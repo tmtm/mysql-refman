@@ -36,7 +36,7 @@
 </div>
 
 </div>
-<a class="indexterm" name="idm45408184650688"></a><p>
+<a class="indexterm" name="idm46446018104560"></a><p>
     This chapter introduces MySQL InnoDB ReplicaSet, which combines
     MySQL technologies to enable you to deploy and administer
     <a class="xref" href="replication.html" title="Chapter 17 Replication">Chapter 17, <i>Replication</i></a>. This content is a high-level overview
@@ -60,7 +60,7 @@
       </p></li><li class="listitem"><p>
         <a class="ulink" href="https://dev.mysql.com/doc/mysql-router/8.0/en/" target="_top">MySQL Router</a>, a lightweight
         middleware that provides transparent routing between your
-        application and InnoDB Cluster.
+        application and InnoDB ReplicaSet.
 </p></li></ul>
 </div>
 <p>
@@ -98,7 +98,7 @@
     <a class="link" href="installing.html" title="Chapter 2 Installing and Upgrading MySQL">installed</a>, and you can also
     <a class="ulink" href="https://dev.mysql.com/doc/mysql-router/8.0/en/mysql-router-installation.html" target="_top">install</a> MySQL Router.
   </p><p>
-    InnoDB Cluster supports <a class="link" href="server-administration.html#clone-plugin" title="5.6.7 The Clone Plugin">MySQL
+    InnoDB ReplicaSet supports <a class="link" href="server-administration.html#clone-plugin" title="5.6.7 The Clone Plugin">MySQL
     Clone</a>, which enables you to provision instances simply. In
     the past, to provision a new instance before it joined a MySQL
     Replication deployment, you would need to somehow manually transfer
@@ -115,14 +115,15 @@
     <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/en/admin-api-bootstrapping-router.html" target="_top">bootstrapping</a>,
     which removes the need for you to configure routing manually.
     MySQL Router then transparently connects client applications to the
-    InnoDB Cluster, providing routing and load-balancing for client
+    InnoDB ReplicaSet, providing routing and load-balancing for client
     connections. This integration also enables you to administer some
     aspects of a MySQL Router bootstrapped against an InnoDB ReplicaSet
     using AdminAPI. InnoDB ReplicaSet status information includes
-    details about MySQL Routers bootstrapped against the cluster. Operations
-    enable you to <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/en/admin-api-bootstrapping-router.html#configuring-router-user" target="_top">create
-    MySQL Router users</a> at the cluster level, to work with the
-    MySQL Routers bootstrapped against the cluster, and so on.
+    details about MySQL Routers bootstrapped against the ReplicaSet.
+    Operations enable you to
+    <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/en/admin-api-bootstrapping-router.html#configuring-router-user" target="_top">create MySQL Router users</a>
+    at the ReplicaSet level, to work with the MySQL Routers bootstrapped
+    against the ReplicaSet, and so on.
   </p><p>
     For more information on these technologies, see the user
     documentation linked in the descriptions. In addition to this user
