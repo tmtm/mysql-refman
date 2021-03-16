@@ -39,7 +39,7 @@
 <div class="toc">
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="stored-objects.html#stored-programs-defining">25.1 Defining Stored Programs</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines">25.2 Using Stored Routines</a></span></dt><dd><dl><dt><span class="section"><a href="stored-objects.html#stored-routines-syntax">25.2.1 Stored Routine Syntax</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines-privileges">25.2.2 Stored Routines and MySQL Privileges</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines-metadata">25.2.3 Stored Routine Metadata</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines-last-insert-id">25.2.4 Stored Procedures, Functions, Triggers, and LAST_INSERT_ID()</a></span></dt></dl></dd><dt><span class="section"><a href="stored-objects.html#triggers">25.3 Using Triggers</a></span></dt><dd><dl><dt><span class="section"><a href="stored-objects.html#trigger-syntax">25.3.1 Trigger Syntax and Examples</a></span></dt><dt><span class="section"><a href="stored-objects.html#trigger-metadata">25.3.2 Trigger Metadata</a></span></dt></dl></dd><dt><span class="section"><a href="stored-objects.html#event-scheduler">25.4 Using the Event Scheduler</a></span></dt><dd><dl><dt><span class="section"><a href="stored-objects.html#events-overview">25.4.1 Event Scheduler Overview</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-configuration">25.4.2 Event Scheduler Configuration</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-syntax">25.4.3 Event Syntax</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-metadata">25.4.4 Event Metadata</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-status-info">25.4.5 Event Scheduler Status</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-privileges">25.4.6 The Event Scheduler and MySQL Privileges</a></span></dt></dl></dd><dt><span class="section"><a href="stored-objects.html#views">25.5 Using Views</a></span></dt><dd><dl><dt><span class="section"><a href="stored-objects.html#view-syntax">25.5.1 View Syntax</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-algorithms">25.5.2 View Processing Algorithms</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-updatability">25.5.3 Updatable and Insertable Views</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-check-option">25.5.4 The View WITH CHECK OPTION Clause</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-metadata">25.5.5 View Metadata</a></span></dt></dl></dd><dt><span class="section"><a href="stored-objects.html#stored-objects-security">25.6 Stored Object Access Control</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-programs-logging">25.7 Stored Program Binary Logging</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-program-restrictions">25.8 Restrictions on Stored Programs</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-restrictions">25.9 Restrictions on Views</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45370693136096"></a><a class="indexterm" name="idm45370693135024"></a><a class="indexterm" name="idm45370693133952"></a><a class="indexterm" name="idm45370693132880"></a><a class="indexterm" name="idm45370693131392"></a><a class="indexterm" name="idm45370693129904"></a><a class="indexterm" name="idm45370693128416"></a><a class="indexterm" name="idm45370693127344"></a><a class="indexterm" name="idm45370693126272"></a><a class="indexterm" name="idm45370693125200"></a><p>
+<a class="indexterm" name="idm45780909816784"></a><a class="indexterm" name="idm45780909815712"></a><a class="indexterm" name="idm45780909814640"></a><a class="indexterm" name="idm45780909813568"></a><a class="indexterm" name="idm45780909812080"></a><a class="indexterm" name="idm45780909810592"></a><a class="indexterm" name="idm45780909809104"></a><a class="indexterm" name="idm45780909808032"></a><a class="indexterm" name="idm45780909806960"></a><a class="indexterm" name="idm45780909805888"></a><p>
     This chapter discusses stored database objects that are defined in
     terms of SQL code that is stored on the server for later execution.
   </p><p>
@@ -218,7 +218,7 @@ mysql&gt; <strong class="userinput"><code>SELECT hello('world');</code></strong>
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="stored-objects.html#stored-routines-syntax">25.2.1 Stored Routine Syntax</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines-privileges">25.2.2 Stored Routines and MySQL Privileges</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines-metadata">25.2.3 Stored Routine Metadata</a></span></dt><dt><span class="section"><a href="stored-objects.html#stored-routines-last-insert-id">25.2.4 Stored Procedures, Functions, Triggers, and LAST_INSERT_ID()</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45370693059120"></a><a class="indexterm" name="idm45370693058048"></a><a class="indexterm" name="idm45370693056560"></a><a class="indexterm" name="idm45370693055488"></a><a class="indexterm" name="idm45370693054000"></a><a class="indexterm" name="idm45370693052928"></a><p>
+<a class="indexterm" name="idm45780909739680"></a><a class="indexterm" name="idm45780909738608"></a><a class="indexterm" name="idm45780909737120"></a><a class="indexterm" name="idm45780909736048"></a><a class="indexterm" name="idm45780909734560"></a><a class="indexterm" name="idm45780909733488"></a><p>
     MySQL supports stored routines (procedures and functions). A stored
     routine is a set of SQL statements that can be stored in the server.
     Once this has been done, clients don't need to keep reissuing the
@@ -260,7 +260,7 @@ mysql&gt; <strong class="userinput"><code>SELECT hello('world');</code></strong>
     used by IBM's DB2. All syntax described here is supported and any
     limitations and extensions are documented where appropriate.
 </p>
-<h3><a name="idm45370693045056"></a>Additional Resources</h3>
+<h3><a name="idm45780909726064"></a>Additional Resources</h3>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         You may find the <a class="ulink" href="https://forums.mysql.com/list.php?98" target="_top">Stored
@@ -476,7 +476,7 @@ mysql&gt; <strong class="userinput"><code>SELECT hello('world');</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692957536"></a><a class="indexterm" name="idm45370692956048"></a><p>
+<a class="indexterm" name="idm45780909638608"></a><a class="indexterm" name="idm45780909637120"></a><p>
       To obtain metadata about stored routines:
 </p>
 <div class="itemizedlist">
@@ -514,7 +514,7 @@ mysql&gt; <strong class="userinput"><code>SELECT hello('world');</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692936848"></a><a class="indexterm" name="idm45370692935360"></a><a class="indexterm" name="idm45370692933872"></a><a class="indexterm" name="idm45370692932384"></a><p>
+<a class="indexterm" name="idm45780909617984"></a><a class="indexterm" name="idm45780909616496"></a><a class="indexterm" name="idm45780909615008"></a><a class="indexterm" name="idm45780909613520"></a><p>
       Within the body of a stored routine (procedure or function) or a
       trigger, the value of
       <a class="link" href="functions.html#function_last-insert-id"><code class="literal">LAST_INSERT_ID()</code></a> changes the same
@@ -554,7 +554,7 @@ mysql&gt; <strong class="userinput"><code>SELECT hello('world');</code></strong>
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="stored-objects.html#trigger-syntax">25.3.1 Trigger Syntax and Examples</a></span></dt><dt><span class="section"><a href="stored-objects.html#trigger-metadata">25.3.2 Trigger Metadata</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45370692922144"></a><p>
+<a class="indexterm" name="idm45780909603344"></a><p>
     A trigger is a named database object that is associated with a
     table, and that activates when a particular event occurs for the
     table. Some uses for triggers are to perform checks of values to be
@@ -595,7 +595,7 @@ Important
     triggers, show some examples of how to use them, and indicate how to
     obtain trigger metadata.
 </p>
-<h3><a name="idm45370692912128"></a>Additional Resources</h3>
+<h3><a name="idm45780909593328"></a>Additional Resources</h3>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         You may find the <a class="ulink" href="https://forums.mysql.com/list.php?100" target="_top">Triggers
@@ -966,7 +966,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM test4;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692771728"></a><a class="indexterm" name="idm45370692770240"></a><p>
+<a class="indexterm" name="idm45780909453056"></a><a class="indexterm" name="idm45780909451568"></a><p>
       To obtain metadata about triggers:
 </p>
 <div class="itemizedlist">
@@ -1000,7 +1000,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM test4;</code></strong>
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="stored-objects.html#events-overview">25.4.1 Event Scheduler Overview</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-configuration">25.4.2 Event Scheduler Configuration</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-syntax">25.4.3 Event Syntax</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-metadata">25.4.4 Event Metadata</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-status-info">25.4.5 Event Scheduler Status</a></span></dt><dt><span class="section"><a href="stored-objects.html#events-privileges">25.4.6 The Event Scheduler and MySQL Privileges</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45370692757616"></a><a class="indexterm" name="idm45370692756576"></a><p>
+<a class="indexterm" name="idm45780909438944"></a><a class="indexterm" name="idm45780909437904"></a><p>
     The <span class="firstterm">MySQL Event Scheduler</span>
     manages the scheduling and execution of events, that is, tasks that
     run according to a schedule. The following discussion covers the
@@ -1032,7 +1032,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM test4;</code></strong>
     sure that your system database is up to date. See
     <a class="xref" href="installing.html#upgrading" title="2.11 Upgrading MySQL">Section 2.11, “Upgrading MySQL”</a>.
 </p>
-<h3><a name="idm45370692743712"></a>Additional Resources</h3>
+<h3><a name="idm45780909424912"></a>Additional Resources</h3>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         You may find the <a class="ulink" href="https://forums.mysql.com/list.php?119" target="_top">MySQL
@@ -1057,7 +1057,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM test4;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692736784"></a><p>
+<a class="indexterm" name="idm45780909417984"></a><p>
       MySQL Events are tasks that run according to a schedule.
       Therefore, we sometimes refer to them as
       <span class="emphasis"><em>scheduled</em></span> events. When you create an event,
@@ -1167,7 +1167,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM test4;</code></strong>
       the <a class="link" href="security.html#priv_process"><code class="literal">PROCESS</code></a> privilege in the output
       of <a class="link" href="sql-statements.html#show-processlist" title="13.7.7.29 SHOW PROCESSLIST Statement"><code class="literal">SHOW PROCESSLIST</code></a>, as shown in
       the discussion that follows.
-    </p><a class="indexterm" name="idm45370692705824"></a><a class="indexterm" name="idm45370692704336"></a><p>
+    </p><a class="indexterm" name="idm45780909387024"></a><a class="indexterm" name="idm45780909385536"></a><p>
       The global <a class="link" href="server-administration.html#sysvar_event_scheduler"><code class="literal">event_scheduler</code></a> system
       variable determines whether the Event Scheduler is enabled and
       running on the server. It has one of these 3 values, which affect
@@ -1178,7 +1178,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM test4;</code></strong>
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           <code class="literal">ON</code>: The Event Scheduler is started; the
           event scheduler thread runs and executes all scheduled events.
-        </p><a class="indexterm" name="idm45370692698640"></a><p>
+        </p><a class="indexterm" name="idm45780909379840"></a><p>
           When the Event Scheduler is <code class="literal">ON</code>, the event
           scheduler thread is listed in the output of
           <a class="link" href="sql-statements.html#show-processlist" title="13.7.7.29 SHOW PROCESSLIST Statement"><code class="literal">SHOW PROCESSLIST</code></a> as a daemon
@@ -1361,7 +1361,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692615376"></a><p>
+<a class="indexterm" name="idm45780909296640"></a><p>
       MySQL provides several SQL statements for working with scheduled
       events:
 </p>
@@ -1401,7 +1401,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692599552"></a><a class="indexterm" name="idm45370692598064"></a><p>
+<a class="indexterm" name="idm45780909280752"></a><a class="indexterm" name="idm45780909279264"></a><p>
       To obtain metadata about events:
 </p>
 <div class="itemizedlist">
@@ -1420,7 +1420,7 @@ Note
 <p>
       <span class="bold"><strong>Event Scheduler Time
       Representation</strong></span>
-    </p><a class="indexterm" name="idm45370692585680"></a><a class="indexterm" name="idm45370692584192"></a><p>
+    </p><a class="indexterm" name="idm45780909266880"></a><a class="indexterm" name="idm45780909265392"></a><p>
       Each session in MySQL has a session time zone (STZ). This is the
       session <a class="link" href="server-administration.html#sysvar_time_zone"><code class="literal">time_zone</code></a> value that is
       initialized from the server's global
@@ -1493,7 +1493,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692539616"></a><a class="indexterm" name="idm45370692538112"></a><a class="indexterm" name="idm45370692537040"></a><p>
+<a class="indexterm" name="idm45780909220832"></a><a class="indexterm" name="idm45780909219328"></a><a class="indexterm" name="idm45780909218256"></a><p>
       The Event Scheduler writes information about event execution that
       terminates with an error or warning to the MySQL Server's error
       log. See <a class="xref" href="stored-objects.html#events-privileges" title="25.4.6 The Event Scheduler and MySQL Privileges">Section 25.4.6, “The Event Scheduler and MySQL Privileges”</a> for an example.
@@ -1555,7 +1555,7 @@ Next activation : never
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692524128"></a><p>
+<a class="indexterm" name="idm45780909205344"></a><p>
       To enable or disable the execution of scheduled events, it is
       necessary to set the value of the global
       <a class="link" href="server-administration.html#sysvar_event_scheduler"><code class="literal">event_scheduler</code></a> system variable.
@@ -1628,7 +1628,7 @@ consult the manual to see which privileges can be used</span>
     </p><pre data-lang="sql" class="programlisting">mysql&gt; <strong class="userinput"><code>INSERT INTO myschema.mytable VALUES (UNIX_TIMESTAMP());</code></strong>
 <span class="errortext">ERROR 1142 (42000): INSERT command denied to user
 'jon'@'ghidora' for table 'mytable'</span>
-</pre><a class="indexterm" name="idm45370692489616"></a><p>
+</pre><a class="indexterm" name="idm45780909170832"></a><p>
       Inspection of the
       <a class="link" href="information-schema.html#information-schema-events-table" title="26.14 The INFORMATION_SCHEMA EVENTS Table"><code class="literal">INFORMATION_SCHEMA.EVENTS</code></a> table shows
       that <code class="literal">e_store_ts</code> exists and is enabled, but its
@@ -1741,7 +1741,7 @@ Important
       directly, since the <a class="link" href="sql-statements.html#grant" title="13.7.1.6 GRANT Statement"><code class="literal">GRANT
       EVENT</code></a> and <code class="literal">REVOKE EVENT</code> statements
       perform the required operations on them.
-    </p><a class="indexterm" name="idm45370692433168"></a><p>
+    </p><a class="indexterm" name="idm45780909114384"></a><p>
       Five status variables provide counts of event-related operations
       (but <span class="emphasis"><em>not</em></span> of statements executed by events;
       see <a class="xref" href="stored-objects.html#stored-program-restrictions" title="25.8 Restrictions on Stored Programs">Section 25.8, “Restrictions on Stored Programs”</a>). These are:
@@ -1791,7 +1791,7 @@ Important
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="stored-objects.html#view-syntax">25.5.1 View Syntax</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-algorithms">25.5.2 View Processing Algorithms</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-updatability">25.5.3 Updatable and Insertable Views</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-check-option">25.5.4 The View WITH CHECK OPTION Clause</a></span></dt><dt><span class="section"><a href="stored-objects.html#view-metadata">25.5.5 View Metadata</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45370692413168"></a><p>
+<a class="indexterm" name="idm45780909094384"></a><p>
     MySQL supports views, including updatable views. Views are stored
     queries that when invoked produce a result set. A view acts as a
     virtual table.
@@ -1799,7 +1799,7 @@ Important
     The following discussion describes the syntax for creating and
     dropping views, and shows some examples of how to use them.
 </p>
-<h3><a name="idm45370692411008"></a>Additional Resources</h3>
+<h3><a name="idm45780909092224"></a>Additional Resources</h3>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         You may find the <a class="ulink" href="https://forums.mysql.com/list.php?100" target="_top">Views
@@ -1868,7 +1868,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM v WHERE qty = 5;</code><
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692387216"></a><p>
+<a class="indexterm" name="idm45780909068304"></a><p>
       The optional <code class="literal">ALGORITHM</code> clause for
       <a class="link" href="sql-statements.html#create-view" title="13.1.23 CREATE VIEW Statement"><code class="literal">CREATE VIEW</code></a> or
       <a class="link" href="sql-statements.html#alter-view" title="13.1.11 ALTER VIEW Statement"><code class="literal">ALTER VIEW</code></a> is a MySQL extension to
@@ -1994,7 +1994,7 @@ SELECT c1, c2 FROM t WHERE c3 &gt; 100;
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692327008"></a><a class="indexterm" name="idm45370692325968"></a><a class="indexterm" name="idm45370692324480"></a><a class="indexterm" name="idm45370692322992"></a><p>
+<a class="indexterm" name="idm45780909008096"></a><a class="indexterm" name="idm45780909007056"></a><a class="indexterm" name="idm45780909005568"></a><a class="indexterm" name="idm45780909004080"></a><p>
       Some views are updatable and references to them can be used to
       specify tables to be updated in data change statements. That is,
       you can use them in statements such as
@@ -2063,7 +2063,7 @@ SELECT c1, c2 FROM t WHERE c3 &gt; 100;
           <a class="link" href="sql-statements.html#delete" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a>)
 </p></li></ul>
 </div>
-<a class="indexterm" name="idm45370692283040"></a><p>
+<a class="indexterm" name="idm45780908964128"></a><p>
       A generated column in a view is considered updatable because it is
       possible to assign to it. However, if such a column is updated
       explicitly, the only permitted value is
@@ -2318,7 +2318,7 @@ ERROR 1369 (HY000): CHECK OPTION failed 'test.v3'
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692175808"></a><a class="indexterm" name="idm45370692174320"></a><p>
+<a class="indexterm" name="idm45780908856880"></a><a class="indexterm" name="idm45780908855392"></a><p>
       To obtain metadata about views:
 </p>
 <div class="itemizedlist">
@@ -2346,7 +2346,7 @@ ERROR 1369 (HY000): CHECK OPTION failed 'test.v3'
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692164416"></a><a class="indexterm" name="idm45370692162960"></a><a class="indexterm" name="idm45370692161872"></a><a class="indexterm" name="idm45370692160384"></a><a class="indexterm" name="idm45370692158896"></a><a class="indexterm" name="idm45370692157408"></a><a class="indexterm" name="idm45370692156336"></a><a class="indexterm" name="idm45370692154848"></a><p>
+<a class="indexterm" name="idm45780908845488"></a><a class="indexterm" name="idm45780908844032"></a><a class="indexterm" name="idm45780908842944"></a><a class="indexterm" name="idm45780908841456"></a><a class="indexterm" name="idm45780908839968"></a><a class="indexterm" name="idm45780908838480"></a><a class="indexterm" name="idm45780908837408"></a><a class="indexterm" name="idm45780908835920"></a><p>
       Stored programs (procedures, functions, triggers, and events) and
       views are defined prior to use and, when referenced, execute
       within a security context that determines their privileges. The
@@ -2526,7 +2526,7 @@ END;
 </div>
 
 </div>
-<a class="indexterm" name="idm45370692087120"></a><a class="indexterm" name="idm45370692085632"></a><a class="indexterm" name="idm45370692084560"></a><a class="indexterm" name="idm45370692083072"></a><p>
+<a class="indexterm" name="idm45780908768000"></a><a class="indexterm" name="idm45780908766512"></a><a class="indexterm" name="idm45780908765440"></a><a class="indexterm" name="idm45780908763952"></a><p>
         An orphan stored object is one for which its
         <code class="literal">DEFINER</code> attribute names a nonexistent
         account:
@@ -3249,7 +3249,7 @@ variable)
 </p>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
-              <a class="indexterm" name="idm45370691825280"></a>
+              <a class="indexterm" name="idm45780908506160"></a>
 
               A statement to be logged might contain references to local
               procedure variables. These variables do not exist outside
@@ -3383,7 +3383,7 @@ variable)
 </div>
 
 </div>
-<a class="indexterm" name="idm45370691779536"></a><a class="indexterm" name="idm45370691778048"></a><a class="indexterm" name="idm45370691776560"></a><a class="indexterm" name="idm45370691775072"></a><a class="indexterm" name="idm45370691773584"></a><a class="indexterm" name="idm45370691772096"></a>
+<a class="indexterm" name="idm45780908460480"></a><a class="indexterm" name="idm45780908458992"></a><a class="indexterm" name="idm45780908457504"></a><a class="indexterm" name="idm45780908456016"></a><a class="indexterm" name="idm45780908454528"></a><a class="indexterm" name="idm45780908453040"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routine-sql-restrictions" title="SQL Statements Not Permitted in Stored Routines">SQL Statements Not Permitted in Stored Routines</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-function-restrictions" title="Restrictions for Stored Functions">Restrictions for Stored Functions</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-trigger-restrictions" title="Restrictions for Triggers">Restrictions for Triggers</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routine-name-conflicts" title="Name Conflicts within Stored Routines">Name Conflicts within Stored Routines</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-replication-restrictions" title="Replication Considerations">Replication Considerations</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-debugging-restrictions" title="Debugging Considerations">Debugging Considerations</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-standard-restrictions" title="Unsupported Syntax from the SQL:2003 Standard">Unsupported Syntax from the SQL:2003 Standard</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-concurrency-restrictions" title="Stored Routine Concurrency Considerations">Stored Routine Concurrency Considerations</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-event-restrictions" title="Event Scheduler Restrictions">Event Scheduler Restrictions</a></p></li><li class="listitem"><p><a class="xref" href="stored-objects.html#stored-routines-ndbcluster" title="Stored routines and triggers in NDB Cluster">Stored routines and triggers in NDB Cluster</a></p></li></ul>
 </div>
@@ -3861,7 +3861,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45370691626256"></a><a class="indexterm" name="idm45370691624768"></a><a class="indexterm" name="idm45370691623280"></a><a class="indexterm" name="idm45370691621792"></a><p>
+<a class="indexterm" name="idm45780908305408"></a><a class="indexterm" name="idm45780908303920"></a><a class="indexterm" name="idm45780908302432"></a><a class="indexterm" name="idm45780908300944"></a><p>
       The maximum number of tables that can be referenced in the
       definition of a view is 61.
     </p><p>
@@ -3916,7 +3916,7 @@ UPDATE t1, v2 SET t1.a = 1 WHERE t1.b = v2.b;
       updatable in practice. MySQL as quickly as possible. Many
       theoretically updatable views can be updated now, but limitations
       still exist. For details, see <a class="xref" href="stored-objects.html#view-updatability" title="25.5.3 Updatable and Insertable Views">Section 25.5.3, “Updatable and Insertable Views”</a>.
-    </p><a class="indexterm" name="idm45370691603568"></a><a class="indexterm" name="idm45370691602080"></a><a class="indexterm" name="idm45370691600592"></a><a class="indexterm" name="idm45370691599104"></a><a class="indexterm" name="idm45370691597616"></a><a class="indexterm" name="idm45370691596128"></a><p>
+    </p><a class="indexterm" name="idm45780908282720"></a><a class="indexterm" name="idm45780908281232"></a><a class="indexterm" name="idm45780908279744"></a><a class="indexterm" name="idm45780908278256"></a><a class="indexterm" name="idm45780908276768"></a><a class="indexterm" name="idm45780908275280"></a><p>
       There exists a shortcoming with the current implementation of
       views. If a user is granted the basic privileges necessary to
       create a view (the <a class="link" href="security.html#priv_create-view"><code class="literal">CREATE VIEW</code></a> and
