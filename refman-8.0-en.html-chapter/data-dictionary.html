@@ -39,7 +39,7 @@
 <div class="toc">
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="data-dictionary.html#data-dictionary-schema">14.1 Data Dictionary Schema</a></span></dt><dt><span class="section"><a href="data-dictionary.html#data-dictionary-file-removal">14.2 Removal of File-based Metadata Storage</a></span></dt><dt><span class="section"><a href="data-dictionary.html#data-dictionary-transactional-storage">14.3 Transactional Storage of Dictionary Data</a></span></dt><dt><span class="section"><a href="data-dictionary.html#data-dictionary-object-cache">14.4 Dictionary Object Cache</a></span></dt><dt><span class="section"><a href="data-dictionary.html#data-dictionary-information-schema">14.5 INFORMATION_SCHEMA and Data Dictionary Integration</a></span></dt><dt><span class="section"><a href="data-dictionary.html#serialized-dictionary-information">14.6 Serialized Dictionary Information (SDI)</a></span></dt><dt><span class="section"><a href="data-dictionary.html#data-dictionary-usage-differences">14.7 Data Dictionary Usage Differences</a></span></dt><dt><span class="section"><a href="data-dictionary.html#data-dictionary-limitations">14.8 Data Dictionary Limitations</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45377169187120"></a><a class="indexterm" name="idm45377169186048"></a><p>
+<a class="indexterm" name="idm45867860216144"></a><a class="indexterm" name="idm45867860215072"></a><p>
     MySQL Server incorporates a transactional data dictionary that
     stores information about database objects. In previous MySQL
     releases, dictionary data was stored in metadata files,
@@ -54,7 +54,7 @@
     Release Notes</a>.
   </p><p>
     Benefits of the MySQL data dictionary include:
-</p><a class="indexterm" name="idm45377169182048"></a>
+</p><a class="indexterm" name="idm45867860211072"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         Simplicity of a centralized data dictionary schema that
@@ -104,7 +104,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45377169164784"></a><p>
+<a class="indexterm" name="idm45867860193872"></a><p>
       Data dictionary tables are protected and may only be accessed in
       debug builds of MySQL. However, MySQL supports access to data
       stored in data dictionary tables through
@@ -236,7 +236,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45377169129424"></a><p>
+<a class="indexterm" name="idm45867860158464"></a><p>
       In previous MySQL releases, dictionary data was partially stored
       in metadata files. Issues with file-based metadata storage
       included expensive file scans, susceptibility to file
@@ -303,7 +303,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45377169101312"></a><p>
+<a class="indexterm" name="idm45867860129920"></a><p>
       The data dictionary schema stores dictionary data in transactional
       (<code class="literal">InnoDB</code>) tables. Data dictionary tables are
       located in the <code class="filename">mysql</code> database together with
@@ -332,7 +332,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45377169092480"></a><a class="indexterm" name="idm45377169091408"></a><p>
+<a class="indexterm" name="idm45867860121088"></a><a class="indexterm" name="idm45867860120016"></a><p>
       The dictionary object cache is a shared global cache that stores
       previously accessed data dictionary objects in memory to enable
       object reuse and minimize disk I/O. Similar to other cache
@@ -425,7 +425,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45377169063696"></a><p>
+<a class="indexterm" name="idm45867860092240"></a><p>
       With the introduction of the data dictionary, the following
       <a class="link" href="information-schema.html" title="Chapter 26 INFORMATION_SCHEMA Tables"><code class="literal">INFORMATION_SCHEMA</code></a> tables are
       implemented as views on data dictionary tables:
@@ -639,7 +639,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45377168940320"></a><p>
+<a class="indexterm" name="idm45867859968880"></a><p>
       Use of a data dictionary-enabled MySQL server entails some
       operational differences compared to a server that does not have a
       data dictionary:
@@ -841,7 +841,7 @@ FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'users';
 </div>
 
 </div>
-<a class="indexterm" name="idm45377168854880"></a><p>
+<a class="indexterm" name="idm45867859883504"></a><p>
       This section describes temporary limitations introduced with the
       MySQL data dictionary.
 </p>
