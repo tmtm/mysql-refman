@@ -39,7 +39,7 @@
 <div class="toc">
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="backup-and-recovery.html#backup-types">7.1 Backup and Recovery Types</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#backup-methods">7.2 Database Backup Methods</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#backup-strategy-example">7.3 Example Backup and Recovery Strategy</a></span></dt><dd><dl><dt><span class="section"><a href="backup-and-recovery.html#backup-policy">7.3.1 Establishing a Backup Policy</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#recovery-from-backups">7.3.2 Using Backups for Recovery</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#backup-strategy-summary">7.3.3 Backup Strategy Summary</a></span></dt></dl></dd><dt><span class="section"><a href="backup-and-recovery.html#using-mysqldump">7.4 Using mysqldump for Backups</a></span></dt><dd><dl><dt><span class="section"><a href="backup-and-recovery.html#mysqldump-sql-format">7.4.1 Dumping Data in SQL Format with mysqldump</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#reloading-sql-format-dumps">7.4.2 Reloading SQL-Format Backups</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#mysqldump-delimited-text">7.4.3 Dumping Data in Delimited-Text Format with mysqldump</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#reloading-delimited-text-dumps">7.4.4 Reloading Delimited-Text Format Backups</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#mysqldump-tips">7.4.5 mysqldump Tips</a></span></dt></dl></dd><dt><span class="section"><a href="backup-and-recovery.html#point-in-time-recovery">7.5 Point-in-Time (Incremental) Recovery</a></span></dt><dd><dl><dt><span class="section"><a href="backup-and-recovery.html#point-in-time-recovery-binlog">7.5.1 Point-in-Time Recovery Using Binary Log</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#point-in-time-recovery-positions">7.5.2 Point-in-Time Recovery Using Event Positions</a></span></dt></dl></dd><dt><span class="section"><a href="backup-and-recovery.html#myisam-table-maintenance">7.6 MyISAM Table Maintenance and Crash Recovery</a></span></dt><dd><dl><dt><span class="section"><a href="backup-and-recovery.html#myisam-crash-recovery">7.6.1 Using myisamchk for Crash Recovery</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#myisam-check">7.6.2 How to Check MyISAM Tables for Errors</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#myisam-repair">7.6.3 How to Repair MyISAM Tables</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#myisam-optimization">7.6.4 MyISAM Table Optimization</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#myisam-maintenance-schedule">7.6.5 Setting Up a MyISAM Table Maintenance Schedule</a></span></dt></dl></dd></dl>
 </div>
-<a class="indexterm" name="idm45284610386000"></a><a class="indexterm" name="idm45284610384512"></a><p>
+<a class="indexterm" name="idm45054593672320"></a><a class="indexterm" name="idm45054593670832"></a><p>
     It is important to back up your databases so that you can recover
     your data and be up and running again in case problems occur, such
     as system crashes, hardware failures, or users deleting data by
@@ -66,7 +66,7 @@
         Table maintenance, to enable recovery of corrupt tables.
 </p></li></ul>
 </div>
-<h2><a name="idm45284610377296"></a>Additional Resources</h2>
+<h2><a name="idm45054593663616"></a>Additional Resources</h2>
 <p>
     Resources related to backup or to maintaining data availability
     include the following:
@@ -129,7 +129,7 @@
       This section describes the characteristics of different types of
       backups.
 </p>
-<h3><a name="idm45284610359968"></a>Physical (Raw) Versus Logical Backups</h3>
+<h3><a name="idm45054593646240"></a>Physical (Raw) Versus Logical Backups</h3>
 <p>
       Physical backups consist of raw copies of the directories and
       files that store database contents. This type of backup is
@@ -258,7 +258,7 @@
           client.
 </p></li></ul>
 </div>
-<h3><a name="idm45284610310880"></a>Online Versus Offline Backups</h3>
+<h3><a name="idm45054593597104"></a>Online Versus Offline Backups</h3>
 <p>
       Online backups take place while the MySQL server is running so
       that the database information can be obtained from the server.
@@ -307,7 +307,7 @@
       so clients must be prevented from accessing data while it is being
       restored.
 </p>
-<h3><a name="idm45284610301440"></a>Local Versus Remote Backups</h3>
+<h3><a name="idm45054593587616"></a>Local Versus Remote Backups</h3>
 <p>
       A local backup is performed on the same host where the MySQL
       server runs, whereas a remote backup is done from a different
@@ -335,7 +335,7 @@
           although the destination for copied files might be remote.
 </p></li></ul>
 </div>
-<h3><a name="idm45284610291360"></a>Snapshot Backups</h3>
+<h3><a name="idm45054593577536"></a>Snapshot Backups</h3>
 <p>
       Some file system implementations enable <span class="quote">“<span class="quote">snapshots</span>”</span>
       to be taken. These provide logical copies of the file system at a
@@ -347,7 +347,7 @@
       It is available through third-party solutions such as Veritas,
       LVM, or ZFS.
 </p>
-<h3><a name="idm45284610289280"></a>Full Versus Incremental Backups</h3>
+<h3><a name="idm45054593575456"></a>Full Versus Incremental Backups</h3>
 <p>
       A full backup includes all data managed by a MySQL server at a
       given point in time. An incremental backup consists of the changes
@@ -357,7 +357,7 @@
       backups are made possible by enabling the server's binary log,
       which the server uses to record data changes.
 </p>
-<h3><a name="idm45284610287680"></a>Full Versus Point-in-Time (Incremental) Recovery</h3>
+<h3><a name="idm45054593573856"></a>Full Versus Point-in-Time (Incremental) Recovery</h3>
 <p>
       A full recovery restores all data from a full backup. This
       restores the server instance to the state that it had when the
@@ -376,7 +376,7 @@
       data modifications and bring the server up to the desired point in
       time.
 </p>
-<h3><a name="idm45284610285168"></a>Table Maintenance</h3>
+<h3><a name="idm45054593571344"></a>Table Maintenance</h3>
 <p>
       Data integrity can be compromised if tables become corrupt. For
       <a class="link" href="innodb-storage-engine.html" title="Chapter 15 The InnoDB Storage Engine"><code class="literal">InnoDB</code></a> tables, this is not a typical
@@ -384,7 +384,7 @@
       tables and repair them if problems are found, see
       <a class="xref" href="backup-and-recovery.html#myisam-table-maintenance" title="7.6 MyISAM Table Maintenance and Crash Recovery">Section 7.6, “MyISAM Table Maintenance and Crash Recovery”</a>.
 </p>
-<h3><a name="idm45284610280688"></a>Backup Scheduling, Compression, and Encryption</h3>
+<h3><a name="idm45054593566864"></a>Backup Scheduling, Compression, and Encryption</h3>
 <p>
       Backup scheduling is valuable for automating backup procedures.
       Compression of backup output reduces space requirements, and
@@ -410,7 +410,7 @@
 <p>
       This section summarizes some general methods for making backups.
 </p>
-<h3><a name="idm45284610276608"></a>Making a Hot Backup with MySQL Enterprise Backup</h3>
+<h3><a name="idm45054593562848"></a>Making a Hot Backup with MySQL Enterprise Backup</h3>
 <p>
       Customers of MySQL Enterprise Edition can use the
       <a class="link" href="glossary.html#glos_mysql_enterprise_backup" title="MySQL Enterprise Backup">MySQL Enterprise
@@ -430,7 +430,7 @@
       backup</a> mechanism. For an overview of the MySQL Enterprise
       Backup product, see <a class="xref" href="mysql-enterprise.html#mysql-enterprise-backup" title="30.2 MySQL Enterprise Backup Overview">Section 30.2, “MySQL Enterprise Backup Overview”</a>.
 </p>
-<h3><a name="idm45284610266304"></a>Making Backups with mysqldump</h3>
+<h3><a name="idm45054593552560"></a>Making Backups with mysqldump</h3>
 <p>
       The <a class="link" href="programs.html#mysqldump" title="4.5.4 mysqldump — A Database Backup Program"><span class="command"><strong>mysqldump</strong></span></a> program can make backups. It can
       back up all kinds of tables. (See
@@ -441,7 +441,7 @@
       <a class="link" href="programs.html#option_mysqldump_single-transaction"><code class="option">--single-transaction</code></a> option to
       <a class="link" href="programs.html#mysqldump" title="4.5.4 mysqldump — A Database Backup Program"><span class="command"><strong>mysqldump</strong></span></a>. See <a class="xref" href="backup-and-recovery.html#backup-policy" title="7.3.1 Establishing a Backup Policy">Section 7.3.1, “Establishing a Backup Policy”</a>.
 </p>
-<h3><a name="idm45284610258896"></a>Making Backups by Copying Table Files</h3>
+<h3><a name="idm45054593545152"></a>Making Backups by Copying Table Files</h3>
 <p>
       MyISAM tables can be backed up by copying table files
       (<code class="filename">*.MYD</code>, <code class="filename">*.MYI</code> files, and
@@ -467,7 +467,7 @@
       For an example of this backup method, refer to the export and
       import example in <a class="xref" href="sql-statements.html#import-table" title="13.2.5 IMPORT TABLE Statement">Section 13.2.5, “IMPORT TABLE Statement”</a>.
 </p>
-<h3><a name="idm45284610248592"></a>Making Delimited-Text File Backups</h3>
+<h3><a name="idm45054593534784"></a>Making Delimited-Text File Backups</h3>
 <p>
       To create a text file containing a table's data, you can use
       <a class="link" href="sql-statements.html#select-into" title="13.2.10.1 SELECT ... INTO Statement"><code class="literal">SELECT * INTO OUTFILE
@@ -489,7 +489,7 @@
       <a class="link" href="sql-statements.html#load-data" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD DATA</code></a> or
       <a class="link" href="programs.html#mysqlimport" title="4.5.5 mysqlimport — A Data Import Program"><span class="command"><strong>mysqlimport</strong></span></a>.
 </p>
-<h3><a name="idm45284610236752"></a>Making Incremental Backups by Enabling the Binary Log</h3>
+<h3><a name="idm45054593522896"></a>Making Incremental Backups by Enabling the Binary Log</h3>
 <p>
       MySQL supports incremental backups using the binary log. The
       binary log files provide you with the information you need to
@@ -514,7 +514,7 @@
       <a class="link" href="sql-statements.html#flush-logs"><code class="literal">FLUSH LOGS</code></a> or <a class="link" href="programs.html#mysqldump" title="4.5.4 mysqldump — A Database Backup Program"><span class="command"><strong>mysqldump
       --flush-logs</strong></span></a>. See <a class="xref" href="programs.html#mysqldump" title="4.5.4 mysqldump — A Database Backup Program">Section 4.5.4, “mysqldump — A Database Backup Program”</a>.
 </p>
-<h3><a name="idm45284610228480"></a>Making Backups Using Replicas</h3>
+<h3><a name="idm45054593514624"></a>Making Backups Using Replicas</h3>
 <p>
       If you have performance problems with a server while making
       backups, one strategy that can help is to set up replication and
@@ -538,7 +538,7 @@
       the directory location is the value of the
       <a class="link" href="server-administration.html#sysvar_tmpdir"><code class="literal">tmpdir</code></a> system variable.
 </p>
-<h3><a name="idm45284610218800"></a>Recovering Corrupt Tables</h3>
+<h3><a name="idm45054593505008"></a>Recovering Corrupt Tables</h3>
 <p>
       If you have to restore <code class="literal">MyISAM</code> tables that have
       become corrupt, try to recover them using
@@ -547,7 +547,7 @@
       <a class="link" href="programs.html#myisamchk" title="4.6.4 myisamchk — MyISAM Table-Maintenance Utility"><span class="command"><strong>myisamchk</strong></span></a> fails, see
       <a class="xref" href="backup-and-recovery.html#myisam-table-maintenance" title="7.6 MyISAM Table Maintenance and Crash Recovery">Section 7.6, “MyISAM Table Maintenance and Crash Recovery”</a>.
 </p>
-<h3><a name="idm45284610212368"></a>Making Backups Using a File System Snapshot</h3>
+<h3><a name="idm45054593498576"></a>Making Backups Using a File System Snapshot</h3>
 <p>
       If you are using a Veritas file system, you can make a backup like
       this:
@@ -939,7 +939,7 @@ Note
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="backup-and-recovery.html#mysqldump-sql-format">7.4.1 Dumping Data in SQL Format with mysqldump</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#reloading-sql-format-dumps">7.4.2 Reloading SQL-Format Backups</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#mysqldump-delimited-text">7.4.3 Dumping Data in Delimited-Text Format with mysqldump</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#reloading-delimited-text-dumps">7.4.4 Reloading Delimited-Text Format Backups</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#mysqldump-tips">7.4.5 mysqldump Tips</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45284610091168"></a><a class="indexterm" name="idm45284610089712"></a>
+<a class="indexterm" name="idm45054593376304"></a><a class="indexterm" name="idm45054593374848"></a>
 <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -1590,7 +1590,7 @@ shell&gt; <strong class="userinput"><code>mysqldump --no-create-info test &gt; d
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="backup-and-recovery.html#point-in-time-recovery-binlog">7.5.1 Point-in-Time Recovery Using Binary Log</a></span></dt><dt><span class="section"><a href="backup-and-recovery.html#point-in-time-recovery-positions">7.5.2 Point-in-Time Recovery Using Event Positions</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45284609801040"></a><a class="indexterm" name="idm45284609800000"></a><a class="indexterm" name="idm45284609798512"></a><a class="indexterm" name="idm45284609797440"></a><p>
+<a class="indexterm" name="idm45054593086176"></a><a class="indexterm" name="idm45054593085136"></a><a class="indexterm" name="idm45054593083648"></a><a class="indexterm" name="idm45054593082576"></a><p>
       Point-in-time recovery refers to recovery of data changes up to a
       given point in time. Typically, this type of recovery is performed
       after restoring a full backup that brings the server to its state
@@ -1994,7 +1994,7 @@ Note
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45284609640672"></a><a class="indexterm" name="idm45284609639216"></a><a class="indexterm" name="idm45284609637728"></a><a class="indexterm" name="idm45284609636656"></a><p>
+<a class="indexterm" name="idm45054592925856"></a><a class="indexterm" name="idm45054592924400"></a><a class="indexterm" name="idm45054592922912"></a><a class="indexterm" name="idm45054592921840"></a><p>
         This section describes how to check for and deal with data
         corruption in MySQL databases. If your tables become corrupted
         frequently, you should try to find the reason why. See
@@ -2090,7 +2090,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45284609575776"></a><a class="indexterm" name="idm45284609574320"></a><a class="indexterm" name="idm45284609572832"></a><p>
+<a class="indexterm" name="idm45054592860896"></a><a class="indexterm" name="idm45054592859440"></a><a class="indexterm" name="idm45054592857952"></a><p>
         To check a <code class="literal">MyISAM</code> table, use the following
         commands:
 </p>
@@ -2154,7 +2154,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45284609547424"></a><a class="indexterm" name="idm45284609545968"></a><p>
+<a class="indexterm" name="idm45054592832544"></a><a class="indexterm" name="idm45054592831088"></a><p>
         The discussion in this section describes how to use
         <a class="link" href="programs.html#myisamchk" title="4.6.4 myisamchk — MyISAM Table-Maintenance Utility"><span class="command"><strong>myisamchk</strong></span></a> on <code class="literal">MyISAM</code> tables
         (extensions <code class="filename">.MYI</code> and
@@ -2365,7 +2365,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45284609449248"></a><a class="indexterm" name="idm45284609447792"></a><p>
+<a class="indexterm" name="idm45054592734320"></a><a class="indexterm" name="idm45054592732864"></a><p>
         To coalesce fragmented rows and eliminate wasted space that
         results from deleting or updating rows, run
         <a class="link" href="programs.html#myisamchk" title="4.6.4 myisamchk — MyISAM Table-Maintenance Utility"><span class="command"><strong>myisamchk</strong></span></a> in recovery mode:
@@ -2419,7 +2419,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45284609423408"></a><a class="indexterm" name="idm45284609421920"></a><p>
+<a class="indexterm" name="idm45054592708416"></a><a class="indexterm" name="idm45054592706928"></a><p>
         It is a good idea to perform table checks on a regular basis
         rather than waiting for problems to occur. One way to check and
         repair <code class="literal">MyISAM</code> tables is with the
@@ -2433,7 +2433,7 @@ Important
         option (short for <a class="link" href="programs.html#option_myisamchk_silent"><code class="option">--silent</code></a>)
         causes <a class="link" href="programs.html#myisamchk" title="4.6.4 myisamchk — MyISAM Table-Maintenance Utility"><span class="command"><strong>myisamchk</strong></span></a> to run in silent mode,
         printing messages only when errors occur.
-      </p><a class="indexterm" name="idm45284609410368"></a><p>
+      </p><a class="indexterm" name="idm45054592695376"></a><p>
         It is also a good idea to enable automatic
         <code class="literal">MyISAM</code> table checking. For example, whenever
         the machine has done a restart in the middle of an update, you
@@ -2458,7 +2458,7 @@ Important
         night on all tables that have been updated during the last 24
         hours. As you see that problems occur infrequently, you can back
         off the checking frequency to once a week or so.
-      </p><a class="indexterm" name="idm45284609398416"></a><p>
+      </p><a class="indexterm" name="idm45054592683424"></a><p>
         Normally, MySQL tables need little maintenance. If you are
         performing many updates to <code class="literal">MyISAM</code> tables with
         dynamic-sized rows (tables with
