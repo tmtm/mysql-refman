@@ -39,7 +39,7 @@
 <div class="toc">
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="tutorial.html#connecting-disconnecting">3.1 Connecting to and Disconnecting from the Server</a></span></dt><dt><span class="section"><a href="tutorial.html#entering-queries">3.2 Entering Queries</a></span></dt><dt><span class="section"><a href="tutorial.html#database-use">3.3 Creating and Using a Database</a></span></dt><dd><dl><dt><span class="section"><a href="tutorial.html#creating-database">3.3.1 Creating and Selecting a Database</a></span></dt><dt><span class="section"><a href="tutorial.html#creating-tables">3.3.2 Creating a Table</a></span></dt><dt><span class="section"><a href="tutorial.html#loading-tables">3.3.3 Loading Data into a Table</a></span></dt><dt><span class="section"><a href="tutorial.html#retrieving-data">3.3.4 Retrieving Information from a Table</a></span></dt></dl></dd><dt><span class="section"><a href="tutorial.html#getting-information">3.4 Getting Information About Databases and Tables</a></span></dt><dt><span class="section"><a href="tutorial.html#batch-mode">3.5 Using mysql in Batch Mode</a></span></dt><dt><span class="section"><a href="tutorial.html#examples">3.6 Examples of Common Queries</a></span></dt><dd><dl><dt><span class="section"><a href="tutorial.html#example-maximum-column">3.6.1 The Maximum Value for a Column</a></span></dt><dt><span class="section"><a href="tutorial.html#example-maximum-row">3.6.2 The Row Holding the Maximum of a Certain Column</a></span></dt><dt><span class="section"><a href="tutorial.html#example-maximum-column-group">3.6.3 Maximum of Column per Group</a></span></dt><dt><span class="section"><a href="tutorial.html#example-maximum-column-group-row">3.6.4 The Rows Holding the Group-wise Maximum of a Certain Column</a></span></dt><dt><span class="section"><a href="tutorial.html#example-user-variables">3.6.5 Using User-Defined Variables</a></span></dt><dt><span class="section"><a href="tutorial.html#example-foreign-keys">3.6.6 Using Foreign Keys</a></span></dt><dt><span class="section"><a href="tutorial.html#searching-on-two-keys">3.6.7 Searching on Two Keys</a></span></dt><dt><span class="section"><a href="tutorial.html#calculating-days">3.6.8 Calculating Visits Per Day</a></span></dt><dt><span class="section"><a href="tutorial.html#example-auto-increment">3.6.9 Using AUTO_INCREMENT</a></span></dt></dl></dd><dt><span class="section"><a href="tutorial.html#apache">3.7 Using MySQL with Apache</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45691588012240"></a><a class="indexterm" name="idm45691588011168"></a><a class="indexterm" name="idm45691588009680"></a><a class="indexterm" name="idm45691588008192"></a><p>
+<a class="indexterm" name="idm46280483650256"></a><a class="indexterm" name="idm46280483649184"></a><a class="indexterm" name="idm46280483647696"></a><a class="indexterm" name="idm46280483646208"></a><p>
     This chapter provides a tutorial introduction to MySQL by showing
     how to use the <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a> client program to create and
     use a simple database. <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a> (sometimes referred
@@ -80,7 +80,7 @@
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45691587988976"></a><a class="indexterm" name="idm45691587987488"></a><a class="indexterm" name="idm45691587986000"></a><a class="indexterm" name="idm45691587984512"></a><p>
+<a class="indexterm" name="idm46280483626864"></a><a class="indexterm" name="idm46280483625376"></a><a class="indexterm" name="idm46280483623888"></a><a class="indexterm" name="idm46280483622400"></a><p>
       To connect to the server, you usually need to provide a MySQL user
       name when you invoke <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a> and, most likely, a
       password. If the server runs on a machine other than the one where
@@ -105,7 +105,7 @@ Enter password: <strong class="userinput"><code>********</code></strong>
     </p><pre data-lang="terminal" class="programlisting">shell&gt; <strong class="userinput"><code>mysql -h <em class="replaceable"><code>host</code></em> -u <em class="replaceable"><code>user</code></em> -p</code></strong>
 Enter password: <strong class="userinput"><code>********</code></strong>
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 25338 to server version: 8.0.25-standard
+Your MySQL connection id is 25338 to server version: 8.0.26-standard
 
 Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -159,7 +159,7 @@ Bye
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587949744"></a><a class="indexterm" name="idm45691587948256"></a><a class="indexterm" name="idm45691587946768"></a><p>
+<a class="indexterm" name="idm46280483587632"></a><a class="indexterm" name="idm46280483586144"></a><a class="indexterm" name="idm46280483584656"></a><p>
       Make sure that you are connected to the server, as discussed in
       the previous section. Doing so does not in itself select any
       database to work with, but that is okay. At this point, it is more
@@ -295,7 +295,7 @@ mysql&gt;
       The following table shows each of the prompts you may see and
       summarizes what they mean about the state that
       <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a> is in.
-</p><a class="indexterm" name="idm45691587895472"></a>
+</p><a class="indexterm" name="idm46280483533312"></a>
 <div class="informaltable">
 <table summary="MySQL prompts and the meaning of each prompt."><col width="10%"><col width="80%"><thead><tr>
           <th>Prompt</th>
@@ -427,7 +427,7 @@ Note
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="tutorial.html#creating-database">3.3.1 Creating and Selecting a Database</a></span></dt><dt><span class="section"><a href="tutorial.html#creating-tables">3.3.2 Creating a Table</a></span></dt><dt><span class="section"><a href="tutorial.html#loading-tables">3.3.3 Loading Data into a Table</a></span></dt><dt><span class="section"><a href="tutorial.html#retrieving-data">3.3.4 Retrieving Information from a Table</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45691587824544"></a><a class="indexterm" name="idm45691587823088"></a><a class="indexterm" name="idm45691587821600"></a><p>
+<a class="indexterm" name="idm46280483462336"></a><a class="indexterm" name="idm46280483460880"></a><a class="indexterm" name="idm46280483459392"></a><p>
       Once you know how to enter SQL statements, you are ready to access
       a database.
     </p><p>
@@ -516,7 +516,7 @@ Database changed
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45691587789056"></a><a class="indexterm" name="idm45691587787600"></a><p>
+<a class="indexterm" name="idm46280483426960"></a><a class="indexterm" name="idm46280483425504"></a><p>
         If the administrator creates your database for you when setting
         up your permissions, you can begin using it. Otherwise, you need
         to create it yourself:
@@ -606,7 +606,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587758176"></a><a class="indexterm" name="idm45691587756688"></a><p>
+<a class="indexterm" name="idm46280483396032"></a><a class="indexterm" name="idm46280483394544"></a><p>
         Creating the database is the easy part, but at this point it is
         empty, as <a class="link" href="sql-statements.html#show-tables" title="13.7.7.39 SHOW TABLES Statement"><code class="literal">SHOW TABLES</code></a> tells you:
       </p><pre data-lang="sql" class="programlisting">mysql&gt; <strong class="userinput"><code>SHOW TABLES;</code></strong>
@@ -724,7 +724,7 @@ Empty set (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587713072"></a><a class="indexterm" name="idm45691587711616"></a><a class="indexterm" name="idm45691587710128"></a><p>
+<a class="indexterm" name="idm46280483351280"></a><a class="indexterm" name="idm46280483349824"></a><a class="indexterm" name="idm46280483348336"></a><p>
         After creating your table, you need to populate it. The
         <a class="link" href="sql-statements.html#load-data" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD DATA</code></a> and
         <a class="link" href="sql-statements.html#insert" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a> statements are useful for
@@ -881,7 +881,7 @@ Empty set (0.00 sec)
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="tutorial.html#selecting-all">3.3.4.1 Selecting All Data</a></span></dt><dt><span class="section"><a href="tutorial.html#selecting-rows">3.3.4.2 Selecting Particular Rows</a></span></dt><dt><span class="section"><a href="tutorial.html#selecting-columns">3.3.4.3 Selecting Particular Columns</a></span></dt><dt><span class="section"><a href="tutorial.html#sorting-rows">3.3.4.4 Sorting Rows</a></span></dt><dt><span class="section"><a href="tutorial.html#date-calculations">3.3.4.5 Date Calculations</a></span></dt><dt><span class="section"><a href="tutorial.html#working-with-null">3.3.4.6 Working with NULL Values</a></span></dt><dt><span class="section"><a href="tutorial.html#pattern-matching">3.3.4.7 Pattern Matching</a></span></dt><dt><span class="section"><a href="tutorial.html#counting-rows">3.3.4.8 Counting Rows</a></span></dt><dt><span class="section"><a href="tutorial.html#multiple-tables">3.3.4.9 Using More Than one Table</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45691587610448"></a><a class="indexterm" name="idm45691587608992"></a><a class="indexterm" name="idm45691587607504"></a><a class="indexterm" name="idm45691587606016"></a><p>
+<a class="indexterm" name="idm46280483248448"></a><a class="indexterm" name="idm46280483246992"></a><a class="indexterm" name="idm46280483245504"></a><a class="indexterm" name="idm46280483244016"></a><p>
         The <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> statement is used to
         pull information from a table. The general form of the statement
         is:
@@ -976,7 +976,7 @@ mysql&gt; <strong class="userinput"><code>LOAD DATA LOCAL INFILE 'pet.txt' INTO 
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587570096"></a><a class="indexterm" name="idm45691587568640"></a><p>
+<a class="indexterm" name="idm46280483209696"></a><a class="indexterm" name="idm46280483208240"></a><p>
           As shown in the preceding section, it is easy to retrieve an
           entire table. Just omit the <code class="literal">WHERE</code> clause
           from the <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> statement. But
@@ -1065,7 +1065,7 @@ mysql&gt; <strong class="userinput"><code>LOAD DATA LOCAL INFILE 'pet.txt' INTO 
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587538336"></a><a class="indexterm" name="idm45691587536880"></a><p>
+<a class="indexterm" name="idm46280483177936"></a><a class="indexterm" name="idm46280483176480"></a><p>
           If you do not want to see entire rows from your table, just
           name the columns in which you are interested, separated by
           commas. For example, if you want to know when your animals
@@ -1101,7 +1101,7 @@ mysql&gt; <strong class="userinput"><code>LOAD DATA LOCAL INFILE 'pet.txt' INTO 
 | Benny  |
 | Diane  |
 +--------+
-</pre><a class="indexterm" name="idm45691587529088"></a><p>
+</pre><a class="indexterm" name="idm46280483168688"></a><p>
           Notice that the query simply retrieves the
           <code class="literal">owner</code> column from each record, and some of
           them appear more than once. To minimize the output, retrieve
@@ -1144,7 +1144,7 @@ mysql&gt; <strong class="userinput"><code>LOAD DATA LOCAL INFILE 'pet.txt' INTO 
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587518944"></a><a class="indexterm" name="idm45691587517872"></a><a class="indexterm" name="idm45691587516384"></a><a class="indexterm" name="idm45691587514896"></a><a class="indexterm" name="idm45691587513408"></a><p>
+<a class="indexterm" name="idm46280483158544"></a><a class="indexterm" name="idm46280483157472"></a><a class="indexterm" name="idm46280483155984"></a><a class="indexterm" name="idm46280483154496"></a><a class="indexterm" name="idm46280483153008"></a><p>
           You may have noticed in the preceding examples that the result
           rows are displayed in no particular order. It is often easier
           to examine query output when the rows are sorted in some
@@ -1233,7 +1233,7 @@ mysql&gt; <strong class="userinput"><code>LOAD DATA LOCAL INFILE 'pet.txt' INTO 
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587493728"></a><a class="indexterm" name="idm45691587492656"></a><a class="indexterm" name="idm45691587491168"></a><a class="indexterm" name="idm45691587489680"></a><p>
+<a class="indexterm" name="idm46280483133440"></a><a class="indexterm" name="idm46280483132368"></a><a class="indexterm" name="idm46280483130880"></a><a class="indexterm" name="idm46280483129392"></a><p>
           MySQL provides several functions that you can use to perform
           calculations on dates, for example, to calculate ages or
           extract parts of dates.
@@ -1432,7 +1432,7 @@ mysql&gt; <strong class="userinput"><code>SHOW WARNINGS;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587413872"></a><a class="indexterm" name="idm45691587412832"></a><p>
+<a class="indexterm" name="idm46280483052848"></a><a class="indexterm" name="idm46280483051808"></a><p>
           The <code class="literal">NULL</code> value can be surprising until you
           get used to it. Conceptually, <code class="literal">NULL</code> means
           <span class="quote">“<span class="quote">a missing unknown value</span>”</span> and it is treated
@@ -1514,7 +1514,7 @@ mysql&gt; <strong class="userinput"><code>SHOW WARNINGS;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587373856"></a><a class="indexterm" name="idm45691587372784"></a><a class="indexterm" name="idm45691587371296"></a><p>
+<a class="indexterm" name="idm46280483012736"></a><a class="indexterm" name="idm46280483011664"></a><a class="indexterm" name="idm46280483010176"></a><p>
           MySQL provides standard SQL pattern matching as well as a form
           of pattern matching based on extended regular expressions
           similar to those used by Unix utilities such as
@@ -1703,7 +1703,7 @@ SELECT * FROM pet WHERE REGEXP_LIKE(name, '^b', 'c');
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587294576"></a><a class="indexterm" name="idm45691587293088"></a><a class="indexterm" name="idm45691587291600"></a><p>
+<a class="indexterm" name="idm46280482933440"></a><a class="indexterm" name="idm46280482931952"></a><a class="indexterm" name="idm46280482930464"></a><p>
           Databases are often used to answer the question, <span class="quote">“<span class="quote">How
           often does a certain type of data occur in a table?</span>”</span>
           For example, you might want to know how many pets you have, or
@@ -1869,7 +1869,7 @@ mysql&gt; <strong class="userinput"><code>SELECT owner, COUNT(*) FROM pet;</code
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587241536"></a><p>
+<a class="indexterm" name="idm46280482880352"></a><p>
           The <code class="literal">pet</code> table keeps track of which pets you
           have. If you want to record other information about them, such
           as events in their lives like visits to the vet or when
@@ -2066,7 +2066,7 @@ mysql&gt; <strong class="userinput"><code>SELECT owner, COUNT(*) FROM pet;</code
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587142128"></a><a class="indexterm" name="idm45691587140672"></a><a class="indexterm" name="idm45691587139184"></a><p>
+<a class="indexterm" name="idm46280482780848"></a><a class="indexterm" name="idm46280482779392"></a><a class="indexterm" name="idm46280482777904"></a><p>
       What if you forget the name of a database or table, or what the
       structure of a given table is (for example, what its columns are
       called)? MySQL addresses this problem through several statements
@@ -2155,7 +2155,7 @@ mysql&gt; <strong class="userinput"><code>SELECT owner, COUNT(*) FROM pet;</code
 </div>
 
 </div>
-<a class="indexterm" name="idm45691587104528"></a><a class="indexterm" name="idm45691587103072"></a><a class="indexterm" name="idm45691587102000"></a><a class="indexterm" name="idm45691587100512"></a><a class="indexterm" name="idm45691587099440"></a><a class="indexterm" name="idm45691587097952"></a><p>
+<a class="indexterm" name="idm46280482743792"></a><a class="indexterm" name="idm46280482742336"></a><a class="indexterm" name="idm46280482741264"></a><a class="indexterm" name="idm46280482739776"></a><a class="indexterm" name="idm46280482738704"></a><a class="indexterm" name="idm46280482737216"></a><p>
       In the previous sections, you used <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a>
       interactively to enter statements and view the results. You can
       also run <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a> in batch mode. To do this, put
@@ -2241,7 +2241,7 @@ snake
       If you want to get the interactive output format in batch mode,
       use <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql -t</strong></span></a>. To echo to the output the
       statements that are executed, use <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql -v</strong></span></a>.
-    </p><a class="indexterm" name="idm45691587056512"></a><a class="indexterm" name="idm45691587055424"></a><a class="indexterm" name="idm45691587054336"></a><a class="indexterm" name="idm45691587053232"></a><p>
+    </p><a class="indexterm" name="idm46280482695728"></a><a class="indexterm" name="idm46280482694640"></a><a class="indexterm" name="idm46280482693552"></a><a class="indexterm" name="idm46280482692448"></a><p>
       You can also use scripts from the <a class="link" href="programs.html#mysql" title="4.5.1 mysql — The MySQL Command-Line Client"><span class="command"><strong>mysql</strong></span></a> prompt
       by using the <code class="literal">source</code> command or
       <code class="literal">\.</code> command:
@@ -2265,7 +2265,7 @@ mysql&gt; <strong class="userinput"><code>\. <em class="replaceable"><code>filen
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="tutorial.html#example-maximum-column">3.6.1 The Maximum Value for a Column</a></span></dt><dt><span class="section"><a href="tutorial.html#example-maximum-row">3.6.2 The Row Holding the Maximum of a Certain Column</a></span></dt><dt><span class="section"><a href="tutorial.html#example-maximum-column-group">3.6.3 Maximum of Column per Group</a></span></dt><dt><span class="section"><a href="tutorial.html#example-maximum-column-group-row">3.6.4 The Rows Holding the Group-wise Maximum of a Certain Column</a></span></dt><dt><span class="section"><a href="tutorial.html#example-user-variables">3.6.5 Using User-Defined Variables</a></span></dt><dt><span class="section"><a href="tutorial.html#example-foreign-keys">3.6.6 Using Foreign Keys</a></span></dt><dt><span class="section"><a href="tutorial.html#searching-on-two-keys">3.6.7 Searching on Two Keys</a></span></dt><dt><span class="section"><a href="tutorial.html#calculating-days">3.6.8 Calculating Visits Per Day</a></span></dt><dt><span class="section"><a href="tutorial.html#example-auto-increment">3.6.9 Using AUTO_INCREMENT</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45691587043472"></a><a class="indexterm" name="idm45691587042016"></a><p>
+<a class="indexterm" name="idm46280482682528"></a><a class="indexterm" name="idm46280482681072"></a><p>
       Here are examples of how to solve some common problems with MySQL.
     </p><p>
       Some of the examples use the table <code class="literal">shop</code> to hold
@@ -2467,7 +2467,7 @@ ORDER BY s1.article;
         <code class="literal">NULL</code>. See <a class="xref" href="sql-statements.html#join" title="13.2.10.2 JOIN Clause">Section 13.2.10.2, “JOIN Clause”</a>.
       </p><p>
         Common table expression with window function:
-      </p><a class="indexterm" name="idm45691586999168"></a><a class="indexterm" name="idm45691586998080"></a><pre data-lang="sql" class="programlisting">WITH s1 AS (
+      </p><a class="indexterm" name="idm46280482638224"></a><a class="indexterm" name="idm46280482637136"></a><pre data-lang="sql" class="programlisting">WITH s1 AS (
    SELECT article, dealer, price,
           RANK() OVER (PARTITION BY article
                            ORDER BY price DESC
@@ -2534,7 +2534,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45691586986992"></a><a class="indexterm" name="idm45691586985920"></a><p>
+<a class="indexterm" name="idm46280482626064"></a><a class="indexterm" name="idm46280482624992"></a><p>
         In MySQL, <code class="literal">InnoDB</code> tables support checking of
         foreign key constraints. See
         <a class="xref" href="innodb-storage-engine.html" title="Chapter 15 The InnoDB Storage Engine">Chapter 15, <i>The InnoDB Storage Engine</i></a>, and
@@ -2674,7 +2674,7 @@ PRIMARY KEY  (`id`)
 </div>
 
 </div>
-<a class="indexterm" name="idm45691586955360"></a><a class="indexterm" name="idm45691586954320"></a><a class="indexterm" name="idm45691586953248"></a><a class="indexterm" name="idm45691586951760"></a><p>
+<a class="indexterm" name="idm46280482594368"></a><a class="indexterm" name="idm46280482593328"></a><a class="indexterm" name="idm46280482592256"></a><a class="indexterm" name="idm46280482590768"></a><p>
         An <a class="link" href="functions.html#operator_or"><code class="literal">OR</code></a> using a single key is well
         optimized, as is the handling of
         <a class="link" href="functions.html#operator_and"><code class="literal">AND</code></a>.
@@ -2712,7 +2712,7 @@ SELECT field1_index, field2_index
 </div>
 
 </div>
-<a class="indexterm" name="idm45691586935728"></a><a class="indexterm" name="idm45691586934688"></a><a class="indexterm" name="idm45691586933616"></a><a class="indexterm" name="idm45691586932528"></a><p>
+<a class="indexterm" name="idm46280482574736"></a><a class="indexterm" name="idm46280482573696"></a><a class="indexterm" name="idm46280482572624"></a><a class="indexterm" name="idm46280482571536"></a><p>
         The following example shows how you can use the bit group
         functions to calculate the number of days per month a user has
         visited a Web page.
@@ -2751,7 +2751,7 @@ INSERT INTO t1 VALUES(2000,1,1),(2000,1,20),(2000,1,30),(2000,2,2),
 </div>
 
 </div>
-<a class="indexterm" name="idm45691586923520"></a><a class="indexterm" name="idm45691586922448"></a><a class="indexterm" name="idm45691586921376"></a><p>
+<a class="indexterm" name="idm46280482562416"></a><a class="indexterm" name="idm46280482561344"></a><a class="indexterm" name="idm46280482560272"></a><p>
         The <code class="literal">AUTO_INCREMENT</code> attribute can be used to
         generate a unique identity for new rows:
       </p><pre data-lang="sql" class="programlisting">CREATE TABLE animals (
@@ -3017,7 +3017,7 @@ SELECT * FROM animals ORDER BY grp,id;
 </div>
 
 </div>
-<a class="indexterm" name="idm45691586831728"></a><p>
+<a class="indexterm" name="idm46280482470400"></a><p>
       There are programs that let you authenticate your users from a
       MySQL database and also let you write your log files into a MySQL
       table.
