@@ -1,0 +1,139 @@
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>第 32 章 OCI マーケットプレイス上の MySQL</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="up" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="prev" href="workbench.html" title="第 31 章 MySQL Workbench"><link rel="next" href="faqs.html" title="付録 A MySQL 8.0 のよくある質問"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">第 32 章 OCI マーケットプレイス上の MySQL</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="workbench.html">前</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="faqs.html">次へ</a></td></tr></table><hr></div><div class="status-header"><p class="alert">このページは機械翻訳したものです。</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="mysql-oci-marketplace"></a>第 32 章 OCI マーケットプレイス上の MySQL</h1></div></div></div><div class="toc"><p><b>目次</b></p><dl class="toc"><dt><span class="section"><a href="mysql-oci-marketplace.html#mysql-oci-marketplace-prereqs">32.1 Oracle Cloud Infrastructure に MySQL EE をデプロイするための前提条件</a></span></dt><dt><span class="section"><a href="mysql-oci-marketplace.html#mysql-oci-marketplace-deploy">32.2 Oracle Cloud Infrastructure での MySQL EE のデプロイ</a></span></dt><dt><span class="section"><a href="mysql-oci-marketplace.html#mysql-oci-marketplace-network-configuration">32.3 ネットワークアクセスの構成</a></span></dt><dt><span class="section"><a href="mysql-oci-marketplace.html#mysql-oci-marketplace-connecting">32.4 Connecting</a></span></dt><dt><span class="section"><a href="mysql-oci-marketplace.html#mysql-oci-marketplace-maintenance">32.5 Maintenance</a></span></dt></dl></div><p>
+    この章では、MySQL Enterprise Edition を Oracle Cloud Infrastructure (OCI) マーケットプレイスアプリケーションとしてデプロイする方法について説明します。 これは BYOL 製品です。 
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
+      OCI マーケットプレイスの詳細は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/Marketplace/Concepts/marketoverview.htm" target="_top">「Marketplace の概要」</a>を参照してください。
+    </p></div><p>
+    MySQL Enterprise Edition Marketplace アプリケーションは、Oracle Linux 7.7 と MySQL EE 8.0 を実行する OCI コンピュートインスタンスです。 デプロイされたイメージへの MySQL EE インストールは、<a class="xref" href="installing.html#linux-installation-rpm" title="2.5.4 Oracle の RPM パッケージを使用した Linux への MySQL のインストール">セクション2.5.4「Oracle の RPM パッケージを使用した Linux への MySQL のインストール」</a> で説明されている RPM インストールと似ています。 
+  </p><p>
+    MySQL Enterprise Edition の詳細は、<a class="xref" href="mysql-enterprise.html" title="第 30 章 MySQL Enterprise Edition">第30章「<i>MySQL Enterprise Edition</i>」</a> を参照してください。
+  </p><p>
+    MySQL の拡張構成の詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/" target="_top">「セキュアデプロイメントガイド」</a>を参照してください。
+  </p><p>
+    Oracle Linux 7 の詳細は、<a class="ulink" href="https://docs.oracle.com/en/operating-systems/oracle-linux/7/" target="_top">「Oracle Linux ドキュメント」</a>を参照してください
+  </p><p>
+    この製品はユーザー管理であり、アップグレードおよびメンテナンスを担当します。
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-oci-marketplace-prereqs"></a>32.1 Oracle Cloud Infrastructure に MySQL EE をデプロイするための前提条件</h2></div></div></div><p>
+      次の前提があります:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          OCI 用語に精通していること。 OCI を初めて使用する場合は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/GSG/Concepts/baremetalintro.htm" target="_top">「はじめに」</a>を参照してください。 
+        </p></li><li class="listitem"><p>
+          適切に構成された仮想クラウドネットワーク (VCN) およびサブネットにアクセスできます。 詳細は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/quickstartnetworking.htm" target="_top">「仮想ネットワーク」</a>を参照してください。 
+        </p></li><li class="listitem"><p>
+          OCI マーケットプレイスアプリケーションをテナンシのコンパートメントにデプロイするために必要な権限があります。 詳細は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/policies.htm" target="_top">「ポリシーの仕組み」</a>を参照してください。 
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-oci-marketplace-deploy"></a>32.2 Oracle Cloud Infrastructure での MySQL EE のデプロイ</h2></div></div></div><p>
+      Oracle Cloud Infrastructure に MySQL EE をデプロイするには、次の手順を実行します:
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+          OCI マーケットプレイスを開き、<span class="guilabel">MySQL</span> を選択します。
+        </p><p>
+          <span class="guilabel">MySQL</span> リストが表示されます。
+        </p></li><li class="listitem"><p>
+          <span class="guilabel">「インスタンスの起動」</span>をクリックして、アプリケーションの起動プロセスを開始します。
+        </p><p>
+          <span class="guilabel">「コンピュートインスタンスの作成」</span>ダイアログが表示されます。
+        </p><p>
+          フィールドへの入力方法の詳細は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/Compute/Tasks/launchinginstance.htm" target="_top">「Linux インスタンスを作成するには」</a>を参照してください。
+        </p></li></ol></div><p>
+      デフォルトでは、MySQL サーバーはポート 3306 でリスニングし、単一のユーザー root で構成されます。
+    </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">重要</div><p>
+        デプロイメントが完了すると、MySQL サーバーが起動し、コンピュートインスタンスに接続して、MySQL ログファイルに書き込まれたデフォルトのルートパスワードを取得する必要があります。
+      </p><p>
+        詳しくは<a class="xref" href="mysql-oci-marketplace.html#mysql-oci-marketplace-connecting-ssh" title="SSH での接続">SSH での接続</a>をご覧ください。
+      </p></div><p>
+      次の MySQL ソフトウェアがインストールされています:
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          MySQL Server EE
+        </p></li><li class="listitem"><p>
+          MySQL Enterprise Backup
+        </p></li><li class="listitem"><p>
+          MySQL Shell
+        </p></li><li class="listitem"><p>
+          MySQL Router
+        </p></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idm46104551318752"></a>MySQL 構成</h3></div></div></div><p>
+        セキュリティのために、次のものが有効になります:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            SELinux : 詳細は、<a class="ulink" href="https://docs.oracle.com/en/operating-systems/oracle-linux/7/admin/ol7-s1-syssec.html" target="_top">「SELinux の構成および使用」</a>を参照してください
+          </p></li><li class="listitem"><p>
+            <code class="filename">firewalld</code> : 詳細は、<a class="ulink" href="https://docs.oracle.com/en/operating-systems/oracle-linux/7/admin/ol7-firewall-sec.html" target="_top">firewalld の現在のステータスと設定</a>を参照してください
+          </p></li></ul></div><p>
+        次の MySQL プラグインが有効になります:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <code class="filename">thread_pool</code>
+          </p></li><li class="listitem"><p>
+            <code class="filename">validate_password</code>
+          </p></li></ul></div><p>
+        起動時には、次の処理が行われます:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            MySQL Server は、<code class="filename">/etc/my.cnf.d/</code>で<code class="filename">/etc/my.cnf</code> および <code class="filename"><em class="replaceable"><code>*</code></em>.cnf</code> という名前のすべてのファイルを読み取ります。
+          </p></li><li class="listitem"><p>
+            <code class="filename">/etc/my.cnf.d/perf-tuning.cnf</code> は、選択した OCI シェイプに基づいて<code class="filename">/usr/bin/mkcnf</code> によって作成されます。
+          </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
+              このメカニズムを無効にするには、<code class="filename">/etc/systemd/system/mysqld.service.d/perf-tuning.conf</code> を削除します。
+            </p></div><p>
+            パフォーマンスチューニングは、次のシェイプに対して構成されます:
+          </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                VM.Standard2.1
+              </p></li><li class="listitem"><p>
+                VM.Standard2.2
+              </p></li><li class="listitem"><p>
+                VM.Standard2.4
+              </p></li><li class="listitem"><p>
+                VM.Standard2.8
+              </p></li><li class="listitem"><p>
+                VM.Standard2.16
+              </p></li><li class="listitem"><p>
+                VM.Standard2.24
+              </p></li><li class="listitem"><p>
+                VM.Standard.E2.1
+              </p></li><li class="listitem"><p>
+                VM.Standard.E2.2
+              </p></li><li class="listitem"><p>
+                VM.Standard.E2.4
+              </p></li><li class="listitem"><p>
+                VM.Standard.E2.8
+              </p></li><li class="listitem"><p>
+                BM.Standard2.52
+              </p></li></ul></div><p>
+            その他のすべてのシェイプでは、VM.Standard 2.1 のチューニングが使用されます。
+          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-oci-marketplace-network-configuration"></a>32.3 ネットワークアクセスの構成</h2></div></div></div><p>
+      OCI セキュリティルールの詳細は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securityrules.htm" target="_top">「セキュリティルール」</a>を参照してください。
+    </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">重要</div><p>
+        MySQL X プロトコルを使用する場合は、ポート 22 (SSH) および 3306 (MySQL) およびオプションで 33060 でイングレスを有効にする必要があります。
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-oci-marketplace-connecting"></a>32.4 Connecting</h2></div></div></div><p>
+      このセクションでは、OCI コンピュートインスタンスにデプロイされた MySQL サーバーに接続するための様々な接続方法について説明します。
+    </p><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-oci-marketplace-connecting-ssh"></a>SSH での接続</h3></div></div></div><p>
+        このセクションでは、UNIX 系プラットフォームから OCI Compute への接続について詳しく説明します。 SSH での接続の詳細は、<a class="ulink" href="https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stcsg/accessing-oracle-linux-instance-using-ssh.html#GUID-D947E2CC-0D4C-43F4-B2A9-A517037D6C11" target="_top">「SSH を使用した Oracle Linux インスタンスへのアクセス」</a>および<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/testingconnection.htm" target="_top">「インスタンスへの接続」</a>を参照してください。 
+      </p><p>
+        SSH を使用してコンピュートインスタンスで実行されている Oracle Linux に接続するには、次のコマンドを実行します:
+      </p><pre class="programlisting">ssh opc@<em class="replaceable"><code>computeIP</code></em></pre><p>
+        ここで、<code class="literal">opc</code> はコンピュートユーザーで、<em class="replaceable"><code>computeIP</code></em> はコンピュートインスタンスの IP アドレスです。
+      </p><p>
+        root ユーザー用に作成された一時 root パスワードを検索するには、次のコマンドを実行します:
+      </p><pre class="programlisting">sudo grep 'temporary password' /var/log/mysqld.log</pre><p>
+        デフォルトのパスワードを変更するには、次のコマンドを使用して、生成された一時パスワードを使用してサーバーにログイン: <code class="literal">mysql -uroot -p</code>。 次に、次のコマンドを実行します: 
+      </p><pre class="programlisting">ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';</pre></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-oci-marketplace-connecting-mysqlclient"></a>MySQL クライアントとの接続</h3></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
+          ローカル MySQL クライアントから接続するには、まず、リモートログインを許可するユーザーを MySQL サーバーに作成する必要があります。
+        </p></div><p>
+        ローカル MySQL クライアントから MySQL Server に接続するには、シェルセッションから次のコマンドを実行します:
+      </p><pre class="programlisting">mysql -uroot -p -h<em class="replaceable"><code>computeIP</code></em></pre><p>
+        ここで、<em class="replaceable"><code>computeIP</code></em> はコンピュートインスタンスの IP アドレスです。
+      </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-oci-marketplace-connecting-mysqlshell"></a>MySQL Shell を使用した接続</h3></div></div></div><p>
+        ローカルの MySQL Shell から MySQL Server に接続するには、次のコマンドを実行してシェルセッションを開始します:
+      </p><pre class="programlisting">mysqlsh \connect root@<em class="replaceable"><code>computeIP</code></em></pre><p>
+        ここで、<em class="replaceable"><code>computeIP</code></em> はコンピュートインスタンスの IP アドレスです。
+      </p><p>
+        MySQL Shell 接続の詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-connections.html" target="_top">MySQL Shell 接続</a> を参照してください。
+      </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-oci-marketplace-connecting-workbench"></a>ワークベンチとの接続</h3></div></div></div><p>
+        MySQL Workbench から MySQL Server に接続するには、<a class="ulink" href="https://dev.mysql.com/doc/workbench/en/wb-mysql-connections.html" target="_top">Connections in MySQL Workbench</a> を参照してください。
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-oci-marketplace-maintenance"></a>32.5 Maintenance</h2></div></div></div><p>
+      この製品はユーザー管理であり、アップグレードおよびメンテナンスを担当します。
+    </p><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-oci-marketplace-maintenance-upgrading"></a>MySQL のアップグレード</h3></div></div></div><p>
+        既存のインストールは RPM ベースです。MySQL サーバーをアップグレードするには、<a class="xref" href="installing.html#upgrade-binary-package" title="2.11.6 Unix/Linux での MySQL バイナリまたはパッケージベースのインストールのアップグレード">セクション2.11.6「Unix/Linux での MySQL バイナリまたはパッケージベースのインストールのアップグレード」</a> を参照してください。
+      </p><p>
+        <code class="filename">scp</code> を使用して、必要な RPM を OCI コンピュートインスタンスにコピーするか、OCI Object Storage からコピーできます (アクセス権が構成されている場合)。 ファイルストレージもオプションです。 詳細は、<a class="ulink" href="https://docs.cloud.oracle.com/iaas/Content/File/Concepts/filestorageoverview.htm" target="_top">「ファイルストレージおよび NFS」</a>を参照してください。 
+      </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-oci-marketplace-maintenance-backuprestore"></a>バックアップとリストア</h3></div></div></div><p>
+        MySQL Enterprise Backup は、推奨されるバックアップおよびリストアソリューションです。 詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/meb-backup-cloud.html" target="_top">Backing Up to Cloud Storage</a>を参照してください。 
+      </p><p>
+        MySQL Enterprise Backup の詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-enterprise-backup/8.0/en/meb-getting-started.html" target="_top">Getting Started with MySQL Enterprise Backup</a> を参照してください。
+      </p><p>
+        MySQL のデフォルトのバックアップおよびリストアの詳細は、<a class="xref" href="backup-and-recovery.html" title="第 7 章 バックアップとリカバリ">第7章「<i>バックアップとリカバリ</i>」</a> を参照してください。
+      </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="workbench.html">前</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="faqs.html">次へ</a></td></tr><tr><td width="40%" align="left" valign="top">第 31 章 MySQL Workbench </td><td width="20%" align="center"><a accesskey="h" href="index.html">ホーム</a></td><td width="40%" align="right" valign="top"> 付録 A MySQL 8.0 のよくある質問</td></tr></table></div><div class="copyright-footer"></div></body></html>
