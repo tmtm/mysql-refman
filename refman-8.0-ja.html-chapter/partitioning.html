@@ -1,4 +1,4 @@
-<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>第 24 章 パーティション化</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="up" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="prev" href="mysql-cluster.html" title="第 23 章 MySQL NDB Cluster 8.0"><link rel="next" href="stored-objects.html" title="第 25 章 ストアドオブジェクト"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">第 24 章 パーティション化</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="mysql-cluster.html">前</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="stored-objects.html">次へ</a></td></tr></table><hr></div><div class="status-header"><p class="alert">このページは機械翻訳したものです。</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="partitioning"></a>第 24 章 パーティション化</h1></div></div></div><div class="toc"><p><b>目次</b></p><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-overview">24.1 MySQL のパーティショニングの概要</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-types">24.2 パーティショニングタイプ</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-range">24.2.1 RANGE パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-list">24.2.2 LIST パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns">24.2.3 COLUMNS パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-hash">24.2.4 HASH パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-key">24.2.5 KEY パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-subpartitions">24.2.6 サブパーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-handling-nulls">24.2.7 MySQL パーティショニングによる NULL の扱い</a></span></dt></dl></dd><dt><span class="section"><a href="partitioning.html#partitioning-management">24.3 パーティション管理</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-management-range-list">24.3.1 RANGE および LIST パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-hash-key">24.3.2 HASH および KEY パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-exchange">24.3.3 パーティションとサブパーティションをテーブルと交換する</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-maintenance">24.3.4 パーティションの保守</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-info">24.3.5 パーティションに関する情報を取得する</a></span></dt></dl></dd><dt><span class="section"><a href="partitioning.html#partitioning-pruning">24.4 パーティションプルーニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-selection">24.5 パーティション選択</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations">24.6 パーティショニングの制約と制限</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys">24.6.1 パーティショニングキー、主キー、および一意キー</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-storage-engines">24.6.2 ストレージエンジンに関連するパーティショニング制限</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-functions">24.6.3 関数に関連するパーティショニング制限</a></span></dt></dl></dd></dl></div><a class="indexterm" name="idm46104575543984"></a><a class="indexterm" name="idm46104575542928"></a><a class="indexterm" name="idm46104575541840"></a><a class="indexterm" name="idm46104575539696"></a><a class="indexterm" name="idm46104575537664"></a><p>
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>第 24 章 パーティション化</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="up" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="prev" href="mysql-cluster.html" title="第 23 章 MySQL NDB Cluster 8.0"><link rel="next" href="stored-objects.html" title="第 25 章 ストアドオブジェクト"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">第 24 章 パーティション化</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="mysql-cluster.html">前</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="stored-objects.html">次へ</a></td></tr></table><hr></div><div class="status-header"><p class="alert">このページは機械翻訳したものです。</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="partitioning"></a>第 24 章 パーティション化</h1></div></div></div><div class="toc"><p><b>目次</b></p><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-overview">24.1 MySQL のパーティショニングの概要</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-types">24.2 パーティショニングタイプ</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-range">24.2.1 RANGE パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-list">24.2.2 LIST パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns">24.2.3 COLUMNS パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-hash">24.2.4 HASH パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-key">24.2.5 KEY パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-subpartitions">24.2.6 サブパーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-handling-nulls">24.2.7 MySQL パーティショニングによる NULL の扱い</a></span></dt></dl></dd><dt><span class="section"><a href="partitioning.html#partitioning-management">24.3 パーティション管理</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-management-range-list">24.3.1 RANGE および LIST パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-hash-key">24.3.2 HASH および KEY パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-exchange">24.3.3 パーティションとサブパーティションをテーブルと交換する</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-maintenance">24.3.4 パーティションの保守</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-info">24.3.5 パーティションに関する情報を取得する</a></span></dt></dl></dd><dt><span class="section"><a href="partitioning.html#partitioning-pruning">24.4 パーティションプルーニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-selection">24.5 パーティション選択</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations">24.6 パーティショニングの制約と制限</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys">24.6.1 パーティショニングキー、主キー、および一意キー</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-storage-engines">24.6.2 ストレージエンジンに関連するパーティショニング制限</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-functions">24.6.3 関数に関連するパーティショニング制限</a></span></dt></dl></dd></dl></div><a class="indexterm" name="idm45820131482224"></a><a class="indexterm" name="idm45820131481168"></a><a class="indexterm" name="idm45820131480080"></a><a class="indexterm" name="idm45820131477936"></a><a class="indexterm" name="idm45820131475904"></a><p>
     この章では、<span class="firstterm">ユーザー定義のパーティション化</span>について説明します。
   </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
       テーブルのパーティション化は、ウィンドウ関数で使用されるパーティション化とは異なります。 ウィンドウ関数の詳細は、<a class="xref" href="functions.html#window-functions" title="12.21 ウィンドウ関数">セクション12.21「ウィンドウ関数」</a> を参照してください。 
@@ -28,7 +28,7 @@
     MySQL 8.0 のパーティショニングの既知の問題については、<a class="xref" href="partitioning.html#partitioning-limitations" title="24.6 パーティショニングの制約と制限">セクション24.6「パーティショニングの制約と制限」</a>を参照してください。
   </p><p>
     また、パーティション化されたテーブルを使用して作業を行うときに、次のリソースが役に立つことがあります。
-  </p><a class="indexterm" name="idm46104575504528"></a><p><b>追加のリソース. </b>
+  </p><a class="indexterm" name="idm45820131442576"></a><p><b>追加のリソース. </b>
       MySQL のユーザー定義パーティショニングに関するその他の情報ソースには、次のものがあります。
     </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         <a class="ulink" href="https://forums.mysql.com/list.php?106" target="_top">MySQL パーティショニングフォーラム</a>
@@ -42,7 +42,7 @@
         <a class="ulink" href="http://www.planetmysql.org/" target="_top">PlanetMySQL</a>
       </p><p>
         MySQL を使用している人が関心を持つと思われる MySQL 関連ブログをまとめた MySQL ニュースサイト。 MySQL パーティショニングを使用している人が更新しているブログへのリンクをここでチェックしたり、自分のブログを追加したりすることをお勧めします。 
-      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-overview"></a>24.1 MySQL のパーティショニングの概要</h2></div></div></div><a class="indexterm" name="idm46104575491984"></a><p>
+      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-overview"></a>24.1 MySQL のパーティショニングの概要</h2></div></div></div><a class="indexterm" name="idm45820131430032"></a><p>
       このセクションでは、MySQL 8.0 のパーティショニングの概念について説明します。
     </p><p>
       パーティショニングの制約および機能制限については、<a class="xref" href="partitioning.html#partitioning-limitations" title="24.6 パーティショニングの制約と制限">セクション24.6「パーティショニングの制約と制限」</a>を参照してください。
@@ -85,7 +85,7 @@
       各パーティションのデータおよびインデックスを特定のディレクトリに割り当てるには、パーティション化されたテーブルを作成するために使用する <code class="literal">CREATE TABLE</code> ステートメントの <code class="literal">PARTITION</code> 句に <code class="literal">DATA DIRECTORY</code> および <code class="literal">INDEX DIRECTORY</code> オプションを使用します。
     </p><p>
       <code class="literal">InnoDB</code> テーブルの個々のパーティションおよびサブパーティションでは、<code class="literal">DATA DIRECTORY</code> オプションのみがサポートされます。 MySQL 8.0.21 では、<code class="literal">DATA DIRECTORY</code> 句で指定されたディレクトリは <code class="literal">InnoDB</code> で認識されている必要があります。 詳細は、<a class="xref" href="innodb-storage-engine.html#innodb-create-table-external-data-directory" title="DATA DIRECTORY 句の使用">DATA DIRECTORY 句の使用</a>を参照してください。 
-    </p><a class="indexterm" name="idm46104575420512"></a><a class="indexterm" name="idm46104575418368"></a><p>
+    </p><a class="indexterm" name="idm45820131358560"></a><a class="indexterm" name="idm45820131356416"></a><p>
       テーブルのパーティション化式で使用されるすべてのカラムは、主キーを含め、テーブルに含まれる可能性のあるすべての一意キーの一部である必要があります。 つまり、次の SQL ステートメントで作成されたこのようなテーブルはパーティション化できません: 
     </p><pre class="programlisting">CREATE TABLE tnp (
     id INT NOT NULL AUTO_INCREMENT,
@@ -98,9 +98,9 @@
       キー <code class="literal">pk</code> と <code class="literal">uk</code> には共通のカラムがないため、パーティション化式で使用できるカラムはありません。 この状況で考えられる回避策には、<code class="literal">name</code> カラムのテーブル主キーへの追加、<code class="literal">id</code> カラムの <code class="literal">uk</code> への追加、または一意キーの完全な削除が含まれます。 詳しくは<a class="xref" href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys" title="24.6.1 パーティショニングキー、主キー、および一意キー">セクション24.6.1「パーティショニングキー、主キー、および一意キー」</a>,をご覧ください。 
     </p><p>
       また、<code class="literal">MAX_ROWS</code> および <code class="literal">MIN_ROWS</code> は、各パーティションに格納できる行のそれぞれ最大数および最小数を決定するために使用できます。 これらのオプションの詳細は、<a class="xref" href="partitioning.html#partitioning-management" title="24.3 パーティション管理">セクション24.3「パーティション管理」</a> を参照してください。 
-    </p><a class="indexterm" name="idm46104575406032"></a><p>
+    </p><a class="indexterm" name="idm45820131344080"></a><p>
       <code class="literal">MAX_ROWS</code> オプションは、余分なパーティションを含む「NDB Cluster」テーブルを作成する場合にも役立つため、ハッシュインデックスの記憶域を増やすことができます。 詳細は、<code class="literal">DataMemory</code> データノード構成パラメータのドキュメント、および <a class="xref" href="mysql-cluster.html#mysql-cluster-nodes-groups" title="23.1.2 NDB Cluster ノード、ノードグループ、フラグメントレプリカ、およびパーティション">セクション23.1.2「NDB Cluster ノード、ノードグループ、フラグメントレプリカ、およびパーティション」</a>を参照してください。 
-    </p><a class="indexterm" name="idm46104575400656"></a><p>
+    </p><a class="indexterm" name="idm45820131338704"></a><p>
       パーティショニングのいくつかの利点を次に示します。
     </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           パーティショニングを使用すると、単一ディスクまたはファイルシステムパーティションに保持できるデータより多くのデータを 1 つのテーブルに格納できます。
@@ -110,7 +110,7 @@
           指定された <code class="literal">WHERE</code> 句を満たすデータを 1 つ以上のパーティションのみに格納できることによって、検索からほかのパーティションが自動的に除外され、一部のクエリーが大幅に最適化されることがあります。 パーティションはパーティション化されたテーブルが作成されたあとに変更できるため、使用頻度の高いクエリー (パーティショニングスキームが最初に設定されたときはあまり使用されていなかった) を改善するためにデータを再編成できます。 一致しないパーティション (およびそれらに含まれている行) を除外するこの機能は、よく<span class="firstterm">パーティションプルーニング</span>と呼ばれます。 詳細は、<a class="xref" href="partitioning.html#partitioning-pruning" title="24.4 パーティションプルーニング">セクション24.4「パーティションプルーニング」</a>を参照してください。 
         </p><p>
           また、MySQL では、クエリーの明示的なパーティション選択もサポートされています。 たとえば、<code class="literal">SELECT * FROM t PARTITION (p0,p1) WHERE c &lt; 5</code> は、パーティション <code class="literal">p0</code> および <code class="literal">p1</code> の <code class="literal">WHERE</code> 条件に一致する行のみを選択します。 この場合、MySQL はテーブル <code class="literal">t</code> のほかのパーティションをチェックしません。これにより、検査するパーティションが事前にわかっているときにクエリー速度が大幅に向上することがあります。 パーティション選択は、データ変更ステートメント (<code class="literal">DELETE</code>、<code class="literal">INSERT</code>、<code class="literal">REPLACE</code>、<code class="literal">UPDATE</code>、<code class="literal">LOAD DATA</code>、および <code class="literal">LOAD XML</code>) でもサポートされます。 詳細および例については、これらのステートメントの説明を参照してください。 
-        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-types"></a>24.2 パーティショニングタイプ</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-range">24.2.1 RANGE パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-list">24.2.2 LIST パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns">24.2.3 COLUMNS パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-hash">24.2.4 HASH パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-key">24.2.5 KEY パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-subpartitions">24.2.6 サブパーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-handling-nulls">24.2.7 MySQL パーティショニングによる NULL の扱い</a></span></dt></dl></div><a class="indexterm" name="idm46104575377504"></a><p>
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-types"></a>24.2 パーティショニングタイプ</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-range">24.2.1 RANGE パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-list">24.2.2 LIST パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns">24.2.3 COLUMNS パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-hash">24.2.4 HASH パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-key">24.2.5 KEY パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-subpartitions">24.2.6 サブパーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-handling-nulls">24.2.7 MySQL パーティショニングによる NULL の扱い</a></span></dt></dl></div><a class="indexterm" name="idm45820131315552"></a><p>
       このセクションでは、MySQL 8.0 で使用できるパーティショニングのタイプについて説明します。 これらには、次に一覧したタイプが含まれます。 
     </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><b>RANGE パーティショニング. </b>
             このタイプのパーティショニングは、指定された範囲に含まれるカラム値に基づいて、行をパーティションに割り当てます。 <a class="xref" href="partitioning.html#partitioning-range" title="24.2.1 RANGE パーティショニング">セクション24.2.1「RANGE パーティショニング」</a>を参照してください。 このタイプを拡張した <code class="literal">RANGE COLUMNS</code> については、<a class="xref" href="partitioning.html#partitioning-columns-range" title="24.2.3.1 RANGE COLUMNS パーティショニング">セクション24.2.3.1「RANGE COLUMNS パーティショニング」</a>を参照してください。 
@@ -120,7 +120,7 @@
             このタイプのパーティショニングでは、テーブルに挿入される行内のカラム値を操作するユーザー定義式によって返される値に基づいて、パーティションが選択されます。 関数は、負ではない整数値を返す MySQL の有効な式で構成できます。 このタイプを拡張した <code class="literal">LINEAR HASH</code> も使用できます。 <a class="xref" href="partitioning.html#partitioning-hash" title="24.2.4 HASH パーティショニング">セクション24.2.4「HASH パーティショニング」</a>を参照してください。 
           </p></li><li class="listitem"><p><b>KEY パーティショニング. </b>
             このタイプのパーティショニングは、<code class="literal">HASH</code> によるパーティショニングに似ていますが、評価される 1 つ以上のカラムのみを指定し、MySQL サーバーが独自のハッシュ関数を提供します。 MySQL によって提供されるハッシュ関数ではカラムデータ型に関係なく整数結果が保証されるため、これらのカラムに整数以外の値が含まれていてもかまいません。 このタイプを拡張した <code class="literal">LINEAR KEY</code> も使用できます。 <a class="xref" href="partitioning.html#partitioning-key" title="24.2.5 KEY パーティショニング">セクション24.2.5「KEY パーティショニング」</a>を参照してください。 
-          </p></li></ul></div><a class="indexterm" name="idm46104575356688"></a><a class="indexterm" name="idm46104575354544"></a><p>
+          </p></li></ul></div><a class="indexterm" name="idm45820131294608"></a><a class="indexterm" name="idm45820131292464"></a><p>
       データベースパーティショニングの非常に一般的な使用方法は、日付によってデータを分けることです。 一部のデータベースシステムは、MySQL 8.0 では実装されていない、明示的な日付パーティショニングをサポートしています。 ただし、MySQL で、<code class="literal">DATE</code>、<code class="literal">TIME</code>、または <code class="literal">DATETIME</code> カラムに基づいて、またはそのようなカラムを使用する式に基づいて、パーティショニングスキームを作成することは難しくありません。 
     </p><p>
       <code class="literal">KEY</code> または <code class="literal">LINEAR KEY</code> でパーティショニングする場合は、<code class="literal">DATE</code>、<code class="literal">TIME</code>、または <code class="literal">DATETIME</code> カラムを、カラム値の変更を実行しないパーティショニングカラムとして使用できます。 たとえば、次のテーブル作成ステートメントは MySQL で完全に有効です。 
@@ -183,7 +183,7 @@ ERROR 1488 (HY000): Duplicate partition name mypart
       テーブルのパーティション番号を指定するときは、先行ゼロなしのゼロ以外の正の整数リテラルとして表現する必要があり、<code class="literal">0.8E+01</code> や <code class="literal">6-2</code> などの式であってはいけません (これが整数値に評価されるとしても)。 小数は許可されません。 
     </p><p>
       次の各セクションでは、各パーティションタイプの作成に使用できる構文に使用可能なすべての形式を必ずしも指定するわけではありません。この詳細は、<a class="xref" href="sql-statements.html#create-table" title="13.1.20 CREATE TABLE ステートメント">セクション13.1.20「CREATE TABLE ステートメント」</a> を参照してください。
-    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-range"></a>24.2.1 RANGE パーティショニング</h3></div></div></div><a class="indexterm" name="idm46104575288208"></a><a class="indexterm" name="idm46104575286064"></a><p>
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-range"></a>24.2.1 RANGE パーティショニング</h3></div></div></div><a class="indexterm" name="idm45820131226128"></a><a class="indexterm" name="idm45820131223984"></a><p>
         範囲によってパーティション化されるテーブルは、各パーティションに含まれる行のパーティショニング式値が指定された範囲に収まるようにパーティション化されます。 範囲は、連続しているけれども重複しないものであるべきで、<code class="literal">VALUES LESS THAN</code> 演算子を使用して定義されます。 次のいくつかの例では、20 のビデオ店で構成されるチェーン (1 から 20 までの番号が付けられている) の従業員レコードを保持する、次のようなテーブルを作成していると想定してください。 
       </p><pre class="programlisting">CREATE TABLE employees (
     id INT NOT NULL,
@@ -258,7 +258,7 @@ PARTITION BY RANGE (job_code) (
         この例では、インストア従業員に関連するすべての行はパーティション <code class="literal">p0</code>、オフィスおよびサポートスタッフに関連するものは <code class="literal">p1</code>、および管理職に関連するものはパーティション <code class="literal">p2</code> に格納されます。
       </p><p>
         <code class="literal">VALUES LESS THAN</code> 句に式を使用することもできます。 ただし、MySQL は、<code class="literal">LESS THAN</code> (<code class="literal">&lt;</code>) 比較の一環として式の戻り値を評価できる必要があります。 
-      </p><a class="indexterm" name="idm46104575240816"></a><p>
+      </p><a class="indexterm" name="idm45820131178784"></a><p>
         店舗番号に従ってテーブルデータを分割するのではなく、代わりに 2 つの <code class="literal">DATE</code> カラムのうちの 1 つに基づく式を使用できます。 たとえば、各従業員が会社を退職した年 (つまり、<code class="literal">YEAR(separated)</code> の値) に基づいてパーティション化するとします。 そのようなパーティショニングスキームを実装する <code class="literal">CREATE TABLE</code> ステートメントの例を次に示します。 
       </p><pre class="programlisting">CREATE TABLE employees (
     id INT NOT NULL,
@@ -367,7 +367,7 @@ PARTITION BY RANGE COLUMNS(joined) (
 );
 </pre></li></ol></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
           <code class="literal">DATE</code> または <code class="literal">DATETIME</code> 以外の日付または時間型を使用してパーティショニングカラムを使用することは、<code class="literal">RANGE COLUMNS</code> ではサポートされません。
-        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-list"></a>24.2.2 LIST パーティショニング</h3></div></div></div><a class="indexterm" name="idm46104575173040"></a><a class="indexterm" name="idm46104575170896"></a><p>
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-list"></a>24.2.2 LIST パーティショニング</h3></div></div></div><a class="indexterm" name="idm45820131111456"></a><a class="indexterm" name="idm45820131109312"></a><p>
         MySQL の LIST パーティショニングは、多くの点で RANGE パーティショニングに似ています。 <code class="literal">RANGE</code> によるパーティショニングと同様に、各パーティションを明示的に定義する必要があります。 2 つのタイプのパーティショニングの主な違いは、LIST パーティショニングでは、各パーティションが、連続する値の範囲のセットのいずれかではなく、値リストのセットのいずれかに含まれるカラム値のメンバーシップに基づいて定義および選択されることです。 これを行うには、<code class="literal">PARTITION BY LIST (<em class="replaceable"><code>expr</code></em>)</code> を使用します。ここで、<em class="replaceable"><code>expr</code></em> はカラム値またはカラム値に基づく式で、整数値を返し、<code class="literal">VALUES IN (<em class="replaceable"><code>value_list</code></em>)</code> で各パーティションを定義します。ここで、<em class="replaceable"><code>value_list</code></em> はカンマで区切られた整数のリストです。 
       </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
           MySQL 8.0 では、<code class="literal">LIST</code> によってパーティション化するときに、整数 (および <code class="literal">NULL</code> も可。<a class="xref" href="partitioning.html#partitioning-handling-nulls" title="24.2.7 MySQL パーティショニングによる NULL の扱い">セクション24.2.7「MySQL パーティショニングによる NULL の扱い」</a>を参照してください) のリストに対してのみ照合できます。
@@ -465,7 +465,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM h2;</code></strong>
 3 rows in set (0.00 sec)
 </pre><p>
         MySQL 8.0 では、<code class="literal">LIST COLUMNS</code> パーティション化もサポートされています。これは、カラムのパーティション化に整数型以外の型のカラムを使用したり、複数のカラムをパーティション化キーとして使用できる <code class="literal">LIST</code> パーティション化のバリアントです。 詳細は、<a class="xref" href="partitioning.html#partitioning-columns-list" title="24.2.3.2 LIST COLUMNS パーティショニング">セクション24.2.3.2「LIST COLUMNS パーティショニング」</a>を参照してください。 
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-columns"></a>24.2.3 COLUMNS パーティショニング</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-columns-range">24.2.3.1 RANGE COLUMNS パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns-list">24.2.3.2 LIST COLUMNS パーティショニング</a></span></dt></dl></div><a class="indexterm" name="idm46104575097280"></a><a class="indexterm" name="idm46104575095248"></a><a class="indexterm" name="idm46104575093728"></a><a class="indexterm" name="idm46104575092464"></a><a class="indexterm" name="idm46104575091088"></a><a class="indexterm" name="idm46104575089568"></a><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-columns"></a>24.2.3 COLUMNS パーティショニング</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-columns-range">24.2.3.1 RANGE COLUMNS パーティショニング</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns-list">24.2.3.2 LIST COLUMNS パーティショニング</a></span></dt></dl></div><a class="indexterm" name="idm45820131035696"></a><a class="indexterm" name="idm45820131033664"></a><a class="indexterm" name="idm45820131032144"></a><a class="indexterm" name="idm45820131030880"></a><a class="indexterm" name="idm45820131029504"></a><a class="indexterm" name="idm45820131027984"></a><p>
         次の 2 つのセクションでは、<code class="literal">RANGE</code> および <code class="literal">LIST</code> パーティショニングのバリアントである <span class="firstterm"><code class="literal">COLUMNS</code> パーティショニング</span>について説明します。 <code class="literal">COLUMNS</code> パーティショニングでは、パーティショニングキーに複数のカラムを使用できます。 これらのすべてのカラムが、パーティションに行を配置するため、およびパーティションプルーニングでどのパーティションで一致する行をチェックするかを判断するという両方の目的のために考慮されます。 
       </p><p>
         また、<code class="literal">RANGE COLUMNS</code> パーティショニングおよび <code class="literal">LIST COLUMNS</code> パーティショニングの両方が、値範囲またはリストメンバーの定義のために整数以外のカラムの使用をサポートします。 許可されるデータ型を次のリストに示します。 
@@ -829,7 +829,7 @@ PARTITION BY RANGE COLUMNS(renewal) (
           また (<code class="literal">RANGE COLUMNS</code> パーティショニングと同様に)、<code class="literal">COLUMNS()</code> 句で複数のカラムを使用できます。
         </p><p>
           <code class="literal">PARTITION BY LIST COLUMNS()</code> 構文についての詳細は、<a class="xref" href="sql-statements.html#create-table" title="13.1.20 CREATE TABLE ステートメント">セクション13.1.20「CREATE TABLE ステートメント」</a>を参照してください。
-        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-hash"></a>24.2.4 HASH パーティショニング</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-linear-hash">24.2.4.1 LINEAR HASH パーティショニング</a></span></dt></dl></div><a class="indexterm" name="idm46104574826560"></a><a class="indexterm" name="idm46104574824416"></a><p>
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-hash"></a>24.2.4 HASH パーティショニング</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-linear-hash">24.2.4.1 LINEAR HASH パーティショニング</a></span></dt></dl></div><a class="indexterm" name="idm45820130765968"></a><a class="indexterm" name="idm45820130763824"></a><p>
         <code class="literal">HASH</code> によるパーティショニングは、事前に決められた数のパーティションにデータを均等に配分するために主に使用されます。 レンジパーティション化またはリストパーティション化では、特定のカラム値またはカラム値のセットを格納するパーティションを明示的に指定する必要があります。ハッシュパーティション化では、この決定が行われ、ハッシュされるカラム値およびパーティションテーブルが分割されるパーティションの数に基づいてカラム値または式のみを指定する必要があります。 
       </p><p>
         <code class="literal">HASH</code> パーティショニングを使用してテーブルをパーティション化する場合は、<code class="literal">CREATE TABLE</code> ステートメントに <code class="literal">PARTITION BY HASH (<em class="replaceable"><code>expr</code></em>)</code> 句を付加する必要があります。ここで、<em class="replaceable"><code>expr</code></em> は整数を返す式です。 これは、型が MySQL 整数型のいずれかであるカラムの名前にすることができます。 また、多くの場合、この後に <code class="literal">PARTITIONS <em class="replaceable"><code>num</code></em></code> を使用します。ここで、<em class="replaceable"><code>num</code></em> は、テーブルが分割されるパーティションの数を表す正の整数です。 
@@ -850,7 +850,7 @@ PARTITION BY HASH(store_id)
 PARTITIONS 4;
 </pre><p>
         <code class="literal">PARTITIONS</code> 句を含めない場合、パーティションの数はデフォルトで <code class="literal">1</code> になります。<code class="literal">PARTITIONS</code> キーワードを数字なしで使用すると、構文エラーが発生します。
-      </p><a class="indexterm" name="idm46104574806960"></a><p>
+      </p><a class="indexterm" name="idm45820130746368"></a><p>
         整数を返す SQL 式を <em class="replaceable"><code>expr</code></em> に使用することもできます。 たとえば、従業員が雇用された年度に基づいてパーティション化するとします。 これは、次のように行うことができます。 
       </p><pre class="programlisting">CREATE TABLE employees (
     id INT NOT NULL,
@@ -889,7 +889,7 @@ PARTITIONS 4;
         MySQL 8.0 では、<span class="firstterm">線形ハッシング</span>と呼ばれる <code class="literal">HASH</code> パーティション化のバリアントもサポートされており、パーティションテーブルに挿入される新しい行の配置を決定するためのより複雑なアルゴリズムが採用されています。 このアルゴリズムについては、<a class="xref" href="partitioning.html#partitioning-linear-hash" title="24.2.4.1 LINEAR HASH パーティショニング">セクション24.2.4.1「LINEAR HASH パーティショニング」</a>を参照してください。 
       </p><p>
         ユーザー指定の式は、レコードが挿入または更新されるたびに評価されます。 状況によっては、レコードが削除されるときにも評価されることがあります。 
-      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="partitioning-linear-hash"></a>24.2.4.1 LINEAR HASH パーティショニング</h4></div></div></div><a class="indexterm" name="idm46104574754192"></a><a class="indexterm" name="idm46104574752032"></a><p>
+      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="partitioning-linear-hash"></a>24.2.4.1 LINEAR HASH パーティショニング</h4></div></div></div><a class="indexterm" name="idm45820130693600"></a><a class="indexterm" name="idm45820130691440"></a><p>
           MySQL は線形ハッシュもサポートしています。通常のハッシュと異なるところは、線形ハッシュは線形二乗アルゴリズムを使用し、通常のハッシュはハッシュ関数の値の法を使用することです。
         </p><p>
           構文的には、リニアハッシュパーティショニングと通常のハッシュの唯一の違いは、次に示すように、<code class="literal">PARTITION BY</code> 句に <code class="literal">LINEAR</code> キーワードが追加されていることです。
@@ -948,7 +948,7 @@ PARTITIONS 4;
 (<span class="emphasis"><em>2 &gt;= 6 is FALSE: record stored in partition #2</em></span>)
 </pre><p>
           線形ハッシュによるパーティショニングの利点は、パーティションの追加、削除、マージ、および分割の速度が向上することです。これは、非常に大量 (テラバイト) のデータが含まれるテーブルを扱うときに利点になることがあります。 欠点は、通常のハッシュパーティショニングを使用して獲得される配分と比べて、データがパーティションに均等に配分される可能性が低いことです。 
-        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-key"></a>24.2.5 KEY パーティショニング</h3></div></div></div><a class="indexterm" name="idm46104574712032"></a><a class="indexterm" name="idm46104574709888"></a><p>
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-key"></a>24.2.5 KEY パーティショニング</h3></div></div></div><a class="indexterm" name="idm45820130651440"></a><a class="indexterm" name="idm45820130649296"></a><p>
         キーによるパーティショニングはハッシュによるパーティショニングと似ていますが、ハッシュパーティショニングはユーザー定義の式を使用し、キーパーティショニング用のハッシュ関数は MySQL サーバーによって提供されます。 NDB Cluster はこの目的のために <code class="literal">MD5()</code> を使用します。ほかのストレージエンジンを使用するテーブルの場合、サーバーは独自の内部ハッシュ関数を使用します。 
       </p><p>
         <code class="literal">CREATE TABLE ... PARTITION BY KEY</code> の構文規則は、ハッシュによってパーティション化されたテーブルを作成する場合のものと似ています。 主な違いを次に示します。 
@@ -996,7 +996,7 @@ PARTITIONS 10;
               このパーティショニングは、<span class="command"><strong>ndb_desc</strong></span> ユーティリティー (<code class="option">-p</code> オプション付き) を使用して確認できます。
             </p></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">重要</div><p>
               キーによってパーティション化されたテーブルの場合は、<code class="literal">ALTER TABLE DROP PRIMARY KEY</code> を実行できません。それを実行すると次のエラーが生成されます: <span class="errortext">ERROR 1466 (HY000): Field in list of fields for partition function not found in table</span>。 これは、<code class="literal">KEY</code> によってパーティション化された「NDB Cluster」テーブルでは問題ではありません。このような場合、テーブルは<span class="quote">「<span class="quote">「非表示」</span>」</span>主キーをテーブルの新しいパーティション化キーとして使用して再編成されます。 <a class="xref" href="mysql-cluster.html" title="第 23 章 MySQL NDB Cluster 8.0">第23章「<i>MySQL NDB Cluster 8.0</i>」</a>を参照してください。 
-            </p></div></li></ul></div><a class="indexterm" name="idm46104574658304"></a><a class="indexterm" name="idm46104574656128"></a><p>
+            </p></div></li></ul></div><a class="indexterm" name="idm45820130597712"></a><a class="indexterm" name="idm45820130595536"></a><p>
         リニアキーによってテーブルをパーティション化することもできます。 次に、単純な例を示します。 
       </p><pre class="programlisting">CREATE TABLE tk (
     col1 INT NOT NULL,
@@ -1007,7 +1007,7 @@ PARTITION BY LINEAR KEY (col1)
 PARTITIONS 3;
 </pre><p>
         <code class="literal">LINEAR</code> キーワードは、<code class="literal">KEY</code> パーティション化と <code class="literal">HASH</code> パーティション化で同じ効果を持ち、パーティション番号はモジュロ演算ではなく 2 乗アルゴリズムを使用して導出されます。 このアルゴリズムの説明およびその影響については、<a class="xref" href="partitioning.html#partitioning-linear-hash" title="24.2.4.1 LINEAR HASH パーティショニング">セクション24.2.4.1「LINEAR HASH パーティショニング」</a>を参照してください。 
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-subpartitions"></a>24.2.6 サブパーティショニング</h3></div></div></div><a class="indexterm" name="idm46104574648064"></a><a class="indexterm" name="idm46104574646576"></a><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-subpartitions"></a>24.2.6 サブパーティショニング</h3></div></div></div><a class="indexterm" name="idm45820130587472"></a><a class="indexterm" name="idm45820130585984"></a><p>
         サブパーティショニング (<span class="firstterm">複合パーティショニング</span>とも呼ばれます) は、パーティション化されたテーブルの各パーティションをさらに分割することです。 次の <code class="literal">CREATE TABLE</code> ステートメントを検討します。 
       </p><pre class="programlisting">CREATE TABLE ts (id INT, purchased DATE)
     PARTITION BY RANGE( YEAR(purchased) )
@@ -1019,11 +1019,11 @@ PARTITIONS 3;
     );
 </pre><p>
         テーブル <code class="literal">ts</code> には 3 つの <code class="literal">RANGE</code> パーティションがあります。 これらの各パーティション (<code class="literal">p0</code>、<code class="literal">p1</code>、および <code class="literal">p2</code>) は、さらに 2 つのサブパーティションに分割されます。 実際には、テーブル全体が <code class="literal">3 * 2 = 6</code> パーティションに分割されます。 ただし、<code class="literal">PARTITION BY RANGE</code> 句のアクションによって、これらの最初の 2 つには <code class="literal">purchased</code> カラムで値が 1990 より小さいレコードのみが格納されます。 
-      </p><a class="indexterm" name="idm46104574634832"></a><p>
+      </p><a class="indexterm" name="idm45820130574240"></a><p>
         <code class="literal">RANGE</code> または <code class="literal">LIST</code> でパーティション化されたテーブルをサブパーティション化できます。 サブパーティショニングには、<code class="literal">HASH</code> または <code class="literal">KEY</code> パーティショニングを使用できます。 これは、<span class="firstterm">複合パーティショニング</span>とも呼ばれます。 
       </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
           <code class="literal">SUBPARTITION BY HASH</code> および <code class="literal">SUBPARTITION BY KEY</code> は通常それぞれ、<code class="literal">PARTITION BY HASH</code> および <code class="literal">PARTITION BY KEY</code> と同じ構文規則に従います。 これの例外は、<code class="literal">SUBPARTITION BY KEY</code> は現在 (<code class="literal">PARTITION BY KEY</code> と異なり) デフォルトカラムをサポートしないことで、この目的に使用されるカラムを指定する必要があります (テーブルに明示的な主キーがある場合でも)。 これは既知の問題であり、対処中です。詳細および例については <a class="xref" href="partitioning.html#partitioning-limitations-subpartitions" title="サブパーティションに関する問題">サブパーティションに関する問題</a>を参照してください。 
-        </p></div><a class="indexterm" name="idm46104574622288"></a><p>
+        </p></div><a class="indexterm" name="idm45820130561696"></a><p>
         <code class="literal">SUBPARTITION</code> 句を使用して個々のサブパーティションのオプションを指定することによって、サブパーティションを明示的に定義することもできます。 たとえば、前の例と同じテーブル <code class="literal">ts</code> をより冗長な形式で作成するには、次のようにします。 
       </p><pre class="programlisting">CREATE TABLE ts (id INT, purchased DATE)
     PARTITION BY RANGE( YEAR(purchased) )
@@ -1312,7 +1312,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM th;</code></strong>
 2 rows in set (0.00 sec)
 </pre><p>
         テーブルの定義で <code class="literal">PARTITION BY HASH</code> のかわりに <code class="literal">PARTITION BY KEY</code> を使用して最後の例を繰り返すことで、<code class="literal">NULL</code> がこのタイプのパーティション化でも 0 のように処理されることを確認できます。
-      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-management"></a>24.3 パーティション管理</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-management-range-list">24.3.1 RANGE および LIST パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-hash-key">24.3.2 HASH および KEY パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-exchange">24.3.3 パーティションとサブパーティションをテーブルと交換する</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-maintenance">24.3.4 パーティションの保守</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-info">24.3.5 パーティションに関する情報を取得する</a></span></dt></dl></div><a class="indexterm" name="idm46104574442656"></a><a class="indexterm" name="idm46104574441200"></a><a class="indexterm" name="idm46104574439168"></a><a class="indexterm" name="idm46104574437136"></a><a class="indexterm" name="idm46104574435088"></a><a class="indexterm" name="idm46104574433024"></a><p>
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-management"></a>24.3 パーティション管理</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-management-range-list">24.3.1 RANGE および LIST パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-hash-key">24.3.2 HASH および KEY パーティションの管理</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-exchange">24.3.3 パーティションとサブパーティションをテーブルと交換する</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-maintenance">24.3.4 パーティションの保守</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-info">24.3.5 パーティションに関する情報を取得する</a></span></dt></dl></div><a class="indexterm" name="idm45820130383008"></a><a class="indexterm" name="idm45820130381552"></a><a class="indexterm" name="idm45820130379520"></a><a class="indexterm" name="idm45820130377488"></a><a class="indexterm" name="idm45820130375440"></a><a class="indexterm" name="idm45820130373376"></a><p>
       SQL ステートメントを使用してパーティションテーブルを変更する方法は多数あります。<code class="literal">ALTER TABLE</code> ステートメントのパーティション化拡張を使用して、既存のパーティションを追加、削除、再定義、マージまたは分割できます。 パーティション化されたテーブルおよびパーティションに関する情報を取得する方法もあります。 以降のセクションでは次のトピックについて説明します。 
     </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           <code class="literal">RANGE</code> または <code class="literal">LIST</code> によってパーティション化されたテーブルのパーティション管理については、<a class="xref" href="partitioning.html#partitioning-management-range-list" title="24.3.1 RANGE および LIST パーティションの管理">セクション24.3.1「RANGE および LIST パーティションの管理」</a>を参照してください。
@@ -1344,7 +1344,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM th;</code></strong>
         <code class="literal">ALTER TABLE</code> ステートメントに使用できるのは、単一の <code class="literal">PARTITION BY</code>、<code class="literal">ADD PARTITION</code>、<code class="literal">DROP PARTITION</code>、<code class="literal">REORGANIZE PARTITION</code>、または <code class="literal">COALESCE PARTITION</code> 句のみです。 たとえば、パーティションを削除してテーブルの残りのパーティションを再編成する場合は、(<code class="literal">DROP PARTITION</code> を使用してから <code class="literal">REORGANIZE PARTITION</code> を使用して別の <code class="literal">ALTER TABLE</code> ステートメントを使用して) これを行う必要があります。 
       </p></div><p>
       <code class="literal">ALTER TABLE ... TRUNCATE PARTITION</code> を使用して、選択した 1 つ以上のパーティションからすべての行を削除できます。
-    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-management-range-list"></a>24.3.1 RANGE および LIST パーティションの管理</h3></div></div></div><a class="indexterm" name="idm46104574390704"></a><a class="indexterm" name="idm46104574388560"></a><a class="indexterm" name="idm46104574386480"></a><a class="indexterm" name="idm46104574384384"></a><p>
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-management-range-list"></a>24.3.1 RANGE および LIST パーティションの管理</h3></div></div></div><a class="indexterm" name="idm45820130331056"></a><a class="indexterm" name="idm45820130328912"></a><a class="indexterm" name="idm45820130326832"></a><a class="indexterm" name="idm45820130324736"></a><p>
         レンジパーティションとリストパーティションの追加および削除は同様の方法で処理されるため、このセクションでは両方のパーティション化の管理について説明します。 ハッシュまたはキーによってパーティション化されたテーブルの管理については、<a class="xref" href="partitioning.html#partitioning-management-hash-key" title="24.3.2 HASH および KEY パーティションの管理">セクション24.3.2「HASH および KEY パーティションの管理」</a>を参照してください。 
       </p><p>
         <code class="literal">RANGE</code> または <code class="literal">LIST</code> によってパーティション化されたテーブルからパーティションを削除するには、<code class="literal">DROP PARTITION</code> オプションを指定した <code class="literal">ALTER TABLE</code> ステートメントを使用します。 レンジでパーティション化され、次の <code class="literal">CREATE TABLE</code> および <code class="literal">INSERT</code> ステートメントを使用して 10 個のレコードが移入されるテーブルを作成したとします: 
@@ -1616,7 +1616,7 @@ ALTER TABLE tt REORGANIZE PARTITION p1,np INTO (
           </p><pre class="programlisting">ALTER TABLE members
     PARTITION BY HASH( YEAR(dob) )
     PARTITIONS 8;
-</pre></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-management-hash-key"></a>24.3.2 HASH および KEY パーティションの管理</h3></div></div></div><a class="indexterm" name="idm46104574190048"></a><a class="indexterm" name="idm46104574187904"></a><a class="indexterm" name="idm46104574185824"></a><a class="indexterm" name="idm46104574183712"></a><p>
+</pre></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-management-hash-key"></a>24.3.2 HASH および KEY パーティションの管理</h3></div></div></div><a class="indexterm" name="idm45820130130400"></a><a class="indexterm" name="idm45820130128256"></a><a class="indexterm" name="idm45820130126176"></a><a class="indexterm" name="idm45820130124064"></a><p>
         ハッシュまたはキーによってパーティション化されたテーブルは、パーティショニングセットアップで変更に関して互いによく似ていますが、範囲またはリストによってパーティション化されたテーブルとはいくつかの点で異なります。 このため、このセクションではハッシュまたはキーによってパーティション化されたテーブルの変更についてのみ取り上げます。 範囲またはリストによってパーティション化されたテーブルのパーティションを追加および削除することについては、<a class="xref" href="partitioning.html#partitioning-management-range-list" title="24.3.1 RANGE および LIST パーティションの管理">セクション24.3.1「RANGE および LIST パーティションの管理」</a>を参照してください。 
       </p><p>
         <code class="literal">HASH</code> または <code class="literal">KEY</code> によってパーティション化されたテーブルから、<code class="literal">RANGE</code> または <code class="literal">LIST</code> によってパーティション化されたテーブルと同じ方法でパーティションを削除することはできません。 ただし、<code class="literal">ALTER TABLE ... COALESCE PARTITION</code> を使用して <code class="literal">HASH</code> または <code class="literal">KEY</code> パーティションをマージできます。 クライアントに関するデータを含む <code class="literal">clients</code> テーブルが、次に示すように作成された 12 個のパーティションに分割されているとします: 
@@ -1691,7 +1691,7 @@ ERROR 1478 (HY000): Cannot remove all partitions, use DROP TABLE instead
         オプションで、<code class="literal">WITH VALIDATION</code> または <code class="literal">WITHOUT VALIDATION</code> を追加できます。 <code class="literal">WITHOUT VALIDATION</code> が指定されている場合、<code class="literal">ALTER TABLE ... EXCHANGE PARTITION</code> 操作では、パーティションを非パーティションテーブルと交換するときに行ごとの検証は実行されず、データベース管理者は行がパーティション定義の境界内にあることを確認する責任を負うことができます。 <code class="literal">WITH VALIDATION</code> がデフォルトです。 
       </p><p>
         単一 <code class="literal">ALTER TABLE EXCHANGE PARTITION</code> ステートメントでは、1 つのパーティションまたはサブパーティションのみを 1 つのパーティション化されていないテーブルのみと交換できます。 複数のパーティションまたはサブパーティションを交換するには、複数の <code class="literal">ALTER TABLE EXCHANGE PARTITION</code> ステートメントを使用してください。 <code class="literal">EXCHANGE PARTITION</code> は、ほかの <code class="literal">ALTER TABLE</code> オプションと組み合わせることはできません。 パーティション化されたテーブルによって使用されるパーティショニングおよび (該当する場合) サブパーティショニングには、MySQL 8.0 でサポートされる任意のタイプを選択できます。 
-      </p><h4><a name="idm46104574092192"></a>パーティションをパーティション化されていないテーブルと交換する</h4><p>
+      </p><h4><a name="idm45820130032544"></a>パーティションをパーティション化されていないテーブルと交換する</h4><p>
         次の SQL ステートメントを使用して、パーティション化されたテーブル <code class="literal">e</code> が作成および移入されているとします。
       </p><pre class="programlisting">CREATE TABLE e (
     id INT NOT NULL,
@@ -1815,7 +1815,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM e2;</code></strong>
 | 41 | Michael | Green |
 +----+---------+-------+
 1 row in set (0.00 sec)
-</pre><h4><a name="idm46104574035904"></a>一致しない行</h4><p>
+</pre><h4><a name="idm45820129976208"></a>一致しない行</h4><p>
         <code class="literal">ALTER TABLE ... EXCHANGE PARTITION</code> ステートメントを発行する前にパーティション化されていないテーブルで見つかる行は、それらがターゲットパーティションに格納されるために必要な条件を満たしている必要があり、そうでない場合はステートメントが失敗することを覚えておいてください。 これがどのように発生するかを確認するために、まずテーブル<code class="literal">e</code> のパーティション <code class="literal">p0</code> のパーティション定義の境界外の行を、<code class="literal">e2</code> に挿入します。 たとえば、<code class="literal">id</code> カラム値が大きすぎる行を挿入してから、テーブルをパーティションとふたたび交換してみてください。 
       </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>INSERT INTO e2 VALUES (51, "Ellen", "McDonald");</code></strong>
 Query OK, 1 row affected (0.08 sec)
@@ -1828,7 +1828,7 @@ mysql&gt; <strong class="userinput"><code>ALTER TABLE e EXCHANGE PARTITION p0 WI
 Query OK, 0 rows affected (0.02 sec)
 </pre><p>
         パーティション定義と一致しない行を含むテーブルとパーティションを交換する場合、データベース管理者は、<code class="literal">REPAIR TABLE</code> または <code class="literal">ALTER TABLE ... REPAIR PARTITION</code> を使用して実行できる不一致の行を修正する必要があります。
-      </p><h4><a name="idm46104574020656"></a>行ごとの検証なしでのパーティションの交換</h4><p>
+      </p><h4><a name="idm45820129960960"></a>行ごとの検証なしでのパーティションの交換</h4><p>
         多数の行を含むテーブルとパーティションを交換するときに時間のかかる検証を回避するために、<code class="literal">ALTER TABLE ... EXCHANGE PARTITION</code> ステートメントに <code class="literal">WITHOUT VALIDATION</code> を追加することで、行ごとの検証ステップをスキップできます。
       </p><p>
         次の例では、パーティションを非パーティションテーブルと交換する際の実行時間の違いを、検証ありおよび検証なしで比較します。 パーティションテーブル (テーブル <code class="literal">e</code>) には、それぞれ 100 万行の 2 つのパーティションが含まれます。 テーブル e の p0 の行は削除され、p0 は 100 万行のパーティション化されていないテーブルと交換されます。 <code class="literal">WITH VALIDATION</code> 操作には 0.74 秒かかります。 比較すると、<code class="literal">WITHOUT VALIDATION</code> 操作には 0.01 秒かかります。 
@@ -1959,7 +1959,7 @@ mysql&gt; SELECT PARTITION_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS W
 2 rows in set (0.00 sec)
       </pre><p>
         パーティション定義と一致しない行を含むテーブルとパーティションを交換する場合、データベース管理者は、<code class="literal">REPAIR TABLE</code> または <code class="literal">ALTER TABLE ... REPAIR PARTITION</code> を使用して実行できる不一致の行を修正する必要があります。
-      </p><h4><a name="idm46104574003504"></a>サブパーティションをパーティション化されていないテーブルと交換する</h4><p>
+      </p><h4><a name="idm45820129943808"></a>サブパーティションをパーティション化されていないテーブルと交換する</h4><p>
         <code class="literal">ALTER TABLE ... EXCHANGE PARTITION</code> ステートメントを使用して、サブパーティション化されたテーブルのサブパーティション (<a class="xref" href="partitioning.html#partitioning-subpartitions" title="24.2.6 サブパーティショニング">セクション24.2.6「サブパーティショニング」</a>を参照してください) をパーティション化されていないテーブルと交換することもできます。 次の例では、まず <code class="literal">RANGE</code> によってパーティション化され、<code class="literal">KEY</code> によってサブパーティション化されたテーブル <code class="literal">es</code> を作成し、テーブル <code class="literal">e</code> と同様にこのテーブルに移入してから、このテーブルの空のパーティション化されていないコピー <code class="literal">es2</code> を作成します。 
       </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE TABLE es (</code></strong>
     -&gt;     <strong class="userinput"><code>id INT NOT NULL,</code></strong>
@@ -2069,7 +2069,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 mysql&gt; <strong class="userinput"><code>ALTER TABLE es EXCHANGE PARTITION p3sp0 WITH TABLE es3;</code></strong>
 <span class="errortext">ERROR 1497 (HY000): The mix of handlers in the partitions is not allowed in this version of MySQL</span>
-</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-maintenance"></a>24.3.4 パーティションの保守</h3></div></div></div><a class="indexterm" name="idm46104573948464"></a><a class="indexterm" name="idm46104573946320"></a><a class="indexterm" name="idm46104573944288"></a><a class="indexterm" name="idm46104573942256"></a><a class="indexterm" name="idm46104573940224"></a><a class="indexterm" name="idm46104573938160"></a><a class="indexterm" name="idm46104573936096"></a><a class="indexterm" name="idm46104573934032"></a><p>
+</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-maintenance"></a>24.3.4 パーティションの保守</h3></div></div></div><a class="indexterm" name="idm45820129888800"></a><a class="indexterm" name="idm45820129886656"></a><a class="indexterm" name="idm45820129884624"></a><a class="indexterm" name="idm45820129882592"></a><a class="indexterm" name="idm45820129880560"></a><a class="indexterm" name="idm45820129878496"></a><a class="indexterm" name="idm45820129876432"></a><a class="indexterm" name="idm45820129874368"></a><p>
         このような目的の SQL ステートメントを使用して、パーティションテーブルに対して多数のテーブルおよびパーティションメンテナンスタスクを実行できます。
       </p><p>
         パーティション化されたテーブルのテーブル保守は、パーティション化されたテーブルでサポートされる <code class="literal">CHECK TABLE</code>、<code class="literal">OPTIMIZE TABLE</code>、<code class="literal">ANALYZE TABLE</code>、および <code class="literal">REPAIR TABLE</code> ステートメントを使用して実現できます。
@@ -2116,7 +2116,7 @@ mysql&gt; <strong class="userinput"><code>ALTER TABLE es EXCHANGE PARTITION p3sp
         <code class="literal">ALTER TABLE ... TRUNCATE PARTITION</code> を使用してパーティションを切り捨てることもできます。 このステートメントは、<code class="literal">TRUNCATE TABLE</code> がテーブルからすべての行を削除するのとほぼ同様に、1 つ以上のパーティションからすべての行を削除するために使用できます。 
       </p><p>
         <code class="literal">ALTER TABLE ... TRUNCATE PARTITION ALL</code> はテーブル内のすべてのパーティションを切り捨てます。
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-info"></a>24.3.5 パーティションに関する情報を取得する</h3></div></div></div><a class="indexterm" name="idm46104573874880"></a><a class="indexterm" name="idm46104573873376"></a><a class="indexterm" name="idm46104573871952"></a><a class="indexterm" name="idm46104573870512"></a><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-info"></a>24.3.5 パーティションに関する情報を取得する</h3></div></div></div><a class="indexterm" name="idm45820129815216"></a><a class="indexterm" name="idm45820129813712"></a><a class="indexterm" name="idm45820129812288"></a><a class="indexterm" name="idm45820129810752"></a><p>
         このセクションでは、既存のパーティションに関する情報を取得する方法 (いくつかの方法が可能) について説明します。 そのような情報を取得する方法には次のものが含まれます。 
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             <code class="literal">SHOW CREATE TABLE</code> ステートメントを使用して、パーティション化されたテーブルの作成に使用されたパーティショニング句を表示する。
@@ -2148,7 +2148,7 @@ Create Table: CREATE TABLE `trb3` (
         パーティション化されたテーブルに対する <code class="literal">SHOW TABLE STATUS</code> の出力は、<code class="literal">Create_options</code> カラムに文字列 <code class="literal">partitioned</code> が含まれることを除いて、パーティション化されていないテーブルの場合と同じです。 <code class="literal">Engine</code> カラムには、テーブルのすべてのパーティションによって使用されるストレージエンジンの名前が含まれます。 (このステートメントについての詳細は、<a class="xref" href="sql-statements.html#show-table-status" title="13.7.7.38 SHOW TABLE STATUS ステートメント">セクション13.7.7.38「SHOW TABLE STATUS ステートメント」</a>を参照してください)。 
       </p><p>
         パーティションに関する情報は、<code class="literal">PARTITIONS</code> テーブルを含む <code class="literal">INFORMATION_SCHEMA</code> からも取得できます。 <a class="xref" href="information-schema.html#information-schema-partitions-table" title="26.21 INFORMATION_SCHEMA PARTITIONS テーブル">セクション26.21「INFORMATION_SCHEMA PARTITIONS テーブル」</a>を参照してください。 
-      </p><a class="indexterm" name="idm46104573840544"></a><a class="indexterm" name="idm46104573838400"></a><p>
+      </p><a class="indexterm" name="idm45820129780784"></a><a class="indexterm" name="idm45820129778640"></a><p>
         <code class="literal">EXPLAIN</code> を使用して、特定の <code class="literal">SELECT</code> クエリーに含まれるパーティションテーブルのパーティションを判別できます。 <code class="literal">EXPLAIN</code> 出力の <code class="literal">partitions</code> カラムには、クエリーによってレコードが照合されるパーティションがリストされます。 
       </p><p>
         テーブル <code class="literal">trb1</code> が作成され、次のように移入されるとします:
@@ -2227,7 +2227,7 @@ possible_keys: PRIMARY
         <code class="literal">EXPLAIN</code> 出力の <code class="literal">rows</code> カラムには、テーブル内の行の合計数が表示されます。
       </p><p>
         <a class="xref" href="sql-statements.html#explain" title="13.8.2 EXPLAIN ステートメント">セクション13.8.2「EXPLAIN ステートメント」</a>も参照してください。
-      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-pruning"></a>24.4 パーティションプルーニング</h2></div></div></div><a class="indexterm" name="idm46104573810784"></a><a class="indexterm" name="idm46104573809328"></a><p>
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-pruning"></a>24.4 パーティションプルーニング</h2></div></div></div><a class="indexterm" name="idm45820129751024"></a><a class="indexterm" name="idm45820129749568"></a><p>
       <span class="firstterm">パーティションプルーニング</span>と呼ばれる最適化は、<span class="quote">「<span class="quote">「一致する値がない可能性があるパーティションをスキャンしません」</span>」</span>と記述できる比較的単純な概念に基づいています。 次のステートメントによってパーティションテーブル <code class="literal">t1</code> が作成されるとします: 
     </p><pre class="programlisting">CREATE TABLE t1 (
     fname VARCHAR(50) NOT NULL,
@@ -2264,7 +2264,7 @@ PARTITION BY RANGE( region_code ) (
       短い範囲にもプルーニングを適用できます (オプティマイザが同等の値リストに変換できるもの)。 たとえば、前の例では、<code class="literal">WHERE</code> 句を <code class="literal">WHERE region_code IN (126, 127, 128, 129)</code> に変換できます。 次に、オプティマイザは、リスト内の最初の 2 つの値がパーティション <code class="literal">p1</code> にあること、パーティション <code class="literal">p2</code> 内の残りの 2 つの値があること、および他のパーティションに関連する値が含まれていないことを判断できるため、一致する行を検索する必要はありません。 
     </p><p>
       オプティマイザは、<code class="literal">RANGE COLUMNS</code> または <code class="literal">LIST COLUMNS</code> パーティション化を使用するテーブルの複数のカラムに対する前述の型の比較を含む <code class="literal">WHERE</code> 条件のプルーニングも実行できます。
-    </p><a class="indexterm" name="idm46104573765952"></a><p>
+    </p><a class="indexterm" name="idm45820129706192"></a><p>
       このタイプの最適化は、パーティショニング式が同一性や範囲で構成されていてそれを同一性のセットにまとめられるとき、またはパーティショニング式が増減する関係を表すときに適用できます。 パーティショニング式が <code class="literal">YEAR()</code> または <code class="literal">TO_DAYS()</code> 関数を使用するとき、<code class="literal">DATE</code> カラムまたは <code class="literal">DATETIME</code> カラムでパーティション化されるテーブルにプルーニングを適用することもできます。 パーティション化式で <code class="literal">TO_SECONDS()</code> 関数を使用する場合は、このようなテーブルにプルーニングを適用することもできます。 
     </p><p>
       <code class="literal">DATE</code> カラムでパーティション化されたテーブル <code class="literal">t2</code> が、次に示すステートメントを使用して作成されるとします:
@@ -2676,7 +2676,7 @@ Records: 2  Duplicates: 0  Warnings: 0
       前述のことは、複数の行を書き込む <code class="literal">INSERT</code> および <code class="literal">REPLACE</code> ステートメントの両方に当てはまります。
     </p><p>
       パーティションの選択は、<code class="literal">NDB</code> などの自動パーティション分割を提供するストレージエンジンを使用するテーブルでは無効になっています。
-    </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-limitations"></a>24.6 パーティショニングの制約と制限</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys">24.6.1 パーティショニングキー、主キー、および一意キー</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-storage-engines">24.6.2 ストレージエンジンに関連するパーティショニング制限</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-functions">24.6.3 関数に関連するパーティショニング制限</a></span></dt></dl></div><a class="indexterm" name="idm46104573531488"></a><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="partitioning-limitations"></a>24.6 パーティショニングの制約と制限</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys">24.6.1 パーティショニングキー、主キー、および一意キー</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-storage-engines">24.6.2 ストレージエンジンに関連するパーティショニング制限</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-functions">24.6.3 関数に関連するパーティショニング制限</a></span></dt></dl></div><a class="indexterm" name="idm45820129471600"></a><p>
       このセクションでは、MySQL パーティショニングサポートでの現在の制約と制限について説明します。
     </p><p><b>禁止されている構造体. </b>
         次の構造体はパーティショニング式で許可されません。
@@ -2687,13 +2687,13 @@ Records: 2  Duplicates: 0  Warnings: 0
         </p></li></ul></div><p>
       パーティショニング式で許可される SQL 関数のリストについては、<a class="xref" href="partitioning.html#partitioning-limitations-functions" title="24.6.3 関数に関連するパーティショニング制限">セクション24.6.3「関数に関連するパーティショニング制限」</a>を参照してください。
     </p><p><b>算術および論理演算子. </b>
-        <a class="indexterm" name="idm46104573522784"></a> <a class="indexterm" name="idm46104573520496"></a> 算術演算子 <code class="literal">+</code>、<code class="literal">-</code>、および <code class="literal">*</code> の使用は、パーティショニング式で許可されます。 ただし、結果は整数値または <code class="literal">NULL</code> である必要があります (この章のほかの場所で説明しているように、<code class="literal">[LINEAR] KEY</code> パーティショニングの場合を除きます。詳細は、<a class="xref" href="partitioning.html#partitioning-types" title="24.2 パーティショニングタイプ">セクション24.2「パーティショニングタイプ」</a>を参照してください)。 
+        <a class="indexterm" name="idm45820129462896"></a> <a class="indexterm" name="idm45820129460608"></a> 算術演算子 <code class="literal">+</code>、<code class="literal">-</code>、および <code class="literal">*</code> の使用は、パーティショニング式で許可されます。 ただし、結果は整数値または <code class="literal">NULL</code> である必要があります (この章のほかの場所で説明しているように、<code class="literal">[LINEAR] KEY</code> パーティショニングの場合を除きます。詳細は、<a class="xref" href="partitioning.html#partitioning-types" title="24.2 パーティショニングタイプ">セクション24.2「パーティショニングタイプ」</a>を参照してください)。 
       </p><p>
       <code class="literal">DIV</code> 演算子もサポートされています。<code class="literal">/</code>演算子は使用できません。
     </p><p>
       ビット演算子 <code class="literal">|</code>、<code class="literal">&amp;</code>、<code class="literal">^</code>、<code class="literal">&lt;&lt;</code>、<code class="literal">&gt;&gt;</code>、および <code class="literal">~</code> はパーティショニング式では許可されません。
     </p><p><b>サーバー SQL モード. </b>
-        <a class="indexterm" name="idm46104573500464"></a> <a class="indexterm" name="idm46104573498288"></a> ユーザー定義パーティショニングを使用するテーブルは、それらが作成された時点で有効だった SQL モードを保持しません。 このマニュアルの他の場所で説明されているように (<a class="xref" href="server-administration.html#sql-mode" title="5.1.11 サーバー SQL モード">セクション5.1.11「サーバー SQL モード」</a> を参照)、多くの MySQL 関数および演算子の結果は、サーバーの SQL モードに応じて変わる可能性があります。 このため、パーティション化されたテーブルの作成後の任意の時点に SQL モードを変更すると、そのようなテーブルの動作が大きく変わることがあり、データの破損または損失が発生しやすくなることがあります。 これらの理由により、<span class="emphasis"><em>パーティション化されたテーブルを作成したあとにサーバー SQL モードを決して変更しないことが強く推奨されています</em></span>。 
+        <a class="indexterm" name="idm45820129440576"></a> <a class="indexterm" name="idm45820129438400"></a> ユーザー定義パーティショニングを使用するテーブルは、それらが作成された時点で有効だった SQL モードを保持しません。 このマニュアルの他の場所で説明されているように (<a class="xref" href="server-administration.html#sql-mode" title="5.1.11 サーバー SQL モード">セクション5.1.11「サーバー SQL モード」</a> を参照)、多くの MySQL 関数および演算子の結果は、サーバーの SQL モードに応じて変わる可能性があります。 このため、パーティション化されたテーブルの作成後の任意の時点に SQL モードを変更すると、そのようなテーブルの動作が大きく変わることがあり、データの破損または損失が発生しやすくなることがあります。 これらの理由により、<span class="emphasis"><em>パーティション化されたテーブルを作成したあとにサーバー SQL モードを決して変更しないことが強く推奨されています</em></span>。 
       </p><p>
       パーティション化されたテーブルを使用不可にするサーバー SQL モードでこのような変更を行う場合は、<code class="literal">NO_UNSIGNED_SUBTRACTION</code> モードが有効な場合にのみ正常に実行できる次の <code class="literal">CREATE TABLE</code> ステートメントを検討してください:
     </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
@@ -2761,7 +2761,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO tu VALUES (20);</code></st
           インデックス条件プッシュダウンは、パーティションテーブルでサポートされています。 <a class="xref" href="optimization.html#index-condition-pushdown-optimization" title="8.2.1.6 インデックスコンディションプッシュダウンの最適化">セクション8.2.1.6「インデックスコンディションプッシュダウンの最適化」</a>を参照してください。 
         </p></li><li class="listitem"><p><b>LOAD DATA のパフォーマンス. </b>
             MySQL 8.0 では、<code class="literal">LOAD DATA</code> はパフォーマンスを向上させるためにバッファリングを使用します。 これを実現するために、バッファーがパーティションごとに 130K バイトメモリーを使用することを認識してください。 
-          </p></li></ul></div><p><a name="partitioning-limitations-max-partitions"></a><b>パーティションの最大数. </b><a class="indexterm" name="idm46104573436672"></a><a class="indexterm" name="idm46104573434448"></a>
+          </p></li></ul></div><p><a name="partitioning-limitations-max-partitions"></a><b>パーティションの最大数. </b><a class="indexterm" name="idm45820129376608"></a><a class="indexterm" name="idm45820129374384"></a>
         <code class="literal">NDB</code> ストレージエンジンを使用しない特定のテーブルで可能なパーティションの最大数は 8192 です。 この数にはサブパーティションが含まれます。 
       </p><p>
       <code class="literal">NDB</code> ストレージエンジンを使用するテーブルのユーザー定義パーティションの最大数は、使用されている NDB Cluster ソフトウェアのバージョン、データノードの数、およびその他の要因に応じて決定されます。 詳細は、<a class="xref" href="mysql-cluster.html#mysql-cluster-nodes-groups-user-partitioning" title="NDB とユーザー定義のパーティション化">NDB とユーザー定義のパーティション化</a>を参照してください。 
@@ -2769,7 +2769,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO tu VALUES (20);</code></st
       多数のパーティション (ただし、最大数より少ない) を持つテーブルを作成するときに、<span class="errortext">Got error ... from storage engine: Out of resources when opening file</span>などのエラーメッセージが表示される場合は、<code class="literal">open_files_limit</code> システム変数の値を増やすことによってこの問題に対処できることがあります。 ただし、これはオペレーティングシステムによって異なるため、すべてのプラットフォームで可能または推奨されるとはかぎりません。詳細は、<a class="xref" href="error-handling.html#not-enough-file-handles" title="B.3.2.16 ファイルが見つからず同様のエラーが発生しました">セクションB.3.2.16「ファイルが見つからず同様のエラーが発生しました」</a>を参照してください。 場合によっては、多数の (数百の) パーティションを使用することがほかの問題のために推奨されないこともあり、より多くのパーティションを使用することが自動的に良い結果となるとはかぎりません。 
     </p><p>
       <a class="xref" href="partitioning.html#partitioning-limitations-file-system-ops" title="ファイルシステム操作">ファイルシステム操作</a>も参照してください。
-    </p><p><b>パーティション化された InnoDB テーブルで外部キーがサポートされない. </b><a class="indexterm" name="idm46104573421776"></a>
+    </p><p><b>パーティション化された InnoDB テーブルで外部キーがサポートされない. </b><a class="indexterm" name="idm45820129361648"></a>
         <code class="literal">InnoDB</code> ストレージエンジンを使用するパーティション化されたテーブルでは、外部キーはサポートされません。 これは具体的には、次の 2 つの記述が true であることを意味します。 
       </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
           ユーザー定義パーティショニングを使用する <code class="literal">InnoDB</code> テーブルの定義には、外部キー参照を含めることはできません。定義に外部キー参照が含まれる <code class="literal">InnoDB</code> テーブルはパーティション化できません。
@@ -2781,15 +2781,15 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO tu VALUES (20);</code></st
         パーティション化されたテーブルに <code class="literal">ALTER TABLE ... ORDER BY <em class="replaceable"><code>column</code></em></code> ステートメントを実行すると、各パーティション内でのみ行が並べ替えられます。
       </p><p><b>主キーを変更することによる REPLACE ステートメントへの影響. </b>
         テーブルの主キーを変更することが望ましい場合があります (<a class="xref" href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys" title="24.6.1 パーティショニングキー、主キー、および一意キー">セクション24.6.1「パーティショニングキー、主キー、および一意キー」</a>を参照してください)。 <code class="literal">REPLACE</code> ステートメントを使用するアプリケーションでこれを行うと、これらのステートメントの結果が大きく変わることがあることを認識してください。 詳細および例については、<a class="xref" href="sql-statements.html#replace" title="13.2.9 REPLACE ステートメント">セクション13.2.9「REPLACE ステートメント」</a>を参照してください。 
-      </p><p><b>FULLTEXT インデックス. </b><a class="indexterm" name="idm46104573399776"></a>
+      </p><p><b>FULLTEXT インデックス. </b><a class="indexterm" name="idm45820129339648"></a>
         パーティションテーブルでは、<code class="literal">FULLTEXT</code> インデックスまたは検索はサポートされていません。
       </p><p><b>空間カラム. </b>
         <code class="literal">POINT</code>、<code class="literal">GEOMETRY</code> などの空間データ型を持つカラムは、パーティション化されたテーブルで使用できません。
-      </p><p><b>一時テーブル. </b><a class="indexterm" name="idm46104573392688"></a>
+      </p><p><b>一時テーブル. </b><a class="indexterm" name="idm45820129332560"></a>
         一時テーブルはパーティション化できません 
       </p><p><b>ログテーブル. </b>
         ログテーブルをパーティション化することはできません。そのようなテーブルに <code class="literal">ALTER TABLE ... PARTITION BY ...</code> ステートメントを実行すると、エラーで失敗します。
-      </p><p><b>パーティショニングキーのデータ型. </b><a class="indexterm" name="idm46104573386384"></a>
+      </p><p><b>パーティショニングキーのデータ型. </b><a class="indexterm" name="idm45820129326256"></a>
         パーティショニングキーは、整数カラム、または整数に解決される式である必要があります。 <code class="literal">ENUM</code> カラムを使用する式は使用できません。 カラムまたは式の値は <code class="literal">NULL</code> でもかまいません。<a class="xref" href="partitioning.html#partitioning-handling-nulls" title="24.2.7 MySQL パーティショニングによる NULL の扱い">セクション24.2.7「MySQL パーティショニングによる NULL の扱い」</a> を参照してください。 
       </p><p>
       この制約には 2 つの例外があります。
@@ -2822,9 +2822,9 @@ PARTITION BY LIST COLUMNS(c2) (
 );
 </pre></li></ol></div><p>
       上記の例外は、<code class="literal">BLOB</code> または <code class="literal">TEXT</code> カラム型には該当しません。
-    </p><p><b>サブクエリー. </b><a class="indexterm" name="idm46104573362336"></a>
+    </p><p><b>サブクエリー. </b><a class="indexterm" name="idm45820129302832"></a>
         パーティショニングキーはサブクエリーにできません (そのサブクエリーが整数値または <code class="literal">NULL</code> に解決される場合でも)。
-      </p><a class="indexterm" name="idm46104573358720"></a><a class="indexterm" name="idm46104573356656"></a><p><a name="partitioning-limitations-prefixes"></a><b>カラムインデックス接頭辞はキーパーティション化ではサポートされていません. </b>
+      </p><a class="indexterm" name="idm45820129299216"></a><a class="indexterm" name="idm45820129297152"></a><p><a name="partitioning-limitations-prefixes"></a><b>カラムインデックス接頭辞はキーパーティション化ではサポートされていません. </b>
         キーでパーティション化されたテーブルを作成する場合、カラム接頭辞を使用するパーティション化キー内のカラムは、テーブルパーティション化関数では使用されません。 3 つの <code class="literal">VARCHAR</code> カラムがあり、主キーが 3 つのカラムすべてを使用し、それらのうちの 2 つに接頭辞を指定する次の <code class="literal">CREATE TABLE</code> ステートメントについて考えてみます: 
       </p><pre class="programlisting">CREATE TABLE t1 (
     a VARCHAR(10000),
@@ -2890,10 +2890,10 @@ is deprecated and will be removed in a future release.
 partitioning function (prefixed columns are not considered).</span>
 </pre><p>
       キーによるテーブルのパーティション化の一般情報は、<a class="xref" href="partitioning.html#partitioning-key" title="24.2.5 KEY パーティショニング">セクション24.2.5「KEY パーティショニング」</a> を参照してください。
-    </p><p><a name="partitioning-limitations-subpartitions"></a><b>サブパーティションに関する問題. </b><a class="indexterm" name="idm46104573317920"></a><a class="indexterm" name="idm46104573315792"></a>
+    </p><p><a name="partitioning-limitations-subpartitions"></a><b>サブパーティションに関する問題. </b><a class="indexterm" name="idm45820129258480"></a><a class="indexterm" name="idm45820129256352"></a>
         サブパーティションは <code class="literal">HASH</code> または <code class="literal">KEY</code> パーティショニングを使用する必要があります。 サブパーティション化できるのは <code class="literal">RANGE</code> および <code class="literal">LIST</code> パーティションのみです。<code class="literal">HASH</code> および <code class="literal">KEY</code> パーティションはサブパーティション化できません。 
       </p><p>
-      <a class="indexterm" name="idm46104573308304"></a> <code class="literal">SUBPARTITION BY KEY</code> では、<code class="literal">PARTITION BY KEY</code> の場合とは異なり、サブパーティション化カラムを明示的に指定する必要があります。ここでは省略できます (この場合、テーブルの主キーカラムがデフォルトで使用されます)。 次のステートメントによって作成されたテーブルがあるとします。 
+      <a class="indexterm" name="idm45820129248864"></a> <code class="literal">SUBPARTITION BY KEY</code> では、<code class="literal">PARTITION BY KEY</code> の場合とは異なり、サブパーティション化カラムを明示的に指定する必要があります。ここでは省略できます (この場合、テーブルの主キーカラムがデフォルトで使用されます)。 次のステートメントによって作成されたテーブルがあるとします。 
     </p><pre class="programlisting">CREATE TABLE ts (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30)
@@ -2954,7 +2954,7 @@ Query OK, 0 rows affected (0.07 sec)
       サブパーティションでは、<code class="literal">ANALYZE</code>, <code class="literal">CHECK</code>, <code class="literal">OPTIMIZE</code>, <code class="literal">REPAIR</code> および <code class="literal">TRUNCATE</code> 操作がサポートされています。 <a class="xref" href="sql-statements.html#alter-table-partition-operations" title="13.1.9.1 ALTER TABLE パーティション操作">セクション13.1.9.1「ALTER TABLE パーティション操作」</a>を参照してください。 
     </p><p><b>パーティションおよびサブパーティションのファイル名デリミタ. </b>
         テーブルパーティションおよびサブパーティションファイルの名前には、<code class="literal">#P#</code>や<code class="literal">#SP#</code>などの生成されたデリミタが含まれます。 このようなデリミタの大文字と小文字は異なる場合があるため、依存しないでください。 
-      </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-limitations-partitioning-keys-unique-keys"></a>24.6.1 パーティショニングキー、主キー、および一意キー</h3></div></div></div><a class="indexterm" name="idm46104573255600"></a><a class="indexterm" name="idm46104573254144"></a><a class="indexterm" name="idm46104573252048"></a><a class="indexterm" name="idm46104573250624"></a><a class="indexterm" name="idm46104573248528"></a><p>
+      </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-limitations-partitioning-keys-unique-keys"></a>24.6.1 パーティショニングキー、主キー、および一意キー</h3></div></div></div><a class="indexterm" name="idm45820129196224"></a><a class="indexterm" name="idm45820129194768"></a><a class="indexterm" name="idm45820129192672"></a><a class="indexterm" name="idm45820129191248"></a><a class="indexterm" name="idm45820129189152"></a><p>
         このセクションでは、パーティショニングキーと主キーおよび一意キーとの関係について説明します。 この関係を制御するルールは次のように表現できます。パーティション化されたテーブルのパーティショニング式で使用されるすべてのカラムは、テーブルが持つことができるすべての一意キーの一部である必要があります。 
       </p><p>
         つまり、<span class="emphasis"><em>テーブルのすべての一意キーは、テーブルパーティション化式のすべてのカラムを使用する必要があります</em></span>です。 (これには、定義上一意のキーであるため、テーブルの主キーも含まれます。 この点については、このセクションで後述します)。 たとえば、次の各テーブル作成ステートメントは無効です。 
@@ -3147,7 +3147,7 @@ Query OK, 0 rows affected (0.11 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 </pre><p>
         <code class="literal">np_pk</code> の場合、パーティショニング式の一部として使用できる唯一のカラムは <code class="literal">id</code> です。このテーブルをパーティショニング式でほかのカラムを使用してパーティション化する場合は、目的のカラムを主キーに追加するか、主キーをすべて削除することによって、まずテーブルを変更する必要があります。
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-limitations-storage-engines"></a>24.6.2 ストレージエンジンに関連するパーティショニング制限</h3></div></div></div><a class="indexterm" name="idm46104573165312"></a><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-limitations-storage-engines"></a>24.6.2 ストレージエンジンに関連するパーティショニング制限</h3></div></div></div><a class="indexterm" name="idm45820129105936"></a><p>
         MySQL 8.0 では、パーティショニングサポートは実際には MySQL Server によって提供されるのではなく、テーブルストレージエンジンの所有するパーティショニングハンドラまたはネイティブパーティショニングハンドラによって提供されます。 MySQL 8.0 では、<code class="literal">InnoDB</code> ストレージエンジンのみがネイティブのパーティショニングハンドラを提供します。 つまり、パーティション化されたテーブルは、ほかのストレージエンジンを使用して作成できません。 
       </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
           MySQL Cluster <code class="literal">NDB</code> ストレージエンジンは、ネイティブパーティショニングサポートも提供しますが、MySQL 8.0 では現在サポートされていません。
@@ -3175,7 +3175,7 @@ Records: 0  Duplicates: 0  Warnings: 0
         <code class="literal">MyISAM</code> テーブルの <code class="literal">InnoDB</code> への変換の詳細は、<a class="xref" href="innodb-storage-engine.html#converting-tables-to-innodb" title="15.6.1.5 MyISAM から InnoDB へのテーブルの変換">セクション15.6.1.5「MyISAM から InnoDB へのテーブルの変換」</a> を参照してください。
       </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="partitioning-limitations-functions"></a>24.6.3 関数に関連するパーティショニング制限</h3></div></div></div><p>
         このセクションでは特に、パーティショニング式で使用される関数に関連する、MySQL パーティショニングの制限について説明します。
-      </p><a class="indexterm" name="idm46104573116320"></a><p>
+      </p><a class="indexterm" name="idm45820129056816"></a><p>
         パーティション化式で使用できるのは、次のリストに示す MySQL 関数のみです:
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             <code class="literal">ABS()</code>
