@@ -40,7 +40,7 @@
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="introduction.html#manual-info">1.1 About This Manual</a></span></dt><dt><span class="section"><a href="introduction.html#what-is">1.2 Overview of the MySQL Database Management System</a></span></dt><dd><dl><dt><span class="section"><a href="introduction.html#what-is-mysql">1.2.1 What is MySQL?</a></span></dt><dt><span class="section"><a href="introduction.html#features">1.2.2 The Main Features of MySQL</a></span></dt><dt><span class="section"><a href="introduction.html#history">1.2.3 History of MySQL</a></span></dt></dl></dd><dt><span class="section"><a href="introduction.html#mysql-nutshell">1.3 What Is New in MySQL 8.0</a></span></dt><dt><span class="section"><a href="introduction.html#added-deprecated-removed">1.4 Server and Status Variables and Options Added, Deprecated, or Removed in
 MySQL 8.0</a></span></dt><dt><span class="section"><a href="introduction.html#information-sources">1.5 MySQL Information Sources</a></span></dt><dt><span class="section"><a href="introduction.html#bug-reports">1.6 How to Report Bugs or Problems</a></span></dt><dt><span class="section"><a href="introduction.html#compatibility">1.7 MySQL Standards Compliance</a></span></dt><dd><dl><dt><span class="section"><a href="introduction.html#extensions-to-ansi">1.7.1 MySQL Extensions to Standard SQL</a></span></dt><dt><span class="section"><a href="introduction.html#differences-from-ansi">1.7.2 MySQL Differences from Standard SQL</a></span></dt><dt><span class="section"><a href="introduction.html#constraints">1.7.3 How MySQL Deals with Constraints</a></span></dt></dl></dd><dt><span class="section"><a href="introduction.html#credits">1.8 Credits</a></span></dt><dd><dl><dt><span class="section"><a href="introduction.html#contributors">1.8.1 Contributors to MySQL</a></span></dt><dt><span class="section"><a href="introduction.html#documenters-translators">1.8.2 Documenters and translators</a></span></dt><dt><span class="section"><a href="introduction.html#packages">1.8.3 Packages that support MySQL</a></span></dt><dt><span class="section"><a href="introduction.html#tools-used-to-create-mysql">1.8.4 Tools that were used to create MySQL</a></span></dt><dt><span class="section"><a href="introduction.html#supporters">1.8.5 Supporters of MySQL</a></span></dt></dl></dd></dl>
 </div>
-<a class="indexterm" name="idm45693058253120"></a><a class="indexterm" name="idm45693058252048"></a><p>
+<a class="indexterm" name="idm45696503296080"></a><a class="indexterm" name="idm45696503295008"></a><p>
     The MySQL™ software delivers a very fast, multithreaded,
     multi-user, and robust SQL (Structured Query Language) database
     server. MySQL Server is intended for mission-critical, heavy-load
@@ -101,7 +101,7 @@ MySQL 8.0</a></span></dt><dt><span class="section"><a href="introduction.html#in
         Notes</a>.
 </p></li></ul>
 </div>
-<a class="indexterm" name="idm45693052677856"></a><a class="indexterm" name="idm45693052676464"></a><a class="indexterm" name="idm45693052675072"></a><a class="indexterm" name="idm45693052673680"></a>
+<a class="indexterm" name="idm45696503272656"></a><a class="indexterm" name="idm45696497649760"></a><a class="indexterm" name="idm45696497648368"></a><a class="indexterm" name="idm45696497646976"></a>
 <div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -127,7 +127,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45693052669392"></a><a class="indexterm" name="idm45693052668384"></a><p>
+<a class="indexterm" name="idm45696497642688"></a><a class="indexterm" name="idm45696497641680"></a><p>
       This is the Reference Manual for the MySQL Database System,
       version 8.0, through release 8.0.25.
       Differences between minor versions of MySQL 8.0 are
@@ -154,7 +154,7 @@ Important
       version of the manual is available online in searchable form at
       <a class="ulink" href="https://dev.mysql.com/doc/" target="_top">https://dev.mysql.com/doc/</a>. Other formats also are available
       there, including downloadable HTML and PDF versions.
-    </p><a class="indexterm" name="idm45693052661552"></a><p>
+    </p><a class="indexterm" name="idm45696497634848"></a><p>
       The source code for MySQL itself contains internal documentation
       written using Doxygen. The generated Doxygen content is available
       <a class="ulink" href="https://dev.mysql.com/doc/index-other.html" target="_top">https://dev.mysql.com/doc/index-other.html</a>. It is also possible to
@@ -181,7 +181,7 @@ Important
 </div>
 <p>
     This manual uses certain typographical conventions:
-</p><a class="indexterm" name="idm45693052654672"></a><a class="indexterm" name="idm45693052653280"></a><a class="indexterm" name="idm45693052652272"></a><a class="indexterm" name="idm45693052650880"></a><a class="indexterm" name="idm45693052649488"></a><a class="indexterm" name="idm45693052648480"></a>
+</p><a class="indexterm" name="idm45696497627968"></a><a class="indexterm" name="idm45696497626576"></a><a class="indexterm" name="idm45696497625568"></a><a class="indexterm" name="idm45696497624176"></a><a class="indexterm" name="idm45696497622784"></a><a class="indexterm" name="idm45696497621776"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         <code class="literal">Text in this style</code> is used for SQL
@@ -312,7 +312,7 @@ replica&gt; <strong class="userinput"><code>type a mysql command on the replica 
     environment variable and run the <span class="command"><strong>configure</strong></span>
     command looks like this in Bourne shell syntax:
   </p><pre data-lang="terminal" class="programlisting">shell&gt; <strong class="userinput"><code>CC=gcc ./configure</code></strong>
-</pre><a class="indexterm" name="idm45693052580752"></a><a class="indexterm" name="idm45693052579744"></a><p>
+</pre><a class="indexterm" name="idm45696497554048"></a><a class="indexterm" name="idm45696497553040"></a><p>
     If you are using <span class="command"><strong>csh</strong></span> or <span class="command"><strong>tcsh</strong></span>,
     you must issue commands somewhat differently:
   </p><pre data-lang="terminal" class="programlisting">shell&gt; <strong class="userinput"><code>setenv CC gcc</code></strong>
@@ -330,7 +330,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693052573984"></a><p>
+<a class="indexterm" name="idm45696497547280"></a><p>
         The Reference Manual source files are written in DocBook XML
         format. The HTML version and other formats are produced
         automatically, primarily using the DocBook XSL stylesheets. For
@@ -371,7 +371,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693052568336"></a><a class="indexterm" name="idm45693052566944"></a><p>
+<a class="indexterm" name="idm45696497541632"></a><a class="indexterm" name="idm45696497540240"></a><p>
       MySQL, the most popular Open Source SQL database management
       system, is developed, distributed, and supported by Oracle
       Corporation.
@@ -397,7 +397,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           <span class="bold"><strong>MySQL databases are
           relational.</strong></span>
         </p><p>
-          <a class="indexterm" name="idm45693052559872"></a>
+          <a class="indexterm" name="idm45696497533168"></a>
 
           A relational database stores data in separate tables rather
           than putting all the data in one big storeroom. The database
@@ -432,13 +432,13 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           <span class="bold"><strong>MySQL software is Open
           Source.</strong></span>
         </p><p>
-          <a class="indexterm" name="idm45693052552000"></a>
+          <a class="indexterm" name="idm45696497525296"></a>
 
-          <a class="indexterm" name="idm45693052550608"></a>
+          <a class="indexterm" name="idm45696497523904"></a>
 
-          <a class="indexterm" name="idm45693052549216"></a>
+          <a class="indexterm" name="idm45696497522512"></a>
 
-          <a class="indexterm" name="idm45693052547824"></a>
+          <a class="indexterm" name="idm45696497521120"></a>
 
           Open Source means that it is possible for anyone to use and
           modify the software. Anybody can download the MySQL software
@@ -495,7 +495,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           Server.
 </p></li></ul>
 </div>
-<a class="indexterm" name="idm45693052530416"></a><a class="indexterm" name="idm45693052529024"></a><p>
+<a class="indexterm" name="idm45696497503712"></a><a class="indexterm" name="idm45696497502320"></a><p>
       The official way to pronounce <span class="quote">“<span class="quote">MySQL</span>”</span> is <span class="quote">“<span class="quote">My
       Ess Que Ell</span>”</span> (not <span class="quote">“<span class="quote">my sequel</span>”</span>), but we do not
       mind if you pronounce it as <span class="quote">“<span class="quote">my sequel</span>”</span> or in some
@@ -513,7 +513,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693052524704"></a><a class="indexterm" name="idm45693052523696"></a><p>
+<a class="indexterm" name="idm45696497498000"></a><a class="indexterm" name="idm45696497496992"></a><p>
       This section describes some of the important characteristics of
       the MySQL Database Software. In most respects, the roadmap applies
       to all versions of MySQL. For information about features as they
@@ -529,7 +529,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           MySQL 5.6: <a class="ulink" href="https://dev.mysql.com/doc/refman/5.6/en/mysql-nutshell.html" target="_top">What Is New in MySQL 5.6</a>
 </p></li></ul>
 </div>
-<h4><a name="idm45693052516400"></a>Internals and Portability</h4>
+<h4><a name="idm45696497489776"></a>Internals and Portability</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           Written in C and C++.
@@ -577,7 +577,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           no network is available.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052500160"></a>Data Types</h4>
+<h4><a name="idm45696497473536"></a>Data Types</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           Many data types: signed/unsigned integers 1, 2, 3, 4, and 8
@@ -601,7 +601,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           Fixed-length and variable-length string types.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052482048"></a>Statements and Functions</h4>
+<h4><a name="idm45696497455424"></a>Statements and Functions</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           Full operator and function support in the
@@ -656,7 +656,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           statement.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052450672"></a>Security</h4>
+<h4><a name="idm45696497424048"></a>Security</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           A privilege and password system that is very flexible and
@@ -666,7 +666,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           you connect to a server.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052447840"></a>Scalability and Limits</h4>
+<h4><a name="idm45696497421216"></a>Scalability and Limits</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           Support for large databases. We use MySQL Server with
@@ -687,7 +687,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           <a class="link" href="data-types.html#blob" title="11.3.4 The BLOB and TEXT Types"><code class="literal">TEXT</code></a> column types.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052437840"></a>Connectivity</h4>
+<h4><a name="idm45696497411216"></a>Connectivity</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           Clients can connect to MySQL Server using several protocols:
@@ -741,7 +741,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           <a class="ulink" href="https://dev.mysql.com/doc/connector-net/en/" target="_top">MySQL Connector/NET Developer Guide</a>.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052422320"></a>Localization</h4>
+<h4><a name="idm45696497395584"></a>Localization</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           The server can provide error messages to clients in many
@@ -771,7 +771,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           <a class="xref" href="server-administration.html#time-zone-support" title="5.1.15 MySQL Server Time Zone Support">Section 5.1.15, “MySQL Server Time Zone Support”</a>.
 </p></li></ul>
 </div>
-<h4><a name="idm45693052410224"></a>Clients and Tools</h4>
+<h4><a name="idm45696497383488"></a>Clients and Tools</h4>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           MySQL includes several client and utility programs. These
@@ -805,7 +805,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693052398976"></a><a class="indexterm" name="idm45693052397968"></a><a class="indexterm" name="idm45693052396960"></a><a class="indexterm" name="idm45693052395952"></a><a class="indexterm" name="idm45693052394560"></a><a class="indexterm" name="idm45693052393552"></a><p>
+<a class="indexterm" name="idm45696497372336"></a><a class="indexterm" name="idm45696497371328"></a><a class="indexterm" name="idm45696497370320"></a><a class="indexterm" name="idm45696497369312"></a><a class="indexterm" name="idm45696497367920"></a><a class="indexterm" name="idm45696497366912"></a><p>
       We started out with the intention of using the
       <code class="literal">mSQL</code> database system to connect to our tables
       using our own fast low-level (ISAM) routines. However, after some
@@ -866,7 +866,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693052381712"></a><a class="indexterm" name="idm45693052380704"></a><p>
+<a class="indexterm" name="idm45696497355072"></a><a class="indexterm" name="idm45696497354064"></a><p>
         The following features have been added to MySQL
         8.0:
 </p>
@@ -877,13 +877,13 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
               previous MySQL releases, dictionary data was stored in
               metadata files and nontransactional tables. For more
               information, see <a class="xref" href="data-dictionary.html" title="Chapter 14 MySQL Data Dictionary">Chapter 14, <i>MySQL Data Dictionary</i></a>.
-            </p><a class="indexterm" name="idm45693052375920"></a><a class="indexterm" name="idm45693052374528"></a></li><li class="listitem"><p><b>Atomic data definition statements (Atomic DDL). </b>
+            </p><a class="indexterm" name="idm45696497349280"></a><a class="indexterm" name="idm45696497347888"></a></li><li class="listitem"><p><b>Atomic data definition statements (Atomic DDL). </b>
               An atomic DDL statement combines the data dictionary
               updates, storage engine operations, and binary log writes
               associated with a DDL operation into a single, atomic
               transaction. For more information, see
               <a class="xref" href="sql-statements.html#atomic-ddl" title="13.1.1 Atomic Data Definition Statement Support">Section 13.1.1, “Atomic Data Definition Statement Support”</a>.
-            </p><a class="indexterm" name="idm45693052370816"></a><a class="indexterm" name="idm45693052369424"></a></li><li class="listitem"><p><b>Upgrade procedure. </b>
+            </p><a class="indexterm" name="idm45696497344176"></a><a class="indexterm" name="idm45696497342784"></a></li><li class="listitem"><p><b>Upgrade procedure. </b>
               Previously, after installation of a new version of MySQL,
               the MySQL server automatically upgrades the data
               dictionary tables at the next startup, after which the DBA
@@ -892,7 +892,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
               <code class="literal">mysql</code> schema, as well as objects in
               other schemas such as the <code class="literal">sys</code> schema
               and user schemas.
-            </p><a class="indexterm" name="idm45693052363824"></a><a class="indexterm" name="idm45693052362432"></a><p>
+            </p><a class="indexterm" name="idm45696497337184"></a><a class="indexterm" name="idm45696497335792"></a><p>
             As of MySQL 8.0.16, the server performs the tasks previously
             handled by <a class="link" href="programs.html#mysql-upgrade" title="4.4.5 mysql_upgrade — Check and Upgrade MySQL Tables"><span class="command"><strong>mysql_upgrade</strong></span></a>. After
             installation of a new MySQL version, the server now
@@ -909,7 +909,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
           </p></li><li class="listitem"><p><b>Security and account management. </b>
               These enhancements were added to improve security and
               enable greater DBA flexibility in account management:
-</p><a class="indexterm" name="idm45693052354064"></a><a class="indexterm" name="idm45693052352672"></a>
+</p><a class="indexterm" name="idm45696497327424"></a><a class="indexterm" name="idm45696497326032"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 The grant tables in the <code class="literal">mysql</code> system
@@ -1073,7 +1073,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
               can associate these CPUs with resource groups and assign
               threads to groups. For more information, see
               <a class="xref" href="server-administration.html#resource-groups" title="5.1.16 Resource Groups">Section 5.1.16, “Resource Groups”</a>.
-            </p><a class="indexterm" name="idm45693052311408"></a><a class="indexterm" name="idm45693052310016"></a></li><li class="listitem"><p><b>Table encryption management. </b>
+            </p><a class="indexterm" name="idm45696497284768"></a><a class="indexterm" name="idm45696497283376"></a></li><li class="listitem"><p><b>Table encryption management. </b>
               Table encryption can now be managed globally by defining
               and enforcing encryption defaults. The
               <a class="link" href="server-administration.html#sysvar_default_table_encryption"><code class="literal">default_table_encryption</code></a>
@@ -1098,9 +1098,9 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
               <a class="link" href="server-administration.html#sysvar_table_encryption_privilege_check"><code class="literal">table_encryption_privilege_check</code></a>
               is enabled. For more information, see
               <a class="xref" href="innodb-storage-engine.html#innodb-schema-tablespace-encryption-default" title="Defining an Encryption Default for Schemas and General Tablespaces">Defining an Encryption Default for Schemas and General Tablespaces</a>.
-            </p><a class="indexterm" name="idm45693052299840"></a><a class="indexterm" name="idm45693052298448"></a></li><li class="listitem"><p><b>InnoDB enhancements. </b>
+            </p><a class="indexterm" name="idm45696497273200"></a><a class="indexterm" name="idm45696497271808"></a></li><li class="listitem"><p><b>InnoDB enhancements. </b>
               These <code class="literal">InnoDB</code> enhancements were added:
-</p><a class="indexterm" name="idm45693052294896"></a><a class="indexterm" name="idm45693052293504"></a>
+</p><a class="indexterm" name="idm45696497268256"></a><a class="indexterm" name="idm45696497266864"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 The current maximum auto-increment counter value is
@@ -1166,7 +1166,7 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
                 detection and rely on the
                 <a class="link" href="innodb-storage-engine.html#sysvar_innodb_lock_wait_timeout"><code class="literal">innodb_lock_wait_timeout</code></a>
                 setting for transaction rollback when a deadlock occurs.
-              </p><a class="indexterm" name="idm45693052271200"></a><a class="indexterm" name="idm45693052269808"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696497244560"></a><a class="indexterm" name="idm45696497243168"></a></li><li class="listitem"><p>
                 The new
                 <a class="link" href="information-schema.html#information-schema-innodb-cached-indexes-table" title="26.4.5 The INFORMATION_SCHEMA INNODB_CACHED_INDEXES Table"><code class="literal">INFORMATION_SCHEMA.INNODB_CACHED_INDEXES</code></a>
                 table reports the number of index pages cached in the
@@ -2004,10 +2004,10 @@ shell&gt; <strong class="userinput"><code>./configure</code></strong>
               Japanese language-specific collation available for Unicode
               in MySQL. For more information, see
               <a class="xref" href="charset.html#charset-unicode-sets" title="10.10.1 Unicode Character Sets">Section 10.10.1, “Unicode Character Sets”</a>.
-            </p><a class="indexterm" name="idm45693051981504"></a><a class="indexterm" name="idm45693051980112"></a></li><li class="listitem"><p><b>JSON enhancements. </b>
+            </p><a class="indexterm" name="idm45696496954864"></a><a class="indexterm" name="idm45696496953472"></a></li><li class="listitem"><p><b>JSON enhancements. </b>
               The following enhancements or additions were made to
               MySQL's JSON functionality:
-</p><a class="indexterm" name="idm45693051977040"></a><a class="indexterm" name="idm45693051975648"></a>
+</p><a class="indexterm" name="idm45696496950400"></a><a class="indexterm" name="idm45696496949008"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 Added the
@@ -2292,9 +2292,9 @@ mysql&gt; <strong class="userinput"><code>SELECT c1 FROM t1;</code></strong>
               <a class="link" href="data-types.html#json" title="11.5 The JSON Data Type"><code class="literal">JSON</code></a> data types, which
               previously could not be assigned default values at all.
               For details, see <a class="xref" href="data-types.html#data-type-defaults" title="11.6 Data Type Default Values">Section 11.6, “Data Type Default Values”</a>.
-            </p><a class="indexterm" name="idm45693051872128"></a><a class="indexterm" name="idm45693051870736"></a></li><li class="listitem"><p><b>Optimizer. </b>
+            </p><a class="indexterm" name="idm45696496845488"></a><a class="indexterm" name="idm45696496844096"></a></li><li class="listitem"><p><b>Optimizer. </b>
               These optimizer enhancements were added:
-</p><a class="indexterm" name="idm45693051867728"></a><a class="indexterm" name="idm45693051866336"></a>
+</p><a class="indexterm" name="idm45696496841088"></a><a class="indexterm" name="idm45696496839696"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 MySQL now supports invisible indexes. An invisible index
@@ -2554,7 +2554,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               preceding <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> statements
               and certain other statements. For more information, see
               <a class="xref" href="sql-statements.html#with" title="13.2.15 WITH (Common Table Expressions)">Section 13.2.15, “WITH (Common Table Expressions)”</a>.
-            </p><a class="indexterm" name="idm45693051768800"></a><a class="indexterm" name="idm45693051767408"></a><p>
+            </p><a class="indexterm" name="idm45696496742160"></a><a class="indexterm" name="idm45696496740768"></a><p>
             As of MySQL 8.0.19, the recursive
             <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> part of a recursive
             common table expression (CTE) supports a
@@ -2574,7 +2574,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               <a class="link" href="functions.html#function_sum"><code class="literal">SUM()</code></a> and
               <a class="link" href="functions.html#function_avg"><code class="literal">AVG()</code></a>). For more
               information, see <a class="xref" href="functions.html#window-functions" title="12.21 Window Functions">Section 12.21, “Window Functions”</a>.
-            </p><a class="indexterm" name="idm45693051754720"></a><a class="indexterm" name="idm45693051753328"></a></li><li class="listitem"><p><b>Lateral derived tables. </b>
+            </p><a class="indexterm" name="idm45696496728080"></a><a class="indexterm" name="idm45696496726688"></a></li><li class="listitem"><p><b>Lateral derived tables. </b>
               A derived table now may be preceded by the
               <code class="literal">LATERAL</code> keyword to specify that it is
               permitted to refer to (depend on) columns of preceding
@@ -2583,11 +2583,11 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               cannot be done with nonlateral derived tables or that
               require less-efficient workarounds. See
               <a class="xref" href="sql-statements.html#lateral-derived-tables" title="13.2.11.9 Lateral Derived Tables">Section 13.2.11.9, “Lateral Derived Tables”</a>.
-            </p><a class="indexterm" name="idm45693051748176"></a><a class="indexterm" name="idm45693051746784"></a></li><li class="listitem"><p><b>Aliases in single-table DELETE statements. </b>
+            </p><a class="indexterm" name="idm45696496721536"></a><a class="indexterm" name="idm45696496720144"></a></li><li class="listitem"><p><b>Aliases in single-table DELETE statements. </b>
               In MySQL 8.0.16 and later, single-table
               <a class="link" href="sql-statements.html#delete" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a> statements support
               the use of table aliases.
-            </p><a class="indexterm" name="idm45693051742688"></a><a class="indexterm" name="idm45693051741296"></a></li><li class="listitem"><p><b>Regular expression support. </b>
+            </p><a class="indexterm" name="idm45696496716048"></a><a class="indexterm" name="idm45696496714656"></a></li><li class="listitem"><p><b>Regular expression support. </b>
               Previously, MySQL used the Henry Spencer regular
               expression library to support regular expression operators
               (<a class="link" href="functions.html#operator_regexp"><code class="literal">REGEXP</code></a>,
@@ -2614,7 +2614,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               which applications that use regular expressions may be
               affected by the implementation change, see
               <a class="xref" href="functions.html#regexp-compatibility" title="Regular Expression Compatibility Considerations">Regular Expression Compatibility Considerations</a>.
-            </p><a class="indexterm" name="idm45693051726272"></a><a class="indexterm" name="idm45693051724880"></a></li><li class="listitem"><p><b>Internal temporary tables. </b>
+            </p><a class="indexterm" name="idm45696496699632"></a><a class="indexterm" name="idm45696496698240"></a></li><li class="listitem"><p><b>Internal temporary tables. </b>
               The <code class="literal">TempTable</code> storage engine replaces
               the <code class="literal">MEMORY</code> storage engine as the
               default engine for in-memory internal temporary tables.
@@ -2631,7 +2631,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               variable defines the maximum amount of memory that the
               <code class="literal">TempTable</code> storage engine can use before
               data is stored to disk.
-            </p><a class="indexterm" name="idm45693051713664"></a><a class="indexterm" name="idm45693051712272"></a></li><li class="listitem"><p><b>Logging. </b>
+            </p><a class="indexterm" name="idm45696496687024"></a><a class="indexterm" name="idm45696496685632"></a></li><li class="listitem"><p><b>Logging. </b>
               Error logging was rewritten to use the MySQL component
               architecture. Traditional error logging is implemented
               using built-in components, and logging using the system
@@ -2641,7 +2641,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               <a class="link" href="server-administration.html#sysvar_log_error_services"><code class="literal">log_error_services</code></a> system
               variable. For more information, see
               <a class="xref" href="server-administration.html#error-log" title="5.4.2 The Error Log">Section 5.4.2, “The Error Log”</a>.
-            </p><a class="indexterm" name="idm45693051707328"></a><a class="indexterm" name="idm45693051705936"></a></li><li class="listitem"><p><b>Backup lock. </b>
+            </p><a class="indexterm" name="idm45696496680688"></a><a class="indexterm" name="idm45696496679296"></a></li><li class="listitem"><p><b>Backup lock. </b>
               A new type of backup lock permits DML during an online
               backup while preventing operations that could result in an
               inconsistent snapshot. The new backup lock is supported by
@@ -2651,10 +2651,10 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               INSTANCE</code></a> syntax. The
               <a class="link" href="security.html#priv_backup-admin"><code class="literal">BACKUP_ADMIN</code></a> privilege is
               required to use these statements.
-            </p><a class="indexterm" name="idm45693051699696"></a><a class="indexterm" name="idm45693051698304"></a></li><li class="listitem"><p><b>Replication. </b>
+            </p><a class="indexterm" name="idm45696496673056"></a><a class="indexterm" name="idm45696496671664"></a></li><li class="listitem"><p><b>Replication. </b>
               The following enhancements have been made to MySQL
               Replication:
-</p><a class="indexterm" name="idm45693051695248"></a><a class="indexterm" name="idm45693051693856"></a>
+</p><a class="indexterm" name="idm45696496668608"></a><a class="indexterm" name="idm45696496667216"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 MySQL Replication now supports binary logging of partial
@@ -2679,7 +2679,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               <a class="link" href="server-administration.html#sysvar_max_connections"><code class="literal">max_connections</code></a>
               connections are already established. See
               <a class="xref" href="server-administration.html#connection-interfaces" title="5.1.12.1 Connection Interfaces">Section 5.1.12.1, “Connection Interfaces”</a>.
-            </p><a class="indexterm" name="idm45693051684208"></a><a class="indexterm" name="idm45693051682816"></a><p>
+            </p><a class="indexterm" name="idm45696496657568"></a><a class="indexterm" name="idm45696496656176"></a><p>
             MySQL now provides more control over the use of compression
             to minimize the number of bytes sent over connections to the
             server. Previously, a given connection was either
@@ -2709,7 +2709,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               account-management statements and in
               <code class="literal">DEFINER</code> attributes); and host
               name-related command options and system variables.
-            </p><a class="indexterm" name="idm45693051670016"></a><a class="indexterm" name="idm45693051668624"></a><a class="indexterm" name="idm45693051667232"></a><p>
+            </p><a class="indexterm" name="idm45696496643376"></a><a class="indexterm" name="idm45696496641984"></a><a class="indexterm" name="idm45696496640592"></a><p>
             Caveats:
 </p>
 <div class="itemizedlist">
@@ -2750,7 +2750,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               Previously, MySQL plugins could be written in C or C++.
               MySQL header files used by plugins now contain C++ code,
               which means that plugins must be written in C++, not C.
-            </p><a class="indexterm" name="idm45693051651872"></a><a class="indexterm" name="idm45693051650480"></a></li><li class="listitem"><p><b>C API. </b>
+            </p><a class="indexterm" name="idm45696496625232"></a><a class="indexterm" name="idm45696496623840"></a></li><li class="listitem"><p><b>C API. </b>
               The MySQL C API now supports asynchronous functions for
               nonblocking communication with the MySQL server. Each
               function is the asynchronous counterpart to an existing
@@ -2761,7 +2761,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               If not, the application can perform other work before
               checking again later. See
               <a class="ulink" href="https://dev.mysql.com/doc/c-api/8.0/en/c-api-asynchronous-interface.html" target="_top">C API Asynchronous Interface</a>.
-            </p><a class="indexterm" name="idm45693051645584"></a><a class="indexterm" name="idm45693051644192"></a></li><li class="listitem"><p><b>Additional target types for casts. </b>
+            </p><a class="indexterm" name="idm45696496618944"></a><a class="indexterm" name="idm45696496617552"></a></li><li class="listitem"><p><b>Additional target types for casts. </b>
               The functions <a class="link" href="functions.html#function_cast"><code class="literal">CAST()</code></a> and
               <a class="link" href="functions.html#function_convert"><code class="literal">CONVERT()</code></a> now support
               conversions to types
@@ -2769,7 +2769,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">FLOAT</code></a>, and
               <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">REAL</code></a>. Added in MySQL
               8.0.17. See <a class="xref" href="functions.html#cast-functions" title="12.11 Cast Functions and Operators">Section 12.11, “Cast Functions and Operators”</a>.
-            </p><a class="indexterm" name="idm45693051635728"></a><a class="indexterm" name="idm45693051634336"></a></li><li class="listitem"><p><b>JSON schema validation. </b>
+            </p><a class="indexterm" name="idm45696496609088"></a><a class="indexterm" name="idm45696496607696"></a></li><li class="listitem"><p><b>JSON schema validation. </b>
               MySQL 8.0.17 adds two functions
               <a class="link" href="functions.html#function_json-schema-valid"><code class="literal">JSON_SCHEMA_VALID()</code></a> and
               <a class="link" href="functions.html#function_json-schema-validation-report"><code class="literal">JSON_SCHEMA_VALIDATION_REPORT()</code></a>
@@ -2781,7 +2781,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               a JSON document containing detailed information about the
               results of the validation. The following statements apply
               to both of these functions:
-</p><a class="indexterm" name="idm45693051627632"></a><a class="indexterm" name="idm45693051626240"></a>
+</p><a class="indexterm" name="idm45696496600992"></a><a class="indexterm" name="idm45696496599600"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 The schema must conform to Draft 4 of the JSON Schema
@@ -2812,7 +2812,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               automatically by the MySQL optimizer for suitable queries,
               as can be viewed in the output of
               <a class="link" href="sql-statements.html#explain" title="13.8.2 EXPLAIN Statement"><code class="literal">EXPLAIN</code></a>.
-            </p><a class="indexterm" name="idm45693051612944"></a><a class="indexterm" name="idm45693051611552"></a><p>
+            </p><a class="indexterm" name="idm45696496586304"></a><a class="indexterm" name="idm45696496584912"></a><p>
             As part of this work, MySQL adds a new function
             <a class="link" href="functions.html#function_json-overlaps"><code class="literal">JSON_OVERLAPS()</code></a> and a new
             <a class="link" href="functions.html#operator_member-of"><code class="literal">MEMBER OF()</code></a> operator for
@@ -2867,7 +2867,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               <a class="link" href="server-administration.html#sysvar_time_zone"><code class="literal">time_zone</code></a> session
               variable is hintable using
               <a class="link" href="optimization.html#optimizer-hints-set-var" title="Variable-Setting Hint Syntax"><code class="literal">SET_VAR</code></a>.
-            </p><a class="indexterm" name="idm45693051585136"></a><a class="indexterm" name="idm45693051583744"></a></li><li class="listitem"><p><b>Redo Log Archiving. </b>
+            </p><a class="indexterm" name="idm45696496558496"></a><a class="indexterm" name="idm45696496557104"></a></li><li class="listitem"><p><b>Redo Log Archiving. </b>
               As of MySQL 8.0.17, <code class="literal">InnoDB</code> supports
               redo log archiving. Backup utilities that copy redo log
               records may sometimes fail to keep pace with redo log
@@ -2879,7 +2879,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               log records from the archive file as necessary, thereby
               avoiding the potential loss of data. For more information,
               see <a class="xref" href="innodb-storage-engine.html#innodb-redo-log-archiving" title="Redo Log Archiving">Redo Log Archiving</a>.
-            </p><a class="indexterm" name="idm45693051579696"></a><a class="indexterm" name="idm45693051578304"></a></li><li class="listitem"><p><b>The Clone Plugin. </b>
+            </p><a class="indexterm" name="idm45696496553056"></a><a class="indexterm" name="idm45696496551664"></a></li><li class="listitem"><p><b>The Clone Plugin. </b>
               As of MySQL 8.0.17, MySQL provides a clone plugin that
               permits cloning <code class="literal">InnoDB</code> data locally or
               from a remote MySQL server instance. A local cloning
@@ -2888,7 +2888,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               transfers cloned data over the network from a donor MySQL
               server instance to the recipient server or node where the
               cloning operation was initiated.
-            </p><a class="indexterm" name="idm45693051574192"></a><a class="indexterm" name="idm45693051572800"></a><p>
+            </p><a class="indexterm" name="idm45696496547552"></a><a class="indexterm" name="idm45696496546160"></a><p>
             The clone plugin supports replication. In addition to
             cloning data, a cloning operation extracts and transfers
             replication coordinates from the donor and applies them on
@@ -2912,7 +2912,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO test VALUES (1, '{"val":tr
               predicates only. A hash join is more efficient in most
               cases than the block-nested loop algorithm. Joins such as
               those shown here can be optimized in this manner:
-            </p><a class="indexterm" name="idm45693051568112"></a><a class="indexterm" name="idm45693051566720"></a><pre data-lang="sql" class="programlisting">SELECT *
+            </p><a class="indexterm" name="idm45696496541472"></a><a class="indexterm" name="idm45696496540080"></a><pre data-lang="sql" class="programlisting">SELECT *
     FROM t1
     JOIN t2
         ON t1.c1=t2.c1;
@@ -3006,7 +3006,7 @@ SELECT *
             In MySQL 8.0.21 and later, this statement also supports a
             <code class="literal">FORMAT=TREE</code> specifier.
             <code class="literal">TREE</code> is the only supported format.
-          </p><a class="indexterm" name="idm45693051535312"></a><a class="indexterm" name="idm45693051533920"></a><p>
+          </p><a class="indexterm" name="idm45696496508672"></a><a class="indexterm" name="idm45696496507280"></a><p>
             See <a class="xref" href="sql-statements.html#explain-analyze" title="Obtaining Information with EXPLAIN ANALYZE">Obtaining Information with EXPLAIN ANALYZE</a>, for more information.
           </p></li><li class="listitem"><p><b>Query cast injection. </b>
               In version 8.0.18 and later, MySQL injects cast operations
@@ -3017,7 +3017,7 @@ SELECT *
               executed equivalent to one which is compliant with the SQL
               standard while maintaining backwards compatibility with
               previous releases of MySQL.
-            </p><a class="indexterm" name="idm45693051529552"></a><a class="indexterm" name="idm45693051528160"></a><p>
+            </p><a class="indexterm" name="idm45696496502912"></a><a class="indexterm" name="idm45696496501520"></a><p>
             Such implicit casts are now performed between temporal types
             (<a class="link" href="data-types.html#datetime" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATE</code></a>,
             <a class="link" href="data-types.html#datetime" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATETIME</code></a>,
@@ -3133,7 +3133,7 @@ EXPLAIN: -&gt; Inner hash join <span class="emphasis"><em>(cast(n.d as double) =
               <code class="literal">'2019-12-11 10:40:30-05:00'</code>,
               <code class="literal">'2003-04-14 03:30:00+10:00'</code>, and
               <code class="literal">'2020-01-01 15:35:45+05:30'</code>.
-            </p><a class="indexterm" name="idm45693051459120"></a><a class="indexterm" name="idm45693051457632"></a><p>
+            </p><a class="indexterm" name="idm45696496428608"></a><a class="indexterm" name="idm45696496427120"></a><p>
             Time zone offsets are not displayed when selecting datetime
             values.
           </p><p>
@@ -3161,7 +3161,7 @@ EXPLAIN: -&gt; Inner hash join <span class="emphasis"><em>(cast(n.d as double) =
               specify a <code class="literal">CHECK</code> constraint, MySQL
               8.0.19 and later provides precise information about the
               reasons for failures of such constraints.
-            </p><a class="indexterm" name="idm45693051442528"></a><a class="indexterm" name="idm45693051441024"></a><p>
+            </p><a class="indexterm" name="idm45696496411840"></a><a class="indexterm" name="idm45696496410336"></a><p>
             For examples and more information, see
             <a class="xref" href="functions.html#json-validation-functions-constraints" title="JSON_SCHEMA_VALID() and CHECK constraints">JSON_SCHEMA_VALID() and CHECK constraints</a>. See
             also <a class="xref" href="sql-statements.html#create-table-check-constraints" title="13.1.20.6 CHECK Constraints">Section 13.1.20.6, “CHECK Constraints”</a>.
@@ -3172,7 +3172,7 @@ EXPLAIN: -&gt; Inner hash join <span class="emphasis"><em>(cast(n.d as double) =
               <a class="link" href="sql-statements.html#insert" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a> statement on a table
               <code class="literal">t</code> having columns <code class="literal">a</code>
               and <code class="literal">b</code>:
-            </p><a class="indexterm" name="idm45693051432304"></a><a class="indexterm" name="idm45693051430816"></a><pre data-lang="sql" class="programlisting">INSERT INTO t SET a=9,b=5
+            </p><a class="indexterm" name="idm45696496401488"></a><a class="indexterm" name="idm45696496400000"></a><pre data-lang="sql" class="programlisting">INSERT INTO t SET a=9,b=5
     ON DUPLICATE KEY UPDATE a=VALUES(a)+VALUES(b);
 </pre><p>
             Using the alias <code class="literal">new</code> for the new row, and,
@@ -3200,7 +3200,7 @@ INSERT INTO t VALUES(9,5) AS new(m,n)
               MySQL 8.0.19, respectively, as the
               <a class="link" href="sql-statements.html#table" title="13.2.12 TABLE Statement"><code class="literal">TABLE</code></a> statement and the
               <a class="link" href="sql-statements.html#values" title="13.2.14 VALUES Statement"><code class="literal">VALUES</code></a> statement.
-            </p><a class="indexterm" name="idm45693051417888"></a><a class="indexterm" name="idm45693051416400"></a><a class="indexterm" name="idm45693051414912"></a><a class="indexterm" name="idm45693051413424"></a><p>
+            </p><a class="indexterm" name="idm45696496387152"></a><a class="indexterm" name="idm45696496385664"></a><a class="indexterm" name="idm45696496384176"></a><a class="indexterm" name="idm45696496382688"></a><p>
             The <a class="link" href="sql-statements.html#table" title="13.2.12 TABLE Statement"><code class="literal">TABLE</code></a> statement has the
             format <code class="literal">TABLE
             <em class="replaceable"><code>table_name</code></em></code>, and is
@@ -3792,7 +3792,7 @@ First Name: Mary
 </div>
 
 </div>
-<a class="indexterm" name="idm45693051128624"></a><a class="indexterm" name="idm45693051127552"></a><p>
+<a class="indexterm" name="idm45696496097824"></a><a class="indexterm" name="idm45696496096752"></a><p>
         The following features are deprecated in MySQL 8.0
         and may be removed in a future series. Where alternatives are
         shown, applications should be updated to use them.
@@ -3810,7 +3810,7 @@ First Name: Mary
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             The <code class="literal">utf8mb3</code> character set is deprecated.
             Please use <code class="literal">utf8mb4</code> instead.
-          </p><a class="indexterm" name="idm45693051122208"></a><a class="indexterm" name="idm45693051120720"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496091408"></a><a class="indexterm" name="idm45696496089920"></a></li><li class="listitem"><p>
             Because <code class="literal">caching_sha2_password</code> is the
             default authentication plugin in MySQL 8.0 and provides a
             superset of the capabilities of the
@@ -3820,7 +3820,7 @@ First Name: Mary
             that authenticate using <code class="literal">sha256_password</code>
             should be migrated to use
             <code class="literal">caching_sha2_password</code> instead.
-          </p><a class="indexterm" name="idm45693051114544"></a><a class="indexterm" name="idm45693051113056"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496083744"></a><a class="indexterm" name="idm45696496082256"></a></li><li class="listitem"><p>
             The <code class="literal">validate_password</code> plugin has been
             reimplemented to use the component infrastructure. The
             plugin form of <code class="literal">validate_password</code> is still
@@ -3829,30 +3829,30 @@ First Name: Mary
             plugin should make the transition to using the component
             instead. See
             <a class="xref" href="security.html#validate-password-transitioning" title="6.4.3.3 Transitioning to the Password Validation Component">Section 6.4.3.3, “Transitioning to the Password Validation Component”</a>.
-          </p><a class="indexterm" name="idm45693051108128"></a><a class="indexterm" name="idm45693051106672"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496077264"></a><a class="indexterm" name="idm45696496075808"></a></li><li class="listitem"><p>
             The <code class="literal">ENGINE</code> clause for the
             <a class="link" href="sql-statements.html#alter-tablespace" title="13.1.10 ALTER TABLESPACE Statement"><code class="literal">ALTER TABLESPACE</code></a> and
             <a class="link" href="sql-statements.html#drop-tablespace" title="13.1.33 DROP TABLESPACE Statement"><code class="literal">DROP TABLESPACE</code></a> statements is
             deprecated.
-          </p><a class="indexterm" name="idm45693051101136"></a><a class="indexterm" name="idm45693051099648"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496070272"></a><a class="indexterm" name="idm45696496068784"></a></li><li class="listitem"><p>
             The
             <a class="link" href="server-administration.html#sqlmode_pad_char_to_full_length"><code class="literal">PAD_CHAR_TO_FULL_LENGTH</code></a>
             SQL mode is deprecated.
-          </p><a class="indexterm" name="idm45693051095872"></a><a class="indexterm" name="idm45693051094384"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496065072"></a><a class="indexterm" name="idm45696496063584"></a></li><li class="listitem"><p>
             <code class="literal">AUTO_INCREMENT</code> support is deprecated for
             columns of type <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">FLOAT</code></a> and
             <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">DOUBLE</code></a> (and any synonyms).
             Consider removing the <code class="literal">AUTO_INCREMENT</code>
             attribute from such columns, or convert them to an integer
             type.
-          </p><a class="indexterm" name="idm45693051088128"></a><a class="indexterm" name="idm45693051086640"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496057328"></a><a class="indexterm" name="idm45696496055840"></a></li><li class="listitem"><p>
             The <code class="literal">UNSIGNED</code> attribute is deprecated for
             columns of type <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">FLOAT</code></a>,
             <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">DOUBLE</code></a>, and
             <a class="link" href="data-types.html#fixed-point-types" title="11.1.3 Fixed-Point Types (Exact Value) - DECIMAL, NUMERIC"><code class="literal">DECIMAL</code></a> (and any synonyms).
             Consider using a simple <code class="literal">CHECK</code> constraint
             instead for such columns.
-          </p><a class="indexterm" name="idm45693051079072"></a><a class="indexterm" name="idm45693051077584"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496048272"></a><a class="indexterm" name="idm45696496046784"></a></li><li class="listitem"><p>
             <code class="literal">FLOAT(<em class="replaceable"><code>M</code></em>,<em class="replaceable"><code>D</code></em>)</code>
             and
             <code class="literal">DOUBLE(<em class="replaceable"><code>M</code></em>,<em class="replaceable"><code>D</code></em>)</code>
@@ -3860,7 +3860,7 @@ First Name: Mary
             <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">FLOAT</code></a> and
             <a class="link" href="data-types.html#floating-point-types" title="11.1.4 Floating-Point Types (Approximate Value) - FLOAT, DOUBLE"><code class="literal">DOUBLE</code></a> (and any synonyms) is
             a nonstandard MySQL extension. This syntax is deprecated.
-          </p><a class="indexterm" name="idm45693051069632"></a><a class="indexterm" name="idm45693051068144"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696496038832"></a><a class="indexterm" name="idm45696496037344"></a></li><li class="listitem"><p>
             The <code class="literal">ZEROFILL</code> attribute is deprecated for
             numeric data types, as is the display width attribute for
             integer data types. Consider using an alternative means of
@@ -3884,7 +3884,7 @@ First Name: Mary
             support for it to be removed in a future version of MySQL.
             Applications should be adjusted to use an explicit
             <code class="literal">_bin</code> collation instead.
-          </p><a class="indexterm" name="idm45693051055760"></a><a class="indexterm" name="idm45693051054272"></a><p>
+          </p><a class="indexterm" name="idm45696496024960"></a><a class="indexterm" name="idm45696496023472"></a><p>
             The use of <code class="literal">BINARY</code> to specify a data type
             or character set remains unchanged.
           </p></li><li class="listitem"><p>
@@ -3898,7 +3898,7 @@ First Name: Mary
             <a class="link" href="functions.html#operator_not"><code class="literal">NOT</code></a> operators, respectively,
             are deprecated. Applications that use the nonstandard
             operators should be adjusted to use the standard operators.
-</p><a class="indexterm" name="idm45693051042672"></a><a class="indexterm" name="idm45693051041184"></a><a class="indexterm" name="idm45693051039696"></a><a class="indexterm" name="idm45693051038240"></a><a class="indexterm" name="idm45693051036784"></a><a class="indexterm" name="idm45693051035328"></a>
+</p><a class="indexterm" name="idm45696496011856"></a><a class="indexterm" name="idm45696496010368"></a><a class="indexterm" name="idm45696496008880"></a><a class="indexterm" name="idm45696496007424"></a><a class="indexterm" name="idm45696496005968"></a><a class="indexterm" name="idm45696496004512"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -3917,19 +3917,19 @@ Note
             deprecated. Use
             <a class="link" href="functions.html#function_json-merge-preserve"><code class="literal">JSON_MERGE_PRESERVE()</code></a>
             instead.
-          </p><a class="indexterm" name="idm45693051026352"></a><a class="indexterm" name="idm45693051024864"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495995488"></a><a class="indexterm" name="idm45696495994000"></a></li><li class="listitem"><p>
             The <code class="literal">SQL_CALC_FOUND_ROWS</code> query modifier
             and accompanying <a class="link" href="functions.html#function_found-rows"><code class="literal">FOUND_ROWS()</code></a>
             function are deprecated. See the
             <a class="link" href="functions.html#function_found-rows"><code class="literal">FOUND_ROWS()</code></a> description for
             information about an alternative strategy.
-          </p><a class="indexterm" name="idm45693051019072"></a><a class="indexterm" name="idm45693051017584"></a><a class="indexterm" name="idm45693051016096"></a><a class="indexterm" name="idm45693051014608"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495988208"></a><a class="indexterm" name="idm45696495986720"></a><a class="indexterm" name="idm45696495985232"></a><a class="indexterm" name="idm45696495983744"></a></li><li class="listitem"><p>
             Support for <code class="literal">TABLESPACE =
             innodb_file_per_table</code> and <code class="literal">TABLESPACE =
             innodb_temporary</code> clauses with
             <a class="link" href="sql-statements.html#create-table" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE
             TEMPORARY TABLE</code></a> is deprecated as of MySQL 8.0.13.
-          </p><a class="indexterm" name="idm45693051009504"></a><a class="indexterm" name="idm45693051008016"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495978640"></a><a class="indexterm" name="idm45696495977152"></a></li><li class="listitem"><p>
             For <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> statements, use of
             an <code class="literal">INTO</code> clause after
             <code class="literal">FROM</code> but not at the end of the
@@ -3955,7 +3955,7 @@ Note
 <p>
             See <a class="xref" href="sql-statements.html#select-into" title="13.2.10.1 SELECT ... INTO Statement">Section 13.2.10.1, “SELECT ... INTO Statement”</a>, and
             <a class="xref" href="sql-statements.html#union" title="13.2.10.3 UNION Clause">Section 13.2.10.3, “UNION Clause”</a>.
-          </p><a class="indexterm" name="idm45693050991648"></a><a class="indexterm" name="idm45693050990160"></a><a class="indexterm" name="idm45693050988672"></a><a class="indexterm" name="idm45693050987184"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495960784"></a><a class="indexterm" name="idm45696495959296"></a><a class="indexterm" name="idm45696495957808"></a><a class="indexterm" name="idm45696495956320"></a></li><li class="listitem"><p>
             <a class="link" href="sql-statements.html#flush-hosts"><code class="literal">FLUSH HOSTS</code></a> is deprecated as
             of MySQL 8.0.23. Instead, truncate the Performance Schema
             <a class="link" href="performance-schema.html#performance-schema-host-cache-table" title="27.12.21.2 The host_cache Table"><code class="literal">host_cache</code></a> table:
@@ -3970,18 +3970,18 @@ Note
             the <code class="literal">mysql</code> system schema and objects in
             other schemas have been moved into the MySQL server. See
             <a class="xref" href="installing.html#upgrading-what-is-upgraded" title="2.11.3 What the MySQL Upgrade Process Upgrades">Section 2.11.3, “What the MySQL Upgrade Process Upgrades”</a>.
-          </p><a class="indexterm" name="idm45693050974240"></a><a class="indexterm" name="idm45693050972752"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495943376"></a><a class="indexterm" name="idm45696495941888"></a></li><li class="listitem"><p>
             The <a class="link" href="server-administration.html#option_mysqld_no-dd-upgrade"><code class="option">--no-dd-upgrade</code></a> server
             option is deprecated. It is superseded by the
             <a class="link" href="server-administration.html#option_mysqld_upgrade"><code class="option">--upgrade</code></a> option, which
             provides finer control over data dictionary and server
             upgrade behavior.
-          </p><a class="indexterm" name="idm45693050968208"></a><a class="indexterm" name="idm45693050966720"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495937344"></a><a class="indexterm" name="idm45696495935856"></a></li><li class="listitem"><p>
             The <code class="filename">mysql_upgrade_info</code> file, which is
             created data directory and used to store the MySQL version
             number, is deprecated; expect it to be removed in a future
             version of MySQL.
-          </p><a class="indexterm" name="idm45693050963536"></a><a class="indexterm" name="idm45693050962048"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495932672"></a><a class="indexterm" name="idm45696495931184"></a></li><li class="listitem"><p>
             The <code class="literal">relay_log_info_file</code> system variable
             and <code class="option">--master-info-file</code> option are
             deprecated. Previously, these were used to specify the name
@@ -3993,12 +3993,12 @@ Note
             of files for the relay log info log and source info log has
             been superseded by crash-safe replica tables, which are the
             default in MySQL 8.0.
-          </p><a class="indexterm" name="idm45693050955360"></a><a class="indexterm" name="idm45693050953872"></a><a class="indexterm" name="idm45693050952384"></a><a class="indexterm" name="idm45693050950896"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495924448"></a><a class="indexterm" name="idm45696495922960"></a><a class="indexterm" name="idm45696495921472"></a><a class="indexterm" name="idm45696495919984"></a></li><li class="listitem"><p>
             The
             <a class="link" href="server-administration.html#sysvar_max_length_for_sort_data"><code class="literal">max_length_for_sort_data</code></a>
             system variable is now deprecated due to optimizer changes
             that make it obsolete and of no effect.
-          </p><a class="indexterm" name="idm45693050947024"></a><a class="indexterm" name="idm45693050945520"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495916224"></a><a class="indexterm" name="idm45696495914720"></a></li><li class="listitem"><p>
             These legacy parameters for compression of connections to
             the server are deprecated: The
             <a class="link" href="programs.html#option_general_compress"><code class="option">--compress</code></a> client
@@ -4010,17 +4010,17 @@ Note
             system variable. For information about parameters to use
             instead, see
             <a class="xref" href="programs.html#connection-compression-control" title="4.2.8 Connection Compression Control">Section 4.2.8, “Connection Compression Control”</a>.
-          </p><a class="indexterm" name="idm45693050937744"></a><a class="indexterm" name="idm45693050936256"></a><a class="indexterm" name="idm45693050934768"></a><a class="indexterm" name="idm45693050933280"></a><a class="indexterm" name="idm45693050931792"></a><a class="indexterm" name="idm45693050930336"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495906992"></a><a class="indexterm" name="idm45696495905504"></a><a class="indexterm" name="idm45696495904016"></a><a class="indexterm" name="idm45696495902528"></a><a class="indexterm" name="idm45696495901040"></a><a class="indexterm" name="idm45696495899584"></a></li><li class="listitem"><p>
             Use of the <code class="literal">MYSQL_PWD</code> environment variable
             to specify a MySQL password is deprecated.
-          </p><a class="indexterm" name="idm45693050927232"></a><a class="indexterm" name="idm45693050925744"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495896480"></a><a class="indexterm" name="idm45696495894992"></a></li><li class="listitem"><p>
             Use of <a class="link" href="functions.html#function_values"><code class="literal">VALUES()</code></a> to access new
             row values in
             <a class="link" href="sql-statements.html#insert-on-duplicate" title="13.2.6.2 INSERT ... ON DUPLICATE KEY UPDATE Statement"><code class="literal">INSERT
             ... ON DUPLICATE KEY UPDATE</code></a> is deprecated as of
             MySQL 8.0.20. Use aliases for the new row and columns,
             instead.
-          </p><a class="indexterm" name="idm45693050920768"></a><a class="indexterm" name="idm45693050919280"></a><a class="indexterm" name="idm45693050917776"></a><a class="indexterm" name="idm45693050916288"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495889904"></a><a class="indexterm" name="idm45696495888416"></a><a class="indexterm" name="idm45696495886912"></a><a class="indexterm" name="idm45696495885424"></a></li><li class="listitem"><p>
             Because specifying <code class="literal">ON ERROR</code> before
             <code class="literal">ON EMPTY</code> when invoking
             <a class="link" href="functions.html#function_json-table"><code class="literal">JSON_TABLE()</code></a> is counter to
@@ -4030,7 +4030,7 @@ Note
             clauses in a single <code class="literal">JSON_TABLE()</code>
             invocation, make sure that <code class="literal">ON EMPTY</code> is
             used first.
-          </p><a class="indexterm" name="idm45693050909552"></a><a class="indexterm" name="idm45693050908064"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495878688"></a><a class="indexterm" name="idm45696495877200"></a></li><li class="listitem"><p>
             Columns with index prefixes have never been supported as
             part of a table's partitioning key; previously, these
             were allowed when creating, altering, or upgrading
@@ -4058,15 +4058,15 @@ Note
           </p><p>
             For more information and examples, see
             <a class="xref" href="partitioning.html#partitioning-limitations-prefixes" title="Column index prefixes not supported for key partitioning">Column index prefixes not supported for key partitioning</a>.
-          </p><a class="indexterm" name="idm45693050897104"></a><a class="indexterm" name="idm45693050895584"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495866240"></a><a class="indexterm" name="idm45696495864720"></a></li><li class="listitem"><p>
             The InnoDB memcached plugin is deprecated as of MySQL
             8.0.22; expect support for it to be removed in a future
             version of MySQL.
-          </p><a class="indexterm" name="idm45693050893104"></a><a class="indexterm" name="idm45693050891616"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495862240"></a><a class="indexterm" name="idm45696495860752"></a></li><li class="listitem"><p>
             The <a class="link" href="server-administration.html#sysvar_temptable_use_mmap"><code class="literal">temptable_use_mmap</code></a>
             variable is now deprecated as of MySQL 8.0.26; expect
             support for it to be removed in a future version of MySQL.
-</p><a class="indexterm" name="idm45693050887936"></a><a class="indexterm" name="idm45693050886448"></a></li></ul>
+</p><a class="indexterm" name="idm45696495857072"></a><a class="indexterm" name="idm45696495855584"></a></li></ul>
 </div>
 
 </div>
@@ -4081,7 +4081,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45693050883536"></a><a class="indexterm" name="idm45693050882496"></a><p>
+<a class="indexterm" name="idm45696495852672"></a><a class="indexterm" name="idm45696495851632"></a><p>
         The following items are obsolete and have been removed in MySQL
         8.0. Where alternatives are shown, applications
         should be updated to use them.
@@ -4100,12 +4100,12 @@ Note
             variable was removed. The <a class="link" href="innodb-storage-engine.html#isolevel_read-committed"><code class="literal">READ
             COMMITTED</code></a> isolation level provides similar
             functionality.
-          </p><a class="indexterm" name="idm45693050876448"></a><a class="indexterm" name="idm45693050874944"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495845584"></a><a class="indexterm" name="idm45696495844080"></a></li><li class="listitem"><p>
             The <code class="literal">information_schema_stats</code> variable,
             introduced in MySQL 8.0.0, was removed and replaced by
             <a class="link" href="server-administration.html#sysvar_information_schema_stats_expiry"><code class="literal">information_schema_stats_expiry</code></a>
             in MySQL 8.0.3.
-          </p><a class="indexterm" name="idm45693050870464"></a><a class="indexterm" name="idm45693050868960"></a><p>
+          </p><a class="indexterm" name="idm45696495839488"></a><a class="indexterm" name="idm45696495837984"></a><p>
             <code class="literal">information_schema_stats_expiry</code> defines
             an expiration setting for cached
             <a class="link" href="information-schema.html" title="Chapter 26 INFORMATION_SCHEMA Tables"><code class="literal">INFORMATION_SCHEMA</code></a> table
@@ -4161,7 +4161,7 @@ Note
 </div>
 
 </div>
-<br class="table-break"><a class="indexterm" name="idm45693050822928"></a><a class="indexterm" name="idm45693050821440"></a><a class="indexterm" name="idm45693050819952"></a><a class="indexterm" name="idm45693050818464"></a><a class="indexterm" name="idm45693050816976"></a><a class="indexterm" name="idm45693050815488"></a><a class="indexterm" name="idm45693050814000"></a><a class="indexterm" name="idm45693050812512"></a><a class="indexterm" name="idm45693050811024"></a><a class="indexterm" name="idm45693050809536"></a><a class="indexterm" name="idm45693050808048"></a><a class="indexterm" name="idm45693050806560"></a><a class="indexterm" name="idm45693050805072"></a><a class="indexterm" name="idm45693050803584"></a><a class="indexterm" name="idm45693050802096"></a><a class="indexterm" name="idm45693050800608"></a><a class="indexterm" name="idm45693050799120"></a><a class="indexterm" name="idm45693050797632"></a><a class="indexterm" name="idm45693050796144"></a><a class="indexterm" name="idm45693050794656"></a><p>
+<br class="table-break"><a class="indexterm" name="idm45696495792032"></a><a class="indexterm" name="idm45696495790544"></a><a class="indexterm" name="idm45696495789056"></a><a class="indexterm" name="idm45696495787568"></a><a class="indexterm" name="idm45696495786080"></a><a class="indexterm" name="idm45696495784592"></a><a class="indexterm" name="idm45696495783104"></a><a class="indexterm" name="idm45696495781616"></a><a class="indexterm" name="idm45696495780128"></a><a class="indexterm" name="idm45696495778640"></a><a class="indexterm" name="idm45696495777152"></a><a class="indexterm" name="idm45696495775664"></a><a class="indexterm" name="idm45696495774176"></a><a class="indexterm" name="idm45696495772688"></a><a class="indexterm" name="idm45696495771200"></a><a class="indexterm" name="idm45696495769712"></a><a class="indexterm" name="idm45696495768224"></a><a class="indexterm" name="idm45696495766736"></a><a class="indexterm" name="idm45696495765248"></a><a class="indexterm" name="idm45696495763760"></a><p>
             After upgrading to MySQL 8.0.3 or later, update any scripts
             that reference previous <code class="literal">InnoDB</code>
             <a class="link" href="information-schema.html" title="Chapter 26 INFORMATION_SCHEMA Tables"><code class="literal">INFORMATION_SCHEMA</code></a> view names.
@@ -4181,7 +4181,7 @@ Note
                 value for the <code class="literal">sql_mode</code> option in the
                 options file prevents <a class="link" href="programs.html#mysqld" title="4.3.1 mysqld — The MySQL Server"><span class="command"><strong>mysqld</strong></span></a> from
                 starting.
-              </p><a class="indexterm" name="idm45693050782224"></a><a class="indexterm" name="idm45693050780736"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495751328"></a><a class="indexterm" name="idm45696495749840"></a></li><li class="listitem"><p>
                 Using <a class="link" href="sql-statements.html#grant" title="13.7.1.6 GRANT Statement"><code class="literal">GRANT</code></a> to modify
                 account properties other than privilege assignments.
                 This includes authentication, SSL, and resource-limit
@@ -4201,12 +4201,12 @@ Note
                 <a class="link" href="sql-statements.html#alter-user" title="13.7.1.1 ALTER USER Statement"><code class="literal">ALTER USER</code></a>, where the
                 <code class="literal">'<em class="replaceable"><code>auth_string</code></em>'</code>
                 value is in a format compatible with the named plugin.
-              </p><a class="indexterm" name="idm45693050764784"></a><a class="indexterm" name="idm45693050763296"></a><p>
+              </p><a class="indexterm" name="idm45696495733888"></a><a class="indexterm" name="idm45696495732400"></a><p>
                 Additionally, because <code class="literal">IDENTIFIED BY
                 PASSWORD</code> syntax was removed, the
                 <code class="literal">log_builtin_as_identified_by_password</code>
                 system variable is superfluous and was removed.
-              </p><a class="indexterm" name="idm45693050759808"></a><a class="indexterm" name="idm45693050758304"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495728912"></a><a class="indexterm" name="idm45696495727408"></a></li><li class="listitem"><p>
                 The <code class="literal">PASSWORD()</code> function.
                 Additionally, <code class="literal">PASSWORD()</code> removal
                 means that
@@ -4214,25 +4214,25 @@ Note
                 PASSWORD ... =
                 PASSWORD('<em class="replaceable"><code>auth_string</code></em>')</code></a>
                 syntax is no longer available.
-              </p><a class="indexterm" name="idm45693050752576"></a><a class="indexterm" name="idm45693050751088"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495721632"></a><a class="indexterm" name="idm45696495720144"></a></li><li class="listitem"><p>
                 The <code class="literal">old_passwords</code> system variable.
-</p><a class="indexterm" name="idm45693050748064"></a><a class="indexterm" name="idm45693050746576"></a></li></ul>
+</p><a class="indexterm" name="idm45696495717120"></a><a class="indexterm" name="idm45696495715632"></a></li></ul>
 </div>
 </li><li class="listitem"><p>
             The query cache was removed. Removal includes these items:
-</p><a class="indexterm" name="idm45693050743968"></a><a class="indexterm" name="idm45693050742480"></a>
+</p><a class="indexterm" name="idm45696495713024"></a><a class="indexterm" name="idm45696495711536"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 The <code class="literal">FLUSH QUERY CACHE</code> and
                 <code class="literal">RESET QUERY CACHE</code> statements.
-              </p><a class="indexterm" name="idm45693050738608"></a><a class="indexterm" name="idm45693050737120"></a><a class="indexterm" name="idm45693050735632"></a><a class="indexterm" name="idm45693050734144"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495707664"></a><a class="indexterm" name="idm45696495706176"></a><a class="indexterm" name="idm45696495704688"></a><a class="indexterm" name="idm45696495703200"></a></li><li class="listitem"><p>
                 These system variables:
                 <code class="literal">query_cache_limit</code>,
                 <code class="literal">query_cache_min_res_unit</code>,
                 <code class="literal">query_cache_size</code>,
                 <code class="literal">query_cache_type</code>,
                 <code class="literal">query_cache_wlock_invalidate</code>.
-              </p><a class="indexterm" name="idm45693050728176"></a><a class="indexterm" name="idm45693050726688"></a><a class="indexterm" name="idm45693050725200"></a><a class="indexterm" name="idm45693050723696"></a><a class="indexterm" name="idm45693050722192"></a><a class="indexterm" name="idm45693050720704"></a><a class="indexterm" name="idm45693050719216"></a><a class="indexterm" name="idm45693050717728"></a><a class="indexterm" name="idm45693050716240"></a><a class="indexterm" name="idm45693050714736"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495697232"></a><a class="indexterm" name="idm45696495695744"></a><a class="indexterm" name="idm45696495694256"></a><a class="indexterm" name="idm45696495692752"></a><a class="indexterm" name="idm45696495691248"></a><a class="indexterm" name="idm45696495689760"></a><a class="indexterm" name="idm45696495688272"></a><a class="indexterm" name="idm45696495686784"></a><a class="indexterm" name="idm45696495685296"></a><a class="indexterm" name="idm45696495683792"></a></li><li class="listitem"><p>
                 These status variables:
                 <code class="literal">Qcache_free_blocks</code>,
                 <code class="literal">Qcache_free_memory</code>,
@@ -4242,7 +4242,7 @@ Note
                 <code class="literal">Qcache_not_cached</code>,
                 <code class="literal">Qcache_queries_in_cache</code>,
                 <code class="literal">Qcache_total_blocks</code>.
-              </p><a class="indexterm" name="idm45693050706624"></a><a class="indexterm" name="idm45693050705136"></a><a class="indexterm" name="idm45693050703648"></a><a class="indexterm" name="idm45693050702160"></a><a class="indexterm" name="idm45693050700672"></a><a class="indexterm" name="idm45693050699184"></a><a class="indexterm" name="idm45693050697696"></a><a class="indexterm" name="idm45693050696208"></a><a class="indexterm" name="idm45693050694720"></a><a class="indexterm" name="idm45693050693232"></a><a class="indexterm" name="idm45693050691744"></a><a class="indexterm" name="idm45693050690256"></a><a class="indexterm" name="idm45693050688768"></a><a class="indexterm" name="idm45693050687280"></a><a class="indexterm" name="idm45693050685792"></a><a class="indexterm" name="idm45693050684304"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495675680"></a><a class="indexterm" name="idm45696495674192"></a><a class="indexterm" name="idm45696495672704"></a><a class="indexterm" name="idm45696495671216"></a><a class="indexterm" name="idm45696495669728"></a><a class="indexterm" name="idm45696495668240"></a><a class="indexterm" name="idm45696495666752"></a><a class="indexterm" name="idm45696495665264"></a><a class="indexterm" name="idm45696495663776"></a><a class="indexterm" name="idm45696495662288"></a><a class="indexterm" name="idm45696495660800"></a><a class="indexterm" name="idm45696495659312"></a><a class="indexterm" name="idm45696495657824"></a><a class="indexterm" name="idm45696495656336"></a><a class="indexterm" name="idm45696495654848"></a><a class="indexterm" name="idm45696495653360"></a></li><li class="listitem"><p>
                 These thread states: <code class="literal">checking privileges on
                 cached query</code>, <code class="literal">checking query cache
                 for query</code>, <code class="literal">invalidating query cache
@@ -4250,10 +4250,10 @@ Note
                 client</code>, <code class="literal">storing result in query
                 cache</code>, <code class="literal">Waiting for query cache
                 lock</code>.
-              </p><a class="indexterm" name="idm45693050677648"></a><a class="indexterm" name="idm45693050676160"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495646704"></a><a class="indexterm" name="idm45696495645216"></a></li><li class="listitem"><p>
                 The <code class="literal">SQL_CACHE</code>
                 <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> modifier.
-</p><a class="indexterm" name="idm45693050671936"></a><a class="indexterm" name="idm45693050670448"></a></li></ul>
+</p><a class="indexterm" name="idm45696495640992"></a><a class="indexterm" name="idm45696495639504"></a></li></ul>
 </div>
 <p>
             These deprecated query cache items remain deprecated, but
@@ -4281,7 +4281,7 @@ Note
             <code class="option">--ignore-db-dir</code> option and
             <code class="literal">ignore_db_dirs</code> system variables are
             extraneous and are removed.
-          </p><a class="indexterm" name="idm45693050659200"></a><a class="indexterm" name="idm45693050657712"></a><a class="indexterm" name="idm45693050656224"></a><a class="indexterm" name="idm45693050654736"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495628256"></a><a class="indexterm" name="idm45696495626768"></a><a class="indexterm" name="idm45696495625280"></a><a class="indexterm" name="idm45696495623792"></a></li><li class="listitem"><p>
             The DDL log, also known as the metadata log, has been
             removed. Beginning with MySQL 8.0.3, this functionality is
             handled by the data dictionary
@@ -4292,42 +4292,42 @@ Note
             <code class="literal">tx_read_only</code> system variables have been
             removed. Use <code class="literal">transaction_isolation</code> and
             <code class="literal">transaction_read_only</code> instead.
-          </p><a class="indexterm" name="idm45693050647040"></a><a class="indexterm" name="idm45693050645552"></a><a class="indexterm" name="idm45693050644064"></a><a class="indexterm" name="idm45693050642576"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495616032"></a><a class="indexterm" name="idm45696495614544"></a><a class="indexterm" name="idm45696495613056"></a><a class="indexterm" name="idm45696495611568"></a></li><li class="listitem"><p>
             The <code class="literal">sync_frm</code> system variable has been
             removed because <code class="filename">.frm</code> files have become
             obsolete.
-          </p><a class="indexterm" name="idm45693050638784"></a><a class="indexterm" name="idm45693050637296"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495607776"></a><a class="indexterm" name="idm45696495606288"></a></li><li class="listitem"><p>
             The <code class="literal">secure_auth</code> system variable and
             <code class="option">--secure-auth</code> client option have been
             removed. The <code class="literal">MYSQL_SECURE_AUTH</code> option for
             the <a class="ulink" href="https://dev.mysql.com/doc/c-api/8.0/en/mysql-options.html" target="_top"><code class="literal">mysql_options()</code></a> C API
             function was removed.
-          </p><a class="indexterm" name="idm45693050631856"></a><a class="indexterm" name="idm45693050630368"></a><a class="indexterm" name="idm45693050628880"></a><a class="indexterm" name="idm45693050627392"></a><a class="indexterm" name="idm45693050625904"></a><a class="indexterm" name="idm45693050624416"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495600848"></a><a class="indexterm" name="idm45696495599360"></a><a class="indexterm" name="idm45696495597872"></a><a class="indexterm" name="idm45696495596384"></a><a class="indexterm" name="idm45696495594896"></a><a class="indexterm" name="idm45696495593408"></a></li><li class="listitem"><p>
             The <code class="literal">multi_range_count</code> system variable is
             removed.
-          </p><a class="indexterm" name="idm45693050621376"></a><a class="indexterm" name="idm45693050619888"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495590368"></a><a class="indexterm" name="idm45696495588880"></a></li><li class="listitem"><p>
             The <code class="literal">log_warnings</code> system variable and
             <code class="option">--log-warnings</code> server option have been
             removed. Use the
             <a class="link" href="server-administration.html#sysvar_log_error_verbosity"><code class="literal">log_error_verbosity</code></a> system
             variable instead.
-          </p><a class="indexterm" name="idm45693050614960"></a><a class="indexterm" name="idm45693050613472"></a><a class="indexterm" name="idm45693050611984"></a><a class="indexterm" name="idm45693050610496"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495583840"></a><a class="indexterm" name="idm45696495582352"></a><a class="indexterm" name="idm45696495580864"></a><a class="indexterm" name="idm45696495579376"></a></li><li class="listitem"><p>
             The global scope for the
             <a class="link" href="replication.html#sysvar_sql_log_bin"><code class="literal">sql_log_bin</code></a> system variable
             was removed. <code class="literal">sql_log_bin</code> has session
             scope only, and applications that rely on accessing
             <code class="literal">@@GLOBAL.sql_log_bin</code> should be adjusted.
-          </p><a class="indexterm" name="idm45693050605296"></a><a class="indexterm" name="idm45693050603808"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495574128"></a><a class="indexterm" name="idm45696495572640"></a></li><li class="listitem"><p>
             The <code class="literal">metadata_locks_cache_size</code> and
             <code class="literal">metadata_locks_hash_instances</code> system
             variables are removed.
-          </p><a class="indexterm" name="idm45693050600016"></a><a class="indexterm" name="idm45693050598512"></a><a class="indexterm" name="idm45693050597008"></a><a class="indexterm" name="idm45693050595504"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495568848"></a><a class="indexterm" name="idm45696495567344"></a><a class="indexterm" name="idm45696495565840"></a><a class="indexterm" name="idm45696495564336"></a></li><li class="listitem"><p>
             The unused <code class="literal">date_format</code>,
             <code class="literal">datetime_format</code>,
             <code class="literal">time_format</code>, and
             <code class="literal">max_tmp_tables</code> system variables are
             removed.
-          </p><a class="indexterm" name="idm45693050590272"></a><a class="indexterm" name="idm45693050588784"></a><a class="indexterm" name="idm45693050587296"></a><a class="indexterm" name="idm45693050585808"></a><a class="indexterm" name="idm45693050584320"></a><a class="indexterm" name="idm45693050582832"></a><a class="indexterm" name="idm45693050581344"></a><a class="indexterm" name="idm45693050579856"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495559104"></a><a class="indexterm" name="idm45696495557616"></a><a class="indexterm" name="idm45696495556128"></a><a class="indexterm" name="idm45696495554640"></a><a class="indexterm" name="idm45696495553152"></a><a class="indexterm" name="idm45696495551664"></a><a class="indexterm" name="idm45696495550176"></a><a class="indexterm" name="idm45696495548688"></a></li><li class="listitem"><p>
             These deprecated compatibility SQL modes are removed:
             <code class="literal">DB2</code>, <code class="literal">MAXDB</code>,
             <code class="literal">MSSQL</code>, <code class="literal">MYSQL323</code>,
@@ -4340,7 +4340,7 @@ Note
             or used as permitted values for the
             <a class="link" href="programs.html#mysqldump" title="4.5.4 mysqldump — A Database Backup Program"><span class="command"><strong>mysqldump</strong></span></a>
             <a class="link" href="programs.html#option_mysqldump_compatible"><code class="option">--compatible</code></a> option.
-          </p><a class="indexterm" name="idm45693050567264"></a><a class="indexterm" name="idm45693050565776"></a><a class="indexterm" name="idm45693050564288"></a><a class="indexterm" name="idm45693050562832"></a><a class="indexterm" name="idm45693050561376"></a><a class="indexterm" name="idm45693050559888"></a><a class="indexterm" name="idm45693050558400"></a><a class="indexterm" name="idm45693050556912"></a><a class="indexterm" name="idm45693050555424"></a><a class="indexterm" name="idm45693050553936"></a><a class="indexterm" name="idm45693050552448"></a><a class="indexterm" name="idm45693050550960"></a><a class="indexterm" name="idm45693050549472"></a><a class="indexterm" name="idm45693050547984"></a><a class="indexterm" name="idm45693050546496"></a><a class="indexterm" name="idm45693050545008"></a><a class="indexterm" name="idm45693050543520"></a><a class="indexterm" name="idm45693050542032"></a><a class="indexterm" name="idm45693050540544"></a><a class="indexterm" name="idm45693050539056"></a><a class="indexterm" name="idm45693050537568"></a><a class="indexterm" name="idm45693050536080"></a><p>
+          </p><a class="indexterm" name="idm45696495536096"></a><a class="indexterm" name="idm45696495534608"></a><a class="indexterm" name="idm45696495533120"></a><a class="indexterm" name="idm45696495531664"></a><a class="indexterm" name="idm45696495530208"></a><a class="indexterm" name="idm45696495528720"></a><a class="indexterm" name="idm45696495527232"></a><a class="indexterm" name="idm45696495525744"></a><a class="indexterm" name="idm45696495524256"></a><a class="indexterm" name="idm45696495522768"></a><a class="indexterm" name="idm45696495521280"></a><a class="indexterm" name="idm45696495519792"></a><a class="indexterm" name="idm45696495518304"></a><a class="indexterm" name="idm45696495516816"></a><a class="indexterm" name="idm45696495515328"></a><a class="indexterm" name="idm45696495513840"></a><a class="indexterm" name="idm45696495512352"></a><a class="indexterm" name="idm45696495510864"></a><a class="indexterm" name="idm45696495509376"></a><a class="indexterm" name="idm45696495507888"></a><a class="indexterm" name="idm45696495506400"></a><a class="indexterm" name="idm45696495504912"></a><p>
             Removal of <code class="literal">MAXDB</code> means that the
             <a class="link" href="data-types.html#datetime" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">TIMESTAMP</code></a> data type for
             <a class="link" href="sql-statements.html#create-table" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE</code></a> or
@@ -4355,22 +4355,22 @@ Note
             results that differ from previous MySQL versions. To produce
             a given sort order, provide an <code class="literal">ORDER BY</code>
             clause.
-          </p><a class="indexterm" name="idm45693050522672"></a><a class="indexterm" name="idm45693050521184"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495491456"></a><a class="indexterm" name="idm45696495489968"></a></li><li class="listitem"><p>
             The <code class="literal">EXTENDED</code> and
             <code class="literal">PARTITIONS</code> keywords for the
             <a class="link" href="sql-statements.html#explain" title="13.8.2 EXPLAIN Statement"><code class="literal">EXPLAIN</code></a> statement have been
             removed. These keywords are unnecessary because their effect
             is always enabled.
-          </p><a class="indexterm" name="idm45693050516096"></a><a class="indexterm" name="idm45693050514608"></a><a class="indexterm" name="idm45693050513120"></a><a class="indexterm" name="idm45693050511632"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495484880"></a><a class="indexterm" name="idm45696495483392"></a><a class="indexterm" name="idm45696495481904"></a><a class="indexterm" name="idm45696495480416"></a></li><li class="listitem"><p>
             These encryption-related items are removed:
 </p>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 The <code class="literal">ENCODE()</code> and
                 <code class="literal">DECODE()</code> functions.
-              </p><a class="indexterm" name="idm45693050506912"></a><a class="indexterm" name="idm45693050505424"></a><a class="indexterm" name="idm45693050503936"></a><a class="indexterm" name="idm45693050502448"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495475696"></a><a class="indexterm" name="idm45696495474208"></a><a class="indexterm" name="idm45696495472720"></a><a class="indexterm" name="idm45696495471232"></a></li><li class="listitem"><p>
                 The <code class="literal">ENCRYPT()</code> function.
-              </p><a class="indexterm" name="idm45693050499424"></a><a class="indexterm" name="idm45693050497936"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495468208"></a><a class="indexterm" name="idm45696495466720"></a></li><li class="listitem"><p>
                 The <code class="literal">DES_ENCRYPT()</code>, and
                 <code class="literal">DES_DECRYPT()</code> functions, the
                 <code class="option">--des-key-file</code> option, the
@@ -4379,7 +4379,7 @@ Note
                 <a class="link" href="sql-statements.html#flush" title="13.7.8.3 FLUSH Statement"><code class="literal">FLUSH</code></a> statement, and the
                 <code class="option">HAVE_CRYPT</code> <span class="command"><strong>CMake</strong></span>
                 option.
-</p><a class="indexterm" name="idm45693050489792"></a><a class="indexterm" name="idm45693050488304"></a><a class="indexterm" name="idm45693050486816"></a><a class="indexterm" name="idm45693050485328"></a><a class="indexterm" name="idm45693050483840"></a><a class="indexterm" name="idm45693050482352"></a><a class="indexterm" name="idm45693050480864"></a><a class="indexterm" name="idm45693050479376"></a><a class="indexterm" name="idm45693050477888"></a><a class="indexterm" name="idm45693050476400"></a><a class="indexterm" name="idm45693050474912"></a><a class="indexterm" name="idm45693050473424"></a></li></ul>
+</p><a class="indexterm" name="idm45696495458576"></a><a class="indexterm" name="idm45696495457088"></a><a class="indexterm" name="idm45696495455600"></a><a class="indexterm" name="idm45696495454112"></a><a class="indexterm" name="idm45696495452624"></a><a class="indexterm" name="idm45696495451136"></a><a class="indexterm" name="idm45696495449648"></a><a class="indexterm" name="idm45696495448160"></a><a class="indexterm" name="idm45696495446672"></a><a class="indexterm" name="idm45696495445184"></a><a class="indexterm" name="idm45696495443696"></a><a class="indexterm" name="idm45696495442208"></a></li></ul>
 </div>
 <p>
             In place of the removed encryption functions: For
@@ -4410,7 +4410,7 @@ Note
                 <code class="literal">Intersects()</code>,
                 <code class="literal">Overlaps()</code>,
                 <code class="literal">Within()</code>.
-              </p><a class="indexterm" name="idm45693050456176"></a><a class="indexterm" name="idm45693050454688"></a><a class="indexterm" name="idm45693050453200"></a><a class="indexterm" name="idm45693050451712"></a><a class="indexterm" name="idm45693050450224"></a><a class="indexterm" name="idm45693050448736"></a><a class="indexterm" name="idm45693050447248"></a><a class="indexterm" name="idm45693050445760"></a><a class="indexterm" name="idm45693050444272"></a><a class="indexterm" name="idm45693050442784"></a><a class="indexterm" name="idm45693050441296"></a><a class="indexterm" name="idm45693050439808"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495424976"></a><a class="indexterm" name="idm45696495423488"></a><a class="indexterm" name="idm45696495422000"></a><a class="indexterm" name="idm45696495420512"></a><a class="indexterm" name="idm45696495419024"></a><a class="indexterm" name="idm45696495417536"></a><a class="indexterm" name="idm45696495416048"></a><a class="indexterm" name="idm45696495414560"></a><a class="indexterm" name="idm45696495413072"></a><a class="indexterm" name="idm45696495411584"></a><a class="indexterm" name="idm45696495410096"></a><a class="indexterm" name="idm45696495408608"></a></li><li class="listitem"><p>
                 These functions are removed in favor of the
                 <code class="literal">ST_</code> names: <code class="literal">Area()</code>,
                 <code class="literal">AsBinary()</code>,
@@ -4468,10 +4468,10 @@ Note
                 <code class="literal">StartPoint()</code>,
                 <code class="literal">Touches()</code>, <code class="literal">X()</code>,
                 <code class="literal">Y()</code>.
-              </p><a class="indexterm" name="idm45693050394336"></a><a class="indexterm" name="idm45693050392848"></a><a class="indexterm" name="idm45693050391360"></a><a class="indexterm" name="idm45693050389872"></a><a class="indexterm" name="idm45693050388384"></a><a class="indexterm" name="idm45693050386896"></a><a class="indexterm" name="idm45693050385408"></a><a class="indexterm" name="idm45693050383920"></a><a class="indexterm" name="idm45693050382432"></a><a class="indexterm" name="idm45693050380944"></a><a class="indexterm" name="idm45693050379456"></a><a class="indexterm" name="idm45693050377968"></a><a class="indexterm" name="idm45693050376480"></a><a class="indexterm" name="idm45693050374992"></a><a class="indexterm" name="idm45693050373504"></a><a class="indexterm" name="idm45693050372016"></a><a class="indexterm" name="idm45693050370528"></a><a class="indexterm" name="idm45693050369040"></a><a class="indexterm" name="idm45693050367552"></a><a class="indexterm" name="idm45693050366064"></a><a class="indexterm" name="idm45693050364576"></a><a class="indexterm" name="idm45693050363088"></a><a class="indexterm" name="idm45693050361600"></a><a class="indexterm" name="idm45693050360112"></a><a class="indexterm" name="idm45693050358624"></a><a class="indexterm" name="idm45693050357136"></a><a class="indexterm" name="idm45693050355648"></a><a class="indexterm" name="idm45693050354160"></a><a class="indexterm" name="idm45693050352672"></a><a class="indexterm" name="idm45693050351184"></a><a class="indexterm" name="idm45693050349696"></a><a class="indexterm" name="idm45693050348208"></a><a class="indexterm" name="idm45693050346720"></a><a class="indexterm" name="idm45693050345232"></a><a class="indexterm" name="idm45693050343744"></a><a class="indexterm" name="idm45693050342256"></a><a class="indexterm" name="idm45693050340768"></a><a class="indexterm" name="idm45693050339264"></a><a class="indexterm" name="idm45693050337760"></a><a class="indexterm" name="idm45693050336256"></a><a class="indexterm" name="idm45693050334752"></a><a class="indexterm" name="idm45693050333264"></a><a class="indexterm" name="idm45693050331776"></a><a class="indexterm" name="idm45693050330288"></a><a class="indexterm" name="idm45693050328800"></a><a class="indexterm" name="idm45693050327312"></a><a class="indexterm" name="idm45693050325824"></a><a class="indexterm" name="idm45693050324336"></a><a class="indexterm" name="idm45693050322848"></a><a class="indexterm" name="idm45693050321360"></a><a class="indexterm" name="idm45693050319872"></a><a class="indexterm" name="idm45693050318384"></a><a class="indexterm" name="idm45693050316896"></a><a class="indexterm" name="idm45693050315408"></a><a class="indexterm" name="idm45693050313920"></a><a class="indexterm" name="idm45693050312432"></a><a class="indexterm" name="idm45693050310944"></a><a class="indexterm" name="idm45693050309456"></a><a class="indexterm" name="idm45693050307968"></a><a class="indexterm" name="idm45693050306480"></a><a class="indexterm" name="idm45693050304992"></a><a class="indexterm" name="idm45693050303504"></a><a class="indexterm" name="idm45693050302016"></a><a class="indexterm" name="idm45693050300528"></a><a class="indexterm" name="idm45693050299040"></a><a class="indexterm" name="idm45693050297552"></a><a class="indexterm" name="idm45693050296064"></a><a class="indexterm" name="idm45693050294576"></a><a class="indexterm" name="idm45693050293088"></a><a class="indexterm" name="idm45693050291600"></a><a class="indexterm" name="idm45693050290112"></a><a class="indexterm" name="idm45693050288624"></a><a class="indexterm" name="idm45693050287136"></a><a class="indexterm" name="idm45693050285648"></a><a class="indexterm" name="idm45693050284160"></a><a class="indexterm" name="idm45693050282672"></a><a class="indexterm" name="idm45693050281184"></a><a class="indexterm" name="idm45693050279680"></a><a class="indexterm" name="idm45693050278176"></a><a class="indexterm" name="idm45693050276672"></a><a class="indexterm" name="idm45693050275168"></a><a class="indexterm" name="idm45693050273680"></a><a class="indexterm" name="idm45693050272192"></a><a class="indexterm" name="idm45693050270704"></a><a class="indexterm" name="idm45693050269216"></a><a class="indexterm" name="idm45693050267728"></a><a class="indexterm" name="idm45693050266240"></a><a class="indexterm" name="idm45693050264752"></a><a class="indexterm" name="idm45693050263264"></a><a class="indexterm" name="idm45693050261776"></a><a class="indexterm" name="idm45693050260288"></a><a class="indexterm" name="idm45693050258800"></a><a class="indexterm" name="idm45693050257312"></a><a class="indexterm" name="idm45693050255824"></a><a class="indexterm" name="idm45693050254336"></a><a class="indexterm" name="idm45693050252848"></a><a class="indexterm" name="idm45693050251360"></a><a class="indexterm" name="idm45693050249872"></a><a class="indexterm" name="idm45693050248384"></a><a class="indexterm" name="idm45693050246896"></a><a class="indexterm" name="idm45693050245408"></a><a class="indexterm" name="idm45693050243920"></a><a class="indexterm" name="idm45693050242432"></a><a class="indexterm" name="idm45693050240944"></a><a class="indexterm" name="idm45693050239456"></a><a class="indexterm" name="idm45693050237968"></a><a class="indexterm" name="idm45693050236480"></a><a class="indexterm" name="idm45693050234992"></a><a class="indexterm" name="idm45693050233504"></a><a class="indexterm" name="idm45693050232016"></a><a class="indexterm" name="idm45693050230528"></a><a class="indexterm" name="idm45693050229040"></a><a class="indexterm" name="idm45693050227552"></a><a class="indexterm" name="idm45693050226064"></a><a class="indexterm" name="idm45693050224576"></a><a class="indexterm" name="idm45693050223120"></a><a class="indexterm" name="idm45693050221664"></a><a class="indexterm" name="idm45693050220208"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696495363184"></a><a class="indexterm" name="idm45696495361696"></a><a class="indexterm" name="idm45696495360208"></a><a class="indexterm" name="idm45696495358720"></a><a class="indexterm" name="idm45696495357232"></a><a class="indexterm" name="idm45696495355744"></a><a class="indexterm" name="idm45696495354256"></a><a class="indexterm" name="idm45696495352768"></a><a class="indexterm" name="idm45696495351280"></a><a class="indexterm" name="idm45696495349792"></a><a class="indexterm" name="idm45696495348304"></a><a class="indexterm" name="idm45696495346816"></a><a class="indexterm" name="idm45696495345328"></a><a class="indexterm" name="idm45696495343840"></a><a class="indexterm" name="idm45696495342352"></a><a class="indexterm" name="idm45696495340864"></a><a class="indexterm" name="idm45696495339376"></a><a class="indexterm" name="idm45696495337888"></a><a class="indexterm" name="idm45696495336400"></a><a class="indexterm" name="idm45696495334912"></a><a class="indexterm" name="idm45696495333424"></a><a class="indexterm" name="idm45696495331936"></a><a class="indexterm" name="idm45696495330448"></a><a class="indexterm" name="idm45696495328960"></a><a class="indexterm" name="idm45696495327472"></a><a class="indexterm" name="idm45696495325984"></a><a class="indexterm" name="idm45696495324496"></a><a class="indexterm" name="idm45696495323008"></a><a class="indexterm" name="idm45696495321520"></a><a class="indexterm" name="idm45696495320032"></a><a class="indexterm" name="idm45696495318544"></a><a class="indexterm" name="idm45696495317056"></a><a class="indexterm" name="idm45696495315568"></a><a class="indexterm" name="idm45696495314080"></a><a class="indexterm" name="idm45696495312592"></a><a class="indexterm" name="idm45696495311104"></a><a class="indexterm" name="idm45696495309616"></a><a class="indexterm" name="idm45696495308112"></a><a class="indexterm" name="idm45696495306608"></a><a class="indexterm" name="idm45696495305104"></a><a class="indexterm" name="idm45696495303600"></a><a class="indexterm" name="idm45696495302112"></a><a class="indexterm" name="idm45696495300624"></a><a class="indexterm" name="idm45696495299136"></a><a class="indexterm" name="idm45696495297648"></a><a class="indexterm" name="idm45696495296160"></a><a class="indexterm" name="idm45696495294672"></a><a class="indexterm" name="idm45696495293184"></a><a class="indexterm" name="idm45696495291696"></a><a class="indexterm" name="idm45696495290208"></a><a class="indexterm" name="idm45696495288720"></a><a class="indexterm" name="idm45696495287232"></a><a class="indexterm" name="idm45696495285744"></a><a class="indexterm" name="idm45696495284256"></a><a class="indexterm" name="idm45696495282768"></a><a class="indexterm" name="idm45696495281280"></a><a class="indexterm" name="idm45696495279792"></a><a class="indexterm" name="idm45696495278304"></a><a class="indexterm" name="idm45696495276816"></a><a class="indexterm" name="idm45696495275328"></a><a class="indexterm" name="idm45696495273840"></a><a class="indexterm" name="idm45696495272352"></a><a class="indexterm" name="idm45696495270864"></a><a class="indexterm" name="idm45696495269376"></a><a class="indexterm" name="idm45696495267888"></a><a class="indexterm" name="idm45696495266400"></a><a class="indexterm" name="idm45696495264912"></a><a class="indexterm" name="idm45696495263424"></a><a class="indexterm" name="idm45696495261936"></a><a class="indexterm" name="idm45696495260448"></a><a class="indexterm" name="idm45696495258960"></a><a class="indexterm" name="idm45696495257472"></a><a class="indexterm" name="idm45696495255984"></a><a class="indexterm" name="idm45696495254496"></a><a class="indexterm" name="idm45696495253008"></a><a class="indexterm" name="idm45696495251520"></a><a class="indexterm" name="idm45696495250032"></a><a class="indexterm" name="idm45696495248528"></a><a class="indexterm" name="idm45696495247024"></a><a class="indexterm" name="idm45696495245520"></a><a class="indexterm" name="idm45696495244016"></a><a class="indexterm" name="idm45696495242528"></a><a class="indexterm" name="idm45696495241040"></a><a class="indexterm" name="idm45696495239552"></a><a class="indexterm" name="idm45696495238064"></a><a class="indexterm" name="idm45696495236576"></a><a class="indexterm" name="idm45696495235088"></a><a class="indexterm" name="idm45696495233600"></a><a class="indexterm" name="idm45696495232112"></a><a class="indexterm" name="idm45696495230624"></a><a class="indexterm" name="idm45696495229136"></a><a class="indexterm" name="idm45696495227648"></a><a class="indexterm" name="idm45696495226160"></a><a class="indexterm" name="idm45696495224672"></a><a class="indexterm" name="idm45696495223184"></a><a class="indexterm" name="idm45696495221696"></a><a class="indexterm" name="idm45696495220208"></a><a class="indexterm" name="idm45696495218720"></a><a class="indexterm" name="idm45696495217232"></a><a class="indexterm" name="idm45696495215744"></a><a class="indexterm" name="idm45696495214256"></a><a class="indexterm" name="idm45696495212768"></a><a class="indexterm" name="idm45696495211280"></a><a class="indexterm" name="idm45696495209792"></a><a class="indexterm" name="idm45696495208304"></a><a class="indexterm" name="idm45696495206816"></a><a class="indexterm" name="idm45696495205328"></a><a class="indexterm" name="idm45696495203840"></a><a class="indexterm" name="idm45696495202352"></a><a class="indexterm" name="idm45696495200864"></a><a class="indexterm" name="idm45696495199376"></a><a class="indexterm" name="idm45696495197888"></a><a class="indexterm" name="idm45696495196400"></a><a class="indexterm" name="idm45696495194912"></a><a class="indexterm" name="idm45696495193424"></a><a class="indexterm" name="idm45696495191968"></a><a class="indexterm" name="idm45696495190512"></a><a class="indexterm" name="idm45696495189056"></a></li><li class="listitem"><p>
                 <code class="literal">GLength()</code> is removed in favor of
                 <a class="link" href="functions.html#function_st-length"><code class="literal">ST_Length()</code></a>.
-</p><a class="indexterm" name="idm45693050215824"></a><a class="indexterm" name="idm45693050214336"></a></li></ul>
+</p><a class="indexterm" name="idm45696495184672"></a><a class="indexterm" name="idm45696495183184"></a></li></ul>
 </div>
 </li><li class="listitem"><p>
             The functions described in
@@ -4480,11 +4480,11 @@ Note
             are no longer permitted and produce an error. See that
             section for guidelines for migrating queries away from using
             geometry arguments.
-          </p><a class="indexterm" name="idm45693050210624"></a><a class="indexterm" name="idm45693050209168"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495179536"></a><a class="indexterm" name="idm45696495178080"></a></li><li class="listitem"><p>
             The parser no longer treats <code class="literal">\N</code> as a
             synonym for <code class="literal">NULL</code> in SQL statements. Use
             <code class="literal">NULL</code> instead.
-          </p><a class="indexterm" name="idm45693050204640"></a><a class="indexterm" name="idm45693050203152"></a><p>
+          </p><a class="indexterm" name="idm45696495173600"></a><a class="indexterm" name="idm45696495172112"></a><p>
             This change does not affect text file import or export
             operations performed with <a class="link" href="sql-statements.html#load-data" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD
             DATA</code></a> or
@@ -4494,7 +4494,7 @@ Note
             <a class="xref" href="sql-statements.html#load-data" title="13.2.7 LOAD DATA Statement">Section 13.2.7, “LOAD DATA Statement”</a>.
           </p></li><li class="listitem"><p>
             <code class="literal">PROCEDURE ANALYSE()</code> syntax is removed.
-          </p><a class="indexterm" name="idm45693050194992"></a><a class="indexterm" name="idm45693050193504"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495163840"></a><a class="indexterm" name="idm45696495162352"></a></li><li class="listitem"><p>
             The client-side <code class="option">--ssl</code> and
             <code class="option">--ssl-verify-server-cert</code> options have been
             removed. Use
@@ -4510,7 +4510,7 @@ Note
             <a class="link" href="server-administration.html#option_mysqld_ssl"><code class="option">--ssl</code></a> option is still
             available, but is deprecated as of MySQL 8.0.26 and subject
             to removal in a future MySQL version.)
-          </p><a class="indexterm" name="idm45693050183440"></a><a class="indexterm" name="idm45693050181952"></a><a class="indexterm" name="idm45693050180464"></a><a class="indexterm" name="idm45693050178960"></a><p>
+          </p><a class="indexterm" name="idm45696495152176"></a><a class="indexterm" name="idm45696495150688"></a><a class="indexterm" name="idm45696495149200"></a><a class="indexterm" name="idm45696495147696"></a><p>
             For the C API, <code class="literal">MYSQL_OPT_SSL_ENFORCE</code> and
             <code class="literal">MYSQL_OPT_SSL_VERIFY_SERVER_CERT</code> options
             for <a class="ulink" href="https://dev.mysql.com/doc/c-api/8.0/en/mysql-options.html" target="_top"><code class="literal">mysql_options()</code></a>
@@ -4519,12 +4519,12 @@ Note
             removed. Use <code class="literal">MYSQL_OPT_SSL_MODE</code> with an
             option value of <code class="literal">SSL_MODE_REQUIRED</code> or
             <code class="literal">SSL_MODE_VERIFY_IDENTITY</code> instead.
-          </p><a class="indexterm" name="idm45693050171216"></a><a class="indexterm" name="idm45693050169728"></a><a class="indexterm" name="idm45693050168240"></a><a class="indexterm" name="idm45693050166736"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495139952"></a><a class="indexterm" name="idm45696495138464"></a><a class="indexterm" name="idm45696495136976"></a><a class="indexterm" name="idm45696495135472"></a></li><li class="listitem"><p>
             The <code class="option">--temp-pool</code> server option was removed.
-          </p><a class="indexterm" name="idm45693050163968"></a><a class="indexterm" name="idm45693050162480"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495132704"></a><a class="indexterm" name="idm45696495131216"></a></li><li class="listitem"><p>
             The <code class="literal">ignore_builtin_innodb</code> system variable
             is removed.
-          </p><a class="indexterm" name="idm45693050159440"></a><a class="indexterm" name="idm45693050157952"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495128176"></a><a class="indexterm" name="idm45696495126688"></a></li><li class="listitem"><p>
             The server no longer performs conversion of pre-MySQL 5.1
             database names containing special characters to 5.1 format
             with the addition of a <code class="literal">#mysql50#</code> prefix.
@@ -4536,7 +4536,7 @@ Note
             <a class="link" href="sql-statements.html#alter-database" title="13.1.2 ALTER DATABASE Statement"><code class="literal">ALTER DATABASE</code></a> statement, and
             the <code class="literal">Com_alter_db_upgrade</code> status variable
             are removed.
-          </p><a class="indexterm" name="idm45693050149680"></a><a class="indexterm" name="idm45693050148176"></a><a class="indexterm" name="idm45693050146672"></a><a class="indexterm" name="idm45693050145184"></a><a class="indexterm" name="idm45693050143696"></a><a class="indexterm" name="idm45693050142208"></a><a class="indexterm" name="idm45693050140720"></a><a class="indexterm" name="idm45693050139232"></a><a class="indexterm" name="idm45693050137744"></a><a class="indexterm" name="idm45693050136256"></a><p>
+          </p><a class="indexterm" name="idm45696495118368"></a><a class="indexterm" name="idm45696495116864"></a><a class="indexterm" name="idm45696495115360"></a><a class="indexterm" name="idm45696495113872"></a><a class="indexterm" name="idm45696495112384"></a><a class="indexterm" name="idm45696495110896"></a><a class="indexterm" name="idm45696495109408"></a><a class="indexterm" name="idm45696495107920"></a><a class="indexterm" name="idm45696495106432"></a><a class="indexterm" name="idm45696495104944"></a><p>
             Upgrades are supported only from one major version to
             another (for example, 5.0 to 5.1, or 5.1 to 5.5), so there
             should be little remaining need for conversion of older 5.0
@@ -4556,7 +4556,7 @@ Note
             <code class="option">INSTALL_SCRIPTDIR</code> <code class="literal">CMake</code>
             option that controlled the installation location for
             <span class="command"><strong>mysql_install_db</strong></span> was removed.
-          </p><a class="indexterm" name="idm45693050124496"></a><a class="indexterm" name="idm45693050123008"></a><a class="indexterm" name="idm45693050121520"></a><a class="indexterm" name="idm45693050120032"></a><a class="indexterm" name="idm45693050118544"></a><a class="indexterm" name="idm45693050117056"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495093184"></a><a class="indexterm" name="idm45696495091696"></a><a class="indexterm" name="idm45696495090208"></a><a class="indexterm" name="idm45696495088720"></a><a class="indexterm" name="idm45696495087232"></a><a class="indexterm" name="idm45696495085744"></a></li><li class="listitem"><p>
             The generic partitioning handler was removed from the MySQL
             server. In order to support partitioning of a given table,
             the storage engine used for the table must now provide its
@@ -4568,7 +4568,7 @@ Note
             PLUGINS</code></a> or in the
             <a class="link" href="information-schema.html#information-schema-plugins-table" title="26.3.22 The INFORMATION_SCHEMA PLUGINS Table"><code class="literal">INFORMATION_SCHEMA.PLUGINS</code></a>
             table.
-          </p><a class="indexterm" name="idm45693050110304"></a><a class="indexterm" name="idm45693050108816"></a><a class="indexterm" name="idm45693050107328"></a><a class="indexterm" name="idm45693050105840"></a><p>
+          </p><a class="indexterm" name="idm45696495078992"></a><a class="indexterm" name="idm45696495077504"></a><a class="indexterm" name="idm45696495076016"></a><a class="indexterm" name="idm45696495074528"></a><p>
             Two MySQL storage engines currently provide native
             partitioning support: <a class="link" href="innodb-storage-engine.html" title="Chapter 15 The InnoDB Storage Engine"><code class="literal">InnoDB</code></a>
             and <a class="link" href="mysql-cluster.html" title="Chapter 23 MySQL NDB Cluster 8.0"><code class="literal">NDB</code></a>. Of these, only
@@ -4657,14 +4657,14 @@ Note
             <code class="literal">Slave_running</code>. The information they
             provided is available in Performance Schema tables; see
             <a class="ulink" href="https://dev.mysql.com/doc/refman/5.7/en/performance-schema-variable-table-migration.html" target="_top">Migrating to Performance Schema System and Status Variable Tables</a>.
-          </p><a class="indexterm" name="idm45693050066672"></a><a class="indexterm" name="idm45693050065184"></a><a class="indexterm" name="idm45693050063696"></a><a class="indexterm" name="idm45693050062208"></a><a class="indexterm" name="idm45693050060720"></a><a class="indexterm" name="idm45693050059232"></a><a class="indexterm" name="idm45693050057744"></a><a class="indexterm" name="idm45693050056256"></a><a class="indexterm" name="idm45693050054768"></a><a class="indexterm" name="idm45693050053280"></a><a class="indexterm" name="idm45693050051792"></a><a class="indexterm" name="idm45693050050304"></a><a class="indexterm" name="idm45693050048816"></a><a class="indexterm" name="idm45693050047328"></a><a class="indexterm" name="idm45693050045840"></a><a class="indexterm" name="idm45693050044336"></a><a class="indexterm" name="idm45693050042832"></a><a class="indexterm" name="idm45693050041328"></a><a class="indexterm" name="idm45693050039824"></a><a class="indexterm" name="idm45693050038336"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495035264"></a><a class="indexterm" name="idm45696495033776"></a><a class="indexterm" name="idm45696495032288"></a><a class="indexterm" name="idm45696495030800"></a><a class="indexterm" name="idm45696495029312"></a><a class="indexterm" name="idm45696495027824"></a><a class="indexterm" name="idm45696495026336"></a><a class="indexterm" name="idm45696495024848"></a><a class="indexterm" name="idm45696495023360"></a><a class="indexterm" name="idm45696495021872"></a><a class="indexterm" name="idm45696495020384"></a><a class="indexterm" name="idm45696495018896"></a><a class="indexterm" name="idm45696495017408"></a><a class="indexterm" name="idm45696495015920"></a><a class="indexterm" name="idm45696495014432"></a><a class="indexterm" name="idm45696495012928"></a><a class="indexterm" name="idm45696495011424"></a><a class="indexterm" name="idm45696495009920"></a><a class="indexterm" name="idm45696495008416"></a><a class="indexterm" name="idm45696495006928"></a></li><li class="listitem"><p>
             The Performance Schema <code class="literal">setup_timers</code> table
             was removed, as was the <code class="literal">TICK</code> row in the
             <a class="link" href="performance-schema.html#performance-schema-performance-timers-table" title="27.12.21.4 The performance_timers Table"><code class="literal">performance_timers</code></a> table.
-          </p><a class="indexterm" name="idm45693050033072"></a><a class="indexterm" name="idm45693050031584"></a><a class="indexterm" name="idm45693050030096"></a><a class="indexterm" name="idm45693050028608"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696495001776"></a><a class="indexterm" name="idm45696495000288"></a><a class="indexterm" name="idm45696494998800"></a><a class="indexterm" name="idm45696494997312"></a></li><li class="listitem"><p>
             The <code class="literal">libmysqld</code> embedded server library is
             removed, along with:
-</p><a class="indexterm" name="idm45693050025552"></a><a class="indexterm" name="idm45693050024064"></a><a class="indexterm" name="idm45693050022576"></a><a class="indexterm" name="idm45693050021088"></a>
+</p><a class="indexterm" name="idm45696494994256"></a><a class="indexterm" name="idm45696494992768"></a><a class="indexterm" name="idm45696494991280"></a><a class="indexterm" name="idm45696494989792"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 The <a class="ulink" href="https://dev.mysql.com/doc/c-api/8.0/en/mysql-options.html" target="_top"><code class="literal">mysql_options()</code></a>
@@ -4704,20 +4704,20 @@ Note
             <a class="link" href="server-administration.html#option_mysqld_plugin-load-add"><code class="option">--plugin-load-add</code></a> option, or
             at runtime using the <a class="link" href="sql-statements.html#install-plugin" title="13.7.4.4 INSTALL PLUGIN Statement"><code class="literal">INSTALL
             PLUGIN</code></a> statement.
-          </p><a class="indexterm" name="idm45693049995088"></a><a class="indexterm" name="idm45693049993600"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494963856"></a><a class="indexterm" name="idm45696494962368"></a></li><li class="listitem"><p>
             The <span class="command"><strong>resolveip</strong></span> utility is removed.
             <span class="command"><strong>nslookup</strong></span>, <span class="command"><strong>host</strong></span>, or
             <span class="command"><strong>dig</strong></span> can be used instead.
-          </p><a class="indexterm" name="idm45693049988464"></a><a class="indexterm" name="idm45693049986976"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494957184"></a><a class="indexterm" name="idm45696494955696"></a></li><li class="listitem"><p>
             The <span class="command"><strong>resolve_stack_dump</strong></span> utility is
             removed. Stack traces from official MySQL builds are always
             symbolized, so there is no need to use
             <span class="command"><strong>resolve_stack_dump</strong></span>.
-          </p><a class="indexterm" name="idm45693049983120"></a><a class="indexterm" name="idm45693049981632"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494951840"></a><a class="indexterm" name="idm45696494950352"></a></li><li class="listitem"><p>
             The following server error codes are not used and have been
             removed. Applications that test specifically for any of
             these errors should be updated.
-          </p><a class="indexterm" name="idm45693049979168"></a><a class="indexterm" name="idm45693049977680"></a><pre data-lang="none" class="programlisting">ER_BINLOG_READ_EVENT_CHECKSUM_FAILURE
+          </p><a class="indexterm" name="idm45696494947888"></a><a class="indexterm" name="idm45696494946400"></a><pre data-lang="none" class="programlisting">ER_BINLOG_READ_EVENT_CHECKSUM_FAILURE
 ER_BINLOG_ROW_RBR_TO_SBR
 ER_BINLOG_ROW_WRONG_TABLE_DEF
 ER_CANT_ACTIVATE_LOG
@@ -4817,7 +4817,7 @@ ER_WSAS_FAILED
             removed. Use the Performance Schema
             <a class="link" href="performance-schema.html#performance-schema-data-locks-table" title="27.12.13.1 The data_locks Table"><code class="literal">data_locks</code></a> and
             <a class="link" href="performance-schema.html#performance-schema-data-lock-waits-table" title="27.12.13.2 The data_lock_waits Table"><code class="literal">data_lock_waits</code></a> tables instead.
-</p><a class="indexterm" name="idm45693049963440"></a><a class="indexterm" name="idm45693049961952"></a><a class="indexterm" name="idm45693049960464"></a><a class="indexterm" name="idm45693049958976"></a>
+</p><a class="indexterm" name="idm45696494932032"></a><a class="indexterm" name="idm45696494930544"></a><a class="indexterm" name="idm45696494929056"></a><a class="indexterm" name="idm45696494927568"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -4849,7 +4849,7 @@ Note
             <a class="link" href="innodb-storage-engine.html#sysvar_innodb_strict_mode"><code class="literal">innodb_strict_mode</code></a> is
             disabled, warnings are issued and the temporary table is
             created using a non-compressed row format.
-          </p><a class="indexterm" name="idm45693049940720"></a><a class="indexterm" name="idm45693049939264"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494909264"></a><a class="indexterm" name="idm45696494907808"></a></li><li class="listitem"><p>
             <code class="literal">InnoDB</code> no longer creates
             <code class="filename">.isl</code> files (<code class="literal">InnoDB</code>
             Symbolic Link files) when creating tablespace data files
@@ -4864,20 +4864,20 @@ Note
             Moving remote tablespace files is now supported by the
             <a class="link" href="innodb-storage-engine.html#sysvar_innodb_directories"><code class="literal">innodb_directories</code></a> option.
             See <a class="xref" href="innodb-storage-engine.html#innodb-moving-data-files-offline" title="15.6.3.6 Moving Tablespace Files While the Server is Offline">Section 15.6.3.6, “Moving Tablespace Files While the Server is Offline”</a>.
-          </p><a class="indexterm" name="idm45693049929952"></a><a class="indexterm" name="idm45693049928496"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494898496"></a><a class="indexterm" name="idm45696494897040"></a></li><li class="listitem"><p>
             The following <code class="literal">InnoDB</code> file format
             variables were removed:
 </p>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
                 <code class="literal">innodb_file_format</code>
-              </p><a class="indexterm" name="idm45693049923824"></a><a class="indexterm" name="idm45693049922336"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696494892368"></a><a class="indexterm" name="idm45696494890880"></a></li><li class="listitem"><p>
                 <code class="literal">innodb_file_format_check</code>
-              </p><a class="indexterm" name="idm45693049919376"></a><a class="indexterm" name="idm45693049917872"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696494887920"></a><a class="indexterm" name="idm45696494886416"></a></li><li class="listitem"><p>
                 <code class="literal">innodb_file_format_max</code>
-              </p><a class="indexterm" name="idm45693049914912"></a><a class="indexterm" name="idm45693049913424"></a></li><li class="listitem"><p>
+              </p><a class="indexterm" name="idm45696494883456"></a><a class="indexterm" name="idm45696494881968"></a></li><li class="listitem"><p>
                 <code class="literal">innodb_large_prefix</code>
-</p><a class="indexterm" name="idm45693049910480"></a><a class="indexterm" name="idm45693049908992"></a></li></ul>
+</p><a class="indexterm" name="idm45696494879024"></a><a class="indexterm" name="idm45696494877536"></a></li></ul>
 </div>
 <p>
             File format variables were necessary for creating tables
@@ -4890,18 +4890,18 @@ Note
             the <a class="link" href="information-schema.html#information-schema-innodb-tables-table" title="26.4.25 The INFORMATION_SCHEMA INNODB_TABLES Table"><code class="literal">INNODB_TABLES</code></a> and
             <a class="link" href="information-schema.html#information-schema-innodb-tablespaces-table" title="26.4.26 The INFORMATION_SCHEMA INNODB_TABLESPACES Table"><code class="literal">INNODB_TABLESPACES</code></a> Information
             Schema tables.
-          </p><a class="indexterm" name="idm45693049901984"></a><a class="indexterm" name="idm45693049900496"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494870512"></a><a class="indexterm" name="idm45696494869024"></a></li><li class="listitem"><p>
             The <code class="literal">innodb_support_xa</code> system variable,
             which enables support for two-phase commit in XA
             transactions, was removed. <code class="literal">InnoDB</code> support
             for two-phase commit in XA transactions is always enabled.
-          </p><a class="indexterm" name="idm45693049896592"></a><a class="indexterm" name="idm45693049895104"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494865120"></a><a class="indexterm" name="idm45696494863632"></a></li><li class="listitem"><p>
             Support for DTrace was removed.
-          </p><a class="indexterm" name="idm45693049892784"></a><a class="indexterm" name="idm45693049891296"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494861312"></a><a class="indexterm" name="idm45696494859824"></a></li><li class="listitem"><p>
             The <code class="literal">JSON_APPEND()</code> function was removed.
             Use <a class="link" href="functions.html#function_json-array-append"><code class="literal">JSON_ARRAY_APPEND()</code></a>
             instead.
-          </p><a class="indexterm" name="idm45693049886864"></a><a class="indexterm" name="idm45693049885376"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494855344"></a><a class="indexterm" name="idm45696494853856"></a></li><li class="listitem"><p>
             Support for placing table partitions in shared
             <code class="literal">InnoDB</code> tablespaces was removed in MySQL
             8.0.13. Shared tablespaces include the
@@ -4909,35 +4909,35 @@ Note
             tablespaces. For information about identifying partitions in
             shared tablespaces and moving them to file-per-table
             tablespaces, see <a class="xref" href="installing.html#upgrade-prerequisites" title="2.11.5 Preparing Your Installation for Upgrade">Section 2.11.5, “Preparing Your Installation for Upgrade”</a>.
-          </p><a class="indexterm" name="idm45693049880480"></a><a class="indexterm" name="idm45693049878976"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494849008"></a><a class="indexterm" name="idm45696494847504"></a></li><li class="listitem"><p>
             Support for setting user variables in statements other than
             <a class="link" href="sql-statements.html#set-variable" title="13.7.6.1 SET Syntax for Variable Assignment"><code class="literal">SET</code></a>
             was deprecated in MySQL 8.0.13. This functionality is
             subject to removal in MySQL 9.0.
-          </p><a class="indexterm" name="idm45693049875184"></a><a class="indexterm" name="idm45693049873696"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494843648"></a><a class="indexterm" name="idm45696494842160"></a></li><li class="listitem"><p>
             The <code class="option">--ndb</code> <a class="link" href="programs.html#perror" title="4.8.2 perror — Display MySQL Error Message Information"><span class="command"><strong>perror</strong></span></a> option
             was removed. Use the <a class="link" href="mysql-cluster.html#mysql-cluster-programs-ndb-perror" title="23.4.16 ndb_perror — Obtain NDB Error Message Information"><span class="command"><strong>ndb_perror</strong></span></a> utility
             instead.
-          </p><a class="indexterm" name="idm45693049868144"></a><a class="indexterm" name="idm45693049866656"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494836608"></a><a class="indexterm" name="idm45696494835120"></a></li><li class="listitem"><p>
             The <code class="literal">innodb_undo_logs</code> variable was
             removed. The
             <a class="link" href="innodb-storage-engine.html#sysvar_innodb_rollback_segments"><code class="literal">innodb_rollback_segments</code></a>
             variables performs the same function and should be used
             instead.
-          </p><a class="indexterm" name="idm45693049862304"></a><a class="indexterm" name="idm45693049860816"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494830768"></a><a class="indexterm" name="idm45696494829280"></a></li><li class="listitem"><p>
             The <code class="literal">Innodb_available_undo_logs</code> status
             variable was removed. The number of available rollback
             segments per tablespace may be retrieved using <code class="literal">SHOW
             VARIABLES LIKE 'innodb_rollback_segments';</code>
-          </p><a class="indexterm" name="idm45693049856944"></a><a class="indexterm" name="idm45693049855440"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494825408"></a><a class="indexterm" name="idm45696494823904"></a></li><li class="listitem"><p>
             As of MySQL 8.0.14, the previously deprecated
             <a class="link" href="innodb-storage-engine.html#sysvar_innodb_undo_tablespaces"><code class="literal">innodb_undo_tablespaces</code></a>
             variable is no longer configurable. For more information,
             see <a class="xref" href="innodb-storage-engine.html#innodb-undo-tablespaces" title="15.6.3.4 Undo Tablespaces">Section 15.6.3.4, “Undo Tablespaces”</a>.
-          </p><a class="indexterm" name="idm45693049850912"></a><a class="indexterm" name="idm45693049849424"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494819376"></a><a class="indexterm" name="idm45696494817888"></a></li><li class="listitem"><p>
             Support for the <code class="literal">ALTER TABLE ... UPGRADE
             PARTITIONING</code> statement has been removed.
-          </p><a class="indexterm" name="idm45693049846352"></a><a class="indexterm" name="idm45693049844848"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494814816"></a><a class="indexterm" name="idm45696494813312"></a></li><li class="listitem"><p>
             As of MySQL 8.0.16, support for the
             <a class="link" href="server-administration.html#sysvar_internal_tmp_disk_storage_engine"><code class="literal">internal_tmp_disk_storage_engine</code></a>
             system variable has been removed; internal temporary tables
@@ -4945,11 +4945,11 @@ Note
             <a class="link" href="innodb-storage-engine.html" title="Chapter 15 The InnoDB Storage Engine"><code class="literal">InnoDB</code></a> storage engine. See
             <a class="xref" href="optimization.html#internal-temporary-tables-engines-disk" title="Storage Engine for On-Disk Internal Temporary Tables">Storage Engine for On-Disk Internal Temporary Tables</a>,for
             more information.
-          </p><a class="indexterm" name="idm45693049838944"></a><a class="indexterm" name="idm45693049837488"></a></li><li class="listitem"><p>
+          </p><a class="indexterm" name="idm45696494807360"></a><a class="indexterm" name="idm45696494805904"></a></li><li class="listitem"><p>
             The <a class="link" href="installing.html#option_cmake_disable_shared"><code class="option">DISABLE_SHARED</code></a>
             <span class="command"><strong>CMake</strong></span> option was unused and has been
             removed.
-</p><a class="indexterm" name="idm45693049833296"></a><a class="indexterm" name="idm45693049831808"></a></li></ul>
+</p><a class="indexterm" name="idm45696494801712"></a><a class="indexterm" name="idm45696494800224"></a></li></ul>
 </div>
 
 </div>
@@ -6707,7 +6707,7 @@ MySQL 8.0</h2>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048849408"></a><a class="indexterm" name="idm45693048847920"></a><p>
+<a class="indexterm" name="idm45696493818560"></a><a class="indexterm" name="idm45696493817072"></a><p>
       The primary website for MySQL documentation is
       <a class="ulink" href="https://dev.mysql.com/doc/" target="_top">https://dev.mysql.com/doc/</a>. Online and downloadable
       documentation formats are available for the MySQL Reference
@@ -6729,7 +6729,7 @@ MySQL 8.0</h2>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048842848"></a><a class="indexterm" name="idm45693048841392"></a><p>
+<a class="indexterm" name="idm45696493812000"></a><a class="indexterm" name="idm45696493810544"></a><p>
       The forums at <a class="ulink" href="http://forums.mysql.com" target="_top">http://forums.mysql.com</a> are an
       important community resource. Many forums are available, grouped
       into these general categories:
@@ -6811,7 +6811,7 @@ MySQL 8.0</h2>
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048821520"></a><a class="indexterm" name="idm45693048820096"></a><a class="indexterm" name="idm45693048818608"></a><a class="indexterm" name="idm45693048817120"></a><a class="indexterm" name="idm45693048815632"></a><a class="indexterm" name="idm45693048814144"></a><a class="indexterm" name="idm45693048812656"></a><a class="indexterm" name="idm45693048811168"></a><a class="indexterm" name="idm45693048809680"></a><a class="indexterm" name="idm45693048808608"></a><p>
+<a class="indexterm" name="idm45696493790736"></a><a class="indexterm" name="idm45696493789312"></a><a class="indexterm" name="idm45696493787824"></a><a class="indexterm" name="idm45696493786336"></a><a class="indexterm" name="idm45696493784848"></a><a class="indexterm" name="idm45696493783360"></a><a class="indexterm" name="idm45696493781872"></a><a class="indexterm" name="idm45696493780384"></a><a class="indexterm" name="idm45696493778896"></a><a class="indexterm" name="idm45696493777824"></a><p>
     Before posting a bug report about a problem, please try to verify
     that it is a bug and that it has not been reported already:
 </p>
@@ -6980,7 +6980,7 @@ MySQL 8.0</h2>
         The contents of the <code class="filename">docs/INFO_BIN</code> file from
         your MySQL installation. This file contains information about
         how MySQL was configured and compiled.
-      </p><a class="indexterm" name="idm45693048767584"></a></li><li class="listitem"><p>
+      </p><a class="indexterm" name="idm45696493736800"></a></li><li class="listitem"><p>
         If you are using a source distribution of the MySQL software,
         include the name and version number of the compiler that you
         used. If you have a binary distribution, include the
@@ -7209,7 +7209,7 @@ mysql&gt; <strong class="userinput"><code>SHOW STATUS;</code></strong>
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="introduction.html#extensions-to-ansi">1.7.1 MySQL Extensions to Standard SQL</a></span></dt><dt><span class="section"><a href="introduction.html#differences-from-ansi">1.7.2 MySQL Differences from Standard SQL</a></span></dt><dt><span class="section"><a href="introduction.html#constraints">1.7.3 How MySQL Deals with Constraints</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45693048675776"></a><a class="indexterm" name="idm45693048674320"></a><a class="indexterm" name="idm45693048673248"></a><a class="indexterm" name="idm45693048671760"></a><a class="indexterm" name="idm45693048670272"></a><p>
+<a class="indexterm" name="idm45696493645200"></a><a class="indexterm" name="idm45696493643744"></a><a class="indexterm" name="idm45696493642672"></a><a class="indexterm" name="idm45696493641184"></a><a class="indexterm" name="idm45696493639696"></a><p>
       This section describes how MySQL relates to the ANSI/ISO SQL
       standards. MySQL Server has many extensions to the SQL standard,
       and here you can find out what they are and how to use them. You
@@ -7262,7 +7262,7 @@ mysql&gt; <strong class="userinput"><code>SHOW STATUS;</code></strong>
       SQL:2016 standard; see <a class="xref" href="functions.html#json-functions" title="12.18 JSON Functions">Section 12.18, “JSON Functions”</a>, for more
       information.
 </p>
-<h3><a name="idm45693048653440"></a>Selecting SQL Modes</h3>
+<h3><a name="idm45696493622864"></a>Selecting SQL Modes</h3>
 <p>
       The MySQL server can operate in different SQL modes, and can apply
       these modes differently for different clients, depending on the
@@ -7279,8 +7279,8 @@ mysql&gt; <strong class="userinput"><code>SHOW STATUS;</code></strong>
       For more information on setting the SQL mode, see
       <a class="xref" href="server-administration.html#sql-mode" title="5.1.11 Server SQL Modes">Section 5.1.11, “Server SQL Modes”</a>.
 </p>
-<h3><a name="idm45693048648928"></a>Running MySQL in ANSI Mode</h3>
-<a class="indexterm" name="idm45693048648208"></a><a class="indexterm" name="idm45693048646720"></a><p>
+<h3><a name="idm45696493618368"></a>Running MySQL in ANSI Mode</h3>
+<a class="indexterm" name="idm45696493617648"></a><a class="indexterm" name="idm45696493616160"></a><p>
       To run MySQL Server in ANSI mode, start <a class="link" href="programs.html#mysqld" title="4.3.1 mysqld — The MySQL Server"><span class="command"><strong>mysqld</strong></span></a>
       with the <a class="link" href="server-administration.html#option_mysqld_ansi"><code class="option">--ansi</code></a> option. Running the
       server in ANSI mode is the same as starting it with the following
@@ -7317,7 +7317,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45693048629232"></a><a class="indexterm" name="idm45693048627776"></a><p>
+<a class="indexterm" name="idm45696493598672"></a><a class="indexterm" name="idm45696493597216"></a><p>
         MySQL Server supports some extensions that you are not likely to
         find in other SQL DBMSs. Be warned that if you use them, your
         code is most likely not portable to other SQL servers. In some
@@ -7346,7 +7346,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             Organization of data on disk
-          </p><a class="indexterm" name="idm45693048617648"></a><a class="indexterm" name="idm45693048616160"></a><a class="indexterm" name="idm45693048614672"></a><a class="indexterm" name="idm45693048613184"></a><p>
+          </p><a class="indexterm" name="idm45696493587088"></a><a class="indexterm" name="idm45696493585600"></a><a class="indexterm" name="idm45696493584112"></a><a class="indexterm" name="idm45696493582624"></a><p>
             MySQL Server maps each database to a directory under the
             MySQL data directory, and maps tables within a database to
             file names in the database directory. Consequently, database
@@ -7417,9 +7417,9 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
                 <code class="literal">INFORMATION_SCHEMA</code>. See
                 <a class="xref" href="information-schema.html" title="Chapter 26 INFORMATION_SCHEMA Tables">Chapter 26, <i>INFORMATION_SCHEMA Tables</i></a>.
               </p></li><li class="listitem"><p>
-                <a class="indexterm" name="idm45693048567600"></a>
+                <a class="indexterm" name="idm45696493537072"></a>
 
-                <a class="indexterm" name="idm45693048566528"></a>
+                <a class="indexterm" name="idm45696493536000"></a>
 
                 Use of <a class="link" href="sql-statements.html#load-data" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD DATA</code></a>. In many
                 cases, this syntax is compatible with Oracle
@@ -7569,9 +7569,9 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
                 to be done using the underlying character code values
                 rather than a lexical ordering.
               </p></li><li class="listitem"><p>
-                <a class="indexterm" name="idm45693048458592"></a>
+                <a class="indexterm" name="idm45696493427904"></a>
 
-                <a class="indexterm" name="idm45693048457504"></a>
+                <a class="indexterm" name="idm45696493426816"></a>
 
                 The <a class="link" href="functions.html#function_mod"><code class="literal">%</code></a>
                 operator is a synonym for
@@ -7661,7 +7661,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="introduction.html#ansi-diff-select-into-table">1.7.2.1 SELECT INTO TABLE Differences</a></span></dt><dt><span class="section"><a href="introduction.html#ansi-diff-update">1.7.2.2 UPDATE Differences</a></span></dt><dt><span class="section"><a href="introduction.html#ansi-diff-foreign-keys">1.7.2.3 FOREIGN KEY Constraint Differences</a></span></dt><dt><span class="section"><a href="introduction.html#ansi-diff-comments">1.7.2.4 '--' as the Start of a Comment</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45693048386608"></a><p>
+<a class="indexterm" name="idm45696493356016"></a><p>
         We try to make MySQL Server follow the ANSI SQL standard and the
         ODBC SQL standard, but MySQL Server performs operations
         differently in some cases:
@@ -7693,7 +7693,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048374736"></a><p>
+<a class="indexterm" name="idm45696493344096"></a><p>
           MySQL Server doesn't support the <code class="literal">SELECT ... INTO
           TABLE</code> Sybase SQL extension. Instead, MySQL Server
           supports the
@@ -7727,7 +7727,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048362688"></a><p>
+<a class="indexterm" name="idm45696493332048"></a><p>
           If you access a column from the table to be updated in an
           expression, <a class="link" href="sql-statements.html#update" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a> uses the
           current value of the column. The second assignment in the
@@ -7750,7 +7750,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048353792"></a><a class="indexterm" name="idm45693048352752"></a><p>
+<a class="indexterm" name="idm45696493323200"></a><a class="indexterm" name="idm45696493322160"></a><p>
           The MySQL implementation of foreign key constraints differs
           from the SQL standard in the following key respects:
 </p>
@@ -7865,7 +7865,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048307520"></a><a class="indexterm" name="idm45693048306064"></a><p>
+<a class="indexterm" name="idm45696493276928"></a><a class="indexterm" name="idm45696493275472"></a><p>
           Standard SQL uses the C syntax <code class="literal">/* this is a comment
           */</code> for comments, and MySQL Server supports this
           syntax as well. MySQL also support extensions to this syntax
@@ -7925,7 +7925,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="introduction.html#constraint-primary-key">1.7.3.1 PRIMARY KEY and UNIQUE Index Constraints</a></span></dt><dt><span class="section"><a href="introduction.html#constraint-foreign-key">1.7.3.2 FOREIGN KEY Constraints</a></span></dt><dt><span class="section"><a href="introduction.html#constraint-invalid-data">1.7.3.3 Enforced Constraints on Invalid Data</a></span></dt><dt><span class="section"><a href="introduction.html#constraint-enum">1.7.3.4 ENUM and SET Constraints</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45693048284336"></a><p>
+<a class="indexterm" name="idm45696493253744"></a><p>
         MySQL enables you to work both with transactional tables that
         permit rollback and with nontransactional tables that do not.
         Because of this, constraint handling is a bit different in MySQL
@@ -7968,7 +7968,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45693048277600"></a><a class="indexterm" name="idm45693048276144"></a><a class="indexterm" name="idm45693048274656"></a><p>
+<a class="indexterm" name="idm45696493247120"></a><a class="indexterm" name="idm45696493245664"></a><a class="indexterm" name="idm45696493244176"></a><p>
           Normally, errors occur for data-change statements (such as
           <a class="link" href="sql-statements.html#insert" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a> or
           <a class="link" href="sql-statements.html#update" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a>) that would violate
@@ -8011,7 +8011,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048255744"></a><p>
+<a class="indexterm" name="idm45696493225312"></a><p>
           Foreign keys let you cross-reference related data across
           tables, and
           <a class="link" href="glossary.html#glos_foreign_key_constraint" title="FOREIGN KEY constraint">foreign key
@@ -8082,7 +8082,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048220960"></a><a class="indexterm" name="idm45693048219504"></a><p>
+<a class="indexterm" name="idm45696493190464"></a><a class="indexterm" name="idm45696493189008"></a><p>
           By default, MySQL 8.0 rejects invalid or improper data values
           and aborts the statement in which they occur. It is possible
           to alter this behavior to be more forgiving of invalid values,
@@ -8184,7 +8184,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45693048182704"></a><p>
+<a class="indexterm" name="idm45696493152320"></a><p>
       Although Oracle Corporation and/or its affiliates own all
       copyrights in the <code class="literal">MySQL server</code> and the
       <code class="literal">MySQL manual</code>, we wish to recognize those who
@@ -8523,7 +8523,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048046672"></a><a class="indexterm" name="idm45693048045216"></a><p>
+<a class="indexterm" name="idm45696493016240"></a><a class="indexterm" name="idm45696493014784"></a><p>
       The following people have helped us with writing the MySQL
       documentation and translating the documentation or error messages
       in MySQL.
@@ -8632,7 +8632,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693048009232"></a><a class="indexterm" name="idm45693048007776"></a><p>
+<a class="indexterm" name="idm45696492978736"></a><a class="indexterm" name="idm45696492977280"></a><p>
       The following is a list of creators/maintainers of some of the
       most important API/packages/applications that a lot of people use
       with MySQL.
@@ -8689,7 +8689,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693047989824"></a><p>
+<a class="indexterm" name="idm45696492959280"></a><p>
       The following is a list of some of the tools we have used to
       create MySQL. We use this to express our thanks to those that has
       created them as without these we could not have made MySQL what it
@@ -8736,7 +8736,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@GLOBAL.sql_mode;</code></stro
 </div>
 
 </div>
-<a class="indexterm" name="idm45693047975568"></a><p>
+<a class="indexterm" name="idm45696492945040"></a><p>
       Although Oracle Corporation and/or its affiliates own all
       copyrights in the <code class="literal">MySQL server</code> and the
       <code class="literal">MySQL manual</code>, we wish to recognize the
