@@ -39,7 +39,7 @@
 <div class="toc">
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="replication.html#replication-configuration">17.1 Configuring Replication</a></span></dt><dd><dl><dt><span class="section"><a href="replication.html#binlog-replication-configuration-overview">17.1.1 Binary Log File Position Based Replication Configuration Overview</a></span></dt><dt><span class="section"><a href="replication.html#replication-howto">17.1.2 Setting Up Binary Log File Position Based Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids">17.1.3 Replication with Global Transaction Identifiers</a></span></dt><dt><span class="section"><a href="replication.html#replication-mode-change-online">17.1.4 Changing GTID Mode on Online Servers</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source">17.1.5 MySQL Multi-Source Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-options">17.1.6 Replication and Binary Logging Options and Variables</a></span></dt><dt><span class="section"><a href="replication.html#replication-administration">17.1.7 Common Replication Administration Tasks</a></span></dt></dl></dd><dt><span class="section"><a href="replication.html#replication-implementation">17.2 Replication Implementation</a></span></dt><dd><dl><dt><span class="section"><a href="replication.html#replication-formats">17.2.1 Replication Formats</a></span></dt><dt><span class="section"><a href="replication.html#replication-channels">17.2.2 Replication Channels</a></span></dt><dt><span class="section"><a href="replication.html#replication-implementation-details">17.2.3 Replication Threads</a></span></dt><dt><span class="section"><a href="replication.html#replica-logs">17.2.4 Relay Log and Replication Metadata Repositories</a></span></dt><dt><span class="section"><a href="replication.html#replication-rules">17.2.5 How Servers Evaluate Replication Filtering Rules</a></span></dt></dl></dd><dt><span class="section"><a href="replication.html#replication-security">17.3 Replication Security</a></span></dt><dd><dl><dt><span class="section"><a href="replication.html#replication-solutions-encrypted-connections">17.3.1 Setting Up Replication to Use Encrypted Connections</a></span></dt><dt><span class="section"><a href="replication.html#replication-binlog-encryption">17.3.2 Encrypting Binary Log Files and Relay Log Files</a></span></dt><dt><span class="section"><a href="replication.html#replication-privilege-checks">17.3.3 Replication Privilege Checks</a></span></dt></dl></dd><dt><span class="section"><a href="replication.html#replication-solutions">17.4 Replication Solutions</a></span></dt><dd><dl><dt><span class="section"><a href="replication.html#replication-solutions-backups">17.4.1 Using Replication for Backups</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-unexpected-replica-halt">17.4.2 Handling an Unexpected Halt of a Replica</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-rbr-monitoring">17.4.3 Monitoring Row-based Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-diffengines">17.4.4 Using Replication with Different Source and Replica Storage Engines</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-scaleout">17.4.5 Using Replication for Scale-Out</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-partitioning">17.4.6 Replicating Different Databases to Different Replicas</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-performance">17.4.7 Improving Replication Performance</a></span></dt><dt><span class="section"><a href="replication.html#replication-solutions-switch">17.4.8 Switching Sources During Failover</a></span></dt><dt><span class="section"><a href="replication.html#replication-asynchronous-connection-failover">17.4.9 Switching Sources with Asynchronous Connection Failover</a></span></dt><dt><span class="section"><a href="replication.html#replication-semisync">17.4.10 Semisynchronous Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-delayed">17.4.11 Delayed Replication</a></span></dt></dl></dd><dt><span class="section"><a href="replication.html#replication-notes">17.5 Replication Notes and Tips</a></span></dt><dd><dl><dt><span class="section"><a href="replication.html#replication-features">17.5.1 Replication Features and Issues</a></span></dt><dt><span class="section"><a href="replication.html#replication-compatibility">17.5.2 Replication Compatibility Between MySQL Versions</a></span></dt><dt><span class="section"><a href="replication.html#replication-upgrade">17.5.3 Upgrading a Replication Setup</a></span></dt><dt><span class="section"><a href="replication.html#replication-problems">17.5.4 Troubleshooting Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-bugs">17.5.5 How to Report Replication Bugs or Problems</a></span></dt></dl></dd></dl>
 </div>
-<a class="indexterm" name="idm45385651889088"></a><a class="indexterm" name="idm45385651888016"></a><a class="indexterm" name="idm45385651886528"></a><a class="indexterm" name="idm45385651885024"></a><p>
+<a class="indexterm" name="idm46254473771696"></a><a class="indexterm" name="idm46254473770624"></a><a class="indexterm" name="idm46254473769136"></a><a class="indexterm" name="idm46254473767632"></a><p>
     Replication enables data from one MySQL database server (known as a
     source) to be copied to one or more MySQL database servers (known as
     replicas). Replication is asynchronous by default; replicas do not
@@ -1583,7 +1583,7 @@ changed!! Please use '--relay-log=<em class="replaceable"><code>new_replica_host
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-gtids-concepts">17.1.3.1 GTID Format and Storage</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-lifecycle">17.1.3.2 GTID Life Cycle</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-auto-positioning">17.1.3.3 GTID Auto-Positioning</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-howto">17.1.3.4 Setting Up Replication Using GTIDs</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-failover">17.1.3.5 Using GTIDs for Failover and Scaleout</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-assign-anon">17.1.3.6 Replication From a Source Without GTIDs to a Replica With GTIDs</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-restrictions">17.1.3.7 Restrictions on Replication with GTIDs</a></span></dt><dt><span class="section"><a href="replication.html#replication-gtids-functions">17.1.3.8 Stored Function Examples to Manipulate GTIDs</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385651402992"></a><p>
+<a class="indexterm" name="idm46254473285040"></a><p>
     This section explains transaction-based replication using
     <span class="firstterm">global transaction identifiers</span>
     (GTIDs). When using GTIDs, each transaction can be identified and
@@ -1654,7 +1654,7 @@ changed!! Please use '--relay-log=<em class="replaceable"><code>new_replica_host
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385651382928"></a><p>
+<a class="indexterm" name="idm46254473264624"></a><p>
       A global transaction identifier (GTID) is a unique identifier
       created and associated with each transaction committed on the
       server of origin (the source). This identifier is unique not only
@@ -1753,7 +1753,7 @@ changed!! Please use '--relay-log=<em class="replaceable"><code>new_replica_host
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385651356784"></a><p>
+<a class="indexterm" name="idm46254473238480"></a><p>
         A GTID set is a set comprising one or more single GTIDs or
         ranges of GTIDs. GTID sets are used in a MySQL server in several
         ways. For example, the values stored by the
@@ -1827,7 +1827,7 @@ changed!! Please use '--relay-log=<em class="replaceable"><code>new_replica_host
 </div>
 
 </div>
-<a class="indexterm" name="idm45385651327328"></a><a class="indexterm" name="idm45385651326240"></a><a class="indexterm" name="idm45385651324752"></a><a class="indexterm" name="idm45385651323264"></a><a class="indexterm" name="idm45385651321776"></a><p>
+<a class="indexterm" name="idm46254473208960"></a><a class="indexterm" name="idm46254473207872"></a><a class="indexterm" name="idm46254473206384"></a><a class="indexterm" name="idm46254473204896"></a><a class="indexterm" name="idm46254473203408"></a><p>
         GTIDs are stored in a table named
         <code class="literal">gtid_executed</code>, in the
         <code class="literal">mysql</code> database. A row in this table contains,
@@ -1857,7 +1857,7 @@ Warning
           modify this table yourself.
 </p>
 </div>
-<a class="indexterm" name="idm45385651312784"></a><p>
+<a class="indexterm" name="idm46254473194416"></a><p>
         The <code class="literal">mysql.gtid_executed</code> table is provided for
         internal use by the MySQL server. It enables a replica to use
         GTIDs when binary logging is disabled on the replica, and it
@@ -1958,7 +1958,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45385651274272"></a><a class="indexterm" name="idm45385651272768"></a><a class="indexterm" name="idm45385651271680"></a><a class="indexterm" name="idm45385651270160"></a><p>
+<a class="indexterm" name="idm46254473155904"></a><a class="indexterm" name="idm46254473154400"></a><a class="indexterm" name="idm46254473153312"></a><a class="indexterm" name="idm46254473151792"></a><p>
         Over the course of time, the
         <code class="literal">mysql.gtid_executed</code> table can become filled
         with many rows referring to individual GTIDs that originate on
@@ -2095,7 +2095,7 @@ PROCESSLIST_COMMAND: Daemon
 </div>
 
 </div>
-<a class="indexterm" name="idm45385651228496"></a><p>
+<a class="indexterm" name="idm46254473110128"></a><p>
       The life cycle of a GTID consists of the following steps:
 </p>
 <div class="orderedlist">
@@ -2416,7 +2416,7 @@ PROCESSLIST_COMMAND: Daemon
 </div>
 
 </div>
-<a class="indexterm" name="idm45385651130224"></a><a class="indexterm" name="idm45385651128736"></a><p>
+<a class="indexterm" name="idm46254473011744"></a><a class="indexterm" name="idm46254473010256"></a><p>
         The set of GTIDs in the
         <a class="link" href="replication.html#sysvar_gtid_purged"><code class="literal">gtid_purged</code></a> system variable
         (<code class="literal">@@GLOBAL.gtid_purged</code>) contains the GTIDs of
@@ -2622,7 +2622,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45385651048960"></a><p>
+<a class="indexterm" name="idm46254472930480"></a><p>
       GTIDs replace the file-offset pairs previously required to
       determine points for starting, stopping, or resuming the flow of
       data between source and replica. When GTIDs are in use, all the
@@ -2782,7 +2782,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45385651005168"></a><p>
+<a class="indexterm" name="idm46254472887216"></a><p>
       This section describes a process for configuring and starting
       GTID-based replication in MySQL 8.0. This is a
       <span class="quote">“<span class="quote">cold start</span>”</span> procedure that assumes either that you
@@ -2989,7 +2989,7 @@ mysql&gt; <strong class="userinput"><code>START REPLICA;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650920448"></a><a class="indexterm" name="idm45385650918960"></a><p>
+<a class="indexterm" name="idm46254472802432"></a><a class="indexterm" name="idm46254472800944"></a><p>
       There are a number of techniques when using MySQL Replication with
       Global Transaction Identifiers (GTIDs) for provisioning a new
       replica which can then be used for scaleout, being promoted to
@@ -3267,7 +3267,7 @@ mysql&gt; <strong class="userinput"><code>START REPLICA;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650814640"></a><p>
+<a class="indexterm" name="idm46254472696656"></a><p>
       From MySQL 8.0.23, you can set up replication channels to assign a
       GTID to replicated transactions that do not already have one. This
       feature enables replication from a source server that does not
@@ -3440,7 +3440,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650758768"></a><p>
+<a class="indexterm" name="idm46254472640720"></a><p>
       Because GTID-based replication is dependent on transactions, some
       features otherwise available in MySQL are not supported when using
       it. This section provides information about restrictions on and
@@ -3708,7 +3708,7 @@ RETURNS LONGTEXT
   RETURN GTID_SUBTRACT(gtid_set, GTID_SUBTRACT_UUID(gtid_set, uuid))|</pre><p>
 </p>
 <div class="example">
-<a name="idm45385650658368"></a><p class="title"><b>Example 17.1 Verifying that a replica is up to date</b></p>
+<a name="idm46254472539792"></a><p class="title"><b>Example 17.1 Verifying that a replica is up to date</b></p>
 <div class="example-contents">
 <p>
         The built-in functions <code class="function">GTID_SUBSET</code> and
@@ -3744,7 +3744,7 @@ RETURNS LONGTEXT
 </div>
 <br class="example-break">
 <div class="example">
-<a name="idm45385650647392"></a><p class="title"><b>Example 17.2 Backup and restore scenario</b></p>
+<a name="idm46254472528816"></a><p class="title"><b>Example 17.2 Backup and restore scenario</b></p>
 <div class="example-contents">
 <p>
         The stored functions <code class="function">GTID_IS_EQUAL</code>,
@@ -3866,7 +3866,7 @@ RETURNS LONGTEXT
 </div>
 <br class="example-break">
 <div class="example">
-<a name="idm45385650579120"></a><p class="title"><b>Example 17.3 Selecting the most up-to-date replica for manual failover</b></p>
+<a name="idm46254472460544"></a><p class="title"><b>Example 17.3 Selecting the most up-to-date replica for manual failover</b></p>
 <div class="example-contents">
 <p>
         The stored function <code class="function">GTID_UNION</code> could be
@@ -3902,7 +3902,7 @@ RETURNS LONGTEXT
 </div>
 <br class="example-break">
 <div class="example">
-<a name="idm45385650571712"></a><p class="title"><b>Example 17.4 Checking for extraneous transactions on a replica</b></p>
+<a name="idm46254472453136"></a><p class="title"><b>Example 17.4 Checking for extraneous transactions on a replica</b></p>
 <div class="example-contents">
 <p>
         The stored function <code class="function">GTID_SUBTRACT_UUID</code>
@@ -3941,7 +3941,7 @@ RETURNS LONGTEXT
 </div>
 <br class="example-break">
 <div class="example">
-<a name="idm45385650564096"></a><p class="title"><b>Example 17.5 Verifying that a server in a replication topology is read-only</b></p>
+<a name="idm46254472445520"></a><p class="title"><b>Example 17.5 Verifying that a server in a replication topology is read-only</b></p>
 <div class="example-contents">
 <p>
         The stored function
@@ -3962,7 +3962,7 @@ RETURNS LONGTEXT
 </div>
 <br class="example-break">
 <div class="example">
-<a name="idm45385650559408"></a><p class="title"><b>Example 17.6 Validating an additional replica in a multisource replication setup</b></p>
+<a name="idm46254472440832"></a><p class="title"><b>Example 17.6 Validating an additional replica in a multisource replication setup</b></p>
 <div class="example-contents">
 <p>
         The stored function
@@ -4053,7 +4053,7 @@ RETURNS LONGTEXT
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-mode-change-online-concepts">17.1.4.1 Replication Mode Concepts</a></span></dt><dt><span class="section"><a href="replication.html#replication-mode-change-online-enable-gtids">17.1.4.2 Enabling GTID Transactions Online</a></span></dt><dt><span class="section"><a href="replication.html#replication-mode-change-online-disable-gtids">17.1.4.3 Disabling GTID Transactions Online</a></span></dt><dt><span class="section"><a href="replication.html#replication-mode-change-online-verify-transactions">17.1.4.4 Verifying Replication of Anonymous Transactions</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385650522256"></a><p>
+<a class="indexterm" name="idm46254472403680"></a><p>
     This section describes how to change the mode of replication from
     and to GTID mode without having to take the server offline.
 </p>
@@ -4066,7 +4066,7 @@ RETURNS LONGTEXT
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385650519504"></a><p>
+<a class="indexterm" name="idm46254472400912"></a><p>
       To be able to safely configure the replication mode of an online
       server it is important to understand some key concepts of
       replication. This section explains these concepts and is essential
@@ -4226,7 +4226,7 @@ RETURNS LONGTEXT
 </div>
 
 <div class="table">
-<a name="idm45385650444112"></a><p class="title"><b>Table 17.1 Valid Combinations of Source and Replica gtid_mode</b></p>
+<a name="idm46254472325456"></a><p class="title"><b>Table 17.1 Valid Combinations of Source and Replica gtid_mode</b></p>
 <div class="table-contents">
 <table summary="Explains compatible (Y) and incompatible (N) combinations of master and slave GTID mode. An asterisk (*) indicates that auto-positioning can be used with this combination of GTID modes."><col style="width: 26%"><col style="width: 12%"><col style="width: 24%"><col style="width: 24%"><col style="width: 12%"><thead><tr>
           <th scope="col"><p>
@@ -4337,7 +4337,7 @@ RETURNS LONGTEXT
 </div>
 
 <div class="table">
-<a name="idm45385650389008"></a><p class="title"><b>Table 17.2 Valid Combinations of gtid_mode and gtid_next</b></p>
+<a name="idm46254472270352"></a><p class="title"><b>Table 17.2 Valid Combinations of gtid_mode and gtid_next</b></p>
 <div class="table-contents">
 <table summary="Explains the behavior for each of the possible combinations of GTID mode and setting for the gtid_next variable. With gtid_next set to AUTOMATIC, the behavior also varies depending on whether binary logging is enabled or disabled."><col style="width: 20%"><col style="width: 20%"><col style="width: 20%"><col style="width: 20%"><col style="width: 20%"><thead><tr>
           <th scope="col"></th>
@@ -4447,7 +4447,7 @@ RETURNS LONGTEXT
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650336192"></a><p>
+<a class="indexterm" name="idm46254472217536"></a><p>
       This section describes how to enable GTID transactions, and
       optionally auto-positioning, on servers that are already online
       and using anonymous transactions. This procedure does not require
@@ -4629,7 +4629,7 @@ START REPLICA [FOR CHANNEL 'channel'];
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650292256"></a><p>
+<a class="indexterm" name="idm46254472173584"></a><p>
       This section describes how to disable GTID transactions on servers
       that are already online. This procedure does not require taking
       the server offline and is suited to use in production. However, if
@@ -4753,7 +4753,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650255024"></a><p>
+<a class="indexterm" name="idm46254472136352"></a><p>
       This section explains how to monitor a replication topology and
       verify that all anonymous transactions have been replicated. This
       is helpful when changing the replication mode online as you can
@@ -4832,7 +4832,7 @@ Important
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-multi-source-configuration">17.1.5.1 Configuring Multi-Source Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-provision-replica">17.1.5.2 Provisioning a Multi-Source Replica for GTID-Based Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-adding-gtid-master">17.1.5.3 Adding GTID-Based Sources to a Multi-Source Replica</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-adding-binlog-master">17.1.5.4 Adding Binary Log Based Replication Sources to a Multi-Source Replica</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-start-replica">17.1.5.5 Starting Multi-Source Replicas</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-stop-replica">17.1.5.6 Stopping Multi-Source Replicas</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-reset-replica">17.1.5.7 Resetting Multi-Source Replicas</a></span></dt><dt><span class="section"><a href="replication.html#replication-multi-source-monitoring">17.1.5.8 Monitoring Multi-Source Replication</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385650235456"></a><a class="indexterm" name="idm45385650234368"></a><a class="indexterm" name="idm45385650232864"></a><a class="indexterm" name="idm45385650231360"></a><p>
+<a class="indexterm" name="idm46254472116896"></a><a class="indexterm" name="idm46254472115808"></a><a class="indexterm" name="idm46254472114304"></a><a class="indexterm" name="idm46254472112800"></a><p>
     MySQL multi-source replication enables a replica to receive
     transactions from multiple immediate sources in parallel. In a
     multi-source replication topology, a replica creates a replication
@@ -4905,7 +4905,7 @@ Note
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385650217680"></a><p>
+<a class="indexterm" name="idm46254472099120"></a><p>
       A multi-source replication topology requires at least two sources
       and one replica configured. In these tutorials, we assume that you
       have two sources <code class="literal">source1</code> and
@@ -4956,7 +4956,7 @@ mysql&gt; <strong class="userinput"><code>GRANT REPLICATION SLAVE ON *.* TO 'ted
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650196848"></a><p>
+<a class="indexterm" name="idm46254472078288"></a><p>
       If the sources in the multi-source replication topology have
       existing data, it can save time to provision the replica with the
       relevant data before starting replication. In a multi-source
@@ -5115,7 +5115,7 @@ mysql&gt; <strong class="userinput"><code>SET @@GLOBAL.gtid_purged = "2174B383-5
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650118784"></a><p>
+<a class="indexterm" name="idm46254472000224"></a><p>
       These steps assume you have enabled GTIDs for transactions on the
       sources using <a class="link" href="replication.html#sysvar_gtid_mode"><code class="literal">gtid_mode=ON</code></a>,
       created a replication user, ensured that the replica is using
@@ -5176,7 +5176,7 @@ mysql&gt; <strong class="userinput"><code>CHANGE REPLICATION FILTER REPLICATE_WI
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650086480"></a><p>
+<a class="indexterm" name="idm46254471967904"></a><p>
       These steps assume that binary logging is enabled on the source
       (which is the default), the replica is using
       <code class="literal">TABLE</code> based replication applier metadata
@@ -5230,7 +5230,7 @@ mysql&gt; <strong class="userinput"><code>CHANGE REPLICATION FILTER REPLICATE_WI
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650058192"></a><p>
+<a class="indexterm" name="idm46254471939616"></a><p>
       Once you have added channels for all of the replication sources,
       issue a <a class="link" href="sql-statements.html#start-replica" title="13.4.2.7 START REPLICA | SLAVE Statement"><code class="literal">START
       REPLICA | SLAVE</code></a> statement to start replication. When you
@@ -5270,7 +5270,7 @@ mysql&gt; <strong class="userinput"><code>SHOW REPLICA STATUS FOR CHANNEL "sourc
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650040224"></a><p>
+<a class="indexterm" name="idm46254471921648"></a><p>
       The <a class="link" href="sql-statements.html#stop-replica" title="13.4.2.9 STOP REPLICA | SLAVE Statement"><code class="literal">STOP REPLICA |
       SLAVE</code></a> statement can be used to stop a multi-source
       replica. By default, if you use the
@@ -5310,7 +5310,7 @@ mysql&gt; <strong class="userinput"><code>STOP REPLICA FOR CHANNEL "source_1";</
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650023248"></a><p>
+<a class="indexterm" name="idm46254471904672"></a><p>
       The <a class="link" href="sql-statements.html#reset-replica" title="13.4.2.5 RESET REPLICA | SLAVE Statement"><code class="literal">RESET REPLICA |
       SLAVE</code></a> statement can be used to reset a multi-source
       replica. By default, if you use the
@@ -5364,7 +5364,7 @@ mysql&gt; <strong class="userinput"><code>RESET REPLICA FOR CHANNEL "source_1";<
 </div>
 
 </div>
-<a class="indexterm" name="idm45385650000544"></a><a class="indexterm" name="idm45385649999040"></a><p>
+<a class="indexterm" name="idm46254471881968"></a><a class="indexterm" name="idm46254471880464"></a><p>
       To monitor the status of replication channels the following
       options exist:
 </p>
@@ -5418,7 +5418,7 @@ Note
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385649983072"></a><p>
+<a class="indexterm" name="idm46254471864432"></a><p>
         This section explains how to use the replication Performance
         Schema tables to monitor channels. You can choose to monitor all
         channels, or a subset of the existing channels.
@@ -5513,7 +5513,7 @@ LAST_ERROR_TIMESTAMP: 0000-00-00 00:00:00
   </p><p><a name="sysvar_server_id"></a>
     Of particular importance is the
     <a class="link" href="replication.html#sysvar_server_id"><code class="literal">server_id</code></a> system variable.
-</p><a class="indexterm" name="idm45385649962400"></a><a class="indexterm" name="idm45385649961312"></a>
+</p><a class="indexterm" name="idm46254471843760"></a><a class="indexterm" name="idm46254471842672"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for server_id"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--server-id=#</code></td>
@@ -5564,7 +5564,7 @@ LAST_ERROR_TIMESTAMP: 0000-00-00 00:00:00
     <a class="xref" href="replication.html#replication-howto-slavebaseconfig" title="17.1.2.2 Setting the Replica Configuration">Section 17.1.2.2, “Setting the Replica Configuration”</a>.
   </p><p><a name="sysvar_server_uuid"></a>
     <a class="link" href="replication.html#sysvar_server_uuid"><code class="literal">server_uuid</code></a>
-  </p><a class="indexterm" name="idm45385649924640"></a><a class="indexterm" name="idm45385649923136"></a><p>
+  </p><a class="indexterm" name="idm46254471805936"></a><a class="indexterm" name="idm46254471804432"></a><p>
     The MySQL server generates a true UUID in addition to the default or
     user-supplied server ID set in the <code class="literal">server_id</code>
     system variable. This is available as the global, read-only variable
@@ -5602,7 +5602,7 @@ Note
 </p>
 <div class="orderedlist">
 <ol class="orderedlist" type="1"><li class="listitem"><p>
-        <a class="indexterm" name="idm45385649898640"></a>
+        <a class="indexterm" name="idm46254471779936"></a>
 
         Attempt to read and use the UUID written in the file
         <code class="filename"><em class="replaceable"><code>data_dir</code></em>/auto.cnf</code>
@@ -6355,7 +6355,7 @@ Note
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_show-slave-auth-info"></a>
             <a class="link" href="replication.html#option_mysqld_show-slave-auth-info"><code class="option">--show-slave-auth-info</code></a>
-</p><a class="indexterm" name="idm45385649516464"></a><a class="indexterm" name="idm45385649515008"></a>
+</p><a class="indexterm" name="idm46254471397632"></a><a class="indexterm" name="idm46254471396176"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for show-slave-auth-info"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--show-slave-auth-info[={OFF|ON}]</code></td>
@@ -6394,7 +6394,7 @@ Note
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sysvar_auto_increment_increment"></a>
             <a class="link" href="replication.html#sysvar_auto_increment_increment"><code class="literal">auto_increment_increment</code></a>
-</p><a class="indexterm" name="idm45385649495088"></a><a class="indexterm" name="idm45385649493984"></a>
+</p><a class="indexterm" name="idm46254471376256"></a><a class="indexterm" name="idm46254471375152"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for auto_increment_increment"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--auto-increment-increment=#</code></td>
@@ -6652,7 +6652,7 @@ mysql&gt; <strong class="userinput"><code>SELECT col FROM autoinc1;</code></stro
             <a class="xref" href="replication.html#replication-features-auto-increment" title="17.5.1.1 Replication and AUTO_INCREMENT">Section 17.5.1.1, “Replication and AUTO_INCREMENT”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_auto_increment_offset"></a>
             <a class="link" href="replication.html#sysvar_auto_increment_offset"><code class="literal">auto_increment_offset</code></a>
-</p><a class="indexterm" name="idm45385649392160"></a><a class="indexterm" name="idm45385649391120"></a>
+</p><a class="indexterm" name="idm46254471273264"></a><a class="indexterm" name="idm46254471272224"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for auto_increment_offset"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--auto-increment-offset=#</code></td>
@@ -6696,7 +6696,7 @@ Note
             variable is no longer a restricted operation.
           </p></li><li class="listitem"><p><a name="sysvar_immediate_server_version"></a>
             <a class="link" href="replication.html#sysvar_immediate_server_version"><code class="literal">immediate_server_version</code></a>
-</p><a class="indexterm" name="idm45385649356912"></a><a class="indexterm" name="idm45385649355808"></a>
+</p><a class="indexterm" name="idm46254471238016"></a><a class="indexterm" name="idm46254471236912"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for immediate_server_version"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Introduced</th>
 <td>8.0.14</td>
@@ -6747,7 +6747,7 @@ Note
             is set automatically by the replication infrastructure.
           </p></li><li class="listitem"><p><a name="sysvar_original_server_version"></a>
             <a class="link" href="replication.html#sysvar_original_server_version"><code class="literal">original_server_version</code></a>
-</p><a class="indexterm" name="idm45385649326016"></a><a class="indexterm" name="idm45385649324976"></a>
+</p><a class="indexterm" name="idm46254471207120"></a><a class="indexterm" name="idm46254471206080"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for original_server_version"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Introduced</th>
 <td>8.0.14</td>
@@ -6808,7 +6808,7 @@ Note
             is set automatically by the replication infrastructure.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_master_enabled"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_master_enabled"><code class="literal">rpl_semi_sync_master_enabled</code></a>
-</p><a class="indexterm" name="idm45385649292608"></a><a class="indexterm" name="idm45385649291504"></a>
+</p><a class="indexterm" name="idm46254471173776"></a><a class="indexterm" name="idm46254471172672"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_master_enabled"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-master-enabled[={OFF|ON}]</code></td>
@@ -6837,7 +6837,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_master_timeout"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_master_timeout"><code class="literal">rpl_semi_sync_master_timeout</code></a>
-</p><a class="indexterm" name="idm45385649264112"></a><a class="indexterm" name="idm45385649263008"></a>
+</p><a class="indexterm" name="idm46254471145280"></a><a class="indexterm" name="idm46254471144176"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_master_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-master-timeout=#</code></td>
@@ -6865,7 +6865,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_master_trace_level"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_master_trace_level"><code class="literal">rpl_semi_sync_master_trace_level</code></a>
-</p><a class="indexterm" name="idm45385649237680"></a><a class="indexterm" name="idm45385649236576"></a>
+</p><a class="indexterm" name="idm46254471118784"></a><a class="indexterm" name="idm46254471117680"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_master_trace_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-master-trace-level=#</code></td>
@@ -6905,7 +6905,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_master_wait_for_slave_count"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_master_wait_for_slave_count"><code class="literal">rpl_semi_sync_master_wait_for_slave_count</code></a>
-</p><a class="indexterm" name="idm45385649207376"></a><a class="indexterm" name="idm45385649206256"></a>
+</p><a class="indexterm" name="idm46254471088480"></a><a class="indexterm" name="idm46254471087360"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_master_wait_for_slave_count"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-master-wait-for-slave-count=#</code></td>
@@ -6961,7 +6961,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_master_wait_no_slave"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_master_wait_no_slave"><code class="literal">rpl_semi_sync_master_wait_no_slave</code></a>
-</p><a class="indexterm" name="idm45385649168736"></a><a class="indexterm" name="idm45385649167696"></a>
+</p><a class="indexterm" name="idm46254471049776"></a><a class="indexterm" name="idm46254471048736"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_master_wait_no_slave"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-master-wait-no-slave[={OFF|ON}]</code></td>
@@ -7010,7 +7010,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_master_wait_point"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_master_wait_point"><code class="literal">rpl_semi_sync_master_wait_point</code></a>
-</p><a class="indexterm" name="idm45385649131552"></a><a class="indexterm" name="idm45385649130448"></a>
+</p><a class="indexterm" name="idm46254471012592"></a><a class="indexterm" name="idm46254471011488"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_master_wait_point"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-master-wait-point=value</code></td>
@@ -7174,7 +7174,7 @@ server-id=3
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_master-info-file"></a>
             <a class="link" href="replication.html#option_mysqld_master-info-file"><code class="option">--master-info-file=<em class="replaceable"><code>file_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385649067008"></a><a class="indexterm" name="idm45385649065520"></a>
+</p><a class="indexterm" name="idm46254470947920"></a><a class="indexterm" name="idm46254470946432"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for master-info-file"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--master-info-file=file_name</code></td>
@@ -7201,7 +7201,7 @@ server-id=3
             <a class="xref" href="replication.html#replica-logs-status" title="17.2.4.2 Replication Metadata Repositories">Section 17.2.4.2, “Replication Metadata Repositories”</a>.
           </p></li><li class="listitem"><p><a name="option_mysqld_master-retry-count"></a>
             <a class="link" href="replication.html#option_mysqld_master-retry-count"><code class="option">--master-retry-count=<em class="replaceable"><code>count</code></em></code></a>
-</p><a class="indexterm" name="idm45385649044416"></a><a class="indexterm" name="idm45385649042960"></a>
+</p><a class="indexterm" name="idm46254470925328"></a><a class="indexterm" name="idm46254470923872"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for master-retry-count"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--master-retry-count=#</code></td>
@@ -7244,7 +7244,7 @@ server-id=3
             instead.
           </p></li><li class="listitem"><p><a name="option_mysqld_max-relay-log-size"></a>
             <a class="link" href="replication.html#option_mysqld_max-relay-log-size"><code class="option">--max-relay-log-size=<em class="replaceable"><code>size</code></em></code></a>
-</p><a class="indexterm" name="idm45385649008224"></a><a class="indexterm" name="idm45385649006768"></a>
+</p><a class="indexterm" name="idm46254470889200"></a><a class="indexterm" name="idm46254470887744"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for max_relay_log_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--max-relay-log-size=#</code></td>
@@ -7278,7 +7278,7 @@ server-id=3
             information, see <a class="xref" href="replication.html#replica-logs-relaylog" title="17.2.4.1 The Relay Log">Section 17.2.4.1, “The Relay Log”</a>.
           </p></li><li class="listitem"><p><a name="option_mysqld_relay-log-purge"></a>
             <a class="link" href="replication.html#option_mysqld_relay-log-purge"><code class="option">--relay-log-purge={0|1}</code></a>
-</p><a class="indexterm" name="idm45385648972848"></a><a class="indexterm" name="idm45385648971360"></a>
+</p><a class="indexterm" name="idm46254470853696"></a><a class="indexterm" name="idm46254470852208"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_purge"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-purge[={OFF|ON}]</code></td>
@@ -7307,7 +7307,7 @@ server-id=3
             risks data consistency and is therefore not crash-safe.
           </p></li><li class="listitem"><p><a name="option_mysqld_relay-log-space-limit"></a>
             <a class="link" href="replication.html#option_mysqld_relay-log-space-limit"><code class="option">--relay-log-space-limit=<em class="replaceable"><code>size</code></em></code></a>
-</p><a class="indexterm" name="idm45385648944368"></a><a class="indexterm" name="idm45385648942864"></a>
+</p><a class="indexterm" name="idm46254470825216"></a><a class="indexterm" name="idm46254470823712"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_space_limit"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-space-limit=#</code></td>
@@ -7357,7 +7357,7 @@ server-id=3
             temporarily.
           </p></li><li class="listitem"><p><a name="option_mysqld_replicate-do-db"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-do-db"><code class="option">--replicate-do-db=<em class="replaceable"><code>db_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648905904"></a><a class="indexterm" name="idm45385648904416"></a>
+</p><a class="indexterm" name="idm46254470786816"></a><a class="indexterm" name="idm46254470785328"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-do-db"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-do-db=name</code></td>
@@ -7540,7 +7540,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="option_mysqld_replicate-ignore-db"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-ignore-db"><code class="option">--replicate-ignore-db=<em class="replaceable"><code>db_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648828720"></a><a class="indexterm" name="idm45385648827264"></a>
+</p><a class="indexterm" name="idm46254470709632"></a><a class="indexterm" name="idm46254470708176"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-ignore-db"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-ignore-db=name</code></td>
@@ -7664,7 +7664,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="option_mysqld_replicate-do-table"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-do-table"><code class="option">--replicate-do-table=<em class="replaceable"><code>db_name.tbl_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648775632"></a><a class="indexterm" name="idm45385648774176"></a>
+</p><a class="indexterm" name="idm46254470656544"></a><a class="indexterm" name="idm46254470655088"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-do-table"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-do-table=name</code></td>
@@ -7724,7 +7724,7 @@ Note
             <code class="option">--replicate-*-db</code> options.
           </p></li><li class="listitem"><p><a name="option_mysqld_replicate-ignore-table"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-ignore-table"><code class="option">--replicate-ignore-table=<em class="replaceable"><code>db_name.tbl_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648751232"></a><a class="indexterm" name="idm45385648749728"></a>
+</p><a class="indexterm" name="idm46254470632144"></a><a class="indexterm" name="idm46254470630640"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-ignore-table"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-ignore-table=name</code></td>
@@ -7786,7 +7786,7 @@ Note
             <code class="option">--replicate-*-db</code> options.
           </p></li><li class="listitem"><p><a name="option_mysqld_replicate-rewrite-db"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-rewrite-db"><code class="option">--replicate-rewrite-db=<em class="replaceable"><code>from_name</code></em>-&gt;<em class="replaceable"><code>to_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648726192"></a><a class="indexterm" name="idm45385648724736"></a>
+</p><a class="indexterm" name="idm46254470607104"></a><a class="indexterm" name="idm46254470605648"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-rewrite-db"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-rewrite-db=old_name-&gt;new_name</code></td>
@@ -7910,7 +7910,7 @@ Note
 <p>
           </p></li><li class="listitem"><p><a name="option_mysqld_replicate-same-server-id"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-same-server-id"><code class="option">--replicate-same-server-id</code></a>
-</p><a class="indexterm" name="idm45385648674496"></a><a class="indexterm" name="idm45385648672992"></a>
+</p><a class="indexterm" name="idm46254470555408"></a><a class="indexterm" name="idm46254470553904"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-same-server-id"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-same-server-id[={OFF|ON}]</code></td>
@@ -7955,7 +7955,7 @@ Note
             replication SQL thread to execute.
           </p></li><li class="listitem"><p><a name="option_mysqld_replicate-wild-do-table"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-wild-do-table"><code class="option">--replicate-wild-do-table=<em class="replaceable"><code>db_name.tbl_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648650000"></a><a class="indexterm" name="idm45385648648496"></a>
+</p><a class="indexterm" name="idm46254470530912"></a><a class="indexterm" name="idm46254470529408"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-wild-do-table"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-wild-do-table=name</code></td>
@@ -8048,7 +8048,7 @@ Note
             <a class="link" href="replication.html#option_mysqld_replicate-wild-do-table"><code class="option">--replicate-wild-do-table=my\\_own\\%db</code></a>.
           </p></li><li class="listitem"><p><a name="option_mysqld_replicate-wild-ignore-table"></a>
             <a class="link" href="replication.html#option_mysqld_replicate-wild-ignore-table"><code class="option">--replicate-wild-ignore-table=<em class="replaceable"><code>db_name.tbl_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385648607408"></a><a class="indexterm" name="idm45385648605904"></a>
+</p><a class="indexterm" name="idm46254470488320"></a><a class="indexterm" name="idm46254470486816"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replicate-wild-ignore-table"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replicate-wild-ignore-table=name</code></td>
@@ -8114,7 +8114,7 @@ Note
             as well.
           </p></li><li class="listitem"><p><a name="option_mysqld_skip-slave-start"></a>
             <a class="link" href="replication.html#option_mysqld_skip-slave-start"><code class="option">--skip-slave-start</code></a>
-</p><a class="indexterm" name="idm45385648580080"></a><a class="indexterm" name="idm45385648578592"></a>
+</p><a class="indexterm" name="idm46254470460992"></a><a class="indexterm" name="idm46254470459504"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for skip-slave-start"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--skip-slave-start[={OFF|ON}]</code></td>
@@ -8147,7 +8147,7 @@ Note
             access to the operating system.
           </p></li><li class="listitem"><p><a name="option_mysqld_slave-skip-errors"></a>
             <a class="link" href="replication.html#option_mysqld_slave-skip-errors"><code class="option">--slave-skip-errors=[<em class="replaceable"><code>err_code1</code></em>,<em class="replaceable"><code>err_code2</code></em>,...|all|ddl_exist_errors]</code></a>
-</p><a class="indexterm" name="idm45385648549904"></a><a class="indexterm" name="idm45385648548400"></a>
+</p><a class="indexterm" name="idm46254470430816"></a><a class="indexterm" name="idm46254470429312"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave-skip-errors"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-skip-errors=name</code></td>
@@ -8208,7 +8208,7 @@ Note
 --slave-skip-errors=ddl_exist_errors
 </pre></li><li class="listitem"><p><a name="option_mysqld_slave-sql-verify-checksum"></a>
             <a class="link" href="replication.html#option_mysqld_slave-sql-verify-checksum"><code class="option">--slave-sql-verify-checksum={0|1}</code></a>
-</p><a class="indexterm" name="idm45385648508416"></a><a class="indexterm" name="idm45385648506912"></a>
+</p><a class="indexterm" name="idm46254470389200"></a><a class="indexterm" name="idm46254470387696"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave-sql-verify-checksum"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-sql-verify-checksum[={OFF|ON}]</code></td>
@@ -8232,7 +8232,7 @@ Note
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_abort-slave-event-count"></a>
             <a class="link" href="replication.html#option_mysqld_abort-slave-event-count"><code class="option">--abort-slave-event-count</code></a>
-</p><a class="indexterm" name="idm45385648491616"></a><a class="indexterm" name="idm45385648490112"></a>
+</p><a class="indexterm" name="idm46254470372400"></a><a class="indexterm" name="idm46254470370896"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for abort-slave-event-count"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--abort-slave-event-count=#</code></td>
@@ -8262,7 +8262,7 @@ Note
             further events are read from the relay log.
           </p></li><li class="listitem"><p><a name="option_mysqld_disconnect-slave-event-count"></a>
             <a class="link" href="replication.html#option_mysqld_disconnect-slave-event-count"><code class="option">--disconnect-slave-event-count</code></a>
-</p><a class="indexterm" name="idm45385648468592"></a><a class="indexterm" name="idm45385648467088"></a>
+</p><a class="indexterm" name="idm46254470349376"></a><a class="indexterm" name="idm46254470347872"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for disconnect-slave-event-count"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--disconnect-slave-event-count=#</code></td>
@@ -8298,7 +8298,7 @@ Note
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sysvar_init_slave"></a>
             <a class="link" href="replication.html#sysvar_init_slave"><code class="literal">init_slave</code></a>
-</p><a class="indexterm" name="idm45385648449680"></a><a class="indexterm" name="idm45385648448592"></a>
+</p><a class="indexterm" name="idm46254470330528"></a><a class="indexterm" name="idm46254470329440"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for init_slave"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--init-slave=name</code></td>
@@ -8344,7 +8344,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="sysvar_log_slow_slave_statements"></a>
             <a class="link" href="replication.html#sysvar_log_slow_slave_statements"><code class="literal">log_slow_slave_statements</code></a>
-</p><a class="indexterm" name="idm45385648417120"></a><a class="indexterm" name="idm45385648416016"></a>
+</p><a class="indexterm" name="idm46254470297968"></a><a class="indexterm" name="idm46254470296864"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_slow_slave_statements"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-slow-slave-statements[={OFF|ON}]</code></td>
@@ -8402,7 +8402,7 @@ Note
             <code class="literal">SQL_THREAD</code> option).
           </p></li><li class="listitem"><p><a name="sysvar_master_info_repository"></a>
             <a class="link" href="replication.html#sysvar_master_info_repository"><code class="literal">master_info_repository</code></a>
-</p><a class="indexterm" name="idm45385648372976"></a><a class="indexterm" name="idm45385648371936"></a>
+</p><a class="indexterm" name="idm46254470253824"></a><a class="indexterm" name="idm46254470252784"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for master_info_repository"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--master-info-repository={FILE|TABLE}</code></td>
@@ -8446,7 +8446,7 @@ Note
             <a class="link" href="replication.html#option_mysqld_master-info-file"><code class="option">--master-info-file</code></a> option.
           </p></li><li class="listitem"><p><a name="sysvar_max_relay_log_size"></a>
             <a class="link" href="replication.html#sysvar_max_relay_log_size"><code class="literal">max_relay_log_size</code></a>
-</p><a class="indexterm" name="idm45385648333312"></a><a class="indexterm" name="idm45385648332272"></a>
+</p><a class="indexterm" name="idm46254470214160"></a><a class="indexterm" name="idm46254470213120"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for max_relay_log_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--max-relay-log-size=#</code></td>
@@ -8489,7 +8489,7 @@ Note
             <a class="xref" href="replication.html#replication-implementation-details" title="17.2.3 Replication Threads">Section 17.2.3, “Replication Threads”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_relay_log"></a>
             <a class="link" href="replication.html#sysvar_relay_log"><code class="literal">relay_log</code></a>
-</p><a class="indexterm" name="idm45385648294224"></a><a class="indexterm" name="idm45385648293136"></a>
+</p><a class="indexterm" name="idm46254470175072"></a><a class="indexterm" name="idm46254470173984"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log=file_name</code></td>
@@ -8580,7 +8580,7 @@ Note
             variable.
           </p></li><li class="listitem"><p><a name="sysvar_relay_log_basename"></a>
             <a class="link" href="replication.html#sysvar_relay_log_basename"><code class="literal">relay_log_basename</code></a>
-</p><a class="indexterm" name="idm45385648249248"></a><a class="indexterm" name="idm45385648248208"></a>
+</p><a class="indexterm" name="idm46254470130096"></a><a class="indexterm" name="idm46254470129056"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_basename"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_relay_log_basename">relay_log_basename</a></code></td>
@@ -8602,7 +8602,7 @@ Note
             the server and is read only.
           </p></li><li class="listitem"><p><a name="sysvar_relay_log_index"></a>
             <a class="link" href="replication.html#sysvar_relay_log_index"><code class="literal">relay_log_index</code></a>
-</p><a class="indexterm" name="idm45385648226000"></a><a class="indexterm" name="idm45385648224912"></a>
+</p><a class="indexterm" name="idm46254470106848"></a><a class="indexterm" name="idm46254470105760"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_index"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-index=file_name</code></td>
@@ -8667,7 +8667,7 @@ Note
             <a class="xref" href="programs.html#program-options" title="4.2.2 Specifying Program Options">Section 4.2.2, “Specifying Program Options”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_relay_log_info_file"></a>
             <a class="link" href="replication.html#sysvar_relay_log_info_file"><code class="literal">relay_log_info_file</code></a>
-</p><a class="indexterm" name="idm45385648185040"></a><a class="indexterm" name="idm45385648184000"></a>
+</p><a class="indexterm" name="idm46254470065888"></a><a class="indexterm" name="idm46254470064848"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_info_file"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-info-file=file_name</code></td>
@@ -8703,7 +8703,7 @@ Note
             <a class="xref" href="replication.html#replica-logs-status" title="17.2.4.2 Replication Metadata Repositories">Section 17.2.4.2, “Replication Metadata Repositories”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_relay_log_info_repository"></a>
             <a class="link" href="replication.html#sysvar_relay_log_info_repository"><code class="literal">relay_log_info_repository</code></a>
-</p><a class="indexterm" name="idm45385648152448"></a><a class="indexterm" name="idm45385648151344"></a>
+</p><a class="indexterm" name="idm46254470033296"></a><a class="indexterm" name="idm46254470032192"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_info_repository"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-info-repository=value</code></td>
@@ -8751,7 +8751,7 @@ Note
             variable.
           </p></li><li class="listitem"><p><a name="sysvar_relay_log_purge"></a>
             <a class="link" href="replication.html#sysvar_relay_log_purge"><code class="literal">relay_log_purge</code></a>
-</p><a class="indexterm" name="idm45385648110912"></a><a class="indexterm" name="idm45385648109824"></a>
+</p><a class="indexterm" name="idm46254469991760"></a><a class="indexterm" name="idm46254469990672"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_purge"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-purge[={OFF|ON}]</code></td>
@@ -8775,7 +8775,7 @@ Note
             (<code class="literal">ON</code>).
           </p></li><li class="listitem"><p><a name="sysvar_relay_log_recovery"></a>
             <a class="link" href="replication.html#sysvar_relay_log_recovery"><code class="literal">relay_log_recovery</code></a>
-</p><a class="indexterm" name="idm45385648084464"></a><a class="indexterm" name="idm45385648082976"></a><a class="indexterm" name="idm45385648081936"></a><a class="indexterm" name="idm45385648080864"></a>
+</p><a class="indexterm" name="idm46254469965312"></a><a class="indexterm" name="idm46254469963824"></a><a class="indexterm" name="idm46254469962784"></a><a class="indexterm" name="idm46254469961712"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_recovery"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-recovery[={OFF|ON}]</code></td>
@@ -8861,7 +8861,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="sysvar_relay_log_space_limit"></a>
             <a class="link" href="replication.html#sysvar_relay_log_space_limit"><code class="literal">relay_log_space_limit</code></a>
-</p><a class="indexterm" name="idm45385648041280"></a><a class="indexterm" name="idm45385648040240"></a>
+</p><a class="indexterm" name="idm46254469922128"></a><a class="indexterm" name="idm46254469921088"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for relay_log_space_limit"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--relay-log-space-limit=#</code></td>
@@ -8887,7 +8887,7 @@ Note
             The maximum amount of space to use for all relay logs.
           </p></li><li class="listitem"><p><a name="sysvar_replication_optimize_for_static_plugin_config"></a>
             <a class="link" href="replication.html#sysvar_replication_optimize_for_static_plugin_config"><code class="literal">replication_optimize_for_static_plugin_config</code></a>
-</p><a class="indexterm" name="idm45385648010704"></a><a class="indexterm" name="idm45385648009584"></a>
+</p><a class="indexterm" name="idm46254469891552"></a><a class="indexterm" name="idm46254469890432"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replication_optimize_for_static_plugin_config"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replication-optimize-for-static-plugin-config[={OFF|ON}]</code></td>
@@ -8926,7 +8926,7 @@ Note
             same locking mechanisms as the replicas.
           </p></li><li class="listitem"><p><a name="sysvar_replication_sender_observe_commit_only"></a>
             <a class="link" href="replication.html#sysvar_replication_sender_observe_commit_only"><code class="literal">replication_sender_observe_commit_only</code></a>
-</p><a class="indexterm" name="idm45385647980096"></a><a class="indexterm" name="idm45385647979056"></a>
+</p><a class="indexterm" name="idm46254469860944"></a><a class="indexterm" name="idm46254469859904"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for replication_sender_observe_commit_only"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--replication-sender-observe-commit-only[={OFF|ON}]</code></td>
@@ -8961,7 +8961,7 @@ Note
             same locking mechanisms as the replicas.
           </p></li><li class="listitem"><p><a name="sysvar_report_host"></a>
             <a class="link" href="replication.html#sysvar_report_host"><code class="literal">report_host</code></a>
-</p><a class="indexterm" name="idm45385647950096"></a><a class="indexterm" name="idm45385647949008"></a>
+</p><a class="indexterm" name="idm46254469830944"></a><a class="indexterm" name="idm46254469829856"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for report_host"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--report-host=host_name</code></td>
@@ -9001,7 +9001,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="sysvar_report_password"></a>
             <a class="link" href="replication.html#sysvar_report_password"><code class="literal">report_password</code></a>
-</p><a class="indexterm" name="idm45385647924320"></a><a class="indexterm" name="idm45385647923232"></a>
+</p><a class="indexterm" name="idm46254469805168"></a><a class="indexterm" name="idm46254469804080"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for report_password"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--report-password=name</code></td>
@@ -9033,7 +9033,7 @@ Note
             for the MySQL replication user account.
           </p></li><li class="listitem"><p><a name="sysvar_report_port"></a>
             <a class="link" href="replication.html#sysvar_report_port"><code class="literal">report_port</code></a>
-</p><a class="indexterm" name="idm45385647896864"></a><a class="indexterm" name="idm45385647895776"></a>
+</p><a class="indexterm" name="idm46254469777712"></a><a class="indexterm" name="idm46254469776624"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for report_port"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--report-port=port_num</code></td>
@@ -9069,7 +9069,7 @@ Note
             | SHOW SLAVE HOSTS</code></a>.
           </p></li><li class="listitem"><p><a name="sysvar_report_user"></a>
             <a class="link" href="replication.html#sysvar_report_user"><code class="literal">report_user</code></a>
-</p><a class="indexterm" name="idm45385647864288"></a><a class="indexterm" name="idm45385647863200"></a>
+</p><a class="indexterm" name="idm46254469745136"></a><a class="indexterm" name="idm46254469744048"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for report_user"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--report-user=name</code></td>
@@ -9101,7 +9101,7 @@ Note
             the MySQL replication user account.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_read_size"></a>
             <a class="link" href="replication.html#sysvar_rpl_read_size"><code class="literal">rpl_read_size</code></a>
-</p><a class="indexterm" name="idm45385647836832"></a><a class="indexterm" name="idm45385647835344"></a>
+</p><a class="indexterm" name="idm46254469717680"></a><a class="indexterm" name="idm46254469716192"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_read_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-read-size=#</code></td>
@@ -9144,7 +9144,7 @@ Note
             impact on memory consumption for servers.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_slave_enabled"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_slave_enabled"><code class="literal">rpl_semi_sync_slave_enabled</code></a>
-</p><a class="indexterm" name="idm45385647799808"></a><a class="indexterm" name="idm45385647798704"></a>
+</p><a class="indexterm" name="idm46254469680592"></a><a class="indexterm" name="idm46254469679488"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_slave_enabled"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-slave-enabled[={OFF|ON}]</code></td>
@@ -9173,7 +9173,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_semi_sync_slave_trace_level"></a>
             <a class="link" href="replication.html#sysvar_rpl_semi_sync_slave_trace_level"><code class="literal">rpl_semi_sync_slave_trace_level</code></a>
-</p><a class="indexterm" name="idm45385647771312"></a><a class="indexterm" name="idm45385647770208"></a>
+</p><a class="indexterm" name="idm46254469652096"></a><a class="indexterm" name="idm46254469650992"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_semi_sync_slave_trace_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-semi-sync-slave-trace-level=#</code></td>
@@ -9201,7 +9201,7 @@ Note
             semisynchronous replication plugin is installed.
           </p></li><li class="listitem"><p><a name="sysvar_rpl_stop_slave_timeout"></a>
             <a class="link" href="replication.html#sysvar_rpl_stop_slave_timeout"><code class="literal">rpl_stop_slave_timeout</code></a>
-</p><a class="indexterm" name="idm45385647743712"></a><a class="indexterm" name="idm45385647742224"></a>
+</p><a class="indexterm" name="idm46254469624432"></a><a class="indexterm" name="idm46254469622944"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for rpl_stop_slave_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--rpl-stop-slave-timeout=seconds</code></td>
@@ -9253,7 +9253,7 @@ Note
             SLAVE</code></a> statement is executed and the replica stops.
           </p></li><li class="listitem"><p><a name="sysvar_skip_slave_start"></a>
             <a class="link" href="replication.html#sysvar_skip_slave_start"><code class="literal">skip_slave_start</code></a>
-</p><a class="indexterm" name="idm45385647703344"></a><a class="indexterm" name="idm45385647702256"></a>
+</p><a class="indexterm" name="idm46254469584064"></a><a class="indexterm" name="idm46254469582976"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for skip-slave-start"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--skip-slave-start[={OFF|ON}]</code></td>
@@ -9291,7 +9291,7 @@ Note
             privileged access to the operating system.
           </p></li><li class="listitem"><p><a name="sysvar_slave_checkpoint_group"></a>
             <a class="link" href="replication.html#sysvar_slave_checkpoint_group"><code class="literal">slave_checkpoint_group</code></a>
-</p><a class="indexterm" name="idm45385647671440"></a><a class="indexterm" name="idm45385647669952"></a>
+</p><a class="indexterm" name="idm46254469552160"></a><a class="indexterm" name="idm46254469550672"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_checkpoint_group"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-checkpoint-group=#</code></td>
@@ -9361,7 +9361,7 @@ Note
             value is 524280.
           </p></li><li class="listitem"><p><a name="sysvar_slave_checkpoint_period"></a>
             <a class="link" href="replication.html#sysvar_slave_checkpoint_period"><code class="literal">slave_checkpoint_period</code></a>
-</p><a class="indexterm" name="idm45385647629520"></a><a class="indexterm" name="idm45385647628032"></a>
+</p><a class="indexterm" name="idm46254469510112"></a><a class="indexterm" name="idm46254469508624"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_checkpoint_period"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-checkpoint-period=#</code></td>
@@ -9425,7 +9425,7 @@ Note
             value is 4294967295 (4GB).
           </p></li><li class="listitem"><p><a name="sysvar_slave_compressed_protocol"></a>
             <a class="link" href="replication.html#sysvar_slave_compressed_protocol"><code class="literal">slave_compressed_protocol</code></a>
-</p><a class="indexterm" name="idm45385647589600"></a><a class="indexterm" name="idm45385647588496"></a>
+</p><a class="indexterm" name="idm46254469470192"></a><a class="indexterm" name="idm46254469469088"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_compressed_protocol"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-compressed-protocol[={OFF|ON}]</code></td>
@@ -9490,7 +9490,7 @@ Note
             <a class="xref" href="programs.html#connection-compression-legacy-configuration" title="Configuring Legacy Connection Compression">Configuring Legacy Connection Compression</a>.
           </p></li><li class="listitem"><p><a name="sysvar_slave_exec_mode"></a>
             <a class="link" href="replication.html#sysvar_slave_exec_mode"><code class="literal">slave_exec_mode</code></a>
-</p><a class="indexterm" name="idm45385647545856"></a><a class="indexterm" name="idm45385647544768"></a>
+</p><a class="indexterm" name="idm46254469426448"></a><a class="indexterm" name="idm46254469425360"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_exec_mode"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-exec-mode=mode</code></td>
@@ -9546,7 +9546,7 @@ Note
             other cases.
           </p></li><li class="listitem"><p><a name="sysvar_slave_load_tmpdir"></a>
             <a class="link" href="replication.html#sysvar_slave_load_tmpdir"><code class="literal">slave_load_tmpdir</code></a>
-</p><a class="indexterm" name="idm45385647503264"></a><a class="indexterm" name="idm45385647502224"></a>
+</p><a class="indexterm" name="idm46254469383744"></a><a class="indexterm" name="idm46254469382704"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_load_tmpdir"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-load-tmpdir=dir_name</code></td>
@@ -9597,7 +9597,7 @@ Note
             removed.
           </p></li><li class="listitem"><p><a name="sysvar_slave_max_allowed_packet"></a>
             <a class="link" href="replication.html#sysvar_slave_max_allowed_packet"><code class="literal">slave_max_allowed_packet</code></a>
-</p><a class="indexterm" name="idm45385647470352"></a><a class="indexterm" name="idm45385647469248"></a>
+</p><a class="indexterm" name="idm46254469350832"></a><a class="indexterm" name="idm46254469349728"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_max_allowed_packet"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-max-allowed-packet=#</code></td>
@@ -9645,7 +9645,7 @@ Note
             the minimum is 1024.
           </p></li><li class="listitem"><p><a name="sysvar_slave_net_timeout"></a>
             <a class="link" href="replication.html#sysvar_slave_net_timeout"><code class="literal">slave_net_timeout</code></a>
-</p><a class="indexterm" name="idm45385647431296"></a><a class="indexterm" name="idm45385647430256"></a>
+</p><a class="indexterm" name="idm46254469311776"></a><a class="indexterm" name="idm46254469310736"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_net_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-net-timeout=#</code></td>
@@ -9712,7 +9712,7 @@ Note
             timeout.
           </p></li><li class="listitem"><p><a name="sysvar_slave_parallel_type"></a>
             <a class="link" href="replication.html#sysvar_slave_parallel_type"><code class="literal">slave_parallel_type</code></a>
-</p><a class="indexterm" name="idm45385647381520"></a><a class="indexterm" name="idm45385647380480"></a>
+</p><a class="indexterm" name="idm46254469262000"></a><a class="indexterm" name="idm46254469260960"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_parallel_type"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-parallel-type=value</code></td>
@@ -9791,7 +9791,7 @@ Note
             mapped and scheduled for each event.
           </p></li><li class="listitem"><p><a name="sysvar_slave_parallel_workers"></a>
             <a class="link" href="replication.html#sysvar_slave_parallel_workers"><code class="literal">slave_parallel_workers</code></a>
-</p><a class="indexterm" name="idm45385647333488"></a><a class="indexterm" name="idm45385647332448"></a>
+</p><a class="indexterm" name="idm46254469213968"></a><a class="indexterm" name="idm46254469212928"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_parallel_workers"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-parallel-workers=#</code></td>
@@ -9865,7 +9865,7 @@ Note
             | SLAVE</code></a> statements.
           </p></li><li class="listitem"><p><a name="sysvar_slave_pending_jobs_size_max"></a>
             <a class="link" href="replication.html#sysvar_slave_pending_jobs_size_max"><code class="literal">slave_pending_jobs_size_max</code></a>
-</p><a class="indexterm" name="idm45385647290816"></a><a class="indexterm" name="idm45385647289312"></a>
+</p><a class="indexterm" name="idm46254469171296"></a><a class="indexterm" name="idm46254469169792"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_pending_jobs_size_max"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-pending-jobs-size-max=#</code></td>
@@ -9917,7 +9917,7 @@ Note
             has been completed.
           </p></li><li class="listitem"><p><a name="sysvar_slave_preserve_commit_order"></a>
             <a class="link" href="replication.html#sysvar_slave_preserve_commit_order"><code class="literal">slave_preserve_commit_order</code></a>
-</p><a class="indexterm" name="idm45385647249664"></a><a class="indexterm" name="idm45385647248160"></a>
+</p><a class="indexterm" name="idm46254469130144"></a><a class="indexterm" name="idm46254469128640"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_preserve_commit_order"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-preserve-commit-order[={OFF|ON}]</code></td>
@@ -10053,7 +10053,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="sysvar_slave_rows_search_algorithms"></a>
             <a class="link" href="replication.html#sysvar_slave_rows_search_algorithms"><code class="literal">slave_rows_search_algorithms</code></a>
-</p><a class="indexterm" name="idm45385647186160"></a><a class="indexterm" name="idm45385647185056"></a>
+</p><a class="indexterm" name="idm46254469066704"></a><a class="indexterm" name="idm46254469065600"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_rows_search_algorithms"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-rows-search-algorithms=value</code></td>
@@ -10086,7 +10086,7 @@ Note
             <a class="xref" href="replication.html#replication-features-row-searches" title="17.5.1.27 Replication and Row Searches">Section 17.5.1.27, “Replication and Row Searches”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_slave_skip_errors"></a>
             <a class="link" href="replication.html#sysvar_slave_skip_errors"><code class="literal">slave_skip_errors</code></a>
-</p><a class="indexterm" name="idm45385647150480"></a><a class="indexterm" name="idm45385647149440"></a>
+</p><a class="indexterm" name="idm46254469031072"></a><a class="indexterm" name="idm46254469030032"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave-skip-errors"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-skip-errors=name</code></td>
@@ -10115,7 +10115,7 @@ Note
             value.
           </p></li><li class="listitem"><p><a name="sysvar_slave_sql_verify_checksum"></a>
             <a class="link" href="replication.html#sysvar_slave_sql_verify_checksum"><code class="literal">slave_sql_verify_checksum</code></a>
-</p><a class="indexterm" name="idm45385647118880"></a><a class="indexterm" name="idm45385647117776"></a>
+</p><a class="indexterm" name="idm46254468999472"></a><a class="indexterm" name="idm46254468998368"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_sql_verify_checksum"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-sql-verify-checksum[={OFF|ON}]</code></td>
@@ -10152,7 +10152,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="sysvar_slave_transaction_retries"></a>
             <a class="link" href="replication.html#sysvar_slave_transaction_retries"><code class="literal">slave_transaction_retries</code></a>
-</p><a class="indexterm" name="idm45385647091952"></a><a class="indexterm" name="idm45385647090848"></a>
+</p><a class="indexterm" name="idm46254468972608"></a><a class="indexterm" name="idm46254468971504"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_transaction_retries"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-transaction-retries=#</code></td>
@@ -10213,7 +10213,7 @@ Note
             progress to be reattempted.
           </p></li><li class="listitem"><p><a name="sysvar_slave_type_conversions"></a>
             <a class="link" href="replication.html#sysvar_slave_type_conversions"><code class="literal">slave_type_conversions</code></a>
-</p><a class="indexterm" name="idm45385647044176"></a><a class="indexterm" name="idm45385647043136"></a>
+</p><a class="indexterm" name="idm46254468924704"></a><a class="indexterm" name="idm46254468923664"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for slave_type_conversions"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--slave-type-conversions=set</code></td>
@@ -10252,7 +10252,7 @@ Note
             <a class="xref" href="replication.html#replication-features-attribute-promotion" title="Row-based replication: attribute promotion and demotion">Row-based replication: attribute promotion and demotion</a>.
           </p></li><li class="listitem"><p><a name="sysvar_sql_slave_skip_counter"></a>
             <a class="link" href="replication.html#sysvar_sql_slave_skip_counter"><code class="literal">sql_slave_skip_counter</code></a>
-</p><a class="indexterm" name="idm45385647008240"></a><a class="indexterm" name="idm45385647007200"></a>
+</p><a class="indexterm" name="idm46254468888704"></a><a class="indexterm" name="idm46254468887664"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sql_slave_skip_counter"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_sql_slave_skip_counter">sql_slave_skip_counter</a></code></td>
@@ -10317,7 +10317,7 @@ Important
 </div>
 </li><li class="listitem"><p><a name="sysvar_sync_master_info"></a>
             <a class="link" href="replication.html#sysvar_sync_master_info"><code class="literal">sync_master_info</code></a>
-</p><a class="indexterm" name="idm45385646966144"></a><a class="indexterm" name="idm45385646965056"></a>
+</p><a class="indexterm" name="idm46254468846544"></a><a class="indexterm" name="idm46254468845456"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sync_master_info"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--sync-master-info=#</code></td>
@@ -10355,7 +10355,7 @@ Important
             including running channels.
           </p></li><li class="listitem"><p><a name="sysvar_sync_relay_log"></a>
             <a class="link" href="replication.html#sysvar_sync_relay_log"><code class="literal">sync_relay_log</code></a>
-</p><a class="indexterm" name="idm45385646932384"></a><a class="indexterm" name="idm45385646931296"></a>
+</p><a class="indexterm" name="idm46254468812784"></a><a class="indexterm" name="idm46254468811696"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sync_relay_log"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--sync-relay-log=#</code></td>
@@ -10400,7 +10400,7 @@ Important
             <a class="xref" href="replication.html#replication-solutions-unexpected-replica-halt" title="17.4.2 Handling an Unexpected Halt of a Replica">Section 17.4.2, “Handling an Unexpected Halt of a Replica”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_sync_relay_log_info"></a>
             <a class="link" href="replication.html#sysvar_sync_relay_log_info"><code class="literal">sync_relay_log_info</code></a>
-</p><a class="indexterm" name="idm45385646896768"></a><a class="indexterm" name="idm45385646895728"></a>
+</p><a class="indexterm" name="idm46254468777168"></a><a class="indexterm" name="idm46254468776128"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sync_relay_log_info"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--sync-relay-log-info=#</code></td>
@@ -10487,7 +10487,7 @@ Important
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_binlog-row-event-max-size"></a>
             <a class="link" href="replication.html#option_mysqld_binlog-row-event-max-size"><code class="option">--binlog-row-event-max-size=<em class="replaceable"><code>N</code></em></code></a>
-</p><a class="indexterm" name="idm45385646852320"></a><a class="indexterm" name="idm45385646850816"></a>
+</p><a class="indexterm" name="idm46254468732608"></a><a class="indexterm" name="idm46254468731104"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog-row-event-max-size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-row-event-max-size=#</code></td>
@@ -10522,7 +10522,7 @@ Important
             bytes.
           </p></li><li class="listitem"><p><a name="option_mysqld_log-bin"></a>
             <a class="link" href="replication.html#option_mysqld_log-bin"><code class="option">--log-bin[=<em class="replaceable"><code>base_name</code></em>]</code></a>
-</p><a class="indexterm" name="idm45385646818176"></a><a class="indexterm" name="idm45385646816688"></a>
+</p><a class="indexterm" name="idm46254468698464"></a><a class="indexterm" name="idm46254468696976"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log-bin"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-bin=file_name</code></td>
@@ -10643,7 +10643,7 @@ Important
             log, see <a class="xref" href="server-administration.html#binary-log" title="5.4.4 The Binary Log">Section 5.4.4, “The Binary Log”</a>.
           </p></li><li class="listitem"><p><a name="option_mysqld_log-bin-index"></a>
             <a class="link" href="replication.html#option_mysqld_log-bin-index"><code class="option">--log-bin-index[=<em class="replaceable"><code>file_name</code></em>]</code></a>
-</p><a class="indexterm" name="idm45385646769712"></a><a class="indexterm" name="idm45385646768224"></a>
+</p><a class="indexterm" name="idm46254468650000"></a><a class="indexterm" name="idm46254468648512"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log-bin-index"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-bin-index=file_name</code></td>
@@ -10689,7 +10689,7 @@ Important
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_binlog-do-db"></a>
             <a class="link" href="replication.html#option_mysqld_binlog-do-db"><code class="option">--binlog-do-db=<em class="replaceable"><code>db_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385646736368"></a><a class="indexterm" name="idm45385646734880"></a>
+</p><a class="indexterm" name="idm46254468616592"></a><a class="indexterm" name="idm46254468615104"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog-do-db"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-do-db=name</code></td>
@@ -10840,7 +10840,7 @@ UPDATE db1.table1, db2.table2 SET db1.table1.col1 = 10, db2.table2.col2 = 20;
             behavior.
           </p></li><li class="listitem"><p><a name="option_mysqld_binlog-ignore-db"></a>
             <a class="link" href="replication.html#option_mysqld_binlog-ignore-db"><code class="option">--binlog-ignore-db=<em class="replaceable"><code>db_name</code></em></code></a>
-</p><a class="indexterm" name="idm45385646663760"></a><a class="indexterm" name="idm45385646662272"></a>
+</p><a class="indexterm" name="idm46254468543984"></a><a class="indexterm" name="idm46254468542496"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog-ignore-db"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-ignore-db=name</code></td>
@@ -10928,7 +10928,7 @@ UPDATE sales.january SET amount=amount+1000;
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_binlog-checksum"></a>
             <a class="link" href="replication.html#option_mysqld_binlog-checksum"><code class="option">--binlog-checksum={NONE|CRC32}</code></a>
-</p><a class="indexterm" name="idm45385646621472"></a><a class="indexterm" name="idm45385646619984"></a>
+</p><a class="indexterm" name="idm46254468501648"></a><a class="indexterm" name="idm46254468500160"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog-checksum"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-checksum=type</code></td>
@@ -10963,7 +10963,7 @@ UPDATE sales.january SET amount=amount+1000;
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_max-binlog-dump-events"></a>
             <a class="link" href="replication.html#option_mysqld_max-binlog-dump-events"><code class="option">--max-binlog-dump-events=<em class="replaceable"><code>N</code></em></code></a>
-</p><a class="indexterm" name="idm45385646596672"></a><a class="indexterm" name="idm45385646595168"></a>
+</p><a class="indexterm" name="idm46254468476848"></a><a class="indexterm" name="idm46254468475344"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for max-binlog-dump-events"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--max-binlog-dump-events=#</code></td>
@@ -10978,7 +10978,7 @@ UPDATE sales.january SET amount=amount+1000;
             replication testing and debugging.
           </p></li><li class="listitem"><p><a name="option_mysqld_sporadic-binlog-dump-fail"></a>
             <a class="link" href="replication.html#option_mysqld_sporadic-binlog-dump-fail"><code class="option">--sporadic-binlog-dump-fail</code></a>
-</p><a class="indexterm" name="idm45385646580928"></a><a class="indexterm" name="idm45385646579424"></a>
+</p><a class="indexterm" name="idm46254468461104"></a><a class="indexterm" name="idm46254468459600"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sporadic-binlog-dump-fail"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--sporadic-binlog-dump-fail[={OFF|ON}]</code></td>
@@ -11017,7 +11017,7 @@ UPDATE sales.january SET amount=amount+1000;
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sysvar_binlog_cache_size"></a>
             <a class="link" href="replication.html#sysvar_binlog_cache_size"><code class="literal">binlog_cache_size</code></a>
-</p><a class="indexterm" name="idm45385646561296"></a><a class="indexterm" name="idm45385646560256"></a>
+</p><a class="indexterm" name="idm46254468441472"></a><a class="indexterm" name="idm46254468440432"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_cache_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-cache-size=#</code></td>
@@ -11076,7 +11076,7 @@ UPDATE sales.january SET amount=amount+1000;
             system variable.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_checksum"></a>
             <a class="link" href="replication.html#sysvar_binlog_checksum"><code class="literal">binlog_checksum</code></a>
-</p><a class="indexterm" name="idm45385646517008"></a><a class="indexterm" name="idm45385646515920"></a>
+</p><a class="indexterm" name="idm46254468397184"></a><a class="indexterm" name="idm46254468396096"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_checksum"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-checksum=name</code></td>
@@ -11139,7 +11139,7 @@ UPDATE sales.january SET amount=amount+1000;
             the compressed <code class="literal">Transaction_payload_event</code>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_direct_non_transactional_updates"></a>
             <a class="link" href="replication.html#sysvar_binlog_direct_non_transactional_updates"><code class="literal">binlog_direct_non_transactional_updates</code></a>
-</p><a class="indexterm" name="idm45385646473056"></a><a class="indexterm" name="idm45385646472016"></a>
+</p><a class="indexterm" name="idm46254468353232"></a><a class="indexterm" name="idm46254468352192"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_direct_non_transactional_updates"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-direct-non-transactional-updates[={OFF|ON}]</code></td>
@@ -11217,7 +11217,7 @@ Important
             <code class="literal">ROW</code> or <code class="literal">MIXED</code>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_encryption"></a>
             <a class="link" href="replication.html#sysvar_binlog_encryption"><code class="literal">binlog_encryption</code></a>
-</p><a class="indexterm" name="idm45385646429360"></a><a class="indexterm" name="idm45385646428320"></a>
+</p><a class="indexterm" name="idm46254468309536"></a><a class="indexterm" name="idm46254468308496"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_encryption"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-encryption[={OFF|ON}]</code></td>
@@ -11296,7 +11296,7 @@ Important
             <a class="xref" href="replication.html#replication-binlog-encryption" title="17.3.2 Encrypting Binary Log Files and Relay Log Files">Section 17.3.2, “Encrypting Binary Log Files and Relay Log Files”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_error_action"></a>
             <a class="link" href="replication.html#sysvar_binlog_error_action"><code class="literal">binlog_error_action</code></a>
-</p><a class="indexterm" name="idm45385646390400"></a><a class="indexterm" name="idm45385646389360"></a>
+</p><a class="indexterm" name="idm46254468270576"></a><a class="indexterm" name="idm46254468269536"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_error_action"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-error-action[=value]</code></td>
@@ -11340,7 +11340,7 @@ Important
             MySQL.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_expire_logs_seconds"></a>
             <a class="link" href="replication.html#sysvar_binlog_expire_logs_seconds"><code class="literal">binlog_expire_logs_seconds</code></a>
-</p><a class="indexterm" name="idm45385646355136"></a><a class="indexterm" name="idm45385646354048"></a>
+</p><a class="indexterm" name="idm46254468235312"></a><a class="indexterm" name="idm46254468234224"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_expire_logs_seconds"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-expire-logs-seconds=#</code></td>
@@ -11406,7 +11406,7 @@ Important
             See <a class="xref" href="sql-statements.html#purge-binary-logs" title="13.4.1.1 PURGE BINARY LOGS Statement">Section 13.4.1.1, “PURGE BINARY LOGS Statement”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_format"></a>
             <a class="link" href="replication.html#sysvar_binlog_format"><code class="literal">binlog_format</code></a>
-</p><a class="indexterm" name="idm45385646305584"></a><a class="indexterm" name="idm45385646304496"></a>
+</p><a class="indexterm" name="idm46254468185760"></a><a class="indexterm" name="idm46254468184672"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_format"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-format=format</code></td>
@@ -11541,7 +11541,7 @@ Important
             the individual options.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_group_commit_sync_delay"></a>
             <a class="link" href="replication.html#sysvar_binlog_group_commit_sync_delay"><code class="literal">binlog_group_commit_sync_delay</code></a>
-</p><a class="indexterm" name="idm45385646234608"></a><a class="indexterm" name="idm45385646233520"></a>
+</p><a class="indexterm" name="idm46254468114720"></a><a class="indexterm" name="idm46254468113632"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_group_commit_sync_delay"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-group-commit-sync-delay=#</code></td>
@@ -11619,7 +11619,7 @@ Important
             setting.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_group_commit_sync_no_delay_count"></a>
             <a class="link" href="replication.html#sysvar_binlog_group_commit_sync_no_delay_count"><code class="literal">binlog_group_commit_sync_no_delay_count</code></a>
-</p><a class="indexterm" name="idm45385646182336"></a><a class="indexterm" name="idm45385646181248"></a>
+</p><a class="indexterm" name="idm46254468062448"></a><a class="indexterm" name="idm46254468061360"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_group_commit_sync_no_delay_count"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-group-commit-sync-no-delay-count=#</code></td>
@@ -11650,7 +11650,7 @@ Important
             is set to 0, then this option has no effect.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_max_flush_queue_time"></a>
             <a class="link" href="replication.html#sysvar_binlog_max_flush_queue_time"><code class="literal">binlog_max_flush_queue_time</code></a>
-</p><a class="indexterm" name="idm45385646149088"></a><a class="indexterm" name="idm45385646147984"></a>
+</p><a class="indexterm" name="idm46254468029200"></a><a class="indexterm" name="idm46254468028096"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_max_flush_queue_time"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-max-flush-queue-time=#</code></td>
@@ -11683,7 +11683,7 @@ Important
             longer has any effect.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_order_commits"></a>
             <a class="link" href="replication.html#sysvar_binlog_order_commits"><code class="literal">binlog_order_commits</code></a>
-</p><a class="indexterm" name="idm45385646115472"></a><a class="indexterm" name="idm45385646114432"></a>
+</p><a class="indexterm" name="idm46254467995584"></a><a class="indexterm" name="idm46254467994544"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_order_commits"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-order-commits[={OFF|ON}]</code></td>
@@ -11734,7 +11734,7 @@ Important
             on the replica.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_rotate_encryption_master_key_at_startup"></a>
             <a class="link" href="replication.html#sysvar_binlog_rotate_encryption_master_key_at_startup"><code class="literal">binlog_rotate_encryption_master_key_at_startup</code></a>
-</p><a class="indexterm" name="idm45385646084736"></a><a class="indexterm" name="idm45385646083616"></a>
+</p><a class="indexterm" name="idm46254467964848"></a><a class="indexterm" name="idm46254467963728"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_rotate_encryption_master_key_at_startup"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-rotate-encryption-master-key-at-startup[={OFF|ON}]</code></td>
@@ -11778,7 +11778,7 @@ Important
             see <a class="xref" href="replication.html#replication-binlog-encryption" title="17.3.2 Encrypting Binary Log Files and Relay Log Files">Section 17.3.2, “Encrypting Binary Log Files and Relay Log Files”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_row_event_max_size"></a>
             <a class="link" href="replication.html#sysvar_binlog_row_event_max_size"><code class="literal">binlog_row_event_max_size</code></a>
-</p><a class="indexterm" name="idm45385646049888"></a><a class="indexterm" name="idm45385646048784"></a>
+</p><a class="indexterm" name="idm46254467930000"></a><a class="indexterm" name="idm46254467928896"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog-row-event-max-size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-row-event-max-size=#</code></td>
@@ -11819,7 +11819,7 @@ Important
             <a class="link" href="data-types.html#set" title="11.3.6 The SET Type"><code class="literal">SET</code></a> statement.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_row_image"></a>
             <a class="link" href="replication.html#sysvar_binlog_row_image"><code class="literal">binlog_row_image</code></a>
-</p><a class="indexterm" name="idm45385646013072"></a><a class="indexterm" name="idm45385646011984"></a>
+</p><a class="indexterm" name="idm46254467893184"></a><a class="indexterm" name="idm46254467892096"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_row_image"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-row-image=image_type</code></td>
@@ -11965,7 +11965,7 @@ Note
             transaction.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_row_metadata"></a>
             <a class="link" href="replication.html#sysvar_binlog_row_metadata"><code class="literal">binlog_row_metadata</code></a>
-</p><a class="indexterm" name="idm45385645950768"></a><a class="indexterm" name="idm45385645949728"></a>
+</p><a class="indexterm" name="idm46254467830880"></a><a class="indexterm" name="idm46254467829840"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_row_metadata"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-row-metadata=metadata_type</code></td>
@@ -12011,7 +12011,7 @@ Note
 </div>
 </li><li class="listitem"><p><a name="sysvar_binlog_row_value_options"></a>
             <a class="link" href="replication.html#sysvar_binlog_row_value_options"><code class="literal">binlog_row_value_options</code></a>
-</p><a class="indexterm" name="idm45385645913184"></a><a class="indexterm" name="idm45385645912080"></a>
+</p><a class="indexterm" name="idm46254467793232"></a><a class="indexterm" name="idm46254467792128"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_row_value_options"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-row-value-options=#</code></td>
@@ -12089,7 +12089,7 @@ Note
             produce a valid but unexpected JSON document on the replica.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_rows_query_log_events"></a>
             <code class="literal">binlog_rows_query_log_events</code>
-</p><a class="indexterm" name="idm45385645861024"></a><a class="indexterm" name="idm45385645859920"></a>
+</p><a class="indexterm" name="idm46254467741072"></a><a class="indexterm" name="idm46254467739968"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_rows_query_log_events"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-rows-query-log-events[={OFF|ON}]</code></td>
@@ -12129,7 +12129,7 @@ Note
             --verbose</code>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_stmt_cache_size"></a>
             <a class="link" href="replication.html#sysvar_binlog_stmt_cache_size"><code class="literal">binlog_stmt_cache_size</code></a>
-</p><a class="indexterm" name="idm45385645830976"></a><a class="indexterm" name="idm45385645829936"></a>
+</p><a class="indexterm" name="idm46254467711024"></a><a class="indexterm" name="idm46254467709984"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_stmt_cache_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-stmt-cache-size=#</code></td>
@@ -12188,7 +12188,7 @@ Note
             system variable sets the size for the transaction cache.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_transaction_compression"></a>
             <a class="link" href="replication.html#sysvar_binlog_transaction_compression"><code class="literal">binlog_transaction_compression</code></a>
-</p><a class="indexterm" name="idm45385645787168"></a><a class="indexterm" name="idm45385645786064"></a>
+</p><a class="indexterm" name="idm46254467667216"></a><a class="indexterm" name="idm46254467666112"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_transaction_compression"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-transaction-compression[={OFF|ON}]</code></td>
@@ -12255,7 +12255,7 @@ Note
             <a class="xref" href="server-administration.html#binary-log-transaction-compression" title="5.4.4.5 Binary Log Transaction Compression">Section 5.4.4.5, “Binary Log Transaction Compression”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_transaction_compression_level_zstd"></a>
             <a class="link" href="replication.html#sysvar_binlog_transaction_compression_level_zstd"><code class="literal">binlog_transaction_compression_level_zstd</code></a>
-</p><a class="indexterm" name="idm45385645747856"></a><a class="indexterm" name="idm45385645746736"></a>
+</p><a class="indexterm" name="idm46254467627904"></a><a class="indexterm" name="idm46254467626784"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_transaction_compression_level_zstd"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-transaction-compression-level-zstd=#</code></td>
@@ -12303,7 +12303,7 @@ Note
             variables. See <a class="xref" href="server-administration.html#system-variable-privileges" title="5.1.9.1 System Variable Privileges">Section 5.1.9.1, “System Variable Privileges”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_transaction_dependency_tracking"></a>
             <a class="link" href="replication.html#sysvar_binlog_transaction_dependency_tracking"><code class="literal">binlog_transaction_dependency_tracking</code></a>
-</p><a class="indexterm" name="idm45385645710768"></a><a class="indexterm" name="idm45385645709728"></a>
+</p><a class="indexterm" name="idm46254467590816"></a><a class="indexterm" name="idm46254467589776"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_transaction_dependency_tracking"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-transaction-dependency-tracking=value</code></td>
@@ -12409,7 +12409,7 @@ Note
             group's workload.
           </p></li><li class="listitem"><p><a name="sysvar_binlog_transaction_dependency_history_size"></a>
             <a class="link" href="replication.html#sysvar_binlog_transaction_dependency_history_size"><code class="literal">binlog_transaction_dependency_history_size</code></a>
-</p><a class="indexterm" name="idm45385645644624"></a><a class="indexterm" name="idm45385645643504"></a>
+</p><a class="indexterm" name="idm46254467524672"></a><a class="indexterm" name="idm46254467523552"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_transaction_dependency_history_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-transaction-dependency-history-size=#</code></td>
@@ -12438,7 +12438,7 @@ Note
             been reached, the history is purged.
           </p></li><li class="listitem"><p><a name="sysvar_expire_logs_days"></a>
             <a class="link" href="replication.html#sysvar_expire_logs_days"><code class="literal">expire_logs_days</code></a>
-</p><a class="indexterm" name="idm45385645613760"></a><a class="indexterm" name="idm45385645612672"></a>
+</p><a class="indexterm" name="idm46254467493808"></a><a class="indexterm" name="idm46254467492720"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for expire_logs_days"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--expire-logs-days=#</code></td>
@@ -12508,7 +12508,7 @@ Note
             See <a class="xref" href="sql-statements.html#purge-binary-logs" title="13.4.1.1 PURGE BINARY LOGS Statement">Section 13.4.1.1, “PURGE BINARY LOGS Statement”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_log_bin"></a>
             <a class="link" href="replication.html#sysvar_log_bin"><code class="literal">log_bin</code></a>
-</p><a class="indexterm" name="idm45385645561104"></a><a class="indexterm" name="idm45385645560032"></a>
+</p><a class="indexterm" name="idm46254467441152"></a><a class="indexterm" name="idm46254467440080"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_bin"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_log_bin">log_bin</a></code></td>
@@ -12565,7 +12565,7 @@ Note
             log, see <a class="xref" href="server-administration.html#binary-log" title="5.4.4 The Binary Log">Section 5.4.4, “The Binary Log”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_log_bin_basename"></a>
             <a class="link" href="replication.html#sysvar_log_bin_basename"><code class="literal">log_bin_basename</code></a>
-</p><a class="indexterm" name="idm45385645524976"></a><a class="indexterm" name="idm45385645523888"></a>
+</p><a class="indexterm" name="idm46254467405024"></a><a class="indexterm" name="idm46254467403936"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_bin_basename"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_log_bin_basename">log_bin_basename</a></code></td>
@@ -12596,7 +12596,7 @@ Note
             
           </p></li><li class="listitem"><p><a name="sysvar_log_bin_index"></a>
             <a class="link" href="replication.html#sysvar_log_bin_index"><code class="literal">log_bin_index</code></a>
-</p><a class="indexterm" name="idm45385645499760"></a><a class="indexterm" name="idm45385645498672"></a>
+</p><a class="indexterm" name="idm46254467379808"></a><a class="indexterm" name="idm46254467378720"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log-bin-index"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-bin-index=file_name</code></td>
@@ -12619,7 +12619,7 @@ Note
             option. The maximum variable length is 256.
           </p></li><li class="listitem"><p><a name="sysvar_log_bin_trust_function_creators"></a>
             <a class="link" href="replication.html#sysvar_log_bin_trust_function_creators"><code class="literal">log_bin_trust_function_creators</code></a>
-</p><a class="indexterm" name="idm45385645475424"></a><a class="indexterm" name="idm45385645474320"></a>
+</p><a class="indexterm" name="idm46254467355472"></a><a class="indexterm" name="idm46254467354368"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_bin_trust_function_creators"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-bin-trust-function-creators[={OFF|ON}]</code></td>
@@ -12656,7 +12656,7 @@ Note
             See <a class="xref" href="stored-objects.html#stored-programs-logging" title="25.7 Stored Program Binary Logging">Section 25.7, “Stored Program Binary Logging”</a>.
           </p></li><li class="listitem"><p><a name="sysvar_log_bin_use_v1_row_events"></a>
             <a class="link" href="replication.html#sysvar_log_bin_use_v1_row_events"><code class="literal">log_bin_use_v1_row_events</code></a>
-</p><a class="indexterm" name="idm45385645442432"></a><a class="indexterm" name="idm45385645441328"></a>
+</p><a class="indexterm" name="idm46254467322480"></a><a class="indexterm" name="idm46254467321376"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_bin_use_v1_row_events"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-bin-use-v1-row-events[={OFF|ON}]</code></td>
@@ -12685,7 +12685,7 @@ Note
             log row events which are the default as of MySQL 5.6.
           </p></li><li class="listitem"><p><a name="sysvar_log_slave_updates"></a>
             <a class="link" href="replication.html#sysvar_log_slave_updates"><code class="literal">log_slave_updates</code></a>
-</p><a class="indexterm" name="idm45385645413616"></a><a class="indexterm" name="idm45385645412576"></a>
+</p><a class="indexterm" name="idm46254467293664"></a><a class="indexterm" name="idm46254467292624"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_slave_updates"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-slave-updates[={OFF|ON}]</code></td>
@@ -12745,7 +12745,7 @@ Note
             <code class="literal">C</code>.
           </p></li><li class="listitem"><p><a name="sysvar_log_statements_unsafe_for_binlog"></a>
             <a class="link" href="replication.html#sysvar_log_statements_unsafe_for_binlog"><code class="literal">log_statements_unsafe_for_binlog</code></a>
-</p><a class="indexterm" name="idm45385645371232"></a><a class="indexterm" name="idm45385645370128"></a>
+</p><a class="indexterm" name="idm46254467251280"></a><a class="indexterm" name="idm46254467250176"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for log_statements_unsafe_for_binlog"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--log-statements-unsafe-for-binlog[={OFF|ON}]</code></td>
@@ -12768,7 +12768,7 @@ Note
             warnings are added to the error log or not.
           </p></li><li class="listitem"><p><a name="sysvar_master_verify_checksum"></a>
             <a class="link" href="replication.html#sysvar_master_verify_checksum"><code class="literal">master_verify_checksum</code></a>
-</p><a class="indexterm" name="idm45385645345440"></a><a class="indexterm" name="idm45385645344400"></a>
+</p><a class="indexterm" name="idm46254467225424"></a><a class="indexterm" name="idm46254467224384"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for master_verify_checksum"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--master-verify-checksum[={OFF|ON}]</code></td>
@@ -12796,7 +12796,7 @@ Note
             complete events are read from the binary log.
           </p></li><li class="listitem"><p><a name="sysvar_max_binlog_cache_size"></a>
             <a class="link" href="replication.html#sysvar_max_binlog_cache_size"><code class="literal">max_binlog_cache_size</code></a>
-</p><a class="indexterm" name="idm45385645318192"></a><a class="indexterm" name="idm45385645317152"></a>
+</p><a class="indexterm" name="idm46254467198176"></a><a class="indexterm" name="idm46254467197136"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for max_binlog_cache_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--max-binlog-cache-size=#</code></td>
@@ -12843,7 +12843,7 @@ Note
             new sessions that are started after the value is changed.
           </p></li><li class="listitem"><p><a name="sysvar_max_binlog_size"></a>
             <a class="link" href="replication.html#sysvar_max_binlog_size"><code class="literal">max_binlog_size</code></a>
-</p><a class="indexterm" name="idm45385645279248"></a><a class="indexterm" name="idm45385645278160"></a>
+</p><a class="indexterm" name="idm46254467159232"></a><a class="indexterm" name="idm46254467158144"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for max_binlog_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--max-binlog-size=#</code></td>
@@ -12902,7 +12902,7 @@ Note
 
           </p></li><li class="listitem"><p><a name="sysvar_max_binlog_stmt_cache_size"></a>
             <a class="link" href="replication.html#sysvar_max_binlog_stmt_cache_size"><code class="literal">max_binlog_stmt_cache_size</code></a>
-</p><a class="indexterm" name="idm45385645234304"></a><a class="indexterm" name="idm45385645233200"></a>
+</p><a class="indexterm" name="idm46254467114288"></a><a class="indexterm" name="idm46254467113184"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for max_binlog_stmt_cache_size"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--max-binlog-stmt-cache-size=#</code></td>
@@ -12940,7 +12940,7 @@ Note
             system variable.
           </p></li><li class="listitem"><p><a name="sysvar_original_commit_timestamp"></a>
             <a class="link" href="replication.html#sysvar_original_commit_timestamp"><code class="literal">original_commit_timestamp</code></a>
-</p><a class="indexterm" name="idm45385645198336"></a><a class="indexterm" name="idm45385645197232"></a>
+</p><a class="indexterm" name="idm46254467078320"></a><a class="indexterm" name="idm46254467077216"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for original_commit_timestamp"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_original_commit_timestamp">original_commit_timestamp</a></code></td>
@@ -12972,7 +12972,7 @@ Note
             is set automatically by the replication infrastructure.
           </p></li><li class="listitem"><p><a name="sysvar_sql_log_bin"></a>
             <a class="link" href="replication.html#sysvar_sql_log_bin"><code class="literal">sql_log_bin</code></a>
-</p><a class="indexterm" name="idm45385645173776"></a><a class="indexterm" name="idm45385645172688"></a>
+</p><a class="indexterm" name="idm46254467053760"></a><a class="indexterm" name="idm46254467052672"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sql_log_bin"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_sql_log_bin">sql_log_bin</a></code></td>
@@ -13019,7 +13019,7 @@ Note
             in the meantime, so in effect those transactions are lost.
           </p></li><li class="listitem"><p><a name="sysvar_sync_binlog"></a>
             <a class="link" href="replication.html#sysvar_sync_binlog"><code class="literal">sync_binlog</code></a>
-</p><a class="indexterm" name="idm45385645140880"></a><a class="indexterm" name="idm45385645139792"></a>
+</p><a class="indexterm" name="idm46254467020864"></a><a class="indexterm" name="idm46254467019776"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for sync_binlog"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--sync-binlog=#</code></td>
@@ -13113,7 +13113,7 @@ Caution
 </div>
 </li><li class="listitem"><p><a name="sysvar_transaction_write_set_extraction"></a>
             <a class="link" href="replication.html#sysvar_transaction_write_set_extraction"><code class="literal">transaction_write_set_extraction</code></a>
-</p><a class="indexterm" name="idm45385645091712"></a><a class="indexterm" name="idm45385645090624"></a>
+</p><a class="indexterm" name="idm46254466971696"></a><a class="indexterm" name="idm46254466970608"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for transaction_write_set_extraction"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--transaction-write-set-extraction[=value]</code></td>
@@ -13202,7 +13202,7 @@ Caution
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sysvar_binlog_gtid_simple_recovery"></a>
           <a class="link" href="replication.html#sysvar_binlog_gtid_simple_recovery"><code class="literal">binlog_gtid_simple_recovery</code></a>
-</p><a class="indexterm" name="idm45385645036000"></a><a class="indexterm" name="idm45385645034912"></a>
+</p><a class="indexterm" name="idm46254466915984"></a><a class="indexterm" name="idm46254466914896"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for binlog_gtid_simple_recovery"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--binlog-gtid-simple-recovery[={OFF|ON}]</code></td>
@@ -13317,7 +13317,7 @@ Caution
 </div>
 </li><li class="listitem"><p><a name="sysvar_enforce_gtid_consistency"></a>
           <a class="link" href="replication.html#sysvar_enforce_gtid_consistency"><code class="literal">enforce_gtid_consistency</code></a>
-</p><a class="indexterm" name="idm45385644970144"></a><a class="indexterm" name="idm45385644969040"></a>
+</p><a class="indexterm" name="idm46254466850064"></a><a class="indexterm" name="idm46254466848960"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for enforce_gtid_consistency"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--enforce-gtid-consistency[=value]</code></td>
@@ -13426,7 +13426,7 @@ Caution
           <code class="literal">SHOW</code> and the Information Schema.
         </p></li><li class="listitem"><p><a name="sysvar_gtid_executed"></a>
           <a class="link" href="replication.html#sysvar_gtid_executed"><code class="literal">gtid_executed</code></a>
-</p><a class="indexterm" name="idm45385644905872"></a><a class="indexterm" name="idm45385644904784"></a>
+</p><a class="indexterm" name="idm46254466785792"></a><a class="indexterm" name="idm46254466784704"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for gtid_executed"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_gtid_executed">gtid_executed</a></code></td>
@@ -13486,7 +13486,7 @@ Caution
           session. The session scope is now deprecated.
         </p></li><li class="listitem"><p><a name="sysvar_gtid_executed_compression_period"></a>
           <a class="link" href="replication.html#sysvar_gtid_executed_compression_period"><code class="literal">gtid_executed_compression_period</code></a>
-</p><a class="indexterm" name="idm45385644863920"></a><a class="indexterm" name="idm45385644862832"></a>
+</p><a class="indexterm" name="idm46254466743840"></a><a class="indexterm" name="idm46254466742752"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for gtid_executed_compression_period"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--gtid-executed-compression-period=#</code></td>
@@ -13549,7 +13549,7 @@ Caution
           for more information.
         </p></li><li class="listitem"><p><a name="sysvar_gtid_mode"></a>
           <a class="link" href="replication.html#sysvar_gtid_mode"><code class="literal">gtid_mode</code></a>
-</p><a class="indexterm" name="idm45385644817248"></a><a class="indexterm" name="idm45385644816160"></a>
+</p><a class="indexterm" name="idm46254466697168"></a><a class="indexterm" name="idm46254466696080"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for gtid_mode"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>Command-Line Format</th>
 <td><code class="literal">--gtid-mode=MODE</code></td>
@@ -13620,7 +13620,7 @@ Caution
           contain the correct values.
         </p></li><li class="listitem"><p><a name="sysvar_gtid_next"></a>
           <a class="link" href="replication.html#sysvar_gtid_next"><code class="literal">gtid_next</code></a>
-</p><a class="indexterm" name="idm45385644763696"></a><a class="indexterm" name="idm45385644762608"></a>
+</p><a class="indexterm" name="idm46254466643616"></a><a class="indexterm" name="idm46254466642528"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for gtid_next"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_gtid_next">gtid_next</a></code></td>
@@ -13688,7 +13688,7 @@ Caution
           temporary tables using nontransactional storage engines.
         </p></li><li class="listitem"><p><a name="sysvar_gtid_owned"></a>
           <a class="link" href="replication.html#sysvar_gtid_owned"><code class="literal">gtid_owned</code></a>
-</p><a class="indexterm" name="idm45385644716192"></a><a class="indexterm" name="idm45385644715104"></a>
+</p><a class="indexterm" name="idm46254466596112"></a><a class="indexterm" name="idm46254466595024"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for gtid_owned"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_gtid_owned">gtid_owned</a></code></td>
@@ -13751,7 +13751,7 @@ Caution
 </div>
 </li><li class="listitem"><p><a name="sysvar_gtid_purged"></a>
           <a class="link" href="replication.html#sysvar_gtid_purged"><code class="literal">gtid_purged</code></a>
-</p><a class="indexterm" name="idm45385644679696"></a><a class="indexterm" name="idm45385644678608"></a>
+</p><a class="indexterm" name="idm46254466559552"></a><a class="indexterm" name="idm46254466558464"></a>
 <div class="informaltable">
 <table frame="box" rules="all" summary="Properties for gtid_purged"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>System Variable</th>
 <td><code class="literal"><a class="link" href="replication.html#sysvar_gtid_purged">gtid_purged</a></code></td>
@@ -14483,7 +14483,7 @@ sql_slave_skip_counter</code></h6>
 </div>
 
 </div>
-<a class="indexterm" name="idm45385644425600"></a><a class="indexterm" name="idm45385644424512"></a><a class="indexterm" name="idm45385644423440"></a><a class="indexterm" name="idm45385644422368"></a><p>
+<a class="indexterm" name="idm46254466305440"></a><a class="indexterm" name="idm46254466304352"></a><a class="indexterm" name="idm46254466303280"></a><a class="indexterm" name="idm46254466302208"></a><p>
             When you have assessed the failing transaction for any other
             appropriate actions as described previously (such as
             security considerations), count the number of events that
@@ -14606,7 +14606,7 @@ CHANGE MASTER TO MASTER_AUTO_POSITION=1;
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-formats">17.2.1 Replication Formats</a></span></dt><dt><span class="section"><a href="replication.html#replication-channels">17.2.2 Replication Channels</a></span></dt><dt><span class="section"><a href="replication.html#replication-implementation-details">17.2.3 Replication Threads</a></span></dt><dt><span class="section"><a href="replication.html#replica-logs">17.2.4 Relay Log and Replication Metadata Repositories</a></span></dt><dt><span class="section"><a href="replication.html#replication-rules">17.2.5 How Servers Evaluate Replication Filtering Rules</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385644387440"></a><p>
+<a class="indexterm" name="idm46254466267280"></a><p>
     Replication is based on the source server keeping track of all
     changes to its databases (updates, deletes, and so on) in its binary
     log. The binary log serves as a written record of all events that
@@ -14775,7 +14775,7 @@ Replication</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385644345440"></a><a class="indexterm" name="idm45385644343984"></a><p>
+<a class="indexterm" name="idm46254466225168"></a><a class="indexterm" name="idm46254466223712"></a><p>
         Each binary logging format has advantages and disadvantages. For
         most users, the mixed replication format should provide the best
         combination of data integrity and performance. If, however, you
@@ -14801,7 +14801,7 @@ Replication</h4>
 </p></li></ul>
 </div>
 <h5><a name="replication-sbr-rbr-sbr-advantages"></a>Advantages of statement-based replication</h5>
-<a class="indexterm" name="idm45385644332880"></a>
+<a class="indexterm" name="idm46254466212448"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             Proven technology.
@@ -14817,9 +14817,9 @@ Replication</h4>
 </p></li></ul>
 </div>
 <h5><a name="replication-sbr-rbr-sbr-disadvantages"></a>Disadvantages of statement-based replication</h5>
-<a class="indexterm" name="idm45385644326528"></a>
+<a class="indexterm" name="idm46254466206096"></a>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><b>Statements that are unsafe for SBR. </b><a class="indexterm" name="idm45385644323872"></a><a class="indexterm" name="idm45385644322352"></a>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><b>Statements that are unsafe for SBR. </b><a class="indexterm" name="idm46254466203440"></a><a class="indexterm" name="idm46254466201920"></a>
               Not all statements which modify data (such as
               <a class="link" href="sql-statements.html#insert" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a>
               <a class="link" href="sql-statements.html#delete" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a>,
@@ -14964,7 +14964,7 @@ Replication</h4>
 </p></li></ul>
 </div>
 <h5><a name="replication-sbr-rbr-rbr-advantages"></a>Advantages of row-based replication</h5>
-<a class="indexterm" name="idm45385644243248"></a>
+<a class="indexterm" name="idm46254466122704"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             All changes can be replicated. This is the safest form of
@@ -15019,7 +15019,7 @@ Note
 </p></li></ul>
 </div>
 <h5><a name="replication-sbr-rbr-rbr-disadvantages"></a>Disadvantages of row-based replication</h5>
-<a class="indexterm" name="idm45385644217776"></a>
+<a class="indexterm" name="idm46254466097232"></a>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             RBR can generate more data that must be logged. To replicate
@@ -15253,7 +15253,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385644127680"></a><a class="indexterm" name="idm45385644126224"></a><a class="indexterm" name="idm45385644124720"></a><p>
+<a class="indexterm" name="idm46254466007136"></a><a class="indexterm" name="idm46254466005680"></a><a class="indexterm" name="idm46254466004176"></a><p>
         The <span class="quote">“<span class="quote">safeness</span>”</span> of a statement in MySQL replication
         refers to whether the statement and its effects can be
         replicated correctly using statement-based format. If this is
@@ -15312,7 +15312,7 @@ Note
         receive one warning for each such statement.
       </p><p>
         For more information, see <a class="xref" href="replication.html#replication-formats" title="17.2.1 Replication Formats">Section 17.2.1, “Replication Formats”</a>.
-      </p><p><b>Statements considered unsafe. </b><a class="indexterm" name="idm45385644105680"></a>
+      </p><p><b>Statements considered unsafe. </b><a class="indexterm" name="idm46254465985008"></a>
           Statements with the following characteristics are considered
           unsafe:
 </p>
@@ -15482,7 +15482,7 @@ Note
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#channels-commands-single-channel">17.2.2.1 Commands for Operations on a Single Channel</a></span></dt><dt><span class="section"><a href="replication.html#channels-with-prev-replication">17.2.2.2 Compatibility with Previous Replication Statements</a></span></dt><dt><span class="section"><a href="replication.html#channels-startup-options">17.2.2.3 Startup Options and Replication Channels</a></span></dt><dt><span class="section"><a href="replication.html#channels-naming-conventions">17.2.2.4 Replication Channel Naming Conventions</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385644008928"></a><a class="indexterm" name="idm45385644007856"></a><p>
+<a class="indexterm" name="idm46254465888128"></a><a class="indexterm" name="idm46254465887056"></a><p>
     In MySQL multi-source replication, a replica opens multiple
     replication channels, one for each source server. The replication
     channels represent the path of transactions flowing from a source to
@@ -15562,7 +15562,7 @@ Note
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385643994016"></a><a class="indexterm" name="idm45385643992528"></a><p>
+<a class="indexterm" name="idm46254465873040"></a><a class="indexterm" name="idm46254465871552"></a><p>
       To enable MySQL replication operations to act on individual
       replication channels, use the <code class="literal">FOR CHANNEL
       <em class="replaceable"><code>channel</code></em></code> clause with the
@@ -15652,7 +15652,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385643952576"></a><p>
+<a class="indexterm" name="idm46254465831600"></a><p>
       When a replica has multiple channels and a <code class="literal">FOR CHANNEL
       <em class="replaceable"><code>channel</code></em></code> option is not
       specified, a valid statement generally acts on all available
@@ -15730,7 +15730,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45385643922048"></a><a class="indexterm" name="idm45385643920560"></a><p>
+<a class="indexterm" name="idm46254465801072"></a><a class="indexterm" name="idm46254465799584"></a><p>
       This section describes startup options which are impacted by the
       addition of replication channels.
     </p><p>
@@ -15839,7 +15839,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45385643873168"></a><p>
+<a class="indexterm" name="idm46254465752192"></a><p>
       This section describes how naming conventions are impacted by
       replication channels.
     </p><p>
@@ -16186,7 +16186,7 @@ Command: Connect
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replica-logs-relaylog">17.2.4.1 The Relay Log</a></span></dt><dt><span class="section"><a href="replication.html#replica-logs-status">17.2.4.2 Replication Metadata Repositories</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385643780864"></a><a class="indexterm" name="idm45385643779408"></a><a class="indexterm" name="idm45385643777904"></a><a class="indexterm" name="idm45385643776832"></a><a class="indexterm" name="idm45385643775744"></a><a class="indexterm" name="idm45385643774656"></a><a class="indexterm" name="idm45385643773568"></a><a class="indexterm" name="idm45385643772480"></a><a class="indexterm" name="idm45385643771376"></a><p>
+<a class="indexterm" name="idm46254465659824"></a><a class="indexterm" name="idm46254465658368"></a><a class="indexterm" name="idm46254465656864"></a><a class="indexterm" name="idm46254465655792"></a><a class="indexterm" name="idm46254465654704"></a><a class="indexterm" name="idm46254465653616"></a><a class="indexterm" name="idm46254465652528"></a><a class="indexterm" name="idm46254465651440"></a><a class="indexterm" name="idm46254465650336"></a><p>
       A replica server creates several repositories of information to
       use for the replication process:
 </p>
@@ -16913,7 +16913,7 @@ Important
       If any <a class="link" href="replication.html#option_mysqld_replicate-rewrite-db"><code class="option">--replicate-rewrite-db</code></a>
       options were specified, they are applied before the
       <code class="option">--replicate-*</code> filtering rules are tested.
-</p><a class="indexterm" name="idm45385643369936"></a><a class="indexterm" name="idm45385643368432"></a>
+</p><a class="indexterm" name="idm46254465248896"></a><a class="indexterm" name="idm46254465247392"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -17440,7 +17440,7 @@ Note
 </p></li></ol>
 </div>
 <div class="example">
-<a name="idm45385643190480"></a><p class="title"><b>Example 17.7 A <a class="link" href="replication.html#option_mysqld_replicate-ignore-db"><code class="option">--replicate-ignore-db</code></a> option and a
+<a name="idm46254465069440"></a><p class="title"><b>Example 17.7 A <a class="link" href="replication.html#option_mysqld_replicate-ignore-db"><code class="option">--replicate-ignore-db</code></a> option and a
 <a class="link" href="replication.html#option_mysqld_replicate-do-table"><code class="option">--replicate-do-table</code></a> option</b></p>
 <div class="example-contents">
 <p>
@@ -17535,7 +17535,7 @@ INSERT INTO t3 VALUES (1);
 </div>
 
 </div>
-<a class="indexterm" name="idm45385643153520"></a><p>
+<a class="indexterm" name="idm46254465032416"></a><p>
         This section explains how to work with replication filters when
         multiple replication channels exist, for example in a
         multi-source replication topology. Before MySQL 8.0, replication
@@ -18185,7 +18185,7 @@ mysql&gt; <strong class="userinput"><code>GRANT REPLICATION SLAVE ON *.*</code><
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-binlog-encryption-scope">17.3.2.1 Scope of Binary Log Encryption</a></span></dt><dt><span class="section"><a href="replication.html#replication-binlog-encryption-encryption-keys">17.3.2.2 Binary Log Encryption Keys</a></span></dt><dt><span class="section"><a href="replication.html#replication-binlog-encryption-key-rotation">17.3.2.3 Binary Log Master Key Rotation</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385642933056"></a><a class="indexterm" name="idm45385642931984"></a><p>
+<a class="indexterm" name="idm46254464811808"></a><a class="indexterm" name="idm46254464810736"></a><p>
       From MySQL 8.0.14, binary log files and relay log files can be
       encrypted, helping to protect these files and the potentially
       sensitive data contained in them from being misused by outside
@@ -19673,7 +19673,7 @@ mysql&gt; <strong class="userinput"><code>UNLOCK TABLES;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45385642446192"></a><a class="indexterm" name="idm45385642445120"></a><a class="indexterm" name="idm45385642443632"></a><p>
+<a class="indexterm" name="idm46254464324816"></a><a class="indexterm" name="idm46254464323744"></a><a class="indexterm" name="idm46254464322256"></a><p>
       In order for replication to be resilient to unexpected halts of
       the server (sometimes described as crash-safe) it must be possible
       for the replica to recover its state before halting. This section
@@ -20794,7 +20794,7 @@ Important
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-semisync-interface">17.4.10.1 Semisynchronous Replication Administrative Interface</a></span></dt><dt><span class="section"><a href="replication.html#replication-semisync-installation">17.4.10.2 Semisynchronous Replication Installation and Configuration</a></span></dt><dt><span class="section"><a href="replication.html#replication-semisync-monitoring">17.4.10.3 Semisynchronous Replication Monitoring</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385642065216"></a><a class="indexterm" name="idm45385642064160"></a><p>
+<a class="indexterm" name="idm46254463943440"></a><a class="indexterm" name="idm46254463942384"></a><p>
       In addition to the built-in asynchronous replication, MySQL
       8.0 supports an interface to semisynchronous
       replication that is implemented by plugins. This section discusses
@@ -21011,7 +21011,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385642026912"></a><p>
+<a class="indexterm" name="idm46254463905088"></a><p>
         The administrative interface to semisynchronous replication has
         several components:
 </p>
@@ -21125,7 +21125,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641986624"></a><a class="indexterm" name="idm45385641985168"></a><p>
+<a class="indexterm" name="idm46254463864800"></a><a class="indexterm" name="idm46254463863344"></a><p>
         Semisynchronous replication is implemented using plugins, so the
         plugins must be installed into the server to make them
         available. After a plugin has been installed, you control it by
@@ -21311,7 +21311,7 @@ rpl_semi_sync_slave_enabled=1
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641919136"></a><p>
+<a class="indexterm" name="idm46254463797312"></a><p>
         The plugins for the semisynchronous replication capability
         expose several system and status variables that you can examine
         to determine its configuration and operational state.
@@ -21369,7 +21369,7 @@ rpl_semi_sync_slave_enabled=1
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641897328"></a><a class="indexterm" name="idm45385641896256"></a><a class="indexterm" name="idm45385641894768"></a><a class="indexterm" name="idm45385641893680"></a><p>
+<a class="indexterm" name="idm46254463775504"></a><a class="indexterm" name="idm46254463774432"></a><a class="indexterm" name="idm46254463772944"></a><a class="indexterm" name="idm46254463771856"></a><p>
       MySQL supports delayed replication such that a replica server
       deliberately executes transactions later than the source by at
       least a specified amount of time. This section describes how to
@@ -21675,7 +21675,7 @@ Note
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="replication.html#replication-features-auto-increment">17.5.1.1 Replication and AUTO_INCREMENT</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-blackhole">17.5.1.2 Replication and BLACKHOLE Tables</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-charset">17.5.1.3 Replication and Character Sets</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-checksum-table">17.5.1.4 Replication and CHECKSUM TABLE</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-create-alter-drop-server">17.5.1.5 Replication of CREATE SERVER, ALTER SERVER, and DROP SERVER</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-create-if-not-exists">17.5.1.6 Replication of CREATE ... IF NOT EXISTS Statements</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-create-select">17.5.1.7 Replication of CREATE TABLE ... SELECT Statements</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-current-user">17.5.1.8 Replication of CURRENT_USER()</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-differing-tables">17.5.1.9 Replication with Differing Table Definitions on Source and Replica</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-directory">17.5.1.10 Replication and DIRECTORY Table Options</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-drop-if-exists">17.5.1.11 Replication of DROP ... IF EXISTS Statements</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-floatvalues">17.5.1.12 Replication and Floating-Point Values</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-flush">17.5.1.13 Replication and FLUSH</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-functions">17.5.1.14 Replication and System Functions</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-fractional-seconds">17.5.1.15 Replication and Fractional Seconds Support</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-invoked">17.5.1.16 Replication of Invoked Features</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-json">17.5.1.17 Replication of JSON Documents</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-limit">17.5.1.18 Replication and LIMIT</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-load-data">17.5.1.19 Replication and LOAD DATA</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-max-allowed-packet">17.5.1.20 Replication and max_allowed_packet</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-memory">17.5.1.21 Replication and MEMORY Tables</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-mysqldb">17.5.1.22 Replication of the mysql System Schema</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-optimizer">17.5.1.23 Replication and the Query Optimizer</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-partitioning">17.5.1.24 Replication and Partitioning</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-repair-table">17.5.1.25 Replication and REPAIR TABLE</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-reserved-words">17.5.1.26 Replication and Reserved Words</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-row-searches">17.5.1.27 Replication and Row Searches</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-shutdowns">17.5.1.28 Replication and Source or Replica Shutdowns</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-slaveerrors">17.5.1.29 Replica Errors During Replication</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-sql-mode">17.5.1.30 Replication and Server SQL Mode</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-temptables">17.5.1.31 Replication and Temporary Tables</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-timeout">17.5.1.32 Replication Retries and Timeouts</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-timezone">17.5.1.33 Replication and Time Zones</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-transaction-inconsistencies">17.5.1.34 Replication and Transaction Inconsistencies</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-transactions">17.5.1.35 Replication and Transactions</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-triggers">17.5.1.36 Replication and Triggers</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-truncate">17.5.1.37 Replication and TRUNCATE TABLE</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-user-names">17.5.1.38 Replication and User Name Length</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-variables">17.5.1.39 Replication and Variables</a></span></dt><dt><span class="section"><a href="replication.html#replication-features-views">17.5.1.40 Replication and Views</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45385641806384"></a><a class="indexterm" name="idm45385641804928"></a><a class="indexterm" name="idm45385641803856"></a><a class="indexterm" name="idm45385641802368"></a><a class="indexterm" name="idm45385641801296"></a><a class="indexterm" name="idm45385641800224"></a><p>
+<a class="indexterm" name="idm46254463684496"></a><a class="indexterm" name="idm46254463683040"></a><a class="indexterm" name="idm46254463681968"></a><a class="indexterm" name="idm46254463680480"></a><a class="indexterm" name="idm46254463679408"></a><a class="indexterm" name="idm46254463678336"></a><p>
       The following sections provide information about what is supported
       and what is not in MySQL replication, and about specific issues
       and situations that may occur when replicating certain statements.
@@ -21720,7 +21720,7 @@ Note
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45385641788864"></a><a class="indexterm" name="idm45385641787376"></a><a class="indexterm" name="idm45385641785888"></a><a class="indexterm" name="idm45385641784400"></a><a class="indexterm" name="idm45385641782912"></a><a class="indexterm" name="idm45385641781424"></a><p>
+<a class="indexterm" name="idm46254463666976"></a><a class="indexterm" name="idm46254463665488"></a><a class="indexterm" name="idm46254463664000"></a><a class="indexterm" name="idm46254463662512"></a><a class="indexterm" name="idm46254463661024"></a><a class="indexterm" name="idm46254463659536"></a><p>
         Statement-based replication of
         <code class="literal">AUTO_INCREMENT</code>,
         <a class="link" href="functions.html#function_last-insert-id"><code class="literal">LAST_INSERT_ID()</code></a>, and
@@ -21813,7 +21813,7 @@ ALTER TABLE t2 RENAME t1;
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641743520"></a><a class="indexterm" name="idm45385641742032"></a><a class="indexterm" name="idm45385641740544"></a><a class="indexterm" name="idm45385641739056"></a><p>
+<a class="indexterm" name="idm46254463621632"></a><a class="indexterm" name="idm46254463620144"></a><a class="indexterm" name="idm46254463618656"></a><a class="indexterm" name="idm46254463617168"></a><p>
         The <a class="link" href="storage-engines.html#blackhole-storage-engine" title="16.6 The BLACKHOLE Storage Engine"><code class="literal">BLACKHOLE</code></a> storage engine
         accepts data but discards it and does not store it. When
         performing binary logging, all inserts to such tables are always
@@ -21845,7 +21845,7 @@ ALTER TABLE t2 RENAME t1;
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641727776"></a><a class="indexterm" name="idm45385641726288"></a><p>
+<a class="indexterm" name="idm46254463605936"></a><a class="indexterm" name="idm46254463604448"></a><p>
         The following applies to replication between MySQL servers that
         use different character sets:
 </p>
@@ -21875,7 +21875,7 @@ ALTER TABLE t2 RENAME t1;
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641717712"></a><a class="indexterm" name="idm45385641716208"></a><p>
+<a class="indexterm" name="idm46254463595872"></a><a class="indexterm" name="idm46254463594368"></a><p>
         <a class="link" href="sql-statements.html#checksum-table" title="13.7.3.3 CHECKSUM TABLE Statement"><code class="literal">CHECKSUM TABLE</code></a> returns a checksum
         that is calculated row by row, using a method that depends on
         the table row storage format. The storage format is not
@@ -21913,7 +21913,7 @@ ALTER TABLE t2 RENAME t1;
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641705936"></a><a class="indexterm" name="idm45385641704432"></a><p>
+<a class="indexterm" name="idm46254463584000"></a><a class="indexterm" name="idm46254463582496"></a><p>
         MySQL applies these rules when various <code class="literal">CREATE ... IF
         NOT EXISTS</code> statements are replicated:
 </p>
@@ -21956,7 +21956,7 @@ ALTER TABLE t2 RENAME t1;
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641688832"></a><a class="indexterm" name="idm45385641687376"></a><p>
+<a class="indexterm" name="idm46254463566832"></a><a class="indexterm" name="idm46254463565376"></a><p>
         MySQL applies these rules when
         <a class="link" href="sql-statements.html#create-table-select" title="13.1.20.4 CREATE TABLE ... SELECT Statement"><code class="literal">CREATE
         TABLE ... SELECT</code></a> statements are replicated:
@@ -22077,7 +22077,7 @@ ALTER TABLE t2 RENAME t1;
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641633552"></a><p>
+<a class="indexterm" name="idm46254463511616"></a><p>
         Source and target tables for replication do not have to be
         identical. A table on the source can have more or fewer columns
         than the replica's copy of the table. In addition, corresponding
@@ -22239,7 +22239,7 @@ replica&gt;  <strong class="userinput"><code>CREATE TABLE t1 (c1 INT, c2 INT, c3
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641575488"></a><a class="indexterm" name="idm45385641574000"></a><a class="indexterm" name="idm45385641572512"></a><a class="indexterm" name="idm45385641571024"></a><p>
+<a class="indexterm" name="idm46254463453488"></a><a class="indexterm" name="idm46254463452000"></a><a class="indexterm" name="idm46254463450512"></a><a class="indexterm" name="idm46254463449024"></a><p>
           Corresponding columns on the source's and the
           replica's copies of the same table ideally should have
           the same data type. However, this is not always strictly
@@ -22554,7 +22554,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641443920"></a><a class="indexterm" name="idm45385641442432"></a><a class="indexterm" name="idm45385641440944"></a><a class="indexterm" name="idm45385641439456"></a><a class="indexterm" name="idm45385641437968"></a><p>
+<a class="indexterm" name="idm46254463321920"></a><a class="indexterm" name="idm46254463320432"></a><a class="indexterm" name="idm46254463318944"></a><a class="indexterm" name="idm46254463317456"></a><a class="indexterm" name="idm46254463315968"></a><p>
         If a <code class="literal">DATA DIRECTORY</code> or <code class="literal">INDEX
         DIRECTORY</code> table option is used in a
         <a class="link" href="sql-statements.html#create-table" title="13.1.20 CREATE TABLE Statement"><code class="literal">CREATE TABLE</code></a> statement on the
@@ -22584,7 +22584,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641425296"></a><a class="indexterm" name="idm45385641423808"></a><p>
+<a class="indexterm" name="idm46254463303296"></a><a class="indexterm" name="idm46254463301808"></a><p>
         The <a class="link" href="sql-statements.html#drop-database" title="13.1.24 DROP DATABASE Statement"><code class="literal">DROP DATABASE
         IF EXISTS</code></a>,
         <a class="link" href="sql-statements.html#drop-table" title="13.1.32 DROP TABLE Statement"><code class="literal">DROP TABLE IF
@@ -22613,7 +22613,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641415344"></a><a class="indexterm" name="idm45385641413840"></a><p>
+<a class="indexterm" name="idm46254463293344"></a><a class="indexterm" name="idm46254463291840"></a><p>
         With statement-based replication, values are converted from
         decimal to binary. Because conversions between decimal and
         binary representations of them may be approximate, comparisons
@@ -22638,7 +22638,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641408608"></a><a class="indexterm" name="idm45385641407120"></a><p>
+<a class="indexterm" name="idm46254463286608"></a><a class="indexterm" name="idm46254463285120"></a><p>
         Some forms of the <a class="link" href="sql-statements.html#flush" title="13.7.8.3 FLUSH Statement"><code class="literal">FLUSH</code></a> statement
         are not logged because they could cause problems if replicated
         to a replica: <a class="link" href="sql-statements.html#flush-logs"><code class="literal">FLUSH LOGS</code></a> and
@@ -22678,7 +22678,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641384976"></a><a class="indexterm" name="idm45385641383488"></a><p>
+<a class="indexterm" name="idm46254463262976"></a><a class="indexterm" name="idm46254463261488"></a><p>
         Certain functions do not replicate well under some conditions:
 </p>
 <div class="itemizedlist">
@@ -22873,7 +22873,7 @@ INSERT INTO mytable VALUES(@found_rows);
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641294720"></a><a class="indexterm" name="idm45385641293232"></a><p>
+<a class="indexterm" name="idm46254463172720"></a><a class="indexterm" name="idm46254463171232"></a><p>
         MySQL 8.0 permits fractional seconds for
         <a class="link" href="data-types.html#time" title="11.2.3 The TIME Type"><code class="literal">TIME</code></a>,
         <a class="link" href="data-types.html#datetime" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATETIME</code></a>, and
@@ -22893,7 +22893,7 @@ INSERT INTO mytable VALUES(@found_rows);
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641285616"></a><a class="indexterm" name="idm45385641284128"></a><a class="indexterm" name="idm45385641282640"></a><a class="indexterm" name="idm45385641281152"></a><a class="indexterm" name="idm45385641279664"></a><a class="indexterm" name="idm45385641278176"></a><a class="indexterm" name="idm45385641276688"></a><p>
+<a class="indexterm" name="idm46254463163616"></a><a class="indexterm" name="idm46254463162128"></a><a class="indexterm" name="idm46254463160640"></a><a class="indexterm" name="idm46254463159152"></a><a class="indexterm" name="idm46254463157664"></a><a class="indexterm" name="idm46254463156176"></a><a class="indexterm" name="idm46254463154688"></a><p>
         Replication of invoked features such as loadable functions and
         stored programs (stored procedures and functions, triggers, and
         events) provides the following characteristics:
@@ -22950,13 +22950,13 @@ Note
 </p>
 </div>
 </li><li class="listitem"><p>
-            <a class="indexterm" name="idm45385641251120"></a>
+            <a class="indexterm" name="idm46254463129120"></a>
 
-            <a class="indexterm" name="idm45385641249632"></a>
+            <a class="indexterm" name="idm46254463127632"></a>
 
-            <a class="indexterm" name="idm45385641248144"></a>
+            <a class="indexterm" name="idm46254463126144"></a>
 
-            <a class="indexterm" name="idm45385641246656"></a>
+            <a class="indexterm" name="idm46254463124656"></a>
 
             In the case of <a class="link" href="sql-statements.html#create-event" title="13.1.13 CREATE EVENT Statement"><code class="literal">CREATE EVENT</code></a>
             and <a class="link" href="sql-statements.html#alter-event" title="13.1.3 ALTER EVENT Statement"><code class="literal">ALTER EVENT</code></a>:
@@ -23097,7 +23097,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641195024"></a><a class="indexterm" name="idm45385641193536"></a><p>
+<a class="indexterm" name="idm46254463073088"></a><a class="indexterm" name="idm46254463071600"></a><p>
         Statement-based replication of <code class="literal">LIMIT</code> clauses
         in <a class="link" href="sql-statements.html#delete" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a>,
         <a class="link" href="sql-statements.html#update" title="13.2.13 UPDATE Statement"><code class="literal">UPDATE</code></a>, and
@@ -23137,7 +23137,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641178560"></a><a class="indexterm" name="idm45385641177072"></a><p>
+<a class="indexterm" name="idm46254463056624"></a><a class="indexterm" name="idm46254463055136"></a><p>
         <a class="link" href="sql-statements.html#load-data" title="13.2.7 LOAD DATA Statement"><code class="literal">LOAD DATA</code></a> is considered unsafe
         for statement-based logging (see
         <a class="xref" href="replication.html#replication-rbr-safe-unsafe" title="17.2.1.3 Determination of Safe and Unsafe Statements in Binary Logging">Section 17.2.1.3, “Determination of Safe and Unsafe Statements in Binary Logging”</a>). When
@@ -23198,7 +23198,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641146896"></a><a class="indexterm" name="idm45385641145408"></a><p>
+<a class="indexterm" name="idm46254463024960"></a><a class="indexterm" name="idm46254463023472"></a><p>
         <a class="link" href="server-administration.html#sysvar_max_allowed_packet"><code class="literal">max_allowed_packet</code></a> sets an
         upper limit on the size of any single message between the MySQL
         server and clients, including replicas. If you are replicating
@@ -23282,7 +23282,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641113936"></a><a class="indexterm" name="idm45385641112448"></a><p>
+<a class="indexterm" name="idm46254462992000"></a><a class="indexterm" name="idm46254462990512"></a><p>
         When a replication source server shuts down and restarts, its
         <a class="link" href="storage-engines.html#memory-storage-engine" title="16.3 The MEMORY Storage Engine"><code class="literal">MEMORY</code></a> tables become empty. To
         replicate this effect to replicas, the first time that the
@@ -23398,7 +23398,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641058272"></a><a class="indexterm" name="idm45385641056768"></a><a class="indexterm" name="idm45385641055280"></a><a class="indexterm" name="idm45385641053792"></a><p>
+<a class="indexterm" name="idm46254462936272"></a><a class="indexterm" name="idm46254462934768"></a><a class="indexterm" name="idm46254462933280"></a><a class="indexterm" name="idm46254462931792"></a><p>
         Data modification statements made to tables in the
         <code class="literal">mysql</code> schema are replicated according to the
         value of <a class="link" href="replication.html#sysvar_binlog_format"><code class="literal">binlog_format</code></a>; if this
@@ -23422,7 +23422,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641044704"></a><a class="indexterm" name="idm45385641043216"></a><p>
+<a class="indexterm" name="idm46254462922704"></a><a class="indexterm" name="idm46254462921216"></a><p>
         It is possible for the data on the source and replica to become
         different if a statement is written in such a way that the data
         modification is nondeterministic; that is, left up the query
@@ -23446,7 +23446,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641035088"></a><a class="indexterm" name="idm45385641033600"></a><p>
+<a class="indexterm" name="idm46254462913024"></a><a class="indexterm" name="idm46254462911536"></a><p>
         Replication is supported between partitioned tables as long as
         they use the same partitioning scheme and otherwise have the
         same structure, except where an exception is specifically
@@ -23481,7 +23481,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641026848"></a><a class="indexterm" name="idm45385641025344"></a><p>
+<a class="indexterm" name="idm46254462904784"></a><a class="indexterm" name="idm46254462903280"></a><p>
         When used on a corrupted or otherwise damaged table, it is
         possible for the <a class="link" href="sql-statements.html#repair-table" title="13.7.3.5 REPAIR TABLE Statement"><code class="literal">REPAIR TABLE</code></a>
         statement to delete rows that cannot be recovered. However, any
@@ -23508,7 +23508,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385641017760"></a><a class="indexterm" name="idm45385641016272"></a><p>
+<a class="indexterm" name="idm46254462895696"></a><a class="indexterm" name="idm46254462894208"></a><p>
         You can encounter problems when you attempt to replicate from an
         older source to a newer replica and you make use of identifiers
         on the source that are reserved words in the newer MySQL version
@@ -23665,7 +23665,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640972976"></a><a class="indexterm" name="idm45385640971488"></a><a class="indexterm" name="idm45385640970000"></a><a class="indexterm" name="idm45385640968512"></a><p>
+<a class="indexterm" name="idm46254462850912"></a><a class="indexterm" name="idm46254462849424"></a><a class="indexterm" name="idm46254462847936"></a><a class="indexterm" name="idm46254462846448"></a><p>
         It is safe to shut down a replication source server and restart
         it later. When a replica loses its connection to the source, the
         replica tries to reconnect immediately and retries periodically
@@ -23745,7 +23745,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640942688"></a><a class="indexterm" name="idm45385640941200"></a><a class="indexterm" name="idm45385640939712"></a><a class="indexterm" name="idm45385640938224"></a><p>
+<a class="indexterm" name="idm46254462820624"></a><a class="indexterm" name="idm46254462819136"></a><a class="indexterm" name="idm46254462817648"></a><a class="indexterm" name="idm46254462816160"></a><p>
         If a statement produces the same error (identical error code) on
         both the source and the replica, the error is logged, but
         replication continues.
@@ -23824,7 +23824,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640921040"></a><a class="indexterm" name="idm45385640919552"></a><a class="indexterm" name="idm45385640918064"></a><a class="indexterm" name="idm45385640916576"></a><a class="indexterm" name="idm45385640915088"></a><a class="indexterm" name="idm45385640913600"></a><p>
+<a class="indexterm" name="idm46254462798976"></a><a class="indexterm" name="idm46254462797488"></a><a class="indexterm" name="idm46254462796000"></a><a class="indexterm" name="idm46254462794512"></a><a class="indexterm" name="idm46254462793024"></a><a class="indexterm" name="idm46254462791536"></a><p>
         Using different server SQL mode settings on the source and the
         replica may cause the same <a class="link" href="sql-statements.html#insert" title="13.2.6 INSERT Statement"><code class="literal">INSERT</code></a>
         statements to be handled differently on the source and the
@@ -23855,7 +23855,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640906816"></a><a class="indexterm" name="idm45385640905328"></a><a class="indexterm" name="idm45385640903840"></a><p>
+<a class="indexterm" name="idm46254462784752"></a><a class="indexterm" name="idm46254462783264"></a><a class="indexterm" name="idm46254462781776"></a><p>
         In MySQL 8.0, when
         <a class="link" href="replication.html#sysvar_binlog_format"><code class="literal">binlog_format</code></a> is set to
         <code class="literal">ROW</code> or <code class="literal">MIXED</code>, statements
@@ -23966,7 +23966,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640861008"></a><a class="indexterm" name="idm45385640859520"></a><a class="indexterm" name="idm45385640858032"></a><a class="indexterm" name="idm45385640856960"></a><p>
+<a class="indexterm" name="idm46254462738880"></a><a class="indexterm" name="idm46254462737392"></a><a class="indexterm" name="idm46254462735904"></a><a class="indexterm" name="idm46254462734832"></a><p>
         The global system variable
         <a class="link" href="replication.html#sysvar_slave_transaction_retries"><code class="literal">slave_transaction_retries</code></a> sets
         the maximum number of times for applier threads on a
@@ -24024,7 +24024,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640843008"></a><a class="indexterm" name="idm45385640841520"></a><p>
+<a class="indexterm" name="idm46254462720880"></a><a class="indexterm" name="idm46254462719392"></a><p>
         By default, source and replica servers assume that they are in
         the same time zone. If you are replicating between servers in
         different time zones, the time zone must be set on both source
@@ -24303,7 +24303,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640734096"></a><a class="indexterm" name="idm45385640732608"></a><p><b>Mixing transactional and nontransactional statements within the same
+<a class="indexterm" name="idm46254462611968"></a><a class="indexterm" name="idm46254462610480"></a><p><b>Mixing transactional and nontransactional statements within the same
           transaction. </b>
           In general, you should avoid transactions that update both
           transactional and nontransactional tables in a replication
@@ -24339,7 +24339,7 @@ Warning
             has no effect for row-format or mixed-format binary logging.
 </p></li></ul>
 </div>
-<p><a name="replication-features-transactions-trx-nontrx-mixed"></a><b>Transactional, nontransactional, and mixed statements. </b><a class="indexterm" name="idm45385640720704"></a>
+<p><a name="replication-features-transactions-trx-nontrx-mixed"></a><b>Transactional, nontransactional, and mixed statements. </b><a class="indexterm" name="idm46254462598576"></a>
           To apply those rules, the server considers a statement
           nontransactional if it changes only nontransactional tables,
           and transactional if it changes only transactional tables. A
@@ -24471,7 +24471,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640680304"></a><a class="indexterm" name="idm45385640678816"></a><p>
+<a class="indexterm" name="idm46254462558176"></a><a class="indexterm" name="idm46254462556688"></a><p>
         With statement-based replication, triggers executed on the
         source also execute on the replica. With row-based replication,
         triggers executed on the source do not execute on the replica.
@@ -24579,7 +24579,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640650160"></a><a class="indexterm" name="idm45385640648672"></a><p>
+<a class="indexterm" name="idm46254462528080"></a><a class="indexterm" name="idm46254462526592"></a><p>
         <a class="link" href="sql-statements.html#truncate-table" title="13.1.37 TRUNCATE TABLE Statement"><code class="literal">TRUNCATE TABLE</code></a> is normally
         regarded as a DML statement, and so would be expected to be
         logged and replicated using row-based format when the binary
@@ -24613,7 +24613,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640634576"></a><a class="indexterm" name="idm45385640633120"></a><p>
+<a class="indexterm" name="idm46254462512432"></a><a class="indexterm" name="idm46254462510976"></a><p>
         The maximum length for user names in MySQL 8.0 is
         32 characters. Replication of user names longer than 16
         characters fails when the replica runs a version of MySQL
@@ -24634,7 +24634,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640629536"></a><a class="indexterm" name="idm45385640628048"></a><a class="indexterm" name="idm45385640626560"></a><a class="indexterm" name="idm45385640625072"></a><a class="indexterm" name="idm45385640623584"></a><p>
+<a class="indexterm" name="idm46254462507456"></a><a class="indexterm" name="idm46254462505968"></a><a class="indexterm" name="idm46254462504480"></a><a class="indexterm" name="idm46254462502992"></a><a class="indexterm" name="idm46254462501504"></a><p>
         System variables are not replicated correctly when using
         <code class="literal">STATEMENT</code> mode, except for the following
         variables when they are used with session scope:
@@ -24793,7 +24793,7 @@ Important
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640535792"></a><a class="indexterm" name="idm45385640534304"></a><p>
+<a class="indexterm" name="idm46254462413712"></a><a class="indexterm" name="idm46254462412224"></a><p>
         Views are always replicated to replicas. Views are filtered by
         their own name, not by the tables they refer to. This means that
         a view can be replicated to the replica even if the view
@@ -25077,7 +25077,7 @@ collation_server=latin1_swedish_ci
 </div>
 
 </div>
-<a class="indexterm" name="idm45385640465200"></a><p>
+<a class="indexterm" name="idm46254462343120"></a><p>
       If you have followed the instructions but your replication setup
       is not working, the first thing to do is <span class="emphasis"><em>check the error
       log for messages</em></span>. Many users have lost time by not
