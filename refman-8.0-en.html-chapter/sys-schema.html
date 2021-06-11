@@ -74,7 +74,7 @@
     absence of this view indicates a user-created <code class="literal">sys</code>
     schema. To upgrade in this case, remove or rename the existing
     <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema first.
-  </p><a class="indexterm" name="idm46042089552432"></a><p>
+  </p><a class="indexterm" name="idm45831923354960"></a><p>
     <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema objects have a
     <code class="literal">DEFINER</code> of
     <code class="literal">'mysql.sys'@'localhost'</code>. Use of the dedicated
@@ -385,224 +385,177 @@ stage/innodb/buffer pool load
 <div class="table">
 <a name="sys-schema-views-table"></a><p class="title"><b>Table 28.2 sys Schema Views</b></p>
 <div class="table-contents">
-<table summary="Views used in the sys schema implementation"><col style="width: 60%"><col style="width: 40%"><thead><tr>
-            <th>View Name</th>
-            <th>Description</th>
-          </tr></thead><tbody><tr>
-            <td><a class="link" href="sys-schema.html#sys-host-summary" title="28.4.3.1 The host_summary and x$host_summary Views"><code class="literal">host_summary</code></a>,
-              <a class="link" href="sys-schema.html#sys-host-summary" title="28.4.3.1 The host_summary and x$host_summary Views"><code class="literal">x$host_summary</code></a></td>
-            <td>Statement activity, file I/O, and connections, grouped by host</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-host-summary-by-file-io" title="28.4.3.2 The host_summary_by_file_io and x$host_summary_by_file_io Views"><code class="literal">host_summary_by_file_io</code></a>,
-              <a class="link" href="sys-schema.html#sys-host-summary-by-file-io" title="28.4.3.2 The host_summary_by_file_io and x$host_summary_by_file_io Views"><code class="literal">x$host_summary_by_file_io</code></a></td>
-            <td>File I/O, grouped by host</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-host-summary-by-file-io-type" title="28.4.3.3 The host_summary_by_file_io_type and x$host_summary_by_file_io_type Views"><code class="literal">host_summary_by_file_io_type</code></a>,
-              <a class="link" href="sys-schema.html#sys-host-summary-by-file-io-type" title="28.4.3.3 The host_summary_by_file_io_type and x$host_summary_by_file_io_type Views"><code class="literal">x$host_summary_by_file_io_type</code></a></td>
-            <td>File I/O, grouped by host and event type</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-host-summary-by-stages" title="28.4.3.4 The host_summary_by_stages and x$host_summary_by_stages Views"><code class="literal">host_summary_by_stages</code></a>,
-              <a class="link" href="sys-schema.html#sys-host-summary-by-stages" title="28.4.3.4 The host_summary_by_stages and x$host_summary_by_stages Views"><code class="literal">x$host_summary_by_stages</code></a></td>
-            <td>Statement stages, grouped by host</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-host-summary-by-statement-latency" title="28.4.3.5 The host_summary_by_statement_latency and x$host_summary_by_statement_latency Views"><code class="literal">host_summary_by_statement_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-host-summary-by-statement-latency" title="28.4.3.5 The host_summary_by_statement_latency and x$host_summary_by_statement_latency Views"><code class="literal">x$host_summary_by_statement_latency</code></a></td>
-            <td>Statement statistics, grouped by host</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-host-summary-by-statement-type" title="28.4.3.6 The host_summary_by_statement_type and x$host_summary_by_statement_type Views"><code class="literal">host_summary_by_statement_type</code></a>,
-              <a class="link" href="sys-schema.html#sys-host-summary-by-statement-type" title="28.4.3.6 The host_summary_by_statement_type and x$host_summary_by_statement_type Views"><code class="literal">x$host_summary_by_statement_type</code></a></td>
-            <td>Statements executed, grouped by host and statement</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-innodb-buffer-stats-by-schema" title="28.4.3.7 The innodb_buffer_stats_by_schema and x$innodb_buffer_stats_by_schema Views"><code class="literal">innodb_buffer_stats_by_schema</code></a>,
-              <a class="link" href="sys-schema.html#sys-innodb-buffer-stats-by-schema" title="28.4.3.7 The innodb_buffer_stats_by_schema and x$innodb_buffer_stats_by_schema Views"><code class="literal">x$innodb_buffer_stats_by_schema</code></a></td>
-            <td><code class="literal">InnoDB</code> buffer information, grouped by schema</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-innodb-buffer-stats-by-table" title="28.4.3.8 The innodb_buffer_stats_by_table and x$innodb_buffer_stats_by_table Views"><code class="literal">innodb_buffer_stats_by_table</code></a>,
-              <a class="link" href="sys-schema.html#sys-innodb-buffer-stats-by-table" title="28.4.3.8 The innodb_buffer_stats_by_table and x$innodb_buffer_stats_by_table Views"><code class="literal">x$innodb_buffer_stats_by_table</code></a></td>
-            <td><code class="literal">InnoDB</code> buffer information, grouped by schema and
-              table</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-innodb-lock-waits" title="28.4.3.9 The innodb_lock_waits and x$innodb_lock_waits Views"><code class="literal">innodb_lock_waits</code></a>,
-              <a class="link" href="sys-schema.html#sys-innodb-lock-waits" title="28.4.3.9 The innodb_lock_waits and x$innodb_lock_waits Views"><code class="literal">x$innodb_lock_waits</code></a></td>
-            <td><code class="literal">InnoDB</code> lock information</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-io-by-thread-by-latency" title="28.4.3.10 The io_by_thread_by_latency and x$io_by_thread_by_latency Views"><code class="literal">io_by_thread_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-io-by-thread-by-latency" title="28.4.3.10 The io_by_thread_by_latency and x$io_by_thread_by_latency Views"><code class="literal">x$io_by_thread_by_latency</code></a></td>
-            <td>I/O consumers, grouped by thread</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-io-global-by-file-by-bytes" title="28.4.3.11 The io_global_by_file_by_bytes and x$io_global_by_file_by_bytes Views"><code class="literal">io_global_by_file_by_bytes</code></a>,
-              <a class="link" href="sys-schema.html#sys-io-global-by-file-by-bytes" title="28.4.3.11 The io_global_by_file_by_bytes and x$io_global_by_file_by_bytes Views"><code class="literal">x$io_global_by_file_by_bytes</code></a></td>
-            <td>Global I/O consumers, grouped by file and bytes</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-io-global-by-file-by-latency" title="28.4.3.12 The io_global_by_file_by_latency and x$io_global_by_file_by_latency Views"><code class="literal">io_global_by_file_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-io-global-by-file-by-latency" title="28.4.3.12 The io_global_by_file_by_latency and x$io_global_by_file_by_latency Views"><code class="literal">x$io_global_by_file_by_latency</code></a></td>
-            <td>Global I/O consumers, grouped by file and latency</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-io-global-by-wait-by-bytes" title="28.4.3.13 The io_global_by_wait_by_bytes and x$io_global_by_wait_by_bytes Views"><code class="literal">io_global_by_wait_by_bytes</code></a>,
-              <a class="link" href="sys-schema.html#sys-io-global-by-wait-by-bytes" title="28.4.3.13 The io_global_by_wait_by_bytes and x$io_global_by_wait_by_bytes Views"><code class="literal">x$io_global_by_wait_by_bytes</code></a></td>
-            <td>Global I/O consumers, grouped by bytes</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-io-global-by-wait-by-latency" title="28.4.3.14 The io_global_by_wait_by_latency and x$io_global_by_wait_by_latency Views"><code class="literal">io_global_by_wait_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-io-global-by-wait-by-latency" title="28.4.3.14 The io_global_by_wait_by_latency and x$io_global_by_wait_by_latency Views"><code class="literal">x$io_global_by_wait_by_latency</code></a></td>
-            <td>Global I/O consumers, grouped by latency</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-latest-file-io" title="28.4.3.15 The latest_file_io and x$latest_file_io Views"><code class="literal">latest_file_io</code></a>,
-              <a class="link" href="sys-schema.html#sys-latest-file-io" title="28.4.3.15 The latest_file_io and x$latest_file_io Views"><code class="literal">x$latest_file_io</code></a></td>
-            <td>Most recent I/O, grouped by file and thread</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-memory-by-host-by-current-bytes" title="28.4.3.16 The memory_by_host_by_current_bytes and x$memory_by_host_by_current_bytes Views"><code class="literal">memory_by_host_by_current_bytes</code></a>,
-              <a class="link" href="sys-schema.html#sys-memory-by-host-by-current-bytes" title="28.4.3.16 The memory_by_host_by_current_bytes and x$memory_by_host_by_current_bytes Views"><code class="literal">x$memory_by_host_by_current_bytes</code></a></td>
-            <td>Memory use, grouped by host</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-memory-by-thread-by-current-bytes" title="28.4.3.17 The memory_by_thread_by_current_bytes and x$memory_by_thread_by_current_bytes Views"><code class="literal">memory_by_thread_by_current_bytes</code></a>,
-              <a class="link" href="sys-schema.html#sys-memory-by-thread-by-current-bytes" title="28.4.3.17 The memory_by_thread_by_current_bytes and x$memory_by_thread_by_current_bytes Views"><code class="literal">x$memory_by_thread_by_current_bytes</code></a></td>
-            <td>Memory use, grouped by thread</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-memory-by-user-by-current-bytes" title="28.4.3.18 The memory_by_user_by_current_bytes and x$memory_by_user_by_current_bytes Views"><code class="literal">memory_by_user_by_current_bytes</code></a>,
-              <a class="link" href="sys-schema.html#sys-memory-by-user-by-current-bytes" title="28.4.3.18 The memory_by_user_by_current_bytes and x$memory_by_user_by_current_bytes Views"><code class="literal">x$memory_by_user_by_current_bytes</code></a></td>
-            <td>Memory use, grouped by user</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-memory-global-by-current-bytes" title="28.4.3.19 The memory_global_by_current_bytes and x$memory_global_by_current_bytes Views"><code class="literal">memory_global_by_current_bytes</code></a>,
-              <a class="link" href="sys-schema.html#sys-memory-global-by-current-bytes" title="28.4.3.19 The memory_global_by_current_bytes and x$memory_global_by_current_bytes Views"><code class="literal">x$memory_global_by_current_bytes</code></a></td>
-            <td>Memory use, grouped by allocation type</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-memory-global-total" title="28.4.3.20 The memory_global_total and x$memory_global_total Views"><code class="literal">memory_global_total</code></a>,
-              <a class="link" href="sys-schema.html#sys-memory-global-total" title="28.4.3.20 The memory_global_total and x$memory_global_total Views"><code class="literal">x$memory_global_total</code></a></td>
-            <td>Total memory use</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-metrics" title="28.4.3.21 The metrics View"><code class="literal">metrics</code></a></td>
-            <td>Server metrics</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">processlist</code></a>,
-              <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">x$processlist</code></a></td>
-            <td>Processlist information</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-check-lost-instrumentation" title="28.4.3.23 The ps_check_lost_instrumentation View"><code class="literal">ps_check_lost_instrumentation</code></a></td>
-            <td>Variables that have lost instruments</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-auto-increment-columns" title="28.4.3.24 The schema_auto_increment_columns View"><code class="literal">schema_auto_increment_columns</code></a></td>
-            <td><code class="literal">AUTO_INCREMENT</code> column information</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-index-statistics" title="28.4.3.25 The schema_index_statistics and x$schema_index_statistics Views"><code class="literal">schema_index_statistics</code></a>,
-              <a class="link" href="sys-schema.html#sys-schema-index-statistics" title="28.4.3.25 The schema_index_statistics and x$schema_index_statistics Views"><code class="literal">x$schema_index_statistics</code></a></td>
-            <td>Index statistics</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-object-overview" title="28.4.3.26 The schema_object_overview View"><code class="literal">schema_object_overview</code></a></td>
-            <td>Types of objects within each schema</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">schema_redundant_indexes</code></a></td>
-            <td>Duplicate or redundant indexes</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-table-lock-waits" title="28.4.3.28 The schema_table_lock_waits and x$schema_table_lock_waits Views"><code class="literal">schema_table_lock_waits</code></a>,
-              <a class="link" href="sys-schema.html#sys-schema-table-lock-waits" title="28.4.3.28 The schema_table_lock_waits and x$schema_table_lock_waits Views"><code class="literal">x$schema_table_lock_waits</code></a></td>
-            <td>Sessions waiting for metadata locks</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-table-statistics" title="28.4.3.29 The schema_table_statistics and x$schema_table_statistics Views"><code class="literal">schema_table_statistics</code></a>,
-              <a class="link" href="sys-schema.html#sys-schema-table-statistics" title="28.4.3.29 The schema_table_statistics and x$schema_table_statistics Views"><code class="literal">x$schema_table_statistics</code></a></td>
-            <td>Table statistics</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-table-statistics-with-buffer" title="28.4.3.30 The schema_table_statistics_with_buffer and x$schema_table_statistics_with_buffer Views"><code class="literal">schema_table_statistics_with_buffer</code></a>,
-              <a class="link" href="sys-schema.html#sys-schema-table-statistics-with-buffer" title="28.4.3.30 The schema_table_statistics_with_buffer and x$schema_table_statistics_with_buffer Views"><code class="literal">x$schema_table_statistics_with_buffer</code></a></td>
-            <td>Table statistics, including <code class="literal">InnoDB</code> buffer pool
-              statistics</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-tables-with-full-table-scans" title="28.4.3.31 The schema_tables_with_full_table_scans and x$schema_tables_with_full_table_scans Views"><code class="literal">schema_tables_with_full_table_scans</code></a>,
-              <a class="link" href="sys-schema.html#sys-schema-tables-with-full-table-scans" title="28.4.3.31 The schema_tables_with_full_table_scans and x$schema_tables_with_full_table_scans Views"><code class="literal">x$schema_tables_with_full_table_scans</code></a></td>
-            <td>Tables being accessed with full scans</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-unused-indexes" title="28.4.3.32 The schema_unused_indexes View"><code class="literal">schema_unused_indexes</code></a></td>
-            <td>Indexes not in active use</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-session" title="28.4.3.33 The session and x$session Views"><code class="literal">session</code></a>,
-              <a class="link" href="sys-schema.html#sys-session" title="28.4.3.33 The session and x$session Views"><code class="literal">x$session</code></a></td>
-            <td>Processlist information for user sessions</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-session-ssl-status" title="28.4.3.34 The session_ssl_status View"><code class="literal">session_ssl_status</code></a></td>
-            <td>Connection SSL information</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statement-analysis" title="28.4.3.35 The statement_analysis and x$statement_analysis Views"><code class="literal">statement_analysis</code></a>,
-              <a class="link" href="sys-schema.html#sys-statement-analysis" title="28.4.3.35 The statement_analysis and x$statement_analysis Views"><code class="literal">x$statement_analysis</code></a></td>
-            <td>Statement aggregate statistics</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-errors-or-warnings" title="28.4.3.36 The statements_with_errors_or_warnings and x$statements_with_errors_or_warnings Views"><code class="literal">statements_with_errors_or_warnings</code></a>,
-              <a class="link" href="sys-schema.html#sys-statements-with-errors-or-warnings" title="28.4.3.36 The statements_with_errors_or_warnings and x$statements_with_errors_or_warnings Views"><code class="literal">x$statements_with_errors_or_warnings</code></a></td>
-            <td>Statements that have produced errors or warnings</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-full-table-scans" title="28.4.3.37 The statements_with_full_table_scans and x$statements_with_full_table_scans Views"><code class="literal">statements_with_full_table_scans</code></a>,
-              <a class="link" href="sys-schema.html#sys-statements-with-full-table-scans" title="28.4.3.37 The statements_with_full_table_scans and x$statements_with_full_table_scans Views"><code class="literal">x$statements_with_full_table_scans</code></a></td>
-            <td>Statements that have done full table scans</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">statements_with_runtimes_in_95th_percentile</code></a>,
-              <a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">x$statements_with_runtimes_in_95th_percentile</code></a></td>
-            <td>Statements with highest average runtime</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-sorting" title="28.4.3.39 The statements_with_sorting and x$statements_with_sorting Views"><code class="literal">statements_with_sorting</code></a>,
-              <a class="link" href="sys-schema.html#sys-statements-with-sorting" title="28.4.3.39 The statements_with_sorting and x$statements_with_sorting Views"><code class="literal">x$statements_with_sorting</code></a></td>
-            <td>Statements that performed sorts</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-temp-tables" title="28.4.3.40 The statements_with_temp_tables and x$statements_with_temp_tables Views"><code class="literal">statements_with_temp_tables</code></a>,
-              <a class="link" href="sys-schema.html#sys-statements-with-temp-tables" title="28.4.3.40 The statements_with_temp_tables and x$statements_with_temp_tables Views"><code class="literal">x$statements_with_temp_tables</code></a></td>
-            <td>Statements that used temporary tables</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-user-summary" title="28.4.3.41 The user_summary and x$user_summary Views"><code class="literal">user_summary</code></a>,
-              <a class="link" href="sys-schema.html#sys-user-summary" title="28.4.3.41 The user_summary and x$user_summary Views"><code class="literal">x$user_summary</code></a></td>
-            <td>User statement and connection activity</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-user-summary-by-file-io" title="28.4.3.42 The user_summary_by_file_io and x$user_summary_by_file_io Views"><code class="literal">user_summary_by_file_io</code></a>,
-              <a class="link" href="sys-schema.html#sys-user-summary-by-file-io" title="28.4.3.42 The user_summary_by_file_io and x$user_summary_by_file_io Views"><code class="literal">x$user_summary_by_file_io</code></a></td>
-            <td>File I/O, grouped by user</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-user-summary-by-file-io-type" title="28.4.3.43 The user_summary_by_file_io_type and x$user_summary_by_file_io_type Views"><code class="literal">user_summary_by_file_io_type</code></a>,
-              <a class="link" href="sys-schema.html#sys-user-summary-by-file-io-type" title="28.4.3.43 The user_summary_by_file_io_type and x$user_summary_by_file_io_type Views"><code class="literal">x$user_summary_by_file_io_type</code></a></td>
-            <td>File I/O, grouped by user and event</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-user-summary-by-stages" title="28.4.3.44 The user_summary_by_stages and x$user_summary_by_stages Views"><code class="literal">user_summary_by_stages</code></a>,
-              <a class="link" href="sys-schema.html#sys-user-summary-by-stages" title="28.4.3.44 The user_summary_by_stages and x$user_summary_by_stages Views"><code class="literal">x$user_summary_by_stages</code></a></td>
-            <td>Stage events, grouped by user</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-user-summary-by-statement-latency" title="28.4.3.45 The user_summary_by_statement_latency and x$user_summary_by_statement_latency Views"><code class="literal">user_summary_by_statement_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-user-summary-by-statement-latency" title="28.4.3.45 The user_summary_by_statement_latency and x$user_summary_by_statement_latency Views"><code class="literal">x$user_summary_by_statement_latency</code></a></td>
-            <td>Statement statistics, grouped by user</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-user-summary-by-statement-type" title="28.4.3.46 The user_summary_by_statement_type and x$user_summary_by_statement_type Views"><code class="literal">user_summary_by_statement_type</code></a>,
-              <a class="link" href="sys-schema.html#sys-user-summary-by-statement-type" title="28.4.3.46 The user_summary_by_statement_type and x$user_summary_by_statement_type Views"><code class="literal">x$user_summary_by_statement_type</code></a></td>
-            <td>Statements executed, grouped by user and statement</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-version" title="28.4.3.47 The version View"><code class="literal">version</code></a></td>
-            <td>Current <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema and MySQL server
-              versions</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-wait-classes-global-by-avg-latency" title="28.4.3.48 The wait_classes_global_by_avg_latency and x$wait_classes_global_by_avg_latency Views"><code class="literal">wait_classes_global_by_avg_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-wait-classes-global-by-avg-latency" title="28.4.3.48 The wait_classes_global_by_avg_latency and x$wait_classes_global_by_avg_latency Views"><code class="literal">x$wait_classes_global_by_avg_latency</code></a></td>
-            <td>Wait class average latency, grouped by event class</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-wait-classes-global-by-latency" title="28.4.3.49 The wait_classes_global_by_latency and x$wait_classes_global_by_latency Views"><code class="literal">wait_classes_global_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-wait-classes-global-by-latency" title="28.4.3.49 The wait_classes_global_by_latency and x$wait_classes_global_by_latency Views"><code class="literal">x$wait_classes_global_by_latency</code></a></td>
-            <td>Wait class total latency, grouped by event class</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-waits-by-host-by-latency" title="28.4.3.50 The waits_by_host_by_latency and x$waits_by_host_by_latency Views"><code class="literal">waits_by_host_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-waits-by-host-by-latency" title="28.4.3.50 The waits_by_host_by_latency and x$waits_by_host_by_latency Views"><code class="literal">x$waits_by_host_by_latency</code></a></td>
-            <td>Wait events, grouped by host and event</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-waits-by-user-by-latency" title="28.4.3.51 The waits_by_user_by_latency and x$waits_by_user_by_latency Views"><code class="literal">waits_by_user_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-waits-by-user-by-latency" title="28.4.3.51 The waits_by_user_by_latency and x$waits_by_user_by_latency Views"><code class="literal">x$waits_by_user_by_latency</code></a></td>
-            <td>Wait events, grouped by user and event</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-waits-global-by-latency" title="28.4.3.52 The waits_global_by_latency and x$waits_global_by_latency Views"><code class="literal">waits_global_by_latency</code></a>,
-              <a class="link" href="sys-schema.html#sys-waits-global-by-latency" title="28.4.3.52 The waits_global_by_latency and x$waits_global_by_latency Views"><code class="literal">x$waits_global_by_latency</code></a></td>
-            <td>Wait events, grouped by event</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">x$ps_digest_95th_percentile_by_avg_us</code></a></td>
-            <td>Helper view for 95th-percentile views</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">x$ps_digest_avg_latency_distribution</code></a></td>
-            <td>Helper view for 95th-percentile views</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-table-statistics" title="28.4.3.29 The schema_table_statistics and x$schema_table_statistics Views"><code class="literal">x$ps_schema_table_statistics_io</code></a></td>
-            <td>Helper view for table-statistics views</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">x$schema_flattened_keys</code></a></td>
-            <td>Helper view for <a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">schema_redundant_indexes</code></a></td>
+<table frame="box" rules="all" summary="Views used in the sys schema implementation."><col style="width: 25%"><col style="width: 62%"><col style="width: 12%"><thead><tr><th>View Name</th>
+<th>Description</th>
+<th>Deprecated</th>
+</tr></thead><tbody><tr><th scope="row"><a class="link" href="sys-schema.html#sys-host-summary" title="28.4.3.1 The host_summary and x$host_summary Views"><code class="literal">host_summary</code>, <code class="literal">x$host_summary</code></a></th>
+<td>Statement activity, file I/O, and connections, grouped by host</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-host-summary-by-file-io" title="28.4.3.2 The host_summary_by_file_io and x$host_summary_by_file_io Views"><code class="literal">host_summary_by_file_io</code>, <code class="literal">x$host_summary_by_file_io</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-host-summary-by-file-io-type" title="28.4.3.3 The host_summary_by_file_io_type and x$host_summary_by_file_io_type Views"><code class="literal">host_summary_by_file_io_type</code>, <code class="literal">x$host_summary_by_file_io_type</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-host-summary-by-stages" title="28.4.3.4 The host_summary_by_stages and x$host_summary_by_stages Views"><code class="literal">host_summary_by_stages</code>, <code class="literal">x$host_summary_by_stages</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-host-summary-by-statement-latency" title="28.4.3.5 The host_summary_by_statement_latency and x$host_summary_by_statement_latency Views"><code class="literal">host_summary_by_statement_latency</code>, <code class="literal">x$host_summary_by_statement_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-host-summary-by-statement-type" title="28.4.3.6 The host_summary_by_statement_type and x$host_summary_by_statement_type Views"><code class="literal">host_summary_by_statement_type</code>, <code class="literal">x$host_summary_by_statement_type</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-innodb-buffer-stats-by-schema" title="28.4.3.7 The innodb_buffer_stats_by_schema and x$innodb_buffer_stats_by_schema Views"><code class="literal">innodb_buffer_stats_by_schema</code>, <code class="literal">x$innodb_buffer_stats_by_schema</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-innodb-buffer-stats-by-table" title="28.4.3.8 The innodb_buffer_stats_by_table and x$innodb_buffer_stats_by_table Views"><code class="literal">innodb_buffer_stats_by_table</code>, <code class="literal">x$innodb_buffer_stats_by_table</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-innodb-lock-waits" title="28.4.3.9 The innodb_lock_waits and x$innodb_lock_waits Views"><code class="literal">innodb_lock_waits</code>, <code class="literal">x$innodb_lock_waits</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-io-by-thread-by-latency" title="28.4.3.10 The io_by_thread_by_latency and x$io_by_thread_by_latency Views"><code class="literal">io_by_thread_by_latency</code>, <code class="literal">x$io_by_thread_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-io-global-by-file-by-bytes" title="28.4.3.11 The io_global_by_file_by_bytes and x$io_global_by_file_by_bytes Views"><code class="literal">io_global_by_file_by_bytes</code>, <code class="literal">x$io_global_by_file_by_bytes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-io-global-by-file-by-latency" title="28.4.3.12 The io_global_by_file_by_latency and x$io_global_by_file_by_latency Views"><code class="literal">io_global_by_file_by_latency</code>, <code class="literal">x$io_global_by_file_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-io-global-by-wait-by-bytes" title="28.4.3.13 The io_global_by_wait_by_bytes and x$io_global_by_wait_by_bytes Views"><code class="literal">io_global_by_wait_by_bytes</code>, <code class="literal">x$io_global_by_wait_by_bytes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-io-global-by-wait-by-latency" title="28.4.3.14 The io_global_by_wait_by_latency and x$io_global_by_wait_by_latency Views"><code class="literal">io_global_by_wait_by_latency</code>, <code class="literal">x$io_global_by_wait_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-latest-file-io" title="28.4.3.15 The latest_file_io and x$latest_file_io Views"><code class="literal">latest_file_io</code>, <code class="literal">x$latest_file_io</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-memory-by-host-by-current-bytes" title="28.4.3.16 The memory_by_host_by_current_bytes and x$memory_by_host_by_current_bytes Views"><code class="literal">memory_by_host_by_current_bytes</code>, <code class="literal">x$memory_by_host_by_current_bytes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-memory-by-thread-by-current-bytes" title="28.4.3.17 The memory_by_thread_by_current_bytes and x$memory_by_thread_by_current_bytes Views"><code class="literal">memory_by_thread_by_current_bytes</code>, <code class="literal">x$memory_by_thread_by_current_bytes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-memory-by-user-by-current-bytes" title="28.4.3.18 The memory_by_user_by_current_bytes and x$memory_by_user_by_current_bytes Views"><code class="literal">memory_by_user_by_current_bytes</code>, <code class="literal">x$memory_by_user_by_current_bytes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-memory-global-by-current-bytes" title="28.4.3.19 The memory_global_by_current_bytes and x$memory_global_by_current_bytes Views"><code class="literal">memory_global_by_current_bytes</code>, <code class="literal">x$memory_global_by_current_bytes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-memory-global-total" title="28.4.3.20 The memory_global_total and x$memory_global_total Views"><code class="literal">memory_global_total</code>, <code class="literal">x$memory_global_total</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-metrics" title="28.4.3.21 The metrics View"><code class="literal">metrics</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">processlist</code>, <code class="literal">x$processlist</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-check-lost-instrumentation" title="28.4.3.23 The ps_check_lost_instrumentation View"><code class="literal">ps_check_lost_instrumentation</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-auto-increment-columns" title="28.4.3.24 The schema_auto_increment_columns View"><code class="literal">schema_auto_increment_columns</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-index-statistics" title="28.4.3.25 The schema_index_statistics and x$schema_index_statistics Views"><code class="literal">schema_index_statistics</code>, <code class="literal">x$schema_index_statistics</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-object-overview" title="28.4.3.26 The schema_object_overview View"><code class="literal">schema_object_overview</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">schema_redundant_indexes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-table-lock-waits" title="28.4.3.28 The schema_table_lock_waits and x$schema_table_lock_waits Views"><code class="literal">schema_table_lock_waits</code>, <code class="literal">x$schema_table_lock_waits</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-table-statistics" title="28.4.3.29 The schema_table_statistics and x$schema_table_statistics Views"><code class="literal">schema_table_statistics</code>, <code class="literal">x$schema_table_statistics</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-table-statistics-with-buffer" title="28.4.3.30 The schema_table_statistics_with_buffer and x$schema_table_statistics_with_buffer Views"><code class="literal">schema_table_statistics_with_buffer</code>, <code class="literal">x$schema_table_statistics_with_buffer</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-tables-with-full-table-scans" title="28.4.3.31 The schema_tables_with_full_table_scans and x$schema_tables_with_full_table_scans Views"><code class="literal">schema_tables_with_full_table_scans</code>, <code class="literal">x$schema_tables_with_full_table_scans</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-unused-indexes" title="28.4.3.32 The schema_unused_indexes View"><code class="literal">schema_unused_indexes</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-session" title="28.4.3.33 The session and x$session Views"><code class="literal">session</code>, <code class="literal">x$session</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-session-ssl-status" title="28.4.3.34 The session_ssl_status View"><code class="literal">session_ssl_status</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statement-analysis" title="28.4.3.35 The statement_analysis and x$statement_analysis Views"><code class="literal">statement_analysis</code>, <code class="literal">x$statement_analysis</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-errors-or-warnings" title="28.4.3.36 The statements_with_errors_or_warnings and x$statements_with_errors_or_warnings Views"><code class="literal">statements_with_errors_or_warnings</code>, <code class="literal">x$statements_with_errors_or_warnings</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-full-table-scans" title="28.4.3.37 The statements_with_full_table_scans and x$statements_with_full_table_scans Views"><code class="literal">statements_with_full_table_scans</code>, <code class="literal">x$statements_with_full_table_scans</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">statements_with_runtimes_in_95th_percentile</code>, <code class="literal">x$statements_with_runtimes_in_95th_percentile</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-sorting" title="28.4.3.39 The statements_with_sorting and x$statements_with_sorting Views"><code class="literal">statements_with_sorting</code>, <code class="literal">x$statements_with_sorting</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-temp-tables" title="28.4.3.40 The statements_with_temp_tables and x$statements_with_temp_tables Views"><code class="literal">statements_with_temp_tables</code>, <code class="literal">x$statements_with_temp_tables</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-user-summary" title="28.4.3.41 The user_summary and x$user_summary Views"><code class="literal">user_summary</code>, <code class="literal">x$user_summary</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-user-summary-by-file-io" title="28.4.3.42 The user_summary_by_file_io and x$user_summary_by_file_io Views"><code class="literal">user_summary_by_file_io</code>, <code class="literal">x$user_summary_by_file_io</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-user-summary-by-file-io-type" title="28.4.3.43 The user_summary_by_file_io_type and x$user_summary_by_file_io_type Views"><code class="literal">user_summary_by_file_io_type</code>, <code class="literal">x$user_summary_by_file_io_type</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-user-summary-by-stages" title="28.4.3.44 The user_summary_by_stages and x$user_summary_by_stages Views"><code class="literal">user_summary_by_stages</code>, <code class="literal">x$user_summary_by_stages</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-user-summary-by-statement-latency" title="28.4.3.45 The user_summary_by_statement_latency and x$user_summary_by_statement_latency Views"><code class="literal">user_summary_by_statement_latency</code>, <code class="literal">x$user_summary_by_statement_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-user-summary-by-statement-type" title="28.4.3.46 The user_summary_by_statement_type and x$user_summary_by_statement_type Views"><code class="literal">user_summary_by_statement_type</code>, <code class="literal">x$user_summary_by_statement_type</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-version" title="28.4.3.47 The version View"><code class="literal">version</code></a></th>
+<td>sys schema and MySQL server versions</td>
+<td>8.0.18</td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-wait-classes-global-by-avg-latency" title="28.4.3.48 The wait_classes_global_by_avg_latency and x$wait_classes_global_by_avg_latency Views"><code class="literal">wait_classes_global_by_avg_latency</code>, <code class="literal">x$wait_classes_global_by_avg_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-wait-classes-global-by-latency" title="28.4.3.49 The wait_classes_global_by_latency and x$wait_classes_global_by_latency Views"><code class="literal">wait_classes_global_by_latency</code>, <code class="literal">x$wait_classes_global_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-waits-by-host-by-latency" title="28.4.3.50 The waits_by_host_by_latency and x$waits_by_host_by_latency Views"><code class="literal">waits_by_host_by_latency</code>, <code class="literal">x$waits_by_host_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-waits-by-user-by-latency" title="28.4.3.51 The waits_by_user_by_latency and x$waits_by_user_by_latency Views"><code class="literal">waits_by_user_by_latency</code>, <code class="literal">x$waits_by_user_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-waits-global-by-latency" title="28.4.3.52 The waits_global_by_latency and x$waits_global_by_latency Views"><code class="literal">waits_global_by_latency</code>, <code class="literal">x$waits_global_by_latency</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">x$ps_digest_95th_percentile_by_avg_us</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile" title="28.4.3.38 The statements_with_runtimes_in_95th_percentile and x$statements_with_runtimes_in_95th_percentile Views"><code class="literal">x$ps_digest_avg_latency_distribution</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-table-statistics" title="28.4.3.29 The schema_table_statistics and x$schema_table_statistics Views"><code class="literal">x$ps_schema_table_statistics_io</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">x$schema_flattened_keys</code></a></th>
+<td>DESCRIBE</td>
+<td></td>
 </tr></tbody></table>
 </div>
 
@@ -611,87 +564,60 @@ stage/innodb/buffer pool load
 <div class="table">
 <a name="sys-schema-procedures-table"></a><p class="title"><b>Table 28.3 sys Schema Stored Procedures</b></p>
 <div class="table-contents">
-<table summary="Stored procedures used in the sys schema implementation"><col style="width: 60%"><col style="width: 40%"><thead><tr>
-            <th>Procedure Name</th>
-            <th>Description</th>
-          </tr></thead><tbody><tr>
-            <td><a class="link" href="sys-schema.html#sys-create-synonym-db" title="28.4.4.1 The create_synonym_db() Procedure"><code class="literal">create_synonym_db()</code></a></td>
-            <td>Create synonym for schema</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-diagnostics" title="28.4.4.2 The diagnostics() Procedure"><code class="literal">diagnostics()</code></a></td>
-            <td>Collect system diagnostic information</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-execute-prepared-stmt" title="28.4.4.3 The execute_prepared_stmt() Procedure"><code class="literal">execute_prepared_stmt()</code></a></td>
-            <td>Execute prepared statement</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-disable-background-threads" title="28.4.4.4 The ps_setup_disable_background_threads() Procedure"><code class="literal">ps_setup_disable_background_threads()</code></a></td>
-            <td>Disable background thread instrumentation</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-disable-consumer" title="28.4.4.5 The ps_setup_disable_consumer() Procedure"><code class="literal">ps_setup_disable_consumer()</code></a></td>
-            <td>Disable consumers</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-disable-instrument" title="28.4.4.6 The ps_setup_disable_instrument() Procedure"><code class="literal">ps_setup_disable_instrument()</code></a></td>
-            <td>Disable instruments</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-disable-thread" title="28.4.4.7 The ps_setup_disable_thread() Procedure"><code class="literal">ps_setup_disable_thread()</code></a></td>
-            <td>Disable instrumentation for thread</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-enable-background-threads" title="28.4.4.8 The ps_setup_enable_background_threads() Procedure"><code class="literal">ps_setup_enable_background_threads()</code></a></td>
-            <td>Enable background thread instrumentation</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-enable-consumer" title="28.4.4.9 The ps_setup_enable_consumer() Procedure"><code class="literal">ps_setup_enable_consumer()</code></a></td>
-            <td>Enable consumers</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-enable-instrument" title="28.4.4.10 The ps_setup_enable_instrument() Procedure"><code class="literal">ps_setup_enable_instrument()</code></a></td>
-            <td>Enable instruments</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-enable-thread" title="28.4.4.11 The ps_setup_enable_thread() Procedure"><code class="literal">ps_setup_enable_thread()</code></a></td>
-            <td>Enable instrumentation for thread</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-reload-saved" title="28.4.4.12 The ps_setup_reload_saved() Procedure"><code class="literal">ps_setup_reload_saved()</code></a></td>
-            <td>Reload saved Performance Schema configuration</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-reset-to-default" title="28.4.4.13 The ps_setup_reset_to_default() Procedure"><code class="literal">ps_setup_reset_to_default()</code></a></td>
-            <td>Reset saved Performance Schema configuration</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-save" title="28.4.4.14 The ps_setup_save() Procedure"><code class="literal">ps_setup_save()</code></a></td>
-            <td>Save Performance Schema configuration</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-show-disabled" title="28.4.4.15 The ps_setup_show_disabled() Procedure"><code class="literal">ps_setup_show_disabled()</code></a></td>
-            <td>Display disabled Performance Schema configuration</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-show-disabled-consumers" title="28.4.4.16 The ps_setup_show_disabled_consumers() Procedure"><code class="literal">ps_setup_show_disabled_consumers()</code></a></td>
-            <td>Display disabled Performance Schema consumers</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-show-disabled-instruments" title="28.4.4.17 The ps_setup_show_disabled_instruments() Procedure"><code class="literal">ps_setup_show_disabled_instruments()</code></a></td>
-            <td>Display disabled Performance Schema instruments</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-show-enabled" title="28.4.4.18 The ps_setup_show_enabled() Procedure"><code class="literal">ps_setup_show_enabled()</code></a></td>
-            <td>Display enabled Performance Schema configuration</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-show-enabled-consumers" title="28.4.4.19 The ps_setup_show_enabled_consumers() Procedure"><code class="literal">ps_setup_show_enabled_consumers()</code></a></td>
-            <td>Display enabled Performance Schema consumers</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-setup-show-enabled-instruments" title="28.4.4.20 The ps_setup_show_enabled_instruments() Procedure"><code class="literal">ps_setup_show_enabled_instruments()</code></a></td>
-            <td>Display enabled Performance Schema instruments</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-statement-avg-latency-histogram" title="28.4.4.21 The ps_statement_avg_latency_histogram() Procedure"><code class="literal">ps_statement_avg_latency_histogram()</code></a></td>
-            <td>Display statement latency histogram</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-trace-statement-digest" title="28.4.4.22 The ps_trace_statement_digest() Procedure"><code class="literal">ps_trace_statement_digest()</code></a></td>
-            <td>Trace Performance Schema instrumentation for digest</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-trace-thread" title="28.4.4.23 The ps_trace_thread() Procedure"><code class="literal">ps_trace_thread()</code></a></td>
-            <td>Dump Performance Schema data for thread</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-ps-truncate-all-tables" title="28.4.4.24 The ps_truncate_all_tables() Procedure"><code class="literal">ps_truncate_all_tables()</code></a></td>
-            <td>Truncate Performance Schema summary tables</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-statement-performance-analyzer" title="28.4.4.25 The statement_performance_analyzer() Procedure"><code class="literal">statement_performance_analyzer()</code></a></td>
-            <td>Report of statements running on server</td>
-          </tr><tr>
-            <td><a class="link" href="sys-schema.html#sys-table-exists" title="28.4.4.26 The table_exists() Procedure"><code class="literal">table_exists()</code></a></td>
-            <td>Whether a table exists</td>
+<table frame="box" rules="all" summary="Stored procedures used in the sys schema implementation."><col style="width: 28%"><col style="width: 71%"><thead><tr><th>Procedure Name</th>
+<th>Description</th>
+</tr></thead><tbody><tr><td><a class="link" href="sys-schema.html#sys-create-synonym-db" title="28.4.4.1 The create_synonym_db() Procedure"><code class="literal">create_synonym_db()</code></a></td>
+<td>Create synonym for schema</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-diagnostics" title="28.4.4.2 The diagnostics() Procedure"><code class="literal">diagnostics()</code></a></td>
+<td>Collect system diagnostic information</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-execute-prepared-stmt" title="28.4.4.3 The execute_prepared_stmt() Procedure"><code class="literal">execute_prepared_stmt()</code></a></td>
+<td>Execute prepared statement</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-disable-background-threads" title="28.4.4.4 The ps_setup_disable_background_threads() Procedure"><code class="literal">ps_setup_disable_background_threads()</code></a></td>
+<td>Disable background thread instrumentation</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-disable-consumer" title="28.4.4.5 The ps_setup_disable_consumer() Procedure"><code class="literal">ps_setup_disable_consumer()</code></a></td>
+<td>Disable consumers</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-disable-instrument" title="28.4.4.6 The ps_setup_disable_instrument() Procedure"><code class="literal">ps_setup_disable_instrument()</code></a></td>
+<td>Disable instruments</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-disable-thread" title="28.4.4.7 The ps_setup_disable_thread() Procedure"><code class="literal">ps_setup_disable_thread()</code></a></td>
+<td>Disable instrumentation for thread</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-enable-background-threads" title="28.4.4.8 The ps_setup_enable_background_threads() Procedure"><code class="literal">ps_setup_enable_background_threads()</code></a></td>
+<td>Enable background thread instrumentation</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-enable-consumer" title="28.4.4.9 The ps_setup_enable_consumer() Procedure"><code class="literal">ps_setup_enable_consumer()</code></a></td>
+<td>Enable consumers</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-enable-instrument" title="28.4.4.10 The ps_setup_enable_instrument() Procedure"><code class="literal">ps_setup_enable_instrument()</code></a></td>
+<td>Enable instruments</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-enable-thread" title="28.4.4.11 The ps_setup_enable_thread() Procedure"><code class="literal">ps_setup_enable_thread()</code></a></td>
+<td>Enable instrumentation for thread</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-reload-saved" title="28.4.4.12 The ps_setup_reload_saved() Procedure"><code class="literal">ps_setup_reload_saved()</code></a></td>
+<td>Reload saved Performance Schema configuration</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-reset-to-default" title="28.4.4.13 The ps_setup_reset_to_default() Procedure"><code class="literal">ps_setup_reset_to_default()</code></a></td>
+<td>Reset saved Performance Schema configuration</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-save" title="28.4.4.14 The ps_setup_save() Procedure"><code class="literal">ps_setup_save()</code></a></td>
+<td>Save Performance Schema configuration</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-show-disabled" title="28.4.4.15 The ps_setup_show_disabled() Procedure"><code class="literal">ps_setup_show_disabled()</code></a></td>
+<td>Display disabled Performance Schema configuration</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-show-disabled-consumers" title="28.4.4.16 The ps_setup_show_disabled_consumers() Procedure"><code class="literal">ps_setup_show_disabled_consumers()</code></a></td>
+<td>Display disabled Performance Schema consumers</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-show-disabled-instruments" title="28.4.4.17 The ps_setup_show_disabled_instruments() Procedure"><code class="literal">ps_setup_show_disabled_instruments()</code></a></td>
+<td>Display disabled Performance Schema instruments</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-show-enabled" title="28.4.4.18 The ps_setup_show_enabled() Procedure"><code class="literal">ps_setup_show_enabled()</code></a></td>
+<td>Display enabled Performance Schema configuration</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-show-enabled-consumers" title="28.4.4.19 The ps_setup_show_enabled_consumers() Procedure"><code class="literal">ps_setup_show_enabled_consumers()</code></a></td>
+<td>Display enabled Performance Schema consumers</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-setup-show-enabled-instruments" title="28.4.4.20 The ps_setup_show_enabled_instruments() Procedure"><code class="literal">ps_setup_show_enabled_instruments()</code></a></td>
+<td>Display enabled Performance Schema instruments</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-statement-avg-latency-histogram" title="28.4.4.21 The ps_statement_avg_latency_histogram() Procedure"><code class="literal">ps_statement_avg_latency_histogram()</code></a></td>
+<td>Display statement latency histogram</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-trace-statement-digest" title="28.4.4.22 The ps_trace_statement_digest() Procedure"><code class="literal">ps_trace_statement_digest()</code></a></td>
+<td>Trace Performance Schema instrumentation for digest</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-trace-thread" title="28.4.4.23 The ps_trace_thread() Procedure"><code class="literal">ps_trace_thread()</code></a></td>
+<td>Dump Performance Schema data for thread</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-truncate-all-tables" title="28.4.4.24 The ps_truncate_all_tables() Procedure"><code class="literal">ps_truncate_all_tables()</code></a></td>
+<td>Truncate Performance Schema summary tables</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-statement-performance-analyzer" title="28.4.4.25 The statement_performance_analyzer() Procedure"><code class="literal">statement_performance_analyzer()</code></a></td>
+<td>Report of statements running on server</td>
+</tr><tr><td><a class="link" href="sys-schema.html#sys-table-exists" title="28.4.4.26 The table_exists() Procedure"><code class="literal">table_exists()</code></a></td>
+<td>Whether a table exists</td>
 </tr></tbody></table>
 </div>
 
@@ -700,52 +626,75 @@ stage/innodb/buffer pool load
 <div class="table">
 <a name="sys-schema-functions-table"></a><p class="title"><b>Table 28.4 sys Schema Stored Functions</b></p>
 <div class="table-contents">
-<table frame="box" rules="all" summary="Stored functions used in the sys schema implementation."><col style="width: 28%"><col style="width: 71%"><thead><tr><th>Function Name</th>
+<table frame="box" rules="all" summary="Stored functions used in the sys schema implementation."><col style="width: 25%"><col style="width: 62%"><col style="width: 12%"><thead><tr><th>Function Name</th>
 <th>Description</th>
-</tr></thead><tbody><tr><td><a class="link" href="sys-schema.html#sys-extract-schema-from-file-name" title="28.4.5.1 The extract_schema_from_file_name() Function"><code class="literal">extract_schema_from_file_name()</code></a></td>
+<th>Deprecated</th>
+</tr></thead><tbody><tr><th scope="row"><a class="link" href="sys-schema.html#sys-extract-schema-from-file-name" title="28.4.5.1 The extract_schema_from_file_name() Function"><code class="literal">extract_schema_from_file_name()</code></a></th>
 <td>Extract schema name part of file name</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-extract-table-from-file-name" title="28.4.5.2 The extract_table_from_file_name() Function"><code class="literal">extract_table_from_file_name()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-extract-table-from-file-name" title="28.4.5.2 The extract_table_from_file_name() Function"><code class="literal">extract_table_from_file_name()</code></a></th>
 <td>Extract table name part of file name</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-format-bytes" title="28.4.5.3 The format_bytes() Function"><code class="literal">format_bytes()</code></a></td>
-<td>Convert byte count to human-readable format</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-format-path" title="28.4.5.4 The format_path() Function"><code class="literal">format_path()</code></a></td>
-<td>Rewrite path in terms of system variables</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-format-statement" title="28.4.5.5 The format_statement() Function"><code class="literal">format_statement()</code></a></td>
-<td>Format statement to be within statement_truncate_len bytes</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-format-time" title="28.4.5.6 The format_time() Function"><code class="literal">format_time()</code></a></td>
-<td>Convert time to human-readable format</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-list-add" title="28.4.5.7 The list_add() Function"><code class="literal">list_add()</code></a></td>
-<td>Add value to list</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-list-drop" title="28.4.5.8 The list_drop() Function"><code class="literal">list_drop()</code></a></td>
-<td>Remove value from list</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-is-account-enabled" title="28.4.5.9 The ps_is_account_enabled() Function"><code class="literal">ps_is_account_enabled()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-format-bytes" title="28.4.5.3 The format_bytes() Function"><code class="literal">format_bytes()</code></a></th>
+<td>Convert byte count to value with units</td>
+<td>8.0.16</td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-format-path" title="28.4.5.4 The format_path() Function"><code class="literal">format_path()</code></a></th>
+<td>Replace directories in path name with symbolic system variable names</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-format-statement" title="28.4.5.5 The format_statement() Function"><code class="literal">format_statement()</code></a></th>
+<td>Truncate long statement to fixed length</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-format-time" title="28.4.5.6 The format_time() Function"><code class="literal">format_time()</code></a></th>
+<td>Convert picoseconds time to value with units</td>
+<td>8.0.16</td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-list-add" title="28.4.5.7 The list_add() Function"><code class="literal">list_add()</code></a></th>
+<td>Add item to list</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-list-drop" title="28.4.5.8 The list_drop() Function"><code class="literal">list_drop()</code></a></th>
+<td>Remove item from list</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-is-account-enabled" title="28.4.5.9 The ps_is_account_enabled() Function"><code class="literal">ps_is_account_enabled()</code></a></th>
 <td>Whether Performance Schema instrumentation for account is enabled</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-is-consumer-enabled" title="28.4.5.10 The ps_is_consumer_enabled() Function"><code class="literal">ps_is_consumer_enabled()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-is-consumer-enabled" title="28.4.5.10 The ps_is_consumer_enabled() Function"><code class="literal">ps_is_consumer_enabled()</code></a></th>
 <td>Whether Performance Schema consumer is enabled</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-is-instrument-default-enabled" title="28.4.5.11 The ps_is_instrument_default_enabled() Function"><code class="literal">ps_is_instrument_default_enabled()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-is-instrument-default-enabled" title="28.4.5.11 The ps_is_instrument_default_enabled() Function"><code class="literal">ps_is_instrument_default_enabled()</code></a></th>
 <td>Whether Performance Schema instrument is enabled by default</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-is-instrument-default-timed" title="28.4.5.12 The ps_is_instrument_default_timed() Function"><code class="literal">ps_is_instrument_default_timed()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-is-instrument-default-timed" title="28.4.5.12 The ps_is_instrument_default_timed() Function"><code class="literal">ps_is_instrument_default_timed()</code></a></th>
 <td>Whether Performance Schema instrument is timed by default</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-is-thread-instrumented" title="28.4.5.13 The ps_is_thread_instrumented() Function"><code class="literal">ps_is_thread_instrumented()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-is-thread-instrumented" title="28.4.5.13 The ps_is_thread_instrumented() Function"><code class="literal">ps_is_thread_instrumented()</code></a></th>
 <td>Whether Performance Schema instrumentation for connection ID is enabled</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-thread-account" title="28.4.5.14 The ps_thread_account() Function"><code class="literal">ps_thread_account()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-thread-account" title="28.4.5.14 The ps_thread_account() Function"><code class="literal">ps_thread_account()</code></a></th>
 <td>Account associated with Performance Schema thread ID</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-thread-id" title="28.4.5.15 The ps_thread_id() Function"><code class="literal">ps_thread_id()</code></a></td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-thread-id" title="28.4.5.15 The ps_thread_id() Function"><code class="literal">ps_thread_id()</code></a></th>
 <td>Performance Schema thread ID associated with connection ID</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-thread-stack" title="28.4.5.16 The ps_thread_stack() Function"><code class="literal">ps_thread_stack()</code></a></td>
-<td>Thread stack as JSON object</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-ps-thread-trx-info" title="28.4.5.17 The ps_thread_trx_info() Function"><code class="literal">ps_thread_trx_info()</code></a></td>
-<td>Thread information as JSON object</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-quote-identifier" title="28.4.5.18 The quote_identifier() Function"><code class="literal">quote_identifier()</code></a></td>
+<td>8.0.16</td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-thread-stack" title="28.4.5.16 The ps_thread_stack() Function"><code class="literal">ps_thread_stack()</code></a></th>
+<td>Event information for connection ID</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-ps-thread-trx-info" title="28.4.5.17 The ps_thread_trx_info() Function"><code class="literal">ps_thread_trx_info()</code></a></th>
+<td>Transaction information for thread ID</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-quote-identifier" title="28.4.5.18 The quote_identifier() Function"><code class="literal">quote_identifier()</code></a></th>
 <td>Quote string as identifier</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-sys-get-config" title="28.4.5.19 The sys_get_config() Function"><code class="literal">sys_get_config()</code></a></td>
-<td>Configuration option value</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-version-major" title="28.4.5.20 The version_major() Function"><code class="literal">version_major()</code></a></td>
-<td>MySQL server major version</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-version-minor" title="28.4.5.21 The version_minor() Function"><code class="literal">version_minor()</code></a></td>
-<td>MySQL server minor version</td>
-</tr><tr><td><a class="link" href="sys-schema.html#sys-version-patch" title="28.4.5.22 The version_patch() Function"><code class="literal">version_patch()</code></a></td>
-<td>MySQL server patch release version</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-sys-get-config" title="28.4.5.19 The sys_get_config() Function"><code class="literal">sys_get_config()</code></a></th>
+<td>sys schema configuration option value</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-version-major" title="28.4.5.20 The version_major() Function"><code class="literal">version_major()</code></a></th>
+<td>MySQL server major version number</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-version-minor" title="28.4.5.21 The version_minor() Function"><code class="literal">version_minor()</code></a></th>
+<td>MySQL server minor version number</td>
+<td></td>
+</tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-version-patch" title="28.4.5.22 The version_patch() Function"><code class="literal">version_patch()</code></a></th>
+<td>MySQL server patch release version number</td>
+<td></td>
 </tr></tbody></table>
 </div>
 
@@ -779,7 +728,7 @@ stage/innodb/buffer pool load
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042089096608"></a><a class="indexterm" name="idm46042089095216"></a><p>
+<a class="indexterm" name="idm45831922761744"></a><a class="indexterm" name="idm45831922760256"></a><p>
           This table contains <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema
           configuration options, one row per option. Configuration
           changes made by updating this table persist across client
@@ -1060,7 +1009,7 @@ Views</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait
 <p>
         The following sections describe
         <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema views.
-      </p><a class="indexterm" name="idm46042088998752"></a><a class="indexterm" name="idm46042088997360"></a><p>
+      </p><a class="indexterm" name="idm45831922650608"></a><a class="indexterm" name="idm45831922649120"></a><p>
         The <code class="literal">sys</code> schema contains many views that
         summarize Performance Schema tables in various ways. Most of
         these views come in pairs, such that one member of the pair has
@@ -1123,7 +1072,7 @@ Views</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088975808"></a><a class="indexterm" name="idm46042088974416"></a><a class="indexterm" name="idm46042088973024"></a><a class="indexterm" name="idm46042088971632"></a><p>
+<a class="indexterm" name="idm45831922624816"></a><a class="indexterm" name="idm45831922623360"></a><a class="indexterm" name="idm45831922621872"></a><a class="indexterm" name="idm45831922620384"></a><p>
           These views summarize statement activity, file I/O, and
           connections, grouped by host.
         </p><p>
@@ -1199,7 +1148,7 @@ Views</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088941344"></a><a class="indexterm" name="idm46042088939952"></a><a class="indexterm" name="idm46042088938560"></a><a class="indexterm" name="idm46042088937168"></a><p>
+<a class="indexterm" name="idm45831922588256"></a><a class="indexterm" name="idm45831922586800"></a><a class="indexterm" name="idm45831922585296"></a><a class="indexterm" name="idm45831922583792"></a><p>
           These views summarize file I/O, grouped by host. By default,
           rows are sorted by descending total file I/O latency.
         </p><p>
@@ -1237,7 +1186,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088923664"></a><a class="indexterm" name="idm46042088922272"></a><a class="indexterm" name="idm46042088920880"></a><a class="indexterm" name="idm46042088919488"></a><p>
+<a class="indexterm" name="idm45831922568848"></a><a class="indexterm" name="idm45831922567392"></a><a class="indexterm" name="idm45831922565888"></a><a class="indexterm" name="idm45831922564384"></a><p>
           These views summarize file I/O, grouped by host and event
           type. By default, rows are sorted by host and descending total
           I/O latency.
@@ -1290,7 +1239,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088902208"></a><a class="indexterm" name="idm46042088900816"></a><a class="indexterm" name="idm46042088899424"></a><a class="indexterm" name="idm46042088898032"></a><p>
+<a class="indexterm" name="idm45831922545520"></a><a class="indexterm" name="idm45831922544064"></a><a class="indexterm" name="idm45831922542560"></a><a class="indexterm" name="idm45831922541056"></a><p>
           These views summarize statement stages, grouped by host. By
           default, rows are sorted by host and descending total latency.
         </p><p>
@@ -1339,7 +1288,7 @@ x$host_summary_by_statement_latency Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088880752"></a><a class="indexterm" name="idm46042088879360"></a><a class="indexterm" name="idm46042088877968"></a><a class="indexterm" name="idm46042088876576"></a><p>
+<a class="indexterm" name="idm45831922522160"></a><a class="indexterm" name="idm45831922520704"></a><a class="indexterm" name="idm45831922519200"></a><a class="indexterm" name="idm45831922517680"></a><p>
           These views summarize overall statement statistics, grouped by
           host. By default, rows are sorted by descending total latency.
         </p><p>
@@ -1409,7 +1358,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088851648"></a><a class="indexterm" name="idm46042088850256"></a><a class="indexterm" name="idm46042088848864"></a><a class="indexterm" name="idm46042088847472"></a><p>
+<a class="indexterm" name="idm45831922490880"></a><a class="indexterm" name="idm45831922489424"></a><a class="indexterm" name="idm45831922487920"></a><a class="indexterm" name="idm45831922486416"></a><p>
           These views summarize informaion about statements executed,
           grouped by host and statement type. By default, rows are
           sorted by host and descending total latency.
@@ -1486,7 +1435,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088820432"></a><a class="indexterm" name="idm46042088819040"></a><a class="indexterm" name="idm46042088817648"></a><a class="indexterm" name="idm46042088816256"></a><p>
+<a class="indexterm" name="idm45831922457520"></a><a class="indexterm" name="idm45831922456064"></a><a class="indexterm" name="idm45831922454560"></a><a class="indexterm" name="idm45831922453056"></a><p>
           These views summarize the information in the
           <code class="literal">INFORMATION_SCHEMA</code>
           <a class="link" href="information-schema.html#information-schema-innodb-buffer-page-table" title="26.4.2 The INFORMATION_SCHEMA INNODB_BUFFER_PAGE Table"><code class="literal">INNODB_BUFFER_PAGE</code></a> table, grouped
@@ -1560,7 +1509,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088792288"></a><a class="indexterm" name="idm46042088790896"></a><a class="indexterm" name="idm46042088789504"></a><a class="indexterm" name="idm46042088788112"></a><p>
+<a class="indexterm" name="idm45831922426720"></a><a class="indexterm" name="idm45831922425264"></a><a class="indexterm" name="idm45831922423760"></a><a class="indexterm" name="idm45831922422256"></a><p>
           These views summarize the information in the
           <code class="literal">INFORMATION_SCHEMA</code>
           <a class="link" href="information-schema.html#information-schema-innodb-buffer-page-table" title="26.4.2 The INFORMATION_SCHEMA INNODB_BUFFER_PAGE Table"><code class="literal">INNODB_BUFFER_PAGE</code></a> table, grouped
@@ -1639,7 +1588,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088762464"></a><a class="indexterm" name="idm46042088761072"></a><a class="indexterm" name="idm46042088759680"></a><a class="indexterm" name="idm46042088758288"></a><p>
+<a class="indexterm" name="idm45831922394112"></a><a class="indexterm" name="idm45831922392656"></a><a class="indexterm" name="idm45831922391168"></a><a class="indexterm" name="idm45831922389664"></a><p>
           These views summarize the <code class="literal">InnoDB</code> locks that
           transactions are waiting for. By default, rows are sorted by
           descending lock age.
@@ -1792,7 +1741,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088690944"></a><a class="indexterm" name="idm46042088689552"></a><a class="indexterm" name="idm46042088688160"></a><a class="indexterm" name="idm46042088686768"></a><p>
+<a class="indexterm" name="idm45831922317680"></a><a class="indexterm" name="idm45831922316224"></a><a class="indexterm" name="idm45831922314720"></a><a class="indexterm" name="idm45831922313216"></a><p>
           These views summarize I/O consumers to display time waiting
           for I/O, grouped by thread. By default, rows are sorted by
           descending total I/O latency.
@@ -1853,7 +1802,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088665280"></a><a class="indexterm" name="idm46042088663888"></a><a class="indexterm" name="idm46042088662496"></a><a class="indexterm" name="idm46042088661104"></a><p>
+<a class="indexterm" name="idm45831922290112"></a><a class="indexterm" name="idm45831922288656"></a><a class="indexterm" name="idm45831922287152"></a><a class="indexterm" name="idm45831922285648"></a><p>
           These views summarize global I/O consumers to display amount
           of I/O, grouped by file. By default, rows are sorted by
           descending total I/O (bytes read and written).
@@ -1912,7 +1861,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088638496"></a><a class="indexterm" name="idm46042088637104"></a><a class="indexterm" name="idm46042088635712"></a><a class="indexterm" name="idm46042088634320"></a><p>
+<a class="indexterm" name="idm45831922261440"></a><a class="indexterm" name="idm45831922259984"></a><a class="indexterm" name="idm45831922258480"></a><a class="indexterm" name="idm45831922256976"></a><p>
           These views summarize global I/O consumers to display time
           waiting for I/O, grouped by file. By default, rows are sorted
           by descending total latency.
@@ -1976,7 +1925,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088611712"></a><a class="indexterm" name="idm46042088610320"></a><a class="indexterm" name="idm46042088608928"></a><a class="indexterm" name="idm46042088607536"></a><p>
+<a class="indexterm" name="idm45831922232688"></a><a class="indexterm" name="idm45831922231232"></a><a class="indexterm" name="idm45831922229728"></a><a class="indexterm" name="idm45831922228224"></a><p>
           These views summarize global I/O consumers to display amount
           of I/O and time waiting for I/O, grouped by event. By default,
           rows are sorted by descending total I/O (bytes read and
@@ -2057,7 +2006,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088576624"></a><a class="indexterm" name="idm46042088575232"></a><a class="indexterm" name="idm46042088573840"></a><a class="indexterm" name="idm46042088572448"></a><p>
+<a class="indexterm" name="idm45831922195344"></a><a class="indexterm" name="idm45831922193888"></a><a class="indexterm" name="idm45831922192384"></a><a class="indexterm" name="idm45831922190880"></a><p>
           These views summarize global I/O consumers to display amount
           of I/O and time waiting for I/O, grouped by event. By default,
           rows are sorted by descending total latency.
@@ -2145,7 +2094,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088539744"></a><a class="indexterm" name="idm46042088538352"></a><a class="indexterm" name="idm46042088536960"></a><a class="indexterm" name="idm46042088535568"></a><p>
+<a class="indexterm" name="idm45831922156176"></a><a class="indexterm" name="idm45831922154720"></a><a class="indexterm" name="idm45831922153232"></a><a class="indexterm" name="idm45831922151744"></a><p>
           These views summarize file I/O activity, grouped by file and
           thread. By default, rows are sorted with most recent I/O
           first.
@@ -2190,7 +2139,7 @@ x$memory_by_host_by_current_bytes Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088520464"></a><a class="indexterm" name="idm46042088519072"></a><a class="indexterm" name="idm46042088517680"></a><a class="indexterm" name="idm46042088516288"></a><p>
+<a class="indexterm" name="idm45831922135344"></a><a class="indexterm" name="idm45831922133888"></a><a class="indexterm" name="idm45831922132384"></a><a class="indexterm" name="idm45831922130880"></a><p>
           These views summarize memory use, grouped by host. By default,
           rows are sorted by descending amount of memory used.
         </p><p>
@@ -2246,7 +2195,7 @@ x$memory_by_thread_by_current_bytes Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088496992"></a><a class="indexterm" name="idm46042088495600"></a><a class="indexterm" name="idm46042088494208"></a><a class="indexterm" name="idm46042088492816"></a><p>
+<a class="indexterm" name="idm45831922109984"></a><a class="indexterm" name="idm45831922108528"></a><a class="indexterm" name="idm45831922107024"></a><a class="indexterm" name="idm45831922105504"></a><p>
           These views summarize memory use, grouped by thread. By
           default, rows are sorted by descending amount of memory used.
         </p><p>
@@ -2302,7 +2251,7 @@ x$memory_by_user_by_current_bytes Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088473856"></a><a class="indexterm" name="idm46042088472464"></a><a class="indexterm" name="idm46042088471072"></a><a class="indexterm" name="idm46042088469680"></a><p>
+<a class="indexterm" name="idm45831922085024"></a><a class="indexterm" name="idm45831922083568"></a><a class="indexterm" name="idm45831922082064"></a><a class="indexterm" name="idm45831922080560"></a><p>
           These views summarize memory use, grouped by user. By default,
           rows are sorted by descending amount of memory used.
         </p><p>
@@ -2358,7 +2307,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088450432"></a><a class="indexterm" name="idm46042088449040"></a><a class="indexterm" name="idm46042088447648"></a><a class="indexterm" name="idm46042088446256"></a><p>
+<a class="indexterm" name="idm45831922059648"></a><a class="indexterm" name="idm45831922058192"></a><a class="indexterm" name="idm45831922056688"></a><a class="indexterm" name="idm45831922055184"></a><p>
           These views summarize memory use, grouped by allocation type
           (that is, by event). By default, rows are sorted by descending
           amount of memory used.
@@ -2418,7 +2367,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088427312"></a><a class="indexterm" name="idm46042088425920"></a><a class="indexterm" name="idm46042088424528"></a><a class="indexterm" name="idm46042088423136"></a><p>
+<a class="indexterm" name="idm45831922034720"></a><a class="indexterm" name="idm45831922033248"></a><a class="indexterm" name="idm45831922031744"></a><a class="indexterm" name="idm45831922030240"></a><p>
           These views summarize total memory use within the server.
         </p><p>
           The <a class="link" href="sys-schema.html#sys-memory-global-total" title="28.4.3.20 The memory_global_total and x$memory_global_total Views"><code class="literal">memory_global_total</code></a> and
@@ -2445,7 +2394,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088415632"></a><a class="indexterm" name="idm46042088414240"></a><p>
+<a class="indexterm" name="idm45831922021856"></a><a class="indexterm" name="idm45831922020368"></a><p>
           This view summarizes MySQL server metrics to show variable
           names, values, types, and whether they are enabled. By
           default, rows are sorted by variable type and name.
@@ -2588,7 +2537,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088351056"></a><a class="indexterm" name="idm46042088349664"></a><a class="indexterm" name="idm46042088348272"></a><a class="indexterm" name="idm46042088346880"></a><p>
+<a class="indexterm" name="idm45831921949056"></a><a class="indexterm" name="idm45831921947600"></a><a class="indexterm" name="idm45831921946112"></a><a class="indexterm" name="idm45831921944624"></a><p>
           The MySQL process list indicates the operations currently
           being performed by the set of threads executing within the
           server. The <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">processlist</code></a> and
@@ -2756,7 +2705,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088278096"></a><a class="indexterm" name="idm46042088276704"></a><p>
+<a class="indexterm" name="idm45831921870688"></a><a class="indexterm" name="idm45831921869184"></a><p>
           This view returns information about lost Performance Schema
           instruments, to indicate whether the Performance Schema is
           unable to monitor all runtime data.
@@ -2790,7 +2739,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088268176"></a><a class="indexterm" name="idm46042088266784"></a><p>
+<a class="indexterm" name="idm45831921859840"></a><a class="indexterm" name="idm45831921858336"></a><p>
           This view indicates which tables have
           <code class="literal">AUTO_INCREMENT</code> columns and provides
           information about those columns, such as the current and
@@ -2870,7 +2819,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088236096"></a><a class="indexterm" name="idm46042088234704"></a><a class="indexterm" name="idm46042088233312"></a><a class="indexterm" name="idm46042088231920"></a><p>
+<a class="indexterm" name="idm45831921825264"></a><a class="indexterm" name="idm45831921823808"></a><a class="indexterm" name="idm45831921822304"></a><a class="indexterm" name="idm45831921820800"></a><p>
           These views provide index statistics. By default, rows are
           sorted by descending total index latency.
         </p><p>
@@ -2938,7 +2887,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088205776"></a><a class="indexterm" name="idm46042088204384"></a><p>
+<a class="indexterm" name="idm45831921792880"></a><a class="indexterm" name="idm45831921791376"></a><p>
           This view summarizes the types of objects within each schema.
           By default, rows are sorted by schema and object type.
 </p>
@@ -2989,7 +2938,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088188512"></a><a class="indexterm" name="idm46042088187120"></a><a class="indexterm" name="idm46042088185728"></a><a class="indexterm" name="idm46042088184336"></a><p>
+<a class="indexterm" name="idm45831921773872"></a><a class="indexterm" name="idm45831921772416"></a><a class="indexterm" name="idm45831921770912"></a><a class="indexterm" name="idm45831921769408"></a><p>
           The <a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">schema_redundant_indexes</code></a>
           view displays indexes that duplicate other indexes or are made
           redundant by them. The
@@ -3091,7 +3040,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088144560"></a><a class="indexterm" name="idm46042088143168"></a><a class="indexterm" name="idm46042088141776"></a><a class="indexterm" name="idm46042088140384"></a><p>
+<a class="indexterm" name="idm45831921726608"></a><a class="indexterm" name="idm45831921725152"></a><a class="indexterm" name="idm45831921723648"></a><a class="indexterm" name="idm45831921722144"></a><p>
           These views display which sessions are blocked waiting on
           metadata locks, and what is blocking them.
         </p><p>
@@ -3201,7 +3150,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm46042088096768"></a><a class="indexterm" name="idm46042088095376"></a><a class="indexterm" name="idm46042088093984"></a><a class="indexterm" name="idm46042088092592"></a><p>
+<a class="indexterm" name="idm45831921675424"></a><a class="indexterm" name="idm45831921673968"></a><a class="indexterm" name="idm45831921672464"></a><a class="indexterm" name="idm45831921670960"></a><p>
           These views summarize table statistics. By default, rows are
           sorted by descending total wait time (tables with most
           contention first).
@@ -3309,7 +3258,7 @@ x$schema_table_statistics_with_buffer Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042088050192"></a><a class="indexterm" name="idm46042088048800"></a><a class="indexterm" name="idm46042088047408"></a><a class="indexterm" name="idm46042088046016"></a><p>
+<a class="indexterm" name="idm45831921626160"></a><a class="indexterm" name="idm45831921624640"></a><a class="indexterm" name="idm45831921623120"></a><a class="indexterm" name="idm45831921621600"></a><p>
           These views summarize table statistics, including
           <code class="literal">InnoDB</code> buffer pool statistics. By default,
           rows are sorted by descending total wait time (tables with
@@ -3453,7 +3402,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087986288"></a><a class="indexterm" name="idm46042087984896"></a><a class="indexterm" name="idm46042087983504"></a><a class="indexterm" name="idm46042087982112"></a><p>
+<a class="indexterm" name="idm45831921557920"></a><a class="indexterm" name="idm45831921556400"></a><a class="indexterm" name="idm45831921554880"></a><a class="indexterm" name="idm45831921553360"></a><p>
           These views display which tables are being accessed with full
           table scans. By default, rows are sorted by descending rows
           scanned.
@@ -3497,7 +3446,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087969072"></a><a class="indexterm" name="idm46042087967680"></a><p>
+<a class="indexterm" name="idm45831921538976"></a><a class="indexterm" name="idm45831921537472"></a><p>
           These views display indexes for which there are no events,
           which indicates that they are not being used. By default, rows
           are sorted by schema and table.
@@ -3538,7 +3487,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087956960"></a><a class="indexterm" name="idm46042087955568"></a><a class="indexterm" name="idm46042087954176"></a><a class="indexterm" name="idm46042087952784"></a><p>
+<a class="indexterm" name="idm45831921525712"></a><a class="indexterm" name="idm45831921524256"></a><a class="indexterm" name="idm45831921522768"></a><a class="indexterm" name="idm45831921521280"></a><p>
           These views are similar to
           <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">processlist</code></a> and
           <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">x$processlist</code></a>, but they filter
@@ -3558,7 +3507,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087947360"></a><a class="indexterm" name="idm46042087945968"></a><p>
+<a class="indexterm" name="idm45831921514864"></a><a class="indexterm" name="idm45831921513408"></a><p>
           For each connection, this view displays the SSL version,
           cipher, and count of reused SSL sessions.
         </p><p>
@@ -3597,7 +3546,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087933840"></a><a class="indexterm" name="idm46042087932448"></a><a class="indexterm" name="idm46042087931056"></a><a class="indexterm" name="idm46042087929664"></a><p>
+<a class="indexterm" name="idm45831921500336"></a><a class="indexterm" name="idm45831921498880"></a><a class="indexterm" name="idm45831921497392"></a><a class="indexterm" name="idm45831921495888"></a><p>
           These views list normalized statements with aggregated
           statistics. The content mimics the MySQL Enterprise Monitor
           Query Analysis view. By default, rows are sorted by descending
@@ -3730,7 +3679,7 @@ x$statements_with_errors_or_warnings Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087879584"></a><a class="indexterm" name="idm46042087878192"></a><a class="indexterm" name="idm46042087876800"></a><a class="indexterm" name="idm46042087875408"></a><p>
+<a class="indexterm" name="idm45831921443328"></a><a class="indexterm" name="idm45831921441872"></a><a class="indexterm" name="idm45831921440368"></a><a class="indexterm" name="idm45831921438848"></a><p>
           These views display normalized statements that have produced
           errors or warnings. By default, rows are sorted by descending
           error and warning counts.
@@ -3800,7 +3749,7 @@ x$statements_with_full_table_scans Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087850208"></a><a class="indexterm" name="idm46042087848816"></a><a class="indexterm" name="idm46042087847424"></a><a class="indexterm" name="idm46042087846032"></a><p>
+<a class="indexterm" name="idm45831921411856"></a><a class="indexterm" name="idm45831921410400"></a><a class="indexterm" name="idm45831921408896"></a><a class="indexterm" name="idm45831921407392"></a><p>
           These views display normalized statements that have done full
           table scans. By default, rows are sorted by descending
           percentage of time a full scan was done and descending total
@@ -3889,7 +3838,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087813200"></a><a class="indexterm" name="idm46042087811808"></a><a class="indexterm" name="idm46042087810416"></a><a class="indexterm" name="idm46042087809024"></a><p>
+<a class="indexterm" name="idm45831921372464"></a><a class="indexterm" name="idm45831921371008"></a><a class="indexterm" name="idm45831921369488"></a><a class="indexterm" name="idm45831921367968"></a><p>
           These views list statements with runtimes in the 95th
           percentile. By default, rows are sorted by descending average
           latency.
@@ -3994,7 +3943,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087770816"></a><a class="indexterm" name="idm46042087769424"></a><a class="indexterm" name="idm46042087768032"></a><a class="indexterm" name="idm46042087766640"></a><p>
+<a class="indexterm" name="idm45831921327136"></a><a class="indexterm" name="idm45831921325680"></a><a class="indexterm" name="idm45831921324176"></a><a class="indexterm" name="idm45831921322672"></a><p>
           These views list normalized statements that have performed
           sorts. By default, rows are sorted by descending total
           latency.
@@ -4078,7 +4027,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087735792"></a><a class="indexterm" name="idm46042087734400"></a><a class="indexterm" name="idm46042087733008"></a><a class="indexterm" name="idm46042087731616"></a><p>
+<a class="indexterm" name="idm45831921289904"></a><a class="indexterm" name="idm45831921288448"></a><a class="indexterm" name="idm45831921286944"></a><a class="indexterm" name="idm45831921285440"></a><p>
           These views list normalized statements that have used
           temporary tables. By default, rows are sorted by descending
           number of on-disk temporary tables used and descending number
@@ -4154,7 +4103,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087704480"></a><a class="indexterm" name="idm46042087703088"></a><a class="indexterm" name="idm46042087701696"></a><a class="indexterm" name="idm46042087700304"></a><p>
+<a class="indexterm" name="idm45831921256448"></a><a class="indexterm" name="idm45831921254992"></a><a class="indexterm" name="idm45831921253504"></a><a class="indexterm" name="idm45831921252016"></a><p>
           These views summarize statement activity, file I/O, and
           connections, grouped by user. By default, rows are sorted by
           descending total latency.
@@ -4232,7 +4181,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087669920"></a><a class="indexterm" name="idm46042087668528"></a><a class="indexterm" name="idm46042087667136"></a><a class="indexterm" name="idm46042087665744"></a><p>
+<a class="indexterm" name="idm45831921219792"></a><a class="indexterm" name="idm45831921218336"></a><a class="indexterm" name="idm45831921216832"></a><a class="indexterm" name="idm45831921215328"></a><p>
           These views summarize file I/O, grouped by user. By default,
           rows are sorted by descending total file I/O latency.
         </p><p>
@@ -4270,7 +4219,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087652272"></a><a class="indexterm" name="idm46042087650880"></a><a class="indexterm" name="idm46042087649488"></a><a class="indexterm" name="idm46042087648096"></a><p>
+<a class="indexterm" name="idm45831921200464"></a><a class="indexterm" name="idm45831921199008"></a><a class="indexterm" name="idm45831921197504"></a><a class="indexterm" name="idm45831921196000"></a><p>
           These views summarize file I/O, grouped by user and event
           type. By default, rows are sorted by user and descending total
           latency.
@@ -4323,7 +4272,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087630848"></a><a class="indexterm" name="idm46042087629456"></a><a class="indexterm" name="idm46042087628064"></a><a class="indexterm" name="idm46042087626672"></a><p>
+<a class="indexterm" name="idm45831921177168"></a><a class="indexterm" name="idm45831921175712"></a><a class="indexterm" name="idm45831921174208"></a><a class="indexterm" name="idm45831921172704"></a><p>
           These views summarize stages, grouped by user. By default,
           rows are sorted by user and descending total stage latency.
         </p><p>
@@ -4372,7 +4321,7 @@ x$user_summary_by_statement_latency Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087609440"></a><a class="indexterm" name="idm46042087608048"></a><a class="indexterm" name="idm46042087606656"></a><a class="indexterm" name="idm46042087605264"></a><p>
+<a class="indexterm" name="idm45831921153920"></a><a class="indexterm" name="idm45831921152464"></a><a class="indexterm" name="idm45831921150960"></a><a class="indexterm" name="idm45831921149440"></a><p>
           These views summarize overall statement statistics, grouped by
           user. By default, rows are sorted by descending total latency.
         </p><p>
@@ -4442,7 +4391,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087580368"></a><a class="indexterm" name="idm46042087578976"></a><a class="indexterm" name="idm46042087577584"></a><a class="indexterm" name="idm46042087576192"></a><p>
+<a class="indexterm" name="idm45831921122736"></a><a class="indexterm" name="idm45831921121280"></a><a class="indexterm" name="idm45831921119776"></a><a class="indexterm" name="idm45831921118272"></a><p>
           These views summarize informaion about statements executed,
           grouped by user and statement type. By default, rows are
           sorted by user and descending total latency.
@@ -4521,7 +4470,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087549280"></a><a class="indexterm" name="idm46042087547888"></a><p>
+<a class="indexterm" name="idm45831921089552"></a><a class="indexterm" name="idm45831921088064"></a><p>
           This view provides the current
           <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema and MySQL server
           versions.
@@ -4565,7 +4514,7 @@ x$wait_classes_global_by_avg_latency Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087535600"></a><a class="indexterm" name="idm46042087534208"></a><a class="indexterm" name="idm46042087532816"></a><a class="indexterm" name="idm46042087531424"></a><p>
+<a class="indexterm" name="idm45831921074144"></a><a class="indexterm" name="idm45831921072688"></a><a class="indexterm" name="idm45831921071184"></a><a class="indexterm" name="idm45831921069664"></a><p>
           These views summarize wait class average latencies, grouped by
           event class. By default, rows are sorted by descending average
           latency. Idle events are ignored.
@@ -4623,7 +4572,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087512512"></a><a class="indexterm" name="idm46042087511120"></a><a class="indexterm" name="idm46042087509728"></a><a class="indexterm" name="idm46042087508336"></a><p>
+<a class="indexterm" name="idm45831921049088"></a><a class="indexterm" name="idm45831921047632"></a><a class="indexterm" name="idm45831921046128"></a><a class="indexterm" name="idm45831921044624"></a><p>
           These views summarize wait class total latencies, grouped by
           event class. By default, rows are sorted by descending total
           latency. Idle events are ignored.
@@ -4683,7 +4632,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087489440"></a><a class="indexterm" name="idm46042087488048"></a><a class="indexterm" name="idm46042087486656"></a><a class="indexterm" name="idm46042087485264"></a><p>
+<a class="indexterm" name="idm45831921024016"></a><a class="indexterm" name="idm45831921022560"></a><a class="indexterm" name="idm45831921021056"></a><a class="indexterm" name="idm45831921019552"></a><p>
           These views summarize wait events, grouped by host and event.
           By default, rows are sorted by host and descending total
           latency. Idle events are ignored.
@@ -4735,7 +4684,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087468208"></a><a class="indexterm" name="idm46042087466816"></a><a class="indexterm" name="idm46042087465424"></a><a class="indexterm" name="idm46042087464032"></a><p>
+<a class="indexterm" name="idm45831921001024"></a><a class="indexterm" name="idm45831920999568"></a><a class="indexterm" name="idm45831920998064"></a><a class="indexterm" name="idm45831920996560"></a><p>
           These views summarize wait events, grouped by user and event.
           By default, rows are sorted by user and descending total
           latency. Idle events are ignored.
@@ -4787,7 +4736,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087446992"></a><a class="indexterm" name="idm46042087445600"></a><a class="indexterm" name="idm46042087444208"></a><a class="indexterm" name="idm46042087442816"></a><p>
+<a class="indexterm" name="idm45831920978112"></a><a class="indexterm" name="idm45831920976656"></a><a class="indexterm" name="idm45831920975152"></a><a class="indexterm" name="idm45831920973648"></a><p>
           These views summarize wait events, grouped by event. By
           default, rows are sorted by descending total latency. Idle
           events are ignored.
@@ -4851,7 +4800,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042087425408"></a><a class="indexterm" name="idm46042087424016"></a><p>
+<a class="indexterm" name="idm45831920954400"></a><a class="indexterm" name="idm45831920952928"></a><p>
           Given a schema name, this procedure creates a synonym schema
           containing views that refer to all the tables and views in the
           original schema. This can be used, for example, to create a
@@ -4945,7 +4894,7 @@ mysql&gt; <strong class="userinput"><code>SHOW FULL TABLES FROM info;</code></st
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087408928"></a><a class="indexterm" name="idm46042087407536"></a><p>
+<a class="indexterm" name="idm45831920935968"></a><a class="indexterm" name="idm45831920934512"></a><p>
           Creates a report of the current server status for diagnostic
           purposes.
         </p><p>
@@ -5160,7 +5109,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087331216"></a><a class="indexterm" name="idm46042087329824"></a><p>
+<a class="indexterm" name="idm45831920848992"></a><a class="indexterm" name="idm45831920847488"></a><p>
           Given an SQL statement as a string, executes it as a prepared
           statement. The prepared statement is deallocated after
           execution, so it is not subject to reuse. Thus, this procedure
@@ -5250,7 +5199,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087312832"></a><a class="indexterm" name="idm46042087311440"></a><p>
+<a class="indexterm" name="idm45831920828272"></a><a class="indexterm" name="idm45831920826752"></a><p>
           Disables Performance Schema instrumentation for all background
           threads. Produces a result set indicating how many background
           threads were disabled. Already disabled threads do not count.
@@ -5302,7 +5251,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_background_t
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087304336"></a><a class="indexterm" name="idm46042087302944"></a><p>
+<a class="indexterm" name="idm45831920818416"></a><a class="indexterm" name="idm45831920816960"></a><p>
           Disables Performance Schema consumers with names that contain
           the argument. Produces a result set indicating how many
           consumers were disabled. Already disabled consumers do not
@@ -5366,7 +5315,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_consumer('st
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087291264"></a><a class="indexterm" name="idm46042087289872"></a><p>
+<a class="indexterm" name="idm45831920803600"></a><a class="indexterm" name="idm45831920802144"></a><p>
           Disables Performance Schema instruments with names that
           contain the argument. Produces a result set indicating how
           many instruments were disabled. Already disabled instruments
@@ -5440,7 +5389,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_instrument('
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087276080"></a><a class="indexterm" name="idm46042087274688"></a><p>
+<a class="indexterm" name="idm45831920786624"></a><a class="indexterm" name="idm45831920785120"></a><p>
           Given a connection ID, disables Performance Schema
           instrumentation for the thread. Produces a result set
           indicating how many threads were disabled. Already disabled
@@ -5513,7 +5462,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_thread(CONNE
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087260416"></a><a class="indexterm" name="idm46042087259024"></a><p>
+<a class="indexterm" name="idm45831920768688"></a><a class="indexterm" name="idm45831920767168"></a><p>
           Enables Performance Schema instrumentation for all background
           threads. Produces a result set indicating how many background
           threads were enabled. Already enabled threads do not count.
@@ -5565,7 +5514,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_background_th
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087251920"></a><a class="indexterm" name="idm46042087250528"></a><p>
+<a class="indexterm" name="idm45831920758960"></a><a class="indexterm" name="idm45831920757504"></a><p>
           Enables Performance Schema consumers with names that contain
           the argument. Produces a result set indicating how many
           consumers were enabled. Already enabled consumers do not
@@ -5629,7 +5578,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_consumer('sta
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087238944"></a><a class="indexterm" name="idm46042087237552"></a><p>
+<a class="indexterm" name="idm45831920744144"></a><a class="indexterm" name="idm45831920742688"></a><p>
           Enables Performance Schema instruments with names that contain
           the argument. Produces a result set indicating how many
           instruments were enabled. Already enabled instruments do not
@@ -5703,7 +5652,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_instrument('m
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087223760"></a><a class="indexterm" name="idm46042087222368"></a><p>
+<a class="indexterm" name="idm45831920727104"></a><a class="indexterm" name="idm45831920725600"></a><p>
           Given a connection ID, enables Performance Schema
           instrumentation for the thread. Produces a result set
           indicating how many threads were enabled. Already enabled
@@ -5776,7 +5725,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_thread(CONNEC
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087208096"></a><a class="indexterm" name="idm46042087206704"></a><p>
+<a class="indexterm" name="idm45831920709296"></a><a class="indexterm" name="idm45831920707792"></a><p>
           Reloads a Performance Schema configuration saved earlier
           within the same session using
           <a class="link" href="sys-schema.html#sys-ps-setup-save" title="28.4.4.14 The ps_setup_save() Procedure"><code class="literal">ps_setup_save()</code></a>. For more
@@ -5817,7 +5766,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_thread(CONNEC
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087198128"></a><a class="indexterm" name="idm46042087196736"></a><p>
+<a class="indexterm" name="idm45831920697680"></a><a class="indexterm" name="idm45831920696224"></a><p>
           Resets the Performance Schema configuration to its default
           settings.
 </p>
@@ -5881,7 +5830,7 @@ VALUES ('%', '%', '%')
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087187968"></a><a class="indexterm" name="idm46042087186576"></a><p>
+<a class="indexterm" name="idm45831920686336"></a><a class="indexterm" name="idm45831920684864"></a><p>
           Saves the current Performance Schema configuration. This
           enables you to alter the configuration temporarily for
           debugging or other purposes, then restore it to the previous
@@ -5969,7 +5918,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087162304"></a><a class="indexterm" name="idm46042087160912"></a><p>
+<a class="indexterm" name="idm45831920656256"></a><a class="indexterm" name="idm45831920654752"></a><p>
           Displays all currently disabled Performance Schema
           configuration.
 </p>
@@ -6056,7 +6005,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087148960"></a><a class="indexterm" name="idm46042087147568"></a><p>
+<a class="indexterm" name="idm45831920639904"></a><a class="indexterm" name="idm45831920638416"></a><p>
           Displays all currently disabled Performance Schema consumers.
 </p>
 <div class="simplesect">
@@ -6114,7 +6063,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087140272"></a><a class="indexterm" name="idm46042087138880"></a><p>
+<a class="indexterm" name="idm45831920629952"></a><a class="indexterm" name="idm45831920628432"></a><p>
           Displays all currently disabled Performance Schema
           instruments. This might be a long list.
 </p>
@@ -6169,7 +6118,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087131584"></a><a class="indexterm" name="idm46042087130192"></a><p>
+<a class="indexterm" name="idm45831920619504"></a><a class="indexterm" name="idm45831920618000"></a><p>
           Displays all currently enabled Performance Schema
           configuration.
 </p>
@@ -6259,7 +6208,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087119328"></a><a class="indexterm" name="idm46042087117936"></a><p>
+<a class="indexterm" name="idm45831920605904"></a><a class="indexterm" name="idm45831920604384"></a><p>
           Displays all currently enabled Performance Schema consumers.
 </p>
 <div class="simplesect">
@@ -6314,7 +6263,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087110800"></a><a class="indexterm" name="idm46042087109408"></a><p>
+<a class="indexterm" name="idm45831920596144"></a><a class="indexterm" name="idm45831920594624"></a><p>
           Displays all currently enabled Performance Schema instruments.
           This might be a long list.
 </p>
@@ -6369,7 +6318,7 @@ enabled_instruments: wait/io/file/sql/binlog_cache
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087102192"></a><a class="indexterm" name="idm46042087100800"></a><p>
+<a class="indexterm" name="idm45831920586176"></a><a class="indexterm" name="idm45831920584656"></a><p>
           Displays a textual histogram graph of the average latency
           values across all normalized statements tracked within the
           Performance Schema
@@ -6451,7 +6400,7 @@ Performance Schema Statement Digest Average Latency Histogram:
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087089920"></a><a class="indexterm" name="idm46042087088528"></a><p>
+<a class="indexterm" name="idm45831920571488"></a><a class="indexterm" name="idm45831920570032"></a><p>
           Traces all Performance Schema instrumentation for a specific
           statement digest.
         </p><p>
@@ -6608,7 +6557,7 @@ Query OK, 0 rows affected (9.28 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087057488"></a><a class="indexterm" name="idm46042087056096"></a><p>
+<a class="indexterm" name="idm45831920538976"></a><a class="indexterm" name="idm45831920537504"></a><p>
           Dumps all Performance Schema data for an instrumented thread
           to a <code class="filename">.dot</code> formatted graph file (for the
           DOT graph description language). Each result set returned from
@@ -6732,7 +6681,7 @@ Query OK, 0 rows affected (9.28 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087031536"></a><a class="indexterm" name="idm46042087030144"></a><p>
+<a class="indexterm" name="idm45831920508928"></a><a class="indexterm" name="idm45831920507424"></a><p>
           Truncates all Performance Schema summary tables, resetting all
           aggregated instrumentation as a snapshot. Produces a result
           set indicating how many tables were truncated.
@@ -6789,7 +6738,7 @@ Query OK, 0 rows affected (9.28 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm46042087020720"></a><a class="indexterm" name="idm46042087019328"></a><p>
+<a class="indexterm" name="idm45831920496512"></a><a class="indexterm" name="idm45831920494992"></a><p>
           Creates a report of the statements running on the server. The
           views are calculated based on the overall and/or delta
           activity.
@@ -7139,7 +7088,7 @@ Every 60.0s: mysql sys --table -e "        ...  Mon Dec 22 10:58:51 2014
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086904848"></a><a class="indexterm" name="idm46042086903456"></a><p>
+<a class="indexterm" name="idm45831920367728"></a><a class="indexterm" name="idm45831920366256"></a><p>
           Tests whether a given table exists as a regular table, a
           <code class="literal">TEMPORARY</code> table, or a view. The procedure
           returns the table type in an <code class="literal">OUT</code> parameter.
@@ -7294,7 +7243,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm46042086871856"></a><a class="indexterm" name="idm46042086870464"></a><p>
+<a class="indexterm" name="idm45831920331504"></a><a class="indexterm" name="idm45831920329984"></a><p>
           Given a file path name, returns the path component that
           represents the schema name. This function assumes that the
           file name lies within the schema directory. For this reason,
@@ -7373,7 +7322,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086857760"></a><a class="indexterm" name="idm46042086856368"></a><p>
+<a class="indexterm" name="idm45831920315936"></a><a class="indexterm" name="idm45831920314480"></a><p>
           Given a file path name, returns the path component that
           represents the table name.
         </p><p>
@@ -7451,7 +7400,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086843568"></a><a class="indexterm" name="idm46042086842176"></a>
+<a class="indexterm" name="idm45831920300096"></a><a class="indexterm" name="idm45831920298640"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -7541,7 +7490,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086824256"></a><a class="indexterm" name="idm46042086822864"></a><p>
+<a class="indexterm" name="idm45831920277936"></a><a class="indexterm" name="idm45831920276480"></a><p>
           Given a path name, returns the modified path name after
           replacing subpaths that match the values of the following
           system variables, in order:
@@ -7623,7 +7572,7 @@ basedir
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086809392"></a><a class="indexterm" name="idm46042086808000"></a><p>
+<a class="indexterm" name="idm45831920261440"></a><a class="indexterm" name="idm45831920259968"></a><p>
           Given a string (normally representing an SQL statement),
           reduces it to the length given by the
           <code class="literal">statement_truncate_len</code> configuration
@@ -7748,7 +7697,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086782912"></a><a class="indexterm" name="idm46042086781520"></a>
+<a class="indexterm" name="idm45831920231552"></a><a class="indexterm" name="idm45831920230096"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -7842,7 +7791,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086761632"></a><a class="indexterm" name="idm46042086760240"></a><p>
+<a class="indexterm" name="idm45831920207552"></a><a class="indexterm" name="idm45831920206064"></a><p>
           Adds a value to a comma-separated list of values and returns
           the result.
         </p><p>
@@ -7936,7 +7885,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086740880"></a><a class="indexterm" name="idm46042086739488"></a><p>
+<a class="indexterm" name="idm45831920184272"></a><a class="indexterm" name="idm45831920182816"></a><p>
           Removes a value from a comma-separated list of values and
           returns the result. For more information, see the description
           of <a class="link" href="sys-schema.html#sys-list-add" title="28.4.5.7 The list_add() Function"><code class="literal">list_add()</code></a>
@@ -7991,7 +7940,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086729184"></a><a class="indexterm" name="idm46042086727792"></a><p>
+<a class="indexterm" name="idm45831920171072"></a><a class="indexterm" name="idm45831920169568"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether Performance Schema instrumentation for a
           given account is enabled.
@@ -8065,7 +8014,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086714512"></a><a class="indexterm" name="idm46042086713120"></a><p>
+<a class="indexterm" name="idm45831920154512"></a><a class="indexterm" name="idm45831920153008"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether a given Performance Schema consumer is
           enabled, or <code class="literal">NULL</code> if the argument is
@@ -8146,7 +8095,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086697968"></a><a class="indexterm" name="idm46042086696576"></a><p>
+<a class="indexterm" name="idm45831920135744"></a><a class="indexterm" name="idm45831920134224"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether a given Performance Schema instrument is
           enabled by default.
@@ -8223,7 +8172,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_instrument_default_en
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086681424"></a><a class="indexterm" name="idm46042086679904"></a><p>
+<a class="indexterm" name="idm45831920119008"></a><a class="indexterm" name="idm45831920117488"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether a given Performance Schema instrument is
           timed by default.
@@ -8300,7 +8249,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_instrument_default_ti
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086664896"></a><a class="indexterm" name="idm46042086663440"></a><p>
+<a class="indexterm" name="idm45831920102480"></a><a class="indexterm" name="idm45831920101024"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether Performance Schema instrumentation for a
           given connection ID is enabled, <code class="literal">UNKNOWN</code> if
@@ -8383,7 +8332,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086642624"></a><a class="indexterm" name="idm46042086641152"></a><p>
+<a class="indexterm" name="idm45831920080144"></a><a class="indexterm" name="idm45831920078672"></a><p>
           Given a Performance Schema thread ID, returns the
           <code class="literal"><em class="replaceable"><code>user_name</code></em>@<em class="replaceable"><code>host_name</code></em></code>
           account associated with the thread.
@@ -8459,7 +8408,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086625712"></a><a class="indexterm" name="idm46042086624256"></a>
+<a class="indexterm" name="idm45831920063104"></a><a class="indexterm" name="idm45831920061648"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -8552,7 +8501,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086602144"></a><a class="indexterm" name="idm46042086600672"></a><p>
+<a class="indexterm" name="idm45831920039584"></a><a class="indexterm" name="idm45831920038112"></a><p>
           Returns a JSON formatted stack of all statements, stages, and
           events within the Performance Schema for a given thread ID.
 </p>
@@ -8631,7 +8580,7 @@ thread_stack: {"rankdir": "LR","nodesep": "0.10",
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086584096"></a><a class="indexterm" name="idm46042086582624"></a><p>
+<a class="indexterm" name="idm45831920021536"></a><a class="indexterm" name="idm45831920020064"></a><p>
           Returns a JSON object containing information about a given
           thread. The information includes the current transaction, and
           the statements it has already executed, derived from the
@@ -8810,7 +8759,7 @@ sys.ps_thread_trx_info(48): [
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086555104"></a><a class="indexterm" name="idm46042086553632"></a><p>
+<a class="indexterm" name="idm45831919991040"></a><a class="indexterm" name="idm45831919989568"></a><p>
           Given a string argument, this function produces a quoted
           identifier suitable for inclusion in SQL statements. This is
           useful when a value to be used as an identifier is a reserved
@@ -8890,7 +8839,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.quote_identifier('integer')
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086539440"></a><a class="indexterm" name="idm46042086537968"></a><p>
+<a class="indexterm" name="idm45831919975328"></a><a class="indexterm" name="idm45831919973856"></a><p>
           Given a configuration option name, returns the option value
           from the <a class="link" href="sys-schema.html#sys-sys-config" title="28.4.2.1 The sys_config Table"><code class="literal">sys_config</code></a> table, or
           the provided default value (which may be
@@ -9018,7 +8967,7 @@ END IF;
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086498416"></a><a class="indexterm" name="idm46042086496944"></a><p>
+<a class="indexterm" name="idm45831919934304"></a><a class="indexterm" name="idm45831919932832"></a><p>
           This function returns the major version of the MySQL server.
 </p>
 <div class="simplesect">
@@ -9082,7 +9031,7 @@ END IF;
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086486464"></a><a class="indexterm" name="idm46042086484992"></a><p>
+<a class="indexterm" name="idm45831919922400"></a><a class="indexterm" name="idm45831919920928"></a><p>
           This function returns the minor version of the MySQL server.
 </p>
 <div class="simplesect">
@@ -9146,7 +9095,7 @@ END IF;
 </div>
 
 </div>
-<a class="indexterm" name="idm46042086474512"></a><a class="indexterm" name="idm46042086473040"></a><p>
+<a class="indexterm" name="idm45831919910512"></a><a class="indexterm" name="idm45831919909040"></a><p>
           This function returns the patch release version of the MySQL
           server.
 </p>
