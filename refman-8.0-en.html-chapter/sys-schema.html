@@ -74,7 +74,7 @@
     absence of this view indicates a user-created <code class="literal">sys</code>
     schema. To upgrade in this case, remove or rename the existing
     <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema first.
-  </p><a class="indexterm" name="idm45844706558544"></a><p>
+  </p><a class="indexterm" name="idm45908132545136"></a><p>
     <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema objects have a
     <code class="literal">DEFINER</code> of
     <code class="literal">'mysql.sys'@'localhost'</code>. Use of the dedicated
@@ -527,7 +527,7 @@ stage/innodb/buffer pool load
 <td>Statements executed, grouped by user and statement</td>
 <td></td>
 </tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-version" title="28.4.3.47 The version View"><code class="literal">version</code></a></th>
-<td>sys schema and MySQL server versions</td>
+<td>Current sys schema and MySQL server versions</td>
 <td>8.0.18</td>
 </tr><tr><th scope="row"><a class="link" href="sys-schema.html#sys-wait-classes-global-by-avg-latency" title="28.4.3.48 The wait_classes_global_by_avg_latency and x$wait_classes_global_by_avg_latency Views"><code class="literal">wait_classes_global_by_avg_latency</code>, <code class="literal">x$wait_classes_global_by_avg_latency</code></a></th>
 <td>Wait class average latency, grouped by event class</td>
@@ -728,7 +728,7 @@ stage/innodb/buffer pool load
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705964352"></a><a class="indexterm" name="idm45844705962864"></a><p>
+<a class="indexterm" name="idm45908131950864"></a><a class="indexterm" name="idm45908131949376"></a><p>
           This table contains <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema
           configuration options, one row per option. Configuration
           changes made by updating this table persist across client
@@ -1009,7 +1009,7 @@ Views</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait
 <p>
         The following sections describe
         <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema views.
-      </p><a class="indexterm" name="idm45844705853152"></a><a class="indexterm" name="idm45844705851664"></a><p>
+      </p><a class="indexterm" name="idm45908131839600"></a><a class="indexterm" name="idm45908131838112"></a><p>
         The <code class="literal">sys</code> schema contains many views that
         summarize Performance Schema tables in various ways. Most of
         these views come in pairs, such that one member of the pair has
@@ -1072,7 +1072,7 @@ Views</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705827360"></a><a class="indexterm" name="idm45844705825904"></a><a class="indexterm" name="idm45844705824416"></a><a class="indexterm" name="idm45844705822928"></a><p>
+<a class="indexterm" name="idm45908131813872"></a><a class="indexterm" name="idm45908131812416"></a><a class="indexterm" name="idm45908131810928"></a><a class="indexterm" name="idm45908131809440"></a><p>
           These views summarize statement activity, file I/O, and
           connections, grouped by host.
         </p><p>
@@ -1148,7 +1148,7 @@ Views</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705790736"></a><a class="indexterm" name="idm45844705789280"></a><a class="indexterm" name="idm45844705787776"></a><a class="indexterm" name="idm45844705786272"></a><p>
+<a class="indexterm" name="idm45908131777312"></a><a class="indexterm" name="idm45908131775856"></a><a class="indexterm" name="idm45908131774352"></a><a class="indexterm" name="idm45908131772848"></a><p>
           These views summarize file I/O, grouped by host. By default,
           rows are sorted by descending total file I/O latency.
         </p><p>
@@ -1186,7 +1186,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705771328"></a><a class="indexterm" name="idm45844705769872"></a><a class="indexterm" name="idm45844705768368"></a><a class="indexterm" name="idm45844705766864"></a><p>
+<a class="indexterm" name="idm45908131757904"></a><a class="indexterm" name="idm45908131756448"></a><a class="indexterm" name="idm45908131754944"></a><a class="indexterm" name="idm45908131753440"></a><p>
           These views summarize file I/O, grouped by host and event
           type. By default, rows are sorted by host and descending total
           I/O latency.
@@ -1239,7 +1239,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705748000"></a><a class="indexterm" name="idm45844705746544"></a><a class="indexterm" name="idm45844705745040"></a><a class="indexterm" name="idm45844705743536"></a><p>
+<a class="indexterm" name="idm45908131734512"></a><a class="indexterm" name="idm45908131733056"></a><a class="indexterm" name="idm45908131731552"></a><a class="indexterm" name="idm45908131730048"></a><p>
           These views summarize statement stages, grouped by host. By
           default, rows are sorted by host and descending total latency.
         </p><p>
@@ -1288,7 +1288,7 @@ x$host_summary_by_statement_latency Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705724640"></a><a class="indexterm" name="idm45844705723184"></a><a class="indexterm" name="idm45844705721680"></a><a class="indexterm" name="idm45844705720160"></a><p>
+<a class="indexterm" name="idm45908131711152"></a><a class="indexterm" name="idm45908131709696"></a><a class="indexterm" name="idm45908131708192"></a><a class="indexterm" name="idm45908131706672"></a><p>
           These views summarize overall statement statistics, grouped by
           host. By default, rows are sorted by descending total latency.
         </p><p>
@@ -1358,7 +1358,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705693360"></a><a class="indexterm" name="idm45844705691904"></a><a class="indexterm" name="idm45844705690400"></a><a class="indexterm" name="idm45844705688896"></a><p>
+<a class="indexterm" name="idm45908131679872"></a><a class="indexterm" name="idm45908131678416"></a><a class="indexterm" name="idm45908131676912"></a><a class="indexterm" name="idm45908131675408"></a><p>
           These views summarize informaion about statements executed,
           grouped by host and statement type. By default, rows are
           sorted by host and descending total latency.
@@ -1435,7 +1435,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705659936"></a><a class="indexterm" name="idm45844705658480"></a><a class="indexterm" name="idm45844705656976"></a><a class="indexterm" name="idm45844705655472"></a><p>
+<a class="indexterm" name="idm45908131646512"></a><a class="indexterm" name="idm45908131645056"></a><a class="indexterm" name="idm45908131643552"></a><a class="indexterm" name="idm45908131642048"></a><p>
           These views summarize the information in the
           <code class="literal">INFORMATION_SCHEMA</code>
           <a class="link" href="information-schema.html#information-schema-innodb-buffer-page-table" title="26.4.2 The INFORMATION_SCHEMA INNODB_BUFFER_PAGE Table"><code class="literal">INNODB_BUFFER_PAGE</code></a> table, grouped
@@ -1509,7 +1509,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705629136"></a><a class="indexterm" name="idm45844705627680"></a><a class="indexterm" name="idm45844705626176"></a><a class="indexterm" name="idm45844705624672"></a><p>
+<a class="indexterm" name="idm45908131615712"></a><a class="indexterm" name="idm45908131614256"></a><a class="indexterm" name="idm45908131612752"></a><a class="indexterm" name="idm45908131611248"></a><p>
           These views summarize the information in the
           <code class="literal">INFORMATION_SCHEMA</code>
           <a class="link" href="information-schema.html#information-schema-innodb-buffer-page-table" title="26.4.2 The INFORMATION_SCHEMA INNODB_BUFFER_PAGE Table"><code class="literal">INNODB_BUFFER_PAGE</code></a> table, grouped
@@ -1588,7 +1588,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705596464"></a><a class="indexterm" name="idm45844705595008"></a><a class="indexterm" name="idm45844705593520"></a><a class="indexterm" name="idm45844705592016"></a><p>
+<a class="indexterm" name="idm45908131583040"></a><a class="indexterm" name="idm45908131581584"></a><a class="indexterm" name="idm45908131580096"></a><a class="indexterm" name="idm45908131578592"></a><p>
           These views summarize the <code class="literal">InnoDB</code> locks that
           transactions are waiting for. By default, rows are sorted by
           descending lock age.
@@ -1741,7 +1741,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705519968"></a><a class="indexterm" name="idm45844705518512"></a><a class="indexterm" name="idm45844705517008"></a><a class="indexterm" name="idm45844705515504"></a><p>
+<a class="indexterm" name="idm45908131506544"></a><a class="indexterm" name="idm45908131505088"></a><a class="indexterm" name="idm45908131503584"></a><a class="indexterm" name="idm45908131502080"></a><p>
           These views summarize I/O consumers to display time waiting
           for I/O, grouped by thread. By default, rows are sorted by
           descending total I/O latency.
@@ -1802,7 +1802,7 @@ Warning
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705492336"></a><a class="indexterm" name="idm45844705490880"></a><a class="indexterm" name="idm45844705489376"></a><a class="indexterm" name="idm45844705487872"></a><p>
+<a class="indexterm" name="idm45908131478912"></a><a class="indexterm" name="idm45908131477456"></a><a class="indexterm" name="idm45908131475952"></a><a class="indexterm" name="idm45908131474448"></a><p>
           These views summarize global I/O consumers to display amount
           of I/O, grouped by file. By default, rows are sorted by
           descending total I/O (bytes read and written).
@@ -1861,7 +1861,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705463664"></a><a class="indexterm" name="idm45844705462208"></a><a class="indexterm" name="idm45844705460704"></a><a class="indexterm" name="idm45844705459200"></a><p>
+<a class="indexterm" name="idm45908131450176"></a><a class="indexterm" name="idm45908131448720"></a><a class="indexterm" name="idm45908131447216"></a><a class="indexterm" name="idm45908131445712"></a><p>
           These views summarize global I/O consumers to display time
           waiting for I/O, grouped by file. By default, rows are sorted
           by descending total latency.
@@ -1925,7 +1925,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705434912"></a><a class="indexterm" name="idm45844705433456"></a><a class="indexterm" name="idm45844705431952"></a><a class="indexterm" name="idm45844705430448"></a><p>
+<a class="indexterm" name="idm45908131421488"></a><a class="indexterm" name="idm45908131420032"></a><a class="indexterm" name="idm45908131418528"></a><a class="indexterm" name="idm45908131417024"></a><p>
           These views summarize global I/O consumers to display amount
           of I/O and time waiting for I/O, grouped by event. By default,
           rows are sorted by descending total I/O (bytes read and
@@ -2006,7 +2006,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705397632"></a><a class="indexterm" name="idm45844705396176"></a><a class="indexterm" name="idm45844705394672"></a><a class="indexterm" name="idm45844705393168"></a><p>
+<a class="indexterm" name="idm45908131384208"></a><a class="indexterm" name="idm45908131382752"></a><a class="indexterm" name="idm45908131381248"></a><a class="indexterm" name="idm45908131379744"></a><p>
           These views summarize global I/O consumers to display amount
           of I/O and time waiting for I/O, grouped by event. By default,
           rows are sorted by descending total latency.
@@ -2094,7 +2094,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705358464"></a><a class="indexterm" name="idm45844705357008"></a><a class="indexterm" name="idm45844705355520"></a><a class="indexterm" name="idm45844705354032"></a><p>
+<a class="indexterm" name="idm45908131344976"></a><a class="indexterm" name="idm45908131343520"></a><a class="indexterm" name="idm45908131342032"></a><a class="indexterm" name="idm45908131340544"></a><p>
           These views summarize file I/O activity, grouped by file and
           thread. By default, rows are sorted with most recent I/O
           first.
@@ -2139,7 +2139,7 @@ x$memory_by_host_by_current_bytes Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705337632"></a><a class="indexterm" name="idm45844705336176"></a><a class="indexterm" name="idm45844705334672"></a><a class="indexterm" name="idm45844705333168"></a><p>
+<a class="indexterm" name="idm45908131324144"></a><a class="indexterm" name="idm45908131322688"></a><a class="indexterm" name="idm45908131321184"></a><a class="indexterm" name="idm45908131319680"></a><p>
           These views summarize memory use, grouped by host. By default,
           rows are sorted by descending amount of memory used.
         </p><p>
@@ -2195,7 +2195,7 @@ x$memory_by_thread_by_current_bytes Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705312272"></a><a class="indexterm" name="idm45844705310816"></a><a class="indexterm" name="idm45844705309312"></a><a class="indexterm" name="idm45844705307792"></a><p>
+<a class="indexterm" name="idm45908131298720"></a><a class="indexterm" name="idm45908131297264"></a><a class="indexterm" name="idm45908131295760"></a><a class="indexterm" name="idm45908131294240"></a><p>
           These views summarize memory use, grouped by thread. By
           default, rows are sorted by descending amount of memory used.
         </p><p>
@@ -2251,7 +2251,7 @@ x$memory_by_user_by_current_bytes Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705287312"></a><a class="indexterm" name="idm45844705285856"></a><a class="indexterm" name="idm45844705284352"></a><a class="indexterm" name="idm45844705282848"></a><p>
+<a class="indexterm" name="idm45908131273696"></a><a class="indexterm" name="idm45908131272240"></a><a class="indexterm" name="idm45908131270736"></a><a class="indexterm" name="idm45908131269232"></a><p>
           These views summarize memory use, grouped by user. By default,
           rows are sorted by descending amount of memory used.
         </p><p>
@@ -2307,7 +2307,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844705262000"></a><a class="indexterm" name="idm45844705260544"></a><a class="indexterm" name="idm45844705259040"></a><a class="indexterm" name="idm45844705257536"></a><p>
+<a class="indexterm" name="idm45908131248320"></a><a class="indexterm" name="idm45908131246864"></a><a class="indexterm" name="idm45908131245360"></a><a class="indexterm" name="idm45908131243856"></a><p>
           These views summarize memory use, grouped by allocation type
           (that is, by event). By default, rows are sorted by descending
           amount of memory used.
@@ -2367,7 +2367,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705237072"></a><a class="indexterm" name="idm45844705235600"></a><a class="indexterm" name="idm45844705234096"></a><a class="indexterm" name="idm45844705232592"></a><p>
+<a class="indexterm" name="idm45908131223392"></a><a class="indexterm" name="idm45908131221920"></a><a class="indexterm" name="idm45908131220416"></a><a class="indexterm" name="idm45908131218912"></a><p>
           These views summarize total memory use within the server.
         </p><p>
           The <a class="link" href="sys-schema.html#sys-memory-global-total" title="28.4.3.20 The memory_global_total and x$memory_global_total Views"><code class="literal">memory_global_total</code></a> and
@@ -2394,7 +2394,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705224208"></a><a class="indexterm" name="idm45844705222720"></a><p>
+<a class="indexterm" name="idm45908131210528"></a><a class="indexterm" name="idm45908131209040"></a><p>
           This view summarizes MySQL server metrics to show variable
           names, values, types, and whether they are enabled. By
           default, rows are sorted by variable type and name.
@@ -2537,7 +2537,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705151472"></a><a class="indexterm" name="idm45844705150016"></a><a class="indexterm" name="idm45844705148528"></a><a class="indexterm" name="idm45844705147040"></a><p>
+<a class="indexterm" name="idm45908131137792"></a><a class="indexterm" name="idm45908131136336"></a><a class="indexterm" name="idm45908131134848"></a><a class="indexterm" name="idm45908131133360"></a><p>
           The MySQL process list indicates the operations currently
           being performed by the set of threads executing within the
           server. The <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">processlist</code></a> and
@@ -2705,7 +2705,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705073168"></a><a class="indexterm" name="idm45844705071664"></a><p>
+<a class="indexterm" name="idm45908131059488"></a><a class="indexterm" name="idm45908131057984"></a><p>
           This view returns information about lost Performance Schema
           instruments, to indicate whether the Performance Schema is
           unable to monitor all runtime data.
@@ -2739,7 +2739,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705062320"></a><a class="indexterm" name="idm45844705060816"></a><p>
+<a class="indexterm" name="idm45908131048576"></a><a class="indexterm" name="idm45908131047072"></a><p>
           This view indicates which tables have
           <code class="literal">AUTO_INCREMENT</code> columns and provides
           information about those columns, such as the current and
@@ -2819,7 +2819,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844705027744"></a><a class="indexterm" name="idm45844705026288"></a><a class="indexterm" name="idm45844705024784"></a><a class="indexterm" name="idm45844705023280"></a><p>
+<a class="indexterm" name="idm45908131014000"></a><a class="indexterm" name="idm45908131012544"></a><a class="indexterm" name="idm45908131011040"></a><a class="indexterm" name="idm45908131009536"></a><p>
           These views provide index statistics. By default, rows are
           sorted by descending total index latency.
         </p><p>
@@ -2887,7 +2887,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704995424"></a><a class="indexterm" name="idm45844704993920"></a><p>
+<a class="indexterm" name="idm45908130981616"></a><a class="indexterm" name="idm45908130980112"></a><p>
           This view summarizes the types of objects within each schema.
           By default, rows are sorted by schema and object type.
 </p>
@@ -2938,7 +2938,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704976416"></a><a class="indexterm" name="idm45844704974960"></a><a class="indexterm" name="idm45844704973456"></a><a class="indexterm" name="idm45844704971952"></a><p>
+<a class="indexterm" name="idm45908130962672"></a><a class="indexterm" name="idm45908130961216"></a><a class="indexterm" name="idm45908130959712"></a><a class="indexterm" name="idm45908130958208"></a><p>
           The <a class="link" href="sys-schema.html#sys-schema-redundant-indexes" title="28.4.3.27 The schema_redundant_indexes and x$schema_flattened_keys Views"><code class="literal">schema_redundant_indexes</code></a>
           view displays indexes that duplicate other indexes or are made
           redundant by them. The
@@ -3040,7 +3040,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704929152"></a><a class="indexterm" name="idm45844704927696"></a><a class="indexterm" name="idm45844704926192"></a><a class="indexterm" name="idm45844704924688"></a><p>
+<a class="indexterm" name="idm45908130915344"></a><a class="indexterm" name="idm45908130913888"></a><a class="indexterm" name="idm45908130912384"></a><a class="indexterm" name="idm45908130910880"></a><p>
           These views display which sessions are blocked waiting on
           metadata locks, and what is blocking them.
         </p><p>
@@ -3150,7 +3150,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704877968"></a><a class="indexterm" name="idm45844704876512"></a><a class="indexterm" name="idm45844704875008"></a><a class="indexterm" name="idm45844704873504"></a><p>
+<a class="indexterm" name="idm45908130864160"></a><a class="indexterm" name="idm45908130862704"></a><a class="indexterm" name="idm45908130861200"></a><a class="indexterm" name="idm45908130859696"></a><p>
           These views summarize table statistics. By default, rows are
           sorted by descending total wait time (tables with most
           contention first).
@@ -3258,7 +3258,7 @@ x$schema_table_statistics_with_buffer Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704828640"></a><a class="indexterm" name="idm45844704827120"></a><a class="indexterm" name="idm45844704825600"></a><a class="indexterm" name="idm45844704824080"></a><p>
+<a class="indexterm" name="idm45908130814832"></a><a class="indexterm" name="idm45908130813312"></a><a class="indexterm" name="idm45908130811792"></a><a class="indexterm" name="idm45908130810272"></a><p>
           These views summarize table statistics, including
           <code class="literal">InnoDB</code> buffer pool statistics. By default,
           rows are sorted by descending total wait time (tables with
@@ -3402,7 +3402,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704760336"></a><a class="indexterm" name="idm45844704758816"></a><a class="indexterm" name="idm45844704757296"></a><a class="indexterm" name="idm45844704755776"></a><p>
+<a class="indexterm" name="idm45908130746592"></a><a class="indexterm" name="idm45908130745072"></a><a class="indexterm" name="idm45908130743552"></a><a class="indexterm" name="idm45908130742032"></a><p>
           These views display which tables are being accessed with full
           table scans. By default, rows are sorted by descending rows
           scanned.
@@ -3446,7 +3446,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704741328"></a><a class="indexterm" name="idm45844704739824"></a><p>
+<a class="indexterm" name="idm45908130727584"></a><a class="indexterm" name="idm45908130726080"></a><p>
           These views display indexes for which there are no events,
           which indicates that they are not being used. By default, rows
           are sorted by schema and table.
@@ -3487,7 +3487,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704728064"></a><a class="indexterm" name="idm45844704726608"></a><a class="indexterm" name="idm45844704725120"></a><a class="indexterm" name="idm45844704723632"></a><p>
+<a class="indexterm" name="idm45908130714256"></a><a class="indexterm" name="idm45908130712800"></a><a class="indexterm" name="idm45908130711312"></a><a class="indexterm" name="idm45908130709824"></a><p>
           These views are similar to
           <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">processlist</code></a> and
           <a class="link" href="sys-schema.html#sys-processlist" title="28.4.3.22 The processlist and x$processlist Views"><code class="literal">x$processlist</code></a>, but they filter
@@ -3507,7 +3507,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704717152"></a><a class="indexterm" name="idm45844704715696"></a><p>
+<a class="indexterm" name="idm45908130703408"></a><a class="indexterm" name="idm45908130701952"></a><p>
           For each connection, this view displays the SSL version,
           cipher, and count of reused SSL sessions.
         </p><p>
@@ -3546,7 +3546,7 @@ x$schema_tables_with_full_table_scans Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704702624"></a><a class="indexterm" name="idm45844704701168"></a><a class="indexterm" name="idm45844704699680"></a><a class="indexterm" name="idm45844704698176"></a><p>
+<a class="indexterm" name="idm45908130688880"></a><a class="indexterm" name="idm45908130687424"></a><a class="indexterm" name="idm45908130685936"></a><a class="indexterm" name="idm45908130684432"></a><p>
           These views list normalized statements with aggregated
           statistics. The content mimics the MySQL Enterprise Monitor
           Query Analysis view. By default, rows are sorted by descending
@@ -3679,7 +3679,7 @@ x$statements_with_errors_or_warnings Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704645616"></a><a class="indexterm" name="idm45844704644160"></a><a class="indexterm" name="idm45844704642656"></a><a class="indexterm" name="idm45844704641136"></a><p>
+<a class="indexterm" name="idm45908130631872"></a><a class="indexterm" name="idm45908130630416"></a><a class="indexterm" name="idm45908130628912"></a><a class="indexterm" name="idm45908130627392"></a><p>
           These views display normalized statements that have produced
           errors or warnings. By default, rows are sorted by descending
           error and warning counts.
@@ -3749,7 +3749,7 @@ x$statements_with_full_table_scans Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704614144"></a><a class="indexterm" name="idm45844704612688"></a><a class="indexterm" name="idm45844704611184"></a><a class="indexterm" name="idm45844704609680"></a><p>
+<a class="indexterm" name="idm45908130600400"></a><a class="indexterm" name="idm45908130598944"></a><a class="indexterm" name="idm45908130597440"></a><a class="indexterm" name="idm45908130595936"></a><p>
           These views display normalized statements that have done full
           table scans. By default, rows are sorted by descending
           percentage of time a full scan was done and descending total
@@ -3838,7 +3838,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704574688"></a><a class="indexterm" name="idm45844704573232"></a><a class="indexterm" name="idm45844704571712"></a><a class="indexterm" name="idm45844704570192"></a><p>
+<a class="indexterm" name="idm45908130561008"></a><a class="indexterm" name="idm45908130559552"></a><a class="indexterm" name="idm45908130558032"></a><a class="indexterm" name="idm45908130556512"></a><p>
           These views list statements with runtimes in the 95th
           percentile. By default, rows are sorted by descending average
           latency.
@@ -3943,7 +3943,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704529424"></a><a class="indexterm" name="idm45844704527968"></a><a class="indexterm" name="idm45844704526464"></a><a class="indexterm" name="idm45844704524960"></a><p>
+<a class="indexterm" name="idm45908130515680"></a><a class="indexterm" name="idm45908130514224"></a><a class="indexterm" name="idm45908130512720"></a><a class="indexterm" name="idm45908130511216"></a><p>
           These views list normalized statements that have performed
           sorts. By default, rows are sorted by descending total
           latency.
@@ -4027,7 +4027,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704492192"></a><a class="indexterm" name="idm45844704490736"></a><a class="indexterm" name="idm45844704489232"></a><a class="indexterm" name="idm45844704487728"></a><p>
+<a class="indexterm" name="idm45908130478448"></a><a class="indexterm" name="idm45908130476992"></a><a class="indexterm" name="idm45908130475488"></a><a class="indexterm" name="idm45908130473984"></a><p>
           These views list normalized statements that have used
           temporary tables. By default, rows are sorted by descending
           number of on-disk temporary tables used and descending number
@@ -4103,7 +4103,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704458672"></a><a class="indexterm" name="idm45844704457216"></a><a class="indexterm" name="idm45844704455728"></a><a class="indexterm" name="idm45844704454240"></a><p>
+<a class="indexterm" name="idm45908130444992"></a><a class="indexterm" name="idm45908130443536"></a><a class="indexterm" name="idm45908130442048"></a><a class="indexterm" name="idm45908130440560"></a><p>
           These views summarize statement activity, file I/O, and
           connections, grouped by user. By default, rows are sorted by
           descending total latency.
@@ -4181,7 +4181,7 @@ x$statements_with_runtimes_in_95th_percentile Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704421952"></a><a class="indexterm" name="idm45844704420496"></a><a class="indexterm" name="idm45844704418992"></a><a class="indexterm" name="idm45844704417488"></a><p>
+<a class="indexterm" name="idm45908130408272"></a><a class="indexterm" name="idm45908130406816"></a><a class="indexterm" name="idm45908130405312"></a><a class="indexterm" name="idm45908130403808"></a><p>
           These views summarize file I/O, grouped by user. By default,
           rows are sorted by descending total file I/O latency.
         </p><p>
@@ -4219,7 +4219,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704402688"></a><a class="indexterm" name="idm45844704401232"></a><a class="indexterm" name="idm45844704399728"></a><a class="indexterm" name="idm45844704398224"></a><p>
+<a class="indexterm" name="idm45908130389008"></a><a class="indexterm" name="idm45908130387552"></a><a class="indexterm" name="idm45908130386048"></a><a class="indexterm" name="idm45908130384544"></a><p>
           These views summarize file I/O, grouped by user and event
           type. By default, rows are sorted by user and descending total
           latency.
@@ -4272,7 +4272,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704379328"></a><a class="indexterm" name="idm45844704377872"></a><a class="indexterm" name="idm45844704376368"></a><a class="indexterm" name="idm45844704374864"></a><p>
+<a class="indexterm" name="idm45908130365648"></a><a class="indexterm" name="idm45908130364192"></a><a class="indexterm" name="idm45908130362688"></a><a class="indexterm" name="idm45908130361184"></a><p>
           These views summarize stages, grouped by user. By default,
           rows are sorted by user and descending total stage latency.
         </p><p>
@@ -4321,7 +4321,7 @@ x$user_summary_by_statement_latency Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704356080"></a><a class="indexterm" name="idm45844704354624"></a><a class="indexterm" name="idm45844704353120"></a><a class="indexterm" name="idm45844704351600"></a><p>
+<a class="indexterm" name="idm45908130342400"></a><a class="indexterm" name="idm45908130340944"></a><a class="indexterm" name="idm45908130339440"></a><a class="indexterm" name="idm45908130337920"></a><p>
           These views summarize overall statement statistics, grouped by
           user. By default, rows are sorted by descending total latency.
         </p><p>
@@ -4391,7 +4391,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704324832"></a><a class="indexterm" name="idm45844704323376"></a><a class="indexterm" name="idm45844704321872"></a><a class="indexterm" name="idm45844704320368"></a><p>
+<a class="indexterm" name="idm45908130311152"></a><a class="indexterm" name="idm45908130309696"></a><a class="indexterm" name="idm45908130308192"></a><a class="indexterm" name="idm45908130306688"></a><p>
           These views summarize informaion about statements executed,
           grouped by user and statement type. By default, rows are
           sorted by user and descending total latency.
@@ -4470,7 +4470,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704291584"></a><a class="indexterm" name="idm45844704290096"></a><p>
+<a class="indexterm" name="idm45908130277904"></a><a class="indexterm" name="idm45908130276416"></a><p>
           This view provides the current
           <a class="link" href="sys-schema.html" title="Chapter 28 MySQL sys Schema"><code class="literal">sys</code></a> schema and MySQL server
           versions.
@@ -4514,7 +4514,7 @@ x$wait_classes_global_by_avg_latency Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704276176"></a><a class="indexterm" name="idm45844704274720"></a><a class="indexterm" name="idm45844704273216"></a><a class="indexterm" name="idm45844704271696"></a><p>
+<a class="indexterm" name="idm45908130262560"></a><a class="indexterm" name="idm45908130261104"></a><a class="indexterm" name="idm45908130259600"></a><a class="indexterm" name="idm45908130258080"></a><p>
           These views summarize wait class average latencies, grouped by
           event class. By default, rows are sorted by descending average
           latency. Idle events are ignored.
@@ -4572,7 +4572,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704251056"></a><a class="indexterm" name="idm45844704249600"></a><a class="indexterm" name="idm45844704248096"></a><a class="indexterm" name="idm45844704246592"></a><p>
+<a class="indexterm" name="idm45908130237440"></a><a class="indexterm" name="idm45908130235984"></a><a class="indexterm" name="idm45908130234480"></a><a class="indexterm" name="idm45908130232976"></a><p>
           These views summarize wait class total latencies, grouped by
           event class. By default, rows are sorted by descending total
           latency. Idle events are ignored.
@@ -4632,7 +4632,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704226048"></a><a class="indexterm" name="idm45844704224592"></a><a class="indexterm" name="idm45844704223088"></a><a class="indexterm" name="idm45844704221584"></a><p>
+<a class="indexterm" name="idm45908130212432"></a><a class="indexterm" name="idm45908130210976"></a><a class="indexterm" name="idm45908130209472"></a><a class="indexterm" name="idm45908130207968"></a><p>
           These views summarize wait events, grouped by host and event.
           By default, rows are sorted by host and descending total
           latency. Idle events are ignored.
@@ -4684,7 +4684,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704203120"></a><a class="indexterm" name="idm45844704201664"></a><a class="indexterm" name="idm45844704200160"></a><a class="indexterm" name="idm45844704198656"></a><p>
+<a class="indexterm" name="idm45908130189440"></a><a class="indexterm" name="idm45908130187984"></a><a class="indexterm" name="idm45908130186480"></a><a class="indexterm" name="idm45908130184976"></a><p>
           These views summarize wait events, grouped by user and event.
           By default, rows are sorted by user and descending total
           latency. Idle events are ignored.
@@ -4736,7 +4736,7 @@ Views</h4>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704180208"></a><a class="indexterm" name="idm45844704178752"></a><a class="indexterm" name="idm45844704177248"></a><a class="indexterm" name="idm45844704175744"></a><p>
+<a class="indexterm" name="idm45908130166464"></a><a class="indexterm" name="idm45908130165008"></a><a class="indexterm" name="idm45908130163504"></a><a class="indexterm" name="idm45908130162000"></a><p>
           These views summarize wait events, grouped by event. By
           default, rows are sorted by descending total latency. Idle
           events are ignored.
@@ -4800,7 +4800,7 @@ Views</h4>
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844704156368"></a><a class="indexterm" name="idm45844704154896"></a><p>
+<a class="indexterm" name="idm45908130142624"></a><a class="indexterm" name="idm45908130141152"></a><p>
           Given a schema name, this procedure creates a synonym schema
           containing views that refer to all the tables and views in the
           original schema. This can be used, for example, to create a
@@ -4894,7 +4894,7 @@ mysql&gt; <strong class="userinput"><code>SHOW FULL TABLES FROM info;</code></st
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704138320"></a><a class="indexterm" name="idm45844704136864"></a><p>
+<a class="indexterm" name="idm45908130124576"></a><a class="indexterm" name="idm45908130123120"></a><p>
           Creates a report of the current server status for diagnostic
           purposes.
         </p><p>
@@ -5109,7 +5109,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704051280"></a><a class="indexterm" name="idm45844704049776"></a><p>
+<a class="indexterm" name="idm45908130037664"></a><a class="indexterm" name="idm45908130036160"></a><p>
           Given an SQL statement as a string, executes it as a prepared
           statement. The prepared statement is deallocated after
           execution, so it is not subject to reuse. Thus, this procedure
@@ -5199,7 +5199,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704030640"></a><a class="indexterm" name="idm45844704029120"></a><p>
+<a class="indexterm" name="idm45908130016960"></a><a class="indexterm" name="idm45908130015440"></a><p>
           Disables Performance Schema instrumentation for all background
           threads. Produces a result set indicating how many background
           threads were disabled. Already disabled threads do not count.
@@ -5251,7 +5251,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_background_t
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704020784"></a><a class="indexterm" name="idm45844704019328"></a><p>
+<a class="indexterm" name="idm45908130007168"></a><a class="indexterm" name="idm45908130005712"></a><p>
           Disables Performance Schema consumers with names that contain
           the argument. Produces a result set indicating how many
           consumers were disabled. Already disabled consumers do not
@@ -5315,7 +5315,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_consumer('st
 </div>
 
 </div>
-<a class="indexterm" name="idm45844704005968"></a><a class="indexterm" name="idm45844704004512"></a><p>
+<a class="indexterm" name="idm45908129992224"></a><a class="indexterm" name="idm45908129990768"></a><p>
           Disables Performance Schema instruments with names that
           contain the argument. Produces a result set indicating how
           many instruments were disabled. Already disabled instruments
@@ -5389,7 +5389,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_instrument('
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703989040"></a><a class="indexterm" name="idm45844703987536"></a><p>
+<a class="indexterm" name="idm45908129975056"></a><a class="indexterm" name="idm45908129973552"></a><p>
           Given a connection ID, disables Performance Schema
           instrumentation for the thread. Produces a result set
           indicating how many threads were disabled. Already disabled
@@ -5462,7 +5462,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_disable_thread(CONNE
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703971040"></a><a class="indexterm" name="idm45844703969520"></a><p>
+<a class="indexterm" name="idm45908129957248"></a><a class="indexterm" name="idm45908129955728"></a><p>
           Enables Performance Schema instrumentation for all background
           threads. Produces a result set indicating how many background
           threads were enabled. Already enabled threads do not count.
@@ -5514,7 +5514,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_background_th
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703961312"></a><a class="indexterm" name="idm45844703959856"></a><p>
+<a class="indexterm" name="idm45908129947456"></a><a class="indexterm" name="idm45908129946000"></a><p>
           Enables Performance Schema consumers with names that contain
           the argument. Produces a result set indicating how many
           consumers were enabled. Already enabled consumers do not
@@ -5578,7 +5578,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_consumer('sta
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703946560"></a><a class="indexterm" name="idm45844703945104"></a><p>
+<a class="indexterm" name="idm45908129932640"></a><a class="indexterm" name="idm45908129931184"></a><p>
           Enables Performance Schema instruments with names that contain
           the argument. Produces a result set indicating how many
           instruments were enabled. Already enabled instruments do not
@@ -5652,7 +5652,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_instrument('m
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703929584"></a><a class="indexterm" name="idm45844703928080"></a><p>
+<a class="indexterm" name="idm45908129915600"></a><a class="indexterm" name="idm45908129914096"></a><p>
           Given a connection ID, enables Performance Schema
           instrumentation for the thread. Produces a result set
           indicating how many threads were enabled. Already enabled
@@ -5725,7 +5725,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_thread(CONNEC
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703911712"></a><a class="indexterm" name="idm45844703910208"></a><p>
+<a class="indexterm" name="idm45908129897856"></a><a class="indexterm" name="idm45908129896352"></a><p>
           Reloads a Performance Schema configuration saved earlier
           within the same session using
           <a class="link" href="sys-schema.html#sys-ps-setup-save" title="28.4.4.14 The ps_setup_save() Procedure"><code class="literal">ps_setup_save()</code></a>. For more
@@ -5766,7 +5766,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_enable_thread(CONNEC
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703900032"></a><a class="indexterm" name="idm45844703898576"></a><p>
+<a class="indexterm" name="idm45908129886240"></a><a class="indexterm" name="idm45908129884784"></a><p>
           Resets the Performance Schema configuration to its default
           settings.
 </p>
@@ -5830,7 +5830,7 @@ VALUES ('%', '%', '%')
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703888688"></a><a class="indexterm" name="idm45844703887216"></a><p>
+<a class="indexterm" name="idm45908129874896"></a><a class="indexterm" name="idm45908129873424"></a><p>
           Saves the current Performance Schema configuration. This
           enables you to alter the configuration temporarily for
           debugging or other purposes, then restore it to the previous
@@ -5918,7 +5918,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703858672"></a><a class="indexterm" name="idm45844703857168"></a><p>
+<a class="indexterm" name="idm45908129844752"></a><a class="indexterm" name="idm45908129843248"></a><p>
           Displays all currently disabled Performance Schema
           configuration.
 </p>
@@ -6005,7 +6005,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703845024"></a><a class="indexterm" name="idm45844703843504"></a><p>
+<a class="indexterm" name="idm45908129830128"></a><a class="indexterm" name="idm45908129828608"></a><p>
           Displays all currently disabled Performance Schema consumers.
 </p>
 <div class="simplesect">
@@ -6063,7 +6063,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703835040"></a><a class="indexterm" name="idm45844703833520"></a><p>
+<a class="indexterm" name="idm45908129820208"></a><a class="indexterm" name="idm45908129818688"></a><p>
           Displays all currently disabled Performance Schema
           instruments. This might be a long list.
 </p>
@@ -6118,7 +6118,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703825056"></a><a class="indexterm" name="idm45844703823552"></a><p>
+<a class="indexterm" name="idm45908129810288"></a><a class="indexterm" name="idm45908129808784"></a><p>
           Displays all currently enabled Performance Schema
           configuration.
 </p>
@@ -6208,7 +6208,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703811456"></a><a class="indexterm" name="idm45844703809936"></a><p>
+<a class="indexterm" name="idm45908129796688"></a><a class="indexterm" name="idm45908129795168"></a><p>
           Displays all currently enabled Performance Schema consumers.
 </p>
 <div class="simplesect">
@@ -6263,7 +6263,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703801568"></a><a class="indexterm" name="idm45844703800048"></a><p>
+<a class="indexterm" name="idm45908129786928"></a><a class="indexterm" name="idm45908129785408"></a><p>
           Displays all currently enabled Performance Schema instruments.
           This might be a long list.
 </p>
@@ -6318,7 +6318,7 @@ enabled_instruments: wait/io/file/sql/binlog_cache
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703791664"></a><a class="indexterm" name="idm45844703790144"></a><p>
+<a class="indexterm" name="idm45908129776960"></a><a class="indexterm" name="idm45908129775440"></a><p>
           Displays a textual histogram graph of the average latency
           values across all normalized statements tracked within the
           Performance Schema
@@ -6400,7 +6400,7 @@ Performance Schema Statement Digest Average Latency Histogram:
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703777600"></a><a class="indexterm" name="idm45844703776144"></a><p>
+<a class="indexterm" name="idm45908129762896"></a><a class="indexterm" name="idm45908129761440"></a><p>
           Traces all Performance Schema instrumentation for a specific
           statement digest.
         </p><p>
@@ -6557,7 +6557,7 @@ Query OK, 0 rows affected (9.28 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703745024"></a><a class="indexterm" name="idm45844703743552"></a><p>
+<a class="indexterm" name="idm45908129726912"></a><a class="indexterm" name="idm45908129725440"></a><p>
           Dumps all Performance Schema data for an instrumented thread
           to a <code class="filename">.dot</code> formatted graph file (for the
           DOT graph description language). Each result set returned from
@@ -6681,7 +6681,7 @@ Query OK, 0 rows affected (9.28 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703714848"></a><a class="indexterm" name="idm45844703713344"></a><p>
+<a class="indexterm" name="idm45908129698352"></a><a class="indexterm" name="idm45908129696848"></a><p>
           Truncates all Performance Schema summary tables, resetting all
           aggregated instrumentation as a snapshot. Produces a result
           set indicating how many tables were truncated.
@@ -6738,7 +6738,7 @@ Query OK, 0 rows affected (9.28 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703702304"></a><a class="indexterm" name="idm45844703700784"></a><p>
+<a class="indexterm" name="idm45908129685872"></a><a class="indexterm" name="idm45908129684352"></a><p>
           Creates a report of the statements running on the server. The
           views are calculated based on the overall and/or delta
           activity.
@@ -7088,7 +7088,7 @@ Every 60.0s: mysql sys --table -e "        ...  Mon Dec 22 10:58:51 2014
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703573600"></a><a class="indexterm" name="idm45844703572128"></a><p>
+<a class="indexterm" name="idm45908129557104"></a><a class="indexterm" name="idm45908129555632"></a><p>
           Tests whether a given table exists as a regular table, a
           <code class="literal">TEMPORARY</code> table, or a view. The procedure
           returns the table type in an <code class="literal">OUT</code> parameter.
@@ -7243,7 +7243,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45844703537328"></a><a class="indexterm" name="idm45844703535808"></a><p>
+<a class="indexterm" name="idm45908129520832"></a><a class="indexterm" name="idm45908129519312"></a><p>
           Given a file path name, returns the path component that
           represents the schema name. This function assumes that the
           file name lies within the schema directory. For this reason,
@@ -7322,7 +7322,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703521760"></a><a class="indexterm" name="idm45844703520304"></a><p>
+<a class="indexterm" name="idm45908129505200"></a><a class="indexterm" name="idm45908129503744"></a><p>
           Given a file path name, returns the path component that
           represents the table name.
         </p><p>
@@ -7400,7 +7400,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703505920"></a><a class="indexterm" name="idm45844703504464"></a>
+<a class="indexterm" name="idm45908129489184"></a><a class="indexterm" name="idm45908129487728"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -7490,7 +7490,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703483760"></a><a class="indexterm" name="idm45844703482304"></a><p>
+<a class="indexterm" name="idm45908129467152"></a><a class="indexterm" name="idm45908129465696"></a><p>
           Given a path name, returns the modified path name after
           replacing subpaths that match the values of the following
           system variables, in order:
@@ -7572,7 +7572,7 @@ basedir
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703467264"></a><a class="indexterm" name="idm45844703465792"></a><p>
+<a class="indexterm" name="idm45908129450528"></a><a class="indexterm" name="idm45908129449056"></a><p>
           Given a string (normally representing an SQL statement),
           reduces it to the length given by the
           <code class="literal">statement_truncate_len</code> configuration
@@ -7697,7 +7697,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703437376"></a><a class="indexterm" name="idm45844703435920"></a>
+<a class="indexterm" name="idm45908129420640"></a><a class="indexterm" name="idm45908129419184"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -7791,7 +7791,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703412912"></a><a class="indexterm" name="idm45844703411424"></a><p>
+<a class="indexterm" name="idm45908129396576"></a><a class="indexterm" name="idm45908129395088"></a><p>
           Adds a value to a comma-separated list of values and returns
           the result.
         </p><p>
@@ -7885,7 +7885,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703389696"></a><a class="indexterm" name="idm45844703388240"></a><p>
+<a class="indexterm" name="idm45908129373360"></a><a class="indexterm" name="idm45908129371904"></a><p>
           Removes a value from a comma-separated list of values and
           returns the result. For more information, see the description
           of <a class="link" href="sys-schema.html#sys-list-add" title="28.4.5.7 The list_add() Function"><code class="literal">list_add()</code></a>
@@ -7940,7 +7940,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703376496"></a><a class="indexterm" name="idm45844703374992"></a><p>
+<a class="indexterm" name="idm45908129360224"></a><a class="indexterm" name="idm45908129358720"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether Performance Schema instrumentation for a
           given account is enabled.
@@ -8014,7 +8014,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703360000"></a><a class="indexterm" name="idm45844703358496"></a><p>
+<a class="indexterm" name="idm45908129343728"></a><a class="indexterm" name="idm45908129342224"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether a given Performance Schema consumer is
           enabled, or <code class="literal">NULL</code> if the argument is
@@ -8095,7 +8095,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703341312"></a><a class="indexterm" name="idm45844703339792"></a><p>
+<a class="indexterm" name="idm45908129324976"></a><a class="indexterm" name="idm45908129323456"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether a given Performance Schema instrument is
           enabled by default.
@@ -8172,7 +8172,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_instrument_default_en
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703324576"></a><a class="indexterm" name="idm45844703323056"></a><p>
+<a class="indexterm" name="idm45908129308368"></a><a class="indexterm" name="idm45908129306848"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether a given Performance Schema instrument is
           timed by default.
@@ -8249,7 +8249,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_instrument_default_ti
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703307712"></a><a class="indexterm" name="idm45844703306256"></a><p>
+<a class="indexterm" name="idm45908129291824"></a><a class="indexterm" name="idm45908129290368"></a><p>
           Returns <code class="literal">YES</code> or <code class="literal">NO</code> to
           indicate whether Performance Schema instrumentation for a
           given connection ID is enabled, <code class="literal">UNKNOWN</code> if
@@ -8332,7 +8332,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703285312"></a><a class="indexterm" name="idm45844703283840"></a><p>
+<a class="indexterm" name="idm45908129269552"></a><a class="indexterm" name="idm45908129268080"></a><p>
           Given a Performance Schema thread ID, returns the
           <code class="literal"><em class="replaceable"><code>user_name</code></em>@<em class="replaceable"><code>host_name</code></em></code>
           account associated with the thread.
@@ -8408,7 +8408,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703268400"></a><a class="indexterm" name="idm45844703266944"></a>
+<a class="indexterm" name="idm45908129252704"></a><a class="indexterm" name="idm45908129251248"></a>
 <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
 
 <div class="admon-title">
@@ -8501,7 +8501,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703244768"></a><a class="indexterm" name="idm45844703243296"></a><p>
+<a class="indexterm" name="idm45908129229136"></a><a class="indexterm" name="idm45908129227664"></a><p>
           Returns a JSON formatted stack of all statements, stages, and
           events within the Performance Schema for a given thread ID.
 </p>
@@ -8580,7 +8580,7 @@ thread_stack: {"rankdir": "LR","nodesep": "0.10",
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703226768"></a><a class="indexterm" name="idm45844703225296"></a><p>
+<a class="indexterm" name="idm45908129211088"></a><a class="indexterm" name="idm45908129209616"></a><p>
           Returns a JSON object containing information about a given
           thread. The information includes the current transaction, and
           the statements it has already executed, derived from the
@@ -8759,7 +8759,7 @@ sys.ps_thread_trx_info(48): [
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703197904"></a><a class="indexterm" name="idm45844703196432"></a><p>
+<a class="indexterm" name="idm45908129180416"></a><a class="indexterm" name="idm45908129178944"></a><p>
           Given a string argument, this function produces a quoted
           identifier suitable for inclusion in SQL statements. This is
           useful when a value to be used as an identifier is a reserved
@@ -8839,7 +8839,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.quote_identifier('integer')
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703182192"></a><a class="indexterm" name="idm45844703180720"></a><p>
+<a class="indexterm" name="idm45908129164704"></a><a class="indexterm" name="idm45908129163232"></a><p>
           Given a configuration option name, returns the option value
           from the <a class="link" href="sys-schema.html#sys-sys-config" title="28.4.2.1 The sys_config Table"><code class="literal">sys_config</code></a> table, or
           the provided default value (which may be
@@ -8967,7 +8967,7 @@ END IF;
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703141040"></a><a class="indexterm" name="idm45844703139568"></a><p>
+<a class="indexterm" name="idm45908129123680"></a><a class="indexterm" name="idm45908129122208"></a><p>
           This function returns the major version of the MySQL server.
 </p>
 <div class="simplesect">
@@ -9031,7 +9031,7 @@ END IF;
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703129152"></a><a class="indexterm" name="idm45844703127680"></a><p>
+<a class="indexterm" name="idm45908129111792"></a><a class="indexterm" name="idm45908129110320"></a><p>
           This function returns the minor version of the MySQL server.
 </p>
 <div class="simplesect">
@@ -9095,7 +9095,7 @@ END IF;
 </div>
 
 </div>
-<a class="indexterm" name="idm45844703117264"></a><a class="indexterm" name="idm45844703115792"></a><p>
+<a class="indexterm" name="idm45908129099840"></a><a class="indexterm" name="idm45908129098368"></a><p>
           This function returns the patch release version of the MySQL
           server.
 </p>
