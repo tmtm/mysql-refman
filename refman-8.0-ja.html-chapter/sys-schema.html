@@ -10,7 +10,7 @@
     新規インストールでは、<code class="option">--initialize</code> または <code class="option">--initialize-insecure</code> オプションを指定して <span class="command"><strong>mysqld</strong></span> を使用する場合、<code class="literal">sys</code> スキーマはデータディレクトリの初期化時にデフォルトでインストールされます。 これが不要な場合は、初期化後に <code class="literal">sys</code> スキーマを手動で削除できます。 
   </p><p>
     MySQL のアップグレード手順では、<code class="literal">sys</code> スキーマは存在するが <code class="literal">version</code> ビューがない場合、このビューが存在しないことはユーザーが作成した <code class="literal">sys</code> スキーマを示していることを前提として、エラーが生成されます。 この場合にアップグレードするには、まず既存の <code class="literal">sys</code> スキーマを削除するか、名前を変更します。 
-  </p><a class="indexterm" name="idm45563184867008"></a><p>
+  </p><a class="indexterm" name="idm44888490438256"></a><p>
     <code class="literal">sys</code> スキーマオブジェクトには、<code class="literal">'mysql.sys'@'localhost'</code>の <code class="literal">DEFINER</code> があります。 専用の <code class="literal">mysql.sys</code> アカウントを使用すると、DBA が <code class="literal">root</code> アカウントの名前を変更または削除した場合に発生する問題を回避できます。 
   </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sys-schema-prerequisites"></a>28.1 sys スキーマを使用するための前提条件</h2></div></div></div><p>
       <code class="literal">sys</code> スキーマを使用する前に、このセクションで説明する前提条件を満たしている必要があります。
@@ -465,7 +465,7 @@ stage/innodb/buffer pool load
             <td>MySQL サーバーパッチのリリースバージョン番号</td>
           </tr></tbody></table></div></div><br class="table-break"></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="sys-schema-tables"></a>28.4.2 sys スキーマのテーブルおよびトリガー</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="sys-schema.html#sys-sys-config">28.4.2.1 sys_config テーブル</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-sys-config-insert-set-user">28.4.2.2 sys_config_insert_set_user トリガー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-sys-config-update-set-user">28.4.2.3 sys_config_update_set_user トリガー</a></span></dt></dl></div><p>
         次の各セクションでは、<code class="literal">sys</code> のスキーマテーブルおよびトリガーについて説明します。
-      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-sys-config"></a>28.4.2.1 sys_config テーブル</h4></div></div></div><a class="indexterm" name="idm45563184365456"></a><a class="indexterm" name="idm45563184363296"></a><p>
+      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-sys-config"></a>28.4.2.1 sys_config テーブル</h4></div></div></div><a class="indexterm" name="idm44888489936848"></a><a class="indexterm" name="idm44888489934688"></a><p>
           このテーブルには、オプションごとに 1 行ずつ、<code class="literal">sys</code> スキーマ構成オプションが含まれています。 このテーブルを更新して行われた構成変更は、クライアントセッションおよびサーバーの再起動後も保持されます。 
         </p><p>
           <code class="literal">sys_config</code> テーブルには、次のカラムがあります:
@@ -561,7 +561,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
           <code class="literal">sys_config</code> テーブルの <code class="literal">sys_config_update_set_user</code> トリガーは、<code class="literal">sys_config_insert_set_user</code> トリガーと似ていますが、<code class="literal">UPDATE</code> ステートメントの場合です。
         </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="sys-schema-views"></a>28.4.3 sys スキーマビュー</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="sys-schema.html#sys-host-summary">28.4.3.1 host_summary および x$host_summary のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-host-summary-by-file-io">28.4.3.2 host_summary_by_file_io および x$host_summary_by_file_io のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-host-summary-by-file-io-type">28.4.3.3 host_summary_by_file_io_type および x$host_summary_by_file_io_type ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-host-summary-by-stages">28.4.3.4 host_summary_by_stages および x$host_summary_by_stages のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-host-summary-by-statement-latency">28.4.3.5 host_summary_by_statement_latency および x$host_summary_by_statement_latency ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-host-summary-by-statement-type">28.4.3.6 host_summary_by_statement_type および x$host_summary_by_statement_type のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-innodb-buffer-stats-by-schema">28.4.3.7 innodb_buffer_stats_by_schema および x$innodb_buffer_stats_by_schema のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-innodb-buffer-stats-by-table">28.4.3.8 innodb_buffer_stats_by_table および x$innodb_buffer_stats_by_table のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-innodb-lock-waits">28.4.3.9 innodb_lock_waits および x$innodb_lock_waits のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-io-by-thread-by-latency">28.4.3.10 io_by_thread_by_latency および x$io_by_thread_by_latency のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-io-global-by-file-by-bytes">28.4.3.11 io_global_by_file_by_bytes および x$io_global_by_file_by_bytes のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-io-global-by-file-by-latency">28.4.3.12 io_global_by_file_by_latency および x$io_global_by_file_by_latency のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-io-global-by-wait-by-bytes">28.4.3.13 io_global_by_wait_by_bytes および x$io_global_by_wait_by_bytes のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-io-global-by-wait-by-latency">28.4.3.14 io_global_by_wait_by_latency および x$io_global_by_wait_by_latency ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-latest-file-io">28.4.3.15 latest_file_io および x$latest_file_io のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-memory-by-host-by-current-bytes">28.4.3.16 memory_by_host_by_current_bytes および x$memory_by_host_by_current_bytes ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-memory-by-thread-by-current-bytes">28.4.3.17 memory_by_thread_by_current_bytes および x$memory_by_thread_by_current_bytes のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-memory-by-user-by-current-bytes">28.4.3.18 memory_by_user_by_current_bytes および x$memory_by_user_by_current_bytes のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-memory-global-by-current-bytes">28.4.3.19 memory_global_by_current_bytes および x$memory_global_by_current_bytes のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-memory-global-total">28.4.3.20 memory_global_total および x$memory_global_total のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-metrics">28.4.3.21 メトリックビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-processlist">28.4.3.22 processlist ビューと x$processlist ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-check-lost-instrumentation">28.4.3.23 ps_check_lost_instrumentation ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-auto-increment-columns">28.4.3.24 schema_auto_increment_columns ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-index-statistics">28.4.3.25 schema_index_statistics および x$schema_index_statistics のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-object-overview">28.4.3.26 schema_object_overview ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-redundant-indexes">28.4.3.27 schema_redundant_indexes および x$schema_flattened_keys のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-table-lock-waits">28.4.3.28 schema_table_lock_waits および x$schema_table_lock_waits のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-table-statistics">28.4.3.29 schema_table_statistics および x$schema_table_statistics のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-table-statistics-with-buffer">28.4.3.30 schema_table_statistics_with_buffer および x$schema_table_statistics_with_buffer のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-tables-with-full-table-scans">28.4.3.31 schema_tables_with_full_table_scans および x$schema_tables_with_full_table_scans のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-schema-unused-indexes">28.4.3.32 schema_unused_indexes ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-session">28.4.3.33 セッションおよび x$session ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-session-ssl-status">28.4.3.34 session_ssl_status ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statement-analysis">28.4.3.35 statement_analysis および x$statement_analysis のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statements-with-errors-or-warnings">28.4.3.36 statements_with_errors_or_warnings および x$statements_with_errors_or_warnings ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statements-with-full-table-scans">28.4.3.37 statements_with_full_table_scans および x$statements_with_full_table_scans のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statements-with-runtimes-in-95th-percentile">28.4.3.38 statements_with_runtimes_in_95th_percentile および x$statements_with_runtimes_in_95th_percentile のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statements-with-sorting">28.4.3.39 statements_with_sorting および x$statements_with_sorting のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statements-with-temp-tables">28.4.3.40 statements_with_temp_tables および x$statements_with_temp_tables のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-user-summary">28.4.3.41 user_summary および x$user_summary のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-user-summary-by-file-io">28.4.3.42 user_summary_by_file_io および x$user_summary_by_file_io のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-user-summary-by-file-io-type">28.4.3.43 user_summary_by_file_io_type および x$user_summary_by_file_io_type のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-user-summary-by-stages">28.4.3.44 user_summary_by_stages および x$user_summary_by_stages のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-user-summary-by-statement-latency">28.4.3.45 user_summary_by_statement_latency および x$user_summary_by_statement_latency のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-user-summary-by-statement-type">28.4.3.46 user_summary_by_statement_type および x$user_summary_by_statement_type のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-version">28.4.3.47 バージョンビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait-classes-global-by-avg-latency">28.4.3.48 wait_classes_global_by_avg_latency および x$wait_classes_global_by_avg_latency のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-wait-classes-global-by-latency">28.4.3.49 wait_classes_global_by_latency および x$wait_classes_global_by_latency ビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-waits-by-host-by-latency">28.4.3.50 waits_by_host_by_latency および x$waits_by_host_by_latency のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-waits-by-user-by-latency">28.4.3.51 waits_by_user_by_latency および x$waits_by_user_by_latency のビュー</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-waits-global-by-latency">28.4.3.52 waits_global_by_latency および x$waits_global_by_latency のビュー</a></span></dt></dl></div><p>
         次の各セクションでは、<code class="literal">sys</code> スキーマビューについて説明します。
-      </p><a class="indexterm" name="idm45563184256160"></a><a class="indexterm" name="idm45563184253984"></a><p>
+      </p><a class="indexterm" name="idm44888489827488"></a><a class="indexterm" name="idm44888489825312"></a><p>
         <code class="literal">sys</code> スキーマには、様々な方法で「パフォーマンススキーマ」テーブルを要約する多数のビューが含まれています。 これらのビューのほとんどはペアになっているため、ペアのメンバーは他のメンバーと同じ名前に <code class="literal">x$</code> 接頭辞を付けたものになります。 たとえば、<code class="literal">host_summary_by_file_io</code> ビューでは、ホスト別にグループ化されたファイル I/O が要約され、ピコ秒からより読みやすい値 (単位付き) に変換された待機時間が表示されます 
       </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>SELECT * FROM sys.host_summary_by_file_io;</code></strong>
 +------------+-------+------------+
@@ -591,7 +591,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
             SQL ステートメントは、<code class="literal">format_statement()</code> を使用して最大表示幅に切り捨てられます。
           </p></li><li class="listitem"><p>
             パス名は、<code class="literal">format_path()</code> を使用して短縮されます。
-          </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary"></a>28.4.3.1 host_summary および x$host_summary のビュー</h4></div></div></div><a class="indexterm" name="idm45563184229136"></a><a class="indexterm" name="idm45563184226976"></a><a class="indexterm" name="idm45563184224896"></a><a class="indexterm" name="idm45563184222800"></a><p>
+          </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary"></a>28.4.3.1 host_summary および x$host_summary のビュー</h4></div></div></div><a class="indexterm" name="idm44888489800528"></a><a class="indexterm" name="idm44888489798368"></a><a class="indexterm" name="idm44888489796288"></a><a class="indexterm" name="idm44888489794192"></a><p>
           これらのビューには、ホストごとにグループ化されたステートメントアクティビティ、ファイル I/O,および接続が要約されます。
         </p><p>
           <code class="literal">host_summary</code> ビューと <code class="literal">x$host_summary</code> ビューには、次のカラムがあります:
@@ -643,7 +643,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_memory_allocated</code>
             </p><p>
               ホストに割り当てられたメモリーの合計量。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-file-io"></a>28.4.3.2 host_summary_by_file_io および x$host_summary_by_file_io のビュー</h4></div></div></div><a class="indexterm" name="idm45563184189008"></a><a class="indexterm" name="idm45563184186832"></a><a class="indexterm" name="idm45563184184720"></a><a class="indexterm" name="idm45563184182608"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-file-io"></a>28.4.3.2 host_summary_by_file_io および x$host_summary_by_file_io のビュー</h4></div></div></div><a class="indexterm" name="idm44888489760400"></a><a class="indexterm" name="idm44888489758224"></a><a class="indexterm" name="idm44888489756112"></a><a class="indexterm" name="idm44888489754000"></a><p>
           これらのビューは、ホストごとにグループ化されたファイル I/O,を要約します。 デフォルトでは、行は合計ファイル I/O レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">host_summary_by_file_io</code> ビューと <code class="literal">x$host_summary_by_file_io</code> ビューには、次のカラムがあります:
@@ -659,7 +659,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">io_latency</code>
             </p><p>
               ホストの時間指定ファイル I/O イベントの合計待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-file-io-type"></a>28.4.3.3 host_summary_by_file_io_type および x$host_summary_by_file_io_type ビュー</h4></div></div></div><a class="indexterm" name="idm45563184166784"></a><a class="indexterm" name="idm45563184164592"></a><a class="indexterm" name="idm45563184162464"></a><a class="indexterm" name="idm45563184160320"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-file-io-type"></a>28.4.3.3 host_summary_by_file_io_type および x$host_summary_by_file_io_type ビュー</h4></div></div></div><a class="indexterm" name="idm44888489738240"></a><a class="indexterm" name="idm44888489736048"></a><a class="indexterm" name="idm44888489733920"></a><a class="indexterm" name="idm44888489731776"></a><p>
           これらのビューには、ホストおよびイベントタイプ別にグループ化されたファイル I/O,が要約されます。 デフォルトでは、行はホストでソートされ、合計 I/O レイテンシが降順になります。 
         </p><p>
           <code class="literal">host_summary_by_file_io_type</code> ビューと <code class="literal">x$host_summary_by_file_io_type</code> ビューには、次のカラムがあります:
@@ -683,7 +683,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">max_latency</code>
             </p><p>
               ホストのファイル I/O イベントの時間指定発生の最大単一待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-stages"></a>28.4.3.4 host_summary_by_stages および x$host_summary_by_stages のビュー</h4></div></div></div><a class="indexterm" name="idm45563184140352"></a><a class="indexterm" name="idm45563184138176"></a><a class="indexterm" name="idm45563184136064"></a><a class="indexterm" name="idm45563184133952"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-stages"></a>28.4.3.4 host_summary_by_stages および x$host_summary_by_stages のビュー</h4></div></div></div><a class="indexterm" name="idm44888489711744"></a><a class="indexterm" name="idm44888489709568"></a><a class="indexterm" name="idm44888489707456"></a><a class="indexterm" name="idm44888489705344"></a><p>
           これらのビューは、ホストごとにグループ化されたステートメントステージを要約します。 デフォルトでは、行はホストおよび合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">host_summary_by_stages</code> ビューと <code class="literal">x$host_summary_by_stages</code> ビューには、次のカラムがあります:
@@ -707,7 +707,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">avg_latency</code>
             </p><p>
               ホストのステージイベントの発生時間ごとの平均待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-statement-latency"></a>28.4.3.5 host_summary_by_statement_latency および x$host_summary_by_statement_latency ビュー</h4></div></div></div><a class="indexterm" name="idm45563184114096"></a><a class="indexterm" name="idm45563184111840"></a><a class="indexterm" name="idm45563184109696"></a><a class="indexterm" name="idm45563184107536"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-statement-latency"></a>28.4.3.5 host_summary_by_statement_latency および x$host_summary_by_statement_latency ビュー</h4></div></div></div><a class="indexterm" name="idm44888489685424"></a><a class="indexterm" name="idm44888489683168"></a><a class="indexterm" name="idm44888489681024"></a><a class="indexterm" name="idm44888489678864"></a><p>
           これらのビューには、ホストごとにグループ化されたステートメント全体の統計が要約されます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">host_summary_by_statement_latency</code> ビューと <code class="literal">x$host_summary_by_statement_latency</code> ビューには、次のカラムがあります:
@@ -747,7 +747,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">full_scans</code>
             </p><p>
               ホストのステートメントによる全テーブルスキャンの合計数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-statement-type"></a>28.4.3.6 host_summary_by_statement_type および x$host_summary_by_statement_type のビュー</h4></div></div></div><a class="indexterm" name="idm45563184079264"></a><a class="indexterm" name="idm45563184077008"></a><a class="indexterm" name="idm45563184074864"></a><a class="indexterm" name="idm45563184072720"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-host-summary-by-statement-type"></a>28.4.3.6 host_summary_by_statement_type および x$host_summary_by_statement_type のビュー</h4></div></div></div><a class="indexterm" name="idm44888489650592"></a><a class="indexterm" name="idm44888489648336"></a><a class="indexterm" name="idm44888489646192"></a><a class="indexterm" name="idm44888489644048"></a><p>
           これらのビューには、実行されたステートメントに関する情報が、ホストおよびステートメントタイプ別にグループ化されて要約されます。 デフォルトでは、行はホストおよび合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">host_summary_by_statement_type</code> ビューと <code class="literal">x$host_summary_by_statement_type</code> ビューには、次のカラムがあります:
@@ -791,7 +791,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">full_scans</code>
             </p><p>
               ホストのステートメントイベントの発生による全テーブルスキャンの合計数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-innodb-buffer-stats-by-schema"></a>28.4.3.7 innodb_buffer_stats_by_schema および x$innodb_buffer_stats_by_schema のビュー</h4></div></div></div><a class="indexterm" name="idm45563184041872"></a><a class="indexterm" name="idm45563184039680"></a><a class="indexterm" name="idm45563184037552"></a><a class="indexterm" name="idm45563184035408"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-innodb-buffer-stats-by-schema"></a>28.4.3.7 innodb_buffer_stats_by_schema および x$innodb_buffer_stats_by_schema のビュー</h4></div></div></div><a class="indexterm" name="idm44888489613200"></a><a class="indexterm" name="idm44888489611008"></a><a class="indexterm" name="idm44888489608880"></a><a class="indexterm" name="idm44888489606736"></a><p>
           これらのビューには、スキーマ別にグループ化された <code class="literal">INFORMATION_SCHEMA</code> <code class="literal">INNODB_BUFFER_PAGE</code> テーブルの情報がまとめられています。 デフォルトでは、行は降順のバッファサイズでソートされます。 
         </p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">警告</div><p>
             <code class="literal">INNODB_BUFFER_PAGE</code> テーブルにアクセスするビューをクエリーすると、パフォーマンスに影響する可能性があります。 パフォーマンスへの影響を認識し、許容できると判断した場合を除き、本番システムでこれらのビューをクエリーしないでください。 本番システムのパフォーマンスへの影響を回避するには、調査する問題を再現し、テストインスタンスのバッファプール統計をクエリーします。 
@@ -825,7 +825,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">rows_cached</code>
             </p><p>
               スキーマのキャッシュされた行の合計数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-innodb-buffer-stats-by-table"></a>28.4.3.8 innodb_buffer_stats_by_table および x$innodb_buffer_stats_by_table のビュー</h4></div></div></div><a class="indexterm" name="idm45563184008480"></a><a class="indexterm" name="idm45563184006288"></a><a class="indexterm" name="idm45563184004160"></a><a class="indexterm" name="idm45563184002016"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-innodb-buffer-stats-by-table"></a>28.4.3.8 innodb_buffer_stats_by_table および x$innodb_buffer_stats_by_table のビュー</h4></div></div></div><a class="indexterm" name="idm44888489579808"></a><a class="indexterm" name="idm44888489577616"></a><a class="indexterm" name="idm44888489575488"></a><a class="indexterm" name="idm44888489573344"></a><p>
           これらのビューには、スキーマおよびテーブル別にグループ化された <code class="literal">INFORMATION_SCHEMA</code> <code class="literal">INNODB_BUFFER_PAGE</code> テーブルの情報がまとめられています。 デフォルトでは、行は降順のバッファサイズでソートされます。 
         </p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">警告</div><p>
             <code class="literal">INNODB_BUFFER_PAGE</code> テーブルにアクセスするビューをクエリーすると、パフォーマンスに影響する可能性があります。 パフォーマンスへの影響を認識し、許容できると判断した場合を除き、本番システムでこれらのビューをクエリーしないでください。 本番システムのパフォーマンスへの影響を回避するには、調査する問題を再現し、テストインスタンスのバッファプール統計をクエリーします。 
@@ -863,7 +863,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">rows_cached</code>
             </p><p>
               テーブルのキャッシュされた行数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-innodb-lock-waits"></a>28.4.3.9 innodb_lock_waits および x$innodb_lock_waits のビュー</h4></div></div></div><a class="indexterm" name="idm45563183973312"></a><a class="indexterm" name="idm45563183971136"></a><a class="indexterm" name="idm45563183969040"></a><a class="indexterm" name="idm45563183966928"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-innodb-lock-waits"></a>28.4.3.9 innodb_lock_waits および x$innodb_lock_waits のビュー</h4></div></div></div><a class="indexterm" name="idm44888489544576"></a><a class="indexterm" name="idm44888489542400"></a><a class="indexterm" name="idm44888489540304"></a><a class="indexterm" name="idm44888489538192"></a><p>
           これらのビューには、トランザクションが待機している <code class="literal">InnoDB</code> ロックの概要が示されます。 デフォルトでは、行はロック期間の降順でソートされます。 
         </p><p>
           <code class="literal">innodb_lock_waits</code> ビューと <code class="literal">x$innodb_lock_waits</code> ビューには、次のカラムがあります:
@@ -983,7 +983,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">sql_kill_blocking_connection</code>
             </p><p>
               ブロッキングステートメントを実行しているセッションを強制終了するために実行する <code class="literal">KILL</code> ステートメント。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-by-thread-by-latency"></a>28.4.3.10 io_by_thread_by_latency および x$io_by_thread_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563183892224"></a><a class="indexterm" name="idm45563183890048"></a><a class="indexterm" name="idm45563183887936"></a><a class="indexterm" name="idm45563183885824"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-by-thread-by-latency"></a>28.4.3.10 io_by_thread_by_latency および x$io_by_thread_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888489463552"></a><a class="indexterm" name="idm44888489461376"></a><a class="indexterm" name="idm44888489459264"></a><a class="indexterm" name="idm44888489457152"></a><p>
           これらのビューは、I/O コンシューマを要約して、I/O を待機している時間をスレッド別にグループ化して表示します。 デフォルトでは、行は合計 I/O レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">io_by_thread_by_latency</code> ビューと <code class="literal">x$io_by_thread_by_latency</code> ビューには、次のカラムがあります:
@@ -1019,7 +1019,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">processlist_id</code>
             </p><p>
               フォアグラウンドスレッドの場合、スレッドのプロセスリスト ID。 バックグラウンドスレッドの場合、<code class="literal">NULL</code>。 
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-file-by-bytes"></a>28.4.3.11 io_global_by_file_by_bytes および x$io_global_by_file_by_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm45563183861296"></a><a class="indexterm" name="idm45563183859104"></a><a class="indexterm" name="idm45563183856976"></a><a class="indexterm" name="idm45563183854848"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-file-by-bytes"></a>28.4.3.11 io_global_by_file_by_bytes および x$io_global_by_file_by_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm44888489432624"></a><a class="indexterm" name="idm44888489430432"></a><a class="indexterm" name="idm44888489428304"></a><a class="indexterm" name="idm44888489426176"></a><p>
           これらのビューは、グローバル I/O コンシューマを要約して、ファイルごとにグループ化された I/O の量を表示します。 デフォルトでは、行は合計 I/O (読取りおよび書込みバイト数) の降順でソートされます。 
         </p><p>
           <code class="literal">io_global_by_file_by_bytes</code> ビューと <code class="literal">x$io_global_by_file_by_bytes</code> ビューには、次のカラムがあります:
@@ -1059,7 +1059,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">write_pct</code>
             </p><p>
               書き込まれた I/O の合計バイト数の割合。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-file-by-latency"></a>28.4.3.12 io_global_by_file_by_latency および x$io_global_by_file_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563183829264"></a><a class="indexterm" name="idm45563183827072"></a><a class="indexterm" name="idm45563183824944"></a><a class="indexterm" name="idm45563183822800"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-file-by-latency"></a>28.4.3.12 io_global_by_file_by_latency および x$io_global_by_file_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888489400592"></a><a class="indexterm" name="idm44888489398400"></a><a class="indexterm" name="idm44888489396272"></a><a class="indexterm" name="idm44888489394128"></a><p>
           これらのビューは、グローバル I/O コンシューマを要約して、I/O を待機している時間をファイル別にグループ化して表示します。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">io_global_by_file_by_latency</code> ビューと <code class="literal">x$io_global_by_file_by_latency</code> ビューには、次のカラムがあります:
@@ -1099,7 +1099,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">misc_latency</code>
             </p><p>
               ファイルの他の時間指定 I/O イベントの合計待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-wait-by-bytes"></a>28.4.3.13 io_global_by_wait_by_bytes および x$io_global_by_wait_by_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm45563183797184"></a><a class="indexterm" name="idm45563183794992"></a><a class="indexterm" name="idm45563183792864"></a><a class="indexterm" name="idm45563183790736"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-wait-by-bytes"></a>28.4.3.13 io_global_by_wait_by_bytes および x$io_global_by_wait_by_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm44888489368576"></a><a class="indexterm" name="idm44888489366384"></a><a class="indexterm" name="idm44888489364256"></a><a class="indexterm" name="idm44888489362128"></a><p>
           これらのビューには、グローバル I/O コンシューマの概要が示され、I/O を待機している時間がイベント別にグループ化されて表示されます。 デフォルトでは、行は合計 I/O (読取りおよび書込みバイト数) の降順でソートされます。 
         </p><p>
           <code class="literal">io_global_by_wait_by_bytes</code> ビューと <code class="literal">x$io_global_by_wait_by_bytes</code> ビューには、次のカラムがあります:
@@ -1155,7 +1155,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_requested</code>
             </p><p>
               I/O イベントに対して読取りおよび書込みが行われた合計バイト数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-wait-by-latency"></a>28.4.3.14 io_global_by_wait_by_latency および x$io_global_by_wait_by_latency ビュー</h4></div></div></div><a class="indexterm" name="idm45563183756368"></a><a class="indexterm" name="idm45563183754176"></a><a class="indexterm" name="idm45563183752048"></a><a class="indexterm" name="idm45563183749904"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-io-global-by-wait-by-latency"></a>28.4.3.14 io_global_by_wait_by_latency および x$io_global_by_wait_by_latency ビュー</h4></div></div></div><a class="indexterm" name="idm44888489327760"></a><a class="indexterm" name="idm44888489325568"></a><a class="indexterm" name="idm44888489323440"></a><a class="indexterm" name="idm44888489321296"></a><p>
           これらのビューには、グローバル I/O コンシューマの概要が示され、I/O を待機している時間がイベント別にグループ化されて表示されます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">io_global_by_wait_by_latency</code> ビューと <code class="literal">x$io_global_by_wait_by_latency</code> ビューには、次のカラムがあります:
@@ -1215,7 +1215,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">avg_written</code>
             </p><p>
               I/O イベントの書込み当たりの平均バイト数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-latest-file-io"></a>28.4.3.15 latest_file_io および x$latest_file_io のビュー</h4></div></div></div><a class="indexterm" name="idm45563183713648"></a><a class="indexterm" name="idm45563183711472"></a><a class="indexterm" name="idm45563183709376"></a><a class="indexterm" name="idm45563183707280"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-latest-file-io"></a>28.4.3.15 latest_file_io および x$latest_file_io のビュー</h4></div></div></div><a class="indexterm" name="idm44888489285104"></a><a class="indexterm" name="idm44888489282928"></a><a class="indexterm" name="idm44888489280832"></a><a class="indexterm" name="idm44888489278736"></a><p>
           これらのビューには、ファイルおよびスレッド別にグループ化されたファイル I/O アクティビティが要約されます。 デフォルトでは、行は最新の I/O から順にソートされます。 
         </p><p>
           <code class="literal">latest_file_io</code> ビューと <code class="literal">x$latest_file_io</code> ビューには、次のカラムがあります:
@@ -1239,7 +1239,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">requested</code>
             </p><p>
               ファイル I/O イベントに対してリクエストされたデータバイト数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-by-host-by-current-bytes"></a>28.4.3.16 memory_by_host_by_current_bytes および x$memory_by_host_by_current_bytes ビュー</h4></div></div></div><a class="indexterm" name="idm45563183689744"></a><a class="indexterm" name="idm45563183687488"></a><a class="indexterm" name="idm45563183685344"></a><a class="indexterm" name="idm45563183683200"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-by-host-by-current-bytes"></a>28.4.3.16 memory_by_host_by_current_bytes および x$memory_by_host_by_current_bytes ビュー</h4></div></div></div><a class="indexterm" name="idm44888489261200"></a><a class="indexterm" name="idm44888489258944"></a><a class="indexterm" name="idm44888489256800"></a><a class="indexterm" name="idm44888489254656"></a><p>
           これらのビューには、ホストごとにグループ化されたメモリー使用量の概要が示されます。 デフォルトでは、行は使用されているメモリー量の降順でソートされます。 
         </p><p>
           <code class="literal">memory_by_host_by_current_bytes</code> ビューと <code class="literal">x$memory_by_host_by_current_bytes</code> ビューには、次のカラムがあります:
@@ -1267,7 +1267,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_allocated</code>
             </p><p>
               ホストの合計メモリー割当て (バイト)。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-by-thread-by-current-bytes"></a>28.4.3.17 memory_by_thread_by_current_bytes および x$memory_by_thread_by_current_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm45563183661120"></a><a class="indexterm" name="idm45563183658864"></a><a class="indexterm" name="idm45563183656720"></a><a class="indexterm" name="idm45563183654560"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-by-thread-by-current-bytes"></a>28.4.3.17 memory_by_thread_by_current_bytes および x$memory_by_thread_by_current_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm44888489232576"></a><a class="indexterm" name="idm44888489230320"></a><a class="indexterm" name="idm44888489228176"></a><a class="indexterm" name="idm44888489226016"></a><p>
           これらのビューには、スレッドごとにグループ化されたメモリー使用量の概要が示されます。 デフォルトでは、行は使用されているメモリー量の降順でソートされます。 
         </p><p>
           <code class="literal">memory_by_thread_by_current_bytes</code> ビューと <code class="literal">x$memory_by_thread_by_current_bytes</code> ビューには、次のカラムがあります:
@@ -1299,7 +1299,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_allocated</code>
             </p><p>
               スレッドの合計メモリー割当て (バイト)。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-by-user-by-current-bytes"></a>28.4.3.18 memory_by_user_by_current_bytes および x$memory_by_user_by_current_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm45563183632912"></a><a class="indexterm" name="idm45563183630656"></a><a class="indexterm" name="idm45563183628512"></a><a class="indexterm" name="idm45563183626368"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-by-user-by-current-bytes"></a>28.4.3.18 memory_by_user_by_current_bytes および x$memory_by_user_by_current_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm44888489204432"></a><a class="indexterm" name="idm44888489202176"></a><a class="indexterm" name="idm44888489200032"></a><a class="indexterm" name="idm44888489197888"></a><p>
           これらのビューには、ユーザー別にグループ化されたメモリー使用量の概要が示されます。 デフォルトでは、行は使用されているメモリー量の降順でソートされます。 
         </p><p>
           <code class="literal">memory_by_user_by_current_bytes</code> ビューと <code class="literal">x$memory_by_user_by_current_bytes</code> ビューには、次のカラムがあります:
@@ -1327,7 +1327,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_allocated</code>
             </p><p>
               ユーザーの合計メモリー割当て (バイト)。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-global-by-current-bytes"></a>28.4.3.19 memory_global_by_current_bytes および x$memory_global_by_current_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm45563183604208"></a><a class="indexterm" name="idm45563183601952"></a><a class="indexterm" name="idm45563183599808"></a><a class="indexterm" name="idm45563183597664"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-global-by-current-bytes"></a>28.4.3.19 memory_global_by_current_bytes および x$memory_global_by_current_bytes のビュー</h4></div></div></div><a class="indexterm" name="idm44888489175728"></a><a class="indexterm" name="idm44888489173472"></a><a class="indexterm" name="idm44888489171328"></a><a class="indexterm" name="idm44888489169184"></a><p>
           これらのビューには、割当てタイプ (つまり、イベント別) 別にグループ化されたメモリー使用量が要約されます。 デフォルトでは、行は使用されているメモリー量の降順でソートされます。 
         </p><p>
           <code class="literal">memory_global_by_current_bytes</code> ビューと <code class="literal">x$memory_global_by_current_bytes</code> ビューには、次のカラムがあります:
@@ -1359,7 +1359,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">high_avg_alloc</code>
             </p><p>
               イベントに割り当てられたメモリーブロック当たりの平均バイト数の最高水位標。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-global-total"></a>28.4.3.20 memory_global_total および x$memory_global_total のビュー</h4></div></div></div><a class="indexterm" name="idm45563183576112"></a><a class="indexterm" name="idm45563183573920"></a><a class="indexterm" name="idm45563183571808"></a><a class="indexterm" name="idm45563183569696"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-memory-global-total"></a>28.4.3.20 memory_global_total および x$memory_global_total のビュー</h4></div></div></div><a class="indexterm" name="idm44888489147632"></a><a class="indexterm" name="idm44888489145440"></a><a class="indexterm" name="idm44888489143328"></a><a class="indexterm" name="idm44888489141216"></a><p>
           これらのビューには、サーバー内の合計メモリー使用量のサマリーが表示されます。
         </p><p>
           <code class="literal">memory_global_total</code> ビューと <code class="literal">x$memory_global_total</code> ビューには、次のカラムがあります:
@@ -1367,7 +1367,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_allocated</code>
             </p><p>
               サーバー内で割り当てられたメモリーの合計バイト数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-metrics"></a>28.4.3.21 メトリックビュー</h4></div></div></div><a class="indexterm" name="idm45563183560832"></a><a class="indexterm" name="idm45563183558672"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-metrics"></a>28.4.3.21 メトリックビュー</h4></div></div></div><a class="indexterm" name="idm44888489132352"></a><a class="indexterm" name="idm44888489130192"></a><p>
           このビューには、MySQL サーバーメトリックの概要が示され、変数名、値、タイプおよびそれらが有効かどうかが示されます。 デフォルトでは、行は変数の型と名前でソートされます。 
         </p><p>
           <code class="literal">metrics</code> ビューには、次の情報が含まれます:
@@ -1429,7 +1429,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
                   メモリーメトリック用: <code class="literal">NO</code>、<code class="literal">YES</code> または <code class="literal">PARTIAL</code> (現在、<code class="literal">PARTIAL</code> はメモリーメトリックに対してのみ発生し、すべての <code class="literal">memory/%</code> インストゥルメントが有効ではないことを示します。パフォーマンススキーマメモリーインストルメントは常に有効です)
                 </p></li><li class="listitem"><p>
                   現在の時刻: <code class="literal">YES</code>
-                </p></li></ul></div></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-processlist"></a>28.4.3.22 processlist ビューと x$processlist ビュー</h4></div></div></div><a class="indexterm" name="idm45563183489184"></a><a class="indexterm" name="idm45563183487024"></a><a class="indexterm" name="idm45563183484944"></a><a class="indexterm" name="idm45563183482864"></a><p>
+                </p></li></ul></div></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-processlist"></a>28.4.3.22 processlist ビューと x$processlist ビュー</h4></div></div></div><a class="indexterm" name="idm44888489060704"></a><a class="indexterm" name="idm44888489058544"></a><a class="indexterm" name="idm44888489056464"></a><a class="indexterm" name="idm44888489054384"></a><p>
           MySQL プロセスリストには、サーバー内で実行されているスレッドのセットによって現在実行されている操作が示されます。 <code class="literal">processlist</code> および <code class="literal">x$processlist</code> ビューには、プロセス情報が要約されています。 これらは、<code class="literal">SHOW PROCESSLIST</code> ステートメントおよび <code class="literal">INFORMATION_SCHEMA</code> <code class="literal">PROCESSLIST</code> テーブルよりも完全な情報を提供し、非ブロック化も行います。 デフォルトでは、行はプロセス時間の降順および待機時間の降順でソートされます。 プロセス情報ソースの比較については、<a class="xref" href="optimization.html#processlist-sources" title="プロセス情報のソース">プロセス情報のソース</a> を参照してください。 
         </p><p>
           ここでのカラムの説明は簡単です。 詳細は、<a class="xref" href="performance-schema.html#performance-schema-threads-table" title="27.12.19.10 スレッドテーブル">セクション27.12.19.10「スレッドテーブル」</a> のパフォーマンススキーマ <code class="literal">threads</code> テーブルの説明を参照してください。 
@@ -1547,7 +1547,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">program_name</code>
             </p><p>
               クライアントプログラム名。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-check-lost-instrumentation"></a>28.4.3.23 ps_check_lost_instrumentation ビュー</h4></div></div></div><a class="indexterm" name="idm45563183406000"></a><a class="indexterm" name="idm45563183403808"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-check-lost-instrumentation"></a>28.4.3.23 ps_check_lost_instrumentation ビュー</h4></div></div></div><a class="indexterm" name="idm44888488977520"></a><a class="indexterm" name="idm44888488975328"></a><p>
           このビューは、失われたパフォーマンススキーマインストゥルメントに関する情報を返し、パフォーマンススキーマがすべての実行時データをモニターできないかどうかを示します。
         </p><p>
           <code class="literal">ps_check_lost_instrumentation</code> ビューには、次のカラムがあります:
@@ -1559,7 +1559,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">variable_value</code>
             </p><p>
               失われたインストゥルメントの数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-auto-increment-columns"></a>28.4.3.24 schema_auto_increment_columns ビュー</h4></div></div></div><a class="indexterm" name="idm45563183393488"></a><a class="indexterm" name="idm45563183391296"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-auto-increment-columns"></a>28.4.3.24 schema_auto_increment_columns ビュー</h4></div></div></div><a class="indexterm" name="idm44888488965008"></a><a class="indexterm" name="idm44888488962816"></a><p>
           このビューは、<code class="literal">AUTO_INCREMENT</code> カラムを持つテーブルを示し、現在のカラム値と最大カラム値、使用率 (使用可能な値に対する使用率) など、これらのカラムに関する情報を提供します。 デフォルトでは、行は使用率と最大カラム値の降順でソートされます。 
         </p><p>
           これらのスキーマのテーブルはビュー出力から除外されます: <code class="literal">mysql</code>, <code class="literal">sys</code>, <code class="literal">INFORMATION_SCHEMA</code>, <code class="literal">performance_schema</code>。
@@ -1605,7 +1605,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">auto_increment_ratio</code>
             </p><p>
               カラムに許可された値に使用されるの比率。 これは、値の順序が<span class="quote">「<span class="quote">「使用済」</span>」</span>である量を示します。 
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-index-statistics"></a>28.4.3.25 schema_index_statistics および x$schema_index_statistics のビュー</h4></div></div></div><a class="indexterm" name="idm45563183356752"></a><a class="indexterm" name="idm45563183354576"></a><a class="indexterm" name="idm45563183352464"></a><a class="indexterm" name="idm45563183350352"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-index-statistics"></a>28.4.3.25 schema_index_statistics および x$schema_index_statistics のビュー</h4></div></div></div><a class="indexterm" name="idm44888488928208"></a><a class="indexterm" name="idm44888488926032"></a><a class="indexterm" name="idm44888488923920"></a><a class="indexterm" name="idm44888488921808"></a><p>
           これらのビューは、インデックス統計を提供します。 デフォルトでは、行は合計インデックスレイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">schema_index_statistics</code> ビューと <code class="literal">x$schema_index_statistics</code> ビューには、次のカラムがあります:
@@ -1653,7 +1653,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">delete_latency</code>
             </p><p>
               インデックスからの時間付き削除の合計待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-object-overview"></a>28.4.3.26 schema_object_overview ビュー</h4></div></div></div><a class="indexterm" name="idm45563183321072"></a><a class="indexterm" name="idm45563183318896"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-object-overview"></a>28.4.3.26 schema_object_overview ビュー</h4></div></div></div><a class="indexterm" name="idm44888488892592"></a><a class="indexterm" name="idm44888488890416"></a><p>
           このビューには、各スキーマ内のオブジェクトのタイプがまとめられています。 デフォルトでは、行はスキーマおよびオブジェクトタイプでソートされます。 
         </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             多数のオブジェクトを持つ MySQL インスタンスでは、このビューの実行に時間がかかる場合があります。
@@ -1671,7 +1671,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">count</code>
             </p><p>
               指定されたタイプのスキーマ内のオブジェクトの数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-redundant-indexes"></a>28.4.3.27 schema_redundant_indexes および x$schema_flattened_keys のビュー</h4></div></div></div><a class="indexterm" name="idm45563183300416"></a><a class="indexterm" name="idm45563183298240"></a><a class="indexterm" name="idm45563183296128"></a><a class="indexterm" name="idm45563183294016"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-redundant-indexes"></a>28.4.3.27 schema_redundant_indexes および x$schema_flattened_keys のビュー</h4></div></div></div><a class="indexterm" name="idm44888488871936"></a><a class="indexterm" name="idm44888488869760"></a><a class="indexterm" name="idm44888488867648"></a><a class="indexterm" name="idm44888488865536"></a><p>
           <code class="literal">schema_redundant_indexes</code> ビューには、他のインデックスを複製するインデックス、またはそれらによって冗長化されたインデックスが表示されます。 <code class="literal">x$schema_flattened_keys</code> ビューは、<code class="literal">schema_redundant_indexes</code> のヘルパービューです。 
         </p><p>
           次のカラムの説明では、冗長インデックスを冗長化するインデックスが主要なインデックスです。
@@ -1743,7 +1743,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">index_columns</code>
             </p><p>
               インデックス内のカラムの名前。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-table-lock-waits"></a>28.4.3.28 schema_table_lock_waits および x$schema_table_lock_waits のビュー</h4></div></div></div><a class="indexterm" name="idm45563183249600"></a><a class="indexterm" name="idm45563183247424"></a><a class="indexterm" name="idm45563183245312"></a><a class="indexterm" name="idm45563183243200"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-table-lock-waits"></a>28.4.3.28 schema_table_lock_waits および x$schema_table_lock_waits のビュー</h4></div></div></div><a class="indexterm" name="idm44888488821120"></a><a class="indexterm" name="idm44888488818944"></a><a class="indexterm" name="idm44888488816832"></a><a class="indexterm" name="idm44888488814720"></a><p>
           これらのビューには、メタデータロックで待機中にブロックされているセッションとブロックされているセッションが表示されます。
         </p><p>
           ここでのカラムの説明は簡単です。 詳細は、<a class="xref" href="performance-schema.html#performance-schema-metadata-locks-table" title="27.12.13.3 metadata_locks テーブル">セクション27.12.13.3「metadata_locks テーブル」</a> のパフォーマンススキーマ <code class="literal">metadata_locks</code> テーブルの説明を参照してください。 
@@ -1821,7 +1821,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">sql_kill_blocking_connection</code>
             </p><p>
               ブロッキングステートメントを実行しているセッションを強制終了するために実行する <code class="literal">KILL</code> ステートメント。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-table-statistics"></a>28.4.3.29 schema_table_statistics および x$schema_table_statistics のビュー</h4></div></div></div><a class="indexterm" name="idm45563183194624"></a><a class="indexterm" name="idm45563183192448"></a><a class="indexterm" name="idm45563183190336"></a><a class="indexterm" name="idm45563183188224"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-table-statistics"></a>28.4.3.29 schema_table_statistics および x$schema_table_statistics のビュー</h4></div></div></div><a class="indexterm" name="idm44888488766144"></a><a class="indexterm" name="idm44888488763968"></a><a class="indexterm" name="idm44888488761856"></a><a class="indexterm" name="idm44888488759744"></a><p>
           これらのビューには、テーブルの統計がまとめられています。 デフォルトでは、行は合計待機時間の降順 (競合が最も多いテーブルが最初) でソートされます。 
         </p><p>
           これらのビューはヘルパービュー <code class="literal">x$ps_schema_table_statistics_io</code> を使用します。
@@ -1903,7 +1903,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">io_misc_latency</code>
             </p><p>
               テーブルに対するその他の I/O リクエストの合計待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-table-statistics-with-buffer"></a>28.4.3.30 schema_table_statistics_with_buffer および x$schema_table_statistics_with_buffer のビュー</h4></div></div></div><a class="indexterm" name="idm45563183141136"></a><a class="indexterm" name="idm45563183138864"></a><a class="indexterm" name="idm45563183136704"></a><a class="indexterm" name="idm45563183134544"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-table-statistics-with-buffer"></a>28.4.3.30 schema_table_statistics_with_buffer および x$schema_table_statistics_with_buffer のビュー</h4></div></div></div><a class="indexterm" name="idm44888488712720"></a><a class="indexterm" name="idm44888488710448"></a><a class="indexterm" name="idm44888488708288"></a><a class="indexterm" name="idm44888488706128"></a><p>
           これらのビューは、<code class="literal">InnoDB</code> バッファプール統計を含むテーブル統計を要約します。 デフォルトでは、行は合計待機時間の降順 (競合が最も多いテーブルが最初) でソートされます。 
         </p><p>
           これらのビューはヘルパービュー <code class="literal">x$ps_schema_table_statistics_io</code> を使用します。
@@ -2009,7 +2009,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">innodb_buffer_rows_cached</code>
             </p><p>
               テーブルに対してキャッシュされた <code class="literal">InnoDB</code> 行の合計数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-tables-with-full-table-scans"></a>28.4.3.31 schema_tables_with_full_table_scans および x$schema_tables_with_full_table_scans のビュー</h4></div></div></div><a class="indexterm" name="idm45563183068016"></a><a class="indexterm" name="idm45563183065744"></a><a class="indexterm" name="idm45563183063584"></a><a class="indexterm" name="idm45563183061424"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-tables-with-full-table-scans"></a>28.4.3.31 schema_tables_with_full_table_scans および x$schema_tables_with_full_table_scans のビュー</h4></div></div></div><a class="indexterm" name="idm44888488639536"></a><a class="indexterm" name="idm44888488637264"></a><a class="indexterm" name="idm44888488635104"></a><a class="indexterm" name="idm44888488632944"></a><p>
           これらのビューには、全テーブルスキャンでアクセスされているテーブルが表示されます。 デフォルトでは、行はスキャンされた降順の行でソートされます。 
         </p><p>
           <code class="literal">schema_tables_with_full_table_scans</code> ビューと <code class="literal">x$schema_tables_with_full_table_scans</code> ビューには、次のカラムがあります:
@@ -2029,7 +2029,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">latency</code>
             </p><p>
               テーブルの全スキャンの合計待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-unused-indexes"></a>28.4.3.32 schema_unused_indexes ビュー</h4></div></div></div><a class="indexterm" name="idm45563183046416"></a><a class="indexterm" name="idm45563183044240"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-schema-unused-indexes"></a>28.4.3.32 schema_unused_indexes ビュー</h4></div></div></div><a class="indexterm" name="idm44888488617936"></a><a class="indexterm" name="idm44888488615760"></a><p>
           これらのビューには、使用されていないことを示すイベントがないインデックスが表示されます。 デフォルトでは、行はスキーマおよびテーブルでソートされます。 
         </p><p>
           このビューは、サーバーが稼働しており、ワークロードが代表的であるほど長く処理されている場合に最も役立ちます。 そうしないと、このビューにインデックスが存在しても意味がない場合があります。 
@@ -2047,9 +2047,9 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">index_name</code>
             </p><p>
               未使用のインデックス名。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-session"></a>28.4.3.33 セッションおよび x$session ビュー</h4></div></div></div><a class="indexterm" name="idm45563183031360"></a><a class="indexterm" name="idm45563183029200"></a><a class="indexterm" name="idm45563183027120"></a><a class="indexterm" name="idm45563183025056"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-session"></a>28.4.3.33 セッションおよび x$session ビュー</h4></div></div></div><a class="indexterm" name="idm44888488602944"></a><a class="indexterm" name="idm44888488600784"></a><a class="indexterm" name="idm44888488598704"></a><a class="indexterm" name="idm44888488596640"></a><p>
           これらのビューは、<code class="literal">processlist</code> および <code class="literal">x$processlist</code> に似ていますが、ユーザーセッションのみを表示するようにバックグラウンドプロセスをフィルタで除外します。 カラムの説明は、<a class="xref" href="sys-schema.html#sys-processlist" title="28.4.3.22 processlist ビューと x$processlist ビュー">セクション28.4.3.22「processlist ビューと x$processlist ビュー」</a> を参照してください。 
-        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-session-ssl-status"></a>28.4.3.34 session_ssl_status ビュー</h4></div></div></div><a class="indexterm" name="idm45563183018336"></a><a class="indexterm" name="idm45563183016144"></a><p>
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-session-ssl-status"></a>28.4.3.34 session_ssl_status ビュー</h4></div></div></div><a class="indexterm" name="idm44888488589968"></a><a class="indexterm" name="idm44888488587776"></a><p>
           このビューには、接続ごとに SSL バージョン、暗号および再利用された SSL セッションの数が表示されます。
         </p><p>
           <code class="literal">session_ssl_status</code> ビューには、次のカラムがあります:
@@ -2069,7 +2069,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">ssl_sessions_reused</code>
             </p><p>
               接続に再利用された SSL セッションの数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statement-analysis"></a>28.4.3.35 statement_analysis および x$statement_analysis のビュー</h4></div></div></div><a class="indexterm" name="idm45563183002160"></a><a class="indexterm" name="idm45563182999968"></a><a class="indexterm" name="idm45563182997856"></a><a class="indexterm" name="idm45563182995744"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statement-analysis"></a>28.4.3.35 statement_analysis および x$statement_analysis のビュー</h4></div></div></div><a class="indexterm" name="idm44888488573856"></a><a class="indexterm" name="idm44888488571664"></a><a class="indexterm" name="idm44888488569552"></a><a class="indexterm" name="idm44888488567440"></a><p>
           これらのビューには、集計された統計とともに正規化されたステートメントがリストされます。 コンテンツは、MySQL Enterprise Monitor クエリー分析ビューに似ています。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">statement_analysis</code> ビューと <code class="literal">x$statement_analysis</code> ビューには、次のカラムがあります:
@@ -2165,7 +2165,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">last_seen</code>
             </p><p>
               ステートメントが最後に表示された時刻。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-errors-or-warnings"></a>28.4.3.36 statements_with_errors_or_warnings および x$statements_with_errors_or_warnings ビュー</h4></div></div></div><a class="indexterm" name="idm45563182940160"></a><a class="indexterm" name="idm45563182937888"></a><a class="indexterm" name="idm45563182935728"></a><a class="indexterm" name="idm45563182933568"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-errors-or-warnings"></a>28.4.3.36 statements_with_errors_or_warnings および x$statements_with_errors_or_warnings ビュー</h4></div></div></div><a class="indexterm" name="idm44888488511920"></a><a class="indexterm" name="idm44888488509648"></a><a class="indexterm" name="idm44888488507488"></a><a class="indexterm" name="idm44888488505328"></a><p>
           これらのビューには、エラーまたは警告が生成された正規化されたステートメントが表示されます。 デフォルトでは、行は降順のエラー数および警告数でソートされます。 
         </p><p>
           <code class="literal">statements_with_errors_or_warnings</code> ビューと <code class="literal">x$statements_with_errors_or_warnings</code> ビューには、次のカラムがあります:
@@ -2209,7 +2209,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">digest</code>
             </p><p>
               ステートメントダイジェスト。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-full-table-scans"></a>28.4.3.37 statements_with_full_table_scans および x$statements_with_full_table_scans のビュー</h4></div></div></div><a class="indexterm" name="idm45563182905248"></a><a class="indexterm" name="idm45563182902992"></a><a class="indexterm" name="idm45563182900848"></a><a class="indexterm" name="idm45563182898688"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-full-table-scans"></a>28.4.3.37 statements_with_full_table_scans および x$statements_with_full_table_scans のビュー</h4></div></div></div><a class="indexterm" name="idm44888488477008"></a><a class="indexterm" name="idm44888488474752"></a><a class="indexterm" name="idm44888488472608"></a><a class="indexterm" name="idm44888488470448"></a><p>
           これらのビューには、全テーブルスキャンを実行した正規化されたステートメントが表示されます。 デフォルトでは、行は全体スキャンが実行された時間の降順および合計待機時間の降順でソートされます。 
         </p><p>
           <code class="literal">statements_with_full_table_scans</code> ビューと <code class="literal">x$statements_with_full_table_scans</code> ビューには、次のカラムがあります:
@@ -2269,7 +2269,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">digest</code>
             </p><p>
               ステートメントダイジェスト。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-runtimes-in-95th-percentile"></a>28.4.3.38 statements_with_runtimes_in_95th_percentile および x$statements_with_runtimes_in_95th_percentile のビュー</h4></div></div></div><a class="indexterm" name="idm45563182861824"></a><a class="indexterm" name="idm45563182859600"></a><a class="indexterm" name="idm45563182857424"></a><a class="indexterm" name="idm45563182855216"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-runtimes-in-95th-percentile"></a>28.4.3.38 statements_with_runtimes_in_95th_percentile および x$statements_with_runtimes_in_95th_percentile のビュー</h4></div></div></div><a class="indexterm" name="idm44888488433600"></a><a class="indexterm" name="idm44888488431376"></a><a class="indexterm" name="idm44888488429200"></a><a class="indexterm" name="idm44888488427024"></a><p>
           これらのビューには、95 パーセンタイルのランタイムを含むステートメントがリストされます。 デフォルトでは、行は平均レイテンシの降順でソートされます。 
         </p><p>
           どちらのビューも、<code class="literal">x$ps_digest_avg_latency_distribution</code> と <code class="literal">x$ps_digest_95th_percentile_by_avg_us</code> の 2 つのヘルパービューを使用します。
@@ -2339,7 +2339,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">digest</code>
             </p><p>
               ステートメントダイジェスト。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-sorting"></a>28.4.3.39 statements_with_sorting および x$statements_with_sorting のビュー</h4></div></div></div><a class="indexterm" name="idm45563182812256"></a><a class="indexterm" name="idm45563182810080"></a><a class="indexterm" name="idm45563182807968"></a><a class="indexterm" name="idm45563182805856"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-sorting"></a>28.4.3.39 statements_with_sorting および x$statements_with_sorting のビュー</h4></div></div></div><a class="indexterm" name="idm44888488384096"></a><a class="indexterm" name="idm44888488381920"></a><a class="indexterm" name="idm44888488379808"></a><a class="indexterm" name="idm44888488377696"></a><p>
           これらのビューには、ソートを実行した正規化されたステートメントがリストされます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">statements_with_sorting</code> ビューと <code class="literal">x$statements_with_sorting</code> ビューには、次のカラムがあります:
@@ -2395,7 +2395,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">digest</code>
             </p><p>
               ステートメントダイジェスト。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-temp-tables"></a>28.4.3.40 statements_with_temp_tables および x$statements_with_temp_tables のビュー</h4></div></div></div><a class="indexterm" name="idm45563182771296"></a><a class="indexterm" name="idm45563182769104"></a><a class="indexterm" name="idm45563182766976"></a><a class="indexterm" name="idm45563182764848"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statements-with-temp-tables"></a>28.4.3.40 statements_with_temp_tables および x$statements_with_temp_tables のビュー</h4></div></div></div><a class="indexterm" name="idm44888488343200"></a><a class="indexterm" name="idm44888488341008"></a><a class="indexterm" name="idm44888488338880"></a><a class="indexterm" name="idm44888488336752"></a><p>
           これらのビューには、一時テーブルを使用した正規化されたステートメントがリストされます。 デフォルトでは、使用されるディスク上の一時テーブルの数が降順で、使用されるインメモリー一時テーブルの数が降順でソートされます。 
         </p><p>
           <code class="literal">statements_with_temp_tables</code> ビューと <code class="literal">x$statements_with_temp_tables</code> ビューには、次のカラムがあります:
@@ -2443,7 +2443,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">digest</code>
             </p><p>
               ステートメントダイジェスト。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary"></a>28.4.3.41 user_summary および x$user_summary のビュー</h4></div></div></div><a class="indexterm" name="idm45563182734240"></a><a class="indexterm" name="idm45563182732080"></a><a class="indexterm" name="idm45563182730000"></a><a class="indexterm" name="idm45563182727904"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary"></a>28.4.3.41 user_summary および x$user_summary のビュー</h4></div></div></div><a class="indexterm" name="idm44888488306144"></a><a class="indexterm" name="idm44888488303984"></a><a class="indexterm" name="idm44888488301904"></a><a class="indexterm" name="idm44888488299808"></a><p>
           これらのビューには、ステートメントアクティビティ、ファイル I/O,および接続がユーザー別にグループ化されて要約されます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">user_summary</code> ビューと <code class="literal">x$user_summary</code> ビューには、次のカラムがあります:
@@ -2495,7 +2495,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">total_memory_allocated</code>
             </p><p>
               ユーザーに割り当てられたメモリーの合計量。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-file-io"></a>28.4.3.42 user_summary_by_file_io および x$user_summary_by_file_io のビュー</h4></div></div></div><a class="indexterm" name="idm45563182693776"></a><a class="indexterm" name="idm45563182691600"></a><a class="indexterm" name="idm45563182689488"></a><a class="indexterm" name="idm45563182687376"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-file-io"></a>28.4.3.42 user_summary_by_file_io および x$user_summary_by_file_io のビュー</h4></div></div></div><a class="indexterm" name="idm44888488265744"></a><a class="indexterm" name="idm44888488263568"></a><a class="indexterm" name="idm44888488261456"></a><a class="indexterm" name="idm44888488259344"></a><p>
           これらのビューには、ユーザー別にグループ化されたファイル I/O,が要約されます。 デフォルトでは、行は合計ファイル I/O レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">user_summary_by_file_io</code> ビューと <code class="literal">x$user_summary_by_file_io</code> ビューには、次のカラムがあります:
@@ -2511,7 +2511,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">io_latency</code>
             </p><p>
               ユーザーの時間指定ファイル I/O イベントの合計待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-file-io-type"></a>28.4.3.43 user_summary_by_file_io_type および x$user_summary_by_file_io_type のビュー</h4></div></div></div><a class="indexterm" name="idm45563182671648"></a><a class="indexterm" name="idm45563182669456"></a><a class="indexterm" name="idm45563182667328"></a><a class="indexterm" name="idm45563182665184"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-file-io-type"></a>28.4.3.43 user_summary_by_file_io_type および x$user_summary_by_file_io_type のビュー</h4></div></div></div><a class="indexterm" name="idm44888488243552"></a><a class="indexterm" name="idm44888488241360"></a><a class="indexterm" name="idm44888488239232"></a><a class="indexterm" name="idm44888488237088"></a><p>
           これらのビューには、ユーザーおよびイベントタイプ別にグループ化されたファイル I/O,が要約されます。 デフォルトでは、行はユーザーおよび合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">user_summary_by_file_io_type</code> ビューと <code class="literal">x$user_summary_by_file_io_type</code> ビューには、次のカラムがあります:
@@ -2535,7 +2535,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">max_latency</code>
             </p><p>
               ユーザーのファイル I/O イベントの時間指定発生の最大単一待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-stages"></a>28.4.3.44 user_summary_by_stages および x$user_summary_by_stages のビュー</h4></div></div></div><a class="indexterm" name="idm45563182645232"></a><a class="indexterm" name="idm45563182643056"></a><a class="indexterm" name="idm45563182640944"></a><a class="indexterm" name="idm45563182638832"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-stages"></a>28.4.3.44 user_summary_by_stages および x$user_summary_by_stages のビュー</h4></div></div></div><a class="indexterm" name="idm44888488217072"></a><a class="indexterm" name="idm44888488214896"></a><a class="indexterm" name="idm44888488212784"></a><a class="indexterm" name="idm44888488210672"></a><p>
           これらのビューには、ユーザー別にグループ化されたステージが要約されます。 デフォルトでは、行はユーザーでソートされ、ステージ待機時間の合計が降順になります。 
         </p><p>
           <code class="literal">user_summary_by_stages</code> ビューと <code class="literal">x$user_summary_by_stages</code> ビューには、次のカラムがあります:
@@ -2559,7 +2559,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">avg_latency</code>
             </p><p>
               ユーザーのステージイベントの発生時間ごとの平均待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-statement-latency"></a>28.4.3.45 user_summary_by_statement_latency および x$user_summary_by_statement_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563182618896"></a><a class="indexterm" name="idm45563182616640"></a><a class="indexterm" name="idm45563182614496"></a><a class="indexterm" name="idm45563182612336"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-statement-latency"></a>28.4.3.45 user_summary_by_statement_latency および x$user_summary_by_statement_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888488190736"></a><a class="indexterm" name="idm44888488188480"></a><a class="indexterm" name="idm44888488186336"></a><a class="indexterm" name="idm44888488184176"></a><p>
           これらのビューには、ユーザー別にグループ化されたステートメント全体の統計が要約されます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">user_summary_by_statement_latency</code> ビューと <code class="literal">x$user_summary_by_statement_latency</code> ビューには、次のカラムがあります:
@@ -2599,7 +2599,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">full_scans</code>
             </p><p>
               ユーザーのステートメントによる全テーブルスキャンの合計数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-statement-type"></a>28.4.3.46 user_summary_by_statement_type および x$user_summary_by_statement_type のビュー</h4></div></div></div><a class="indexterm" name="idm45563182584048"></a><a class="indexterm" name="idm45563182581792"></a><a class="indexterm" name="idm45563182579648"></a><a class="indexterm" name="idm45563182577504"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-user-summary-by-statement-type"></a>28.4.3.46 user_summary_by_statement_type および x$user_summary_by_statement_type のビュー</h4></div></div></div><a class="indexterm" name="idm44888488155888"></a><a class="indexterm" name="idm44888488153632"></a><a class="indexterm" name="idm44888488151488"></a><a class="indexterm" name="idm44888488149344"></a><p>
           これらのビューには、ユーザーおよびステートメントタイプ別にグループ化された、実行されたステートメントに関する情報が要約されます。 デフォルトでは、行はユーザーおよび合計レイテンシの降順でソートされます。 
         </p><p>
           <code class="literal">user_summary_by_statement_type</code> ビューと <code class="literal">x$user_summary_by_statement_type</code> ビューには、次のカラムがあります:
@@ -2643,7 +2643,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">full_scans</code>
             </p><p>
               ユーザーのステートメントイベントの発生による全テーブルスキャンの合計数。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version"></a>28.4.3.47 バージョンビュー</h4></div></div></div><a class="indexterm" name="idm45563182546912"></a><a class="indexterm" name="idm45563182544752"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version"></a>28.4.3.47 バージョンビュー</h4></div></div></div><a class="indexterm" name="idm44888488118688"></a><a class="indexterm" name="idm44888488116528"></a><p>
           このビューには、現在の <code class="literal">sys</code> スキーマおよび MySQL サーバーのバージョンが表示されます。
         </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             MySQL 8.0.18 では、このビューは非推奨です。将来のバージョンの MySQL で削除される予定です。 影響を受けるアプリケーションは、かわりに代替を使用するように調整する必要があります。 たとえば、<code class="literal">VERSION()</code> 関数を使用して、MySQL サーバーのバージョンを取得します。 
@@ -2657,7 +2657,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">mysql_version</code>
             </p><p>
               MySQL サーバーのバージョン。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-wait-classes-global-by-avg-latency"></a>28.4.3.48 wait_classes_global_by_avg_latency および x$wait_classes_global_by_avg_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563182530480"></a><a class="indexterm" name="idm45563182528208"></a><a class="indexterm" name="idm45563182526048"></a><a class="indexterm" name="idm45563182523888"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-wait-classes-global-by-avg-latency"></a>28.4.3.48 wait_classes_global_by_avg_latency および x$wait_classes_global_by_avg_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888488102320"></a><a class="indexterm" name="idm44888488100048"></a><a class="indexterm" name="idm44888488097888"></a><a class="indexterm" name="idm44888488095728"></a><p>
           これらのビューには、待機クラスの平均待機時間がイベントクラス別にグループ化されて要約されます。 デフォルトでは、行は平均レイテンシの降順でソートされます。 アイドルイベントは無視されます。 
         </p><p>
           イベントクラスは、最初の 3 つのコンポーネントの後にあるすべてのものをイベント名から削除することによって決定されます。 たとえば、<code class="literal">wait/io/file/sql/slow_log</code> のクラスは <code class="literal">wait/io/file</code> です。 
@@ -2687,7 +2687,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">max_latency</code>
             </p><p>
               クラス内で発生したイベントの最大単一待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-wait-classes-global-by-latency"></a>28.4.3.49 wait_classes_global_by_latency および x$wait_classes_global_by_latency ビュー</h4></div></div></div><a class="indexterm" name="idm45563182502112"></a><a class="indexterm" name="idm45563182499856"></a><a class="indexterm" name="idm45563182497712"></a><a class="indexterm" name="idm45563182495568"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-wait-classes-global-by-latency"></a>28.4.3.49 wait_classes_global_by_latency および x$wait_classes_global_by_latency ビュー</h4></div></div></div><a class="indexterm" name="idm44888488073888"></a><a class="indexterm" name="idm44888488071632"></a><a class="indexterm" name="idm44888488069488"></a><a class="indexterm" name="idm44888488067344"></a><p>
           これらのビューには、待機クラスの合計待機時間がイベントクラス別にグループ化されて要約されます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 アイドルイベントは無視されます。 
         </p><p>
           イベントクラスは、最初の 3 つのコンポーネントの後にあるすべてのものをイベント名から削除することによって決定されます。 たとえば、<code class="literal">wait/io/file/sql/slow_log</code> のクラスは <code class="literal">wait/io/file</code> です。 
@@ -2717,7 +2717,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">max_latency</code>
             </p><p>
               クラス内で発生したイベントの最大単一待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-waits-by-host-by-latency"></a>28.4.3.50 waits_by_host_by_latency および x$waits_by_host_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563182473760"></a><a class="indexterm" name="idm45563182471584"></a><a class="indexterm" name="idm45563182469472"></a><a class="indexterm" name="idm45563182467344"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-waits-by-host-by-latency"></a>28.4.3.50 waits_by_host_by_latency および x$waits_by_host_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888488045600"></a><a class="indexterm" name="idm44888488043424"></a><a class="indexterm" name="idm44888488041312"></a><a class="indexterm" name="idm44888488039184"></a><p>
           これらのビューには、ホストおよびイベント別にグループ化された待機イベントが要約されます。 デフォルトでは、行はホストおよび合計レイテンシの降順でソートされます。 アイドルイベントは無視されます。 
         </p><p>
           <code class="literal">waits_by_host_by_latency</code> ビューと <code class="literal">x$waits_by_host_by_latency</code> ビューには、次のカラムがあります:
@@ -2745,7 +2745,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">max_latency</code>
             </p><p>
               ホストのイベントの時間指定発生の最大単一待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-waits-by-user-by-latency"></a>28.4.3.51 waits_by_user_by_latency および x$waits_by_user_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563182447952"></a><a class="indexterm" name="idm45563182445776"></a><a class="indexterm" name="idm45563182443664"></a><a class="indexterm" name="idm45563182441536"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-waits-by-user-by-latency"></a>28.4.3.51 waits_by_user_by_latency および x$waits_by_user_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888488019808"></a><a class="indexterm" name="idm44888488017632"></a><a class="indexterm" name="idm44888488015520"></a><a class="indexterm" name="idm44888488013392"></a><p>
           これらのビューには、ユーザーおよびイベント別にグループ化された待機イベントが要約されます。 デフォルトでは、行はユーザーおよび合計レイテンシの降順でソートされます。 アイドルイベントは無視されます。 
         </p><p>
           <code class="literal">waits_by_user_by_latency</code> ビューと <code class="literal">x$waits_by_user_by_latency</code> ビューには、次のカラムがあります:
@@ -2773,7 +2773,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               <code class="literal">max_latency</code>
             </p><p>
               ユーザーのイベントの時間指定発生の最大単一待機時間。
-            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-waits-global-by-latency"></a>28.4.3.52 waits_global_by_latency および x$waits_global_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm45563182422080"></a><a class="indexterm" name="idm45563182419904"></a><a class="indexterm" name="idm45563182417792"></a><a class="indexterm" name="idm45563182415680"></a><p>
+            </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-waits-global-by-latency"></a>28.4.3.52 waits_global_by_latency および x$waits_global_by_latency のビュー</h4></div></div></div><a class="indexterm" name="idm44888487993936"></a><a class="indexterm" name="idm44888487991760"></a><a class="indexterm" name="idm44888487989648"></a><a class="indexterm" name="idm44888487987536"></a><p>
           これらのビューには、イベント別にグループ化された待機イベントが要約されます。 デフォルトでは、行は合計レイテンシの降順でソートされます。 アイドルイベントは無視されます。 
         </p><p>
           <code class="literal">waits_global_by_latency</code> ビューと <code class="literal">x$waits_global_by_latency</code> ビューには、次のカラムがあります:
@@ -2799,7 +2799,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
               イベントの時間指定発生の最大単一待機時間。
             </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="sys-schema-procedures"></a>28.4.4 sys スキーマストアドプロシージャ</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="sys-schema.html#sys-create-synonym-db">28.4.4.1 create_synonym_db() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-diagnostics">28.4.4.2 diagnostics() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-execute-prepared-stmt">28.4.4.3 execute_prepared_stmt() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-disable-background-threads">28.4.4.4 ps_setup_disable_background_threads() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-disable-consumer">28.4.4.5 ps_setup_disable_consumer() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-disable-instrument">28.4.4.6 ps_setup_disable_instrument() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-disable-thread">28.4.4.7 ps_setup_disable_thread() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-enable-background-threads">28.4.4.8 ps_setup_enable_background_threads() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-enable-consumer">28.4.4.9 ps_setup_enable_consumer() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-enable-instrument">28.4.4.10 ps_setup_enable_instrument() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-enable-thread">28.4.4.11 ps_setup_enable_thread() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-reload-saved">28.4.4.12 ps_setup_reload_saved() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-reset-to-default">28.4.4.13 ps_setup_reset_to_default() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-save">28.4.4.14 ps_setup_save() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-show-disabled">28.4.4.15 ps_setup_show_disabled() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-show-disabled-consumers">28.4.4.16 ps_setup_show_disabled_consumers() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-show-disabled-instruments">28.4.4.17 ps_setup_show_disabled_instruments() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-show-enabled">28.4.4.18 ps_setup_show_enabled() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-show-enabled-consumers">28.4.4.19 ps_setup_show_enabled_consumers() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-setup-show-enabled-instruments">28.4.4.20 ps_setup_show_enabled_instruments() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-statement-avg-latency-histogram">28.4.4.21 ps_statement_avg_latency_histogram() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-trace-statement-digest">28.4.4.22 ps_trace_statement_digest() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-trace-thread">28.4.4.23 ps_trace_thread() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-truncate-all-tables">28.4.4.24 ps_truncate_all_tables() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-statement-performance-analyzer">28.4.4.25 statement_performance_analyzer() プロシージャ</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-table-exists">28.4.4.26 table_exists() プロシージャ</a></span></dt></dl></div><p>
         次の各セクションでは、<code class="literal">sys</code> スキーマストアドプロシージャについて説明します。
-      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-create-synonym-db"></a>28.4.4.1 create_synonym_db() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182395680"></a><a class="indexterm" name="idm45563182393472"></a><p>
+      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-create-synonym-db"></a>28.4.4.1 create_synonym_db() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487967584"></a><a class="indexterm" name="idm44888487965376"></a><p>
           このプロシージャは、スキーマ名を指定すると、元のスキーマ内のすべてのテーブルおよびビューを参照するビューを含むシノニムスキーマを作成します。 たとえば、これを使用して、長い名前 (<code class="literal">INFORMATION_SCHEMA</code> ではなく <code class="literal">info</code> など) のスキーマを参照するための短い名前を作成できます。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-create-synonym-db-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_db_name VARCHAR(64)</code>: シノニムを作成するスキーマの名前。
@@ -2842,7 +2842,7 @@ mysql&gt; <strong class="userinput"><code>SHOW FULL TABLES FROM info;</code></st
 | column_privileges                     | VIEW       |
 | columns                               | VIEW       |
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-diagnostics"></a>28.4.4.2 diagnostics() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182375680"></a><a class="indexterm" name="idm45563182373488"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-diagnostics"></a>28.4.4.2 diagnostics() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487947648"></a><a class="indexterm" name="idm44888487945456"></a><p>
           診断目的で現在のサーバーステータスのレポートを作成します。
         </p><p>
           このプロシージャは、<code class="literal">sql_log_bin</code> システム変数のセッション値を操作して、実行中にバイナリロギングを無効にします。 これは制限付き操作であるため、このプロシージャには制限付きセッション変数を設定するのに十分な権限が必要です。 <a class="xref" href="server-administration.html#system-variable-privileges" title="5.1.9.1 システム変数権限">セクション5.1.9.1「システム変数権限」</a>を参照してください。 
@@ -2908,7 +2908,7 @@ mysql&gt; <strong class="userinput"><code>SHOW FULL TABLES FROM info;</code></st
           </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>tee diag.out;</code></strong>
 mysql&gt; <strong class="userinput"><code>CALL sys.diagnostics(120, 30, 'current');</code></strong>
 mysql&gt; <strong class="userinput"><code>notee;</code></strong>
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-execute-prepared-stmt"></a>28.4.4.3 execute_prepared_stmt() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182286800"></a><a class="indexterm" name="idm45563182284544"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-execute-prepared-stmt"></a>28.4.4.3 execute_prepared_stmt() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487858960"></a><a class="indexterm" name="idm44888487856704"></a><p>
           SQL ステートメントを文字列として指定すると、準備されたステートメントとして実行されます。 プリペアドステートメントは実行後に割当て解除されるため、再利用されません。 したがって、このプロシージャは主に動的ステートメントを一度に実行する場合に役立ちます。 
         </p><p>
           このプロシージャは、準備されたステートメントの名前として <code class="literal">sys_execute_prepared_stmt</code> を使用します。 プロシージャのコール時にそのステートメントの名前が存在する場合は、以前の内容が破棄されます。 
@@ -2926,7 +2926,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +----------+
 |       15 |
 +----------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-background-threads"></a>28.4.4.4 ps_setup_disable_background_threads() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182264080"></a><a class="indexterm" name="idm45563182261776"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-background-threads"></a>28.4.4.4 ps_setup_disable_background_threads() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487836160"></a><a class="indexterm" name="idm44888487833856"></a><p>
           すべてのバックグラウンドスレッドのパフォーマンススキーマインストゥルメンテーションを無効にします。 無効化されたバックグラウンドスレッドの数を示す結果セットを生成します。 すでに無効になっているスレッドはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-disable-background-threads-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -2936,7 +2936,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +--------------------------------+
 | Disabled 24 background threads |
 +--------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-consumer"></a>28.4.4.5 ps_setup_disable_consumer() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182252352"></a><a class="indexterm" name="idm45563182250080"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-consumer"></a>28.4.4.5 ps_setup_disable_consumer() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487824480"></a><a class="indexterm" name="idm44888487822208"></a><p>
           引数を含む名前を持つパフォーマンススキーマコンシューマを無効にします。 無効化されたコンシューマの数を示す結果セットを生成します。 すでに無効になっているコンシューマはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-disable-consumer-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">consumer VARCHAR(128)</code>: コンシューマ名の照合に使用される値。<code class="literal">LIKE</code> パターン一致のオペランドとして <code class="literal">%consumer%</code> を使用して識別されます。
@@ -2950,7 +2950,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +----------------------+
 | Disabled 4 consumers |
 +----------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-instrument"></a>28.4.4.6 ps_setup_disable_instrument() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182235712"></a><a class="indexterm" name="idm45563182233440"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-instrument"></a>28.4.4.6 ps_setup_disable_instrument() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487807904"></a><a class="indexterm" name="idm44888487805632"></a><p>
           引数を含む名前を持つパフォーマンススキーマインストゥルメントを無効にします。 無効化されたインストゥルメントの数を示す結果セットを生成します。 すでに無効になっているインストゥルメントはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-disable-instrument-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_pattern VARCHAR(128)</code>: インストゥルメント名の照合に使用される値。<code class="literal">LIKE</code> パターン一致のオペランドとして <code class="literal">%in_pattern%</code> を使用して識別されます。
@@ -2972,7 +2972,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +--------------------------+
 | Disabled 177 instruments |
 +--------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-thread"></a>28.4.4.7 ps_setup_disable_thread() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182216688"></a><a class="indexterm" name="idm45563182214416"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-disable-thread"></a>28.4.4.7 ps_setup_disable_thread() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487788816"></a><a class="indexterm" name="idm44888487786544"></a><p>
           接続 ID を指定すると、スレッドのパフォーマンススキーマインストゥルメンテーションが無効になります。 無効化されたスレッドの数を示す結果セットを生成します。 すでに無効になっているスレッドはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-disable-thread-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_connection_id BIGINT</code>: 接続 ID。 これは、パフォーマンススキーマ <code class="literal">threads</code> テーブルの <code class="literal">PROCESSLIST_ID</code> カラムまたは <code class="literal">SHOW PROCESSLIST</code> 出力の <code class="literal">Id</code> カラムで指定されたタイプの値です。 
@@ -2992,7 +2992,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +-------------------+
 | Disabled 1 thread |
 +-------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-background-threads"></a>28.4.4.8 ps_setup_enable_background_threads() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182197312"></a><a class="indexterm" name="idm45563182195024"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-background-threads"></a>28.4.4.8 ps_setup_enable_background_threads() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487769440"></a><a class="indexterm" name="idm44888487767152"></a><p>
           すべてのバックグラウンドスレッドのパフォーマンススキーマインストゥルメンテーションを有効にします。 有効化されたバックグラウンドスレッドの数を示す結果セットを生成します。 すでに有効になっているスレッドはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-enable-background-threads-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -3002,7 +3002,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +-------------------------------+
 | Enabled 24 background threads |
 +-------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-consumer"></a>28.4.4.9 ps_setup_enable_consumer() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182185616"></a><a class="indexterm" name="idm45563182183344"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-consumer"></a>28.4.4.9 ps_setup_enable_consumer() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487757856"></a><a class="indexterm" name="idm44888487755584"></a><p>
           引数を含む名前を持つパフォーマンススキーマコンシューマを有効にします。 有効化されたコンシューマの数を示す結果セットを生成します。 すでに有効になっているコンシューマはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-enable-consumer-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">consumer VARCHAR(128)</code>: コンシューマ名の照合に使用される値。<code class="literal">LIKE</code> パターン一致のオペランドとして <code class="literal">%consumer%</code> を使用して識別されます。
@@ -3016,7 +3016,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +---------------------+
 | Enabled 4 consumers |
 +---------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-instrument"></a>28.4.4.10 ps_setup_enable_instrument() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182169008"></a><a class="indexterm" name="idm45563182166736"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-instrument"></a>28.4.4.10 ps_setup_enable_instrument() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487741248"></a><a class="indexterm" name="idm44888487738976"></a><p>
           引数を含む名前を持つパフォーマンススキーマインストゥルメントを有効にします。 有効化されたインストゥルメントの数を示す結果セットを生成します。 すでに有効になっているインストゥルメントはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-enable-instrument-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_pattern VARCHAR(128)</code>: インストゥルメント名の照合に使用される値。<code class="literal">LIKE</code> パターン一致のオペランドとして <code class="literal">%in_pattern%</code> を使用して識別されます。
@@ -3038,7 +3038,7 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +-------------------------+
 | Enabled 177 instruments |
 +-------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-thread"></a>28.4.4.11 ps_setup_enable_thread() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182150016"></a><a class="indexterm" name="idm45563182147760"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-enable-thread"></a>28.4.4.11 ps_setup_enable_thread() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487722240"></a><a class="indexterm" name="idm44888487719984"></a><p>
           接続 ID を指定すると、スレッドのパフォーマンススキーマインストゥルメンテーションが有効になります。 有効化されたスレッドの数を示す結果セットを生成します。 すでに有効になっているスレッドはカウントされません。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-enable-thread-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_connection_id BIGINT</code>: 接続 ID。 これは、パフォーマンススキーマ <code class="literal">threads</code> テーブルの <code class="literal">PROCESSLIST_ID</code> カラムまたは <code class="literal">SHOW PROCESSLIST</code> 出力の <code class="literal">Id</code> カラムで指定されたタイプの値です。 
@@ -3058,13 +3058,13 @@ mysql&gt; <strong class="userinput"><code>notee;</code></strong>
 +------------------+
 | Enabled 1 thread |
 +------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-reload-saved"></a>28.4.4.12 ps_setup_reload_saved() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182130768"></a><a class="indexterm" name="idm45563182128512"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-reload-saved"></a>28.4.4.12 ps_setup_reload_saved() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487702928"></a><a class="indexterm" name="idm44888487700672"></a><p>
           <code class="literal">ps_setup_save()</code> を使用して、同じセッション内で以前に保存したパフォーマンススキーマ構成をリロードします。 詳細は、<code class="literal">ps_setup_save()</code> の説明を参照してください。 
         </p><p>
           このプロシージャは、<code class="literal">sql_log_bin</code> システム変数のセッション値を操作して、実行中にバイナリロギングを無効にします。 これは制限付き操作であるため、このプロシージャには制限付きセッション変数を設定するのに十分な権限が必要です。 <a class="xref" href="server-administration.html#system-variable-privileges" title="5.1.9.1 システム変数権限">セクション5.1.9.1「システム変数権限」</a>を参照してください。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-reload-saved-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
-          </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-reset-to-default"></a>28.4.4.13 ps_setup_reset_to_default() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182117968"></a><a class="indexterm" name="idm45563182115696"></a><p>
+          </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-reset-to-default"></a>28.4.4.13 ps_setup_reset_to_default() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487690192"></a><a class="indexterm" name="idm44888487687920"></a><p>
           パフォーマンススキーマ構成をデフォルト設定にリセットします。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-reset-to-default-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_verbose BOOLEAN</code>: プロシージャの実行中に各設定ステージに関する情報を表示するかどうか。 これには、実行された SQL ステートメントが含まれます。 
@@ -3081,7 +3081,7 @@ INSERT IGNORE INTO performance_schema.setup_actors
 VALUES ('%', '%', '%')
 
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-save"></a>28.4.4.14 ps_setup_save() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182104896"></a><a class="indexterm" name="idm45563182102704"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-save"></a>28.4.4.14 ps_setup_save() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487677056"></a><a class="indexterm" name="idm44888487674864"></a><p>
           現在のパフォーマンススキーマ構成を保存します。 これにより、デバッグまたはその他の目的で構成を一時的に変更し、<code class="literal">ps_setup_reload_saved()</code> プロシージャを起動して以前の状態にリストアできます。 
         </p><p>
           構成を保存するための他の同時コールを防止するために、<code class="literal">ps_setup_save()</code> では、<code class="literal">GET_LOCK()</code> 関数をコールして <code class="literal">sys.ps_setup_save</code> という名前のアドバイザロックを取得します。<code class="literal">ps_setup_save()</code> はタイムアウトパラメータを使用して、ロックがすでに存在する場合に待機する秒数を示します (他のセッションに未処理の構成が保存されていることを示します)。 ロックを取得せずにタイムアウトが期限切れになると、<code class="literal">ps_setup_save()</code> は失敗します。 
@@ -3096,7 +3096,7 @@ VALUES ('%', '%', '%')
 ... <em class="replaceable"><code>make Performance Schema configuration changes</code></em> ...
 
 mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</code></strong>
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-disabled"></a>28.4.4.15 ps_setup_show_disabled() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182074576"></a><a class="indexterm" name="idm45563182072320"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-disabled"></a>28.4.4.15 ps_setup_show_disabled() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487646672"></a><a class="indexterm" name="idm44888487644416"></a><p>
           現在無効になっているすべてのパフォーマンススキーマ構成を表示します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-show-disabled-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_show_instruments BOOLEAN</code>: 無効なインストゥルメントを表示するかどうか。 これは長いリストである場合があります。 
@@ -3136,7 +3136,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 +-------------+----------------------+---------+-------+
 
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-disabled-consumers"></a>28.4.4.16 ps_setup_show_disabled_consumers() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182058272"></a><a class="indexterm" name="idm45563182055984"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-disabled-consumers"></a>28.4.4.16 ps_setup_show_disabled_consumers() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487630432"></a><a class="indexterm" name="idm44888487628144"></a><p>
           現在無効になっているすべてのパフォーマンススキーマコンシューマを表示します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-show-disabled-consumers-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -3155,7 +3155,7 @@ mysql&gt; <strong class="userinput"><code>CALL sys.ps_setup_reload_saved();</cod
 | events_waits_history             |
 | events_waits_history_long        |
 +----------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-disabled-instruments"></a>28.4.4.17 ps_setup_show_disabled_instruments() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182046048"></a><a class="indexterm" name="idm45563182043760"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-disabled-instruments"></a>28.4.4.17 ps_setup_show_disabled_instruments() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487618272"></a><a class="indexterm" name="idm44888487615984"></a><p>
           現在無効になっているすべてのパフォーマンススキーマインストゥルメントを表示します。 これは長いリストである場合があります。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-show-disabled-instruments-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -3170,7 +3170,7 @@ disabled_instruments: wait/synch/mutex/sql/THD::LOCK_query_plan
 disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
                timed: NO
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-enabled"></a>28.4.4.18 ps_setup_show_enabled() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182034304"></a><a class="indexterm" name="idm45563182032048"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-enabled"></a>28.4.4.18 ps_setup_show_enabled() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487606656"></a><a class="indexterm" name="idm44888487604400"></a><p>
           現在有効になっているすべてのパフォーマンススキーマ構成を表示します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-show-enabled-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_show_instruments BOOLEAN</code>: 有効なインストゥルメントを表示するかどうか。 これは長いリストである場合があります。 
@@ -3213,7 +3213,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 | statements_digest           |
 | thread_instrumentation      |
 +-----------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-enabled-consumers"></a>28.4.4.19 ps_setup_show_enabled_consumers() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182017824"></a><a class="indexterm" name="idm45563182015536"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-enabled-consumers"></a>28.4.4.19 ps_setup_show_enabled_consumers() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487590304"></a><a class="indexterm" name="idm44888487588016"></a><p>
           現在有効になっているすべてのパフォーマンススキーマコンシューマを表示します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-show-enabled-consumers-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -3229,7 +3229,7 @@ disabled_instruments: wait/synch/mutex/sql/MYSQL_BIN_LOG::LOCK_commit
 | statements_digest           |
 | thread_instrumentation      |
 +-----------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-enabled-instruments"></a>28.4.4.20 ps_setup_show_enabled_instruments() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563182006416"></a><a class="indexterm" name="idm45563182004128"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-setup-show-enabled-instruments"></a>28.4.4.20 ps_setup_show_enabled_instruments() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487578832"></a><a class="indexterm" name="idm44888487576544"></a><p>
           現在有効になっているパフォーマンススキーマインストゥルメントをすべて表示します。 これは長いリストである場合があります。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-setup-show-enabled-instruments-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -3244,7 +3244,7 @@ enabled_instruments: wait/io/file/sql/binlog
 enabled_instruments: wait/io/file/sql/binlog_cache
               timed: YES
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-statement-avg-latency-histogram"></a>28.4.4.21 ps_statement_avg_latency_histogram() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563181994352"></a><a class="indexterm" name="idm45563181992064"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-statement-avg-latency-histogram"></a>28.4.4.21 ps_statement_avg_latency_histogram() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487566832"></a><a class="indexterm" name="idm44888487564544"></a><p>
           パフォーマンススキーマ <code class="literal">events_statements_summary_by_digest</code> テーブル内で追跡されたすべての正規化ステートメントの平均待機時間値のテキストヒストグラムグラフを表示します。
         </p><p>
           このプロシージャを使用すると、この MySQL インスタンス内で実行されているステートメントのレイテンシ分散の概要を表示できます。
@@ -3278,7 +3278,7 @@ Performance Schema Statement Digest Average Latency Histogram:
 (995 - 1062ms) 0   |
 
   Total Statements: 114; Buckets: 16; Bucket Size: 66 ms;
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-trace-statement-digest"></a>28.4.4.22 ps_trace_statement_digest() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563181979056"></a><a class="indexterm" name="idm45563181976784"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-trace-statement-digest"></a>28.4.4.22 ps_trace_statement_digest() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487551600"></a><a class="indexterm" name="idm44888487549328"></a><p>
           特定のステートメントダイジェストのすべてのパフォーマンススキーマインストゥルメンテーションをトレースします。
         </p><p>
           パフォーマンススキーマ <code class="literal">events_statements_summary_by_digest</code> テーブル内で目的のステートメントが見つかった場合は、その <code class="literal">DIGEST</code> カラムの MD5 値をこのプロシージャに指定し、ポーリング期間と間隔を指定します。 結果は、そのダイジェストについてパフォーマンススキーマ内で追跡されたすべての統計のレポートです。 
@@ -3364,7 +3364,7 @@ Performance Schema Statement Digest Average Latency Histogram:
 1 row in set (9.27 sec)
 
 Query OK, 0 rows affected (9.28 sec)
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-trace-thread"></a>28.4.4.23 ps_trace_thread() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563181941744"></a><a class="indexterm" name="idm45563181939536"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-trace-thread"></a>28.4.4.23 ps_trace_thread() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487514240"></a><a class="indexterm" name="idm44888487512032"></a><p>
           インストゥルメントされたスレッドのすべてのパフォーマンススキーマデータを <code class="filename">.dot</code> 形式のグラフファイルにダンプします (DOT グラフ記述言語の場合)。 プロシージャから返される各結果セットは、完全なグラフに使用する必要があります。 
         </p><p>
           このプロシージャは、<code class="literal">sql_log_bin</code> システム変数のセッション値を操作して、実行中にバイナリロギングを無効にします。 これは制限付き操作であるため、このプロシージャには制限付きセッション変数を設定するのに十分な権限が必要です。 <a class="xref" href="server-administration.html#system-variable-privileges" title="5.1.9.1 システム変数権限">セクション5.1.9.1「システム変数権限」</a>を参照してください。 
@@ -3424,7 +3424,7 @@ Query OK, 0 rows affected (9.28 sec)
 | Enabled 1 thread |
 +------------------+
 1 row in set (60.32 sec)
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-truncate-all-tables"></a>28.4.4.24 ps_truncate_all_tables() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563181908832"></a><a class="indexterm" name="idm45563181906576"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-truncate-all-tables"></a>28.4.4.24 ps_truncate_all_tables() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487481328"></a><a class="indexterm" name="idm44888487479072"></a><p>
           すべてのパフォーマンススキーマサマリーテーブルを切り捨てて、すべての集約インストゥルメンテーションをスナップショットとしてリセットします。 切り捨てられたテーブルの数を示す結果セットを生成します。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-truncate-all-tables-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_verbose BOOLEAN</code>: 実行前に各 <code class="literal">TRUNCATE TABLE</code> ステートメントを表示するかどうか。
@@ -3434,7 +3434,7 @@ Query OK, 0 rows affected (9.28 sec)
 +---------------------+
 | Truncated 49 tables |
 +---------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statement-performance-analyzer"></a>28.4.4.25 statement_performance_analyzer() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563181894928"></a><a class="indexterm" name="idm45563181892656"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-statement-performance-analyzer"></a>28.4.4.25 statement_performance_analyzer() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487467360"></a><a class="indexterm" name="idm44888487465088"></a><p>
           サーバーで実行されているステートメントのレポートを作成します。 ビューは、全体またはデルタ (あるいはその両方) のアクティビティに基づいて計算されます。 
         </p><p>
           このプロシージャは、<code class="literal">sql_log_bin</code> システム変数のセッション値を操作して、実行中にバイナリロギングを無効にします。 これは制限付き操作であるため、このプロシージャには制限付きセッション変数を設定するのに十分な権限が必要です。 <a class="xref" href="server-administration.html#system-variable-privileges" title="5.1.9.1 システム変数権限">セクション5.1.9.1「システム変数権限」</a>を参照してください。 
@@ -3602,7 +3602,7 @@ Every 60.0s: mysql sys --table -e "        ...  Mon Dec 22 10:58:51 2014
 | query             | db    | exec_count | total_latency | avg_latency | rows_sent_avg | rows_examined_avg | rows_affected_avg | digest                           |
 +-------------------+-------+------------+---------------+-------------+---------------+-------------------+-------------------+----------------------------------+
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-table-exists"></a>28.4.4.26 table_exists() プロシージャ</h4></div></div></div><a class="indexterm" name="idm45563181763744"></a><a class="indexterm" name="idm45563181761552"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-table-exists"></a>28.4.4.26 table_exists() プロシージャ</h4></div></div></div><a class="indexterm" name="idm44888487336240"></a><a class="indexterm" name="idm44888487334048"></a><p>
           特定のテーブルが通常のテーブル、<code class="literal">TEMPORARY</code> テーブルまたはビューとして存在するかどうかをテストします。 このプロシージャは、<code class="literal">OUT</code> パラメータでテーブルタイプを戻します。 指定された名前の一時テーブルと永続テーブルの両方が存在する場合は、<code class="literal">TEMPORARY</code> が返されます。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-table-exists-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_db VARCHAR(64)</code>: テーブルの存在をチェックするデータベースの名前。
@@ -3676,7 +3676,7 @@ Query OK, 0 rows affected (0.00 sec)
 1 row in set (0.00 sec)
 </pre></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="sys-schema-functions"></a>28.4.5 sys スキーマストアドファンクション</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="sys-schema.html#sys-extract-schema-from-file-name">28.4.5.1 extract_schema_from_file_name() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-extract-table-from-file-name">28.4.5.2 extract_table_from_file_name() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-format-bytes">28.4.5.3 format_bytes() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-format-path">28.4.5.4 format_path() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-format-statement">28.4.5.5 format_statement() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-format-time">28.4.5.6 format_time() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-list-add">28.4.5.7 list_add() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-list-drop">28.4.5.8 list_drop() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-is-account-enabled">28.4.5.9 ps_is_account_enabled() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-is-consumer-enabled">28.4.5.10 ps_is_consumer_enabled() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-is-instrument-default-enabled">28.4.5.11 ps_is_instrument_default_enabled() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-is-instrument-default-timed">28.4.5.12 ps_is_instrument_default_timed() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-is-thread-instrumented">28.4.5.13 ps_is_thread_instrumented() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-thread-account">28.4.5.14 ps_thread_account() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-thread-id">28.4.5.15 ps_thread_id() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-thread-stack">28.4.5.16 ps_thread_stack() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-ps-thread-trx-info">28.4.5.17 ps_thread_trx_info() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-quote-identifier">28.4.5.18 quote_identifier() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-sys-get-config">28.4.5.19 sys_get_config() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-version-major">28.4.5.20 version_major() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-version-minor">28.4.5.21 version_minor() 関数</a></span></dt><dt><span class="section"><a href="sys-schema.html#sys-version-patch">28.4.5.22 version_patch() 関数</a></span></dt></dl></div><p>
         次の各セクションでは、<code class="literal">sys</code> スキーマストアドファンクションについて説明します。
-      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-extract-schema-from-file-name"></a>28.4.5.1 extract_schema_from_file_name() 関数</h4></div></div></div><a class="indexterm" name="idm45563181725072"></a><a class="indexterm" name="idm45563181722816"></a><p>
+      </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-extract-schema-from-file-name"></a>28.4.5.1 extract_schema_from_file_name() 関数</h4></div></div></div><a class="indexterm" name="idm44888487297568"></a><a class="indexterm" name="idm44888487295312"></a><p>
           ファイルパス名を指定すると、スキーマ名を表すパスコンポーネントを返します。 この関数は、ファイル名がスキーマディレクトリ内にあることを前提としています。 このため、独自の <code class="literal">DATA_DIRECTORY</code> テーブルオプションを使用して定義されたパーティションまたはテーブルでは機能しません。 
         </p><p>
           この関数は、ファイルパス名を含むパフォーマンススキーマからファイル I/O 情報を抽出する場合に役立ちます。 完全パス名よりも理解しやすく、オブジェクトスキーマ名に対する結合で使用できるスキーマ名を表示する便利な方法を提供します。 
@@ -3690,7 +3690,7 @@ Query OK, 0 rows affected (0.00 sec)
 +---------------------------------------------------------------------------+
 | world                                                                     |
 +---------------------------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-extract-table-from-file-name"></a>28.4.5.2 extract_table_from_file_name() 関数</h4></div></div></div><a class="indexterm" name="idm45563181707408"></a><a class="indexterm" name="idm45563181705152"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-extract-table-from-file-name"></a>28.4.5.2 extract_table_from_file_name() 関数</h4></div></div></div><a class="indexterm" name="idm44888487279840"></a><a class="indexterm" name="idm44888487277584"></a><p>
           ファイルパス名を指定すると、テーブル名を表すパスコンポーネントを返します。
         </p><p>
           この関数は、ファイルパス名を含むパフォーマンススキーマからファイル I/O 情報を抽出する場合に役立ちます。 完全パス名よりも理解しやすく、オブジェクトテーブル名に対する結合で使用できるテーブル名を表示する便利な方法を提供します。 
@@ -3704,7 +3704,7 @@ Query OK, 0 rows affected (0.00 sec)
 +--------------------------------------------------------------------------+
 | City                                                                     |
 +--------------------------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-bytes"></a>28.4.5.3 format_bytes() 関数</h4></div></div></div><a class="indexterm" name="idm45563181689616"></a><a class="indexterm" name="idm45563181687440"></a><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-bytes"></a>28.4.5.3 format_bytes() 関数</h4></div></div></div><a class="indexterm" name="idm44888487261856"></a><a class="indexterm" name="idm44888487259680"></a><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             MySQL 8.0.16 では、<code class="literal">format_bytes()</code> は非推奨です。将来のバージョンの MySQL で削除される予定です。 かわりに、組込みの <code class="literal">FORMAT_BYTES()</code> 関数を使用するようにアプリケーションを移行する必要があります。 <a class="xref" href="functions.html#performance-schema-functions" title="12.22 パフォーマンススキーマ関数">セクション12.22「パフォーマンススキーマ関数」</a>を参照してください 
           </p></div><p>
           バイト数を指定すると、人間が読める形式に変換され、値と単位インジケータで構成される文字列が返されます。 値のサイズに応じて、単位部分は <code class="literal">bytes</code>、<code class="literal">KiB</code> (キビバイト)、<code class="literal">MiB</code> (メビバイト)、<code class="literal">GiB</code> (ギビバイト)、<code class="literal">TiB</code> (テビバイト) または <code class="literal">PiB</code> (ペビバイト) になります。 
@@ -3718,7 +3718,7 @@ Query OK, 0 rows affected (0.00 sec)
 +-----------------------+----------------------------------------+
 | 512 bytes             | 16383.91 PiB                           |
 +-----------------------+----------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-path"></a>28.4.5.4 format_path() 関数</h4></div></div></div><a class="indexterm" name="idm45563181665952"></a><a class="indexterm" name="idm45563181663776"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-path"></a>28.4.5.4 format_path() 関数</h4></div></div></div><a class="indexterm" name="idm44888487238192"></a><a class="indexterm" name="idm44888487236016"></a><p>
           パス名を指定すると、次のシステム変数の値と一致するサブパスを次の順序で置換した後に、変更されたパス名を返します:
         </p><pre class="programlisting">datadir
 tmpdir
@@ -3739,7 +3739,7 @@ basedir
 +---------------------------------------------------------+
 | /usr/local/mysql/data/world/City.ibd                    |
 +---------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-statement"></a>28.4.5.5 format_statement() 関数</h4></div></div></div><a class="indexterm" name="idm45563181647648"></a><a class="indexterm" name="idm45563181645472"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-statement"></a>28.4.5.5 format_statement() 関数</h4></div></div></div><a class="indexterm" name="idm44888487220000"></a><a class="indexterm" name="idm44888487217824"></a><p>
           文字列 (通常は SQL ステートメントを表します) を指定すると、<code class="literal">statement_truncate_len</code> 構成オプションで指定された長さまで短くなり、結果が返されます。 文字列が <code class="literal">statement_truncate_len</code> より短い場合、切捨ては行われません。 それ以外の場合、文字列の中央部分は省略記号 (<code class="literal">...</code>) に置き換えられます。 
         </p><p>
           この関数は、「パフォーマンススキーマ」テーブルから取得した長いステートメントを既知の固定最大長に書式設定する場合に便利です。
@@ -3769,7 +3769,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
 +-----------------------------------+
 | SELECT variabl ... ROM sys_config |
 +-----------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-time"></a>28.4.5.6 format_time() 関数</h4></div></div></div><a class="indexterm" name="idm45563181616304"></a><a class="indexterm" name="idm45563181614128"></a><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-format-time"></a>28.4.5.6 format_time() 関数</h4></div></div></div><a class="indexterm" name="idm44888487188528"></a><a class="indexterm" name="idm44888487186352"></a><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             MySQL 8.0.16 では、<code class="literal">format_time()</code> は非推奨です。将来のバージョンの MySQL で削除される予定です。 かわりに、組込みの <code class="literal">FORMAT_PICO_TIME()</code> 関数を使用するようにアプリケーションを移行する必要があります。 <a class="xref" href="functions.html#performance-schema-functions" title="12.22 パフォーマンススキーマ関数">セクション12.22「パフォーマンススキーマ関数」</a>を参照してください 
           </p></div><p>
           ピコ秒単位のパフォーマンススキーマレイテンシまたは待機時間を指定すると、それを人間が読める形式に変換し、値と単位インジケータで構成される文字列を返します。 値のサイズに応じて、単位部分は <code class="literal">ps</code> (ピコ秒)、<code class="literal">ns</code> (ナノ秒)、<code class="literal">us</code> (マイクロ秒)、<code class="literal">ms</code> (ms)、<code class="literal">s</code> (秒)、<code class="literal">m</code> (分)、<code class="literal">h</code> (時間)、<code class="literal">d</code> (日) または <code class="literal">w</code> (週) です。 
@@ -3783,7 +3783,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.format_statement(@stmt);</c
 +-----------------------+----------------------------------+
 | 3.50 ns               | 3.15 m                           |
 +-----------------------+----------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-list-add"></a>28.4.5.7 list_add() 関数</h4></div></div></div><a class="indexterm" name="idm45563181590896"></a><a class="indexterm" name="idm45563181588752"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-list-add"></a>28.4.5.7 list_add() 関数</h4></div></div></div><a class="indexterm" name="idm44888487163120"></a><a class="indexterm" name="idm44888487160976"></a><p>
           カンマ区切りの値リストに値を追加し、結果を返します。
         </p><p>
           この関数および <code class="literal">list_drop()</code> は、カンマ区切りの値リストを取る <code class="literal">sql_mode</code> や <code class="literal">optimizer_switch</code> などのシステム変数の値を操作する場合に役立ちます。
@@ -3813,7 +3813,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 +--------------------------------------------+
 | STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION |
 +--------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-list-drop"></a>28.4.5.8 list_drop() 関数</h4></div></div></div><a class="indexterm" name="idm45563181566992"></a><a class="indexterm" name="idm45563181564832"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-list-drop"></a>28.4.5.8 list_drop() 関数</h4></div></div></div><a class="indexterm" name="idm44888487139152"></a><a class="indexterm" name="idm44888487136992"></a><p>
           カンマ区切りの値リストから値を削除し、結果を返します。 詳細は、<code class="literal">list_add()</code> の説明を参照してください 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-list-drop-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_list TEXT</code>: 変更するリスト。
@@ -3821,7 +3821,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
                 <code class="literal">in_drop_value TEXT</code>: リストから削除する値。
               </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-list-drop-return-value"></a>戻り値</h5></div></div></div><p>
             <code class="literal">TEXT</code> 値。
-          </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-account-enabled"></a>28.4.5.9 ps_is_account_enabled() 関数</h4></div></div></div><a class="indexterm" name="idm45563181552624"></a><a class="indexterm" name="idm45563181550448"></a><p>
+          </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-account-enabled"></a>28.4.5.9 ps_is_account_enabled() 関数</h4></div></div></div><a class="indexterm" name="idm44888487124848"></a><a class="indexterm" name="idm44888487122672"></a><p>
           指定されたアカウントのパフォーマンススキーマインストゥルメンテーションが有効かどうかを示す <code class="literal">YES</code> または <code class="literal">NO</code> を返します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-is-account-enabled-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_host VARCHAR(60)</code>: チェックするアカウントのホスト名。
@@ -3835,7 +3835,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 +------------------------------------------------+
 | YES                                            |
 +------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-consumer-enabled"></a>28.4.5.10 ps_is_consumer_enabled() 関数</h4></div></div></div><a class="indexterm" name="idm45563181534528"></a><a class="indexterm" name="idm45563181532352"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-consumer-enabled"></a>28.4.5.10 ps_is_consumer_enabled() 関数</h4></div></div></div><a class="indexterm" name="idm44888487106624"></a><a class="indexterm" name="idm44888487104448"></a><p>
           指定されたパフォーマンススキーマコンシューマが有効かどうかを示す <code class="literal">YES</code> または <code class="literal">NO</code> を返します。引数が <code class="literal">NULL</code> の場合は <code class="literal">NULL</code> を返します。 引数が有効なコンシューマ名でない場合は、エラーが発生します。 (MySQL 8.0.18 より前では、引数が有効なコンシューマ名でない場合、この関数は <code class="literal">NULL</code> を戻します。) 
         </p><p>
           この関数はコンシューマ階層を考慮しているため、依存するすべてのコンシューマも有効になっていないかぎり、コンシューマは有効とみなされません。 コンシューマ階層の詳細は、<a class="xref" href="performance-schema.html#performance-schema-consumer-filtering" title="27.4.7 コンシューマによる事前フィルタリング">セクション27.4.7「コンシューマによる事前フィルタリング」</a> を参照してください。 
@@ -3849,7 +3849,7 @@ mysql&gt; <strong class="userinput"><code>SELECT @@sql_mode;</code></strong>
 +------------------------------------------------------+
 | YES                                                  |
 +------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-instrument-default-enabled"></a>28.4.5.11 ps_is_instrument_default_enabled() 関数</h4></div></div></div><a class="indexterm" name="idm45563181513680"></a><a class="indexterm" name="idm45563181511424"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-instrument-default-enabled"></a>28.4.5.11 ps_is_instrument_default_enabled() 関数</h4></div></div></div><a class="indexterm" name="idm44888487085712"></a><a class="indexterm" name="idm44888487083456"></a><p>
           指定されたパフォーマンススキーマインストゥルメントがデフォルトで有効になっているかどうかを示す <code class="literal">YES</code> または <code class="literal">NO</code> を返します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-is-instrument-default-enabled-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_instrument VARCHAR(128)</code>: チェックするインストゥルメントの名前。
@@ -3867,7 +3867,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_instrument_default_en
 +------------------------------------------------------------------+
 | YES                                                              |
 +------------------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-instrument-default-timed"></a>28.4.5.12 ps_is_instrument_default_timed() 関数</h4></div></div></div><a class="indexterm" name="idm45563181495440"></a><a class="indexterm" name="idm45563181493184"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-instrument-default-timed"></a>28.4.5.12 ps_is_instrument_default_timed() 関数</h4></div></div></div><a class="indexterm" name="idm44888487067408"></a><a class="indexterm" name="idm44888487065152"></a><p>
           指定されたパフォーマンススキーマインストゥルメントがデフォルトで時間指定されているかどうかを示す <code class="literal">YES</code> または <code class="literal">NO</code> を返します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-is-instrument-default-timed-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_instrument VARCHAR(128)</code>: チェックするインストゥルメントの名前。
@@ -3885,7 +3885,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_instrument_default_ti
 +----------------------------------------------------------------+
 | YES                                                            |
 +----------------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-thread-instrumented"></a>28.4.5.13 ps_is_thread_instrumented() 関数</h4></div></div></div><a class="indexterm" name="idm45563181477152"></a><a class="indexterm" name="idm45563181474912"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-is-thread-instrumented"></a>28.4.5.13 ps_is_thread_instrumented() 関数</h4></div></div></div><a class="indexterm" name="idm44888487049120"></a><a class="indexterm" name="idm44888487046880"></a><p>
           指定された接続 ID のパフォーマンススキーマインストゥルメンテーションが有効かどうかを示す <code class="literal">YES</code> または <code class="literal">NO</code> を返します。ID が不明な場合は <code class="literal">UNKNOWN</code>、ID が <code class="literal">NULL</code> の場合は <code class="literal">NULL</code> を返します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-is-thread-instrumented-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_connection_id BIGINT UNSIGNED</code>: 接続 ID。 これは、パフォーマンススキーマ <code class="literal">threads</code> テーブルの <code class="literal">PROCESSLIST_ID</code> カラムまたは <code class="literal">SHOW PROCESSLIST</code> 出力の <code class="literal">Id</code> カラムで指定されたタイプの値です。 
@@ -3903,7 +3903,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 +------------------------------------------------+
 | YES                                            |
 +------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-account"></a>28.4.5.14 ps_thread_account() 関数</h4></div></div></div><a class="indexterm" name="idm45563181453568"></a><a class="indexterm" name="idm45563181451392"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-account"></a>28.4.5.14 ps_thread_account() 関数</h4></div></div></div><a class="indexterm" name="idm44888487025728"></a><a class="indexterm" name="idm44888487023552"></a><p>
           パフォーマンススキーマスレッド ID を指定すると、スレッドに関連付けられた <code class="literal"><em class="replaceable"><code>user_name</code></em>@<em class="replaceable"><code>host_name</code></em></code> アカウントを返します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-thread-account-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_thread_id BIGINT UNSIGNED</code>: アカウントを返すスレッド ID。 この値は、一部のパフォーマンススキーマ <code class="literal">threads</code> テーブル行の <code class="literal">THREAD_ID</code> カラムと一致する必要があります。 
@@ -3915,7 +3915,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 +----------------------------------------------------------+
 | root@localhost                                           |
 +----------------------------------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-id"></a>28.4.5.15 ps_thread_id() 関数</h4></div></div></div><a class="indexterm" name="idm45563181435344"></a><a class="indexterm" name="idm45563181433168"></a><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-id"></a>28.4.5.15 ps_thread_id() 関数</h4></div></div></div><a class="indexterm" name="idm44888487007440"></a><a class="indexterm" name="idm44888487005264"></a><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             MySQL 8.0.16 では、<code class="literal">ps_thread_id()</code> は非推奨です。将来のバージョンの MySQL で削除される予定です。 かわりに、組込みの <code class="literal">PS_THREAD_ID()</code> および <code class="literal">PS_CURRENT_THREAD_ID()</code> 関数を使用するようにアプリケーションを移行する必要があります。 <a class="xref" href="functions.html#performance-schema-functions" title="12.22 パフォーマンススキーマ関数">セクション12.22「パフォーマンススキーマ関数」</a>を参照してください 
           </p></div><p>
           指定された接続 ID に割り当てられたパフォーマンススキーマスレッド ID、または接続 ID が <code class="literal">NULL</code> の場合は現在の接続のスレッド ID を返します。
@@ -3929,7 +3929,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.ps_is_thread_instrumented(C
 +-----------------------+
 |                   285 |
 +-----------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-stack"></a>28.4.5.16 ps_thread_stack() 関数</h4></div></div></div><a class="indexterm" name="idm45563181411184"></a><a class="indexterm" name="idm45563181409008"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-stack"></a>28.4.5.16 ps_thread_stack() 関数</h4></div></div></div><a class="indexterm" name="idm44888486983216"></a><a class="indexterm" name="idm44888486981040"></a><p>
           指定されたスレッド ID のパフォーマンススキーマ内のすべてのステートメント、ステージおよびイベントの JSON 形式のスタックを返します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-ps-thread-stack-parameters"></a>パラメータ</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
                 <code class="literal">in_thread_id BIGINT</code>: トレースするスレッドの ID。 この値は、一部のパフォーマンススキーマ <code class="literal">threads</code> テーブル行の <code class="literal">THREAD_ID</code> カラムと一致する必要があります。 
@@ -3945,7 +3945,7 @@ thread_stack: {"rankdir": "LR","nodesep": "0.10",
 "event_id": "10", "timer_wait": 256.35, "event_info": "sql/select",
 "wait_info": "select @@version_comment limit 1\nerrors: 0\nwarnings: 0\nlock time:
 ...
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-trx-info"></a>28.4.5.17 ps_thread_trx_info() 関数</h4></div></div></div><a class="indexterm" name="idm45563181391584"></a><a class="indexterm" name="idm45563181389408"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-ps-thread-trx-info"></a>28.4.5.17 ps_thread_trx_info() 関数</h4></div></div></div><a class="indexterm" name="idm44888486963744"></a><a class="indexterm" name="idm44888486961568"></a><p>
           指定されたスレッドに関する情報を含む JSON オブジェクトを返します。 この情報には、現在のトランザクションと、パフォーマンススキーマ <code class="literal">events_transactions_current</code> および <code class="literal">events_statements_history</code> テーブルから導出された、すでに実行されているステートメントが含まれます。 (JSON オブジェクトの完全なデータを取得するには、これらのテーブルのコンシューマを有効にする必要があります。) 
         </p><p>
           出力が切捨て長 (デフォルトで 65535) を超えると、次のような JSON エラーオブジェクトが返されます:
@@ -4034,7 +4034,7 @@ sys.ps_thread_trx_info(48): [
     ]
   }
 ]
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-quote-identifier"></a>28.4.5.18 quote_identifier() 関数</h4></div></div></div><a class="indexterm" name="idm45563181359680"></a><a class="indexterm" name="idm45563181357504"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-quote-identifier"></a>28.4.5.18 quote_identifier() 関数</h4></div></div></div><a class="indexterm" name="idm44888486931776"></a><a class="indexterm" name="idm44888486929600"></a><p>
           文字列引数を指定すると、この関数は SQL ステートメントに含めるのに適した引用符付き識別子を生成します。 これは、識別子として使用される値が予約語であるか、バックティック (<code class="literal">`</code>) 文字を含む場合に便利です。 
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-quote-identifier-parameters"></a>パラメータ</h5></div></div></div><p>
             <code class="literal">in_identifier TEXT</code>: 引用する識別子。
@@ -4058,7 +4058,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.quote_identifier('integer')
 +---------------------------------+
 | `integer`                       |
 +---------------------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-sys-get-config"></a>28.4.5.19 sys_get_config() 関数</h4></div></div></div><a class="indexterm" name="idm45563181342368"></a><a class="indexterm" name="idm45563181340192"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-sys-get-config"></a>28.4.5.19 sys_get_config() 関数</h4></div></div></div><a class="indexterm" name="idm44888486914528"></a><a class="indexterm" name="idm44888486912352"></a><p>
           構成オプション名を指定すると、<code class="literal">sys_config</code> テーブルからオプション値を返します。オプションがテーブルに存在しない場合は、指定されたデフォルト値 (<code class="literal">NULL</code> の可能性があります) を返します。
         </p><p>
           <code class="literal">sys_get_config()</code> がデフォルト値を返し、その値が <code class="literal">NULL</code> である場合、呼出し側は指定された構成オプションの <code class="literal">NULL</code> を処理できると予想されます。
@@ -4090,7 +4090,7 @@ mysql&gt; <strong class="userinput"><code>SELECT sys.quote_identifier('integer')
           </p><pre class="programlisting">IF (@sys.statement_truncate_len IS NULL) THEN
   SET @sys.statement_truncate_len = sys.sys_get_config('statement_truncate_len', 64);
 END IF;
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version-major"></a>28.4.5.20 version_major() 関数</h4></div></div></div><a class="indexterm" name="idm45563181300032"></a><a class="indexterm" name="idm45563181297856"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version-major"></a>28.4.5.20 version_major() 関数</h4></div></div></div><a class="indexterm" name="idm44888486872000"></a><a class="indexterm" name="idm44888486869824"></a><p>
           この関数は、MySQL サーバーのメジャーバージョンを戻します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-version-major-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -4102,7 +4102,7 @@ END IF;
 +--------------+---------------------+
 | 8.0.13-debug |                   8 |
 +--------------+---------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version-minor"></a>28.4.5.21 version_minor() 関数</h4></div></div></div><a class="indexterm" name="idm45563181286624"></a><a class="indexterm" name="idm45563181284448"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version-minor"></a>28.4.5.21 version_minor() 関数</h4></div></div></div><a class="indexterm" name="idm44888486858832"></a><a class="indexterm" name="idm44888486856656"></a><p>
           この関数は、MySQL サーバーのマイナーバージョンを戻します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-version-minor-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
@@ -4114,7 +4114,7 @@ END IF;
 +--------------+---------------------+
 | 8.0.13-debug |                   0 |
 +--------------+---------------------+
-</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version-patch"></a>28.4.5.22 version_patch() 関数</h4></div></div></div><a class="indexterm" name="idm45563181273392"></a><a class="indexterm" name="idm45563181271216"></a><p>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="sys-version-patch"></a>28.4.5.22 version_patch() 関数</h4></div></div></div><a class="indexterm" name="idm44888486845488"></a><a class="indexterm" name="idm44888486843312"></a><p>
           この関数は、MySQL サーバーのパッチリリースバージョンを戻します。
         </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="sys-version-patch-parameters"></a>パラメータ</h5></div></div></div><p>
             なし
