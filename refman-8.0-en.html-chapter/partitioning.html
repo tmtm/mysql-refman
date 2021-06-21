@@ -39,7 +39,7 @@
 <div class="toc">
 <p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-overview">24.1 Overview of Partitioning in MySQL</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-types">24.2 Partitioning Types</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-range">24.2.1 RANGE Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-list">24.2.2 LIST Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns">24.2.3 COLUMNS Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-hash">24.2.4 HASH Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-key">24.2.5 KEY Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-subpartitions">24.2.6 Subpartitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-handling-nulls">24.2.7 How MySQL Partitioning Handles NULL</a></span></dt></dl></dd><dt><span class="section"><a href="partitioning.html#partitioning-management">24.3 Partition Management</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-management-range-list">24.3.1 Management of RANGE and LIST Partitions</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-hash-key">24.3.2 Management of HASH and KEY Partitions</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-exchange">24.3.3 Exchanging Partitions and Subpartitions with Tables</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-maintenance">24.3.4 Maintenance of Partitions</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-info">24.3.5 Obtaining Information About Partitions</a></span></dt></dl></dd><dt><span class="section"><a href="partitioning.html#partitioning-pruning">24.4 Partition Pruning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-selection">24.5 Partition Selection</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations">24.6 Restrictions and Limitations on Partitioning</a></span></dt><dd><dl><dt><span class="section"><a href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys">24.6.1 Partitioning Keys, Primary Keys, and Unique Keys</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-storage-engines">24.6.2 Partitioning Limitations Relating to Storage Engines</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-functions">24.6.3 Partitioning Limitations Relating to Functions</a></span></dt></dl></dd></dl>
 </div>
-<a class="indexterm" name="idm45482030781792"></a><a class="indexterm" name="idm45482030780720"></a><a class="indexterm" name="idm45482030779648"></a><a class="indexterm" name="idm45482030778160"></a><a class="indexterm" name="idm45482030776672"></a><p>
+<a class="indexterm" name="idm45465084268464"></a><a class="indexterm" name="idm45465084267392"></a><a class="indexterm" name="idm45465084266320"></a><a class="indexterm" name="idm45465084264832"></a><a class="indexterm" name="idm45465084263344"></a><p>
     This chapter discusses <span class="firstterm">user-defined
     partitioning</span>.
 </p>
@@ -111,7 +111,7 @@ Note
   </p><p>
     You may also find the following resources to be useful when working
     with partitioned tables.
-  </p><a class="indexterm" name="idm45482030745728"></a><p><b>Additional Resources. </b>
+  </p><a class="indexterm" name="idm45465084232400"></a><p><b>Additional Resources. </b>
       Other sources of information about user-defined partitioning in
       MySQL include the following:
 </p>
@@ -152,7 +152,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45482030734832"></a><p>
+<a class="indexterm" name="idm45465084221440"></a><p>
       This section provides a conceptual overview of partitioning in
       MySQL 8.0.
     </p><p>
@@ -316,7 +316,7 @@ Important
       directory specified in a <code class="literal">DATA DIRECTORY</code> clause
       must be known to <code class="literal">InnoDB</code>. For more information,
       see <a class="xref" href="innodb-storage-engine.html#innodb-create-table-external-data-directory" title="Using the DATA DIRECTORY Clause">Using the DATA DIRECTORY Clause</a>.
-    </p><a class="indexterm" name="idm45482030668576"></a><a class="indexterm" name="idm45482030667088"></a><p>
+    </p><a class="indexterm" name="idm45465084155712"></a><a class="indexterm" name="idm45465084154224"></a><p>
       All columns used in the table's partitioning expression must
       be part of every unique key that the table may have, including any
       primary key. This means that a table such as this one, created by
@@ -344,7 +344,7 @@ Important
       and minimum numbers of rows, respectively, that can be stored in
       each partition. See <a class="xref" href="partitioning.html#partitioning-management" title="24.3 Partition Management">Section 24.3, “Partition Management”</a>, for
       more information on these options.
-    </p><a class="indexterm" name="idm45482030656272"></a><p>
+    </p><a class="indexterm" name="idm45465084143408"></a><p>
       The <code class="literal">MAX_ROWS</code> option can also be useful for
       creating NDB Cluster tables with extra partitions, thus allowing
       for greater storage of hash indexes. See the documentation for the
@@ -352,7 +352,7 @@ Important
       configuration parameter, as well as
       <a class="xref" href="mysql-cluster.html#mysql-cluster-nodes-groups" title="23.1.2 NDB Cluster Nodes, Node Groups, Fragment Replicas, and Partitions">Section 23.1.2, “NDB Cluster Nodes, Node Groups, Fragment Replicas, and Partitions”</a>, for more
       information.
-    </p><a class="indexterm" name="idm45482030651488"></a><p>
+    </p><a class="indexterm" name="idm45465084138624"></a><p>
       Some advantages of partitioning are listed here:
 </p>
 <div class="itemizedlist">
@@ -416,7 +416,7 @@ Important
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-range">24.2.1 RANGE Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-list">24.2.2 LIST Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns">24.2.3 COLUMNS Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-hash">24.2.4 HASH Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-key">24.2.5 KEY Partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-subpartitions">24.2.6 Subpartitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-handling-nulls">24.2.7 How MySQL Partitioning Handles NULL</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45482030629312"></a><p>
+<a class="indexterm" name="idm45465084117040"></a><p>
       This section discusses the types of partitioning which are
       available in MySQL 8.0. These include the types
       listed here:
@@ -455,7 +455,7 @@ Important
             <a class="xref" href="partitioning.html#partitioning-key" title="24.2.5 KEY Partitioning">Section 24.2.5, “KEY Partitioning”</a>.
 </p></li></ul>
 </div>
-<a class="indexterm" name="idm45482030610576"></a><a class="indexterm" name="idm45482030609088"></a><p>
+<a class="indexterm" name="idm45465084098304"></a><a class="indexterm" name="idm45465084096816"></a><p>
       A very common use of database partitioning is to segregate data by
       date. Some database systems support explicit date partitioning,
       which MySQL does not implement in 8.0. However, it is
@@ -603,7 +603,7 @@ ERROR 1488 (HY000): Duplicate partition name mypart
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45482030543216"></a><a class="indexterm" name="idm45482030541728"></a><p>
+<a class="indexterm" name="idm45465084030512"></a><a class="indexterm" name="idm45465084029024"></a><p>
         A table that is partitioned by range is partitioned in such a
         way that each partition contains rows for which the partitioning
         expression value lies within a given range. Ranges should be
@@ -764,7 +764,7 @@ PARTITION BY RANGE (job_code) (
         THAN</code> clauses. However, MySQL must be able to evaluate
         the expression's return value as part of a <code class="literal">LESS
         THAN</code> (<code class="literal">&lt;</code>) comparison.
-      </p><a class="indexterm" name="idm45482030499856"></a><p>
+      </p><a class="indexterm" name="idm45465083987152"></a><p>
         Rather than splitting up the table data according to store
         number, you can use an expression based on one of the two
         <a class="link" href="data-types.html#datetime" title="11.2.2 The DATE, DATETIME, and TIMESTAMP Types"><code class="literal">DATE</code></a> columns instead. For
@@ -982,7 +982,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45482030433440"></a><a class="indexterm" name="idm45482030431952"></a><p>
+<a class="indexterm" name="idm45465083920160"></a><a class="indexterm" name="idm45465083918672"></a><p>
         List partitioning in MySQL is similar to range partitioning in
         many ways. As in partitioning by <code class="literal">RANGE</code>, each
         partition must be explicitly defined. The chief difference
@@ -1184,7 +1184,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM h2;</code></strong>
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-columns-range">24.2.3.1 RANGE COLUMNS partitioning</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-columns-list">24.2.3.2 LIST COLUMNS partitioning</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45482030361552"></a><a class="indexterm" name="idm45482030360064"></a><a class="indexterm" name="idm45482030358992"></a><a class="indexterm" name="idm45482030357904"></a><a class="indexterm" name="idm45482030356816"></a><a class="indexterm" name="idm45482030355744"></a><p>
+<a class="indexterm" name="idm45465083848336"></a><a class="indexterm" name="idm45465083846848"></a><a class="indexterm" name="idm45465083845776"></a><a class="indexterm" name="idm45465083844688"></a><a class="indexterm" name="idm45465083843600"></a><a class="indexterm" name="idm45465083842528"></a><p>
         The next two sections discuss
         <span class="firstterm"><code class="literal">COLUMNS</code>
         partitioning</span>, which are variants on
@@ -1878,7 +1878,7 @@ PARTITION BY RANGE COLUMNS(renewal) (
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-linear-hash">24.2.4.1 LINEAR HASH Partitioning</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45482030100288"></a><a class="indexterm" name="idm45482030098800"></a><p>
+<a class="indexterm" name="idm45465083586944"></a><a class="indexterm" name="idm45465083585456"></a><p>
         Partitioning by <code class="literal">HASH</code> is used primarily to
         ensure an even distribution of data among a predetermined number
         of partitions. With range or list partitioning, you must specify
@@ -1937,7 +1937,7 @@ PARTITIONS 4;
         the number of partitions defaults to <code class="literal">1</code>; using
         the <code class="literal">PARTITIONS</code> keyword without a number
         following it results in a syntax error.
-      </p><a class="indexterm" name="idm45482030083360"></a><p>
+      </p><a class="indexterm" name="idm45465083570016"></a><p>
         You can also use an SQL expression that returns an integer for
         <em class="replaceable"><code>expr</code></em>. For instance, you might want to
         partition based on the year in which an employee was hired. This
@@ -2070,7 +2070,7 @@ PARTITIONS 4;
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45482030032944"></a><a class="indexterm" name="idm45482030031456"></a><p>
+<a class="indexterm" name="idm45465083519664"></a><a class="indexterm" name="idm45465083518176"></a><p>
           MySQL also supports linear hashing, which differs from regular
           hashing in that linear hashing utilizes a linear powers-of-two
           algorithm whereas regular hashing employs the modulus of the
@@ -2189,7 +2189,7 @@ PARTITIONS 4;
 </div>
 
 </div>
-<a class="indexterm" name="idm45482029992832"></a><a class="indexterm" name="idm45482029991344"></a><p>
+<a class="indexterm" name="idm45465083479552"></a><a class="indexterm" name="idm45465083478064"></a><p>
         Partitioning by key is similar to partitioning by hash, except
         that where hash partitioning employs a user-defined expression,
         the hashing function for key partitioning is supplied by the
@@ -2334,7 +2334,7 @@ Important
 </div>
 </li></ul>
 </div>
-<a class="indexterm" name="idm45482029940608"></a><a class="indexterm" name="idm45482029939120"></a><p>
+<a class="indexterm" name="idm45465083427328"></a><a class="indexterm" name="idm45465083425840"></a><p>
         It is also possible to partition a table by linear key. Here is
         a simple example:
       </p><pre data-lang="sql" class="programlisting">CREATE TABLE tk (
@@ -2364,7 +2364,7 @@ PARTITIONS 3;
 </div>
 
 </div>
-<a class="indexterm" name="idm45482029931760"></a><a class="indexterm" name="idm45482029930688"></a><p>
+<a class="indexterm" name="idm45465083418480"></a><a class="indexterm" name="idm45465083417408"></a><p>
         Subpartitioning—also known as
         <span class="firstterm">composite
         partitioning</span>—is the further division of each
@@ -2388,7 +2388,7 @@ PARTITIONS 3;
         action of the <code class="literal">PARTITION BY RANGE</code> clause, the
         first 2 of these store only those records with a value less than
         1990 in the <code class="literal">purchased</code> column.
-      </p><a class="indexterm" name="idm45482029919552"></a><p>
+      </p><a class="indexterm" name="idm45465083406272"></a><p>
         It is possible to subpartition tables that are partitioned by
         <code class="literal">RANGE</code> or <code class="literal">LIST</code>.
         Subpartitions may use either <code class="literal">HASH</code> or
@@ -2415,7 +2415,7 @@ Note
           more information and an example.
 </p>
 </div>
-<a class="indexterm" name="idm45482029908000"></a><p>
+<a class="indexterm" name="idm45465083394720"></a><p>
         It is also possible to define subpartitions explicitly using
         <code class="literal">SUBPARTITION</code> clauses to specify options for
         individual subpartitions. For example, a more verbose fashion of
@@ -2851,7 +2851,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM th;</code></strong>
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-management-range-list">24.3.1 Management of RANGE and LIST Partitions</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-hash-key">24.3.2 Management of HASH and KEY Partitions</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-management-exchange">24.3.3 Exchanging Partitions and Subpartitions with Tables</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-maintenance">24.3.4 Maintenance of Partitions</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-info">24.3.5 Obtaining Information About Partitions</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45482029735184"></a><a class="indexterm" name="idm45482029734112"></a><a class="indexterm" name="idm45482029732624"></a><a class="indexterm" name="idm45482029731136"></a><a class="indexterm" name="idm45482029729648"></a><a class="indexterm" name="idm45482029728160"></a><p>
+<a class="indexterm" name="idm45465083221968"></a><a class="indexterm" name="idm45465083220896"></a><a class="indexterm" name="idm45465083219408"></a><a class="indexterm" name="idm45465083217920"></a><a class="indexterm" name="idm45465083216432"></a><a class="indexterm" name="idm45465083214944"></a><p>
       There are a number of ways using SQL statements to modify
       partitioned tables; it is possible to add, drop, redefine, merge,
       or split existing partitions using the partitioning extensions to
@@ -2960,7 +2960,7 @@ Important
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45482029689536"></a><a class="indexterm" name="idm45482029688048"></a><a class="indexterm" name="idm45482029686560"></a><a class="indexterm" name="idm45482029685072"></a><p>
+<a class="indexterm" name="idm45465083176384"></a><a class="indexterm" name="idm45465083174896"></a><a class="indexterm" name="idm45465083173408"></a><a class="indexterm" name="idm45465083171920"></a><p>
         Adding and dropping of range and list partitions are handled in
         a similar fashion, so we discuss the management of both sorts of
         partitioning in this section. For information about working with
@@ -3460,7 +3460,7 @@ ALTER TABLE tt REORGANIZE PARTITION p1,np INTO (
 </div>
 
 </div>
-<a class="indexterm" name="idm45482029500688"></a><a class="indexterm" name="idm45482029499200"></a><a class="indexterm" name="idm45482029497712"></a><a class="indexterm" name="idm45482029496224"></a><p>
+<a class="indexterm" name="idm45465082986976"></a><a class="indexterm" name="idm45465082985488"></a><a class="indexterm" name="idm45465082984000"></a><a class="indexterm" name="idm45465082982512"></a><p>
         Tables which are partitioned by hash or by key are very similar
         to one another with regard to making changes in a partitioning
         setup, and both differ in a number of ways from tables which
@@ -3651,7 +3651,7 @@ ERROR 1478 (HY000): Cannot remove all partitions, use DROP TABLE instead
         partitioned table may be of any type or types supported in MySQL
         8.0.
 </p>
-<h4><a name="idm45482029409504"></a>Exchanging a Partition with a Nonpartitioned Table</h4>
+<h4><a name="idm45465082895792"></a>Exchanging a Partition with a Nonpartitioned Table</h4>
 <p>
         Suppose that a partitioned table <code class="literal">e</code> has been
         created and populated using the following SQL statements:
@@ -3819,7 +3819,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM e2;</code></strong>
 +----+---------+-------+
 1 row in set (0.00 sec)
 </pre>
-<h4><a name="idm45482029354336"></a>Nonmatching Rows</h4>
+<h4><a name="idm45465082840624"></a>Nonmatching Rows</h4>
 <p>
         You should keep in mind that any rows found in the
         nonpartitioned table prior to issuing the
@@ -3852,7 +3852,7 @@ Query OK, 0 rows affected (0.02 sec)
         <a class="link" href="sql-statements.html#alter-table-partition-operations" title="13.1.9.1 ALTER TABLE Partition Operations"><code class="literal">ALTER
         TABLE ... REPAIR PARTITION</code></a>.
 </p>
-<h4><a name="idm45482029339664"></a>Exchanging Partitions Without Row-By-Row Validation</h4>
+<h4><a name="idm45465082825952"></a>Exchanging Partitions Without Row-By-Row Validation</h4>
 <p>
         To avoid time consuming validation when exchanging a partition
         with a table that has many rows, it is possible to skip the
@@ -4004,7 +4004,7 @@ mysql&gt; SELECT PARTITION_NAME, TABLE_ROWS FROM INFORMATION_SCHEMA.PARTITIONS W
         <a class="link" href="sql-statements.html#alter-table-partition-operations" title="13.1.9.1 ALTER TABLE Partition Operations"><code class="literal">ALTER
         TABLE ... REPAIR PARTITION</code></a>.
 </p>
-<h4><a name="idm45482029323584"></a>Exchanging a Subpartition with a Nonpartitioned Table</h4>
+<h4><a name="idm45465082809872"></a>Exchanging a Subpartition with a Nonpartitioned Table</h4>
 <p>
         You can also exchange a subpartition of a subpartitioned table
         (see <a class="xref" href="partitioning.html#partitioning-subpartitions" title="24.2.6 Subpartitioning">Section 24.2.6, “Subpartitioning”</a>) with a
@@ -4154,7 +4154,7 @@ mysql&gt; <strong class="userinput"><code>ALTER TABLE es EXCHANGE PARTITION p3sp
 </div>
 
 </div>
-<a class="indexterm" name="idm45482029269968"></a><a class="indexterm" name="idm45482029268480"></a><a class="indexterm" name="idm45482029266992"></a><a class="indexterm" name="idm45482029265504"></a><a class="indexterm" name="idm45482029264016"></a><a class="indexterm" name="idm45482029262528"></a><a class="indexterm" name="idm45482029261040"></a><a class="indexterm" name="idm45482029259552"></a><p>
+<a class="indexterm" name="idm45465082756192"></a><a class="indexterm" name="idm45465082754704"></a><a class="indexterm" name="idm45465082753216"></a><a class="indexterm" name="idm45465082751728"></a><a class="indexterm" name="idm45465082750240"></a><a class="indexterm" name="idm45465082748752"></a><a class="indexterm" name="idm45465082747264"></a><a class="indexterm" name="idm45465082745776"></a><p>
         A number of table and partition maintenance tasks can be carried
         out on partitioned tables using SQL statements intended for such
         purposes.
@@ -4281,7 +4281,7 @@ mysql&gt; <strong class="userinput"><code>ALTER TABLE es EXCHANGE PARTITION p3sp
 </div>
 
 </div>
-<a class="indexterm" name="idm45482029203696"></a><a class="indexterm" name="idm45482029202640"></a><a class="indexterm" name="idm45482029201552"></a><a class="indexterm" name="idm45482029200464"></a><p>
+<a class="indexterm" name="idm45465082689856"></a><a class="indexterm" name="idm45465082688800"></a><a class="indexterm" name="idm45465082687712"></a><a class="indexterm" name="idm45465082686624"></a><p>
         This section discusses obtaining information about existing
         partitions, which can be done in a number of ways. Methods of
         obtaining such information include the following:
@@ -4354,7 +4354,7 @@ Create Table: CREATE TABLE `trb3` (
         <code class="literal">INFORMATION_SCHEMA</code>, which contains a
         <a class="link" href="information-schema.html#information-schema-partitions-table" title="26.3.21 The INFORMATION_SCHEMA PARTITIONS Table"><code class="literal">PARTITIONS</code></a> table. See
         <a class="xref" href="information-schema.html#information-schema-partitions-table" title="26.3.21 The INFORMATION_SCHEMA PARTITIONS Table">Section 26.3.21, “The INFORMATION_SCHEMA PARTITIONS Table”</a>.
-      </p><a class="indexterm" name="idm45482029170144"></a><a class="indexterm" name="idm45482029168656"></a><p>
+      </p><a class="indexterm" name="idm45465082656304"></a><a class="indexterm" name="idm45465082654816"></a><p>
         It is possible to determine which partitions of a partitioned
         table are involved in a given
         <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a> query using
@@ -4465,7 +4465,7 @@ possible_keys: PRIMARY
 </div>
 
 </div>
-<a class="indexterm" name="idm45482029141440"></a><a class="indexterm" name="idm45482029140368"></a><p>
+<a class="indexterm" name="idm45465082627664"></a><a class="indexterm" name="idm45465082626592"></a><p>
       The optimization known as <span class="firstterm">partition
       pruning</span> is based on a relatively simple concept which
       can be described as <span class="quote">“<span class="quote">Do not scan partitions where there can
@@ -4561,7 +4561,7 @@ PARTITION BY RANGE( region_code ) (
       the preceding types on multiple columns for tables that use
       <code class="literal">RANGE COLUMNS</code> or <code class="literal">LIST
       COLUMNS</code> partitioning.
-    </p><a class="indexterm" name="idm45482029099808"></a><p>
+    </p><a class="indexterm" name="idm45465082586032"></a><p>
       This type of optimization can be applied whenever the partitioning
       expression consists of an equality or a range which can be reduced
       to a set of equalities, or when the partitioning expression
@@ -5207,7 +5207,7 @@ Records: 2  Duplicates: 0  Warnings: 0
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="partitioning.html#partitioning-limitations-partitioning-keys-unique-keys">24.6.1 Partitioning Keys, Primary Keys, and Unique Keys</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-storage-engines">24.6.2 Partitioning Limitations Relating to Storage Engines</a></span></dt><dt><span class="section"><a href="partitioning.html#partitioning-limitations-functions">24.6.3 Partitioning Limitations Relating to Functions</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45482028873136"></a><p>
+<a class="indexterm" name="idm45465082359328"></a><p>
       This section discusses current restrictions and limitations on
       MySQL partitioning support.
     </p><p><b>Prohibited constructs. </b>
@@ -5227,9 +5227,9 @@ Records: 2  Duplicates: 0  Warnings: 0
       expressions, see
       <a class="xref" href="partitioning.html#partitioning-limitations-functions" title="24.6.3 Partitioning Limitations Relating to Functions">Section 24.6.3, “Partitioning Limitations Relating to Functions”</a>.
     </p><p><b>Arithmetic and logical operators. </b>
-        <a class="indexterm" name="idm45482028865632"></a>
+        <a class="indexterm" name="idm45465082351824"></a>
 
-        <a class="indexterm" name="idm45482028864112"></a>
+        <a class="indexterm" name="idm45465082350304"></a>
 
         Use of the arithmetic operators
         <a class="link" href="functions.html#operator_plus"><code class="literal">+</code></a>,
@@ -5254,9 +5254,9 @@ Records: 2  Duplicates: 0  Warnings: 0
       <a class="link" href="functions.html#operator_bitwise-invert"><code class="literal">~</code></a> are not
       permitted in partitioning expressions.
     </p><p><b>Server SQL mode. </b>
-        <a class="indexterm" name="idm45482028844816"></a>
+        <a class="indexterm" name="idm45465082331008"></a>
 
-        <a class="indexterm" name="idm45482028843328"></a>
+        <a class="indexterm" name="idm45465082329520"></a>
 
         Tables employing user-defined partitioning do not preserve the
         SQL mode in effect at the time that they were created. As
@@ -5393,7 +5393,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO tu VALUES (20);</code></st
             partition to achieve this.
 </p></li></ul>
 </div>
-<p><a name="partitioning-limitations-max-partitions"></a><b>Maximum number of partitions. </b><a class="indexterm" name="idm45482028783696"></a><a class="indexterm" name="idm45482028782192"></a>
+<p><a name="partitioning-limitations-max-partitions"></a><b>Maximum number of partitions. </b><a class="indexterm" name="idm45465082270336"></a><a class="indexterm" name="idm45465082268832"></a>
         The maximum possible number of partitions for a given table not
         using the <a class="link" href="mysql-cluster.html" title="Chapter 23 MySQL NDB Cluster 8.0"><code class="literal">NDB</code></a> storage engine is
         8192. This number includes subpartitions.
@@ -5420,7 +5420,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO tu VALUES (20);</code></st
     </p><p>
       See also
       <a class="xref" href="partitioning.html#partitioning-limitations-file-system-ops" title="File system operations">File system operations</a>.
-    </p><p><b>Foreign keys not supported for partitioned InnoDB tables. </b><a class="indexterm" name="idm45482028770736"></a>
+    </p><p><b>Foreign keys not supported for partitioned InnoDB tables. </b><a class="indexterm" name="idm45465082257376"></a>
         Partitioned tables using the <a class="link" href="innodb-storage-engine.html" title="Chapter 15 The InnoDB Storage Engine"><code class="literal">InnoDB</code></a>
         storage engine do not support foreign keys. More specifically,
         this means that the following two statements are true:
@@ -5458,21 +5458,21 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO tu VALUES (20);</code></st
         statements and you do this, the results of these statements can
         be drastically altered. See <a class="xref" href="sql-statements.html#replace" title="13.2.9 REPLACE Statement">Section 13.2.9, “REPLACE Statement”</a>, for more
         information and an example.
-      </p><p><b>FULLTEXT indexes. </b><a class="indexterm" name="idm45482028750640"></a>
+      </p><p><b>FULLTEXT indexes. </b><a class="indexterm" name="idm45465082237280"></a>
         Partitioned tables do not support <code class="literal">FULLTEXT</code>
         indexes or searches.
       </p><p><b>Spatial columns. </b>
         Columns with spatial data types such as <code class="literal">POINT</code>
         or <code class="literal">GEOMETRY</code> cannot be used in partitioned
         tables.
-      </p><p><b>Temporary tables. </b><a class="indexterm" name="idm45482028744448"></a>
+      </p><p><b>Temporary tables. </b><a class="indexterm" name="idm45465082231088"></a>
         Temporary tables cannot be partitioned.
       </p><p><b>Log tables. </b>
         It is not possible to partition the log tables; an
         <a class="link" href="sql-statements.html#alter-table-partition-operations" title="13.1.9.1 ALTER TABLE Partition Operations"><code class="literal">ALTER
         TABLE ... PARTITION BY ...</code></a> statement on such a table
         fails with an error.
-      </p><p><b>Data type of partitioning key. </b><a class="indexterm" name="idm45482028739088"></a>
+      </p><p><b>Data type of partitioning key. </b><a class="indexterm" name="idm45465082225728"></a>
         A partitioning key must be either an integer column or an
         expression that resolves to an integer. Expressions employing
         <a class="link" href="data-types.html#enum" title="11.3.5 The ENUM Type"><code class="literal">ENUM</code></a> columns cannot be used. The
@@ -5528,10 +5528,10 @@ PARTITION BY LIST COLUMNS(c2) (
       Neither of the preceding exceptions applies to
       <a class="link" href="data-types.html#blob" title="11.3.4 The BLOB and TEXT Types"><code class="literal">BLOB</code></a> or
       <a class="link" href="data-types.html#blob" title="11.3.4 The BLOB and TEXT Types"><code class="literal">TEXT</code></a> column types.
-    </p><p><b>Subqueries. </b><a class="indexterm" name="idm45482028714336"></a>
+    </p><p><b>Subqueries. </b><a class="indexterm" name="idm45465082200384"></a>
         A partitioning key may not be a subquery, even if that subquery
         resolves to an integer value or <code class="literal">NULL</code>.
-      </p><a class="indexterm" name="idm45482028711488"></a><a class="indexterm" name="idm45482028710000"></a><p><a name="partitioning-limitations-prefixes"></a><b>Column index prefixes not supported for key partitioning. </b>
+      </p><a class="indexterm" name="idm45465082197536"></a><a class="indexterm" name="idm45465082196048"></a><p><a name="partitioning-limitations-prefixes"></a><b>Column index prefixes not supported for key partitioning. </b>
         When creating a table that is partitioned by key, any columns in
         the partitioning key which use column prefixes are not used in
         the table's partitioning function. Consider the following
@@ -5622,14 +5622,14 @@ partitioning function (prefixed columns are not considered).</span>
 </pre><p>
       For general information about partitioning tables by key, see
       <a class="xref" href="partitioning.html#partitioning-key" title="24.2.5 KEY Partitioning">Section 24.2.5, “KEY Partitioning”</a>.
-    </p><p><a name="partitioning-limitations-subpartitions"></a><b>Issues with subpartitions. </b><a class="indexterm" name="idm45482028674352"></a><a class="indexterm" name="idm45482028672864"></a>
+    </p><p><a name="partitioning-limitations-subpartitions"></a><b>Issues with subpartitions. </b><a class="indexterm" name="idm45465082160336"></a><a class="indexterm" name="idm45465082158848"></a>
         Subpartitions must use <code class="literal">HASH</code> or
         <code class="literal">KEY</code> partitioning. Only
         <code class="literal">RANGE</code> and <code class="literal">LIST</code> partitions
         may be subpartitioned; <code class="literal">HASH</code> and
         <code class="literal">KEY</code> partitions cannot be subpartitioned.
       </p><p>
-      <a class="indexterm" name="idm45482028666224"></a>
+      <a class="indexterm" name="idm45465082152208"></a>
 
       <code class="literal">SUBPARTITION BY KEY</code> requires that the
       subpartitioning column or columns be specified explicitly, unlike
@@ -5735,7 +5735,7 @@ Query OK, 0 rows affected (0.07 sec)
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45482028615696"></a><a class="indexterm" name="idm45482028614656"></a><a class="indexterm" name="idm45482028613168"></a><a class="indexterm" name="idm45482028612080"></a><a class="indexterm" name="idm45482028610592"></a><p>
+<a class="indexterm" name="idm45465082101680"></a><a class="indexterm" name="idm45465082100640"></a><a class="indexterm" name="idm45465082099152"></a><a class="indexterm" name="idm45465082098064"></a><a class="indexterm" name="idm45465082096576"></a><p>
         This section discusses the relationship of partitioning keys
         with primary keys and unique keys. The rule governing this
         relationship can be expressed as follows: All columns used in
@@ -5998,7 +5998,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 </div>
 
 </div>
-<a class="indexterm" name="idm45482028532288"></a><p>
+<a class="indexterm" name="idm45465082017872"></a><p>
         In MySQL 8.0, partitioning support is not actually
         provided by the MySQL Server, but rather by a table storage
         engine's own or native partitioning handler. In MySQL
@@ -6110,7 +6110,7 @@ Note
         This section discusses limitations in MySQL Partitioning
         relating specifically to functions used in partitioning
         expressions.
-      </p><a class="indexterm" name="idm45482028486448"></a><p>
+      </p><a class="indexterm" name="idm45465081972160"></a><p>
         Only the MySQL functions shown in the following list are allowed
         in partitioning expressions:
 </p>
