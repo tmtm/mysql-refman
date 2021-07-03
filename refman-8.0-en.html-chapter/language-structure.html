@@ -74,7 +74,7 @@
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="language-structure.html#string-literals">9.1.1 String Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#number-literals">9.1.2 Numeric Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#date-and-time-literals">9.1.3 Date and Time Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#hexadecimal-literals">9.1.4 Hexadecimal Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#bit-value-literals">9.1.5 Bit-Value Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#boolean-literals">9.1.6 Boolean Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#null-values">9.1.7 NULL Values</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45402840438560"></a><p>
+<a class="indexterm" name="idm46103367907584"></a><p>
       This section describes how to write literal values in MySQL. These
       include strings, numbers, hexadecimal and bit values, boolean
       values, and <code class="literal">NULL</code>. The section also covers
@@ -90,13 +90,13 @@
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45402840434992"></a><a class="indexterm" name="idm45402840433504"></a><a class="indexterm" name="idm45402840432432"></a><a class="indexterm" name="idm45402840430944"></a><a class="indexterm" name="idm45402840429456"></a><a class="indexterm" name="idm45402840427968"></a><p>
+<a class="indexterm" name="idm46103367904016"></a><a class="indexterm" name="idm46103367902528"></a><a class="indexterm" name="idm46103367901456"></a><a class="indexterm" name="idm46103367899968"></a><a class="indexterm" name="idm46103367898480"></a><a class="indexterm" name="idm46103367896992"></a><p>
         A string is a sequence of bytes or characters, enclosed within
         either single quote (<code class="literal">'</code>) or double quote
         (<code class="literal">"</code>) characters. Examples:
       </p><pre data-lang="sql" class="programlisting">'a string'
 "another string"
-</pre><a class="indexterm" name="idm45402840423632"></a><a class="indexterm" name="idm45402840422560"></a><p>
+</pre><a class="indexterm" name="idm46103367892656"></a><a class="indexterm" name="idm46103367891584"></a><p>
         Quoted strings placed next to each other are concatenated to a
         single string. The following lines are equivalent:
       </p><pre data-lang="sql" class="programlisting">'a string'
@@ -141,7 +141,7 @@ Note
         introducer and <code class="literal">COLLATE</code> clause, to designate
         it as a string that uses a particular character set and
         collation:
-      </p><a class="indexterm" name="idm45402840406864"></a><a class="indexterm" name="idm45402840405376"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>]'<em class="replaceable"><code>string</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
+      </p><a class="indexterm" name="idm46103367876352"></a><a class="indexterm" name="idm46103367874864"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>]'<em class="replaceable"><code>string</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
 </pre><p>
         Examples:
       </p><pre data-lang="sql" class="programlisting">SELECT _latin1'<em class="replaceable"><code>string</code></em>';
@@ -187,37 +187,37 @@ SELECT _utf8'some text';
             <th>Escape Sequence</th>
             <th>Character Represented by Sequence</th>
           </tr></thead><tbody><tr>
-            <td><code class="literal">\0</code><a class="indexterm" name="idm45402840376416"></a><a class="indexterm" name="idm45402840375472"></a></td>
+            <td><code class="literal">\0</code><a class="indexterm" name="idm46103367845856"></a><a class="indexterm" name="idm46103367844912"></a></td>
             <td>An ASCII NUL (<code class="literal">X'00'</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\'</code><a class="indexterm" name="idm45402840371296"></a><a class="indexterm" name="idm45402840370352"></a></td>
+            <td><code class="literal">\'</code><a class="indexterm" name="idm46103367840736"></a><a class="indexterm" name="idm46103367839792"></a></td>
             <td>A single quote (<code class="literal">'</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\"</code><a class="indexterm" name="idm45402840366176"></a><a class="indexterm" name="idm45402840365232"></a></td>
+            <td><code class="literal">\"</code><a class="indexterm" name="idm46103367835616"></a><a class="indexterm" name="idm46103367834672"></a></td>
             <td>A double quote (<code class="literal">"</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\b</code><a class="indexterm" name="idm45402840361056"></a><a class="indexterm" name="idm45402840360112"></a></td>
+            <td><code class="literal">\b</code><a class="indexterm" name="idm46103367830496"></a><a class="indexterm" name="idm46103367829552"></a></td>
             <td>A backspace character</td>
           </tr><tr>
-            <td><code class="literal">\n</code><a class="indexterm" name="idm45402840356624"></a><a class="indexterm" name="idm45402840355680"></a><a class="indexterm" name="idm45402840354736"></a><a class="indexterm" name="idm45402840353792"></a></td>
+            <td><code class="literal">\n</code><a class="indexterm" name="idm46103367826064"></a><a class="indexterm" name="idm46103367825120"></a><a class="indexterm" name="idm46103367824176"></a><a class="indexterm" name="idm46103367823232"></a></td>
             <td>A newline (linefeed) character</td>
           </tr><tr>
-            <td><code class="literal">\r</code><a class="indexterm" name="idm45402840350288"></a><a class="indexterm" name="idm45402840349344"></a><a class="indexterm" name="idm45402840348400"></a></td>
+            <td><code class="literal">\r</code><a class="indexterm" name="idm46103367819728"></a><a class="indexterm" name="idm46103367818784"></a><a class="indexterm" name="idm46103367817840"></a></td>
             <td>A carriage return character</td>
           </tr><tr>
-            <td><code class="literal">\t</code><a class="indexterm" name="idm45402840344896"></a><a class="indexterm" name="idm45402840343952"></a></td>
+            <td><code class="literal">\t</code><a class="indexterm" name="idm46103367814336"></a><a class="indexterm" name="idm46103367813392"></a></td>
             <td>A tab character</td>
           </tr><tr>
-            <td><code class="literal">\Z</code><a class="indexterm" name="idm45402840340416"></a><a class="indexterm" name="idm45402840339472"></a></td>
+            <td><code class="literal">\Z</code><a class="indexterm" name="idm46103367809856"></a><a class="indexterm" name="idm46103367808912"></a></td>
             <td>ASCII 26 (Control+Z); see note following the table</td>
           </tr><tr>
-            <td><code class="literal">\\</code><a class="indexterm" name="idm45402840335952"></a><a class="indexterm" name="idm45402840335008"></a></td>
+            <td><code class="literal">\\</code><a class="indexterm" name="idm46103367805392"></a><a class="indexterm" name="idm46103367804448"></a></td>
             <td>A backslash (<code class="literal">\</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\%</code><a class="indexterm" name="idm45402840330832"></a><a class="indexterm" name="idm45402840329888"></a></td>
+            <td><code class="literal">\%</code><a class="indexterm" name="idm46103367800272"></a><a class="indexterm" name="idm46103367799328"></a></td>
             <td>A <code class="literal">%</code> character; see note following the table</td>
           </tr><tr>
-            <td><code class="literal">\_</code><a class="indexterm" name="idm45402840325664"></a><a class="indexterm" name="idm45402840324720"></a></td>
+            <td><code class="literal">\_</code><a class="indexterm" name="idm46103367795152"></a><a class="indexterm" name="idm46103367794208"></a></td>
             <td>A <code class="literal">_</code> character; see note following the table</td>
 </tr></tbody></table>
 </div>
@@ -241,7 +241,7 @@ SELECT _utf8'some text';
         pattern-matching contexts, they evaluate to the strings
         <code class="literal">\%</code> and <code class="literal">\_</code>, not to
         <code class="literal">%</code> and <code class="literal">_</code>.
-      </p><a class="indexterm" name="idm45402840309392"></a><p>
+      </p><a class="indexterm" name="idm46103367778880"></a><p>
         There are several ways to include quote characters within a
         string:
 </p>
@@ -290,7 +290,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
 +------------------------+
 | disappearing backslash |
 +------------------------+
-</pre><a class="indexterm" name="idm45402840289520"></a><p>
+</pre><a class="indexterm" name="idm46103367759008"></a><p>
         To insert binary data into a string column (such as a
         <a class="link" href="data-types.html#blob" title="11.3.4 The BLOB and TEXT Types"><code class="literal">BLOB</code></a> column), you should
         represent certain characters by escape sequences. Backslash
@@ -303,7 +303,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
         if not escaped. For the escape sequences that represent each of
         these characters, see
         <a class="xref" href="language-structure.html#character-escape-sequences" title="Table 9.1 Special Character Escape Sequences">Table 9.1, “Special Character Escape Sequences”</a>.
-      </p><a class="indexterm" name="idm45402840282256"></a><a class="indexterm" name="idm45402840281184"></a><a class="indexterm" name="idm45402840279696"></a><a class="indexterm" name="idm45402840278656"></a><a class="indexterm" name="idm45402840277584"></a><p>
+      </p><a class="indexterm" name="idm46103367751744"></a><a class="indexterm" name="idm46103367750672"></a><a class="indexterm" name="idm46103367749184"></a><a class="indexterm" name="idm46103367748144"></a><a class="indexterm" name="idm46103367747072"></a><p>
         When writing application programs, any string that might contain
         any of these special characters must be properly escaped before
         the string is used as a data value in an SQL statement that is
@@ -344,7 +344,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45402840266912"></a><a class="indexterm" name="idm45402840265824"></a><a class="indexterm" name="idm45402840264736"></a><a class="indexterm" name="idm45402840263248"></a><a class="indexterm" name="idm45402840261760"></a><a class="indexterm" name="idm45402840260272"></a><a class="indexterm" name="idm45402840259200"></a><a class="indexterm" name="idm45402840257712"></a><a class="indexterm" name="idm45402840256640"></a><a class="indexterm" name="idm45402840255568"></a><a class="indexterm" name="idm45402840254496"></a><a class="indexterm" name="idm45402840253424"></a><p>
+<a class="indexterm" name="idm46103367736400"></a><a class="indexterm" name="idm46103367735312"></a><a class="indexterm" name="idm46103367734224"></a><a class="indexterm" name="idm46103367732736"></a><a class="indexterm" name="idm46103367731248"></a><a class="indexterm" name="idm46103367729760"></a><a class="indexterm" name="idm46103367728688"></a><a class="indexterm" name="idm46103367727200"></a><a class="indexterm" name="idm46103367726128"></a><a class="indexterm" name="idm46103367725056"></a><a class="indexterm" name="idm46103367723984"></a><a class="indexterm" name="idm46103367722912"></a><p>
         Number literals include exact-value (integer and
         <a class="link" href="data-types.html#fixed-point-types" title="11.1.3 Fixed-Point Types (Exact Value) - DECIMAL, NUMERIC"><code class="literal">DECIMAL</code></a>) literals and
         approximate-value (floating-point) literals.
@@ -406,7 +406,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45402840219392"></a><a class="indexterm" name="idm45402840217904"></a><a class="indexterm" name="idm45402840216416"></a><a class="indexterm" name="idm45402840215344"></a><p>
+<a class="indexterm" name="idm46103367688928"></a><a class="indexterm" name="idm46103367687440"></a><a class="indexterm" name="idm46103367685952"></a><a class="indexterm" name="idm46103367684880"></a><p>
         Date and time values can be represented in several formats, such
         as quoted strings or as numbers, depending on the exact type of
         the value and other factors. For example, in contexts where
@@ -579,7 +579,7 @@ TIMESTAMP '<em class="replaceable"><code>str</code></em>'
         is given by the first 2 digits. Numbers that are not one of
         these lengths are interpreted as though padded with leading
         zeros to the closest length.
-      </p><a class="indexterm" name="idm45402840126352"></a><a class="indexterm" name="idm45402840125280"></a><p>
+      </p><a class="indexterm" name="idm46103367596016"></a><a class="indexterm" name="idm46103367594944"></a><p>
         Values specified as nondelimited strings are interpreted
         according their length. For a string 8 or 14 characters long,
         the year is assumed to be given by the first 4 characters.
@@ -764,7 +764,7 @@ mysql&gt; <strong class="userinput"><code>SELECT col, UNIX_TIMESTAMP(col) FROM t
 </div>
 
 </div>
-<a class="indexterm" name="idm45402840057968"></a><a class="indexterm" name="idm45402840056480"></a><p>
+<a class="indexterm" name="idm46103367527536"></a><a class="indexterm" name="idm46103367526048"></a><p>
         Hexadecimal literal values are written using
         <code class="literal">X'<em class="replaceable"><code>val</code></em>'</code> or
         <code class="literal">0x<em class="replaceable"><code>val</code></em></code> notation,
@@ -824,7 +824,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 0x5461626c65, CHARSET(0x5461626
         introducer and <code class="literal">COLLATE</code> clause, to designate
         it as a string that uses a particular character set and
         collation:
-      </p><a class="indexterm" name="idm45402840033088"></a><a class="indexterm" name="idm45402840031600"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] X'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
+      </p><a class="indexterm" name="idm46103367502656"></a><a class="indexterm" name="idm46103367501168"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] X'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
 </pre><p>
         Examples:
       </p><pre data-lang="sql" class="programlisting">SELECT _latin1 X'4D7953514C';
@@ -890,7 +890,7 @@ mysql&gt; <strong class="userinput"><code>SELECT X'636174';</code></strong>
 +-----------+
 | cat       |
 +-----------+
-</pre><a class="indexterm" name="idm45402840005216"></a><a class="indexterm" name="idm45402840003728"></a><p>
+</pre><a class="indexterm" name="idm46103367474784"></a><a class="indexterm" name="idm46103367473296"></a><p>
         For hexadecimal literals, bit operations are considered numeric
         context, but bit operations permit numeric or binary string
         arguments in MySQL 8.0 and higher. To explicitly
@@ -925,7 +925,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 </div>
 
 </div>
-<a class="indexterm" name="idm45402839993472"></a><a class="indexterm" name="idm45402839991984"></a><p>
+<a class="indexterm" name="idm46103367462992"></a><a class="indexterm" name="idm46103367461504"></a><p>
         Bit-value literals are written using
         <code class="literal">b'<em class="replaceable"><code>val</code></em>'</code> or
         <code class="literal">0b<em class="replaceable"><code>val</code></em></code> notation.
@@ -961,7 +961,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 0b1100001, CHARSET(0b1100001);<
         introducer and <code class="literal">COLLATE</code> clause, to designate
         it as a string that uses a particular character set and
         collation:
-      </p><a class="indexterm" name="idm45402839978192"></a><a class="indexterm" name="idm45402839976704"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] b'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
+      </p><a class="indexterm" name="idm46103367447712"></a><a class="indexterm" name="idm46103367446224"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] b'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
 </pre><p>
         Examples:
       </p><pre data-lang="sql" class="programlisting">SELECT _latin1 b'1000001';
@@ -1027,7 +1027,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO t SET b = b'0101';</code><
 |   10 | 1010     | 12     | A      |
 |    5 | 101      | 5      | 5      |
 +------+----------+--------+--------+
-</pre><a class="indexterm" name="idm45402839948112"></a><a class="indexterm" name="idm45402839946624"></a><p>
+</pre><a class="indexterm" name="idm46103367417632"></a><a class="indexterm" name="idm46103367416144"></a><p>
         For bit literals, bit operations are considered numeric context,
         but bit operations permit numeric or binary string arguments in
         MySQL 8.0 and higher. To explicitly specify binary
@@ -1062,7 +1062,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 </div>
 
 </div>
-<a class="indexterm" name="idm45402839936320"></a><a class="indexterm" name="idm45402839934832"></a><a class="indexterm" name="idm45402839933760"></a><a class="indexterm" name="idm45402839932688"></a><p>
+<a class="indexterm" name="idm46103367405904"></a><a class="indexterm" name="idm46103367404416"></a><a class="indexterm" name="idm46103367403344"></a><a class="indexterm" name="idm46103367402272"></a><p>
         The constants <code class="literal">TRUE</code> and
         <code class="literal">FALSE</code> evaluate to <code class="literal">1</code> and
         <code class="literal">0</code>, respectively. The constant names can be
@@ -1082,7 +1082,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 </div>
 
 </div>
-<a class="indexterm" name="idm45402839922064"></a><a class="indexterm" name="idm45402839920992"></a><a class="indexterm" name="idm45402839919504"></a><p>
+<a class="indexterm" name="idm46103367391712"></a><a class="indexterm" name="idm46103367390640"></a><a class="indexterm" name="idm46103367389152"></a><p>
         The <code class="literal">NULL</code> value means <span class="quote">“<span class="quote">no data.</span>”</span>
         <code class="literal">NULL</code> can be written in any lettercase.
       </p><p>
@@ -1118,7 +1118,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="language-structure.html#identifier-length">9.2.1 Identifier Length Limits</a></span></dt><dt><span class="section"><a href="language-structure.html#identifier-qualifiers">9.2.2 Identifier Qualifiers</a></span></dt><dt><span class="section"><a href="language-structure.html#identifier-case-sensitivity">9.2.3 Identifier Case Sensitivity</a></span></dt><dt><span class="section"><a href="language-structure.html#identifier-mapping">9.2.4 Mapping of Identifiers to File Names</a></span></dt><dt><span class="section"><a href="language-structure.html#function-resolution">9.2.5 Function Name Parsing and Resolution</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45402839904736"></a><a class="indexterm" name="idm45402839903664"></a><a class="indexterm" name="idm45402839902592"></a><a class="indexterm" name="idm45402839901520"></a><a class="indexterm" name="idm45402839900032"></a><a class="indexterm" name="idm45402839898544"></a><a class="indexterm" name="idm45402839897056"></a><a class="indexterm" name="idm45402839895568"></a><a class="indexterm" name="idm45402839894080"></a><p>
+<a class="indexterm" name="idm46103367374384"></a><a class="indexterm" name="idm46103367373312"></a><a class="indexterm" name="idm46103367372240"></a><a class="indexterm" name="idm46103367371168"></a><a class="indexterm" name="idm46103367369680"></a><a class="indexterm" name="idm46103367368192"></a><a class="indexterm" name="idm46103367366704"></a><a class="indexterm" name="idm46103367365216"></a><a class="indexterm" name="idm46103367363728"></a><p>
       Certain objects within MySQL, including database, table, index,
       column, alias, view, stored procedure, partition, tablespace,
       resource group and other object names are known as identifiers.
@@ -1127,7 +1127,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
       length of each type of identifier.
       <a class="xref" href="language-structure.html#identifier-case-sensitivity" title="9.2.3 Identifier Case Sensitivity">Section 9.2.3, “Identifier Case Sensitivity”</a>, describes which
       types of identifiers are case-sensitive and under what conditions.
-    </p><a class="indexterm" name="idm45402839890176"></a><a class="indexterm" name="idm45402839888688"></a><a class="indexterm" name="idm45402839887616"></a><a class="indexterm" name="idm45402839886576"></a><p>
+    </p><a class="indexterm" name="idm46103367359824"></a><a class="indexterm" name="idm46103367358336"></a><a class="indexterm" name="idm46103367357264"></a><a class="indexterm" name="idm46103367356224"></a><p>
       An identifier may be quoted or unquoted. If an identifier contains
       special characters or is a reserved word, you
       <span class="emphasis"><em>must</em></span> quote it whenever you refer to it.
@@ -1203,7 +1203,7 @@ Query OK, 0 rows affected (0.00 sec)
       following statement creates a table named <code class="literal">a`b</code>
       that contains a column named <code class="literal">c"d</code>:
     </p><pre data-lang="sql" class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE TABLE `a``b` (`c"d` INT);</code></strong>
-</pre><a class="indexterm" name="idm45402839859728"></a><a class="indexterm" name="idm45402839858240"></a><p>
+</pre><a class="indexterm" name="idm46103367329424"></a><a class="indexterm" name="idm46103367327936"></a><p>
       In the select list of a query, a quoted column alias can be
       specified using identifier or string quoting characters:
     </p><pre data-lang="sql" class="programlisting">mysql&gt; <strong class="userinput"><code>SELECT 1 AS `one`, 2 AS 'two';</code></strong>
@@ -1520,7 +1520,7 @@ WHERE t2.c &gt; 100;
 </div>
 
 </div>
-<a class="indexterm" name="idm45402839727520"></a><a class="indexterm" name="idm45402839726032"></a><a class="indexterm" name="idm45402839724544"></a><a class="indexterm" name="idm45402839723056"></a><a class="indexterm" name="idm45402839721568"></a><a class="indexterm" name="idm45402839720080"></a><a class="indexterm" name="idm45402839718592"></a><a class="indexterm" name="idm45402839717104"></a><a class="indexterm" name="idm45402839715616"></a><p>
+<a class="indexterm" name="idm46103367197328"></a><a class="indexterm" name="idm46103367195840"></a><a class="indexterm" name="idm46103367194352"></a><a class="indexterm" name="idm46103367192864"></a><a class="indexterm" name="idm46103367191376"></a><a class="indexterm" name="idm46103367189888"></a><a class="indexterm" name="idm46103367188400"></a><a class="indexterm" name="idm46103367186912"></a><a class="indexterm" name="idm46103367185424"></a><p>
         In MySQL, databases correspond to directories within the data
         directory. Each table within a database corresponds to at least
         one file within the database directory (and possibly more,
@@ -1864,7 +1864,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45402839545776"></a><a class="indexterm" name="idm45402839544320"></a><p>
+<a class="indexterm" name="idm46103367013584"></a><a class="indexterm" name="idm46103367012128"></a><p>
         MySQL supports built-in (native) functions, loadable functions,
         and stored functions. This section describes how the server
         recognizes whether the name of a built-in function is used as a
@@ -2207,7 +2207,7 @@ CREATE TABLE `count` (i INT);
 </div>
 
 </div>
-<a class="indexterm" name="idm45402839414368"></a><a class="indexterm" name="idm45402839413328"></a><p>
+<a class="indexterm" name="idm46103366881904"></a><a class="indexterm" name="idm46103366880864"></a><p>
       Keywords are words that have significance in SQL. Certain
       keywords, such as <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a>,
       <a class="link" href="sql-statements.html#delete" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a>, or
@@ -2306,7 +2306,7 @@ Query OK, 0 rows affected (0.01 sec)
  | <a class="link" href="language-structure.html#keywords-8-0-detailed-Z">Z</a>
 </p><p><a name="keywords-8-0-detailed-A"></a>A</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">ACCESSIBLE</code> (R)</p></li><li class="listitem"><p><code class="literal">ACCOUNT</code></p></li><li class="listitem"><p><code class="literal">ACTION</code></p></li><li class="listitem"><p><code class="literal">ACTIVE</code>; added in 8.0.14 (nonreserved)</p></li><li class="listitem"><p><code class="literal">ADD</code> (R)</p></li><li class="listitem"><p><code class="literal">ADMIN</code>; became nonreserved in 8.0.12</p></li><li class="listitem"><p><code class="literal">AFTER</code></p></li><li class="listitem"><p><code class="literal">AGAINST</code></p></li><li class="listitem"><p><code class="literal">AGGREGATE</code></p></li><li class="listitem"><p><code class="literal">ALGORITHM</code></p></li><li class="listitem"><p><code class="literal">ALL</code> (R)</p></li><li class="listitem"><p><code class="literal">ALTER</code> (R)</p></li><li class="listitem"><p><code class="literal">ALWAYS</code></p></li><li class="listitem"><p><code class="literal">ANALYSE</code>; removed in 8.0.1</p></li><li class="listitem"><p><code class="literal">ANALYZE</code> (R)</p></li><li class="listitem"><p><code class="literal">AND</code> (R)</p></li><li class="listitem"><p><code class="literal">ANY</code></p></li><li class="listitem"><p><code class="literal">ARRAY</code>; added in 8.0.17 (reserved); became nonreserved in 8.0.19</p></li><li class="listitem"><p><code class="literal">AS</code> (R)</p></li><li class="listitem"><p><code class="literal">ASC</code> (R)</p></li><li class="listitem"><p><code class="literal">ASCII</code></p></li><li class="listitem"><p><code class="literal">ASENSITIVE</code> (R)</p></li><li class="listitem"><p><code class="literal">AT</code></p></li><li class="listitem"><p><code class="literal">ATTRIBUTE</code>; added in 8.0.21 (nonreserved)</p></li><li class="listitem"><p><code class="literal">AUTOEXTEND_SIZE</code></p></li><li class="listitem"><p><code class="literal">AUTO_INCREMENT</code></p></li><li class="listitem"><p><code class="literal">AVG</code></p></li><li class="listitem"><p><code class="literal">AVG_ROW_LENGTH</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">ACCESSIBLE</code> (R)</p></li><li class="listitem"><p><code class="literal">ACCOUNT</code></p></li><li class="listitem"><p><code class="literal">ACTION</code></p></li><li class="listitem"><p><code class="literal">ACTIVE</code>; added in 8.0.14 (nonreserved)</p></li><li class="listitem"><p><code class="literal">ADD</code> (R)</p></li><li class="listitem"><p><code class="literal">ADMIN</code>; became nonreserved in 8.0.12</p></li><li class="listitem"><p><code class="literal">AFTER</code></p></li><li class="listitem"><p><code class="literal">AGAINST</code></p></li><li class="listitem"><p><code class="literal">AGGREGATE</code></p></li><li class="listitem"><p><code class="literal">ALGORITHM</code></p></li><li class="listitem"><p><code class="literal">ALL</code> (R)</p></li><li class="listitem"><p><code class="literal">ALTER</code> (R)</p></li><li class="listitem"><p><code class="literal">ALWAYS</code></p></li><li class="listitem"><p><code class="literal">ANALYSE</code>; removed in 8.0.1</p></li><li class="listitem"><p><code class="literal">ANALYZE</code> (R)</p></li><li class="listitem"><p><code class="literal">AND</code> (R)</p></li><li class="listitem"><p><code class="literal">ANY</code></p></li><li class="listitem"><p><code class="literal">ARRAY</code>; added in 8.0.17 (reserved); became nonreserved in 8.0.19</p></li><li class="listitem"><p><code class="literal">AS</code> (R)</p></li><li class="listitem"><p><code class="literal">ASC</code> (R)</p></li><li class="listitem"><p><code class="literal">ASCII</code></p></li><li class="listitem"><p><code class="literal">ASENSITIVE</code> (R)</p></li><li class="listitem"><p><code class="literal">AT</code></p></li><li class="listitem"><p><code class="literal">ATTRIBUTE</code>; added in 8.0.21 (nonreserved)</p></li><li class="listitem"><p><code class="literal">AUTHENTICATION</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">AUTOEXTEND_SIZE</code></p></li><li class="listitem"><p><code class="literal">AUTO_INCREMENT</code></p></li><li class="listitem"><p><code class="literal">AVG</code></p></li><li class="listitem"><p><code class="literal">AVG_ROW_LENGTH</code></p></li></ul>
 </div>
 <p><a name="keywords-8-0-detailed-B"></a>B</p>
 <div class="itemizedlist">
@@ -2314,7 +2314,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-8-0-detailed-C"></a>C</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">CACHE</code></p></li><li class="listitem"><p><code class="literal">CALL</code> (R)</p></li><li class="listitem"><p><code class="literal">CASCADE</code> (R)</p></li><li class="listitem"><p><code class="literal">CASCADED</code></p></li><li class="listitem"><p><code class="literal">CASE</code> (R)</p></li><li class="listitem"><p><code class="literal">CATALOG_NAME</code></p></li><li class="listitem"><p><code class="literal">CHAIN</code></p></li><li class="listitem"><p><code class="literal">CHANGE</code> (R)</p></li><li class="listitem"><p><code class="literal">CHANGED</code></p></li><li class="listitem"><p><code class="literal">CHANNEL</code></p></li><li class="listitem"><p><code class="literal">CHAR</code> (R)</p></li><li class="listitem"><p><code class="literal">CHARACTER</code> (R)</p></li><li class="listitem"><p><code class="literal">CHARSET</code></p></li><li class="listitem"><p><code class="literal">CHECK</code> (R)</p></li><li class="listitem"><p><code class="literal">CHECKSUM</code></p></li><li class="listitem"><p><code class="literal">CIPHER</code></p></li><li class="listitem"><p><code class="literal">CLASS_ORIGIN</code></p></li><li class="listitem"><p><code class="literal">CLIENT</code></p></li><li class="listitem"><p><code class="literal">CLONE</code>; added in 8.0.3 (nonreserved)</p></li><li class="listitem"><p><code class="literal">CLOSE</code></p></li><li class="listitem"><p><code class="literal">COALESCE</code></p></li><li class="listitem"><p><code class="literal">CODE</code></p></li><li class="listitem"><p><code class="literal">COLLATE</code> (R)</p></li><li class="listitem"><p><code class="literal">COLLATION</code></p></li><li class="listitem"><p><code class="literal">COLUMN</code> (R)</p></li><li class="listitem"><p><code class="literal">COLUMNS</code></p></li><li class="listitem"><p><code class="literal">COLUMN_FORMAT</code></p></li><li class="listitem"><p><code class="literal">COLUMN_NAME</code></p></li><li class="listitem"><p><code class="literal">COMMENT</code></p></li><li class="listitem"><p><code class="literal">COMMIT</code></p></li><li class="listitem"><p><code class="literal">COMMITTED</code></p></li><li class="listitem"><p><code class="literal">COMPACT</code></p></li><li class="listitem"><p><code class="literal">COMPLETION</code></p></li><li class="listitem"><p><code class="literal">COMPONENT</code></p></li><li class="listitem"><p><code class="literal">COMPRESSED</code></p></li><li class="listitem"><p><code class="literal">COMPRESSION</code></p></li><li class="listitem"><p><code class="literal">CONCURRENT</code></p></li><li class="listitem"><p><code class="literal">CONDITION</code> (R)</p></li><li class="listitem"><p><code class="literal">CONNECTION</code></p></li><li class="listitem"><p><code class="literal">CONSISTENT</code></p></li><li class="listitem"><p><code class="literal">CONSTRAINT</code> (R)</p></li><li class="listitem"><p><code class="literal">CONSTRAINT_CATALOG</code></p></li><li class="listitem"><p><code class="literal">CONSTRAINT_NAME</code></p></li><li class="listitem"><p><code class="literal">CONSTRAINT_SCHEMA</code></p></li><li class="listitem"><p><code class="literal">CONTAINS</code></p></li><li class="listitem"><p><code class="literal">CONTEXT</code></p></li><li class="listitem"><p><code class="literal">CONTINUE</code> (R)</p></li><li class="listitem"><p><code class="literal">CONVERT</code> (R)</p></li><li class="listitem"><p><code class="literal">CPU</code></p></li><li class="listitem"><p><code class="literal">CREATE</code> (R)</p></li><li class="listitem"><p><code class="literal">CROSS</code> (R)</p></li><li class="listitem"><p><code class="literal">CUBE</code> (R); became reserved in 8.0.1</p></li><li class="listitem"><p><code class="literal">CUME_DIST</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">CURRENT</code></p></li><li class="listitem"><p><code class="literal">CURRENT_DATE</code> (R)</p></li><li class="listitem"><p><code class="literal">CURRENT_TIME</code> (R)</p></li><li class="listitem"><p><code class="literal">CURRENT_TIMESTAMP</code> (R)</p></li><li class="listitem"><p><code class="literal">CURRENT_USER</code> (R)</p></li><li class="listitem"><p><code class="literal">CURSOR</code> (R)</p></li><li class="listitem"><p><code class="literal">CURSOR_NAME</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">CACHE</code></p></li><li class="listitem"><p><code class="literal">CALL</code> (R)</p></li><li class="listitem"><p><code class="literal">CASCADE</code> (R)</p></li><li class="listitem"><p><code class="literal">CASCADED</code></p></li><li class="listitem"><p><code class="literal">CASE</code> (R)</p></li><li class="listitem"><p><code class="literal">CATALOG_NAME</code></p></li><li class="listitem"><p><code class="literal">CHAIN</code></p></li><li class="listitem"><p><code class="literal">CHALLENGE_RESPONSE</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">CHANGE</code> (R)</p></li><li class="listitem"><p><code class="literal">CHANGED</code></p></li><li class="listitem"><p><code class="literal">CHANNEL</code></p></li><li class="listitem"><p><code class="literal">CHAR</code> (R)</p></li><li class="listitem"><p><code class="literal">CHARACTER</code> (R)</p></li><li class="listitem"><p><code class="literal">CHARSET</code></p></li><li class="listitem"><p><code class="literal">CHECK</code> (R)</p></li><li class="listitem"><p><code class="literal">CHECKSUM</code></p></li><li class="listitem"><p><code class="literal">CIPHER</code></p></li><li class="listitem"><p><code class="literal">CLASS_ORIGIN</code></p></li><li class="listitem"><p><code class="literal">CLIENT</code></p></li><li class="listitem"><p><code class="literal">CLONE</code>; added in 8.0.3 (nonreserved)</p></li><li class="listitem"><p><code class="literal">CLOSE</code></p></li><li class="listitem"><p><code class="literal">COALESCE</code></p></li><li class="listitem"><p><code class="literal">CODE</code></p></li><li class="listitem"><p><code class="literal">COLLATE</code> (R)</p></li><li class="listitem"><p><code class="literal">COLLATION</code></p></li><li class="listitem"><p><code class="literal">COLUMN</code> (R)</p></li><li class="listitem"><p><code class="literal">COLUMNS</code></p></li><li class="listitem"><p><code class="literal">COLUMN_FORMAT</code></p></li><li class="listitem"><p><code class="literal">COLUMN_NAME</code></p></li><li class="listitem"><p><code class="literal">COMMENT</code></p></li><li class="listitem"><p><code class="literal">COMMIT</code></p></li><li class="listitem"><p><code class="literal">COMMITTED</code></p></li><li class="listitem"><p><code class="literal">COMPACT</code></p></li><li class="listitem"><p><code class="literal">COMPLETION</code></p></li><li class="listitem"><p><code class="literal">COMPONENT</code></p></li><li class="listitem"><p><code class="literal">COMPRESSED</code></p></li><li class="listitem"><p><code class="literal">COMPRESSION</code></p></li><li class="listitem"><p><code class="literal">CONCURRENT</code></p></li><li class="listitem"><p><code class="literal">CONDITION</code> (R)</p></li><li class="listitem"><p><code class="literal">CONNECTION</code></p></li><li class="listitem"><p><code class="literal">CONSISTENT</code></p></li><li class="listitem"><p><code class="literal">CONSTRAINT</code> (R)</p></li><li class="listitem"><p><code class="literal">CONSTRAINT_CATALOG</code></p></li><li class="listitem"><p><code class="literal">CONSTRAINT_NAME</code></p></li><li class="listitem"><p><code class="literal">CONSTRAINT_SCHEMA</code></p></li><li class="listitem"><p><code class="literal">CONTAINS</code></p></li><li class="listitem"><p><code class="literal">CONTEXT</code></p></li><li class="listitem"><p><code class="literal">CONTINUE</code> (R)</p></li><li class="listitem"><p><code class="literal">CONVERT</code> (R)</p></li><li class="listitem"><p><code class="literal">CPU</code></p></li><li class="listitem"><p><code class="literal">CREATE</code> (R)</p></li><li class="listitem"><p><code class="literal">CROSS</code> (R)</p></li><li class="listitem"><p><code class="literal">CUBE</code> (R); became reserved in 8.0.1</p></li><li class="listitem"><p><code class="literal">CUME_DIST</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">CURRENT</code></p></li><li class="listitem"><p><code class="literal">CURRENT_DATE</code> (R)</p></li><li class="listitem"><p><code class="literal">CURRENT_TIME</code> (R)</p></li><li class="listitem"><p><code class="literal">CURRENT_TIMESTAMP</code> (R)</p></li><li class="listitem"><p><code class="literal">CURRENT_USER</code> (R)</p></li><li class="listitem"><p><code class="literal">CURSOR</code> (R)</p></li><li class="listitem"><p><code class="literal">CURSOR_NAME</code></p></li></ul>
 </div>
 <p><a name="keywords-8-0-detailed-D"></a>D</p>
 <div class="itemizedlist">
@@ -2326,7 +2326,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-8-0-detailed-F"></a>F</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">FAILED_LOGIN_ATTEMPTS</code>; added in 8.0.19 (nonreserved)</p></li><li class="listitem"><p><code class="literal">FALSE</code> (R)</p></li><li class="listitem"><p><code class="literal">FAST</code></p></li><li class="listitem"><p><code class="literal">FAULTS</code></p></li><li class="listitem"><p><code class="literal">FETCH</code> (R)</p></li><li class="listitem"><p><code class="literal">FIELDS</code></p></li><li class="listitem"><p><code class="literal">FILE</code></p></li><li class="listitem"><p><code class="literal">FILE_BLOCK_SIZE</code></p></li><li class="listitem"><p><code class="literal">FILTER</code></p></li><li class="listitem"><p><code class="literal">FIRST</code></p></li><li class="listitem"><p><code class="literal">FIRST_VALUE</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">FIXED</code></p></li><li class="listitem"><p><code class="literal">FLOAT</code> (R)</p></li><li class="listitem"><p><code class="literal">FLOAT4</code> (R)</p></li><li class="listitem"><p><code class="literal">FLOAT8</code> (R)</p></li><li class="listitem"><p><code class="literal">FLUSH</code></p></li><li class="listitem"><p><code class="literal">FOLLOWING</code>; added in 8.0.2 (nonreserved)</p></li><li class="listitem"><p><code class="literal">FOLLOWS</code></p></li><li class="listitem"><p><code class="literal">FOR</code> (R)</p></li><li class="listitem"><p><code class="literal">FORCE</code> (R)</p></li><li class="listitem"><p><code class="literal">FOREIGN</code> (R)</p></li><li class="listitem"><p><code class="literal">FORMAT</code></p></li><li class="listitem"><p><code class="literal">FOUND</code></p></li><li class="listitem"><p><code class="literal">FROM</code> (R)</p></li><li class="listitem"><p><code class="literal">FULL</code></p></li><li class="listitem"><p><code class="literal">FULLTEXT</code> (R)</p></li><li class="listitem"><p><code class="literal">FUNCTION</code> (R); became reserved in 8.0.1</p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">FACTOR</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">FAILED_LOGIN_ATTEMPTS</code>; added in 8.0.19 (nonreserved)</p></li><li class="listitem"><p><code class="literal">FALSE</code> (R)</p></li><li class="listitem"><p><code class="literal">FAST</code></p></li><li class="listitem"><p><code class="literal">FAULTS</code></p></li><li class="listitem"><p><code class="literal">FETCH</code> (R)</p></li><li class="listitem"><p><code class="literal">FIELDS</code></p></li><li class="listitem"><p><code class="literal">FILE</code></p></li><li class="listitem"><p><code class="literal">FILE_BLOCK_SIZE</code></p></li><li class="listitem"><p><code class="literal">FILTER</code></p></li><li class="listitem"><p><code class="literal">FINISH</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">FIRST</code></p></li><li class="listitem"><p><code class="literal">FIRST_VALUE</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">FIXED</code></p></li><li class="listitem"><p><code class="literal">FLOAT</code> (R)</p></li><li class="listitem"><p><code class="literal">FLOAT4</code> (R)</p></li><li class="listitem"><p><code class="literal">FLOAT8</code> (R)</p></li><li class="listitem"><p><code class="literal">FLUSH</code></p></li><li class="listitem"><p><code class="literal">FOLLOWING</code>; added in 8.0.2 (nonreserved)</p></li><li class="listitem"><p><code class="literal">FOLLOWS</code></p></li><li class="listitem"><p><code class="literal">FOR</code> (R)</p></li><li class="listitem"><p><code class="literal">FORCE</code> (R)</p></li><li class="listitem"><p><code class="literal">FOREIGN</code> (R)</p></li><li class="listitem"><p><code class="literal">FORMAT</code></p></li><li class="listitem"><p><code class="literal">FOUND</code></p></li><li class="listitem"><p><code class="literal">FROM</code> (R)</p></li><li class="listitem"><p><code class="literal">FULL</code></p></li><li class="listitem"><p><code class="literal">FULLTEXT</code> (R)</p></li><li class="listitem"><p><code class="literal">FUNCTION</code> (R); became reserved in 8.0.1</p></li></ul>
 </div>
 <p><a name="keywords-8-0-detailed-G"></a>G</p>
 <div class="itemizedlist">
@@ -2338,7 +2338,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-8-0-detailed-I"></a>I</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">IDENTIFIED</code></p></li><li class="listitem"><p><code class="literal">IF</code> (R)</p></li><li class="listitem"><p><code class="literal">IGNORE</code> (R)</p></li><li class="listitem"><p><code class="literal">IGNORE_SERVER_IDS</code></p></li><li class="listitem"><p><code class="literal">IMPORT</code></p></li><li class="listitem"><p><code class="literal">IN</code> (R)</p></li><li class="listitem"><p><code class="literal">INACTIVE</code>; added in 8.0.14 (nonreserved)</p></li><li class="listitem"><p><code class="literal">INDEX</code> (R)</p></li><li class="listitem"><p><code class="literal">INDEXES</code></p></li><li class="listitem"><p><code class="literal">INFILE</code> (R)</p></li><li class="listitem"><p><code class="literal">INITIAL_SIZE</code></p></li><li class="listitem"><p><code class="literal">INNER</code> (R)</p></li><li class="listitem"><p><code class="literal">INOUT</code> (R)</p></li><li class="listitem"><p><code class="literal">INSENSITIVE</code> (R)</p></li><li class="listitem"><p><code class="literal">INSERT</code> (R)</p></li><li class="listitem"><p><code class="literal">INSERT_METHOD</code></p></li><li class="listitem"><p><code class="literal">INSTALL</code></p></li><li class="listitem"><p><code class="literal">INSTANCE</code></p></li><li class="listitem"><p><code class="literal">INT</code> (R)</p></li><li class="listitem"><p><code class="literal">INT1</code> (R)</p></li><li class="listitem"><p><code class="literal">INT2</code> (R)</p></li><li class="listitem"><p><code class="literal">INT3</code> (R)</p></li><li class="listitem"><p><code class="literal">INT4</code> (R)</p></li><li class="listitem"><p><code class="literal">INT8</code> (R)</p></li><li class="listitem"><p><code class="literal">INTEGER</code> (R)</p></li><li class="listitem"><p><code class="literal">INTERVAL</code> (R)</p></li><li class="listitem"><p><code class="literal">INTO</code> (R)</p></li><li class="listitem"><p><code class="literal">INVISIBLE</code></p></li><li class="listitem"><p><code class="literal">INVOKER</code></p></li><li class="listitem"><p><code class="literal">IO</code></p></li><li class="listitem"><p><code class="literal">IO_AFTER_GTIDS</code> (R)</p></li><li class="listitem"><p><code class="literal">IO_BEFORE_GTIDS</code> (R)</p></li><li class="listitem"><p><code class="literal">IO_THREAD</code></p></li><li class="listitem"><p><code class="literal">IPC</code></p></li><li class="listitem"><p><code class="literal">IS</code> (R)</p></li><li class="listitem"><p><code class="literal">ISOLATION</code></p></li><li class="listitem"><p><code class="literal">ISSUER</code></p></li><li class="listitem"><p><code class="literal">ITERATE</code> (R)</p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">IDENTIFIED</code></p></li><li class="listitem"><p><code class="literal">IF</code> (R)</p></li><li class="listitem"><p><code class="literal">IGNORE</code> (R)</p></li><li class="listitem"><p><code class="literal">IGNORE_SERVER_IDS</code></p></li><li class="listitem"><p><code class="literal">IMPORT</code></p></li><li class="listitem"><p><code class="literal">IN</code> (R)</p></li><li class="listitem"><p><code class="literal">INACTIVE</code>; added in 8.0.14 (nonreserved)</p></li><li class="listitem"><p><code class="literal">INDEX</code> (R)</p></li><li class="listitem"><p><code class="literal">INDEXES</code></p></li><li class="listitem"><p><code class="literal">INFILE</code> (R)</p></li><li class="listitem"><p><code class="literal">INITIAL</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">INITIAL_SIZE</code></p></li><li class="listitem"><p><code class="literal">INITIATE</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">INNER</code> (R)</p></li><li class="listitem"><p><code class="literal">INOUT</code> (R)</p></li><li class="listitem"><p><code class="literal">INSENSITIVE</code> (R)</p></li><li class="listitem"><p><code class="literal">INSERT</code> (R)</p></li><li class="listitem"><p><code class="literal">INSERT_METHOD</code></p></li><li class="listitem"><p><code class="literal">INSTALL</code></p></li><li class="listitem"><p><code class="literal">INSTANCE</code></p></li><li class="listitem"><p><code class="literal">INT</code> (R)</p></li><li class="listitem"><p><code class="literal">INT1</code> (R)</p></li><li class="listitem"><p><code class="literal">INT2</code> (R)</p></li><li class="listitem"><p><code class="literal">INT3</code> (R)</p></li><li class="listitem"><p><code class="literal">INT4</code> (R)</p></li><li class="listitem"><p><code class="literal">INT8</code> (R)</p></li><li class="listitem"><p><code class="literal">INTEGER</code> (R)</p></li><li class="listitem"><p><code class="literal">INTERVAL</code> (R)</p></li><li class="listitem"><p><code class="literal">INTO</code> (R)</p></li><li class="listitem"><p><code class="literal">INVISIBLE</code></p></li><li class="listitem"><p><code class="literal">INVOKER</code></p></li><li class="listitem"><p><code class="literal">IO</code></p></li><li class="listitem"><p><code class="literal">IO_AFTER_GTIDS</code> (R)</p></li><li class="listitem"><p><code class="literal">IO_BEFORE_GTIDS</code> (R)</p></li><li class="listitem"><p><code class="literal">IO_THREAD</code></p></li><li class="listitem"><p><code class="literal">IPC</code></p></li><li class="listitem"><p><code class="literal">IS</code> (R)</p></li><li class="listitem"><p><code class="literal">ISOLATION</code></p></li><li class="listitem"><p><code class="literal">ISSUER</code></p></li><li class="listitem"><p><code class="literal">ITERATE</code> (R)</p></li></ul>
 </div>
 <p><a name="keywords-8-0-detailed-J"></a>J</p>
 <div class="itemizedlist">
@@ -2374,7 +2374,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-8-0-detailed-R"></a>R</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">RANDOM</code>; added in 8.0.18 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RANGE</code> (R)</p></li><li class="listitem"><p><code class="literal">RANK</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">READ</code> (R)</p></li><li class="listitem"><p><code class="literal">READS</code> (R)</p></li><li class="listitem"><p><code class="literal">READ_ONLY</code></p></li><li class="listitem"><p><code class="literal">READ_WRITE</code> (R)</p></li><li class="listitem"><p><code class="literal">REAL</code> (R)</p></li><li class="listitem"><p><code class="literal">REBUILD</code></p></li><li class="listitem"><p><code class="literal">RECOVER</code></p></li><li class="listitem"><p><code class="literal">RECURSIVE</code> (R); added in 8.0.1 (reserved)</p></li><li class="listitem"><p><code class="literal">REDOFILE</code>; removed in 8.0.3</p></li><li class="listitem"><p><code class="literal">REDO_BUFFER_SIZE</code></p></li><li class="listitem"><p><code class="literal">REDUNDANT</code></p></li><li class="listitem"><p><code class="literal">REFERENCE</code>; added in 8.0.4 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REFERENCES</code> (R)</p></li><li class="listitem"><p><code class="literal">REGEXP</code> (R)</p></li><li class="listitem"><p><code class="literal">RELAY</code></p></li><li class="listitem"><p><code class="literal">RELAYLOG</code></p></li><li class="listitem"><p><code class="literal">RELAY_LOG_FILE</code></p></li><li class="listitem"><p><code class="literal">RELAY_LOG_POS</code></p></li><li class="listitem"><p><code class="literal">RELAY_THREAD</code></p></li><li class="listitem"><p><code class="literal">RELEASE</code> (R)</p></li><li class="listitem"><p><code class="literal">RELOAD</code></p></li><li class="listitem"><p><code class="literal">REMOTE</code>; added in 8.0.3 (nonreserved); removed in 8.0.14</p></li><li class="listitem"><p><code class="literal">REMOVE</code></p></li><li class="listitem"><p><code class="literal">RENAME</code> (R)</p></li><li class="listitem"><p><code class="literal">REORGANIZE</code></p></li><li class="listitem"><p><code class="literal">REPAIR</code></p></li><li class="listitem"><p><code class="literal">REPEAT</code> (R)</p></li><li class="listitem"><p><code class="literal">REPEATABLE</code></p></li><li class="listitem"><p><code class="literal">REPLACE</code> (R)</p></li><li class="listitem"><p><code class="literal">REPLICA</code>; added in 8.0.22 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REPLICAS</code>; added in 8.0.22 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REPLICATE_DO_DB</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_DO_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_IGNORE_DB</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_IGNORE_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_REWRITE_DB</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_WILD_DO_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_WILD_IGNORE_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATION</code></p></li><li class="listitem"><p><code class="literal">REQUIRE</code> (R)</p></li><li class="listitem"><p><code class="literal">REQUIRE_ROW_FORMAT</code>; added in 8.0.19 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESET</code></p></li><li class="listitem"><p><code class="literal">RESIGNAL</code> (R)</p></li><li class="listitem"><p><code class="literal">RESOURCE</code>; added in 8.0.3 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESPECT</code>; added in 8.0.2 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESTART</code>; added in 8.0.4 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESTORE</code></p></li><li class="listitem"><p><code class="literal">RESTRICT</code> (R)</p></li><li class="listitem"><p><code class="literal">RESUME</code></p></li><li class="listitem"><p><code class="literal">RETAIN</code>; added in 8.0.14 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RETURN</code> (R)</p></li><li class="listitem"><p><code class="literal">RETURNED_SQLSTATE</code></p></li><li class="listitem"><p><code class="literal">RETURNING</code>; added in 8.0.21 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RETURNS</code></p></li><li class="listitem"><p><code class="literal">REUSE</code>; added in 8.0.3 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REVERSE</code></p></li><li class="listitem"><p><code class="literal">REVOKE</code> (R)</p></li><li class="listitem"><p><code class="literal">RIGHT</code> (R)</p></li><li class="listitem"><p><code class="literal">RLIKE</code> (R)</p></li><li class="listitem"><p><code class="literal">ROLE</code>; became nonreserved in 8.0.1</p></li><li class="listitem"><p><code class="literal">ROLLBACK</code></p></li><li class="listitem"><p><code class="literal">ROLLUP</code></p></li><li class="listitem"><p><code class="literal">ROTATE</code></p></li><li class="listitem"><p><code class="literal">ROUTINE</code></p></li><li class="listitem"><p><code class="literal">ROW</code> (R); became reserved in 8.0.2</p></li><li class="listitem"><p><code class="literal">ROWS</code> (R); became reserved in 8.0.2</p></li><li class="listitem"><p><code class="literal">ROW_COUNT</code></p></li><li class="listitem"><p><code class="literal">ROW_FORMAT</code></p></li><li class="listitem"><p><code class="literal">ROW_NUMBER</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">RTREE</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">RANDOM</code>; added in 8.0.18 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RANGE</code> (R)</p></li><li class="listitem"><p><code class="literal">RANK</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">READ</code> (R)</p></li><li class="listitem"><p><code class="literal">READS</code> (R)</p></li><li class="listitem"><p><code class="literal">READ_ONLY</code></p></li><li class="listitem"><p><code class="literal">READ_WRITE</code> (R)</p></li><li class="listitem"><p><code class="literal">REAL</code> (R)</p></li><li class="listitem"><p><code class="literal">REBUILD</code></p></li><li class="listitem"><p><code class="literal">RECOVER</code></p></li><li class="listitem"><p><code class="literal">RECURSIVE</code> (R); added in 8.0.1 (reserved)</p></li><li class="listitem"><p><code class="literal">REDOFILE</code>; removed in 8.0.3</p></li><li class="listitem"><p><code class="literal">REDO_BUFFER_SIZE</code></p></li><li class="listitem"><p><code class="literal">REDUNDANT</code></p></li><li class="listitem"><p><code class="literal">REFERENCE</code>; added in 8.0.4 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REFERENCES</code> (R)</p></li><li class="listitem"><p><code class="literal">REGEXP</code> (R)</p></li><li class="listitem"><p><code class="literal">REGISTRATION</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RELAY</code></p></li><li class="listitem"><p><code class="literal">RELAYLOG</code></p></li><li class="listitem"><p><code class="literal">RELAY_LOG_FILE</code></p></li><li class="listitem"><p><code class="literal">RELAY_LOG_POS</code></p></li><li class="listitem"><p><code class="literal">RELAY_THREAD</code></p></li><li class="listitem"><p><code class="literal">RELEASE</code> (R)</p></li><li class="listitem"><p><code class="literal">RELOAD</code></p></li><li class="listitem"><p><code class="literal">REMOTE</code>; added in 8.0.3 (nonreserved); removed in 8.0.14</p></li><li class="listitem"><p><code class="literal">REMOVE</code></p></li><li class="listitem"><p><code class="literal">RENAME</code> (R)</p></li><li class="listitem"><p><code class="literal">REORGANIZE</code></p></li><li class="listitem"><p><code class="literal">REPAIR</code></p></li><li class="listitem"><p><code class="literal">REPEAT</code> (R)</p></li><li class="listitem"><p><code class="literal">REPEATABLE</code></p></li><li class="listitem"><p><code class="literal">REPLACE</code> (R)</p></li><li class="listitem"><p><code class="literal">REPLICA</code>; added in 8.0.22 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REPLICAS</code>; added in 8.0.22 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REPLICATE_DO_DB</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_DO_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_IGNORE_DB</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_IGNORE_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_REWRITE_DB</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_WILD_DO_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATE_WILD_IGNORE_TABLE</code></p></li><li class="listitem"><p><code class="literal">REPLICATION</code></p></li><li class="listitem"><p><code class="literal">REQUIRE</code> (R)</p></li><li class="listitem"><p><code class="literal">REQUIRE_ROW_FORMAT</code>; added in 8.0.19 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESET</code></p></li><li class="listitem"><p><code class="literal">RESIGNAL</code> (R)</p></li><li class="listitem"><p><code class="literal">RESOURCE</code>; added in 8.0.3 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESPECT</code>; added in 8.0.2 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESTART</code>; added in 8.0.4 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RESTORE</code></p></li><li class="listitem"><p><code class="literal">RESTRICT</code> (R)</p></li><li class="listitem"><p><code class="literal">RESUME</code></p></li><li class="listitem"><p><code class="literal">RETAIN</code>; added in 8.0.14 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RETURN</code> (R)</p></li><li class="listitem"><p><code class="literal">RETURNED_SQLSTATE</code></p></li><li class="listitem"><p><code class="literal">RETURNING</code>; added in 8.0.21 (nonreserved)</p></li><li class="listitem"><p><code class="literal">RETURNS</code></p></li><li class="listitem"><p><code class="literal">REUSE</code>; added in 8.0.3 (nonreserved)</p></li><li class="listitem"><p><code class="literal">REVERSE</code></p></li><li class="listitem"><p><code class="literal">REVOKE</code> (R)</p></li><li class="listitem"><p><code class="literal">RIGHT</code> (R)</p></li><li class="listitem"><p><code class="literal">RLIKE</code> (R)</p></li><li class="listitem"><p><code class="literal">ROLE</code>; became nonreserved in 8.0.1</p></li><li class="listitem"><p><code class="literal">ROLLBACK</code></p></li><li class="listitem"><p><code class="literal">ROLLUP</code></p></li><li class="listitem"><p><code class="literal">ROTATE</code></p></li><li class="listitem"><p><code class="literal">ROUTINE</code></p></li><li class="listitem"><p><code class="literal">ROW</code> (R); became reserved in 8.0.2</p></li><li class="listitem"><p><code class="literal">ROWS</code> (R); became reserved in 8.0.2</p></li><li class="listitem"><p><code class="literal">ROW_COUNT</code></p></li><li class="listitem"><p><code class="literal">ROW_FORMAT</code></p></li><li class="listitem"><p><code class="literal">ROW_NUMBER</code> (R); added in 8.0.2 (reserved)</p></li><li class="listitem"><p><code class="literal">RTREE</code></p></li></ul>
 </div>
 <p><a name="keywords-8-0-detailed-S"></a>S</p>
 <div class="itemizedlist">
@@ -2386,7 +2386,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-8-0-detailed-U"></a>U</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">UNBOUNDED</code>; added in 8.0.2 (nonreserved)</p></li><li class="listitem"><p><code class="literal">UNCOMMITTED</code></p></li><li class="listitem"><p><code class="literal">UNDEFINED</code></p></li><li class="listitem"><p><code class="literal">UNDO</code> (R)</p></li><li class="listitem"><p><code class="literal">UNDOFILE</code></p></li><li class="listitem"><p><code class="literal">UNDO_BUFFER_SIZE</code></p></li><li class="listitem"><p><code class="literal">UNICODE</code></p></li><li class="listitem"><p><code class="literal">UNINSTALL</code></p></li><li class="listitem"><p><code class="literal">UNION</code> (R)</p></li><li class="listitem"><p><code class="literal">UNIQUE</code> (R)</p></li><li class="listitem"><p><code class="literal">UNKNOWN</code></p></li><li class="listitem"><p><code class="literal">UNLOCK</code> (R)</p></li><li class="listitem"><p><code class="literal">UNSIGNED</code> (R)</p></li><li class="listitem"><p><code class="literal">UNTIL</code></p></li><li class="listitem"><p><code class="literal">UPDATE</code> (R)</p></li><li class="listitem"><p><code class="literal">UPGRADE</code></p></li><li class="listitem"><p><code class="literal">USAGE</code> (R)</p></li><li class="listitem"><p><code class="literal">USE</code> (R)</p></li><li class="listitem"><p><code class="literal">USER</code></p></li><li class="listitem"><p><code class="literal">USER_RESOURCES</code></p></li><li class="listitem"><p><code class="literal">USE_FRM</code></p></li><li class="listitem"><p><code class="literal">USING</code> (R)</p></li><li class="listitem"><p><code class="literal">UTC_DATE</code> (R)</p></li><li class="listitem"><p><code class="literal">UTC_TIME</code> (R)</p></li><li class="listitem"><p><code class="literal">UTC_TIMESTAMP</code> (R)</p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">UNBOUNDED</code>; added in 8.0.2 (nonreserved)</p></li><li class="listitem"><p><code class="literal">UNCOMMITTED</code></p></li><li class="listitem"><p><code class="literal">UNDEFINED</code></p></li><li class="listitem"><p><code class="literal">UNDO</code> (R)</p></li><li class="listitem"><p><code class="literal">UNDOFILE</code></p></li><li class="listitem"><p><code class="literal">UNDO_BUFFER_SIZE</code></p></li><li class="listitem"><p><code class="literal">UNICODE</code></p></li><li class="listitem"><p><code class="literal">UNINSTALL</code></p></li><li class="listitem"><p><code class="literal">UNION</code> (R)</p></li><li class="listitem"><p><code class="literal">UNIQUE</code> (R)</p></li><li class="listitem"><p><code class="literal">UNKNOWN</code></p></li><li class="listitem"><p><code class="literal">UNLOCK</code> (R)</p></li><li class="listitem"><p><code class="literal">UNREGISTER</code>; added in 8.0.27 (nonreserved)</p></li><li class="listitem"><p><code class="literal">UNSIGNED</code> (R)</p></li><li class="listitem"><p><code class="literal">UNTIL</code></p></li><li class="listitem"><p><code class="literal">UPDATE</code> (R)</p></li><li class="listitem"><p><code class="literal">UPGRADE</code></p></li><li class="listitem"><p><code class="literal">USAGE</code> (R)</p></li><li class="listitem"><p><code class="literal">USE</code> (R)</p></li><li class="listitem"><p><code class="literal">USER</code></p></li><li class="listitem"><p><code class="literal">USER_RESOURCES</code></p></li><li class="listitem"><p><code class="literal">USE_FRM</code></p></li><li class="listitem"><p><code class="literal">USING</code> (R)</p></li><li class="listitem"><p><code class="literal">UTC_DATE</code> (R)</p></li><li class="listitem"><p><code class="literal">UTC_TIME</code> (R)</p></li><li class="listitem"><p><code class="literal">UTC_TIMESTAMP</code> (R)</p></li></ul>
 </div>
 <p><a name="keywords-8-0-detailed-V"></a>V</p>
 <div class="itemizedlist">
@@ -2453,7 +2453,7 @@ Query OK, 0 rows affected (0.01 sec)
  | <a class="link" href="language-structure.html#keywords-new-8-0-Z">Z</a>
 </p><p><a name="keywords-new-8-0-A"></a>A</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">ACTIVE</code></p></li><li class="listitem"><p><code class="literal">ADMIN</code></p></li><li class="listitem"><p><code class="literal">ARRAY</code></p></li><li class="listitem"><p><code class="literal">ATTRIBUTE</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">ACTIVE</code></p></li><li class="listitem"><p><code class="literal">ADMIN</code></p></li><li class="listitem"><p><code class="literal">ARRAY</code></p></li><li class="listitem"><p><code class="literal">ATTRIBUTE</code></p></li><li class="listitem"><p><code class="literal">AUTHENTICATION</code></p></li></ul>
 </div>
 <p><a name="keywords-new-8-0-B"></a>B</p>
 <div class="itemizedlist">
@@ -2461,7 +2461,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-new-8-0-C"></a>C</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">CLONE</code></p></li><li class="listitem"><p><code class="literal">COMPONENT</code></p></li><li class="listitem"><p><code class="literal">CUME_DIST</code> (R)</p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">CHALLENGE_RESPONSE</code></p></li><li class="listitem"><p><code class="literal">CLONE</code></p></li><li class="listitem"><p><code class="literal">COMPONENT</code></p></li><li class="listitem"><p><code class="literal">CUME_DIST</code> (R)</p></li></ul>
 </div>
 <p><a name="keywords-new-8-0-D"></a>D</p>
 <div class="itemizedlist">
@@ -2473,7 +2473,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-new-8-0-F"></a>F</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">FAILED_LOGIN_ATTEMPTS</code></p></li><li class="listitem"><p><code class="literal">FIRST_VALUE</code> (R)</p></li><li class="listitem"><p><code class="literal">FOLLOWING</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">FACTOR</code></p></li><li class="listitem"><p><code class="literal">FAILED_LOGIN_ATTEMPTS</code></p></li><li class="listitem"><p><code class="literal">FINISH</code></p></li><li class="listitem"><p><code class="literal">FIRST_VALUE</code> (R)</p></li><li class="listitem"><p><code class="literal">FOLLOWING</code></p></li></ul>
 </div>
 <p><a name="keywords-new-8-0-G"></a>G</p>
 <div class="itemizedlist">
@@ -2485,7 +2485,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-new-8-0-I"></a>I</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">INACTIVE</code></p></li><li class="listitem"><p><code class="literal">INVISIBLE</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">INACTIVE</code></p></li><li class="listitem"><p><code class="literal">INITIAL</code></p></li><li class="listitem"><p><code class="literal">INITIATE</code></p></li><li class="listitem"><p><code class="literal">INVISIBLE</code></p></li></ul>
 </div>
 <p><a name="keywords-new-8-0-J"></a>J</p>
 <div class="itemizedlist">
@@ -2517,7 +2517,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-new-8-0-R"></a>R</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">RANDOM</code></p></li><li class="listitem"><p><code class="literal">RANK</code> (R)</p></li><li class="listitem"><p><code class="literal">RECURSIVE</code> (R)</p></li><li class="listitem"><p><code class="literal">REFERENCE</code></p></li><li class="listitem"><p><code class="literal">REPLICA</code></p></li><li class="listitem"><p><code class="literal">REPLICAS</code></p></li><li class="listitem"><p><code class="literal">REQUIRE_ROW_FORMAT</code></p></li><li class="listitem"><p><code class="literal">RESOURCE</code></p></li><li class="listitem"><p><code class="literal">RESPECT</code></p></li><li class="listitem"><p><code class="literal">RESTART</code></p></li><li class="listitem"><p><code class="literal">RETAIN</code></p></li><li class="listitem"><p><code class="literal">RETURNING</code></p></li><li class="listitem"><p><code class="literal">REUSE</code></p></li><li class="listitem"><p><code class="literal">ROLE</code></p></li><li class="listitem"><p><code class="literal">ROW_NUMBER</code> (R)</p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">RANDOM</code></p></li><li class="listitem"><p><code class="literal">RANK</code> (R)</p></li><li class="listitem"><p><code class="literal">RECURSIVE</code> (R)</p></li><li class="listitem"><p><code class="literal">REFERENCE</code></p></li><li class="listitem"><p><code class="literal">REGISTRATION</code></p></li><li class="listitem"><p><code class="literal">REPLICA</code></p></li><li class="listitem"><p><code class="literal">REPLICAS</code></p></li><li class="listitem"><p><code class="literal">REQUIRE_ROW_FORMAT</code></p></li><li class="listitem"><p><code class="literal">RESOURCE</code></p></li><li class="listitem"><p><code class="literal">RESPECT</code></p></li><li class="listitem"><p><code class="literal">RESTART</code></p></li><li class="listitem"><p><code class="literal">RETAIN</code></p></li><li class="listitem"><p><code class="literal">RETURNING</code></p></li><li class="listitem"><p><code class="literal">REUSE</code></p></li><li class="listitem"><p><code class="literal">ROLE</code></p></li><li class="listitem"><p><code class="literal">ROW_NUMBER</code> (R)</p></li></ul>
 </div>
 <p><a name="keywords-new-8-0-S"></a>S</p>
 <div class="itemizedlist">
@@ -2529,7 +2529,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 <p><a name="keywords-new-8-0-U"></a>U</p>
 <div class="itemizedlist">
-<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">UNBOUNDED</code></p></li></ul>
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><code class="literal">UNBOUNDED</code></p></li><li class="listitem"><p><code class="literal">UNREGISTER</code></p></li></ul>
 </div>
 <p><a name="keywords-new-8-0-V"></a>V</p>
 <div class="itemizedlist">
@@ -2584,7 +2584,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45402838401440"></a><a class="indexterm" name="idm45402838399952"></a><a class="indexterm" name="idm45402838398880"></a><a class="indexterm" name="idm45402838397392"></a><a class="indexterm" name="idm45402838396320"></a><a class="indexterm" name="idm45402838395248"></a><p>
+<a class="indexterm" name="idm46103365852736"></a><a class="indexterm" name="idm46103365851248"></a><a class="indexterm" name="idm46103365850176"></a><a class="indexterm" name="idm46103365848688"></a><a class="indexterm" name="idm46103365847616"></a><a class="indexterm" name="idm46103365846544"></a><p>
       You can store a value in a user-defined variable in one statement
       and refer to it later in another statement. This enables you to
       pass values from one statement to another.
@@ -2829,7 +2829,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45402838321968"></a><p>
+<a class="indexterm" name="idm46103365773360"></a><p>
       This section lists the grammar rules that expressions must follow
       in MySQL and provides additional information about the types of
       terms that may appear in expressions.
@@ -3022,7 +3022,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45402838223904"></a><a class="indexterm" name="idm45402838222400"></a><a class="indexterm" name="idm45402838221312"></a><p>
+<a class="indexterm" name="idm46103365675200"></a><a class="indexterm" name="idm46103365673696"></a><a class="indexterm" name="idm46103365672608"></a><p>
         <em class="replaceable"><code>interval_expr</code></em> in expressions
         represents a temporal interval. Intervals have this syntax:
       </p><pre data-lang="sql" class="programlisting">INTERVAL <em class="replaceable"><code>expr</code></em> <em class="replaceable"><code>unit</code></em>
@@ -3263,7 +3263,7 @@ mysql&gt; <strong class="userinput"><code>SELECT '2005-03-32' + INTERVAL 1 MONTH
 </div>
 
 </div>
-<a class="indexterm" name="idm45402838067280"></a><p>
+<a class="indexterm" name="idm46103365518624"></a><p>
       The most visible part of an SQL statement is the text of the
       statement. As of MySQL 8.0.23, clients can also define query
       attributes that apply to the next statement sent to the server for
@@ -3511,7 +3511,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM t1;</code></strong>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="function_mysql-query-attribute-string"></a>
             <a class="link" href="language-structure.html#function_mysql-query-attribute-string"><code class="literal">mysql_query_attribute_string(<em class="replaceable"><code>name</code></em>)</code></a>
-          </p><a class="indexterm" name="idm45402837977600"></a><p>
+          </p><a class="indexterm" name="idm46103365429136"></a><p>
             Applications can define attributes that apply to the next
             query sent to the server. The
             <a class="link" href="language-structure.html#function_mysql-query-attribute-string"><code class="literal">mysql_query_attribute_string()</code></a>
@@ -3575,7 +3575,7 @@ mysql&gt; SELECT
 </div>
 
 </div>
-<a class="indexterm" name="idm45402837957664"></a><a class="indexterm" name="idm45402837956592"></a><p>
+<a class="indexterm" name="idm46103365409200"></a><a class="indexterm" name="idm46103365408128"></a><p>
       MySQL Server supports three comment styles:
 </p>
 <div class="itemizedlist">
