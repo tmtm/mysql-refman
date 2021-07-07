@@ -1,4 +1,4 @@
-<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>第 20 章 ドキュメントストアとしての MySQL の使用</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="up" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="prev" href="mysql-shell-userguide.html" title="第 19 章 MySQL Shell"><link rel="next" href="mysql-innodb-cluster-introduction.html" title="第 21 章 InnoDB クラスタ"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">第 20 章 ドキュメントストアとしての MySQL の使用</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="mysql-shell-userguide.html">前</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="mysql-innodb-cluster-introduction.html">次へ</a></td></tr></table><hr></div><div class="status-header"><p class="alert">このページは機械翻訳したものです。</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="document-store"></a>第 20 章 ドキュメントストアとしての MySQL の使用</h1></div></div></div><div class="toc"><p><b>目次</b></p><dl class="toc"><dt><span class="section"><a href="document-store.html#document-store-interfaces">20.1 MySQL ドキュメントストアへのインタフェース</a></span></dt><dt><span class="section"><a href="document-store.html#document-store-concepts">20.2 ドキュメントストアの概念</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript">20.3 JavaScript クイックスタートガイド: ドキュメントストア用の MySQL Shell</a></span></dt><dd><dl><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-shell">20.3.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-download">20.3.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-collections">20.3.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-relational-tables">20.3.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-in-tables">20.3.5 テーブル内のドキュメント</a></span></dt></dl></dd><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python">20.4 Python クイックスタートガイド: ドキュメントストア用の MySQL Shell</a></span></dt><dd><dl><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-shell">20.4.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-download">20.4.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-collections">20.4.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-relational-tables">20.4.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-in-tables">20.4.5 テーブル内のドキュメント</a></span></dt></dl></dd><dt><span class="section"><a href="document-store.html#x-plugin">20.5 X プラグイン</a></span></dt><dd><dl><dt><span class="section"><a href="document-store.html#x-plugin-checking-installation">20.5.1 X プラグイン のインストールの確認</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-disabling">20.5.2 X プラグイン の無効化</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-encrypted-connections">20.5.3 X プラグイン での暗号化接続の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-sha2-cache-plugin">20.5.4 Caching SHA-2 認証プラグインでの X プラグイン の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-connection-compression">20.5.5 X プラグイン での接続圧縮</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-options-variables">20.5.6 X プラグイン のオプションおよび変数</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-system-monitoring">20.5.7 X プラグイン の監視</a></span></dt></dl></dd></dl></div><a class="indexterm" name="idm45447957639120"></a><a class="indexterm" name="idm45447957637664"></a><a class="indexterm" name="idm45447957635600"></a><p>
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>第 20 章 ドキュメントストアとしての MySQL の使用</title><link rel="stylesheet" type="text/css" href="mvl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="up" href="index.html" title="MySQL 8.0 リファレンスマニュアル"><link rel="prev" href="mysql-shell-userguide.html" title="第 19 章 MySQL Shell"><link rel="next" href="mysql-innodb-cluster-introduction.html" title="第 21 章 InnoDB クラスタ"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">第 20 章 ドキュメントストアとしての MySQL の使用</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="mysql-shell-userguide.html">前</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="mysql-innodb-cluster-introduction.html">次へ</a></td></tr></table><hr></div><div class="status-header"><p class="alert">このページは機械翻訳したものです。</p></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="document-store"></a>第 20 章 ドキュメントストアとしての MySQL の使用</h1></div></div></div><div class="toc"><p><b>目次</b></p><dl class="toc"><dt><span class="section"><a href="document-store.html#document-store-interfaces">20.1 MySQL ドキュメントストアへのインタフェース</a></span></dt><dt><span class="section"><a href="document-store.html#document-store-concepts">20.2 ドキュメントストアの概念</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript">20.3 JavaScript クイックスタートガイド: ドキュメントストア用の MySQL Shell</a></span></dt><dd><dl><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-shell">20.3.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-download">20.3.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-collections">20.3.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-relational-tables">20.3.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-in-tables">20.3.5 テーブル内のドキュメント</a></span></dt></dl></dd><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python">20.4 Python クイックスタートガイド: ドキュメントストア用の MySQL Shell</a></span></dt><dd><dl><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-shell">20.4.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-download">20.4.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-collections">20.4.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-relational-tables">20.4.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-in-tables">20.4.5 テーブル内のドキュメント</a></span></dt></dl></dd><dt><span class="section"><a href="document-store.html#x-plugin">20.5 X プラグイン</a></span></dt><dd><dl><dt><span class="section"><a href="document-store.html#x-plugin-checking-installation">20.5.1 X プラグイン のインストールの確認</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-disabling">20.5.2 X プラグイン の無効化</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-encrypted-connections">20.5.3 X プラグイン での暗号化接続の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-sha2-cache-plugin">20.5.4 Caching SHA-2 認証プラグインでの X プラグイン の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-connection-compression">20.5.5 X プラグイン での接続圧縮</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-options-variables">20.5.6 X プラグイン のオプションおよび変数</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-system-monitoring">20.5.7 X プラグイン の監視</a></span></dt></dl></dd></dl></div><a class="indexterm" name="idm45779500922928"></a><a class="indexterm" name="idm45779500921472"></a><a class="indexterm" name="idm45779500919408"></a><p>
     この章では、MySQL をドキュメントストア (<span class="quote">「<span class="quote">「NoSQL の使用」</span>」</span>とも呼ばれる) として使用する別の方法について説明します。 従来の (SQL) 方法で MySQL を使用する場合、この章はおそらく関連がありません。 
   </p><p>
     従来、MySQL などのリレーショナルデータベースでは、通常、ドキュメントを格納する前にスキーマを定義する必要がありました。 このセクションで説明する機能を使用すると、MySQL をドキュメントストアとして使用できます。ドキュメントストアはスキーマレスであるため、ドキュメントのスキーマ対応の記憶域システムです。 たとえば、製品を説明するドキュメントを作成する場合、ドキュメントを格納して操作する前に、製品の使用可能なすべての属性を把握して定義する必要はありません。 これは、製品をデータベースに追加する前にテーブルのすべてのカラムを認識して定義する必要がある場合に、リレーショナルデータベースでの作業およびテーブルへの製品の格納とは異なります。 この章で説明する機能を使用すると、MySQL の構成方法、ドキュメントストアモデルのみを使用する方法、またはドキュメントストアモデルの柔軟性とリレーショナルモデルの機能を組み合せる方法を選択できます。 
@@ -75,7 +75,7 @@
             1 つまたは複数のドキュメントの更新
           </p></li><li class="listitem"><p>
             1 つまたは複数のドキュメントを削除
-          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-shell-tutorial-javascript"></a>20.3 JavaScript クイックスタートガイド: ドキュメントストア用の MySQL Shell</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-shell">20.3.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-download">20.3.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-collections">20.3.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-relational-tables">20.3.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-in-tables">20.3.5 テーブル内のドキュメント</a></span></dt></dl></div><a class="indexterm" name="idm45447957582064"></a><p>
+          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-shell-tutorial-javascript"></a>20.3 JavaScript クイックスタートガイド: ドキュメントストア用の MySQL Shell</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-shell">20.3.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-download">20.3.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-collections">20.3.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-relational-tables">20.3.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-in-tables">20.3.5 テーブル内のドキュメント</a></span></dt></dl></div><a class="indexterm" name="idm45779500865872"></a><p>
     このクイックスタートガイドでは、MySQL Shell と対話形式でドキュメントストアアプリケーションのプロトタイプ作成を開始する手順について説明します。 このガイドの内容は次のとおりです: 
   </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         MySQL 機能、MySQL Shell および <code class="literal">world_x</code> サンプルスキーマの概要。
@@ -87,7 +87,7 @@
         テーブル内のドキュメントに適用される操作。
       </p></li></ul></div><p>
     このクイックスタートガイドに従うには、X プラグイン がインストールされた MySQL サーバー、8.0 のデフォルト、および MySQL Shell をクライアントとして使用する必要があります。<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/" target="_top">MySQL Shell 8.0</a> は、MySQL Shell に関する詳細情報を提供します。 ドキュメントストアには X DevAPI を使用してアクセスし、MySQL Shell は JavaScript と Python の両方でこの API を提供します。 
-  </p><h3><a name="idm45447957572848"></a>関連情報</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+  </p><h3><a name="idm45779500856656"></a>関連情報</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/" target="_top">MySQL Shell 8.0</a> は、MySQL Shell に関する詳細情報を提供します。
       </p></li><li class="listitem"><p>
         このクイックスタートガイドで使用されるツールの詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-install.html" target="_top">MySQL Shell のインストール</a> および <a class="xref" href="document-store.html#x-plugin" title="20.5 X プラグイン">セクション20.5「X プラグイン」</a> を参照してください。
@@ -95,7 +95,7 @@
         <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/" target="_top">X DevAPI User Guide</a> には、X DevAPI を使用してドキュメントストアを使用するアプリケーションを開発するその他の例が用意されています。
       </p></li><li class="listitem"><p>
         <a class="link" href="document-store.html#mysql-shell-tutorial-python" title="20.4 Python クイックスタートガイド: ドキュメントストア用の MySQL Shell">Python</a> クイックスタートガイドも使用できます。
-      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-shell"></a>20.3.1 MySQL Shell</h3></div></div></div><a class="indexterm" name="idm45447957562960"></a><p>
+      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-shell"></a>20.3.1 MySQL Shell</h3></div></div></div><a class="indexterm" name="idm45779500846768"></a><p>
       このクイックスタートガイドでは、MySQL Shell について一定レベルの知識があることを前提としています。 次のセクションは概要です。詳細は、MySQL Shell のドキュメントを参照してください。MySQL Shell は、MySQL Server への統一されたスクリプトインタフェースです。 JavaScript および Python でのスクリプトがサポートされています。 JavaScript はデフォルトの処理モードです。 
     </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-shell-start"></a>MySQL Shell の起動</h4></div></div></div><p>
         MySQL サーバーをインストールして起動したら、MySQL Shell をサーバーインスタンスに接続します。 接続する予定の MySQL サーバーインスタンスのアドレスを知っている必要があります。 インスタンスをドキュメントストアとして使用できるようにするには、サーバーインスタンスに X プラグイン がインストールされている必要があり、X プロトコル を使用してサーバーに接続する必要があります。 たとえば、33060 のデフォルトの X プロトコル ポートでインスタンス <code class="literal">ds1.example.com</code> に接続するには、ネットワーク文字列 <code class="literal"><em class="replaceable"><code>user</code></em>@ds1.example.com:33060</code> を使用します。 
@@ -130,7 +130,7 @@
             <span class="keycap"><strong>「バックスペース」</strong></span>でカーソルの前の文字を削除でき、新しい文字を入力するとカーソルの位置に挿入されます。
           </p></li><li class="listitem"><p>
             <span class="keycap"><strong>Enter</strong></span> は、現在の入力行をサーバーに送信します。
-          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-shell-help"></a>MySQL Shell のヘルプの表示</h4></div></div></div><a class="indexterm" name="idm45447957523200"></a><p>
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-shell-help"></a>MySQL Shell のヘルプの表示</h4></div></div></div><a class="indexterm" name="idm45779500807072"></a><p>
         コマンドラインオプションのリストを表示するには、コマンドインタプリタのプロンプトで <span class="command"><strong>mysqlsh --help</strong></span> と入力します。
       </p><pre class="programlisting"><strong class="userinput"><code>mysqlsh --help</code></strong>
 </pre><p>
@@ -139,10 +139,10 @@
 </pre><p>
         個々の MySQL Shell コマンドの詳細なヘルプを表示するには、<code class="literal">\help</code> に続けてコマンド名を入力します。 たとえば、<code class="literal">\connect</code> コマンドのヘルプを表示するには、次のコマンドを発行します: 
       </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>\help \connect</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-shell-quit"></a>MySQL Shell の終了</h4></div></div></div><a class="indexterm" name="idm45447957509952"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-shell-quit"></a>MySQL Shell の終了</h4></div></div></div><a class="indexterm" name="idm45779500793888"></a><p>
         MySQL Shell を終了するには、次のコマンドを発行します:
       </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>\quit</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447957505776"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779500789712"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             MySQL Shell での対話型コード実行の動作については、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-interactive-code-execution.html" target="_top">対話型コードの実行</a> を参照してください。
           </p></li><li class="listitem"><p>
             セッションおよび接続の代替方法の詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-getting-started.html" target="_top">MySQL Shell スタートガイド</a> を参照してください。
@@ -165,7 +165,7 @@ Switching to SQL mode... Commands end with ;
 <strong class="userinput"><code>\source /tmp/world_x-db/world_x.sql</code></strong>
 </pre></li></ul></div><p>
           <code class="filename">/tmp/</code>をシステム上の <code class="filename">world_x.sql</code> ファイルへのパスに置き換えます。 プロンプトが表示されたら、パスワードを入力します。 root 以外のアカウントは、そのアカウントが新しいスキーマを作成する権限を持っているかぎり使用できます。 
-        </p></li></ol></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447957480816"></a>world_x スキーマ</h4></div></div></div><a class="indexterm" name="idm45447957480112"></a><p>
+        </p></li></ol></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779500764752"></a>world_x スキーマ</h4></div></div></div><a class="indexterm" name="idm45779500764048"></a><p>
         <code class="literal">world_x</code> サンプルスキーマには、次の JSON コレクションおよびリレーショナルテーブルが含まれています:
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             コレクション
@@ -179,9 +179,9 @@ Switching to SQL mode... Commands end with ;
                 <code class="literal">city</code>: これらの国の一部の都市に関する情報。
               </p></li><li class="listitem"><p>
                 <code class="literal">countrylanguage</code>: 各国で話されている言語。
-              </p></li></ul></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447957467472"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              </p></li></ul></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779500751408"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-sessions.html" target="_top">MySQL Shell セッション</a> では、セッションタイプについて説明します。
-          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-documents-collections"></a>20.3.3 ドキュメントとコレクション</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-collections-operations">20.3.3.1 コレクションの作成、リストおよびドロップ</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-collections-add">20.3.3.2 コレクションの操作</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-find">20.3.3.3 ドキュメントの検索</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-modify">20.3.3.4 ドキュメントの変更</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-remove">20.3.3.5 ドキュメントの削除</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-indexes-create">20.3.3.6 インデックスの作成および削除</a></span></dt></dl></div><a class="indexterm" name="idm45447957463168"></a><p>
+          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-documents-collections"></a>20.3.3 ドキュメントとコレクション</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-collections-operations">20.3.3.1 コレクションの作成、リストおよびドロップ</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-collections-add">20.3.3.2 コレクションの操作</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-find">20.3.3.3 ドキュメントの検索</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-modify">20.3.3.4 ドキュメントの変更</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-documents-remove">20.3.3.5 ドキュメントの削除</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-indexes-create">20.3.3.6 インデックスの作成および削除</a></span></dt></dl></div><a class="indexterm" name="idm45779500747104"></a><p>
       MySQL をドキュメントストアとして使用している場合、コレクションは、作成、リストおよびドロップできるスキーマ内のコンテナです。 コレクションには、追加、検索、更新および削除できる JSON ドキュメントが含まれます。 
     </p><p>
       このセクションの例では、<code class="literal">world_x</code> スキーマの <code class="literal">countryinfo</code> コレクションを使用します。 <code class="literal">world_x</code> スキーマの設定手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-javascript-download" title="20.3.2 world_x データベースのダウンロードおよびインポート">セクション20.3.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。 
@@ -243,41 +243,41 @@ Switching to SQL mode... Commands end with ;
             </tr><tr>
               <td><code class="literal">db.<em class="replaceable"><code>name</code></em>.remove()</code></td>
               <td><a class="link" href="document-store.html#mysql-shell-tutorial-javascript-documents-remove" title="20.3.3.5 ドキュメントの削除">remove()</a> メソッドは、名前付きコレクションからドキュメントまたはドキュメントのリストを削除します。</td>
-            </tr></tbody></table></div></li></ul></div><h4><a name="idm45447957400896"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            </tr></tbody></table></div></li></ul></div><h4><a name="idm45779500685008"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           一般的な概要は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/devapi-users-working-with-collections.html" target="_top">Working with Collections</a> を参照してください。
         </p></li><li class="listitem"><p>
           <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/mysql-x-crud-ebnf-definitions.html" target="_top">CRUD EBNF Definitions</a> では、操作の完全なリストが提供されます。
-        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-collections-operations"></a>20.3.3.1 コレクションの作成、リストおよびドロップ</h4></div></div></div><a class="indexterm" name="idm45447957395312"></a><p>
+        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-collections-operations"></a>20.3.3.1 コレクションの作成、リストおよびドロップ</h4></div></div></div><a class="indexterm" name="idm45779500679376"></a><p>
         MySQL Shell では、新しいコレクションを作成し、スキーマ内の既存のコレクションのリストを取得し、スキーマから既存のコレクションを削除できます。 コレクション名は大/小文字が区別され、各コレクション名は一意である必要があります。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957392304"></a>スキーマの確認</h5></div></div></div><a class="indexterm" name="idm45447957391632"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500676368"></a>スキーマの確認</h5></div></div></div><a class="indexterm" name="idm45779500675696"></a><p>
           スキーマ変数に割り当てられている値を表示するには、次のコマンドを発行します:
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db</code></strong>
 </pre><p>
           スキーマ値が <code class="literal">Schema:world_x</code> でない場合は、次のコマンドを発行して <code class="literal">db</code> 変数を設定します:
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>\use world_x</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-collections-create"></a>コレクションの作成</h5></div></div></div><a class="indexterm" name="idm45447957382464"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-collections-create"></a>コレクションの作成</h5></div></div></div><a class="indexterm" name="idm45779500666528"></a><p>
           既存のスキーマに新しいコレクションを作成するには、<code class="literal">db</code> オブジェクトの <code class="literal">createCollection()</code> メソッドを使用します。 次の例では、<code class="literal">world_x</code> スキーマに <code class="literal">flags</code> というコレクションを作成します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.createCollection("flags")</code></strong>
 </pre><p>
           このメソッドはコレクションオブジェクトを返します。
-        </p><pre class="screen">&lt;Collection:flags&gt;</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-collections-get"></a>コレクションのリスト</h5></div></div></div><a class="indexterm" name="idm45447957372608"></a><p>
+        </p><pre class="screen">&lt;Collection:flags&gt;</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-collections-get"></a>コレクションのリスト</h5></div></div></div><a class="indexterm" name="idm45779500656672"></a><p>
           <code class="literal">world_x</code> スキーマ内のすべてのコレクションを表示するには、<code class="literal">db</code> オブジェクトの <code class="literal">getCollections()</code> メソッドを使用します。 現在接続しているサーバーによって返されるコレクションは、大カッコ内に表示されます。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.getCollections()</code></strong>
 [
     &lt;Collection:countryinfo&gt;,
     &lt;Collection:flags&gt;
 ]
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-collections-drop"></a>コレクションのドロップ</h5></div></div></div><a class="indexterm" name="idm45447957364592"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-collections-drop"></a>コレクションのドロップ</h5></div></div></div><a class="indexterm" name="idm45779500648656"></a><p>
           スキーマから既存のコレクションを削除するには、<code class="literal">db</code> オブジェクトの <code class="literal">dropCollection()</code> メソッドを使用します。 たとえば、現行のスキーマから <code class="literal">flags</code> コレクションを削除するには、次のコマンドを発行します: 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.dropCollection("flags")</code></strong>
 </pre><p>
           <code class="literal">dropCollection()</code> メソッドは、スキーマからリレーショナルテーブルを削除するために MySQL Shell でも使用されます。
 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957356544"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500640608"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               その他の例については、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-objects.html" target="_top">Collection Objects</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-collections-add"></a>20.3.3.2 コレクションの操作</h4></div></div></div><a class="indexterm" name="idm45447957352256"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-collections-add"></a>20.3.3.2 コレクションの操作</h4></div></div></div><a class="indexterm" name="idm45779500636320"></a><p>
         スキーマ内のコレクションを操作するには、<code class="literal">db</code> グローバルオブジェクトを使用して現在のスキーマにアクセスします。 この例では、以前にインポートした <code class="literal">world_x</code> スキーマと <code class="literal">countryinfo</code> コレクションを使用しています。 したがって、発行する操作の形式は <code class="literal">db.<em class="replaceable"><code>collection_name</code></em>.operation</code> で、<em class="replaceable"><code>collection_name</code></em> は操作の実行対象となるコレクションの名前です。 次の例では、操作は <code class="literal">countryinfo</code> コレクションに対して実行されます。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957344672"></a>ドキュメントの追加</h5></div></div></div><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500628736"></a>ドキュメントの追加</h5></div></div></div><p>
           <code class="literal">add()</code> メソッドを使用して、あるドキュメントまたはドキュメントのリストを既存のコレクションに挿入します。 次のドキュメントを <code class="literal">countryinfo</code> コレクションに挿入します。 これは複数行コンテンツであるため、<span class="keycap"><strong>Enter</strong></span> を 2 回押してドキュメントを挿入します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.add(
  {
@@ -325,15 +325,15 @@ Switching to SQL mode... Commands end with ;
 }
 </pre><p>
           ドキュメントの追加時に指定されたフィールドに加えて、<code class="literal">_id</code> というフィールドもあります。 各ドキュメントには、<code class="literal">_id</code> と呼ばれる識別子フィールドが必要です。 <code class="literal">_id</code> フィールドの値は、同じコレクション内のすべてのドキュメント間で一意である必要があります。 MySQL 8.0.11 以上では、ドキュメント ID はクライアントではなくサーバーによって生成されるため、MySQL Shell は<code class="literal">_id</code> 値を自動的に設定しません。 8.0.11 以上の MySQL サーバーでは、ドキュメントに<code class="literal">_id</code> フィールドが含まれていない場合、<code class="literal">_id</code> 値が設定されます。 以前の 8.0 リリースまたは 5.7 の MySQL サーバーは、この状況では<code class="literal">_id</code> 値を設定しないため、明示的に指定する必要があります。 そうでない場合、MySQL Shell はエラー 5115 <span class="errortext">「文書に必須フィールドがありません」</span>を返します。 詳細は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/understanding-automatic-document-ids.html" target="_top">Understanding Document IDs</a> を参照してください。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957327504"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500611616"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionaddfunction" target="_top">CollectionAddFunction</a> を参照してください。
             </p></li><li class="listitem"><p>
               <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/understanding-automatic-document-ids.html" target="_top">Understanding Document IDs</a>を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-documents-find"></a>20.3.3.3 ドキュメントの検索</h4></div></div></div><a class="indexterm" name="idm45447957321536"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-documents-find"></a>20.3.3.3 ドキュメントの検索</h4></div></div></div><a class="indexterm" name="idm45779500605648"></a><p>
         <code class="literal">find()</code> メソッドを使用して、スキーマ内のコレクションに対してクエリーを実行し、ドキュメントを戻すことができます。MySQL Shell には、返されたドキュメントをフィルタおよびソートするために <code class="literal">find()</code> メソッドとともに使用する追加のメソッドが用意されています。
       </p><p>
         MySQL には、検索条件を指定する次の演算子が用意されています: <code class="literal">OR</code> (<code class="literal">||</code>)、<code class="literal">AND</code> (<code class="literal">&amp;&amp;</code>)、<code class="literal">XOR</code>, <code class="literal">IS</code>, <code class="literal">NOT</code>, <code class="literal">BETWEEN</code>, <code class="literal">IN</code>, <code class="literal">LIKE</code>, <code class="literal">!=</code>, <code class="literal">&lt;&gt;</code>, <code class="literal">&gt;</code>, <code class="literal">&gt;=</code>, <code class="literal">&lt;</code>, <code class="literal">&lt;=</code>, <code class="literal">&amp;</code>, <code class="literal">|</code>, <code class="literal">&lt;&lt;</code>, <code class="literal">&gt;&gt;</code>, <code class="literal">+</code>, <code class="literal">-</code>, <code class="literal">*</code>, <code class="literal">/</code>, <code class="literal">~</code> および <code class="literal">%</code>。
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-documents-find-all"></a>コレクション内のすべてのドキュメントの検索</h5></div></div></div><a class="indexterm" name="idm45447957297728"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-documents-find-all"></a>コレクション内のすべてのドキュメントの検索</h5></div></div></div><a class="indexterm" name="idm45779500581888"></a><p>
           コレクション内のすべてのドキュメントを返すには、検索条件を指定せずに <code class="literal">find()</code> メソッドを使用します。 たとえば、次の操作では、<code class="literal">countryinfo</code> コレクション内のすべてのドキュメントが返されます。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.find()</code></strong>
 [
@@ -364,7 +364,7 @@ Switching to SQL mode... Commands end with ;
         </p><p>
           空のセット (一致するドキュメントがない) は、次の情報を返します:
         </p><pre class="screen">Empty set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-documents-find-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45447957288368"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-documents-find-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45779500572528"></a><p>
           <code class="literal">find()</code> メソッドに検索条件を含めることができます。 検索条件を形成する式の構文は、従来の MySQL <a class="xref" href="functions.html" title="第 12 章 関数と演算子">第12章「<i>関数と演算子</i>」</a> の構文と同じです。 すべての式は引用符で囲む必要があります。 簡潔にするために、一部の例では出力が表示されません。 
         </p><p>
           単純検索条件は、<code class="literal">Name</code> フィールドとドキュメント内にあることがわかっている値で構成できます。 次の例では、単一のドキュメントを戻します: 
@@ -492,7 +492,7 @@ mysql-js&gt; <strong class="userinput"><code>myFind.bind('country', 'Germany')</
 }
 
 1 document in set (0.0026 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957253456"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45447957252768"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500537616"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45779500536928"></a><p>
           すべてのフィールドを返すかわりに、ドキュメントの特定のフィールドを返すことができます。 次の例では、検索条件に一致する <code class="literal">countryinfo</code> コレクション内のすべてのドキュメントの GNP および Name フィールドを返します。 
         </p><p>
           <code class="literal">fields()</code> メソッドを使用して、返すフィールドのリストを渡します。
@@ -516,7 +516,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
     "Name": "AFGHANISTAN",
     "GNPPerCapita": 263.0281690140845
 }
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957242896"></a>結果の制限、ソートおよびスキップ</h5></div></div></div><a class="indexterm" name="idm45447957242192"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500527056"></a>結果の制限、ソートおよびスキップ</h5></div></div></div><a class="indexterm" name="idm45779500526352"></a><p>
           <code class="literal">limit()</code>、<code class="literal">sort()</code> および <code class="literal">skip()</code> メソッドを適用して、<code class="literal">find()</code> メソッドによって返されるドキュメントの数と順序を管理できます。
         </p><p>
           結果セットに含めるドキュメントの数を指定するには、<code class="literal">limit()</code> メソッドの値を <code class="literal">find()</code> メソッドに追加します。 次のクエリーは、<code class="literal">countryinfo</code> コレクション内の最初の 5 つのドキュメントを返します。 
@@ -535,11 +535,11 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.find().sort(["IndepYear desc"]).limit(8).skip(1)</code></strong>
 ... [<span class="emphasis"><em>output removed</em></span>]
 8 documents in set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957218416"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500502576"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               <a class="link" href="functions.html" title="第 12 章 関数と演算子">MySQL Reference Manual</a> には、関数および演算子に関する詳細なドキュメントが用意されています。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionfindfunction" target="_top">CollectionFindFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-documents-modify"></a>20.3.3.4 ドキュメントの変更</h4></div></div></div><a class="indexterm" name="idm45447957212240"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-documents-modify"></a>20.3.3.4 ドキュメントの変更</h4></div></div></div><a class="indexterm" name="idm45779500496400"></a><p>
         <code class="literal">modify()</code> メソッドを使用して、コレクション内の 1 つ以上のドキュメントを更新できます。 X DevAPI には、<code class="literal">modify()</code> メソッドとともに使用して次の操作を行うための追加メソッドが用意されています: 
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             ドキュメント内のフィールドを設定および設定解除します。
@@ -547,7 +547,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
             配列を追加、挿入および削除します。
           </p></li><li class="listitem"><p>
             変更するドキュメントをバインド、制限およびソートします。
-          </p></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957204784"></a>ドキュメントフィールドの設定および設定解除</h5></div></div></div><a class="indexterm" name="idm45447957204064"></a><p>
+          </p></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500488944"></a>ドキュメントフィールドの設定および設定解除</h5></div></div></div><a class="indexterm" name="idm45779500488224"></a><p>
           <code class="literal">modify()</code> メソッドは、コレクションをフィルタ処理して変更するドキュメントのみを含め、指定した操作をそれらのドキュメントに適用することで機能します。
         </p><p>
           次の例では、<code class="literal">modify()</code> メソッドは検索条件を使用して変更するドキュメントを識別し、ネストされたデモグラフィックオブジェクト内の 2 つの値を <code class="literal">set()</code> メソッドで置き換えます。
@@ -580,7 +580,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
         "LifeExpectancy": 79
     }
 }
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-append-insert-delete"></a>配列の追加、挿入および削除</h5></div></div></div><a class="indexterm" name="idm45447957186512"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-append-insert-delete"></a>配列の追加、挿入および削除</h5></div></div></div><a class="indexterm" name="idm45779500470736"></a><p>
           配列フィールドに要素を追加したり、配列内の要素を挿入または削除するには、<code class="literal">arrayAppend()</code>、<code class="literal">arrayInsert()</code> または <code class="literal">arrayDelete()</code> メソッドを使用します。 次の例では、国際空港のトラッキングを有効にするように <code class="literal">countryinfo</code> コレクションを変更します。 
         </p><p>
           最初の例では、<code class="literal">modify()</code> および <code class="literal">set()</code> メソッドを使用して、すべてのドキュメントに新しい空港フィールドを作成します。
@@ -622,32 +622,32 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
 </pre><p>
           配列から要素を削除するには、削除する要素のインデックスを <code class="literal">arrayDelete()</code> メソッドに渡す必要があります。
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.modify("Name = 'France'").arrayDelete("$.Airports[1]")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957161568"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500445792"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               <a class="link" href="data-types.html#json-paths" title="JSON 値の検索および変更">MySQL Reference Manual</a> には、JSON 値の検索および変更に役立つ手順が用意されています。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionmodifyfunction" target="_top">CollectionModifyFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-documents-remove"></a>20.3.3.5 ドキュメントの削除</h4></div></div></div><a class="indexterm" name="idm45447957155408"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-documents-remove"></a>20.3.3.5 ドキュメントの削除</h4></div></div></div><a class="indexterm" name="idm45779500439632"></a><p>
         <code class="literal">remove()</code> メソッドを使用して、スキーマ内のコレクションから一部またはすべてのドキュメントを削除できます。 X DevAPI には、<code class="literal">remove()</code> メソッドとともに使用して、削除するドキュメントをフィルタおよびソートするための追加メソッドが用意されています。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-documents-by-condition"></a>条件を使用したドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45447957149728"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-documents-by-condition"></a>条件を使用したドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45779500433952"></a><p>
           次の例では、検索条件を <code class="literal">remove()</code> メソッドに渡します。 条件に一致するすべてのドキュメントが <code class="literal">countryinfo</code> コレクションから削除されます。 この例では、1 つのドキュメントが条件に一致します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.remove("Code = 'SEA'")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-first-document"></a>最初のドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45447957142416"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-first-document"></a>最初のドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45779500426640"></a><p>
           <code class="literal">countryinfo</code> コレクションの最初のドキュメントを削除するには、値 1 を指定して <code class="literal">limit()</code> メソッドを使用します。
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.remove("true").limit(1)</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-last-document"></a>オーダー内の最後の文書の削除</h5></div></div></div><a class="indexterm" name="idm45447957135440"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-last-document"></a>オーダー内の最後の文書の削除</h5></div></div></div><a class="indexterm" name="idm45779500419664"></a><p>
           次の例では、国名で <code class="literal">countryinfo</code> コレクションの最後のドキュメントを削除します。
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.remove("true").sort(["Name desc"]).limit(1)</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-all-documents"></a>コレクション内のすべてのドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45447957129008"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-remove-all-documents"></a>コレクション内のすべてのドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45779500413232"></a><p>
           コレクション内のすべてのドキュメントを削除できます。 これを行うには、検索条件を指定せずに <code class="literal">remove("true")</code> メソッドを使用します。 
         </p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注意</div><p>
             検索条件を指定せずにドキュメントを削除する場合は注意してください。 このアクションは、コレクションからすべてのドキュメントを削除します。 
           </p></div><p>
           または、<code class="literal">db.drop_collection('countryinfo')</code> 操作を使用して <code class="literal">countryinfo</code> コレクションを削除します。
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957122272"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500406496"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionremovefunction" target="_top">CollectionRemoveFunction</a> を参照してください。
             </p></li><li class="listitem"><p>
               <code class="literal">world_x</code> スキーマを再作成する手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-javascript-download" title="20.3.2 world_x データベースのダウンロードおよびインポート">セクション20.3.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-indexes-create"></a>20.3.3.6 インデックスの作成および削除</h4></div></div></div><a class="indexterm" name="idm45447957115536"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-indexes-create"></a>20.3.3.6 インデックスの作成および削除</h4></div></div></div><a class="indexterm" name="idm45779500399760"></a><p>
         インデックスは、特定のフィールド値を持つドキュメントをすばやく検索するために使用されます。 インデックスがない場合、MySQL は最初のドキュメントで始まり、コレクション全体を読み取って関連するフィールドを検索する必要があります。 コレクションが大きいほど、このコストは高くなります。 コレクションが大きく、特定のフィールドに対するクエリーが一般的な場合は、ドキュメント内の特定のフィールドに対するインデックスの作成を検討してください。 
       </p><p>
         たとえば、移入フィールドのインデックスを使用すると、次のクエリーのパフォーマンスが向上します:
@@ -656,7 +656,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
 8 documents in set (0.00 sec)
 </pre><p>
         <code class="literal">createIndex()</code> メソッドは、使用するフィールドを指定する JSON ドキュメントで定義できるインデックスを作成します。 このセクションでは、インデックス付けの概要について説明します。 詳細は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-indexing.html" target="_top">Indexing Collections</a> を参照してください。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-nonunique-index"></a>一意でないインデックスの追加</h5></div></div></div><a class="indexterm" name="idm45447957105248"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-nonunique-index"></a>一意でないインデックスの追加</h5></div></div></div><a class="indexterm" name="idm45779500389472"></a><p>
           一意でないインデックスを作成するには、インデックス名とインデックス情報を <code class="literal">createIndex()</code> メソッドに渡します。 重複するインデックス名は禁止されています。 
         </p><p>
           次の例では、<code class="literal">demographics</code> オブジェクトの <code class="literal">Population</code> フィールドに対して定義され、<code class="literal">Integer</code> 数値としてインデックス付けされた <code class="literal">popul</code> という名前のインデックスを指定します。 最後のパラメータは、フィールドに <code class="literal">NOT NULL</code> 制約が必要かどうかを示します。 値が <code class="literal">false</code> の場合、フィールドには <code class="literal">NULL</code> 値を含めることができます。 インデックス情報は、インデックスに含める 1 つ以上のフィールドの詳細を含む JSON ドキュメントです。 各フィールド定義には、フィールドへの完全なドキュメントパスを含め、フィールドのタイプを指定する必要があります。 
@@ -664,22 +664,22 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
 [{field: '$.demographics.Population', type: 'INTEGER'}]})</code></strong>
 </pre><p>
           ここでは、整数の数値を使用してインデックスが作成されます。 GeoJSON データで使用するオプションなど、さらにオプションを使用できます。 デフォルトタイプの <span class="quote">「<span class="quote">index</span>」</span> が適切であるため、ここでは省略されているインデックスのタイプを指定することもできます。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-unique-index"></a>一意インデックスの追加</h5></div></div></div><a class="indexterm" name="idm45447957090416"></a><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-unique-index"></a>一意インデックスの追加</h5></div></div></div><a class="indexterm" name="idm45779500374640"></a><p>
           一意のインデックスを作成するには、インデックス名、インデックス定義およびインデックスタイプ <span class="quote">「<span class="quote">unique</span>」</span> を <code class="literal">createIndex()</code> メソッドに渡します。 この例は、国名 (<code class="literal">"Name"</code>) に対して作成された一意のインデックスを示しています。これは、インデックス付けする <code class="literal">countryinfo</code> コレクションの別の共通フィールドです。 インデックスフィールドの説明で、<code class="literal">"TEXT(40)"</code>はインデックス付けする文字数を表し、<code class="literal">"required": True</code> はフィールドがドキュメントに存在する必要があることを指定します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.createIndex("name",
 {"fields": [{"field": "$.Name", "type": "TEXT(40)", "required": true}], "unique": true})</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-drop-index"></a>インデックスの削除</h5></div></div></div><a class="indexterm" name="idm45447957079904"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-drop-index"></a>インデックスの削除</h5></div></div></div><a class="indexterm" name="idm45779500364128"></a><p>
           インデックスを削除するには、削除するインデックスの名前を <code class="literal">dropIndex()</code> メソッドに渡します。 たとえば、次のように <span class="quote">「<span class="quote">popul</span>」</span> インデックスを削除できます: 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.countryinfo.dropIndex("popul")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447957074304"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500358528"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               詳しくは<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-indexing.html" target="_top">Indexing Collections</a>をご覧ください。
             </p></li><li class="listitem"><p>
               インデックスを定義する JSON ドキュメントの詳細は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-indexing.html#collection-index-definitions" target="_top">Defining an Index</a> を参照してください。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-index-management-functions.html" target="_top">Collection Index Management Functions</a> を参照してください。
-            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-relational-tables"></a>20.3.4 リレーショナルテーブル</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-insert">20.3.4.1 テーブルへのレコードの挿入</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-select">20.3.4.2 テーブルの選択</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-update">20.3.4.3 テーブルの更新</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-delete">20.3.4.4 テーブルの削除</a></span></dt></dl></div><a class="indexterm" name="idm45447957066368"></a><p>
+            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-relational-tables"></a>20.3.4 リレーショナルテーブル</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-insert">20.3.4.1 テーブルへのレコードの挿入</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-select">20.3.4.2 テーブルの選択</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-update">20.3.4.3 テーブルの更新</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-javascript-table-delete">20.3.4.4 テーブルの削除</a></span></dt></dl></div><a class="indexterm" name="idm45779500350544"></a><p>
       X DevAPI を使用してリレーショナルテーブルを操作することもできます。 MySQL では、各リレーショナルテーブルは特定のストレージエンジンに関連付けられます。 このセクションの例では、<code class="literal">world_x</code> スキーマの <code class="literal">InnoDB</code> テーブルを使用します。 
-    </p><h4><a name="idm45447957061712"></a>スキーマの確認</h4><p>
+    </p><h4><a name="idm45779500345888"></a>スキーマの確認</h4><p>
       <code class="literal">db</code> グローバル変数に割り当てられているスキーマを表示するには、<code class="literal">db</code> を発行します。
     </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db</code></strong>
 &lt;Schema:world_x&gt;
@@ -687,7 +687,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
       戻り値が <code class="literal">Schema:world_x</code> でない場合は、<code class="literal">db</code> 変数を次のように設定します:
     </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>\use world_x</code></strong>
 Schema `world_x` accessible through db.
-</pre><h4><a name="idm45447957053728"></a>すべてのテーブルの表示</h4><p>
+</pre><h4><a name="idm45779500337904"></a>すべてのテーブルの表示</h4><p>
       <code class="literal">world_x</code> スキーマ内のすべてのリレーショナルテーブルを表示するには、<code class="literal">db</code> オブジェクトで <code class="literal">getTables()</code> メソッドを使用します。
     </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.getTables()</code></strong>
 {
@@ -695,7 +695,7 @@ Schema `world_x` accessible through db.
     "country": &lt;Table:country&gt;,
     "countrylanguage": &lt;Table:countrylanguage&gt;
 }
-</pre><h4><a name="idm45447957048336"></a>基本的なテーブル操作</h4><p>
+</pre><h4><a name="idm45779500332512"></a>基本的なテーブル操作</h4><p>
       テーブルによってスコープ指定される基本的な操作は次のとおりです:
     </p><div class="informaltable"><table summary="CRUD operations to use interactively on tables within MySQL Shell"><col style="width: 32%"><col style="width: 68%"><thead><tr>
           <th>操作フォーム</th>
@@ -712,33 +712,33 @@ Schema `world_x` accessible through db.
         </tr><tr>
           <td><code class="literal">db.<em class="replaceable"><code>name</code></em>.delete()</code></td>
           <td><a class="link" href="document-store.html#mysql-shell-tutorial-javascript-table-delete" title="20.3.4.4 テーブルの削除">delete()</a> メソッドは、名前付きのテーブルから 1 つ以上のレコードを削除します。</td>
-        </tr></tbody></table></div><h4><a name="idm45447957025488"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </tr></tbody></table></div><h4><a name="idm45779500309792"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           詳しくは<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/devapi-users-working-with-relational-tables.html" target="_top">Working with Relational Tables</a>をご覧ください。
         </p></li><li class="listitem"><p>
           <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/mysql-x-crud-ebnf-definitions.html" target="_top">CRUD EBNF Definitions</a> では、操作の完全なリストが提供されます。
         </p></li><li class="listitem"><p>
           <code class="literal">world_x</code> スキーマサンプルの設定手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-javascript-download" title="20.3.2 world_x データベースのダウンロードおよびインポート">セクション20.3.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。
-        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-insert"></a>20.3.4.1 テーブルへのレコードの挿入</h4></div></div></div><a class="indexterm" name="idm45447957017632"></a><p>
+        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-insert"></a>20.3.4.1 テーブルへのレコードの挿入</h4></div></div></div><a class="indexterm" name="idm45779500301936"></a><p>
         <code class="literal">insert()</code> メソッドを <code class="literal">values()</code> メソッドとともに使用して、既存のリレーショナルテーブルにレコードを挿入できます。 <code class="literal">insert()</code> メソッドは、個々のカラムまたはテーブル内のすべてのカラムを受け入れます。 1 つ以上の <code class="literal">values()</code> メソッドを使用して、挿入する値を指定します。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-insert-complete-record"></a>完全なレコードの挿入</h5></div></div></div><a class="indexterm" name="idm45447957010608"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-insert-complete-record"></a>完全なレコードの挿入</h5></div></div></div><a class="indexterm" name="idm45779500294912"></a><p>
           完全なレコードを挿入するには、テーブルのすべてのカラムを <code class="literal">insert()</code> メソッドに渡します。 次に、<code class="literal">values()</code> メソッドに、テーブルの各カラムの値を渡します。 たとえば、<code class="literal">world_x</code> スキーマの市区町村テーブルに新しいレコードを追加するには、次のレコードを挿入して <span class="keycap"><strong>Enter</strong></span> を 2 回押します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.insert("ID", "Name", "CountryCode", "District", "Info").values(
 None, "Olympia", "USA", "Washington", '{"Population": 5000}')</code></strong>
 </pre><p>
           city テーブルには 5 つのカラムがあります: ID、名前、CountryCode、地区および情報。 各値は、それが表すカラムのデータ型と一致する必要があります。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-insert-partial-record"></a>部分レコードの挿入</h5></div></div></div><a class="indexterm" name="idm45447957000736"></a><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-insert-partial-record"></a>部分レコードの挿入</h5></div></div></div><a class="indexterm" name="idm45779500285040"></a><p>
           次の例では、city テーブルの ID、Name および CountryCode カラムに値を挿入します。
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.insert("ID", "Name", "CountryCode").values(
 None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 </pre><p>
           <code class="literal">insert()</code> メソッドを使用してカラムを指定する場合、値の数はカラムの数と一致する必要があります。 前の例では、指定した 3 つのカラムに一致するように 3 つの値を指定する必要があります。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956994720"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500279024"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tableinsertfunction" target="_top">TableInsertFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-select"></a>20.3.4.2 テーブルの選択</h4></div></div></div><a class="indexterm" name="idm45447956990400"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-select"></a>20.3.4.2 テーブルの選択</h4></div></div></div><a class="indexterm" name="idm45779500274704"></a><p>
         <code class="literal">select()</code> メソッドを使用して、データベース内のテーブルに対してクエリーを実行し、レコードを戻すことができます。 X DevAPI には、返されたレコードをフィルタおよびソートするために <code class="literal">select()</code> メソッドとともに使用する追加のメソッドが用意されています。 
       </p><p>
         MySQL には、検索条件を指定する次の演算子が用意されています: <code class="literal">OR</code> (<code class="literal">||</code>)、<code class="literal">AND</code> (<code class="literal">&amp;&amp;</code>)、<code class="literal">XOR</code>, <code class="literal">IS</code>, <code class="literal">NOT</code>, <code class="literal">BETWEEN</code>, <code class="literal">IN</code>, <code class="literal">LIKE</code>, <code class="literal">!=</code>, <code class="literal">&lt;&gt;</code>, <code class="literal">&gt;</code>, <code class="literal">&gt;=</code>, <code class="literal">&lt;</code>, <code class="literal">&lt;=</code>, <code class="literal">&amp;</code>, <code class="literal">|</code>, <code class="literal">&lt;&lt;</code>, <code class="literal">&gt;&gt;</code>, <code class="literal">+</code>, <code class="literal">-</code>, <code class="literal">*</code>, <code class="literal">/</code>, <code class="literal">~</code> および <code class="literal">%</code>。
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-select-all-records"></a>すべてのレコードの選択</h5></div></div></div><a class="indexterm" name="idm45447956966672"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-select-all-records"></a>すべてのレコードの選択</h5></div></div></div><a class="indexterm" name="idm45779500250976"></a><p>
           既存のテーブルからすべてのレコードを返すクエリーを発行するには、検索条件を指定せずに <code class="literal">select()</code> メソッドを使用します。 次の例では、<code class="literal">world_x</code> データベースの city テーブルからすべてのレコードを選択します。 
         </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             空の <code class="literal">select()</code> メソッドの使用を対話型のステートメントに制限します。 アプリケーションコードでは、常に明示的なカラム名の選択を使用します。 
@@ -756,7 +756,7 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 </pre><p>
           空のセット (一致するレコードなし) は、次の情報を返します:
         </p><pre class="screen">Empty set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45447956955440"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45779500239744"></a><p>
           一連のテーブルのカラムを戻すクエリーを発行するには、<code class="literal">select()</code> メソッドを使用して、角カッコで囲むカラムを指定します。 このクエリーは、city テーブルから Name カラムと CountryCode カラムを返します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.select(["Name", "CountryCode"])</code></strong>
 +-------------------+-------------+
@@ -805,7 +805,7 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
             プログラム内でバインディングを使用すると、式にプレースホルダを指定できます。プレースホルダには、実行前に値が入力され、必要に応じて自動エスケープを利用できます。
           </p><p>
             入力をサニタイズするには、常にバインディングを使用します。 文字列連結を使用してクエリーに値を導入しないでください。無効な入力が生成され、場合によってはセキュリティの問題が発生することがあります。 
-          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-project-results"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45447956937872"></a><p>
+          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-project-results"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45779500222240"></a><p>
           <code class="literal">AND</code> 演算子を使用してクエリーを発行するには、<code class="literal">where()</code> メソッドの検索条件の間に演算子を追加します。
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.select(["Name", "CountryCode"]).where(
 "Name like 'Z%' and CountryCode = 'CHN'")</code></strong>
@@ -838,7 +838,7 @@ where("Name like 'Z%' and (CountryCode = 'CHN' or CountryCode = 'RUS')")</code><
 | Zeleznogorsk      | RUS         |
 +-------------------+-------------+
 29 rows in set (0.01 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-limit-order-offset-results"></a>制限、順序およびオフセットの結果</h5></div></div></div><a class="indexterm" name="idm45447956925248"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-limit-order-offset-results"></a>制限、順序およびオフセットの結果</h5></div></div></div><a class="indexterm" name="idm45779500209616"></a><p>
           <code class="literal">limit()</code>、<code class="literal">orderBy()</code> および <code class="literal">offSet()</code> メソッドを適用して、<code class="literal">select()</code> メソッドによって返されるレコードの数と順序を管理できます。
         </p><p>
           結果セットに含まれるレコード数を指定するには、<code class="literal">limit()</code> メソッドに <code class="literal">select()</code> メソッドの値を追加します。 たとえば、次のクエリーでは、国テーブルの最初の 5 つのレコードが返されます。 
@@ -877,11 +877,11 @@ where("Name like 'Z%' and (CountryCode = 'CHN' or CountryCode = 'RUS')")</code><
 | YEM  | Yemen      |
 +------+------------+
 3 rows in set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956903264"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500187632"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               <a class="link" href="functions.html" title="第 12 章 関数と演算子">MySQL Reference Manual</a> には、関数および演算子に関する詳細なドキュメントが用意されています。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tableselectfunction" target="_top">TableSelectFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-update"></a>20.3.4.3 テーブルの更新</h4></div></div></div><a class="indexterm" name="idm45447956897120"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-update"></a>20.3.4.3 テーブルの更新</h4></div></div></div><a class="indexterm" name="idm45779500181488"></a><p>
         <code class="literal">update()</code> メソッドを使用して、テーブル内のレコードを変更できます。 <code class="literal">update()</code> メソッドは、更新するレコードのみを含めるようにクエリーをフィルタリングし、指定した操作をそれらのレコードに適用することで機能します。 
       </p><p>
         市区町村テーブルの市区町村名を置換するには、<code class="literal">set()</code> メソッドに新しい市区町村名を渡します。 次に、検索および置換する市区町村名を <code class="literal">where()</code> メソッドに渡します。 次の例では、Peking 市を Beijing に置き換えます。 
@@ -895,32 +895,32 @@ where("Name like 'Z%' and (CountryCode = 'CHN' or CountryCode = 'RUS')")</code><
 | 1891 | Beijing   | CHN         | Peking   | {"Population": 7472000}     |
 +------+-----------+-------------+----------+-----------------------------+
 1 row in set (0.00 sec)
-</pre><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956885440"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500169808"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tableupdatefunction" target="_top">TableUpdateFunction</a> を参照してください。
             </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-table-delete"></a>20.3.4.4 テーブルの削除</h4></div></div></div><p>
         <code class="literal">delete()</code> メソッドを使用して、データベース内のテーブルから一部またはすべてのレコードを削除できます。 X DevAPI には、削除するレコードをフィルタおよび順序付けするために <code class="literal">delete()</code> メソッドとともに使用する追加のメソッドが用意されています。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-delete-records-using-conditions"></a>条件を使用したレコードの削除</h5></div></div></div><a class="indexterm" name="idm45447956877376"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-delete-records-using-conditions"></a>条件を使用したレコードの削除</h5></div></div></div><a class="indexterm" name="idm45779500161744"></a><p>
           次の例では、検索条件を <code class="literal">delete()</code> メソッドに渡します。 条件に一致するすべてのレコードが市区町村テーブルから削除されます。 この例では、1 つのレコードが条件に一致します。 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.delete().where("Name = 'Olympia'")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-delete-first-record"></a>最初のレコードの削除</h5></div></div></div><a class="indexterm" name="idm45447956870768"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-delete-first-record"></a>最初のレコードの削除</h5></div></div></div><a class="indexterm" name="idm45779500155136"></a><p>
           市区町村テーブルの最初のレコードを削除するには、値が 1 の <code class="literal">limit()</code> メソッドを使用します。
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.delete().limit(1)</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-delete-all-records"></a>テーブル内のすべてのレコードの削除</h5></div></div></div><a class="indexterm" name="idm45447956864480"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-javascript-delete-all-records"></a>テーブル内のすべてのレコードの削除</h5></div></div></div><a class="indexterm" name="idm45779500148848"></a><p>
           テーブル内のすべてのレコードを削除できます。 これを行うには、検索条件を指定せずに <code class="literal">delete()</code> メソッドを使用します。 
         </p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注意</div><p>
             検索条件を指定せずにレコードを削除する場合は注意が必要です。削除すると、テーブルからすべてのレコードが削除されます。
-          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956859776"></a>テーブルの削除</h5></div></div></div><a class="indexterm" name="idm45447956859104"></a><p>
+          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500144144"></a>テーブルの削除</h5></div></div></div><a class="indexterm" name="idm45779500143472"></a><p>
           <code class="literal">dropCollection()</code> メソッドは、データベースからリレーショナルテーブルを削除するために MySQL Shell でも使用されます。 たとえば、<code class="literal">world_x</code> データベースから <code class="literal">citytest</code> テーブルを削除するには、次のように発行します: 
         </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>session.dropCollection("world_x", "citytest")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956852384"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779500136752"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tabledeletefunction" target="_top">TableDeleteFunction</a> を参照してください。
             </p></li><li class="listitem"><p>
               <code class="literal">world_x</code> データベースを再作成する手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-javascript-download" title="20.3.2 world_x データベースのダウンロードおよびインポート">セクション20.3.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。
-            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-documents-in-tables"></a>20.3.5 テーブル内のドキュメント</h3></div></div></div><a class="indexterm" name="idm45447956845488"></a><p>
+            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-javascript-documents-in-tables"></a>20.3.5 テーブル内のドキュメント</h3></div></div></div><a class="indexterm" name="idm45779500129904"></a><p>
       MySQL では、テーブルに従来のリレーショナルデータまたは JSON 値 (あるいはその両方) が含まれる場合があります。 ネイティブ <code class="literal">JSON</code> データ型を持つカラムにドキュメントを格納することで、従来のデータを JSON ドキュメントと組み合せることができます。 
     </p><p>
       このセクションの例では、<code class="literal">world_x</code> スキーマの city テーブルを使用します。
-    </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447956840240"></a>市区町村テーブル摘要</h4></div></div></div><p>
+    </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779500124656"></a>市区町村テーブル摘要</h4></div></div></div><p>
         city テーブルには、5 つのカラム (またはフィールド) があります。
       </p><pre class="screen">+---------------+------------+-------+-------+---------+------------------+
 | Field         | Type       | Null  | Key   | Default | Extra            |
@@ -931,11 +931,11 @@ where("Name like 'Z%' and (CountryCode = 'CHN' or CountryCode = 'RUS')")</code><
 | District      | char(20)   | NO    |       |         |                  |
 | Info          | json       | YES   |       | null    |                  |
 +---------------+------------+-------+-------+---------+------------------+
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-insert-record"></a>レコードの挿入</h4></div></div></div><a class="indexterm" name="idm45447956836224"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-insert-record"></a>レコードの挿入</h4></div></div></div><a class="indexterm" name="idm45779500120640"></a><p>
         テーブルのカラムにドキュメントを挿入するには、正しい順序で整形式の JSON ドキュメントを <code class="literal">values()</code> メソッドに渡します。 次の例では、情報カラムに挿入される最終値としてドキュメントが渡されます。 
       </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.insert().values(
 None, "San Francisco", "USA", "California", '{"Population":830000}')</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-select-record"></a>レコードの選択</h4></div></div></div><a class="indexterm" name="idm45447956829568"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-javascript-select-record"></a>レコードの選択</h4></div></div></div><a class="indexterm" name="idm45779500113984"></a><p>
         式のドキュメント値を評価する検索条件を指定してクエリーを発行できます。
       </p><pre class="programlisting">mysql-js&gt; <strong class="userinput"><code>db.city.select(["ID", "Name", "CountryCode", "District", "Info"]).where(
 "CountryCode = :country and Info-&gt;'$.Population' &gt; 1000000").bind(
@@ -954,11 +954,11 @@ None, "San Francisco", "USA", "California", '{"Population":830000}')</code></str
 | 3801 | San Antonio    | USA         | Texas          | {"Population": 1144646}     |
 +------+----------------+-------------+----------------+-----------------------------+
 9 rows in set (0.01 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447956823952"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779500108368"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             詳しくは<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/devapi-users-working-with-relational-tables-and-documents.html" target="_top">Working with Relational Tables and Documents</a>をご覧ください。
           </p></li><li class="listitem"><p>
             データ型の詳細は、<a class="xref" href="data-types.html#json" title="11.5 JSON データ型">セクション11.5「JSON データ型」</a> を参照してください。
-          </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-shell-tutorial-python"></a>20.4 Python クイックスタートガイド: ドキュメントストア用の MySQL Shell</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-shell">20.4.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-download">20.4.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-collections">20.4.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-relational-tables">20.4.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-in-tables">20.4.5 テーブル内のドキュメント</a></span></dt></dl></div><a class="indexterm" name="idm45447956817840"></a><p>
+          </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="mysql-shell-tutorial-python"></a>20.4 Python クイックスタートガイド: ドキュメントストア用の MySQL Shell</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-shell">20.4.1 MySQL Shell</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-download">20.4.2 world_x データベースのダウンロードおよびインポート</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-collections">20.4.3 ドキュメントとコレクション</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-relational-tables">20.4.4 リレーショナルテーブル</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-in-tables">20.4.5 テーブル内のドキュメント</a></span></dt></dl></div><a class="indexterm" name="idm45779500102256"></a><p>
     このクイックスタートガイドでは、MySQL Shell と対話形式でドキュメントストアアプリケーションのプロトタイプ作成を開始する手順について説明します。 このガイドの内容は次のとおりです: 
   </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         MySQL 機能、MySQL Shell および <code class="literal">world_x</code> サンプルスキーマの概要。
@@ -970,7 +970,7 @@ None, "San Francisco", "USA", "California", '{"Population":830000}')</code></str
         テーブル内のドキュメントに適用される操作。
       </p></li></ul></div><p>
     このクイックスタートガイドに従うには、MySQL サーバーに X プラグイン がインストールされている必要があります。8.0 のデフォルトは MySQL Shell で、MySQL Shell は X DevAPI を含み、JavaScript および Python の両方で実装されており、MySQL サーバーインスタンスに X プロトコル を使用して接続し、サーバーをドキュメントストアとして使用できます。
-  </p><h3><a name="idm45447956809744"></a>関連情報</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+  </p><h3><a name="idm45779500094128"></a>関連情報</h3><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/" target="_top">MySQL Shell 8.0</a> は、MySQL Shell に関する詳細情報を提供します。
       </p></li><li class="listitem"><p>
         このクイックスタートガイドで使用されるツールの詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-install.html" target="_top">MySQL Shell のインストール</a> および <a class="xref" href="document-store.html#x-plugin" title="20.5 X プラグイン">セクション20.5「X プラグイン」</a> を参照してください。
@@ -980,7 +980,7 @@ None, "San Francisco", "USA", "California", '{"Population":830000}')</code></str
         <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/" target="_top">X DevAPI User Guide</a> には、X DevAPI を使用して、MySQL をドキュメントストアとして使用するアプリケーションを開発するその他の例があります。
       </p></li><li class="listitem"><p>
         <a class="link" href="document-store.html#mysql-shell-tutorial-javascript" title="20.3 JavaScript クイックスタートガイド: ドキュメントストア用の MySQL Shell">JavaScript</a> クイックスタートガイドも使用できます。
-      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-shell"></a>20.4.1 MySQL Shell</h3></div></div></div><a class="indexterm" name="idm45447956798048"></a><p>
+      </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-shell"></a>20.4.1 MySQL Shell</h3></div></div></div><a class="indexterm" name="idm45779500082464"></a><p>
       このクイックスタートガイドでは、MySQL Shell について一定レベルの知識があることを前提としています。 次のセクションは概要です。詳細は、MySQL Shell のドキュメントを参照してください。MySQL Shell は、MySQL Server への統一されたスクリプトインタフェースです。 JavaScript および Python でのスクリプトがサポートされています。 JavaScript はデフォルトの処理モードです。 
     </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-shell-start"></a>MySQL Shell の起動</h4></div></div></div><p>
         MySQL サーバーをインストールして起動したら、MySQL Shell をサーバーインスタンスに接続します。 接続する予定の MySQL サーバーインスタンスのアドレスを知っている必要があります。 インスタンスをドキュメントストアとして使用できるようにするには、サーバーインスタンスに X プラグイン がインストールされている必要があり、X プロトコル を使用してサーバーに接続する必要があります。 たとえば、33060 のデフォルトの X プロトコル ポートでインスタンス <code class="literal">ds1.example.com</code> に接続するには、ネットワーク文字列 <code class="literal"><em class="replaceable"><code>user</code></em>@ds1.example.com:33060</code> を使用します。 
@@ -1017,7 +1017,7 @@ mysql-py&gt;
             <span class="keycap"><strong>「バックスペース」</strong></span>でカーソルの前の文字を削除でき、新しい文字を入力するとカーソルの位置に挿入されます。
           </p></li><li class="listitem"><p>
             <span class="keycap"><strong>Enter</strong></span> は、現在の入力行をサーバーに送信します。
-          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-shell-help"></a>MySQL Shell のヘルプの表示</h4></div></div></div><a class="indexterm" name="idm45447956756672"></a><p>
+          </p></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-shell-help"></a>MySQL Shell のヘルプの表示</h4></div></div></div><a class="indexterm" name="idm45779500041040"></a><p>
         コマンドラインオプションのリストを表示するには、コマンドインタプリタのプロンプトで <span class="command"><strong>mysqlsh --help</strong></span> と入力します。
       </p><pre class="programlisting"><strong class="userinput"><code>mysqlsh --help</code></strong>
 </pre><p>
@@ -1026,10 +1026,10 @@ mysql-py&gt;
 </pre><p>
         個々の MySQL Shell コマンドの詳細なヘルプを表示するには、<code class="literal">\help</code> に続けてコマンド名を入力します。 たとえば、<code class="literal">\connect</code> コマンドのヘルプを表示するには、次のコマンドを発行します: 
       </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>\help \connect</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-shell-quit"></a>MySQL Shell の終了</h4></div></div></div><a class="indexterm" name="idm45447956743520"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-shell-quit"></a>MySQL Shell の終了</h4></div></div></div><a class="indexterm" name="idm45779500027904"></a><p>
         MySQL Shell を終了するには、次のコマンドを発行します:
       </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>\quit</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447956739296"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779500023680"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             MySQL Shell での対話型コード実行の動作については、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-interactive-code-execution.html" target="_top">対話型コードの実行</a> を参照してください。
           </p></li><li class="listitem"><p>
             セッションおよび接続の代替方法の詳細は、<a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-getting-started.html" target="_top">MySQL Shell スタートガイド</a> を参照してください。
@@ -1052,7 +1052,7 @@ Switching to SQL mode... Commands end with ;
 <strong class="userinput"><code>\source /tmp/world_x-db/world_x.sql</code></strong>
 </pre></li></ul></div><p>
           <code class="filename">/tmp/</code>をシステム上の <code class="filename">world_x.sql</code> ファイルへのパスに置き換えます。 プロンプトが表示されたら、パスワードを入力します。 root 以外のアカウントは、そのアカウントが新しいスキーマを作成する権限を持っているかぎり使用できます。 
-        </p></li></ol></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-world-x"></a>world_x スキーマ</h4></div></div></div><a class="indexterm" name="idm45447956713152"></a><p>
+        </p></li></ol></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-world-x"></a>world_x スキーマ</h4></div></div></div><a class="indexterm" name="idm45779499997600"></a><p>
         <code class="literal">world_x</code> サンプルスキーマには、次の JSON コレクションおよびリレーショナルテーブルが含まれています:
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             コレクション
@@ -1066,9 +1066,9 @@ Switching to SQL mode... Commands end with ;
                 <code class="literal">city</code>: これらの国の一部の都市に関する情報。
               </p></li><li class="listitem"><p>
                 <code class="literal">countrylanguage</code>: 各国で話されている言語。
-              </p></li></ul></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447956700528"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+              </p></li></ul></div></li></ul></div></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779499984976"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             <a class="ulink" href="https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-sessions.html" target="_top">MySQL Shell セッション</a> では、セッションタイプについて説明します。
-          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-documents-collections"></a>20.4.3 ドキュメントとコレクション</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-collections-operations">20.4.3.1 コレクションの作成、リストおよびドロップ</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-add">20.4.3.2 コレクションの操作</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-find">20.4.3.3 ドキュメントの検索</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-modify">20.4.3.4 ドキュメントの変更</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-remove">20.4.3.5 ドキュメントの削除</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-index">20.4.3.6 インデックスの作成および削除</a></span></dt></dl></div><a class="indexterm" name="idm45447956696272"></a><p>
+          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-documents-collections"></a>20.4.3 ドキュメントとコレクション</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-collections-operations">20.4.3.1 コレクションの作成、リストおよびドロップ</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-add">20.4.3.2 コレクションの操作</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-find">20.4.3.3 ドキュメントの検索</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-modify">20.4.3.4 ドキュメントの変更</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-remove">20.4.3.5 ドキュメントの削除</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-documents-index">20.4.3.6 インデックスの作成および削除</a></span></dt></dl></div><a class="indexterm" name="idm45779499980720"></a><p>
       MySQL をドキュメントストアとして使用している場合、コレクションは、作成、リストおよびドロップできるスキーマ内のコンテナです。 コレクションには、追加、検索、更新および削除できる JSON ドキュメントが含まれます。 
     </p><p>
       このセクションの例では、<code class="literal">world_x</code> スキーマの <code class="literal">countryinfo</code> コレクションを使用します。 <code class="literal">world_x</code> スキーマの設定手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-python-download" title="20.4.2 world_x データベースのダウンロードおよびインポート">セクション20.4.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。 
@@ -1130,41 +1130,41 @@ Switching to SQL mode... Commands end with ;
             </tr><tr>
               <td><code class="literal">db.<em class="replaceable"><code>name</code></em>.remove()</code></td>
               <td><a class="link" href="document-store.html#mysql-shell-tutorial-python-documents-remove" title="20.4.3.5 ドキュメントの削除">remove()</a> メソッドは、名前付きコレクションからドキュメントまたはドキュメントのリストを削除します。</td>
-            </tr></tbody></table></div></li></ul></div><h4><a name="idm45447956634128"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            </tr></tbody></table></div></li></ul></div><h4><a name="idm45779499918896"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           一般的な概要は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/devapi-users-working-with-collections.html" target="_top">Working with Collections</a> を参照してください。
         </p></li><li class="listitem"><p>
           <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/mysql-x-crud-ebnf-definitions.html" target="_top">CRUD EBNF Definitions</a> では、操作の完全なリストが提供されます。
-        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-collections-operations"></a>20.4.3.1 コレクションの作成、リストおよびドロップ</h4></div></div></div><a class="indexterm" name="idm45447956628496"></a><p>
+        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-collections-operations"></a>20.4.3.1 コレクションの作成、リストおよびドロップ</h4></div></div></div><a class="indexterm" name="idm45779499913264"></a><p>
         MySQL Shell では、新しいコレクションを作成し、スキーマ内の既存のコレクションのリストを取得し、スキーマから既存のコレクションを削除できます。 コレクション名は大/小文字が区別され、各コレクション名は一意である必要があります。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956625504"></a>スキーマの確認</h5></div></div></div><a class="indexterm" name="idm45447956624832"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499910272"></a>スキーマの確認</h5></div></div></div><a class="indexterm" name="idm45779499909600"></a><p>
           スキーマ変数に割り当てられている値を表示するには、次のコマンドを発行します:
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db</code></strong>
 </pre><p>
           スキーマ値が <code class="literal">Schema:world_x</code> でない場合は、次のコマンドを発行して <code class="literal">db</code> 変数を設定します:
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>\use world_x</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-collections-create"></a>コレクションの作成</h5></div></div></div><a class="indexterm" name="idm45447956615680"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-collections-create"></a>コレクションの作成</h5></div></div></div><a class="indexterm" name="idm45779499900448"></a><p>
           既存のスキーマに新しいコレクションを作成するには、<code class="literal">db</code> オブジェクトの <code class="literal">createCollection()</code> メソッドを使用します。 次の例では、<code class="literal">world_x</code> スキーマに <code class="literal">flags</code> というコレクションを作成します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.create_collection("flags")</code></strong>
 </pre><p>
           このメソッドはコレクションオブジェクトを返します。
-        </p><pre class="screen">&lt;Collection:flags&gt;</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-collections-get"></a>コレクションのリスト</h5></div></div></div><a class="indexterm" name="idm45447956605840"></a><p>
+        </p><pre class="screen">&lt;Collection:flags&gt;</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-collections-get"></a>コレクションのリスト</h5></div></div></div><a class="indexterm" name="idm45779499890608"></a><p>
           <code class="literal">world_x</code> スキーマ内のすべてのコレクションを表示するには、<code class="literal">db</code> オブジェクトの <code class="literal">get_collections()</code> メソッドを使用します。 現在接続しているサーバーによって返されるコレクションは、大カッコ内に表示されます。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.get_collections()</code></strong>
 [
     &lt;Collection:countryinfo&gt;,
     &lt;Collection:flags&gt;
 ]
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-collections-drop"></a>コレクションのドロップ</h5></div></div></div><a class="indexterm" name="idm45447956597872"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-collections-drop"></a>コレクションのドロップ</h5></div></div></div><a class="indexterm" name="idm45779499882640"></a><p>
           スキーマから既存のコレクションを削除するには、<code class="literal">db</code> オブジェクトの <code class="literal">drop_collection()</code> メソッドを使用します。 たとえば、現行のスキーマから <code class="literal">flags</code> コレクションを削除するには、次のコマンドを発行します: 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.drop_collection("flags")</code></strong>
 </pre><p>
           <code class="literal">drop_collection()</code> メソッドは、スキーマからリレーショナルテーブルを削除するために MySQL Shell でも使用されます。
 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956589840"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499874608"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               その他の例については、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-objects.html" target="_top">Collection Objects</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-add"></a>20.4.3.2 コレクションの操作</h4></div></div></div><a class="indexterm" name="idm45447956585552"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-add"></a>20.4.3.2 コレクションの操作</h4></div></div></div><a class="indexterm" name="idm45779499870320"></a><p>
         スキーマ内のコレクションを操作するには、<code class="literal">db</code> グローバルオブジェクトを使用して現在のスキーマにアクセスします。 この例では、以前にインポートした <code class="literal">world_x</code> スキーマと <code class="literal">countryinfo</code> コレクションを使用しています。 したがって、発行する操作の形式は <code class="literal">db.<em class="replaceable"><code>collection_name</code></em>.operation</code> で、<em class="replaceable"><code>collection_name</code></em> は操作の実行対象となるコレクションの名前です。 次の例では、操作は <code class="literal">countryinfo</code> コレクションに対して実行されます。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956577984"></a>ドキュメントの追加</h5></div></div></div><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499862752"></a>ドキュメントの追加</h5></div></div></div><p>
           <code class="literal">add()</code> メソッドを使用して、あるドキュメントまたはドキュメントのリストを既存のコレクションに挿入します。 次のドキュメントを <code class="literal">countryinfo</code> コレクションに挿入します。 これは複数行コンテンツであるため、<span class="keycap"><strong>Enter</strong></span> を 2 回押してドキュメントを挿入します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.add(
  {
@@ -1212,15 +1212,15 @@ Switching to SQL mode... Commands end with ;
 }
 </pre><p>
           ドキュメントの追加時に指定されたフィールドに加えて、<code class="literal">_id</code> というフィールドもあります。 各ドキュメントには、<code class="literal">_id</code> と呼ばれる識別子フィールドが必要です。 <code class="literal">_id</code> フィールドの値は、同じコレクション内のすべてのドキュメント間で一意である必要があります。 MySQL 8.0.11 以上では、ドキュメント ID はクライアントではなくサーバーによって生成されるため、MySQL Shell は<code class="literal">_id</code> 値を自動的に設定しません。 8.0.11 以上の MySQL サーバーでは、ドキュメントに<code class="literal">_id</code> フィールドが含まれていない場合、<code class="literal">_id</code> 値が設定されます。 以前の 8.0 リリースまたは 5.7 の MySQL サーバーは、この状況では<code class="literal">_id</code> 値を設定しないため、明示的に指定する必要があります。 そうでない場合、MySQL Shell はエラー 5115 <span class="errortext">「文書に必須フィールドがありません」</span>を返します。 詳細は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/understanding-automatic-document-ids.html" target="_top">Understanding Document IDs</a> を参照してください。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956560832"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499845600"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionaddfunction" target="_top">CollectionAddFunction</a> を参照してください。
             </p></li><li class="listitem"><p>
               <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/understanding-automatic-document-ids.html" target="_top">Understanding Document IDs</a>を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-find"></a>20.4.3.3 ドキュメントの検索</h4></div></div></div><a class="indexterm" name="idm45447956554864"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-find"></a>20.4.3.3 ドキュメントの検索</h4></div></div></div><a class="indexterm" name="idm45779499839632"></a><p>
         <code class="literal">find()</code> メソッドを使用して、スキーマ内のコレクションに対してクエリーを実行し、ドキュメントを戻すことができます。MySQL Shell には、返されたドキュメントをフィルタおよびソートするために <code class="literal">find()</code> メソッドとともに使用する追加のメソッドが用意されています。
       </p><p>
         MySQL には、検索条件を指定する次の演算子が用意されています: <code class="literal">OR</code> (<code class="literal">||</code>)、<code class="literal">AND</code> (<code class="literal">&amp;&amp;</code>)、<code class="literal">XOR</code>, <code class="literal">IS</code>, <code class="literal">NOT</code>, <code class="literal">BETWEEN</code>, <code class="literal">IN</code>, <code class="literal">LIKE</code>, <code class="literal">!=</code>, <code class="literal">&lt;&gt;</code>, <code class="literal">&gt;</code>, <code class="literal">&gt;=</code>, <code class="literal">&lt;</code>, <code class="literal">&lt;=</code>, <code class="literal">&amp;</code>, <code class="literal">|</code>, <code class="literal">&lt;&lt;</code>, <code class="literal">&gt;&gt;</code>, <code class="literal">+</code>, <code class="literal">-</code>, <code class="literal">*</code>, <code class="literal">/</code>, <code class="literal">~</code> および <code class="literal">%</code>。
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-documents-find-all"></a>コレクション内のすべてのドキュメントの検索</h5></div></div></div><a class="indexterm" name="idm45447956531072"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-documents-find-all"></a>コレクション内のすべてのドキュメントの検索</h5></div></div></div><a class="indexterm" name="idm45779499815840"></a><p>
           コレクション内のすべてのドキュメントを返すには、検索条件を指定せずに <code class="literal">find()</code> メソッドを使用します。 たとえば、次の操作では、<code class="literal">countryinfo</code> コレクション内のすべてのドキュメントが返されます。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.find()</code></strong>
 [
@@ -1251,7 +1251,7 @@ Switching to SQL mode... Commands end with ;
         </p><p>
           空のセット (一致するドキュメントがない) は、次の情報を返します:
         </p><pre class="screen">Empty set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-documents-find-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45447956521104"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-documents-find-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45779499805872"></a><p>
           <code class="literal">find()</code> メソッドに検索条件を含めることができます。 検索条件を形成する式の構文は、従来の MySQL <a class="xref" href="functions.html" title="第 12 章 関数と演算子">第12章「<i>関数と演算子</i>」</a> の構文と同じです。 すべての式は引用符で囲む必要があります。 簡潔にするために、一部の例では出力が表示されません。 
         </p><p>
           単純検索条件は、<code class="literal">Name</code> フィールドとドキュメント内にあることがわかっている値で構成できます。 次の例では、単一のドキュメントを戻します: 
@@ -1379,7 +1379,7 @@ mysql-py&gt; <strong class="userinput"><code>myFind.bind('country', 'Germany')</
 }
 
 1 document in set (0.0026 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956486208"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45447956485520"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499770976"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45779499770288"></a><p>
           すべてのフィールドを返すかわりに、ドキュメントの特定のフィールドを返すことができます。 次の例では、検索条件に一致する <code class="literal">countryinfo</code> コレクション内のすべてのドキュメントの GNP および Name フィールドを返します。 
         </p><p>
           <code class="literal">fields()</code> メソッドを使用して、返すフィールドのリストを渡します。
@@ -1403,7 +1403,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
     "Name": "AFGHANISTAN",
     "GNPPerCapita": 263.0281690140845
 }
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956475664"></a>結果の制限、ソートおよびスキップ</h5></div></div></div><a class="indexterm" name="idm45447956474960"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499760432"></a>結果の制限、ソートおよびスキップ</h5></div></div></div><a class="indexterm" name="idm45779499759728"></a><p>
           <code class="literal">limit()</code>、<code class="literal">sort()</code> および <code class="literal">skip()</code> メソッドを適用して、<code class="literal">find()</code> メソッドによって返されるドキュメントの数と順序を管理できます。
         </p><p>
           結果セットに含めるドキュメントの数を指定するには、<code class="literal">limit()</code> メソッドの値を <code class="literal">find()</code> メソッドに追加します。 次のクエリーは、<code class="literal">countryinfo</code> コレクション内の最初の 5 つのドキュメントを返します。 
@@ -1422,11 +1422,11 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.find().sort(["IndepYear desc"]).limit(8).skip(1)</code></strong>
 ... [<span class="emphasis"><em>output removed</em></span>]
 8 documents in set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956451248"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499736016"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               <a class="link" href="functions.html" title="第 12 章 関数と演算子">MySQL Reference Manual</a> には、関数および演算子に関する詳細なドキュメントが用意されています。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionfindfunction" target="_top">CollectionFindFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-modify"></a>20.4.3.4 ドキュメントの変更</h4></div></div></div><a class="indexterm" name="idm45447956445072"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-modify"></a>20.4.3.4 ドキュメントの変更</h4></div></div></div><a class="indexterm" name="idm45779499729840"></a><p>
         <code class="literal">modify()</code> メソッドを使用して、コレクション内の 1 つ以上のドキュメントを更新できます。 X DevAPI には、<code class="literal">modify()</code> メソッドとともに使用して次の操作を行うための追加メソッドが用意されています: 
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             ドキュメント内のフィールドを設定および設定解除します。
@@ -1434,7 +1434,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
             配列を追加、挿入および削除します。
           </p></li><li class="listitem"><p>
             変更するドキュメントをバインド、制限およびソートします。
-          </p></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956437632"></a>ドキュメントフィールドの設定および設定解除</h5></div></div></div><a class="indexterm" name="idm45447956436912"></a><p>
+          </p></li></ul></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499722400"></a>ドキュメントフィールドの設定および設定解除</h5></div></div></div><a class="indexterm" name="idm45779499721680"></a><p>
           <code class="literal">modify()</code> メソッドは、コレクションをフィルタ処理して変更するドキュメントのみを含め、指定した操作をそれらのドキュメントに適用することで機能します。
         </p><p>
           次の例では、<code class="literal">modify()</code> メソッドは検索条件を使用して変更するドキュメントを識別し、ネストされたデモグラフィックオブジェクト内の 2 つの値を <code class="literal">set()</code> メソッドで置き換えます。
@@ -1467,7 +1467,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
         "LifeExpectancy": 79
     }
 }
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-append-insert-delete"></a>配列の追加、挿入および削除</h5></div></div></div><a class="indexterm" name="idm45447956419376"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-append-insert-delete"></a>配列の追加、挿入および削除</h5></div></div></div><a class="indexterm" name="idm45779499704144"></a><p>
           配列フィールドに要素を追加したり、配列内の要素を挿入または削除するには、<code class="literal">array_append()</code>、<code class="literal">array_insert()</code> または <code class="literal">array_delete()</code> メソッドを使用します。 次の例では、国際空港のトラッキングを有効にするように <code class="literal">countryinfo</code> コレクションを変更します。 
         </p><p>
           最初の例では、<code class="literal">modify()</code> および <code class="literal">set()</code> メソッドを使用して、すべてのドキュメントに新しい空港フィールドを作成します。
@@ -1509,32 +1509,32 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
 </pre><p>
           配列から要素を削除するには、削除する要素のインデックスを <code class="literal">array_delete()</code> メソッドに渡す必要があります。
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.modify("Name = 'France'").array_delete("$.Airports[1]")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956394960"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499679728"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               <a class="link" href="data-types.html#json-paths" title="JSON 値の検索および変更">MySQL Reference Manual</a> には、JSON 値の検索および変更に役立つ手順が用意されています。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionmodifyfunction" target="_top">CollectionModifyFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-remove"></a>20.4.3.5 ドキュメントの削除</h4></div></div></div><a class="indexterm" name="idm45447956388800"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-remove"></a>20.4.3.5 ドキュメントの削除</h4></div></div></div><a class="indexterm" name="idm45779499673568"></a><p>
         <code class="literal">remove()</code> メソッドを使用して、スキーマ内のコレクションから一部またはすべてのドキュメントを削除できます。 X DevAPI には、<code class="literal">remove()</code> メソッドとともに使用して、削除するドキュメントをフィルタおよびソートするための追加メソッドが用意されています。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-documents-by-condition"></a>条件を使用したドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45447956383136"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-documents-by-condition"></a>条件を使用したドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45779499667968"></a><p>
           次の例では、検索条件を <code class="literal">remove()</code> メソッドに渡します。 条件に一致するすべてのドキュメントが <code class="literal">countryinfo</code> コレクションから削除されます。 この例では、1 つのドキュメントが条件に一致します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.remove("Code = 'SEA'")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-first-document"></a>最初のドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45447956375840"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-first-document"></a>最初のドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45779499660672"></a><p>
           <code class="literal">countryinfo</code> コレクションの最初のドキュメントを削除するには、値 1 を指定して <code class="literal">limit()</code> メソッドを使用します。
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.remove("true").limit(1)</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-last-document"></a>オーダー内の最後の文書の削除</h5></div></div></div><a class="indexterm" name="idm45447956368880"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-last-document"></a>オーダー内の最後の文書の削除</h5></div></div></div><a class="indexterm" name="idm45779499653712"></a><p>
           次の例では、国名で <code class="literal">countryinfo</code> コレクションの最後のドキュメントを削除します。
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.remove("true").sort(["Name desc"]).limit(1)</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-all-documents"></a>コレクション内のすべてのドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45447956362464"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-remove-all-documents"></a>コレクション内のすべてのドキュメントの削除</h5></div></div></div><a class="indexterm" name="idm45779499647296"></a><p>
           コレクション内のすべてのドキュメントを削除できます。 これを行うには、検索条件を指定せずに <code class="literal">remove("true")</code> メソッドを使用します。 
         </p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注意</div><p>
             検索条件を指定せずにドキュメントを削除する場合は注意してください。 このアクションは、コレクションからすべてのドキュメントを削除します。 
           </p></div><p>
           または、<code class="literal">db.drop_collection('countryinfo')</code> 操作を使用して <code class="literal">countryinfo</code> コレクションを削除します。
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956355744"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499640576"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-crud-functions.html#crud-ebnf-collectionremovefunction" target="_top">CollectionRemoveFunction</a> を参照してください。
             </p></li><li class="listitem"><p>
               <code class="literal">world_x</code> スキーマを再作成する手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-python-download" title="20.4.2 world_x データベースのダウンロードおよびインポート">セクション20.4.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-index"></a>20.4.3.6 インデックスの作成および削除</h4></div></div></div><a class="indexterm" name="idm45447956349104"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-documents-index"></a>20.4.3.6 インデックスの作成および削除</h4></div></div></div><a class="indexterm" name="idm45779499633872"></a><p>
         インデックスは、特定のフィールド値を持つドキュメントをすばやく検索するために使用されます。 インデックスがない場合、MySQL は最初のドキュメントで始まり、コレクション全体を読み取って関連するフィールドを検索する必要があります。 コレクションが大きいほど、このコストは高くなります。 コレクションが大きく、特定のフィールドに対するクエリーが一般的な場合は、ドキュメント内の特定のフィールドに対するインデックスの作成を検討してください。 
       </p><p>
         たとえば、移入フィールドのインデックスを使用すると、次のクエリーのパフォーマンスが向上します:
@@ -1543,7 +1543,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
 8 documents in set (0.00 sec)
 </pre><p>
         <code class="literal">create_index()</code> メソッドは、使用するフィールドを指定する JSON ドキュメントで定義できるインデックスを作成します。 このセクションでは、インデックス付けの概要について説明します。 詳細は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-indexing.html" target="_top">Indexing Collections</a> を参照してください。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-nonunique-index"></a>一意でないインデックスの追加</h5></div></div></div><a class="indexterm" name="idm45447956338864"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-nonunique-index"></a>一意でないインデックスの追加</h5></div></div></div><a class="indexterm" name="idm45779499623632"></a><p>
           一意でないインデックスを作成するには、インデックス名とインデックス情報を <code class="literal">create_index()</code> メソッドに渡します。 重複するインデックス名は禁止されています。 
         </p><p>
           次の例では、<code class="literal">demographics</code> オブジェクトの <code class="literal">Population</code> フィールドに対して定義され、<code class="literal">Integer</code> 数値としてインデックス付けされた <code class="literal">popul</code> という名前のインデックスを指定します。 最後のパラメータは、フィールドに <code class="literal">NOT NULL</code> 制約が必要かどうかを示します。 値が <code class="literal">false</code> の場合、フィールドには <code class="literal">NULL</code> 値を含めることができます。 インデックス情報は、インデックスに含める 1 つ以上のフィールドの詳細を含む JSON ドキュメントです。 各フィールド定義には、フィールドへの完全なドキュメントパスを含め、フィールドのタイプを指定する必要があります。 
@@ -1551,22 +1551,22 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
 [{field: '$.demographics.Population', type: 'INTEGER'}]})</code></strong>
 </pre><p>
           ここでは、整数の数値を使用してインデックスが作成されます。 GeoJSON データで使用するオプションなど、さらにオプションを使用できます。 デフォルトタイプの <span class="quote">「<span class="quote">index</span>」</span> が適切であるため、ここでは省略されているインデックスのタイプを指定することもできます。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-unique-index"></a>一意インデックスの追加</h5></div></div></div><a class="indexterm" name="idm45447956324048"></a><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-unique-index"></a>一意インデックスの追加</h5></div></div></div><a class="indexterm" name="idm45779499608816"></a><p>
           一意のインデックスを作成するには、インデックス名、インデックス定義およびインデックスタイプ <span class="quote">「<span class="quote">unique</span>」</span> を <code class="literal">create_index()</code> メソッドに渡します。 この例は、国名 (<code class="literal">"Name"</code>) に対して作成された一意のインデックスを示しています。これは、インデックス付けする <code class="literal">countryinfo</code> コレクションの別の共通フィールドです。 インデックスフィールドの説明で、<code class="literal">"TEXT(40)"</code>はインデックス付けする文字数を表し、<code class="literal">"required": True</code> はフィールドがドキュメントに存在する必要があることを指定します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.create_index("name",
 {"fields": [{"field": "$.Name", "type": "TEXT(40)", "required": True}], "unique": True})</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-drop-index"></a>インデックスの削除</h5></div></div></div><a class="indexterm" name="idm45447956313648"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-drop-index"></a>インデックスの削除</h5></div></div></div><a class="indexterm" name="idm45779499598416"></a><p>
           インデックスを削除するには、削除するインデックスの名前を <code class="literal">drop_index()</code> メソッドに渡します。 たとえば、次のように <span class="quote">「<span class="quote">popul</span>」</span> インデックスを削除できます: 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.countryinfo.drop_index("popul")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956308000"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499592768"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               詳しくは<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-indexing.html" target="_top">Indexing Collections</a>をご覧ください。
             </p></li><li class="listitem"><p>
               インデックスを定義する JSON ドキュメントの詳細は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/collection-indexing.html#collection-index-definitions" target="_top">Defining an Index</a> を参照してください。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-collection-index-management-functions.html" target="_top">Collection Index Management Functions</a> を参照してください。
-            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-relational-tables"></a>20.4.4 リレーショナルテーブル</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-insert">20.4.4.1 テーブルへのレコードの挿入</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-select">20.4.4.2 テーブルの選択</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-update">20.4.4.3 テーブルの更新</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-delete">20.4.4.4 テーブルの削除</a></span></dt></dl></div><a class="indexterm" name="idm45447956300080"></a><p>
+            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-relational-tables"></a>20.4.4 リレーショナルテーブル</h3></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-insert">20.4.4.1 テーブルへのレコードの挿入</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-select">20.4.4.2 テーブルの選択</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-update">20.4.4.3 テーブルの更新</a></span></dt><dt><span class="section"><a href="document-store.html#mysql-shell-tutorial-python-table-delete">20.4.4.4 テーブルの削除</a></span></dt></dl></div><a class="indexterm" name="idm45779499584784"></a><p>
       X DevAPI を使用してリレーショナルテーブルを操作することもできます。 MySQL では、各リレーショナルテーブルは特定のストレージエンジンに関連付けられます。 このセクションの例では、<code class="literal">world_x</code> スキーマの <code class="literal">InnoDB</code> テーブルを使用します。 
-    </p><h4><a name="idm45447956295440"></a>スキーマの確認</h4><p>
+    </p><h4><a name="idm45779499580144"></a>スキーマの確認</h4><p>
       <code class="literal">db</code> グローバル変数に割り当てられているスキーマを表示するには、<code class="literal">db</code> を発行します。
     </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db</code></strong>
 &lt;Schema:world_x&gt;
@@ -1574,7 +1574,7 @@ mysqlx.expr('{"Name": upper(Name), "GNPPerCapita": GNP*1000000/demographics.Popu
       戻り値が <code class="literal">Schema:world_x</code> でない場合は、<code class="literal">db</code> 変数を次のように設定します:
     </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>\use world_x</code></strong>
 Schema `world_x` accessible through db.
-</pre><h4><a name="idm45447956287456"></a>すべてのテーブルの表示</h4><p>
+</pre><h4><a name="idm45779499572160"></a>すべてのテーブルの表示</h4><p>
       <code class="literal">world_x</code> スキーマ内のすべてのリレーショナルテーブルを表示するには、<code class="literal">db</code> オブジェクトで <code class="literal">get_tables()</code> メソッドを使用します。
     </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.get_tables()</code></strong>
 [
@@ -1582,7 +1582,7 @@ Schema `world_x` accessible through db.
     &lt;Table:country&gt;,
     &lt;Table:countrylanguage&gt;
 ]
-</pre><h4><a name="idm45447956282144"></a>基本的なテーブル操作</h4><p>
+</pre><h4><a name="idm45779499566848"></a>基本的なテーブル操作</h4><p>
       テーブルによってスコープ指定される基本的な操作は次のとおりです:
     </p><div class="informaltable"><table summary="CRUD operations to use interactively on tables within MySQL Shell"><col style="width: 32%"><col style="width: 68%"><thead><tr>
           <th>操作フォーム</th>
@@ -1599,33 +1599,33 @@ Schema `world_x` accessible through db.
         </tr><tr>
           <td><code class="literal">db.<em class="replaceable"><code>name</code></em>.delete()</code></td>
           <td><a class="link" href="document-store.html#mysql-shell-tutorial-python-table-delete" title="20.4.4.4 テーブルの削除">delete()</a> メソッドは、名前付きのテーブルから 1 つ以上のレコードを削除します。</td>
-        </tr></tbody></table></div><h4><a name="idm45447956259248"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </tr></tbody></table></div><h4><a name="idm45779499544192"></a>関連情報</h4><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
           詳しくは<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/devapi-users-working-with-relational-tables.html" target="_top">Working with Relational Tables</a>をご覧ください。
         </p></li><li class="listitem"><p>
           <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/mysql-x-crud-ebnf-definitions.html" target="_top">CRUD EBNF Definitions</a> では、操作の完全なリストが提供されます。
         </p></li><li class="listitem"><p>
           <code class="literal">world_x</code> スキーマサンプルの設定手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-python-download" title="20.4.2 world_x データベースのダウンロードおよびインポート">セクション20.4.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。
-        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-insert"></a>20.4.4.1 テーブルへのレコードの挿入</h4></div></div></div><a class="indexterm" name="idm45447956251424"></a><p>
+        </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-insert"></a>20.4.4.1 テーブルへのレコードの挿入</h4></div></div></div><a class="indexterm" name="idm45779499536368"></a><p>
         <code class="literal">insert()</code> メソッドを <code class="literal">values()</code> メソッドとともに使用して、既存のリレーショナルテーブルにレコードを挿入できます。 <code class="literal">insert()</code> メソッドは、個々のカラムまたはテーブル内のすべてのカラムを受け入れます。 1 つ以上の <code class="literal">values()</code> メソッドを使用して、挿入する値を指定します。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-insert-complete-record"></a>完全なレコードの挿入</h5></div></div></div><a class="indexterm" name="idm45447956244432"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-insert-complete-record"></a>完全なレコードの挿入</h5></div></div></div><a class="indexterm" name="idm45779499529376"></a><p>
           完全なレコードを挿入するには、テーブルのすべてのカラムを <code class="literal">insert()</code> メソッドに渡します。 次に、<code class="literal">values()</code> メソッドに各カラムの値を渡します。 たとえば、<code class="literal">world_x</code> データベースの市区町村テーブルに新しいレコードを追加するには、次のレコードを挿入して <span class="keycap"><strong>Enter</strong></span> を 2 回押します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.insert("ID", "Name", "CountryCode", "District", "Info").values(
 None, "Olympia", "USA", "Washington", '{"Population": 5000}')</code></strong>
 </pre><p>
           city テーブルには 5 つのカラムがあります: ID、名前、CountryCode、地区および情報。 各値は、それが表すカラムのデータ型と一致する必要があります。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-insert-partial-record"></a>部分レコードの挿入</h5></div></div></div><a class="indexterm" name="idm45447956234592"></a><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-insert-partial-record"></a>部分レコードの挿入</h5></div></div></div><a class="indexterm" name="idm45779499519536"></a><p>
           次の例では、city テーブルの ID、Name および CountryCode カラムに値を挿入します。
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.insert("ID", "Name", "CountryCode").values(
 None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 </pre><p>
           <code class="literal">insert()</code> メソッドを使用してカラムを指定する場合、値の数はカラムの数と一致する必要があります。 前の例では、指定した 3 つのカラムに一致するように 3 つの値を指定する必要があります。 
-        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956228592"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        </p></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499513536"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tableinsertfunction" target="_top">TableInsertFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-select"></a>20.4.4.2 テーブルの選択</h4></div></div></div><a class="indexterm" name="idm45447956224272"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-select"></a>20.4.4.2 テーブルの選択</h4></div></div></div><a class="indexterm" name="idm45779499509216"></a><p>
         <code class="literal">select()</code> メソッドを使用して、データベース内のテーブルに対してクエリーを実行し、レコードを戻すことができます。 X DevAPI には、返されたレコードをフィルタおよびソートするために <code class="literal">select()</code> メソッドとともに使用する追加のメソッドが用意されています。 
       </p><p>
         MySQL には、検索条件を指定する次の演算子が用意されています: <code class="literal">OR</code> (<code class="literal">||</code>)、<code class="literal">AND</code> (<code class="literal">&amp;&amp;</code>)、<code class="literal">XOR</code>, <code class="literal">IS</code>, <code class="literal">NOT</code>, <code class="literal">BETWEEN</code>, <code class="literal">IN</code>, <code class="literal">LIKE</code>, <code class="literal">!=</code>, <code class="literal">&lt;&gt;</code>, <code class="literal">&gt;</code>, <code class="literal">&gt;=</code>, <code class="literal">&lt;</code>, <code class="literal">&lt;=</code>, <code class="literal">&amp;</code>, <code class="literal">|</code>, <code class="literal">&lt;&lt;</code>, <code class="literal">&gt;&gt;</code>, <code class="literal">+</code>, <code class="literal">-</code>, <code class="literal">*</code>, <code class="literal">/</code>, <code class="literal">~</code> および <code class="literal">%</code>。
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-select-all-records"></a>すべてのレコードの選択</h5></div></div></div><a class="indexterm" name="idm45447956200560"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-select-all-records"></a>すべてのレコードの選択</h5></div></div></div><a class="indexterm" name="idm45779499485504"></a><p>
           既存のテーブルからすべてのレコードを返すクエリーを発行するには、検索条件を指定せずに <code class="literal">select()</code> メソッドを使用します。 次の例では、<code class="literal">world_x</code> データベースの city テーブルからすべてのレコードを選択します。 
         </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
             空の <code class="literal">select()</code> メソッドの使用を対話型のステートメントに制限します。 アプリケーションコードでは、常に明示的なカラム名の選択を使用します。 
@@ -1643,7 +1643,7 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 </pre><p>
           空のセット (一致するレコードなし) は、次の情報を返します:
         </p><pre class="screen">Empty set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45447956189344"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-filter-searches"></a>フィルタ検索</h5></div></div></div><a class="indexterm" name="idm45779499474288"></a><p>
           一連のテーブルのカラムを戻すクエリーを発行するには、<code class="literal">select()</code> メソッドを使用して、角カッコで囲むカラムを指定します。 このクエリーは、city テーブルから Name カラムと CountryCode カラムを返します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.select(["Name", "CountryCode"])</code></strong>
 +-------------------+-------------+
@@ -1692,7 +1692,7 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
             プログラム内でバインディングを使用すると、式にプレースホルダを指定できます。プレースホルダには、実行前に値が入力され、必要に応じて自動エスケープを利用できます。
           </p><p>
             入力をサニタイズするには、常にバインディングを使用します。 文字列連結を使用してクエリーに値を導入しないでください。無効な入力が生成され、場合によってはセキュリティの問題が発生することがあります。 
-          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-project-results"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45447956171088"></a><p>
+          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-project-results"></a>プロジェクト結果</h5></div></div></div><a class="indexterm" name="idm45779499456032"></a><p>
           <code class="literal">AND</code> 演算子を使用してクエリーを発行するには、<code class="literal">where()</code> メソッドの検索条件の間に演算子を追加します。
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.select(["Name", "CountryCode"]).where(
 "Name like 'Z%' and CountryCode = 'CHN'")</code></strong>
@@ -1725,7 +1725,7 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 | Zeleznogorsk      | RUS         |
 +-------------------+-------------+
 29 rows in set (0.01 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-limit-order-offset-results"></a>制限、順序およびオフセットの結果</h5></div></div></div><a class="indexterm" name="idm45447956158592"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-limit-order-offset-results"></a>制限、順序およびオフセットの結果</h5></div></div></div><a class="indexterm" name="idm45779499443536"></a><p>
           <code class="literal">limit()</code>、<code class="literal">order_by()</code> および <code class="literal">offset()</code> メソッドを適用して、<code class="literal">select()</code> メソッドによって返されるレコードの数と順序を管理できます。
         </p><p>
           結果セットに含まれるレコード数を指定するには、<code class="literal">limit()</code> メソッドに <code class="literal">select()</code> メソッドの値を追加します。 たとえば、次のクエリーでは、国テーブルの最初の 5 つのレコードが返されます。 
@@ -1764,11 +1764,11 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 | YEM  | Yemen      |
 +------+------------+
 3 rows in set (0.00 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956136544"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499421488"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               <a class="link" href="functions.html" title="第 12 章 関数と演算子">MySQL Reference Manual</a> には、関数および演算子に関する詳細なドキュメントが用意されています。
             </p></li><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tableselectfunction" target="_top">TableSelectFunction</a> を参照してください。
-            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-update"></a>20.4.4.3 テーブルの更新</h4></div></div></div><a class="indexterm" name="idm45447956130400"></a><p>
+            </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-update"></a>20.4.4.3 テーブルの更新</h4></div></div></div><a class="indexterm" name="idm45779499415344"></a><p>
         <code class="literal">update()</code> メソッドを使用して、テーブル内のレコードを変更できます。 <code class="literal">update()</code> メソッドは、更新するレコードのみを含めるようにクエリーをフィルタリングし、指定した操作をそれらのレコードに適用することで機能します。 
       </p><p>
         市区町村テーブルの市区町村名を置換するには、<code class="literal">set()</code> メソッドに新しい市区町村名を渡します。 次に、検索および置換する市区町村名を <code class="literal">where()</code> メソッドに渡します。 次の例では、Peking 市を Beijing に置き換えます。 
@@ -1782,32 +1782,32 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 | 1891 | Beijing   | CHN         | Peking   | {"Population": 7472000}     |
 +------+-----------+-------------+----------+-----------------------------+
 1 row in set (0.00 sec)
-</pre><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956118736"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499403680"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tableupdatefunction" target="_top">TableUpdateFunction</a> を参照してください。
             </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-table-delete"></a>20.4.4.4 テーブルの削除</h4></div></div></div><p>
         <code class="literal">delete()</code> メソッドを使用して、データベース内のテーブルから一部またはすべてのレコードを削除できます。 X DevAPI には、削除するレコードをフィルタおよび順序付けするために <code class="literal">delete()</code> メソッドとともに使用する追加のメソッドが用意されています。 
-      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-delete-records-using-conditions"></a>条件を使用したレコードの削除</h5></div></div></div><a class="indexterm" name="idm45447956110720"></a><p>
+      </p><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-delete-records-using-conditions"></a>条件を使用したレコードの削除</h5></div></div></div><a class="indexterm" name="idm45779499395616"></a><p>
           次の例では、検索条件を <code class="literal">delete()</code> メソッドに渡します。 条件に一致するすべてのレコードが <code class="literal">city</code> テーブルから削除されます。 この例では、1 つのレコードが条件に一致します。 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.delete().where("Name = 'Olympia'")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-delete-first-record"></a>最初のレコードの削除</h5></div></div></div><a class="indexterm" name="idm45447956103504"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-delete-first-record"></a>最初のレコードの削除</h5></div></div></div><a class="indexterm" name="idm45779499388336"></a><p>
           市区町村テーブルの最初のレコードを削除するには、値が 1 の <code class="literal">limit()</code> メソッドを使用します。
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.delete().limit(1)</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-delete-all-records"></a>テーブル内のすべてのレコードの削除</h5></div></div></div><a class="indexterm" name="idm45447956097232"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-delete-all-records"></a>テーブル内のすべてのレコードの削除</h5></div></div></div><a class="indexterm" name="idm45779499382064"></a><p>
           テーブル内のすべてのレコードを削除できます。 これを行うには、検索条件を指定せずに <code class="literal">delete()</code> メソッドを使用します。 
         </p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注意</div><p>
             検索条件を指定せずにレコードを削除する場合は注意が必要です。削除すると、テーブルからすべてのレコードが削除されます。
-          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-drop-table"></a>テーブルの削除</h5></div></div></div><a class="indexterm" name="idm45447956091312"></a><p>
+          </p></div></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="mysql-shell-tutorial-python-drop-table"></a>テーブルの削除</h5></div></div></div><a class="indexterm" name="idm45779499376208"></a><p>
           <code class="literal">drop_collection()</code> メソッドは、データベースからリレーショナルテーブルを削除するために MySQL Shell でも使用されます。 たとえば、<code class="literal">world_x</code> データベースから <code class="literal">citytest</code> テーブルを削除するには、次のように発行します: 
         </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.drop_collection("citytest")</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45447956084672"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h5 class="title"><a name="idm45779499369568"></a>関連情報</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
               完全な構文の定義は、<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/crud-ebnf-table-crud-functions.html#crud-ebnf-tabledeletefunction" target="_top">TableDeleteFunction</a> を参照してください。
             </p></li><li class="listitem"><p>
               <code class="literal">world_x</code> データベースを再作成する手順は、<a class="xref" href="document-store.html#mysql-shell-tutorial-python-download" title="20.4.2 world_x データベースのダウンロードおよびインポート">セクション20.4.2「world_x データベースのダウンロードおよびインポート」</a> を参照してください。
-            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-documents-in-tables"></a>20.4.5 テーブル内のドキュメント</h3></div></div></div><a class="indexterm" name="idm45447956077872"></a><p>
+            </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="mysql-shell-tutorial-python-documents-in-tables"></a>20.4.5 テーブル内のドキュメント</h3></div></div></div><a class="indexterm" name="idm45779499362704"></a><p>
       MySQL では、テーブルに従来のリレーショナルデータまたは JSON 値 (あるいはその両方) が含まれる場合があります。 ネイティブ <code class="literal">JSON</code> データ型を持つカラムにドキュメントを格納することで、従来のデータを JSON ドキュメントと組み合せることができます。 
     </p><p>
       このセクションの例では、<code class="literal">world_x</code> スキーマの city テーブルを使用します。
-    </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447956072640"></a>市区町村テーブル摘要</h4></div></div></div><p>
+    </p><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779499357472"></a>市区町村テーブル摘要</h4></div></div></div><p>
         city テーブルには、5 つのカラム (またはフィールド) があります。
       </p><pre class="screen">+---------------+------------+-------+-------+---------+------------------+
 | Field         | Type       | Null  | Key   | Default | Extra            |
@@ -1818,11 +1818,11 @@ None, "Little Falls", "USA").values(None, "Happy Valley", "USA")</code></strong>
 | District      | char(20)   | NO    |       |         |                  |
 | Info          | json       | YES   |       | null    |                  |
 +---------------+------------+-------+-------+---------+------------------+
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-insert-record"></a>レコードの挿入</h4></div></div></div><a class="indexterm" name="idm45447956068576"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-insert-record"></a>レコードの挿入</h4></div></div></div><a class="indexterm" name="idm45779499353408"></a><p>
         テーブルのカラムにドキュメントを挿入するには、正しい順序で整形式の JSON ドキュメントを <code class="literal">values()</code> メソッドに渡します。 次の例では、情報カラムに挿入される最終値としてドキュメントが渡されます。 
       </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.insert().values(
 None, "San Francisco", "USA", "California", '{"Population":830000}')</code></strong>
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-select-record"></a>レコードの選択</h4></div></div></div><a class="indexterm" name="idm45447956061936"></a><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="mysql-shell-tutorial-python-select-record"></a>レコードの選択</h4></div></div></div><a class="indexterm" name="idm45779499346832"></a><p>
         式のドキュメント値を評価する検索条件を指定してクエリーを発行できます。
       </p><pre class="programlisting">mysql-py&gt; <strong class="userinput"><code>db.city.select(["ID", "Name", "CountryCode", "District", "Info"]).where(
 "CountryCode = :country and Info-&gt;'$.Population' &gt; 1000000").bind(
@@ -1841,11 +1841,11 @@ None, "San Francisco", "USA", "California", '{"Population":830000}')</code></str
 | 3801 | San Antonio    | USA         | Texas          | {"Population": 1144646}     |
 +------+----------------+-------------+----------------+-----------------------------+
 9 rows in set (0.01 sec)
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45447956056336"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h4 class="title"><a name="idm45779499341232"></a>関連情報</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
             詳しくは<a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/devapi-users-working-with-relational-tables-and-documents.html" target="_top">Working with Relational Tables and Documents</a>をご覧ください。
           </p></li><li class="listitem"><p>
             データ型の詳細は、<a class="xref" href="data-types.html#json" title="11.5 JSON データ型">セクション11.5「JSON データ型」</a> を参照してください。
-          </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="x-plugin"></a>20.5 X プラグイン</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#x-plugin-checking-installation">20.5.1 X プラグイン のインストールの確認</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-disabling">20.5.2 X プラグイン の無効化</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-encrypted-connections">20.5.3 X プラグイン での暗号化接続の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-sha2-cache-plugin">20.5.4 Caching SHA-2 認証プラグインでの X プラグイン の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-connection-compression">20.5.5 X プラグイン での接続圧縮</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-options-variables">20.5.6 X プラグイン のオプションおよび変数</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-system-monitoring">20.5.7 X プラグイン の監視</a></span></dt></dl></div><a class="indexterm" name="idm45447956050448"></a><p>
+          </p></li></ul></div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="x-plugin"></a>20.5 X プラグイン</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="document-store.html#x-plugin-checking-installation">20.5.1 X プラグイン のインストールの確認</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-disabling">20.5.2 X プラグイン の無効化</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-encrypted-connections">20.5.3 X プラグイン での暗号化接続の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-sha2-cache-plugin">20.5.4 Caching SHA-2 認証プラグインでの X プラグイン の使用</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-connection-compression">20.5.5 X プラグイン での接続圧縮</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-options-variables">20.5.6 X プラグイン のオプションおよび変数</a></span></dt><dt><span class="section"><a href="document-store.html#x-plugin-system-monitoring">20.5.7 X プラグイン の監視</a></span></dt></dl></div><a class="indexterm" name="idm45779499335344"></a><p>
     このセクションでは、X プラグイン を使用、構成および監視する方法について説明します。
   </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="x-plugin-checking-installation"></a>20.5.1 X プラグイン のインストールの確認</h3></div></div></div><p>
       X プラグイン は MySQL 8 ではデフォルトで有効になっているため、MySQL 8 をインストールまたはアップグレードするとプラグインが使用可能になります。 X プラグイン が MySQL サーバーのインスタンスにインストールされていることを確認するには、<code class="literal">SHOW plugins</code> ステートメントを使用してプラグインリストを表示します。 
@@ -1915,7 +1915,7 @@ mysqlx_ssl_key=server-key2.pem
       非 SSL X プロトコル 接続を使用して <code class="literal">caching_sha2_password</code> 認証プラグインを使用するアカウントを認証するには、X プラグイン 認証キャッシュにパスワードを指定するために、そのアカウントが SSL を使用した X プロトコル 接続を介して少なくとも一度認証されている必要があります。 SSL 経由のこの初期認証が成功すると、非 SSL X プロトコル 接続を使用できます。 
     </p><p>
       オプション <code class="literal">--mysqlx_cache_cleaner=0</code> を指定して MySQL サーバーを起動すると、<code class="literal">mysqlx_cache_cleaner</code> プラグインを無効にできます。 これを行うと、X プラグイン 認証キャッシュが無効になるため、<code class="literal">SHA256_MEMORY</code> 認証を使用した認証時には常に SSL を X プロトコル 接続に使用する必要があります。 
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="x-plugin-connection-compression"></a>20.5.5 X プラグイン での接続圧縮</h3></div></div></div><a class="indexterm" name="idm45447955976688"></a><a class="indexterm" name="idm45447955974560"></a><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="x-plugin-connection-compression"></a>20.5.5 X プラグイン での接続圧縮</h3></div></div></div><a class="indexterm" name="idm45779499261712"></a><a class="indexterm" name="idm45779499259584"></a><p>
       MySQL 8.0.19 から、X プラグイン は X プロトコル 接続を介して送信されるメッセージの圧縮をサポートします。 サーバーとクライアントが相互にサポートされている圧縮アルゴリズムに同意する場合、接続を圧縮できます。 圧縮を有効にすると、ネットワーク経由で送信されるバイト数が削減されますが、圧縮および解凍操作のための CPU コストがサーバーおよびクライアントに追加されます。 したがって、圧縮の利点は、主にネットワーク帯域幅が低く、ネットワーク転送時間が圧縮および解凍操作のコストを支配し、結果セットが大きい場合に発生します。 
     </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><div class="admon-title">注記</div><p>
         MySQL クライアントによって、接続圧縮のサポートが異なる方法で実装されます。詳細は、クライアントのドキュメントを参照してください。 たとえば、クラシック MySQL プロトコル 接続の場合は、<a class="xref" href="programs.html#connection-compression-control" title="4.2.8 接続圧縮制御">セクション4.2.8「接続圧縮制御」</a> を参照してください。 
@@ -2029,7 +2029,7 @@ mysqlx_ssl_key=server-key2.pem
       このセクションでは、X プラグイン を構成するコマンドオプションとシステム変数、および監視目的で使用可能なステータス変数について説明します。 起動時に指定された構成値が正しくない場合、X プラグイン は適切に初期化できず、サーバーがロードしません。 この場合、サーバーは他の X プラグイン 設定を認識できないため、エラーメッセージを生成することもできます。 
     </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="x-plugin-option-variable-reference"></a>20.5.6.1 X プラグイン オプションおよび変数リファレンス</h4></div></div></div><p>
         このテーブルは、X プラグイン で提供されるコマンドオプション、システム変数およびステータス変数の概要を示しています。
-      </p><div class="table"><a name="idm45447955832624"></a><p class="title"><b>表 20.2 「X プラグイン オプションおよび変数リファレンス」</b></p><div class="table-contents"><table frame="box" rules="all" summary="「X プラグイン のコマンドラインオプション、システム変数およびステータス変数のリファレンス。」"><col style="width: 20%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><thead><tr><th scope="col">名前</th>
+      </p><div class="table"><a name="idm45779499117840"></a><p class="title"><b>表 20.2 「X プラグイン オプションおよび変数リファレンス」</b></p><div class="table-contents"><table frame="box" rules="all" summary="「X プラグイン のコマンドラインオプション、システム変数およびステータス変数のリファレンス。」"><col style="width: 20%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><col style="width: 15%"><thead><tr><th scope="col">名前</th>
 <th scope="col">コマンド行</th>
 <th scope="col">オプションファイル</th>
 <th scope="col">システム変数</th>
@@ -2761,7 +2761,7 @@ mysqlx_ssl_key=server-key2.pem
         X プラグイン のアクティブ化を制御するには、このオプションを使用します:
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="option_mysqld_mysqlx"></a>
             <code class="option">--mysqlx[=value]</code>
-          </p><a class="indexterm" name="idm45447955099120"></a><a class="indexterm" name="idm45447955097568"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498384400"></a><a class="indexterm" name="idm45779498382848"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx[=value]</code></td>
 </tr><tr><th>型</th>
 <td>列挙</td>
@@ -2777,7 +2777,7 @@ mysqlx_ssl_key=server-key2.pem
         X プラグイン が有効になっている場合、操作を制御できるいくつかのシステム変数が公開されます:
       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="sysvar_mysqlx_bind_address"></a>
             <code class="literal">mysqlx_bind_address</code>
-          </p><a class="indexterm" name="idm45447955074432"></a><a class="indexterm" name="idm45447955072880"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_bind_address"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498359712"></a><a class="indexterm" name="idm45779498358160"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_bind_address"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-bind-address=addr</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_bind_address">mysqlx_bind_address</a></code></td>
@@ -2837,7 +2837,7 @@ mysqlx_ssl_key=server-key2.pem
               X プラグイン は必須プラグインではないため、指定されたアドレスまたはアドレスリストにエラーがある場合、サーバーの起動は妨げられません (MySQL Server が <code class="literal">bind_address</code> エラーの場合と同様)。 X プラグイン では、リストされたアドレスのいずれかを解析できない場合、または X プラグイン がアドレスにバインドできない場合、アドレスはスキップされ、エラーメッセージがログに記録され、X プラグイン は残りの各アドレスへのバインドを試行します。X プラグイン <code class="literal">Mysqlx_address</code> ステータス変数には、バインドが成功したアドレスのみがリストに表示されます。 リストされたアドレスのいずれもバインドに成功しなかった場合、または単一の指定されたアドレスで障害が発生した場合、X プラグイン は X プロトコル を使用できないことを示すエラーメッセージ <span class="errorname">ER_XPLUGIN_FAILED_TO_PREPARE_IO_INTERFACES</span> をログに記録します。<code class="literal">mysqlx_bind_address</code> は動的ではないため、問題を修正するには、サーバーを停止し、システム変数値を修正してサーバーを再起動する必要があります。 
             </p></div></li><li class="listitem"><p><a name="sysvar_mysqlx_compression_algorithms"></a>
             <code class="literal">mysqlx_compression_algorithms</code>
-          </p><a class="indexterm" name="idm45447954999600"></a><a class="indexterm" name="idm45447954998032"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_compression_algorithms"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498284880"></a><a class="indexterm" name="idm45779498283312"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_compression_algorithms"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-compression-algorithms=value</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.19</td>
@@ -2859,7 +2859,7 @@ mysqlx_ssl_key=server-key2.pem
             X プロトコル 接続で使用できる圧縮アルゴリズム。 デフォルトでは、Deflate、LZ4 および zstd アルゴリズムはすべて許可されています。 どのアルゴリズムも許可しないようにするには、許可するアルゴリズムのみを含むように <code class="literal">mysqlx_compression_algorithms</code> を設定します。 アルゴリズム名 <code class="literal">deflate_stream</code>、<code class="literal">lz4_message</code> および <code class="literal">zstd_stream</code> は任意の組合せで指定でき、順序と大/小文字は重要ではありません。 システム変数を空の文字列に設定した場合、圧縮アルゴリズムは許可されず、圧縮されていない接続のみが使用されます。 アルゴリズム固有のシステム変数を使用して、許可される各アルゴリズムのデフォルトおよび最大の圧縮レベルを調整します。 X プロトコル の接続圧縮と MySQL Server の同等の設定との関連の詳細は、<a class="xref" href="document-store.html#x-plugin-connection-compression" title="20.5.5 X プラグイン での接続圧縮">セクション20.5.5「X プラグイン での接続圧縮」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_connect_timeout"></a>
             <code class="literal">mysqlx_connect_timeout</code>
-          </p><a class="indexterm" name="idm45447954961344"></a><a class="indexterm" name="idm45447954959792"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_connect_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498246624"></a><a class="indexterm" name="idm45779498245072"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_connect_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-connect-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_connect_timeout">mysqlx_connect_timeout</a></code></td>
@@ -2881,7 +2881,7 @@ mysqlx_ssl_key=server-key2.pem
             新しく接続されたクライアントから最初のパケットが受信されるまで X プラグイン が待機する秒数。 これは <code class="literal">connect_timeout</code> と同等の X プラグイン です。詳細は、その変数の説明を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_deflate_default_compression_level"></a>
             <code class="literal">mysqlx_deflate_default_compression_level</code>
-          </p><a class="indexterm" name="idm45447954928816"></a><a class="indexterm" name="idm45447954927216"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_deflate_default_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498214096"></a><a class="indexterm" name="idm45779498212496"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_deflate_default_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx_deflate_default_compression_level=#</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.20</td>
@@ -2905,7 +2905,7 @@ mysqlx_ssl_key=server-key2.pem
             サーバーが X プロトコル 接続の Deflate アルゴリズムに使用するデフォルトの圧縮レベル。 レベルは、1 (最小圧縮作業) から 9 (最大作業) の整数で指定します。 このレベルは、クライアントが機能ネゴシエーション中に圧縮レベルをリクエストしない場合に使用されます。 このシステム変数を指定しない場合、サーバーはレベル 3 をデフォルトとして使用します。 詳細は、<a class="xref" href="document-store.html#x-plugin-connection-compression" title="20.5.5 X プラグイン での接続圧縮">セクション20.5.5「X プラグイン での接続圧縮」</a>を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_deflate_max_client_compression_level"></a>
             <code class="literal">mysqlx_deflate_max_client_compression_level</code>
-          </p><a class="indexterm" name="idm45447954894240"></a><a class="indexterm" name="idm45447954892624"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_deflate_max_client_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498179520"></a><a class="indexterm" name="idm45779498177904"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_deflate_max_client_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx_deflate_max_client_compression_level=#</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.20</td>
@@ -2929,7 +2929,7 @@ mysqlx_ssl_key=server-key2.pem
             サーバーが X プロトコル 接続の Deflate アルゴリズムに許可する最大圧縮レベル。 範囲は、このアルゴリズムのデフォルトの圧縮レベルと同じです。 クライアントがこれより高い圧縮レベルをリクエストした場合、サーバーはここで設定したレベルを使用します。 このシステム変数を指定しない場合、サーバーは最大圧縮レベルを 5 に設定します。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_document_id_unique_prefix"></a>
             <code class="literal">mysqlx_document_id_unique_prefix</code>
-          </p><a class="indexterm" name="idm45447954860464"></a><a class="indexterm" name="idm45447954858880"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_document_id_unique_prefix"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498145744"></a><a class="indexterm" name="idm45779498144160"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_document_id_unique_prefix"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-document-id-unique-prefix=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_document_id_unique_prefix">mysqlx_document_id_unique_prefix</a></code></td>
@@ -2951,7 +2951,7 @@ mysqlx_ssl_key=server-key2.pem
             ドキュメントがコレクションに追加されたときにサーバーによって生成されるドキュメント ID の最初の 4 バイトを設定します。 この変数をインスタンスごとに一意の値に設定することで、ドキュメント ID がインスタンス間で一意であることを確認できます。 <a class="ulink" href="https://dev.mysql.com/doc/x-devapi-userguide/en/understanding-automatic-document-ids.html" target="_top">Understanding Document IDs</a>を参照してください。  
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_enable_hello_notice"></a>
             <code class="literal">mysqlx_enable_hello_notice</code>
-          </p><a class="indexterm" name="idm45447954827232"></a><a class="indexterm" name="idm45447954825664"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_enable_hello_notice"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498112512"></a><a class="indexterm" name="idm45779498110944"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_enable_hello_notice"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-enable-hello-notice[={OFF|ON}]</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_enable_hello_notice">mysqlx_enable_hello_notice</a></code></td>
@@ -2969,7 +2969,7 @@ mysqlx_ssl_key=server-key2.pem
             X プロトコル を介した接続を試行する クラシック MySQL プロトコル クライアントに送信されるメッセージを制御します。 有効にすると、サーバーの X プロトコル ポートに接続しようとする X プロトコル をサポートしていないクライアントは、間違ったプロトコルを使用していることを説明するエラーを受け取ります。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_idle_worker_thread_timeout"></a>
             <code class="literal">mysqlx_idle_worker_thread_timeout</code>
-          </p><a class="indexterm" name="idm45447954800336"></a><a class="indexterm" name="idm45447954798736"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_idle_worker_thread_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498085616"></a><a class="indexterm" name="idm45779498084016"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_idle_worker_thread_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-idle-worker-thread-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_idle_worker_thread_timeout">mysqlx_idle_worker_thread_timeout</a></code></td>
@@ -2991,7 +2991,7 @@ mysqlx_ssl_key=server-key2.pem
             アイドル状態のワーカースレッドが終了するまでの秒数。
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_interactive_timeout"></a>
             <code class="literal">mysqlx_interactive_timeout</code>
-          </p><a class="indexterm" name="idm45447954769104"></a><a class="indexterm" name="idm45447954767536"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_interactive_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498054384"></a><a class="indexterm" name="idm45779498052816"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_interactive_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-interactive-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_interactive_timeout">mysqlx_interactive_timeout</a></code></td>
@@ -3013,7 +3013,7 @@ mysqlx_ssl_key=server-key2.pem
             対話型クライアントの <code class="literal">mysqlx_wait_timeout</code> セッション変数のデフォルト値。 (対話型クライアントがタイムアウトするまで待機する秒数。) 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_lz4_default_compression_level"></a>
             <code class="literal">mysqlx_lz4_default_compression_level</code>
-          </p><a class="indexterm" name="idm45447954736592"></a><a class="indexterm" name="idm45447954734992"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_lz4_default_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779498021936"></a><a class="indexterm" name="idm45779498020336"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_lz4_default_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx_lz4_default_compression_level=#</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.20</td>
@@ -3037,7 +3037,7 @@ mysqlx_ssl_key=server-key2.pem
             サーバーが X プロトコル 接続の LZ4 アルゴリズムに使用するデフォルトの圧縮レベル。 レベルは、0 (最小圧縮作業) から 16 (最大作業) の整数で指定します。 このレベルは、クライアントが機能ネゴシエーション中に圧縮レベルをリクエストしない場合に使用されます。 このシステム変数を指定しない場合、サーバーはレベル 2 をデフォルトとして使用します。 詳細は、<a class="xref" href="document-store.html#x-plugin-connection-compression" title="20.5.5 X プラグイン での接続圧縮">セクション20.5.5「X プラグイン での接続圧縮」</a>を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_lz4_max_client_compression_level"></a>
             <code class="literal">mysqlx_lz4_max_client_compression_level</code>
-          </p><a class="indexterm" name="idm45447954702080"></a><a class="indexterm" name="idm45447954700480"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_lz4_max_client_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497987424"></a><a class="indexterm" name="idm45779497985824"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_lz4_max_client_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx_lz4_max_client_compression_level=#</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.20</td>
@@ -3061,7 +3061,7 @@ mysqlx_ssl_key=server-key2.pem
             サーバーが X プロトコル 接続で LZ4 アルゴリズムに対して許可する最大圧縮レベル。 範囲は、このアルゴリズムのデフォルトの圧縮レベルと同じです。 クライアントがこれより高い圧縮レベルをリクエストした場合、サーバーはここで設定したレベルを使用します。 このシステム変数を指定しない場合、サーバーは最大圧縮レベルを 8 に設定します。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_max_allowed_packet"></a>
             <code class="literal">mysqlx_max_allowed_packet</code>
-          </p><a class="indexterm" name="idm45447954668400"></a><a class="indexterm" name="idm45447954666832"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_max_allowed_packet"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497953744"></a><a class="indexterm" name="idm45779497952176"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_max_allowed_packet"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-max-allowed-packet=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_max_allowed_packet">mysqlx_max_allowed_packet</a></code></td>
@@ -3083,7 +3083,7 @@ mysqlx_ssl_key=server-key2.pem
             X プラグイン で受信できるネットワークパケットの最大サイズ。 この制限は、接続に圧縮が使用される場合にも適用されるため、メッセージが解凍された後は、ネットワークパケットをこのサイズより小さくする必要があります。 これは <code class="literal">max_allowed_packet</code> と同等の X プラグイン です。詳細は、その変数の説明を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_max_connections"></a>
             <code class="literal">mysqlx_max_connections</code>
-          </p><a class="indexterm" name="idm45447954635456"></a><a class="indexterm" name="idm45447954633904"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_max_connections"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497920800"></a><a class="indexterm" name="idm45779497919248"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_max_connections"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-max-connections=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_max_connections">mysqlx_max_connections</a></code></td>
@@ -3107,7 +3107,7 @@ mysqlx_ssl_key=server-key2.pem
             この変数を変更する場合、新しい値が現在の接続数より小さいと、新しい接続に対してのみ新しい制限が考慮されます。
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_min_worker_threads"></a>
             <code class="literal">mysqlx_min_worker_threads</code>
-          </p><a class="indexterm" name="idm45447954602336"></a><a class="indexterm" name="idm45447954600768"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_min_worker_threads"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497887680"></a><a class="indexterm" name="idm45779497886112"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_min_worker_threads"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-min-worker-threads=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_min_worker_threads">mysqlx_min_worker_threads</a></code></td>
@@ -3129,7 +3129,7 @@ mysqlx_ssl_key=server-key2.pem
             クライアントリクエストを処理するために X プラグイン で使用されるワーカースレッドの最小数。
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_port"></a>
             <code class="literal">mysqlx_port</code>
-          </p><a class="indexterm" name="idm45447954571072"></a><a class="indexterm" name="idm45447954569552"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_port"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497856416"></a><a class="indexterm" name="idm45779497854896"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_port"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-port=port_num</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_port">mysqlx_port</a></code></td>
@@ -3151,7 +3151,7 @@ mysqlx_ssl_key=server-key2.pem
             X プラグイン が TCP/IP 接続をリスニングするネットワークポート。 これは <code class="literal">port</code> と同等の X プラグイン です。詳細は、その変数の説明を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_port_open_timeout"></a>
             <code class="literal">mysqlx_port_open_timeout</code>
-          </p><a class="indexterm" name="idm45447954538736"></a><a class="indexterm" name="idm45447954537184"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_port_open_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497824080"></a><a class="indexterm" name="idm45779497822528"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_port_open_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-port-open-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_port_open_timeout">mysqlx_port_open_timeout</a></code></td>
@@ -3173,7 +3173,7 @@ mysqlx_ssl_key=server-key2.pem
             X プラグイン が TCP/IP ポートが解放されるまで待機する秒数。
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_read_timeout"></a>
             <code class="literal">mysqlx_read_timeout</code>
-          </p><a class="indexterm" name="idm45447954507536"></a><a class="indexterm" name="idm45447954505984"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_read_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497792944"></a><a class="indexterm" name="idm45779497791392"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_read_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-read-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_read_timeout">mysqlx_read_timeout</a></code></td>
@@ -3195,7 +3195,7 @@ mysqlx_ssl_key=server-key2.pem
             X プラグイン が読取り操作のブロックの完了を待機する秒数。 この時間が経過すると、読取り操作が成功しない場合、X プラグイン は接続をクローズし、エラーコード<span class="errorcode"> ER_IO_READ_ERROR </span>の警告通知をクライアントアプリケーションに返します。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_socket"></a>
             <code class="literal">mysqlx_socket</code>
-          </p><a class="indexterm" name="idm45447954475344"></a><a class="indexterm" name="idm45447954473872"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_socket"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497760752"></a><a class="indexterm" name="idm45779497759280"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_socket"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-socket=file_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_socket">mysqlx_socket</a></code></td>
@@ -3223,7 +3223,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">MYSQLX_UNIX_PORT</code> 環境変数を使用して、サーバーの起動時に X プラグイン ソケットファイルのデフォルトを設定することもできます (<a class="xref" href="programs.html#environment-variables" title="4.9 環境変数">セクション4.9「環境変数」</a> を参照)。 この環境変数を設定すると、コンパイルされた <code class="option">MYSQLX_UNIX_ADDR</code> 値はオーバーライドされますが、<code class="literal">mysqlx_socket</code> 値によってオーバーライドされます。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_ca"></a>
             <code class="literal">mysqlx_ssl_ca</code>
-          </p><a class="indexterm" name="idm45447954431808"></a><a class="indexterm" name="idm45447954430288"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_ca"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497717216"></a><a class="indexterm" name="idm45779497715696"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_ca"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-ca=file_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_ca">mysqlx_ssl_ca</a></code></td>
@@ -3241,7 +3241,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_ca</code> システム変数は <code class="literal">ssl_ca</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_capath"></a>
             <code class="literal">mysqlx_ssl_capath</code>
-          </p><a class="indexterm" name="idm45447954402544"></a><a class="indexterm" name="idm45447954400992"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_capath"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497687952"></a><a class="indexterm" name="idm45779497686400"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_capath"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-capath=dir_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_capath">mysqlx_ssl_capath</a></code></td>
@@ -3259,7 +3259,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_capath</code> システム変数は <code class="literal">ssl_capath</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_cert"></a>
             <code class="literal">mysqlx_ssl_cert</code>
-          </p><a class="indexterm" name="idm45447954373296"></a><a class="indexterm" name="idm45447954371760"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_cert"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497658704"></a><a class="indexterm" name="idm45779497657168"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_cert"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-cert=file_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_cert">mysqlx_ssl_cert</a></code></td>
@@ -3277,7 +3277,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_cert</code> システム変数は <code class="literal">ssl_cert</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_cipher"></a>
             <code class="literal">mysqlx_ssl_cipher</code>
-          </p><a class="indexterm" name="idm45447954344064"></a><a class="indexterm" name="idm45447954342512"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_cipher"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497629472"></a><a class="indexterm" name="idm45779497627920"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_cipher"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-cipher=name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_cipher">mysqlx_ssl_cipher</a></code></td>
@@ -3295,7 +3295,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_cipher</code> システム変数は <code class="literal">ssl_cipher</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_crl"></a>
             <code class="literal">mysqlx_ssl_crl</code>
-          </p><a class="indexterm" name="idm45447954314816"></a><a class="indexterm" name="idm45447954313344"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_crl"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497600224"></a><a class="indexterm" name="idm45779497598752"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_crl"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-crl=file_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_crl">mysqlx_ssl_crl</a></code></td>
@@ -3313,7 +3313,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_crl</code> システム変数は <code class="literal">ssl_crl</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_crlpath"></a>
             <code class="literal">mysqlx_ssl_crlpath</code>
-          </p><a class="indexterm" name="idm45447954285600"></a><a class="indexterm" name="idm45447954284048"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_crlpath"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497571072"></a><a class="indexterm" name="idm45779497569520"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_crlpath"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-crlpath=dir_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_crlpath">mysqlx_ssl_crlpath</a></code></td>
@@ -3331,7 +3331,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_crlpath</code> システム変数は <code class="literal">ssl_crlpath</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_ssl_key"></a>
             <code class="literal">mysqlx_ssl_key</code>
-          </p><a class="indexterm" name="idm45447954256352"></a><a class="indexterm" name="idm45447954254880"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_key"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497541824"></a><a class="indexterm" name="idm45779497540352"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_ssl_key"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-ssl-key=file_name</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_ssl_key">mysqlx_ssl_key</a></code></td>
@@ -3349,7 +3349,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             <code class="literal">mysqlx_ssl_key</code> システム変数は <code class="literal">ssl_key</code> と似ていますが、MySQL Server のメイン接続インタフェースではなく X プラグイン に適用される点が異なります。 X プラグイン の暗号化サポートの構成の詳細は、<a class="xref" href="document-store.html#x-plugin-encrypted-connections" title="20.5.3 X プラグイン での暗号化接続の使用">セクション20.5.3「X プラグイン での暗号化接続の使用」</a> を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_wait_timeout"></a>
             <code class="literal">mysqlx_wait_timeout</code>
-          </p><a class="indexterm" name="idm45447954227136"></a><a class="indexterm" name="idm45447954225584"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_wait_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497512672"></a><a class="indexterm" name="idm45779497511120"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_wait_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-wait-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_wait_timeout">mysqlx_wait_timeout</a></code></td>
@@ -3371,7 +3371,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             X プラグイン が接続のアクティビティを待機する秒数。 この時間が経過すると、読取り操作が成功しない場合、X プラグイン は接続をクローズします。 クライアントが非対話型の場合、セッション変数の初期値はグローバル <code class="literal">mysqlx_wait_timeout</code> 変数からコピーされます。 対話型クライアントの場合、初期値はセッション <code class="literal">mysqlx_interactive_timeout</code> からコピーされます。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_write_timeout"></a>
             <code class="literal">mysqlx_write_timeout</code>
-          </p><a class="indexterm" name="idm45447954193312"></a><a class="indexterm" name="idm45447954191760"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_write_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497478848"></a><a class="indexterm" name="idm45779497477296"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_write_timeout"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx-write-timeout=#</code></td>
 </tr><tr><th>システム変数</th>
 <td><code class="literal"><a class="link" href="document-store.html#sysvar_mysqlx_write_timeout">mysqlx_write_timeout</a></code></td>
@@ -3393,7 +3393,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             X プラグイン が書込み操作のブロックの完了を待機する秒数。 この時間が経過すると、書込み操作が成功しない場合、X プラグイン は接続をクローズします。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_zstd_default_compression_level"></a>
             <code class="literal">mysqlx_zstd_default_compression_level</code>
-          </p><a class="indexterm" name="idm45447954161904"></a><a class="indexterm" name="idm45447954160304"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_zstd_default_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497447376"></a><a class="indexterm" name="idm45779497445776"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_zstd_default_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx_zstd_default_compression_level=#</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.20</td>
@@ -3417,7 +3417,7 @@ mysqlx_socket=/home/sockets/xplugin/xplugin.sock
             サーバーが X プロトコル 接続で zstd アルゴリズムに使用するデフォルトの圧縮レベル。 1.4.0 の zstd ライブラリのバージョンでは、正の値を 1 から 22 (最高の圧縮作業)、またはプログレッシブローエフォートを表す負の値に設定できます。 値 0 は値 1 に変換されます。 zstd ライブラリの以前のバージョンでは、値 3 のみを指定できます。 このレベルは、クライアントが機能ネゴシエーション中に圧縮レベルをリクエストしない場合に使用されます。 このシステム変数を指定しない場合、サーバーはレベル 3 をデフォルトとして使用します。 詳細は、<a class="xref" href="document-store.html#x-plugin-connection-compression" title="20.5.5 X プラグイン での接続圧縮">セクション20.5.5「X プラグイン での接続圧縮」</a>を参照してください。 
           </p></li><li class="listitem"><p><a name="sysvar_mysqlx_zstd_max_client_compression_level"></a>
             <code class="literal">mysqlx_zstd_max_client_compression_level</code>
-          </p><a class="indexterm" name="idm45447954126512"></a><a class="indexterm" name="idm45447954124912"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_zstd_max_client_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
+          </p><a class="indexterm" name="idm45779497411920"></a><a class="indexterm" name="idm45779497410320"></a><div class="informaltable"><table frame="box" rules="all" summary="Properties for mysqlx_zstd_max_client_compression_level"><col style="width: 30%"><col style="width: 70%"><tbody><tr><th>コマンド行形式</th>
 <td><code class="literal">--mysqlx_zstd_max_client_compression_level=#</code></td>
 </tr><tr><th>導入</th>
 <td>8.0.20</td>
