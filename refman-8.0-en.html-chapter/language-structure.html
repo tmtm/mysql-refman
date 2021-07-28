@@ -74,7 +74,7 @@
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="language-structure.html#string-literals">9.1.1 String Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#number-literals">9.1.2 Numeric Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#date-and-time-literals">9.1.3 Date and Time Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#hexadecimal-literals">9.1.4 Hexadecimal Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#bit-value-literals">9.1.5 Bit-Value Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#boolean-literals">9.1.6 Boolean Literals</a></span></dt><dt><span class="section"><a href="language-structure.html#null-values">9.1.7 NULL Values</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45852198275600"></a><p>
+<a class="indexterm" name="idm45058843225904"></a><p>
       This section describes how to write literal values in MySQL. These
       include strings, numbers, hexadecimal and bit values, boolean
       values, and <code class="literal">NULL</code>. The section also covers
@@ -90,13 +90,13 @@
 </div>
 </div>
 </div>
-<a class="indexterm" name="idm45852198272032"></a><a class="indexterm" name="idm45852198270544"></a><a class="indexterm" name="idm45852198269472"></a><a class="indexterm" name="idm45852198267984"></a><a class="indexterm" name="idm45852198266496"></a><a class="indexterm" name="idm45852198265008"></a><p>
+<a class="indexterm" name="idm45058843222336"></a><a class="indexterm" name="idm45058843220848"></a><a class="indexterm" name="idm45058843219776"></a><a class="indexterm" name="idm45058843218288"></a><a class="indexterm" name="idm45058843216800"></a><a class="indexterm" name="idm45058843215312"></a><p>
         A string is a sequence of bytes or characters, enclosed within
         either single quote (<code class="literal">'</code>) or double quote
         (<code class="literal">"</code>) characters. Examples:
       </p><pre data-lang="sql" class="programlisting">'a string'
 "another string"
-</pre><a class="indexterm" name="idm45852198260672"></a><a class="indexterm" name="idm45852198259600"></a><p>
+</pre><a class="indexterm" name="idm45058843210976"></a><a class="indexterm" name="idm45058843209904"></a><p>
         Quoted strings placed next to each other are concatenated to a
         single string. The following lines are equivalent:
       </p><pre data-lang="sql" class="programlisting">'a string'
@@ -141,7 +141,7 @@ Note
         introducer and <code class="literal">COLLATE</code> clause, to designate
         it as a string that uses a particular character set and
         collation:
-      </p><a class="indexterm" name="idm45852198244416"></a><a class="indexterm" name="idm45852198242928"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>]'<em class="replaceable"><code>string</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
+      </p><a class="indexterm" name="idm45058843194672"></a><a class="indexterm" name="idm45058843193184"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>]'<em class="replaceable"><code>string</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
 </pre><p>
         Examples:
       </p><pre data-lang="sql" class="programlisting">SELECT _latin1'<em class="replaceable"><code>string</code></em>';
@@ -187,37 +187,37 @@ SELECT _utf8'some text';
             <th>Escape Sequence</th>
             <th>Character Represented by Sequence</th>
           </tr></thead><tbody><tr>
-            <td><code class="literal">\0</code><a class="indexterm" name="idm45852198213968"></a><a class="indexterm" name="idm45852198213024"></a></td>
+            <td><code class="literal">\0</code><a class="indexterm" name="idm45058843164224"></a><a class="indexterm" name="idm45058843163280"></a></td>
             <td>An ASCII NUL (<code class="literal">X'00'</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\'</code><a class="indexterm" name="idm45852198208848"></a><a class="indexterm" name="idm45852198207904"></a></td>
+            <td><code class="literal">\'</code><a class="indexterm" name="idm45058843159104"></a><a class="indexterm" name="idm45058843158160"></a></td>
             <td>A single quote (<code class="literal">'</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\"</code><a class="indexterm" name="idm45852198203728"></a><a class="indexterm" name="idm45852198202784"></a></td>
+            <td><code class="literal">\"</code><a class="indexterm" name="idm45058843153984"></a><a class="indexterm" name="idm45058843153040"></a></td>
             <td>A double quote (<code class="literal">"</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\b</code><a class="indexterm" name="idm45852198198608"></a><a class="indexterm" name="idm45852198197664"></a></td>
+            <td><code class="literal">\b</code><a class="indexterm" name="idm45058843148864"></a><a class="indexterm" name="idm45058843147920"></a></td>
             <td>A backspace character</td>
           </tr><tr>
-            <td><code class="literal">\n</code><a class="indexterm" name="idm45852198194176"></a><a class="indexterm" name="idm45852198193232"></a><a class="indexterm" name="idm45852198192288"></a><a class="indexterm" name="idm45852198191344"></a></td>
+            <td><code class="literal">\n</code><a class="indexterm" name="idm45058843144432"></a><a class="indexterm" name="idm45058843143488"></a><a class="indexterm" name="idm45058843142544"></a><a class="indexterm" name="idm45058843141600"></a></td>
             <td>A newline (linefeed) character</td>
           </tr><tr>
-            <td><code class="literal">\r</code><a class="indexterm" name="idm45852198187840"></a><a class="indexterm" name="idm45852198186896"></a><a class="indexterm" name="idm45852198185952"></a></td>
+            <td><code class="literal">\r</code><a class="indexterm" name="idm45058843138096"></a><a class="indexterm" name="idm45058843137152"></a><a class="indexterm" name="idm45058843136208"></a></td>
             <td>A carriage return character</td>
           </tr><tr>
-            <td><code class="literal">\t</code><a class="indexterm" name="idm45852198182448"></a><a class="indexterm" name="idm45852198181504"></a></td>
+            <td><code class="literal">\t</code><a class="indexterm" name="idm45058843132704"></a><a class="indexterm" name="idm45058843131760"></a></td>
             <td>A tab character</td>
           </tr><tr>
-            <td><code class="literal">\Z</code><a class="indexterm" name="idm45852198177968"></a><a class="indexterm" name="idm45852198177024"></a></td>
+            <td><code class="literal">\Z</code><a class="indexterm" name="idm45058843128272"></a><a class="indexterm" name="idm45058843127328"></a></td>
             <td>ASCII 26 (Control+Z); see note following the table</td>
           </tr><tr>
-            <td><code class="literal">\\</code><a class="indexterm" name="idm45852198173504"></a><a class="indexterm" name="idm45852198172560"></a></td>
+            <td><code class="literal">\\</code><a class="indexterm" name="idm45058843123808"></a><a class="indexterm" name="idm45058843122864"></a></td>
             <td>A backslash (<code class="literal">\</code>) character</td>
           </tr><tr>
-            <td><code class="literal">\%</code><a class="indexterm" name="idm45852198168384"></a><a class="indexterm" name="idm45852198167440"></a></td>
+            <td><code class="literal">\%</code><a class="indexterm" name="idm45058843118688"></a><a class="indexterm" name="idm45058843117744"></a></td>
             <td>A <code class="literal">%</code> character; see note following the table</td>
           </tr><tr>
-            <td><code class="literal">\_</code><a class="indexterm" name="idm45852198163216"></a><a class="indexterm" name="idm45852198162272"></a></td>
+            <td><code class="literal">\_</code><a class="indexterm" name="idm45058843113520"></a><a class="indexterm" name="idm45058843112576"></a></td>
             <td>A <code class="literal">_</code> character; see note following the table</td>
 </tr></tbody></table>
 </div>
@@ -241,7 +241,7 @@ SELECT _utf8'some text';
         pattern-matching contexts, they evaluate to the strings
         <code class="literal">\%</code> and <code class="literal">\_</code>, not to
         <code class="literal">%</code> and <code class="literal">_</code>.
-      </p><a class="indexterm" name="idm45852198146944"></a><p>
+      </p><a class="indexterm" name="idm45058843097248"></a><p>
         There are several ways to include quote characters within a
         string:
 </p>
@@ -290,7 +290,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
 +------------------------+
 | disappearing backslash |
 +------------------------+
-</pre><a class="indexterm" name="idm45852198127072"></a><p>
+</pre><a class="indexterm" name="idm45058843077376"></a><p>
         To insert binary data into a string column (such as a
         <a class="link" href="data-types.html#blob" title="11.3.4 The BLOB and TEXT Types"><code class="literal">BLOB</code></a> column), you should
         represent certain characters by escape sequences. Backslash
@@ -303,7 +303,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
         if not escaped. For the escape sequences that represent each of
         these characters, see
         <a class="xref" href="language-structure.html#character-escape-sequences" title="Table 9.1 Special Character Escape Sequences">Table 9.1, “Special Character Escape Sequences”</a>.
-      </p><a class="indexterm" name="idm45852198119808"></a><a class="indexterm" name="idm45852198118736"></a><a class="indexterm" name="idm45852198117248"></a><a class="indexterm" name="idm45852198116208"></a><a class="indexterm" name="idm45852198115136"></a><p>
+      </p><a class="indexterm" name="idm45058843070112"></a><a class="indexterm" name="idm45058843069040"></a><a class="indexterm" name="idm45058843067552"></a><a class="indexterm" name="idm45058843066512"></a><a class="indexterm" name="idm45058843065440"></a><p>
         When writing application programs, any string that might contain
         any of these special characters must be properly escaped before
         the string is used as a data value in an SQL statement that is
@@ -344,7 +344,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45852198104464"></a><a class="indexterm" name="idm45852198103376"></a><a class="indexterm" name="idm45852198102288"></a><a class="indexterm" name="idm45852198100800"></a><a class="indexterm" name="idm45852198099312"></a><a class="indexterm" name="idm45852198097824"></a><a class="indexterm" name="idm45852198096752"></a><a class="indexterm" name="idm45852198095264"></a><a class="indexterm" name="idm45852198094192"></a><a class="indexterm" name="idm45852198093120"></a><a class="indexterm" name="idm45852198092048"></a><a class="indexterm" name="idm45852198090976"></a><p>
+<a class="indexterm" name="idm45058843054768"></a><a class="indexterm" name="idm45058843053680"></a><a class="indexterm" name="idm45058843052592"></a><a class="indexterm" name="idm45058843051104"></a><a class="indexterm" name="idm45058843049616"></a><a class="indexterm" name="idm45058843048128"></a><a class="indexterm" name="idm45058843047056"></a><a class="indexterm" name="idm45058843045568"></a><a class="indexterm" name="idm45058843044496"></a><a class="indexterm" name="idm45058843043424"></a><a class="indexterm" name="idm45058843042352"></a><a class="indexterm" name="idm45058843041280"></a><p>
         Number literals include exact-value (integer and
         <a class="link" href="data-types.html#fixed-point-types" title="11.1.3 Fixed-Point Types (Exact Value) - DECIMAL, NUMERIC"><code class="literal">DECIMAL</code></a>) literals and
         approximate-value (floating-point) literals.
@@ -406,7 +406,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 'disappearing\ backslash';</cod
 </div>
 
 </div>
-<a class="indexterm" name="idm45852198057008"></a><a class="indexterm" name="idm45852198055520"></a><a class="indexterm" name="idm45852198054032"></a><a class="indexterm" name="idm45852198052960"></a><p>
+<a class="indexterm" name="idm45058843007296"></a><a class="indexterm" name="idm45058843005808"></a><a class="indexterm" name="idm45058843004320"></a><a class="indexterm" name="idm45058843003248"></a><p>
         Date and time values can be represented in several formats, such
         as quoted strings or as numbers, depending on the exact type of
         the value and other factors. For example, in contexts where
@@ -579,7 +579,7 @@ TIMESTAMP '<em class="replaceable"><code>str</code></em>'
         is given by the first 2 digits. Numbers that are not one of
         these lengths are interpreted as though padded with leading
         zeros to the closest length.
-      </p><a class="indexterm" name="idm45852197964032"></a><a class="indexterm" name="idm45852197962960"></a><p>
+      </p><a class="indexterm" name="idm45058842914384"></a><a class="indexterm" name="idm45058842913312"></a><p>
         Values specified as nondelimited strings are interpreted
         according their length. For a string 8 or 14 characters long,
         the year is assumed to be given by the first 4 characters.
@@ -764,7 +764,7 @@ mysql&gt; <strong class="userinput"><code>SELECT col, UNIX_TIMESTAMP(col) FROM t
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197895088"></a><a class="indexterm" name="idm45852197893600"></a><p>
+<a class="indexterm" name="idm45058842845504"></a><a class="indexterm" name="idm45058842844016"></a><p>
         Hexadecimal literal values are written using
         <code class="literal">X'<em class="replaceable"><code>val</code></em>'</code> or
         <code class="literal">0x<em class="replaceable"><code>val</code></em></code> notation,
@@ -824,7 +824,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 0x5461626c65, CHARSET(0x5461626
         introducer and <code class="literal">COLLATE</code> clause, to designate
         it as a string that uses a particular character set and
         collation:
-      </p><a class="indexterm" name="idm45852197870208"></a><a class="indexterm" name="idm45852197868720"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] X'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
+      </p><a class="indexterm" name="idm45058842820624"></a><a class="indexterm" name="idm45058842819136"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] X'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
 </pre><p>
         Examples:
       </p><pre data-lang="sql" class="programlisting">SELECT _latin1 X'4D7953514C';
@@ -890,7 +890,7 @@ mysql&gt; <strong class="userinput"><code>SELECT X'636174';</code></strong>
 +-----------+
 | cat       |
 +-----------+
-</pre><a class="indexterm" name="idm45852197842384"></a><a class="indexterm" name="idm45852197840896"></a><p>
+</pre><a class="indexterm" name="idm45058842792752"></a><a class="indexterm" name="idm45058842791264"></a><p>
         For hexadecimal literals, bit operations are considered numeric
         context, but bit operations permit numeric or binary string
         arguments in MySQL 8.0 and higher. To explicitly
@@ -925,7 +925,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197830592"></a><a class="indexterm" name="idm45852197829104"></a><p>
+<a class="indexterm" name="idm45058842781024"></a><a class="indexterm" name="idm45058842779536"></a><p>
         Bit-value literals are written using
         <code class="literal">b'<em class="replaceable"><code>val</code></em>'</code> or
         <code class="literal">0b<em class="replaceable"><code>val</code></em></code> notation.
@@ -961,7 +961,7 @@ mysql&gt; <strong class="userinput"><code>SELECT 0b1100001, CHARSET(0b1100001);<
         introducer and <code class="literal">COLLATE</code> clause, to designate
         it as a string that uses a particular character set and
         collation:
-      </p><a class="indexterm" name="idm45852197815312"></a><a class="indexterm" name="idm45852197813824"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] b'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
+      </p><a class="indexterm" name="idm45058842765744"></a><a class="indexterm" name="idm45058842764256"></a><pre data-lang="sql" class="programlisting">[_<em class="replaceable"><code>charset_name</code></em>] b'<em class="replaceable"><code>val</code></em>' [COLLATE <em class="replaceable"><code>collation_name</code></em>]
 </pre><p>
         Examples:
       </p><pre data-lang="sql" class="programlisting">SELECT _latin1 b'1000001';
@@ -1027,7 +1027,7 @@ mysql&gt; <strong class="userinput"><code>INSERT INTO t SET b = b'0101';</code><
 |   10 | 1010     | 12     | A      |
 |    5 | 101      | 5      | 5      |
 +------+----------+--------+--------+
-</pre><a class="indexterm" name="idm45852197785232"></a><a class="indexterm" name="idm45852197783744"></a><p>
+</pre><a class="indexterm" name="idm45058842735728"></a><a class="indexterm" name="idm45058842734240"></a><p>
         For bit literals, bit operations are considered numeric context,
         but bit operations permit numeric or binary string arguments in
         MySQL 8.0 and higher. To explicitly specify binary
@@ -1062,7 +1062,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197773440"></a><a class="indexterm" name="idm45852197771952"></a><a class="indexterm" name="idm45852197770880"></a><a class="indexterm" name="idm45852197769808"></a><p>
+<a class="indexterm" name="idm45058842724000"></a><a class="indexterm" name="idm45058842722512"></a><a class="indexterm" name="idm45058842721440"></a><a class="indexterm" name="idm45058842720368"></a><p>
         The constants <code class="literal">TRUE</code> and
         <code class="literal">FALSE</code> evaluate to <code class="literal">1</code> and
         <code class="literal">0</code>, respectively. The constant names can be
@@ -1082,7 +1082,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197759200"></a><a class="indexterm" name="idm45852197758128"></a><a class="indexterm" name="idm45852197756640"></a><p>
+<a class="indexterm" name="idm45058842709696"></a><a class="indexterm" name="idm45058842708624"></a><a class="indexterm" name="idm45058842707136"></a><p>
         The <code class="literal">NULL</code> value means <span class="quote">“<span class="quote">no data.</span>”</span>
         <code class="literal">NULL</code> can be written in any lettercase.
       </p><p>
@@ -1118,7 +1118,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
 <div class="toc">
 <dl class="toc"><dt><span class="section"><a href="language-structure.html#identifier-length">9.2.1 Identifier Length Limits</a></span></dt><dt><span class="section"><a href="language-structure.html#identifier-qualifiers">9.2.2 Identifier Qualifiers</a></span></dt><dt><span class="section"><a href="language-structure.html#identifier-case-sensitivity">9.2.3 Identifier Case Sensitivity</a></span></dt><dt><span class="section"><a href="language-structure.html#identifier-mapping">9.2.4 Mapping of Identifiers to File Names</a></span></dt><dt><span class="section"><a href="language-structure.html#function-resolution">9.2.5 Function Name Parsing and Resolution</a></span></dt></dl>
 </div>
-<a class="indexterm" name="idm45852197741872"></a><a class="indexterm" name="idm45852197740800"></a><a class="indexterm" name="idm45852197739728"></a><a class="indexterm" name="idm45852197738656"></a><a class="indexterm" name="idm45852197737168"></a><a class="indexterm" name="idm45852197735680"></a><a class="indexterm" name="idm45852197734192"></a><a class="indexterm" name="idm45852197732704"></a><a class="indexterm" name="idm45852197731216"></a><p>
+<a class="indexterm" name="idm45058842692368"></a><a class="indexterm" name="idm45058842691296"></a><a class="indexterm" name="idm45058842690224"></a><a class="indexterm" name="idm45058842689152"></a><a class="indexterm" name="idm45058842687664"></a><a class="indexterm" name="idm45058842686176"></a><a class="indexterm" name="idm45058842684688"></a><a class="indexterm" name="idm45058842683200"></a><a class="indexterm" name="idm45058842681712"></a><p>
       Certain objects within MySQL, including database, table, index,
       column, alias, view, stored procedure, partition, tablespace,
       resource group and other object names are known as identifiers.
@@ -1127,7 +1127,7 @@ mysql&gt; <strong class="userinput"><code>SELECT HEX(@v1), HEX(@v2);</code></str
       length of each type of identifier.
       <a class="xref" href="language-structure.html#identifier-case-sensitivity" title="9.2.3 Identifier Case Sensitivity">Section 9.2.3, “Identifier Case Sensitivity”</a>, describes which
       types of identifiers are case-sensitive and under what conditions.
-    </p><a class="indexterm" name="idm45852197727312"></a><a class="indexterm" name="idm45852197725824"></a><a class="indexterm" name="idm45852197724752"></a><a class="indexterm" name="idm45852197723712"></a><p>
+    </p><a class="indexterm" name="idm45058842677808"></a><a class="indexterm" name="idm45058842676320"></a><a class="indexterm" name="idm45058842675248"></a><a class="indexterm" name="idm45058842674208"></a><p>
       An identifier may be quoted or unquoted. If an identifier contains
       special characters or is a reserved word, you
       <span class="emphasis"><em>must</em></span> quote it whenever you refer to it.
@@ -1203,7 +1203,7 @@ Query OK, 0 rows affected (0.00 sec)
       following statement creates a table named <code class="literal">a`b</code>
       that contains a column named <code class="literal">c"d</code>:
     </p><pre data-lang="sql" class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE TABLE `a``b` (`c"d` INT);</code></strong>
-</pre><a class="indexterm" name="idm45852197696864"></a><a class="indexterm" name="idm45852197695376"></a><p>
+</pre><a class="indexterm" name="idm45058842647360"></a><a class="indexterm" name="idm45058842645872"></a><p>
       In the select list of a query, a quoted column alias can be
       specified using identifier or string quoting characters:
     </p><pre data-lang="sql" class="programlisting">mysql&gt; <strong class="userinput"><code>SELECT 1 AS `one`, 2 AS 'two';</code></strong>
@@ -1525,7 +1525,7 @@ WHERE t2.c &gt; 100;
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197563280"></a><a class="indexterm" name="idm45852197561792"></a><a class="indexterm" name="idm45852197560304"></a><a class="indexterm" name="idm45852197558816"></a><a class="indexterm" name="idm45852197557328"></a><a class="indexterm" name="idm45852197555840"></a><a class="indexterm" name="idm45852197554352"></a><a class="indexterm" name="idm45852197552864"></a><a class="indexterm" name="idm45852197551376"></a><p>
+<a class="indexterm" name="idm45058842513840"></a><a class="indexterm" name="idm45058842512352"></a><a class="indexterm" name="idm45058842510864"></a><a class="indexterm" name="idm45058842509376"></a><a class="indexterm" name="idm45058842507888"></a><a class="indexterm" name="idm45058842506400"></a><a class="indexterm" name="idm45058842504912"></a><a class="indexterm" name="idm45058842503424"></a><a class="indexterm" name="idm45058842501936"></a><p>
         In MySQL, databases correspond to directories within the data
         directory. Each table within a database corresponds to at least
         one file within the database directory (and possibly more,
@@ -1869,7 +1869,7 @@ Note
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197381296"></a><a class="indexterm" name="idm45852197379840"></a><p>
+<a class="indexterm" name="idm45058842331888"></a><a class="indexterm" name="idm45058842330432"></a><p>
         MySQL supports built-in (native) functions, loadable functions,
         and stored functions. This section describes how the server
         recognizes whether the name of a built-in function is used as a
@@ -2212,7 +2212,7 @@ CREATE TABLE `count` (i INT);
 </div>
 
 </div>
-<a class="indexterm" name="idm45852197250112"></a><a class="indexterm" name="idm45852197249072"></a><p>
+<a class="indexterm" name="idm45058842200528"></a><a class="indexterm" name="idm45058842199488"></a><p>
       Keywords are words that have significance in SQL. Certain
       keywords, such as <a class="link" href="sql-statements.html#select" title="13.2.10 SELECT Statement"><code class="literal">SELECT</code></a>,
       <a class="link" href="sql-statements.html#delete" title="13.2.2 DELETE Statement"><code class="literal">DELETE</code></a>, or
@@ -2589,7 +2589,7 @@ Query OK, 0 rows affected (0.01 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45852196218608"></a><a class="indexterm" name="idm45852196217120"></a><a class="indexterm" name="idm45852196216048"></a><a class="indexterm" name="idm45852196214560"></a><a class="indexterm" name="idm45852196213488"></a><a class="indexterm" name="idm45852196212416"></a><p>
+<a class="indexterm" name="idm45058841168736"></a><a class="indexterm" name="idm45058841167248"></a><a class="indexterm" name="idm45058841166176"></a><a class="indexterm" name="idm45058841164688"></a><a class="indexterm" name="idm45058841163616"></a><a class="indexterm" name="idm45058841162544"></a><p>
       You can store a value in a user-defined variable in one statement
       and refer to it later in another statement. This enables you to
       pass values from one statement to another.
@@ -2834,7 +2834,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45852196139312"></a><p>
+<a class="indexterm" name="idm45058841089328"></a><p>
       This section lists the grammar rules that expressions must follow
       in MySQL and provides additional information about the types of
       terms that may appear in expressions.
@@ -3027,7 +3027,7 @@ Query OK, 0 rows affected (0.00 sec)
 </div>
 
 </div>
-<a class="indexterm" name="idm45852196041120"></a><a class="indexterm" name="idm45852196039616"></a><a class="indexterm" name="idm45852196038528"></a><p>
+<a class="indexterm" name="idm45058840991280"></a><a class="indexterm" name="idm45058840989776"></a><a class="indexterm" name="idm45058840988688"></a><p>
         <em class="replaceable"><code>interval_expr</code></em> in expressions
         represents a temporal interval. Intervals have this syntax:
       </p><pre data-lang="sql" class="programlisting">INTERVAL <em class="replaceable"><code>expr</code></em> <em class="replaceable"><code>unit</code></em>
@@ -3268,7 +3268,7 @@ mysql&gt; <strong class="userinput"><code>SELECT '2005-03-32' + INTERVAL 1 MONTH
 </div>
 
 </div>
-<a class="indexterm" name="idm45852195884560"></a><p>
+<a class="indexterm" name="idm45058840834720"></a><p>
       The most visible part of an SQL statement is the text of the
       statement. As of MySQL 8.0.23, clients can also define query
       attributes that apply to the next statement sent to the server for
@@ -3516,7 +3516,7 @@ mysql&gt; <strong class="userinput"><code>SELECT * FROM t1;</code></strong>
 <div class="itemizedlist">
 <ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a name="function_mysql-query-attribute-string"></a>
             <a class="link" href="language-structure.html#function_mysql-query-attribute-string"><code class="literal">mysql_query_attribute_string(<em class="replaceable"><code>name</code></em>)</code></a>
-          </p><a class="indexterm" name="idm45852195794880"></a><p>
+          </p><a class="indexterm" name="idm45058840745040"></a><p>
             Applications can define attributes that apply to the next
             query sent to the server. The
             <a class="link" href="language-structure.html#function_mysql-query-attribute-string"><code class="literal">mysql_query_attribute_string()</code></a>
@@ -3580,7 +3580,7 @@ mysql&gt; SELECT
 </div>
 
 </div>
-<a class="indexterm" name="idm45852195774944"></a><a class="indexterm" name="idm45852195773872"></a><p>
+<a class="indexterm" name="idm45058840725168"></a><a class="indexterm" name="idm45058840724096"></a><p>
       MySQL Server supports three comment styles:
 </p>
 <div class="itemizedlist">
