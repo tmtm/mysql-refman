@@ -609,9 +609,6 @@ of the appropriate Manual:
 
    * MySQL 8.4: *note mysql-nutshell::
 
-   * MySQL 8.0: What Is New in MySQL 8.0
-     (https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html)
-
 *Internals and Portability*
 
    * Written in C and C++.
@@ -434155,11 +434152,7 @@ caching-sha2-pluggable-authentication::.
 
 The 'caching_sha2_password' plugin provides more secure password
 encryption than the deprecated 'mysql_native_password' plugin (the
-default plugin in MySQL versions before MySQL 8.0).  For information
-about the implications of this change of default plugin for server
-operation and compatibility of the server with clients and connectors,
-see caching_sha2_password as the Preferred Authentication Plugin
-(https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password).
+default plugin in MySQL versions before MySQL 8.0).
 
 For general information about pluggable authentication and other
 available authentication plugins, see *note pluggable-authentication::,
@@ -434319,10 +434312,7 @@ NDB Cluster release series include the following:
      production should use the latest GA release in this series, which
      is currently NDB Cluster 8.0.44.  You can obtain the most recent
      NDB Cluster 8.0 release from
-     <https://dev.mysql.com/downloads/cluster/>.  For information about
-     new features and other important changes in this series, see What
-     is New in MySQL NDB Cluster 8.0
-     (https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster-what-is-new.html).
+     <https://dev.mysql.com/downloads/cluster/>.
 
 You can obtain and compile NDB Cluster from source (see *note
 mysql-cluster-install-linux-source::, and *note
@@ -434342,7 +434332,6 @@ circumstances:
      mysql-cluster-install-windows-binary.
 
    * Windows MSI Installer
-     (https://dev.mysql.com/doc/refman/8.0/en/mysql-installer.html)
 
 Installation packages may also be available from your platform's package
 management system.
@@ -434900,9 +434889,7 @@ include the following:
      on the amount of RAM available to each data node.
 
 For a complete listing of limitations in NDB Cluster, see *note
-mysql-cluster-limitations::.  See also Previous NDB Cluster Issues
-Resolved in NDB Cluster 8.0
-(https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster-limitations-resolved.html).
+mysql-cluster-limitations::.
 
 Does NDB Cluster support foreign keys?
 
@@ -435695,16 +435682,12 @@ The effect of this is that you cannot control the client character set
 by starting *note 'mysqld': mysqld. with '--character-set-server=utf8'.
 However, some Asian customers prefer the MySQL 4.0 behavior.  To make it
 possible to retain this behavior, we added a *note 'mysqld': mysqld.
-switch, '--character-set-client-handshake'
-(https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_character-set-client-handshake),
-which can be turned off with '--skip-character-set-client-handshake'
-(https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_character-set-client-handshake).
-If you start *note 'mysqld': mysqld. with
-'--skip-character-set-client-handshake'
-(https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_character-set-client-handshake),
-then, when a client connects, it sends to the server the name of the
-character set that it wants to use.  However, _the server ignores this
-request from the client_.
+switch, '--character-set-client-handshake', which can be turned off with
+'--skip-character-set-client-handshake'.  If you start *note 'mysqld':
+mysqld. with '--skip-character-set-client-handshake', then, when a
+client connects, it sends to the server the name of the character set
+that it wants to use.  However, _the server ignores this request from
+the client_.
 
 By way of example, suppose that your favorite server character set is
 'latin1'.  Suppose further that the client uses 'utf8' because this is
@@ -435759,9 +435742,7 @@ then display the resulting settings:
 
 As you can see by comparing the differing results from *note 'SHOW
 VARIABLES': show-variables, the server ignores the client's initial
-settings if the '--skip-character-set-client-handshake'
-(https://dev.mysql.com/doc/refman/8.0/en/server-options.html#option_mysqld_character-set-client-handshake)
-option is used.
+settings if the '--skip-character-set-client-handshake' option is used.
 
 Why do some 'LIKE' and 'FULLTEXT' searches with CJK characters fail?
 
@@ -436141,14 +436122,7 @@ How can I use replication to improve performance of my system?
 
 Set up one server as the source and direct all writes to it.  Then
 configure as many replicas as you have the budget and rackspace for, and
-distribute the reads among the source and the replicas.  You can also
-start the replicas with the '--skip-innodb'
-(https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#option_mysqld_innodb)
-option, enable the 'low_priority_updates' system variable, and set the
-'delay_key_write' system variable to 'ALL' to get speed improvements on
-the replica end.  In this case, the replica uses nontransactional
-'MyISAM' tables instead of 'InnoDB' tables to get more speed by
-eliminating transactional overhead.
+distribute the reads among the source and the replicas.
 
 What should I do to prepare client code in my own applications to use
 performance-enhancing replication?
@@ -446379,8 +446353,6 @@ privilege-changes::
 
 *note mysqlbinlog::
 
-*note faqs-replication::
-
 *note innodb-parameters::
 
 *note mysqld-safe::
@@ -452733,8 +452705,8 @@ server-system-variables:: *note system-variable-privileges::
 *note date-and-time-functions:: *note
 partitioning-limitations-functions:: *note server-system-variables::
 
-*note create-table:: *note external-locking:: *note faqs-replication::
-*note server-options:: *note server-system-variables:: *note crashing::
+*note create-table:: *note external-locking:: *note server-options::
+*note server-system-variables:: *note crashing::
 
 *note server-system-variables::
 
@@ -454033,8 +454005,7 @@ slow-query-log::
 replication-options-replica:: *note server-status-variables:: *note
 server-system-variables:: *note slow-query-log::
 
-*note faqs-replication:: *note server-system-variables:: *note
-table-locking::
+*note server-system-variables:: *note table-locking::
 
 *note server-system-variables::
 
