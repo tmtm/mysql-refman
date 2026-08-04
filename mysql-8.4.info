@@ -5997,7 +5997,7 @@ in the instructions that follow.
    * *Oracle Linux 8 and 9 / Red Hat 8 and 9* (EL8 and EL9): These
      platforms by default do not install the file
      '/lib64/libtinfo.so.5', which is required by the MySQL client
-     'bin/mysql' for packages 'mysql-VERSION-el7-x86_64.tar.gz' and
+     'bin/mysql' for packages 'mysql-VERSION-el8-x86_64.tar.gz' and
      'mysql-VERSION-linux-glibc2.12-x86_64.tar.xz'.  To work around this
      issue, install the 'ncurses-compat-libs' package:
 
@@ -10639,7 +10639,7 @@ Package Name              Summary
 'mysql-community'         The source code
                           RPM looks
                           similar to
-                          mysql-community-8.4.11-1.el7.src.rpm,
+                          mysql-community-8.4.11-1.el8.src.rpm,
                           depending on
                           selected OS
                           
@@ -13430,9 +13430,9 @@ To compile using OpenSSL, use this procedure:
           cmake . -DWITH_SSL=PATH_NAME
 
      Alternative OpenSSL system packages are supported by using
-     'WITH_SSL=openssl11' on EL7 or 'WITH_SSL=openssl3' on EL8.
-     Authentication plugins, such as LDAP and Kerberos, are disabled
-     since they do not support these alternative versions of OpenSSL.
+     'WITH_SSL=openssl3' on EL8.  Authentication plugins, such as LDAP
+     and Kerberos, are disabled since they do not support these
+     alternative versions of OpenSSL.
 
   3. Compile and install the distribution.
 
@@ -15300,8 +15300,7 @@ be built as a shared module.
              * 'yes': This is a synonym for 'system'.
 
              * 'opensslVERSION': Use an alternate OpenSSL system package
-               such as 'openssl11' on EL7, or 'openssl3' (or
-               'openssl3-fips') on EL8.
+               such as 'openssl3' (or 'openssl3-fips') on EL8.
 
                Authentication plugins, such as LDAP and Kerberos, are
                disabled as they do not support these alternative
@@ -47957,6 +47956,10 @@ audit_log_include_accounts
 
 Yes            Yes         Yes                     Global      Yes
                                                                
+audit_log_max_size
+
+Yes            Yes         Yes                     Global      Yes
+                                                               
 audit_log_password_history_keep_days
 
 Yes            Yes         Yes                     Global      Yes
@@ -55298,6 +55301,10 @@ audit_log_format_unix_timestamp
 Yes            Yes         Yes         Global      Yes
                                                    
 audit_log_include_accounts
+
+Yes            Yes         Yes         Global      Yes
+                                                   
+audit_log_max_size
 
 Yes            Yes         Yes         Global      Yes
                                                    
@@ -81747,6 +81754,10 @@ Boolean                       Global
 audit_log_include_accounts
 
 String                        Global
+                              
+audit_log_max_size
+
+Integer                       Global
                               
 audit_log_password_history_keep_days
 
@@ -133849,6 +133860,10 @@ audit_log_include_accounts
 
 Yes            Yes         Yes                     Global      Yes
                                                                
+audit_log_max_size
+
+Yes            Yes         Yes                     Global      Yes
+                                                               
 audit_log_password_history_keep_days
 
 Yes            Yes         Yes                     Global      Yes
@@ -134671,6 +134686,57 @@ filtering are so noted.
      connections.
 
    * 'audit_log_max_size'
+
+     Command-Line Format
+
+     '--audit-log-max-size=#'
+
+     System Variable
+
+     'audit_log_max_size'
+
+     Scope
+
+     Global
+
+     Dynamic
+
+     Yes
+
+     'SET_VAR' Hint
+     Applies
+
+     No
+
+     Type
+
+     Integer
+
+     Default Value
+
+     '0'
+
+     Minimum Value
+
+     '0'
+
+     Maximum Value
+     (Windows)
+
+     '4294967295'
+
+     Maximum Value
+     (Other)
+
+     '18446744073709551615'
+
+     Unit
+
+     bytes
+
+     Block Size
+
+     '4096'
 
      'audit_log_max_size' pertains to audit log file pruning, which is
      supported for JSON-format log files only.  It controls pruning
@@ -142194,7 +142260,7 @@ the following:
    * NDB Cluster provides a high-availability, high-redundancy version
      of MySQL adapted for the distributed computing environment.  See
      *note mysql-cluster::, which provides information about MySQL NDB
-     Cluster 8.4.7.
+     Cluster 8.4.11.
 
 
 File: manual.info.tmp,  Node: backup-types,  Next: backup-methods,  Prev: backup-and-recovery,  Up: backup-and-recovery
@@ -325091,7 +325157,7 @@ File: manual.info.tmp,  Node: mysql-cluster,  Next: partitioning,  Prev: mysql-i
 This chapter provides information about MySQL _NDB Cluster_, a
 high-availability, high-redundancy version of MySQL adapted for the
 distributed computing environment, as well as information specific to
-NDB Cluster 8.4 (NDB 8.4.7), based on version 8.4 of the NDB storage
+NDB Cluster 8.4 (NDB 8.4.11), based on version 8.4 of the NDB storage
 engine.  See *note mysql-cluster-what-is-new::, for information about
 differences in NDB 8.4 as compared to earlier releases.  See MySQL NDB
 Cluster 8.0 (https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html)
@@ -325162,13 +325228,13 @@ in the *note 'mysql': mysql. client, as shown here:
      $> mysql
      Welcome to the MySQL monitor.  Commands end with ; or \g.
      Your MySQL connection id is 2
-     Server version: 8.4.7-cluster Source distribution
+     Server version: 8.4.11-cluster Source distribution
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
      mysql> SELECT VERSION()\G
      *************************** 1. row ***************************
-     VERSION(): 8.4.7-cluster
+     VERSION(): 8.4.11-cluster
      1 row in set (0.00 sec)
 
 The version string displayed by other NDB Cluster programs not normally
@@ -325190,14 +325256,14 @@ client, like this:
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=1    @10.0.10.6  (mysql-8.4.7 ndb-8.4.7, Nodegroup: 0, *)
-     id=2    @10.0.10.8  (mysql-8.4.7 ndb-8.4.7, Nodegroup: 0)
+     id=1    @10.0.10.6  (mysql-8.4.11 ndb-8.4.11, Nodegroup: 0, *)
+     id=2    @10.0.10.8  (mysql-8.4.11 ndb-8.4.11, Nodegroup: 0)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=3    @10.0.10.2  (mysql-8.4.7 ndb-8.4.7)
+     id=3    @10.0.10.2  (mysql-8.4.11 ndb-8.4.11)
 
      [mysqld(API)]   2 node(s)
-     id=4    @10.0.10.10  (mysql-8.4.7 ndb-8.4.7)
+     id=4    @10.0.10.10  (mysql-8.4.11 ndb-8.4.11)
      id=5 (not connected, accepting connect from any host)
 
 Compatibility with standard MySQL 8.4 releases
@@ -325914,7 +325980,7 @@ File: manual.info.tmp,  Node: mysql-cluster-what-is-new,  Next: mysql-cluster-ad
    * *note mysql-cluster-innovation-8.x-changes::
 
 The following sections describe changes in the implementation of MySQL
-NDB Cluster in NDB Cluster 8.0 through 8.0.44, as compared to earlier
+NDB Cluster in NDB Cluster 8.0 through 8.0.48, as compared to earlier
 release series.
 
 NDB Cluster 8.4 is also available for production; while NDB 8.0 is still
@@ -326362,7 +326428,7 @@ Version
 NDB Cluster Version
 
 N/A                      *note 'NDB': mysql-cluster.
-                         8.4.7/8.4.7
+                         8.4.11/8.4.11
                          
 Storage Limits
 
@@ -327877,7 +327943,7 @@ the installation process for each cluster host is to download the binary
 archive from the NDB Cluster downloads page
 (https://dev.mysql.com/downloads/cluster/).  (For the most recent 64-bit
 NDB 8.4 release, this is
-'mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64.tar.gz'.)  We assume
+'mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64.tar.gz'.)  We assume
 that you have placed this file in each machine's '/var/tmp' directory.
 
 If you require a custom binary, see *note installing-development-tree::.
@@ -327918,8 +327984,8 @@ following steps as the system 'root' user:
      Cluster version number.
 
           $> cd /var/tmp
-          $> tar -C /usr/local -xzvf mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64.tar.gz
-          $> ln -s /usr/local/mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64 /usr/local/mysql
+          $> tar -C /usr/local -xzvf mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64.tar.gz
+          $> ln -s /usr/local/mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64 /usr/local/mysql
 
   3. Change location to the 'mysql' directory and set up the system
      databases using *note 'mysqld': mysqld. '--initialize' as shown
@@ -327981,8 +328047,8 @@ node binaries on the data node hosts:
      suitable directory such as '/usr/local/bin':
 
           $> cd /var/tmp
-          $> tar -zxvf mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64.tar.gz
-          $> cd mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64
+          $> tar -zxvf mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64.tar.gz
+          $> cd mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64
           $> cp bin/ndbd /usr/local/bin/ndbd
           $> cp bin/ndbmtd /usr/local/bin/ndbmtd
 
@@ -328036,8 +328102,8 @@ mysql-cluster-programs-ndb-mgm. on the management node host:
      directory such as '/usr/local/bin':
 
           $> cd /var/tmp
-          $> tar -zxvf mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64.tar.gz
-          $> cd mysql-cluster-gpl-8.4.6-linux-glibc2.12-x86_64
+          $> tar -zxvf mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64.tar.gz
+          $> cd mysql-cluster-gpl-8.4.11-linux-glibc2.12-x86_64
           $> cp bin/ndb_mgm* /usr/local/bin
 
      (You can safely delete the directory created by unpacking the
@@ -328084,7 +328150,7 @@ available for RPM-based distributions:
 RPMs are available for both 32-bit and 64-bit Linux platforms.  The
 filenames for these RPMs use the following pattern:
 
-     mysql-cluster-community-data-node-8.4.6-1.el7.x86_64.rpm
+     mysql-cluster-community-data-node-8.4.11-1.el8.x86_64.rpm
 
      mysql-cluster-LICENSE-COMPONENT-VER-REV.DISTRO.ARCH.rpm
 
@@ -328096,7 +328162,7 @@ filenames for these RPMs use the following pattern:
 
          REV: MAJOR[.MINOR]
 
-         DISTRO: {el6 | el7 | sles12}
+         DISTRO: {el8 | el9 | | el10 | sles15}
 
          ARCH: {i686 | x86_64}
 
@@ -328208,27 +328274,27 @@ have *note 'mysql': mysql. and other MySQL client programs available on
 these.  We discuss installation of nodes by type later in this section.
 
 VER represents the three-part 'NDB' storage engine version number in
-8.4.X format, shown as '8.4.6' in the examples.  'rev' provides the RPM
+8.4.X format, shown as '8.4.11' in the examples.  'rev' provides the RPM
 revision number in MAJOR.MINOR format.  In the examples shown in this
 section, we use '1.1' for this value.
 
-The DISTRO (Linux distribution) is one of 'rhel5' (Oracle Linux 5, Red
-Hat Enterprise Linux 4 and 5), 'el6' (Oracle Linux 6, Red Hat Enterprise
-Linux 6), 'el7' (Oracle Linux 7, Red Hat Enterprise Linux 7), or
-'sles12' (SUSE Enterprise Linux 12).  For the examples in this section,
-we assume that the host runs Oracle Linux 7, Red Hat Enterprise Linux 7,
-or the equivalent ('el7').
+The DISTRO (Linux distribution) is one of 'el8' (Oracle Linux 8, Red Hat
+Enterprise Linux 8), 'el9' (Oracle Linux 9, Red Hat Enterprise Linux 9),
+'el10' (Oracle Linux 10, Red Hat Enterprise Linux 10) or 'sles15' (SUSE
+Enterprise Linux 15).  For the examples in this section, we assume that
+the host runs Oracle Linux 8, Red Hat Enterprise Linux 8, or the
+equivalent ('el8').
 
 ARCH is 'i686' for 32-bit RPMs and 'x86_64' for 64-bit versions.  In the
 examples shown here, we assume a 64-bit platform.
 
 The NDB Cluster version number in the RPM file names (shown here as
-'8.4.6') can vary according to the version which you are actually using.
-_It is very important that all of the Cluster RPMs to be installed have
-the same version number_.  The architecture should also be appropriate
-to the machine on which the RPM is to be installed; in particular, you
-should keep in mind that 64-bit RPMs ('x86_64') cannot be used with
-32-bit operating systems (use 'i686' for the latter).
+'8.4.11') can vary according to the version which you are actually
+using.  _It is very important that all of the Cluster RPMs to be
+installed have the same version number_.  The architecture should also
+be appropriate to the machine on which the RPM is to be installed; in
+particular, you should keep in mind that 64-bit RPMs ('x86_64') cannot
+be used with 32-bit operating systems (use 'i686' for the latter).
 
 Data nodes
 
@@ -328238,7 +328304,7 @@ node host, and run the following command as the system root user,
 replacing the name shown for the RPM as necessary to match that of the
 RPM downloaded from the MySQL website:
 
-     $> rpm -Uhv mysql-cluster-community-data-node-8.4.6-1.el7.x86_64.rpm
+     $> rpm -Uhv mysql-cluster-community-data-node-8.4.11-1.el8.x86_64.rpm
 
 This installs the *note 'ndbd': mysql-cluster-programs-ndbd. and *note
 'ndbmtd': mysql-cluster-programs-ndbmtd. data node binaries in
@@ -328253,7 +328319,7 @@ the 'server' RPM by executing the following command as the system root
 user, replacing the name shown for the RPM as necessary to match the
 name of the RPM downloaded from the MySQL website:
 
-     $> rpm -Uhv mysql-cluster-community-server-8.4.6-1.el7.x86_64.rpm
+     $> rpm -Uhv mysql-cluster-community-server-8.4.11-1.el8.x86_64.rpm
 
 This installs the MySQL server binary (*note 'mysqld': mysqld.), with
 'NDB' storage engine support, in the '/usr/sbin' directory.  It also
@@ -328273,7 +328339,7 @@ released for the standard MySQL server do not provide support for the
 To administer the SQL node (MySQL server), you should also install the
 'client' RPM, as shown here:
 
-     $> rpm -Uhv mysql-cluster-community-client-8.4.6-1.el7.x86_64.rpm
+     $> rpm -Uhv mysql-cluster-community-client-8.4.11-1.el8.x86_64.rpm
 
 This installs the *note 'mysql': mysql. client and other MySQL client
 programs, such as *note 'mysqladmin': mysqladmin. and *note 'mysqldump':
@@ -328288,7 +328354,7 @@ following command as the system root user (replace the name shown for
 the RPM as necessary to match that of the 'management-server' RPM
 downloaded from the MySQL website):
 
-     $> rpm -Uhv mysql-cluster-community-management-server-8.4.6-1.el7.x86_64.rpm
+     $> rpm -Uhv mysql-cluster-community-management-server-8.4.11-1.el8.x86_64.rpm
 
 This RPM installs the management server binary *note 'ndb_mgmd':
 mysql-cluster-programs-ndb-mgmd. in the '/usr/sbin' directory.  While
@@ -328321,7 +328387,7 @@ host, and run the following command as the system root user, replacing
 the name shown for the RPM as necessary to match that of the RPM
 downloaded from the MySQL website:
 
-     $> rpm -Uhv MySQL-Cluster-server-gpl-8.4.6-1.sles11.i386.rpm
+     $> rpm -Uhv MySQL-Cluster-server-gpl-8.4.11-1.sles11.i386.rpm
 
 Although this installs all NDB Cluster binaries, only the program *note
 'ndbd': mysql-cluster-programs-ndbd. or *note 'ndbmtd':
@@ -328335,7 +328401,7 @@ On each machine to be used for hosting a cluster SQL node, install the
 replacing the name shown for the RPM as necessary to match the name of
 the RPM downloaded from the MySQL website:
 
-     $> rpm -Uhv MySQL-Cluster-server-gpl-8.4.6-1.sles11.i386.rpm
+     $> rpm -Uhv MySQL-Cluster-server-gpl-8.4.11-1.sles11.i386.rpm
 
 This installs the MySQL server binary (*note 'mysqld': mysqld.) with
 *note 'NDB': mysql-cluster. storage engine support in the '/usr/sbin'
@@ -328349,7 +328415,7 @@ group, if needed) automatically.
 To administer the SQL node (MySQL server), you should also install the
 'client' RPM, as shown here:
 
-     $> rpm -Uhv MySQL-Cluster-client-gpl-8.4.6-1.sles11.i386.rpm
+     $> rpm -Uhv MySQL-Cluster-client-gpl-8.4.11-1.sles11.i386.rpm
 
 This installs the *note 'mysql': mysql. client program.
 
@@ -328361,7 +328427,7 @@ management node, and then install it by running the following command as
 the system root user (replace the name shown for the RPM as necessary to
 match that of the 'server' RPM downloaded from the MySQL website):
 
-     $> rpm -Uhv MySQL-Cluster-server-gpl-8.4.6-1.sles11.i386.rpm
+     $> rpm -Uhv MySQL-Cluster-server-gpl-8.4.11-1.sles11.i386.rpm
 
 Although this RPM installs many other files, only the management server
 binary *note 'ndb_mgmd': mysql-cluster-programs-ndb-mgmd. (in the
@@ -328402,13 +328468,13 @@ architecture:
 Here, NDBVER is the 3-part 'NDB' engine version number, DEBIANVER is the
 major version of Debian ('8' or '9'), and ARCH is one of 'i686' or
 'x86_64'.  In the examples that follow, we assume you wish to install
-NDB 8.4.6 on a 64-bit Debian 9 system; in this case, the installer file
-is named 'mysql-cluster-gpl-8.4.6-debian9-x86_64.deb-bundle.tar'.
+NDB 8.4.11 on a 64-bit Debian 9 system; in this case, the installer file
+is named 'mysql-cluster-gpl-8.4.11-debian9-x86_64.deb-bundle.tar'.
 
 Once you have downloaded the appropriate '.deb' file, you can untar it,
 and then install it from the command line using 'dpkg', like this:
 
-     $> dpkg -i mysql-cluster-gpl-8.4.6-debian9-i686.deb
+     $> dpkg -i mysql-cluster-gpl-8.4.11-debian9-i686.deb
 
 You can also remove it using 'dpkg' as shown here:
 
@@ -328446,7 +328512,7 @@ mysql-cluster-install-windows-source::.
 MySQL NDB Cluster 8.4 is built from the MySQL Server 8.4 sources,
 available from the MySQL downloads page at
 <https://dev.mysql.com/downloads/>.  The archived source file should
-have a name similar to 'mysql-8.4.6.tar.gz'.  You can also obtain the
+have a name similar to 'mysql-8.4.11.tar.gz'.  You can also obtain the
 sources from GitHub at <https://github.com/mysql/mysql-server>.
 
 The 'WITH_NDB' option for 'CMake' causes the binaries for the management
@@ -328610,10 +328676,10 @@ first step in the installation process is to download the latest NDB
 Cluster Windows ZIP binary archive from
 <https://dev.mysql.com/downloads/cluster/>.  This archive has a filename
 of the 'mysql-cluster-gpl-VER-winARCH.zip', where VER is the 'NDB'
-storage engine version (such as '8.4.6'), and ARCH is the architecture
+storage engine version (such as '8.4.11'), and ARCH is the architecture
 ('32' for 32-bit binaries, and '64' for 64-bit binaries).  For example,
-the NDB Cluster 8.4.6 archive for 64-bit Windows systems is named
-'mysql-cluster-gpl-8.4.6-win64.zip'.
+the NDB Cluster 8.4.11 archive for 64-bit Windows systems is named
+'mysql-cluster-gpl-8.4.11-win64.zip'.
 
 You can run 32-bit NDB Cluster binaries on both 32-bit and 64-bit
 versions of Windows; however, 64-bit NDB Cluster binaries can be used
@@ -328835,7 +328901,7 @@ same tools.  However, there are two major differences:
    * MySQL NDB Cluster 8.4 is built from the MySQL Server 8.4 sources,
      available from the MySQL downloads page at
      <https://dev.mysql.com/downloads/>.  The archived source file
-     should have a name similar to 'mysql-8.4.6.tar.gz'.  You can also
+     should have a name similar to 'mysql-8.4.11.tar.gz'.  You can also
      obtain the sources from GitHub at
      <https://github.com/mysql/mysql-server>.
 
@@ -328882,7 +328948,7 @@ followed by the data nodes, and then finally by any SQL nodes.
      should appear similar to what is shown here:
 
           C:\mysql\bin> ndb_mgmd
-          2010-06-23 07:53:34 [MgmtSrvr] INFO -- NDB Cluster Management Server. mysql-8.4.7-ndb-8.4.7
+          2010-06-23 07:53:34 [MgmtSrvr] INFO -- NDB Cluster Management Server. mysql-8.4.11-ndb-8.4.11
           2010-06-23 07:53:34 [MgmtSrvr] INFO -- Reading cluster configuration from 'config.ini'
 
      The management node process continues to print logging output to
@@ -328957,14 +329023,14 @@ followed by the data nodes, and then finally by any SQL nodes.
 
           ndb_mgm> ALL STATUS
           Connected to Management Server at: localhost:1186 (using cleartext)
-          Node 2: starting (Last completed phase 3) (mysql-8.4.7-ndb-8.4.7)
-          Node 3: starting (Last completed phase 3) (mysql-8.4.7-ndb-8.4.7)
+          Node 2: starting (Last completed phase 3) (mysql-8.4.11-ndb-8.4.11)
+          Node 3: starting (Last completed phase 3) (mysql-8.4.11-ndb-8.4.11)
 
-          Node 2: starting (Last completed phase 4) (mysql-8.4.7-ndb-8.4.7)
-          Node 3: starting (Last completed phase 4) (mysql-8.4.7-ndb-8.4.7)
+          Node 2: starting (Last completed phase 4) (mysql-8.4.11-ndb-8.4.11)
+          Node 3: starting (Last completed phase 4) (mysql-8.4.11-ndb-8.4.11)
 
-          Node 2: Started (version 8.4.7)
-          Node 3: Started (version 8.4.7)
+          Node 2: Started (version 8.4.11)
+          Node 3: Started (version 8.4.11)
 
           ndb_mgm>
 
@@ -329014,14 +329080,14 @@ followed by the data nodes, and then finally by any SQL nodes.
           Cluster Configuration
           ---------------------
           [ndbd(NDB)]     2 node(s)
-          id=2    @198.51.100.30  (Version: 8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-          id=3    @198.51.100.40  (Version: 8.4.7-ndb-8.4.7, Nodegroup: 0)
+          id=2    @198.51.100.30  (Version: 8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+          id=3    @198.51.100.40  (Version: 8.4.11-ndb-8.4.11, Nodegroup: 0)
 
           [ndb_mgmd(MGM)] 1 node(s)
-          id=1    @198.51.100.10  (Version: 8.4.7-ndb-8.4.7)
+          id=1    @198.51.100.10  (Version: 8.4.11-ndb-8.4.11)
 
           [mysqld(API)]   1 node(s)
-          id=4    @198.51.100.20  (Version: 8.4.7-ndb-8.4.7)
+          id=4    @198.51.100.20  (Version: 8.4.11-ndb-8.4.11)
 
      You can also verify that the SQL node is connected to the NDB
      Cluster in the *note 'mysql': mysql. client (*note 'mysql.exe':
@@ -329371,14 +329437,14 @@ MySQL that you are using:
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=2    @198.51.100.30  (Version: 8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-     id=3    @198.51.100.40  (Version: 8.4.7-ndb-8.4.7, Nodegroup: 0)
+     id=2    @198.51.100.30  (Version: 8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+     id=3    @198.51.100.40  (Version: 8.4.11-ndb-8.4.11, Nodegroup: 0)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=1    @198.51.100.10  (Version: 8.4.7-ndb-8.4.7)
+     id=1    @198.51.100.10  (Version: 8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   1 node(s)
-     id=4    @198.51.100.20  (Version: 8.4.7-ndb-8.4.7)
+     id=4    @198.51.100.20  (Version: 8.4.11-ndb-8.4.11)
 
 The SQL node is referenced here as '[mysqld(API)]', which reflects the
 fact that the *note 'mysqld': mysqld. process is acting as an NDB
@@ -329520,7 +329586,7 @@ password:' prompt):
      $> mysql -u root -p
      Enter password:
      Welcome to the MySQL monitor.  Commands end with ; or \g.
-     Your MySQL connection id is 1 to server version: 8.4.7-ndb-8.4.7
+     Your MySQL connection id is 1 to server version: 8.4.11-ndb-8.4.11
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -329959,13 +330025,13 @@ report on the cluster's status:
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     1 node(s)
-     id=2    @127.0.0.1  (Version: 8.4.7-ndb-8.4.7, Nodegroup: 0, *)
+     id=2    @127.0.0.1  (Version: 8.4.11-ndb-8.4.11, Nodegroup: 0, *)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=1    @127.0.0.1  (Version: 8.4.7-ndb-8.4.7)
+     id=1    @127.0.0.1  (Version: 8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   3 node(s)
-     id=3    @127.0.0.1  (Version: 8.4.7-ndb-8.4.7)
+     id=3    @127.0.0.1  (Version: 8.4.11-ndb-8.4.11)
      id=4 (not connected, accepting connect from any host)
      id=5 (not connected, accepting connect from any host)
 
@@ -359481,10 +359547,10 @@ Additional descriptions follow the table.
      from the newer NDB Cluster version to do so.
 
      For example, to restore a cluster backup taken from a cluster
-     running NDB Cluster 8.4.7 to a cluster running NDB Cluster 8.0.44,
+     running NDB Cluster 8.4.11 to a cluster running NDB Cluster 8.0.48,
      you must use the *note 'ndb_restore':
      mysql-cluster-programs-ndb-restore. that comes with the NDB Cluster
-     8.0.44 distribution.
+     8.0.48 distribution.
 
      For more rapid restoration, the data may be restored in parallel,
      provided that there is a sufficient number of cluster connections
@@ -365180,7 +365246,7 @@ cluster's data nodes.
      'SHOW' command with 'no nodegroup' in place of the node group ID,
      like this (indicated using bold text):
 
-          id=3    @10.100.2.67  (8.4.7-ndb-8.4.7, *no nodegroup*)
+          id=3    @10.100.2.67  (8.4.11-ndb-8.4.11, *no nodegroup*)
 
      'DROP NODEGROUP' works only when all data nodes in the node group
      to be dropped are completely empty of any table data and table
@@ -365229,14 +365295,14 @@ cluster's data nodes.
           Cluster Configuration
           ---------------------
           [ndbd(NDB)]     2 node(s)
-          id=5    @127.0.0.1  (mysql-8.4.7 ndb-8.4.7, single user mode, Nodegroup: 0, *)
-          id=6    @127.0.0.1  (mysql-8.4.7 ndb-8.4.7, single user mode, Nodegroup: 0)
+          id=5    @127.0.0.1  (mysql-8.4.11 ndb-8.4.11, single user mode, Nodegroup: 0, *)
+          id=6    @127.0.0.1  (mysql-8.4.11 ndb-8.4.11, single user mode, Nodegroup: 0)
 
           [ndb_mgmd(MGM)] 1 node(s)
-          id=50   @127.0.0.1  (mysql-8.4.7 ndb-8.4.7)
+          id=50   @127.0.0.1  (mysql-8.4.11 ndb-8.4.11)
 
           [mysqld(API)]   2 node(s)
-          id=100  @127.0.0.1  (mysql-8.4.7 ndb-8.4.7, allowed single user)
+          id=100  @127.0.0.1  (mysql-8.4.11 ndb-8.4.11, allowed single user)
           id=101 (not connected, accepting connect from any host)
 
    * 'EXIT SINGLE USER MODE'
@@ -365419,16 +365485,16 @@ cluster's data nodes.
           Cluster Configuration
           ---------------------
           [ndbd(NDB)]     4 node(s)
-          id=5    @198.51.100.10  (mysql-8.4.7 ndb-8.4.7, Nodegroup: 0, *)
-          id=6    @198.51.100.20  (mysql-8.4.7 ndb-8.4.7, Nodegroup: 0)
-          id=7    @198.51.100.30  (mysql-8.4.7 ndb-8.4.7, Nodegroup: 1)
-          id=8    @198.51.100.40  (mysql-8.4.7 ndb-8.4.7, Nodegroup: 1)
+          id=5    @198.51.100.10  (mysql-8.4.11 ndb-8.4.11, Nodegroup: 0, *)
+          id=6    @198.51.100.20  (mysql-8.4.11 ndb-8.4.11, Nodegroup: 0)
+          id=7    @198.51.100.30  (mysql-8.4.11 ndb-8.4.11, Nodegroup: 1)
+          id=8    @198.51.100.40  (mysql-8.4.11 ndb-8.4.11, Nodegroup: 1)
 
           [ndb_mgmd(MGM)] 1 node(s)
-          id=50   @198.51.100.150  (mysql-8.4.7 ndb-8.4.7)
+          id=50   @198.51.100.150  (mysql-8.4.11 ndb-8.4.11)
 
           [mysqld(API)]   2 node(s)
-          id=100  @198.51.100.100  (mysql-8.4.7 ndb-8.4.7)
+          id=100  @198.51.100.100  (mysql-8.4.11 ndb-8.4.11)
           id=101 (not connected, accepting connect from any host)
 
      The output from this command also indicates when the cluster is in
@@ -367481,10 +367547,10 @@ A sample from an actual cluster log is shown here:
      2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 6: Start phase 50 completed (system restart)
      2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 5: Start phase 101 completed (system restart)
      2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 6: Start phase 101 completed (system restart)
-     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 5: Started (mysql-8.4.7 ndb-8.4.7)
-     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 6: Started (mysql-8.4.7 ndb-8.4.7)
-     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 5: Node 50: API mysql-8.4.7 ndb-8.4.7
-     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 6: Node 50: API mysql-8.4.7 ndb-8.4.7
+     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 5: Started (mysql-8.4.11 ndb-8.4.11)
+     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 6: Started (mysql-8.4.11 ndb-8.4.11)
+     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 5: Node 50: API mysql-8.4.11 ndb-8.4.11
+     2021-06-10 10:01:07 [MgmtSrvr] INFO     -- Node 6: Node 50: API mysql-8.4.11 ndb-8.4.11
      2021-06-10 10:01:08 [MgmtSrvr] INFO     -- Node 6: Prepare arbitrator node 50 [ticket=75fd00010fa8b608]
      2021-06-10 10:01:08 [MgmtSrvr] INFO     -- Node 5: Started arbitrator node 50 [ticket=75fd00010fa8b608]
      2021-06-10 10:01:08 [MgmtSrvr] INFO     -- Node 6: Communication to Node 100 opened
@@ -367496,8 +367562,8 @@ A sample from an actual cluster log is shown here:
      2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 100: mysqld --server-id=1
      2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 5: Node 100 Connected
      2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 6: Node 100 Connected
-     2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 5: Node 100: API mysql-8.4.7 ndb-8.4.7
-     2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 6: Node 100: API mysql-8.4.7 ndb-8.4.7
+     2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 5: Node 100: API mysql-8.4.11 ndb-8.4.11
+     2021-06-10 10:01:36 [MgmtSrvr] INFO     -- Node 6: Node 100: API mysql-8.4.11 ndb-8.4.11
 
 For additional information, see *note mysql-cluster-log-events::.
 
@@ -369634,15 +369700,15 @@ the management client produces output similar to what is shown here:
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=1    @198.51.100.1  (8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-     id=2    @198.51.100.2  (8.4.7-ndb-8.4.7, Nodegroup: 0)
+     id=1    @198.51.100.1  (8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+     id=2    @198.51.100.2  (8.4.11-ndb-8.4.11, Nodegroup: 0)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=10   @198.51.100.10  (8.4.7-ndb-8.4.7)
+     id=10   @198.51.100.10  (8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   2 node(s)
-     id=20   @198.51.100.20  (8.4.7-ndb-8.4.7)
-     id=21   @198.51.100.21  (8.4.7-ndb-8.4.7)
+     id=20   @198.51.100.20  (8.4.11-ndb-8.4.11)
+     id=21   @198.51.100.21  (8.4.11-ndb-8.4.11)
 
 Finally, we assume that the cluster contains a single *note
 'NDBCLUSTER': mysql-cluster. table created as shown here:
@@ -369745,7 +369811,7 @@ again, as follows:
      as shown here:
 
           $> ndb_mgmd -f config.ini --reload
-          2008-12-08 17:29:23 [MgmSrvr] INFO     -- NDB Cluster Management Server. 8.4.7-ndb-8.4.7
+          2008-12-08 17:29:23 [MgmSrvr] INFO     -- NDB Cluster Management Server. 8.4.11-ndb-8.4.11
           2008-12-08 17:29:23 [MgmSrvr] INFO     -- Reading cluster configuration from 'config.ini'
 
 If you check the output of 'SHOW' in the management client after
@@ -369758,17 +369824,17 @@ you should now see something like this:
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=1    @198.51.100.1  (8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-     id=2    @198.51.100.2  (8.4.7-ndb-8.4.7, Nodegroup: 0)
+     id=1    @198.51.100.1  (8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+     id=2    @198.51.100.2  (8.4.11-ndb-8.4.11, Nodegroup: 0)
      id=3 (not connected, accepting connect from 198.51.100.3)
      id=4 (not connected, accepting connect from 198.51.100.4)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=10   @198.51.100.10  (8.4.7-ndb-8.4.7)
+     id=10   @198.51.100.10  (8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   2 node(s)
-     id=20   @198.51.100.20  (8.4.7-ndb-8.4.7)
-     id=21   @198.51.100.21  (8.4.7-ndb-8.4.7)
+     id=20   @198.51.100.20  (8.4.11-ndb-8.4.11)
+     id=21   @198.51.100.21  (8.4.11-ndb-8.4.11)
 
 Step 3: Perform a rolling restart of the existing data nodes
 
@@ -369780,17 +369846,17 @@ client using the 'RESTART' command, as shown here:
      Node 1: Node shutdown completed, restarting, no start.
      Node 1 is being restarted
 
-     ndb_mgm> Node 1: Start initiated (version 8.4.7)
-     Node 1: Started (version 8.4.7)
+     ndb_mgm> Node 1: Start initiated (version 8.4.11)
+     Node 1: Started (version 8.4.11)
 
      ndb_mgm> 2 RESTART
      Node 2: Node shutdown initiated
      Node 2: Node shutdown completed, restarting, no start.
      Node 2 is being restarted
 
-     ndb_mgm> Node 2: Start initiated (version 8.4.7)
+     ndb_mgm> Node 2: Start initiated (version 8.4.11)
 
-     ndb_mgm> Node 2: Started (version 8.4.7)
+     ndb_mgm> Node 2: Started (version 8.4.11)
 
 *Important*:
 
@@ -369845,17 +369911,17 @@ yet belong to any node group (as indicated with bold type here):
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=1    @198.51.100.1  (8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-     id=2    @198.51.100.2  (8.4.7-ndb-8.4.7, Nodegroup: 0)
-     id=3    @198.51.100.3  (8.4.7-ndb-8.4.7, *no nodegroup*)
-     id=4    @198.51.100.4  (8.4.7-ndb-8.4.7, *no nodegroup*)
+     id=1    @198.51.100.1  (8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+     id=2    @198.51.100.2  (8.4.11-ndb-8.4.11, Nodegroup: 0)
+     id=3    @198.51.100.3  (8.4.11-ndb-8.4.11, *no nodegroup*)
+     id=4    @198.51.100.4  (8.4.11-ndb-8.4.11, *no nodegroup*)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=10   @198.51.100.10  (8.4.7-ndb-8.4.7)
+     id=10   @198.51.100.10  (8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   2 node(s)
-     id=20   @198.51.100.20  (8.4.7-ndb-8.4.7)
-     id=21   @198.51.100.21  (8.4.7-ndb-8.4.7)
+     id=20   @198.51.100.20  (8.4.11-ndb-8.4.11)
+     id=21   @198.51.100.21  (8.4.11-ndb-8.4.11)
 
 Step 6: Create a new node group
 
@@ -369875,17 +369941,17 @@ joined the new node group (again indicated in bold type):
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=1    @198.51.100.1  (8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-     id=2    @198.51.100.2  (8.4.7-ndb-8.4.7, Nodegroup: 0)
-     id=3    @198.51.100.3  (8.4.7-ndb-8.4.7, *Nodegroup: 1*)
-     id=4    @198.51.100.4  (8.4.7-ndb-8.4.7, *Nodegroup: 1*)
+     id=1    @198.51.100.1  (8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+     id=2    @198.51.100.2  (8.4.11-ndb-8.4.11, Nodegroup: 0)
+     id=3    @198.51.100.3  (8.4.11-ndb-8.4.11, *Nodegroup: 1*)
+     id=4    @198.51.100.4  (8.4.11-ndb-8.4.11, *Nodegroup: 1*)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=10   @198.51.100.10  (8.4.7-ndb-8.4.7)
+     id=10   @198.51.100.10  (8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   2 node(s)
-     id=20   @198.51.100.20  (8.4.7-ndb-8.4.7)
-     id=21   @198.51.100.21  (8.4.7-ndb-8.4.7)
+     id=20   @198.51.100.20  (8.4.11-ndb-8.4.11)
+     id=21   @198.51.100.21  (8.4.11-ndb-8.4.11)
 
 Step 7: Redistribute cluster data
 
@@ -377715,7 +377781,7 @@ The 'node_type' column displays one of the following three values:
 
 For an executable shipped with the NDB Cluster distribution,
 'node_version' shows the software Cluster version string, such as
-'8.4.7-ndb-8.4.7'.
+'8.4.11-ndb-8.4.11'.
 
 'process_id' is the node executable's process ID as shown by the host
 operating system using a process display application such as 'top' on
@@ -379202,15 +379268,15 @@ command in the *note 'ndb_mgm': mysql-cluster-programs-ndb-mgm. client:
      Cluster Configuration
      ---------------------
      [ndbd(NDB)]     2 node(s)
-     id=1    @10.100.10.1  (8.4.7-ndb-8.4.7, Nodegroup: 0, *)
-     id=2    @10.100.10.2  (8.4.7-ndb-8.4.7, Nodegroup: 0)
+     id=1    @10.100.10.1  (8.4.11-ndb-8.4.11, Nodegroup: 0, *)
+     id=2    @10.100.10.2  (8.4.11-ndb-8.4.11, Nodegroup: 0)
 
      [ndb_mgmd(MGM)] 1 node(s)
-     id=10   @10.100.10.10  (8.4.7-ndb-8.4.7)
+     id=10   @10.100.10.10  (8.4.11-ndb-8.4.11)
 
      [mysqld(API)]   2 node(s)
-     id=20   @10.100.10.20  (8.4.7-ndb-8.4.7)
-     id=21   @10.100.10.21  (8.4.7-ndb-8.4.7)
+     id=20   @10.100.10.20  (8.4.11-ndb-8.4.11)
+     id=21   @10.100.10.21  (8.4.11-ndb-8.4.11)
 
 There are 10 rows in the 'transporters' table--5 for the first data
 node, and 5 for the second--assuming that all data nodes are running, as
@@ -379698,7 +379764,7 @@ Cluster, and in some cases provide information about the cluster itself.
           | ndb_use_exact_count                  | OFF                                   |
           | ndb_use_transactions                 | ON                                    |
           | ndb_version                          | 524308                                |
-          | ndb_version_string                   | ndb-8.4.7                            |
+          | ndb_version_string                   | ndb-8.4.11                            |
           | ndb_wait_connected                   | 30                                    |
           | ndb_wait_setup                       | 30                                    |
           | ndbinfo_database                     | ndbinfo                               |
@@ -434295,7 +434361,7 @@ NDB Cluster release series include the following:
      mysql-cluster. storage engine and MySQL Server 8.0.  NDB Cluster
      8.0 is available for production use; new deployments intended for
      production should use the latest GA release in this series, which
-     is currently NDB Cluster 8.0.44.  You can obtain the most recent
+     is currently NDB Cluster 8.0.48.  You can obtain the most recent
      NDB Cluster 8.0 release from
      <https://dev.mysql.com/downloads/cluster/>.
 
@@ -434437,7 +434503,7 @@ cluster.  These are:
 When I run the 'SHOW' command in the NDB Cluster management client, I
 see a line of output that looks like this:
 
-     id=2    @10.100.10.32  (Version: 8.0.44-ndb-8.0.44 Nodegroup: 0, *)
+     id=2    @10.100.10.32  (Version: 8.0.48-ndb-8.0.48 Nodegroup: 0, *)
 
 What does the '*' mean?  How is this node different from the others?
 
