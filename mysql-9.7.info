@@ -48751,7 +48751,7 @@ Yes            Yes
                
 enable_cascade_triggers
 
-Yes            Yes         Yes                     Global      No
+Yes            Yes         Yes                     Both        Yes
                                                                
 enable_secondary_engine_statistics
 
@@ -55799,7 +55799,7 @@ Yes            Yes         Yes         Global      Yes
                                                    
 enable_cascade_triggers
 
-Yes            Yes         Yes         Global      No
+Yes            Yes         Yes         Both        Yes
                                                    
 enable_secondary_engine_statistics
 
@@ -83690,6 +83690,10 @@ Integer                       Both
 dragnet.log_error_filter_rules
 
 String                        Global
+                              
+enable_cascade_triggers
+
+Boolean                       Both
                               
 enable_secondary_engine_statistics
 
@@ -234267,7 +234271,7 @@ File: manual.info.tmp,  Node: create-view,  Next: drop-database,  Prev: create-t
          [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
          [DEFINER = USER]
          [SQL SECURITY { DEFINER | INVOKER }]
-         [IF NOT EXISTS] VIEW VIEW_NAME [(COLUMN_LIST)]
+         VIEW [IF NOT EXISTS] VIEW_NAME [(COLUMN_LIST)]
          AS SELECT_STATEMENT
          [WITH [CASCADED | LOCAL] CHECK OPTION]
 
@@ -280024,7 +280028,7 @@ Name           Cmd-Line    Option      System      Status      Var Scope   Dynam
                                                    
 enable_cascade_triggers
 
-Yes            Yes         Yes                     Global      No
+Yes            Yes         Yes                     Both        Yes
                                                                
 foreign_key_checks
 
@@ -283486,11 +283490,11 @@ unique_checks
 
      Scope
 
-     Global
+     Global, Session
 
      Dynamic
 
-     No
+     Yes
 
      'SET_VAR' Hint
      Applies
