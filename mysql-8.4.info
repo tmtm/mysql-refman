@@ -2935,17 +2935,29 @@ have been added in MySQL 8.4.
      transaction with group_replication_consistency= BEFORE and
      BEFORE_AND_AFTER. Added in MySQL 8.1.0.
 
+   * 'Performance_schema_logger_lost': Displays the number of logger
+     instruments which failed to be created.  Added in MySQL 8.4.10.
+
    * 'Performance_schema_meter_lost': Number of meter instruments that
      failed to be created.  Added in MySQL 8.2.0.
 
    * 'Performance_schema_metric_lost': Number of metric instruments that
      failed to be created.  Added in MySQL 8.2.0.
 
+   * 'Telemetry_logs_supported
+     (https://dev.mysql.com/doc/refman/9.7/en/server-status-variables.html#statvar_Telemetry_logs_supported)':
+     Indicates whether the Telemetry Logs feature is compiled in.  Added
+     in MySQL 8.4.9.
+
    * 'Telemetry_metrics_supported': Whether server telemetry metrics is
      supported.  Added in MySQL 8.2.0.
 
    * 'Tls_sni_server_name': Server name supplied by the client.  Added
      in MySQL 8.1.0.
+
+   * 'audit_log_rotate_on_time': Close and reopen audit log file based
+     on elapsed time since current file was created.  Added in MySQL
+     8.4.10.
 
    * 'authentication_ldap_sasl_connect_timeout': SASL-Based LDAP server
      connection timeout.  Added in MySQL 8.1.0.
@@ -2997,6 +3009,13 @@ have been added in MySQL 8.4.
 
    * 'mysql_firewall_reload_interval_seconds': Reload MySQL Enterprise
      Firewall plugin data at specified intervals.  Added in MySQL 8.2.0.
+
+   * 'performance-schema-logger': Configure Performance Schema logger
+     instruments.  Added in MySQL 8.4.10.
+
+   * 'performance_schema_max_logger_classes': Defines the maximum number
+     of logger client instruments which can be created.  Added in MySQL
+     8.4.10.
 
    * 'performance_schema_max_meter_classes': Maximum number of meter
      instruments which can be created.  Added in MySQL 8.2.0.
@@ -47986,6 +48005,10 @@ audit_log_rotate_on_size
 
 Yes            Yes         Yes                     Global      Yes
                                                                
+audit_log_rotate_on_time
+
+Yes            Yes         Yes                     Global      Yes
+                                                               
 audit_log_statement_policy
 
 Yes            Yes         Yes                     Global      Yes
@@ -53304,6 +53327,14 @@ Performance_schema_locker_lost
 
                                        Yes         Global      No
                                                                
+performance-schema-logger
+
+Yes            Yes
+               
+Performance_schema_logger_lost
+
+                                       Yes         Global      No
+                                                               
 performance_schema_max_cond_classes
 
 Yes            Yes         Yes                     Global      No
@@ -53335,6 +53366,10 @@ Yes            Yes         Yes                     Global      No
 performance_schema_max_index_stat
 
 Yes            Yes         Yes                     Global      No
+                                                               
+performance_schema_max_logger_classes
+
+Yes                        Yes                     Global      No
                                                                
 performance_schema_max_memory_classes
 
@@ -54708,6 +54743,10 @@ Tc_log_page_waits
 
                                        Yes         Global      No
                                                                
+Telemetry_logs_supported
+
+                                       Yes         Global      No
+                                                               
 Telemetry_metrics_supported
 
                                        Yes         Global      No
@@ -55331,6 +55370,10 @@ audit_log_read_buffer_size
 Yes            Yes         Yes         Both        Yes
                                                    
 audit_log_rotate_on_size
+
+Yes            Yes         Yes         Global      Yes
+                                                   
+audit_log_rotate_on_time
 
 Yes            Yes         Yes         Global      Yes
                                                    
@@ -58095,6 +58138,10 @@ Yes            Yes         Yes         Global      No
 performance_schema_max_index_stat
 
 Yes            Yes         Yes         Global      No
+                                                   
+performance_schema_max_logger_classes
+
+Yes                        Yes         Global      No
                                                    
 performance_schema_max_memory_classes
 
@@ -61652,6 +61699,10 @@ Performance_schema_locker_lost
 
 Integer                       Global
                               
+Performance_schema_logger_lost
+
+Integer                       Global
+                              
 Performance_schema_memory_classes_lost
 
 Integer                       Global
@@ -62095,6 +62146,10 @@ Integer                       Global
 Tc_log_page_waits
 
 Integer                       Global
+                              
+Telemetry_logs_supported
+
+Boolean                       Global
                               
 Telemetry_metrics_supported
 
@@ -81778,6 +81833,10 @@ audit_log_read_buffer_size
 Integer                       Both
                               
 audit_log_rotate_on_size
+
+Integer                       Global
+                              
+audit_log_rotate_on_time
 
 Integer                       Global
                               
@@ -133890,6 +133949,10 @@ audit_log_rotate_on_size
 
 Yes            Yes         Yes                     Global      Yes
                                                                
+audit_log_rotate_on_time
+
+Yes            Yes         Yes                     Global      Yes
+                                                               
 audit_log_statement_policy
 
 Yes            Yes         Yes                     Global      Yes
@@ -135151,6 +135214,71 @@ filtering are so noted.
      'audit_log_max_size' and 'audit_log_prune_seconds' to configure
      pruning of rotated JSON-format log files.  For details, see *note
      audit-log-space-management::.
+
+   * 'audit_log_rotate_on_time'
+
+     Command-Line Format
+
+     '--audit-log-rotate-on-time=#'
+
+     System Variable
+
+     'audit_log_rotate_on_time'
+
+     Scope
+
+     Global
+
+     Dynamic
+
+     Yes
+
+     'SET_VAR' Hint
+     Applies
+
+     No
+
+     Type
+
+     Integer
+
+     Default Value
+
+     '0'
+
+     Minimum Value
+
+     '0'
+
+     Maximum Value
+
+     '18446744073709551615'
+
+     Unit
+
+     seconds
+
+     Block Size
+
+     '0'
+
+     If 'audit_log_rotate_on_time' is 0, the audit log plugin does not
+     perform automatic time-based log file rotation.  If rotation is to
+     occur, you can either use 'audit_log_rotate_on_size' or perform it
+     manually; see *note audit-log-manual-rotation::.
+
+     If 'audit_log_rotate_on_time' is greater than 0, automatic
+     time-based log file rotation occurs.  After the specified time
+     period (in seconds) has elapsed, the audit log plugin renames the
+     current log file and opens a new current log file using the
+     original name.
+
+     The minimum time required to enable time-based rotation is 2
+     seconds.  If you set 'audit_log_rotate_on_time' to 1, the time
+     period is automatically updated to 2 seconds.
+
+     Setting the value of 'audit_log_rotate_on_time' requires the
+     'AUDIT_ADMIN' privilege.
 
    * 'audit_log_statement_policy'
 
@@ -416852,6 +416980,7 @@ File: manual.info.tmp,  Node: performance-schema-telemetry-tables,  Next: perfor
 
 * Menu:
 
+* performance-schema-setup-loggers-table::  The setup_loggers Table
 * performance-schema-setup-meters-table::  The setup_meters Table
 * performance-schema-setup-metrics-table::  The setup_metrics Table
 
@@ -416859,9 +416988,118 @@ The following sections describe tables associated with the Telemetry
 services:
 
 
-File: manual.info.tmp,  Node: performance-schema-setup-meters-table,  Next: performance-schema-setup-metrics-table,  Prev: performance-schema-telemetry-tables,  Up: performance-schema-telemetry-tables
+File: manual.info.tmp,  Node: performance-schema-setup-loggers-table,  Next: performance-schema-setup-meters-table,  Prev: performance-schema-telemetry-tables,  Up: performance-schema-telemetry-tables
 
-29.12.21.1 The setup_meters Table
+29.12.21.1 The setup_loggers Table
+..................................
+
+The *note 'setup_loggers': performance-schema-setup-loggers-table. table
+lists the registered loggers and their logging level:
+
+     mysql>  select * from performance_schema.setup_loggers;
+     +------------------------+-------+-------------------------+
+     | NAME                   | LEVEL | DESCRIPTION             |
+     +------------------------+-------+-------------------------+
+     | logger/sql/error_log   | info  | MySQL error logger      |
+     | logger/sql/slow_log    | info  | MySQL slow query logger |
+     | logger/sql/general_log | info  | MySQL general logger    |
+     +------------------------+-------+-------------------------+
+
+   * 'NAME': The name of the logger.
+
+     This can be one of the following:
+
+        * 'logger/sql/error_log'
+
+        * 'logger/sql/general_log'
+
+          The General log does not have a log level.  All logs are
+          instrumented using 'INFO'.  It is also independent of the
+          existing configuration.  For example, if 'log_output' or
+          'general_log' is disabled, general OpenTelemetry logging
+          continues.
+
+        * 'logger/sql/slow_log'
+
+          The Slow Query log does not have a log level.  All logs are
+          instrumented using 'WARN'.  It is also independent of the
+          existing configuration.  For example, if 'log_output' or
+          'slow_query_log' is disabled, Slow Query OpenTelemetry logging
+          continues.  Similarly, on replicas, if
+          'log_slow_replica_statements' is disabled, Slow query
+          OpenTelemetry logging continues on the replica.
+
+   * 'LEVEL': The log level.  This can be set to one of the following
+     values:
+
+        * 'none'
+
+        * 'error'
+
+        * 'warn'
+
+        * 'info'
+
+        * 'debug'
+
+   * 'DESCRIPTION': A text description of the logger.
+
+*Server Configuration Command Line*
+
+This section describes the logger-related command line configuration
+options.
+
+   * 'performance-schema-logger': defines the default values for
+     loggers.  This can be defined multiple times, similarly to
+     '--performance-schema-instrument'.
+
+     In the following example, all loggers are configured with the error
+     level 'ERROR', except 'foo' and 'bar' which are configured to error
+     level 'INFO' and 'WARNING', respectively:
+
+                        --performance-schema-logger = 'logger/% = Level:ERROR' --performance-schema-logger = 'logger/foo/% = Level:INFO'
+                        --performance-schema-logger = 'logger/bar/% = Level:WARNING'
+
+     To see the configured loggers, run the following:
+
+          select * from performance_schema.setup_loggers;
+          +------------------------+-------+-------------------------+
+          | NAME                   | LEVEL | DESCRIPTION             |
+          +------------------------+-------+-------------------------+
+          | logger/sql/error_log   | info  | MySQL error logger      |
+          | logger/sql/slow_log    | info  | MySQL slow query logger |
+          | logger/sql/general_log | info  | MySQL general logger    |
+          +------------------------+-------+-------------------------+
+
+     This example shows the default MySQL error logger.  This can be set
+     to one of the following values:
+
+        * 'none'
+
+        * 'error'
+
+        * 'warn'
+
+        * 'info'
+
+        * 'debug'
+
+     The following example changes the error logging level to WARNING:
+
+          mysql> UPDATE performance_schema.setup_loggers
+                 SET LEVEL='WARN'
+
+   * 'performance_schema_max_logger_classes': this system variable can
+     also be set from the command line.  For example:
+
+                        --performance_schema_max_logger_classes=100
+
+     Editing this value requires a server restart.
+
+
+File: manual.info.tmp,  Node: performance-schema-setup-meters-table,  Next: performance-schema-setup-metrics-table,  Prev: performance-schema-setup-loggers-table,  Up: performance-schema-telemetry-tables
+
+29.12.21.2 The setup_meters Table
 .................................
 
 The *note 'setup_meters': performance-schema-setup-meters-table. table
@@ -416900,7 +417138,7 @@ lists the registered meters:
 
 File: manual.info.tmp,  Node: performance-schema-setup-metrics-table,  Prev: performance-schema-setup-meters-table,  Up: performance-schema-telemetry-tables
 
-29.12.21.2 The setup_metrics Table
+29.12.21.3 The setup_metrics Table
 ..................................
 
 The *note 'setup_metrics': performance-schema-setup-metrics-table. table
@@ -418800,6 +419038,10 @@ Performance_schema_locker_lost
 
                                        Yes         Global      No
                                                                
+performance-schema-logger
+
+Yes            Yes
+               
 performance_schema_max_cond_classes
 
 Yes            Yes         Yes                     Global      No
@@ -418823,6 +419065,10 @@ Yes            Yes         Yes                     Global      No
 performance_schema_max_file_instances
 
 Yes            Yes         Yes                     Global      No
+                                                               
+performance_schema_max_logger_classes
+
+Yes                        Yes                     Global      No
                                                                
 performance_schema_max_memory_classes
 
@@ -419032,6 +419278,11 @@ performance-schema-startup-configuration::.
 
      Configure a Performance Schema instrument.  The name may be given
      as a pattern to configure instruments that match the pattern.
+
+   * '--performance-schema-logger=LOGGERINSTRUMENT_NAME=Level:LOGLEVEL'
+
+     Configure a Performance Schema logger instrument.  The name may be
+     given as a pattern to configure instruments that match the pattern.
 
 The following items configure individual consumers:
 
@@ -421548,6 +421799,49 @@ Performance Schema system variables have the following meanings:
      variable information in the *note 'status_by_user':
      performance-schema-status-variable-summary-tables. table.
 
+   * 'performance_schema_max_logger_classes'
+
+     Command-Line Format
+
+     '--performance_schema_max_logger_classes[=value]'
+
+     System Variable
+
+     'performance_schema_max_logger_classes'
+
+     Scope
+
+     Global
+
+     Dynamic
+
+     No
+
+     'SET_VAR' Hint
+     Applies
+
+     No
+
+     Type
+
+     Integer
+
+     Default Value
+
+     '80'
+
+     Minimum Value
+
+     '0'
+
+     Maximum Value
+
+     '200'
+
+     The value indicates the maximum number of logger client instruments
+     that can be created.  Modifying this setting requires server
+     restart.
+
 
 File: manual.info.tmp,  Node: performance-schema-status-variables,  Next: performance-schema-memory-model,  Prev: performance-schema-system-variables,  Up: performance-schema
 
@@ -421799,6 +422093,11 @@ Performance Schema status variables have the following meanings:
 
      The number of times a row could not be added to the *note 'users':
      performance-schema-users-table. table because it was full.
+
+   * 'Performance_schema_logger_lost'
+
+     Displays the number of logger instruments which failed to be
+     created.
 
 
 File: manual.info.tmp,  Node: performance-schema-memory-model,  Next: performance-schema-and-plugins,  Prev: performance-schema-status-variables,  Up: performance-schema
@@ -430151,6 +430450,14 @@ The following table lists the Telemetry variables.
 Name           Cmd-Line    Option      System      Status      Var Scope   Dynamic
                            File        Var         Var                     
                                                    
+Performance_schema_logger_lost
+
+                                       Yes         Global      No
+                                                               
+Telemetry_logs_supported
+
+                                       Yes         Global      No
+                                                               
 Telemetry_metrics_supported
 
                                        Yes         Global      No
@@ -430900,6 +431207,15 @@ The following are the server trace telemetry configuration variables:
 
      '[none]'
 
+     Current list of TLS 1.2 ciphers to use for traces.  The current
+     default is:
+
+          ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:
+          ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:
+          ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES256-CCM:ECDHE-ECDSA-AES128-CCM:
+          DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-CCM:
+          DHE-RSA-AES128-CCM:DHE-RSA-CHACHA20-POLY1305
+
    * 'telemetry.otel_exporter_otlp_traces_cipher_suite'
 
      System Variable
@@ -430926,6 +431242,11 @@ The following are the server trace telemetry configuration variables:
      Default Value
 
      '[none]'
+
+     Current list of TLS 1.3 ciphers to use for traces.  The current
+     default is:
+
+           TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_SHA256
 
 *Client Configuration*
 
@@ -445805,9 +446126,16 @@ mysqldump:: *note mysqlimport:: *note mysqlshow:: *note mysqlslap::
 *note performance-schema-options::
 
 *note performance-schema-options:: *note
-performance-schema-startup-configuration::
+performance-schema-startup-configuration:: *note
+performance-schema-setup-loggers-table::
+
+*note performance-schema-options::
+
+*note performance-schema-setup-loggers-table::
 
 *note server-options::
+
+*note performance-schema-setup-loggers-table::
 
 *note performance-schema-status-monitoring::
 
@@ -451843,6 +452171,8 @@ telemetry-metrics-meter-metrics::
 *note performance-schema-status-variables:: *note
 telemetry-metrics-meter-metrics::
 
+*note performance-schema-status-variables::
+
 *note performance-schema-status-variables:: *note
 telemetry-metrics-meter-metrics::
 
@@ -452284,6 +452614,8 @@ using-system-variables:: *note audit-log-filter-definitions::
 *note audit-log-reference:: *note audit-log-file-reading::
 
 *note audit-log-reference:: *note audit-log-logging-configuration::
+
+*note audit-log-reference::
 
 *note audit-log-reference:: *note audit-log-legacy-filtering:: *note
 audit-log-filter-definitions::
@@ -452856,7 +453188,8 @@ server-system-variables:: *note mysql-nutshell::
 [index top]
 
 *note glossary:: *note log-destinations:: *note
-server-system-variables:: *note query-log::
+server-system-variables:: *note query-log:: *note
+performance-schema-setup-loggers-table::
 
 *note log-destinations:: *note server-system-variables:: *note
 query-log::
@@ -454019,7 +454352,8 @@ error-log-filtering:: *note firewall-usage:: *note
 mysql-cluster-what-is-new::
 
 *note log-destinations:: *note server-system-variables:: *note
-query-log:: *note slow-query-log::
+query-log:: *note performance-schema-setup-loggers-table:: *note
+slow-query-log::
 
 *note server-system-variables:: *note slow-query-log::
 
@@ -454042,7 +454376,8 @@ replication-howto-slavebaseconfig:: *note replication-gtids-functions::
 *note audit-log-file-formats:: *note audit-log-logging-configuration::
 *note server-system-variables:: *note slow-query-log::
 
-*note replication-options-replica:: *note slow-query-log::
+*note replication-options-replica:: *note
+performance-schema-setup-loggers-table:: *note slow-query-log::
 
 *note replication-options-replica::
 
@@ -454588,6 +454923,8 @@ performance-schema-system-variables::
 
 *note performance-schema-system-variables::
 
+*note performance-schema-system-variables::
+
 *note performance-schema-status-variables:: *note
 performance-schema-system-variables:: *note
 performance-schema-metadata-locks-table::
@@ -455123,7 +455460,7 @@ server-system-variables:: *note replication-howto-masterbaseconfig::
 *note server-status-variables:: *note server-system-variables::
 
 *note log-destinations:: *note server-system-variables:: *note
-slow-query-log::
+performance-schema-setup-loggers-table:: *note slow-query-log::
 
 *note log-destinations:: *note server-system-variables:: *note
 slow-query-log::
