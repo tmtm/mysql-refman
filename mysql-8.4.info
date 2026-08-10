@@ -417044,58 +417044,6 @@ lists the registered loggers and their logging level:
 
    * 'DESCRIPTION': A text description of the logger.
 
-*Server Configuration Command Line*
-
-This section describes the logger-related command line configuration
-options.
-
-   * 'performance-schema-logger': defines the default values for
-     loggers.  This can be defined multiple times, similarly to
-     '--performance-schema-instrument'.
-
-     In the following example, all loggers are configured with the error
-     level 'ERROR', except 'foo' and 'bar' which are configured to error
-     level 'INFO' and 'WARNING', respectively:
-
-                        --performance-schema-logger = 'logger/% = Level:ERROR' --performance-schema-logger = 'logger/foo/% = Level:INFO'
-                        --performance-schema-logger = 'logger/bar/% = Level:WARNING'
-
-     To see the configured loggers, run the following:
-
-          select * from performance_schema.setup_loggers;
-          +------------------------+-------+-------------------------+
-          | NAME                   | LEVEL | DESCRIPTION             |
-          +------------------------+-------+-------------------------+
-          | logger/sql/error_log   | info  | MySQL error logger      |
-          | logger/sql/slow_log    | info  | MySQL slow query logger |
-          | logger/sql/general_log | info  | MySQL general logger    |
-          +------------------------+-------+-------------------------+
-
-     This example shows the default MySQL error logger.  This can be set
-     to one of the following values:
-
-        * 'none'
-
-        * 'error'
-
-        * 'warn'
-
-        * 'info'
-
-        * 'debug'
-
-     The following example changes the error logging level to WARNING:
-
-          mysql> UPDATE performance_schema.setup_loggers
-                 SET LEVEL='WARN'
-
-   * 'performance_schema_max_logger_classes': this system variable can
-     also be set from the command line.  For example:
-
-                        --performance_schema_max_logger_classes=100
-
-     Editing this value requires a server restart.
-
 
 File: manual.info.tmp,  Node: performance-schema-setup-meters-table,  Next: performance-schema-setup-metrics-table,  Prev: performance-schema-setup-loggers-table,  Up: performance-schema-telemetry-tables
 
@@ -430335,6 +430283,7 @@ File: manual.info.tmp,  Node: telemetry,  Next: faqs,  Prev: mysql-oci-marketpla
 * telemetry-system-variables::   Telemetry Variables
 * telemetry-trace::              OpenTelemetry Trace
 * telemetry-metrics::            OpenTelemetry Metrics
+* telemetry-logging::            OpenTelemetry Logging
 
 The OpenTelemetry (OTel) project is an open-source, vendor-neutral
 observability framework, providing a common observability standard.  It
@@ -431754,7 +431703,7 @@ This span type has the following attributes:
    * 'mysql.cpu_time'
 
 
-File: manual.info.tmp,  Node: telemetry-metrics,  Prev: telemetry-trace,  Up: telemetry
+File: manual.info.tmp,  Node: telemetry-metrics,  Next: telemetry-logging,  Prev: telemetry-trace,  Up: telemetry
 
 35.4 OpenTelemetry Metrics
 ==========================
@@ -433736,6 +433685,114 @@ Name           Source         OTEL Type      Description
 'ping'         'Mysqlx_stmt_ping''ASYNC      The number of ping
                               COUNTER'       statements received.
                               
+
+
+File: manual.info.tmp,  Node: telemetry-logging,  Prev: telemetry-metrics,  Up: telemetry
+
+35.5 OpenTelemetry Logging
+==========================
+
+* Menu:
+
+* telemetry-logs-configuration::  Configuring Log Telemetry
+
+MySQL's OpenTelemetry Logging enables you to export telemetry logs from
+your MySQL Server to OpenTelemetry backends for analysis.  This feature
+is implemented in the following ways:
+
+   * Telemetry Logging Interface: API which enables you to define and
+     integrate your own OpenTelemetry Logging components.  This
+     interface makes it possible to discover the available logging
+     instrumentation, enable loggers, generate records, and extract the
+     associated trace contexts.
+
+     The interface does not provide logging.  You must use MySQL
+     Enterprise Edition, MySQL HeatWave, or develop your own component
+     to provide logging.
+
+     For information on the interface and sample component code, see the
+     _Server telemetry logs service_ sections of the MySQL Server
+     Doxygen Documentation
+     (https://dev.mysql.com/doc/dev/mysql-server/latest/).
+
+
+File: manual.info.tmp,  Node: telemetry-logs-configuration,  Prev: telemetry-logging,  Up: telemetry-logging
+
+35.5.1 Configuring Log Telemetry
+--------------------------------
+
+This section describes the configuration for server.
+
+For information on the configured loggers, see *note
+performance-schema-setup-loggers-table::.
+
+   * *note telemetry-logs-configuration-server-status::
+
+   * *note telemetry-logs-configuration-server-cmdline::
+
+*Server Configuration Status Variables*
+
+This section describes the logger-related status variables.
+
+   * 'Telemetry_logs_supported'
+     (https://dev.mysql.com/doc/refman/9.7/en/server-status-variables.html#statvar_Telemetry_logs_supported):
+     displays whether the server was compiled with Telemetry logging
+     support.
+
+   * 'Performance_schema_logger_lost': Displays the number of logger
+     instruments which failed to be created.
+
+*Server Configuration Command Line*
+
+This section describes the logger-related command line configuration
+options.
+
+   * 'performance-schema-logger': defines the default values for
+     loggers.  This can be defined multiple times, similarly to
+     '--performance-schema-instrument'.
+
+     In the following example, all loggers are configured with the error
+     level 'ERROR', except 'foo' and 'bar' which are configured to error
+     level 'INFO' and 'WARNING', respectively:
+
+                        --performance-schema-logger = 'logger/% = Level:ERROR' --performance-schema-logger = 'logger/foo/% = Level:INFO'
+                        --performance-schema-logger = 'logger/bar/% = Level:WARNING'
+
+     To see the configured loggers, run the following:
+
+          select * from performance_schema.setup_loggers;
+          +------------------------+-------+-------------------------+
+          | NAME                   | LEVEL | DESCRIPTION             |
+          +------------------------+-------+-------------------------+
+          | logger/sql/error_log   | info  | MySQL error logger      |
+          | logger/sql/slow_log    | info  | MySQL slow query logger |
+          | logger/sql/general_log | info  | MySQL general logger    |
+          +------------------------+-------+-------------------------+
+
+     This example shows the default MySQL error logger.  This can be set
+     to one of the following values:
+
+        * 'none'
+
+        * 'error'
+
+        * 'warn'
+
+        * 'info'
+
+        * 'debug'
+
+     The following example changes the error logging level to WARNING:
+
+          mysql> UPDATE performance_schema.setup_loggers
+                 SET LEVEL='WARN'
+
+   * 'performance_schema_max_logger_classes': this system variable can
+     also be set from the command line.  For example:
+
+                        --performance_schema_max_logger_classes=100
+
+     Editing this value requires a server restart.
 
 
 File: manual.info.tmp,  Node: faqs,  Next: error-handling,  Prev: telemetry,  Up: Top
@@ -446125,17 +446182,16 @@ mysqldump:: *note mysqlimport:: *note mysqlshow:: *note mysqlslap::
 
 *note performance-schema-options::
 
-*note performance-schema-options:: *note
-performance-schema-startup-configuration:: *note
-performance-schema-setup-loggers-table::
+*note telemetry-logs-configuration:: *note performance-schema-options::
+*note performance-schema-startup-configuration::
 
 *note performance-schema-options::
 
-*note performance-schema-setup-loggers-table::
+*note telemetry-logs-configuration::
 
 *note server-options::
 
-*note performance-schema-setup-loggers-table::
+*note telemetry-logs-configuration::
 
 *note performance-schema-status-monitoring::
 
@@ -452171,7 +452227,8 @@ telemetry-metrics-meter-metrics::
 *note performance-schema-status-variables:: *note
 telemetry-metrics-meter-metrics::
 
-*note performance-schema-status-variables::
+*note telemetry-logs-configuration:: *note
+performance-schema-status-variables::
 
 *note performance-schema-status-variables:: *note
 telemetry-metrics-meter-metrics::
@@ -452474,6 +452531,8 @@ server-status-variables::
 *note telemetry-metrics-meter-metrics:: *note server-status-variables::
 
 *note server-status-variables::
+
+*note telemetry-logs-configuration::
 
 *note server-status-variables::
 
