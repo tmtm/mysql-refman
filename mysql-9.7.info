@@ -58,7 +58,7 @@ Preface and Legal Notices
 *************************
 
 This is the Reference Manual for the MySQL Database System, for the
-9.7.0 LTS release.  For license information, see the Legal Notices.
+9.7.2 LTS release.  For license information, see the Legal Notices.
 
 This manual is not intended for use with older versions of the MySQL
 software due to the many functional and other differences between MySQL
@@ -300,7 +300,7 @@ File: manual.info.tmp,  Node: manual-info,  Next: what-is,  Prev: introduction, 
 =====================
 
 This is the Reference Manual for the MySQL Database System, version 9.7,
-through release 9.7.0.  Differences between minor versions of MySQL 9.7
+through release 9.7.2.  Differences between minor versions of MySQL 9.7
 are noted in the present text with reference to release numbers (9.7.X).
 For license information, see the Legal Notices.
 
@@ -2549,11 +2549,11 @@ Windows examples assume the name 'md5.exe'.
 
 Linux and Microsoft Windows examples:
 
-     $> md5sum mysql-standard-9.7.0-linux-i686.tar.gz
-     aaab65abbec64d5e907dcd41b8699945  mysql-standard-9.7.0-linux-i686.tar.gz
+     $> md5sum mysql-standard-9.7.2-linux-i686.tar.gz
+     aaab65abbec64d5e907dcd41b8699945  mysql-standard-9.7.2-linux-i686.tar.gz
 
-     $> md5.exe mysql-installer-community-9.7.0.msi
-     aaab65abbec64d5e907dcd41b8699945  mysql-installer-community-9.7.0.msi
+     $> md5.exe mysql-installer-community-9.7.2.msi
+     aaab65abbec64d5e907dcd41b8699945  mysql-installer-community-9.7.2.msi
 
 You should verify that the resulting checksum (the string of hexadecimal
 digits) matches the one displayed on the download page immediately below
@@ -2693,10 +2693,10 @@ examples in the following table.
 
 File Type          File Name
                    
-Distribution       'mysql-9.7.0-linux-glibc2.28-x86_64.tar.xz'
+Distribution       'mysql-9.7.2-linux-glibc2.28-x86_64.tar.xz'
 file               
 
-Signature file     'mysql-9.7.0-linux-glibc2.28-x86_64.tar.xz.asc'
+Signature file     'mysql-9.7.2-linux-glibc2.28-x86_64.tar.xz.asc'
 
 Make sure that both files are stored in the same directory and then run
 the following command to verify the signature for the distribution file:
@@ -2706,7 +2706,7 @@ the following command to verify the signature for the distribution file:
 If the downloaded package is valid, you should see a 'Good signature'
 message similar to this:
 
-     $> gpg --verify mysql-9.7.0-linux-glibc2.28-x86_64.tar.xz.asc
+     $> gpg --verify mysql-9.7.2-linux-glibc2.28-x86_64.tar.xz.asc
      gpg: Signature made Fri 15 Dec 2023 06:55:13 AM EST
      gpg:                using RSA key BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
      gpg: Good signature from "MySQL Release Engineering <mysql-build@oss.oracle.com>"
@@ -2715,7 +2715,7 @@ The 'Good signature' message indicates that the file signature is valid,
 when compared to the signature listed on our site.  But you might also
 see warnings, like so:
 
-     $> gpg --verify mysql-9.7.0-linux-glibc2.28-x86_64.tar.xz.asc
+     $> gpg --verify mysql-9.7.2-linux-glibc2.28-x86_64.tar.xz.asc
      gpg: Signature made Fri 15 Dec 2023 06:55:13 AM EST
      gpg:                using RSA key BCA43417C3B485DD128EC6D4B7B3B788A8D3785C
      gpg: Good signature from "MySQL Release Engineering <mysql-build@oss.oracle.com>"
@@ -2787,10 +2787,10 @@ Windows*
 
 File Type          File Name
                    
-Distribution       'mysql-9.7.0-winx64.msi'
+Distribution       'mysql-9.7.2-winx64.msi'
 file               
 
-Signature file     'mysql-9.7.0-winx64.msi.asc'
+Signature file     'mysql-9.7.2-winx64.msi.asc'
 
 Make sure that both files are stored in the same directory and then run
 the following command to verify the signature for the distribution file.
@@ -2826,8 +2826,8 @@ running the following command:
 
 Example:
 
-     $> rpm --checksig mysql-community-server-9.7.0-1.el8.x86_64.rpm
-     mysql-community-server-9.7.0-1.el8.x86_64.rpm: digests signatures OK
+     $> rpm --checksig mysql-community-server-9.7.2-1.el8.x86_64.rpm
+     mysql-community-server-9.7.2-1.el8.x86_64.rpm: digests signatures OK
 
 *Note*:
 
@@ -3653,7 +3653,7 @@ formats.
 
 MySQL compressed 'tar' file binary distributions have names of the form
 'mysql-VERSION-OS.tar.xz', where 'VERSION' is a number (for example,
-'9.7.0'), and OS indicates the type of operating system for which the
+'9.7.2'), and OS indicates the type of operating system for which the
 distribution is intended (for example, 'pc-linux-i686' or 'winx64').
 
 There is also a 'minimal install' version of the MySQL compressed 'tar'
@@ -3982,7 +3982,7 @@ interaction, and '/lv' to write verbose installation output to a new log
 file target.  Execute the installation as Administrator from the
 command-line, for example:
 
-     $> msiexec /i "C:\MYSQL\MYSQL-9.7.0-WINX64.MSI" /QN /LV "C:\MYSQL\INSTALL.LOG"
+     $> msiexec /i "C:\MYSQL\MYSQL-9.7.2-WINX64.MSI" /QN /LV "C:\MYSQL\INSTALL.LOG"
 
 The MSI also supports 'INSTALLDIR' to optionally override the default
 installation directory path to a non-default location.  The following
@@ -4093,8 +4093,8 @@ this section are:
 
 *MySQL Installation MSI*
 
-This package has a file name similar to 'mysql-community-9.7.0.msi' or
-'mysql-commercial-9.7.0.msi', and installs MySQL server along with MySQL
+This package has a file name similar to 'mysql-community-9.7.2.msi' or
+'mysql-commercial-9.7.2.msi', and installs MySQL server along with MySQL
 Configurator.  The MSI includes a MySQL Configurator application that is
 recommended for most users to set up, configure, and reconfigure the
 MySQL server.
@@ -6500,8 +6500,8 @@ To install MySQL using the package installer:
 
      Double-click the MySQL installer package from the disk.  It is
      named according to the version of MySQL you have downloaded.  For
-     example, for MySQL server 9.7.0 it might be named
-     'mysql-9.7.0-macos-10.13-X86_64.pkg'.
+     example, for MySQL server 9.7.2 it might be named
+     'mysql-9.7.2-macos-10.13-X86_64.pkg'.
 
   2. The initial wizard introduction screen references the MySQL server
      version to install.  Click 'Continue' to begin the installation.
@@ -6548,8 +6548,8 @@ to configure MySQL to automatically start at bootup.
 When installing using the package installer, the files are installed
 into a directory within '/usr/local' matching the name of the
 installation version and platform.  For example, the installer file
-'mysql-9.7.0-MACOS10.15-X86_64.DMG' installs MySQL into
-'/usr/local/mysql-9.7.0-macos10.15-x86_64/ ' with a symlink to
+'mysql-9.7.2-MACOS10.15-X86_64.DMG' installs MySQL into
+'/usr/local/mysql-9.7.2-macos10.15-x86_64/ ' with a symlink to
 '/usr/local/mysql'.  The following table shows the layout of this MySQL
 installation directory.
 
@@ -8375,7 +8375,7 @@ Package Name              Summary
 'mysql-community'         The source code
                           RPM looks
                           similar to
-                          mysql-community-9.7.0-1.el7.src.rpm,
+                          mysql-community-9.7.2-1.el7.src.rpm,
                           depending on
                           selected OS
                           
@@ -10415,16 +10415,16 @@ To use this package, download the corresponding
 'mysql-VERSION-solaris11-PLATFORM.pkg.gz' file, then uncompress it.  For
 example:
 
-     $> gunzip mysql-9.7.0-solaris11-x86_64.pkg.gz
+     $> gunzip mysql-9.7.2-solaris11-x86_64.pkg.gz
 
 To install a new package, use 'pkgadd' and follow the onscreen prompts.
 You must have root privileges to perform this operation:
 
-     $> pkgadd -d mysql-9.7.0-solaris11-x86_64.pkg
+     $> pkgadd -d mysql-9.7.2-solaris11-x86_64.pkg
 
      The following packages are available:
        1  mysql     MySQL Community Server (GPL)
-                    (i86pc) 9.7.0
+                    (i86pc) 9.7.2
 
      Select package(s) you wish to process (or 'all' to process
      all packages). (default: all) [?,??,q]:
@@ -10462,7 +10462,7 @@ upgrade sequence is therefore:
 
      $> mysqladmin shutdown
      $> pkgrm mysql
-     $> pkgadd -d mysql-9.7.0-solaris11-x86_64.pkg
+     $> pkgadd -d mysql-9.7.2-solaris11-x86_64.pkg
      $> mysqld_safe &
 
 You should check the notes in *note upgrading:: before performing any
@@ -10533,7 +10533,7 @@ There are two methods for installing MySQL from source:
      Standard distributions are available as compressed 'tar' files, Zip
      archives, or RPM packages.  Distribution files have names of the
      form 'mysql-VERSION.tar.gz', 'mysql-VERSION.zip', or
-     'mysql-VERSION.rpm', where VERSION is a number like '9.7.0'.  File
+     'mysql-VERSION.rpm', where VERSION is a number like '9.7.2'.  File
      names for source distributions can be distinguished from those for
      precompiled binary distributions in that source distribution names
      are generic and include no platform name, whereas binary
@@ -14325,10 +14325,10 @@ depending on your platform and version of MySQL, but should be similar
 to that shown here:
 
      $> bin/mysqladmin version
-     mysqladmin  Ver 14.12 Distrib 9.7.0, for pc-linux-gnu on i686
+     mysqladmin  Ver 14.12 Distrib 9.7.2, for pc-linux-gnu on i686
      ...
 
-     Server version          9.7.0
+     Server version          9.7.2
      Protocol version        10
      Connection              Localhost via UNIX socket
      UNIX socket             /var/lib/mysql/mysql.sock
@@ -16521,7 +16521,7 @@ a 'mysql>' prompt:
      $> mysql -h HOST -u USER -p
      Enter password: ********
      Welcome to the MySQL monitor.  Commands end with ; or \g.
-     Your MySQL connection id is 25338 to server version: 9.7.0-standard
+     Your MySQL connection id is 25338 to server version: 9.7.2-standard
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -20349,7 +20349,7 @@ example, where a user connects to a MySQL server running on host
      $> mysql --host 85.224.35.45 --user jon
      Welcome to the MySQL monitor.  Commands end with ; or \g.
      Your MySQL connection id is 3
-     Server version: 9.7.0 Source distribution
+     Server version: 9.7.2 Source distribution
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -20485,7 +20485,7 @@ Now the login attempt succeeds:
      $> mysql
      Welcome to the MySQL monitor.  Commands end with ; or \g.
      Your MySQL connection id is 5
-     Server version: 9.7.0 Source distribution
+     Server version: 9.7.2 Source distribution
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -20503,7 +20503,7 @@ sign is not required:
      $> mysql --user jon --host tonfisk
      Welcome to the MySQL monitor.  Commands end with ; or \g.
      Your MySQL connection id is 6
-     Server version: 9.7.0 Source distribution
+     Server version: 9.7.2 Source distribution
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -39142,7 +39142,7 @@ fields) in *note 'JSON': json. format.
 
      Display version information and exit.  For example:
 
-          ibd2sdi  Ver 9.7.0 for Linux on x86_64 (Source distribution)
+          ibd2sdi  Ver 9.7.2 for Linux on x86_64 (Source distribution)
 
    * '--debug[=DEBUG_OPTIONS]', '-# [DEBUG_OPTIONS]'
 
@@ -101357,7 +101357,7 @@ clone. statement is executed:
           +---------------+-------+
           | Variable_name | Value |
           +---------------+-------+
-          | version       | 9.7.0 |
+          | version       | 9.7.2 |
           +---------------+-------+
 
    * The donor and recipient MySQL server instances must run on the same
@@ -104329,9 +104329,9 @@ must be unique per instance.
 
 For the following instructions, suppose that you want to run the *note
 'mysqld': mysqld. server from two different versions of MySQL that are
-installed at 'C:\mysql-5.7.9' and 'C:\mysql-9.7.0', respectively.  (This
+installed at 'C:\mysql-5.7.9' and 'C:\mysql-9.7.2', respectively.  (This
 might be the case if you are running 5.7.9 as your production server,
-but also want to conduct tests using 9.7.0.)
+but also want to conduct tests using 9.7.2.)
 
 To install MySQL as a Windows service, use the '--install' or
 '--install-manual' option.  For information about these options, see
@@ -104345,10 +104345,10 @@ services.
    * *Approach 1:* Specify the options for all services in one of the
      standard option files.  To do this, use a different service name
      for each server.  Suppose that you want to run the 5.7.9 *note
-     'mysqld': mysqld. using the service name of 'mysqld1' and the 9.7.0
+     'mysqld': mysqld. using the service name of 'mysqld1' and the 9.7.2
      *note 'mysqld': mysqld. using the service name 'mysqld2'.  In this
      case, you can use the '[mysqld1]' group for 5.7.9 and the
-     '[mysqld2]' group for 9.7.0.  For example, you can set up
+     '[mysqld2]' group for 9.7.2.  For example, you can set up
      'C:\my.cnf' like this:
 
           # options for mysqld1 service
@@ -104360,7 +104360,7 @@ services.
 
           # options for mysqld2 service
           [mysqld2]
-          basedir = C:/mysql-9.7.0
+          basedir = C:/mysql-9.7.2
           port = 3308
           enable-named-pipe
           socket = mypipe2
@@ -104370,7 +104370,7 @@ services.
      each service:
 
           C:\> C:\mysql-5.7.9\bin\mysqld --install mysqld1
-          C:\> C:\mysql-9.7.0\bin\mysqld --install mysqld2
+          C:\> C:\mysql-9.7.2\bin\mysqld --install mysqld2
 
      To start the services, use the services manager, or 'NET START' or
      'SC START' with the appropriate service names:
@@ -104399,11 +104399,11 @@ services.
           enable-named-pipe
           socket = mypipe1
 
-     For the 9.7.0 *note 'mysqld': mysqld, create a file
+     For the 9.7.2 *note 'mysqld': mysqld, create a file
      'C:\my-opts2.cnf' that looks like this:
 
           [mysqld]
-          basedir = C:/mysql-9.7.0
+          basedir = C:/mysql-9.7.2
           port = 3308
           enable-named-pipe
           socket = mypipe2
@@ -104413,7 +104413,7 @@ services.
 
           C:\> C:\mysql-5.7.9\bin\mysqld --install mysqld1
                      --defaults-file=C:\my-opts1.cnf
-          C:\> C:\mysql-9.7.0\bin\mysqld --install mysqld2
+          C:\> C:\mysql-9.7.2\bin\mysqld --install mysqld2
                      --defaults-file=C:\my-opts2.cnf
 
      When you install a MySQL server as a service and use a
@@ -104453,12 +104453,12 @@ file, and PID file location for each server.
 
 Assume that an existing 9.6 server is configured for the default TCP/IP
 port number (3306) and Unix socket file ('/tmp/mysql.sock').  To
-configure a new 9.7.0 server to have different operating parameters, use
+configure a new 9.7.2 server to have different operating parameters, use
 a 'CMake' command something like this:
 
      $> cmake . -DMYSQL_TCP_PORT=PORT_NUMBER \
                   -DMYSQL_UNIX_ADDR=FILE_NAME \
-                  -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-9.7.0
+                  -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-9.7.2
 
 Here, PORT_NUMBER and FILE_NAME must be different from the default
 TCP/IP port number and Unix socket file path name, and the
@@ -104785,10 +104785,10 @@ attempting to load the symbols.
      'mysqld.pdb', 'mysqld.dmp', and the source code.  Alternatively,
      pass in each path from the WinDbg GUI. For example:
 
-          windbg.exe -i "C:\mysql-9.7.0-winx64\bin\"^
-           -z "C:\mysql-9.7.0-winx64\data\mysqld.dmp"^
-           -srcpath "E:\ade\mysql_archives\9.7\9.7.0\mysql-9.7.0"^
-           -y "C:\mysql-9.7.0-winx64\bin;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols"^
+          windbg.exe -i "C:\mysql-9.7.2-winx64\bin\"^
+           -z "C:\mysql-9.7.2-winx64\data\mysqld.dmp"^
+           -srcpath "E:\ade\mysql_archives\9.7\9.7.2\mysql-9.7.2"^
+           -y "C:\mysql-9.7.2-winx64\bin;SRV*c:\symbols*http://msdl.microsoft.com/download/symbols"^
            -v -n -c "!analyze -vvvvv"
 
      *Note*:
@@ -179795,8 +179795,8 @@ higher:
 
 The version number uses the format MMMRR, where M is a major version, MM
 is a two-digit minor version, and RR is a two-digit release number.  For
-example: In a statement to be run only by a MySQL server version 9.7.0
-or later, use '90700' in the comment.
+example: In a statement to be run only by a MySQL server version 9.7.2
+or later, use '90702' in the comment.
 
 In MySQL 9.7, the version number can also optionally be comprised of six
 digits in MMMMRR format, where MM is a two-digit major version, and MM
@@ -208670,7 +208670,7 @@ Name                 Description
      'STATEMENT'.
 
           mysql> SELECT VERSION();
-                  -> '9.7.0-standard'
+                  -> '9.7.2-standard'
 
 
 File: manual.info.tmp,  Node: spatial-analysis-functions,  Next: json-functions,  Prev: information-functions,  Up: functions
@@ -216657,7 +216657,7 @@ group.
           +------------------------------------------------+
           | group_replication_get_communication_protocol() |
           +------------------------------------------------+
-          | 9.7.0                                          |
+          | 9.7.2                                          |
           +------------------------------------------------+
 
      For more information, see *note
@@ -235436,7 +235436,7 @@ the values of the two variables are set or modified:
      +----------+------------+
      | @version | @increment |
      +----------+------------+
-     | 9.7.0   |         11 |
+     | 9.7.2   |         11 |
      +----------+------------+
 
 In prepared *note 'CALL': call. statements used with *note 'PREPARE':
@@ -235451,7 +235451,7 @@ can be used as follows:
      +----------+------------+
      | @version | @increment |
      +----------+------------+
-     | 9.7.0   |         11 |
+     | 9.7.2   |         11 |
      +----------+------------+
 
 To write C programs that use the *note 'CALL': call. SQL statement to
@@ -252845,7 +252845,7 @@ privilege provided by the first matching grant, but not the second:
 
      Welcome to the MySQL monitor.  Commands end with ; or \g.
      Your MySQL connection id is 10
-     Server version: 9.7.0-tr Source distribution
+     Server version: 9.7.2-tr Source distribution
 
      Copyright (c) 2000, 2023, Oracle and/or its affiliates.
 
@@ -261012,7 +261012,7 @@ about tuning them.
      | unique_checks                                         | ON                    |
      | updatable_views_with_limit                            | YES                   |
      | use_secondary_engine                                  | ON                    |
-     | version                                               | 9.7.0                 |
+     | version                                               | 9.7.2                 |
      | version_comment                                       | Source distribution   |
      | version_compile_machine                               | x86_64                |
      | version_compile_os                                    | Linux                 |
@@ -302074,8 +302074,8 @@ servers:
 
      For internal use by replication.  This session system variable
      holds the MySQL Server release number of the server that is the
-     immediate source in a replication topology (for example, '90700'
-     for a MySQL 9.7.0 server instance).  If this immediate server is at
+     immediate source in a replication topology (for example, '90702'
+     for a MySQL 9.7.2 server instance).  If this immediate server is at
      a release that does not support the session system variable, the
      value of the variable is set to 0 ('UNKNOWN_SERVER_VERSION').
 
@@ -302138,8 +302138,8 @@ servers:
 
      For internal use by replication.  This session system variable
      holds the MySQL Server release number of the server where a
-     transaction was originally committed (for example, '90700' for a
-     MySQL 9.7.0 server instance).  If this original server is at a
+     transaction was originally committed (for example, '90702' for a
+     MySQL 9.7.2 server instance).  If this original server is at a
      release that does not support the session system variable, the
      value of the variable is set to 0 ('UNKNOWN_SERVER_VERSION').  Note
      that when a release number is set by the original server, the value
@@ -321095,7 +321095,7 @@ Check the content of table 't1' and the binary log.
      +---------------+-----+----------------+-----------+-------------+--------------------------------------------------------------------+
      | Log_name      | Pos | Event_type     | Server_id | End_log_pos | Info                                                               |
      +---------------+-----+----------------+-----------+-------------+--------------------------------------------------------------------+
-     | binlog.000001 |   4 | Format_desc    |         1 |         123 | Server ver: 9.7.0-log, Binlog ver: 4                              |
+     | binlog.000001 |   4 | Format_desc    |         1 |         123 | Server ver: 9.7.2-log, Binlog ver: 4                              |
      | binlog.000001 | 123 | Previous_gtids |         1 |         150 |                                                                    |
      | binlog.000001 | 150 | Gtid           |         1 |         211 | SET @@SESSION.GTID_NEXT= 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa:1'  |
      | binlog.000001 | 211 | Query          |         1 |         270 | BEGIN                                                              |
@@ -321242,8 +321242,8 @@ that there are now two 'ONLINE' servers in the group.
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
      | CHANNEL_NAME              | MEMBER_ID                            | MEMBER_HOST | MEMBER_PORT | MEMBER_STATE | MEMBER_ROLE | MEMBER_VERSION | MEMBER_COMMUNICATION_STACK |
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
-     | group_replication_applier | 395409e1-6dfa-11e6-970b-00212844f856 |   s1        |        3306 | ONLINE       | PRIMARY     | 9.7.0          | XCom                       |
-     | group_replication_applier | ac39f1e6-6dfa-11e6-a69d-00212844f856 |   s2        |        3306 | ONLINE       | SECONDARY   | 9.7.0          | XCom                       |
+     | group_replication_applier | 395409e1-6dfa-11e6-970b-00212844f856 |   s1        |        3306 | ONLINE       | PRIMARY     | 9.7.2          | XCom                       |
+     | group_replication_applier | ac39f1e6-6dfa-11e6-a69d-00212844f856 |   s2        |        3306 | ONLINE       | SECONDARY   | 9.7.2          | XCom                       |
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
 
 When s2 attempted to join the group, *note
@@ -321273,7 +321273,7 @@ with server s1 as follows.
      +---------------+------+----------------+-----------+-------------+--------------------------------------------------------------------+
      | Log_name      | Pos  | Event_type     | Server_id | End_log_pos | Info                                                               |
      +---------------+------+----------------+-----------+-------------+--------------------------------------------------------------------+
-     | binlog.000001 |    4 | Format_desc    |         2 |         123 | Server ver: 9.7.0-log, Binlog ver: 4                              |
+     | binlog.000001 |    4 | Format_desc    |         2 |         123 | Server ver: 9.7.2-log, Binlog ver: 4                              |
      | binlog.000001 |  123 | Previous_gtids |         2 |         150 |                                                                    |
      | binlog.000001 |  150 | Gtid           |         1 |         211 | SET @@SESSION.GTID_NEXT= 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa:1'  |
      | binlog.000001 |  211 | Query          |         1 |         270 | BEGIN                                                              |
@@ -321380,9 +321380,9 @@ this is the case.
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
      | CHANNEL_NAME              | MEMBER_ID                            | MEMBER_HOST | MEMBER_PORT | MEMBER_STATE | MEMBER_ROLE | MEMBER_VERSION | MEMBER_COMMUNICATION_STACK |
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
-     | group_replication_applier | 395409e1-6dfa-11e6-970b-00212844f856 |   s1        |        3306 | ONLINE       | PRIMARY     | 9.7.0          | XCom                       |
-     | group_replication_applier | 7eb217ff-6df3-11e6-966c-00212844f856 |   s3        |        3306 | ONLINE       | SECONDARY   | 9.7.0          | XCom                       |
-     | group_replication_applier | ac39f1e6-6dfa-11e6-a69d-00212844f856 |   s2        |        3306 | ONLINE       | SECONDARY   | 9.7.0          | XCom                       |
+     | group_replication_applier | 395409e1-6dfa-11e6-970b-00212844f856 |   s1        |        3306 | ONLINE       | PRIMARY     | 9.7.2          | XCom                       |
+     | group_replication_applier | 7eb217ff-6df3-11e6-966c-00212844f856 |   s3        |        3306 | ONLINE       | SECONDARY   | 9.7.2          | XCom                       |
+     | group_replication_applier | ac39f1e6-6dfa-11e6-a69d-00212844f856 |   s2        |        3306 | ONLINE       | SECONDARY   | 9.7.2          | XCom                       |
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
 
 Issuing this same query on server s2 or server s1 yields the same
@@ -321406,7 +321406,7 @@ result.  Also, you can verify that server s3 has caught up:
      +---------------+------+----------------+-----------+-------------+--------------------------------------------------------------------+
      | Log_name      | Pos  | Event_type     | Server_id | End_log_pos | Info                                                               |
      +---------------+------+----------------+-----------+-------------+--------------------------------------------------------------------+
-     | binlog.000001 |    4 | Format_desc    |         3 |         123 | Server ver: 9.7.0-log, Binlog ver: 4                              |
+     | binlog.000001 |    4 | Format_desc    |         3 |         123 | Server ver: 9.7.2-log, Binlog ver: 4                              |
      | binlog.000001 |  123 | Previous_gtids |         3 |         150 |                                                                    |
      | binlog.000001 |  150 | Gtid           |         1 |         211 | SET @@SESSION.GTID_NEXT= 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa:1'  |
      | binlog.000001 |  211 | Query          |         1 |         270 | BEGIN                                                              |
@@ -322268,9 +322268,9 @@ example by issuing:
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
      | CHANNEL_NAME              | MEMBER_ID                            | MEMBER_HOST | MEMBER_PORT | MEMBER_STATE | MEMBER_ROLE | MEMBER_VERSION | MEMBER_COMMUNICATION_STACK |
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
-     | group_replication_applier | d391e9ee-2691-11ec-bf61-00059a3c7a00 | example1    |        4410 | ONLINE       | PRIMARY     | 9.7.0         | XCom                       |
-     | group_replication_applier | e059ce5c-2691-11ec-8632-00059a3c7a00 | example2    |        4420 | ONLINE       | SECONDARY   | 9.7.0         | XCom                       |
-     | group_replication_applier | ecd9ad06-2691-11ec-91c7-00059a3c7a00 | example3    |        4430 | ONLINE       | SECONDARY   | 9.7.0         | XCom                       |
+     | group_replication_applier | d391e9ee-2691-11ec-bf61-00059a3c7a00 | example1    |        4410 | ONLINE       | PRIMARY     | 9.7.2         | XCom                       |
+     | group_replication_applier | e059ce5c-2691-11ec-8632-00059a3c7a00 | example2    |        4420 | ONLINE       | SECONDARY   | 9.7.2         | XCom                       |
+     | group_replication_applier | ecd9ad06-2691-11ec-91c7-00059a3c7a00 | example3    |        4430 | ONLINE       | SECONDARY   | 9.7.2         | XCom                       |
      +---------------------------+--------------------------------------+-------------+-------------+--------------+-------------+----------------+----------------------------+
      3 rows in set (0.0007 sec)
 
@@ -327852,7 +327852,7 @@ File: manual.info.tmp,  Node: group-replication-online-upgrade-combining-version
 
 Group Replication is versioned according to the MySQL Server version
 that the Group Replication plugin was bundled with.  For example, if a
-member is running MySQL 9.7.0 then that is the version of the Group
+member is running MySQL 9.7.2 then that is the version of the Group
 Replication plugin.  To check the version of MySQL Server on a group
 member issue:
 
@@ -327860,7 +327860,7 @@ member issue:
      +-------------+-------------+----------------+
      | member_host | member_port | member_version |
      +-------------+-------------+----------------+
-     | example.com |	   3306     |   9.7.0	     |
+     | example.com |	   3306     |   9.7.2	     |
      +-------------+-------------+----------------+
 
 For guidance on understanding the MySQL Server version and selecting a
@@ -340858,7 +340858,7 @@ File: manual.info.tmp,  Node: mysql-cluster-what-is-new,  Next: mysql-cluster-ad
 -------------------------------------------
 
 The following sections describe changes in the implementation of MySQL
-NDB Cluster in NDB Cluster 9.7.0, as compared to earlier release series.
+NDB Cluster in NDB Cluster 9.7.2, as compared to earlier release series.
 NDB Cluster 9.7 is available as a Development release for preview and
 testing of new features currently under development.  For production,
 please use NDB 8.4; for more information, see MySQL NDB Cluster 8.4
@@ -341025,7 +341025,7 @@ MySQL Server Version
 Version
 
 *note 'InnoDB': innodb-storage-engine.*note 'InnoDB': innodb-storage-engine.
-9.7.0                    9.7.0
+9.7.2                    9.7.2
                          
 NDB Cluster Version
 
@@ -344562,7 +344562,7 @@ mysql-cluster. storage engine is enabled:
 
      $> mysql
      Welcome to the MySQL monitor.  Commands end with ; or \g.
-     Your MySQL connection id is 1 to server version: 9.7.0
+     Your MySQL connection id is 1 to server version: 9.7.2
 
      Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
@@ -394709,7 +394709,7 @@ Cluster, and in some cases provide information about the cluster itself.
                   PLUGIN_VERSION: 1.0
                    PLUGIN_STATUS: ACTIVE
                      PLUGIN_TYPE: STORAGE ENGINE
-             PLUGIN_TYPE_VERSION: 90700.0
+             PLUGIN_TYPE_VERSION: 90702.0
                   PLUGIN_LIBRARY: NULL
           PLUGIN_LIBRARY_VERSION: NULL
                    PLUGIN_AUTHOR: Oracle Corporation
@@ -394721,7 +394721,7 @@ Cluster, and in some cases provide information about the cluster itself.
                   PLUGIN_VERSION: 0.1
                    PLUGIN_STATUS: ACTIVE
                      PLUGIN_TYPE: STORAGE ENGINE
-             PLUGIN_TYPE_VERSION: 90700.0
+             PLUGIN_TYPE_VERSION: 90702.0
                   PLUGIN_LIBRARY: NULL
           PLUGIN_LIBRARY_VERSION: NULL
                    PLUGIN_AUTHOR: Oracle Corporation
@@ -394733,7 +394733,7 @@ Cluster, and in some cases provide information about the cluster itself.
                   PLUGIN_VERSION: 0.1
                    PLUGIN_STATUS: ACTIVE
                      PLUGIN_TYPE: INFORMATION SCHEMA
-             PLUGIN_TYPE_VERSION: 90700.0
+             PLUGIN_TYPE_VERSION: 90702.0
                   PLUGIN_LIBRARY: NULL
           PLUGIN_LIBRARY_VERSION: NULL
                    PLUGIN_AUTHOR: Oracle Corporation
@@ -432497,7 +432497,7 @@ values and attributes depend on the Connector/Python implementation
    * '_source_host': The host name of the machine on which the connector
      is connecting from.
 
-   * '_connector_version': The connector version (for example, '9.7.0')
+   * '_connector_version': The connector version (for example, '9.7.2')
      (c-ext only).
 
    * '_connector_license': The license type of the connector; 'GPL-2.0'
@@ -440653,7 +440653,7 @@ Example *note 'error_log': performance-schema-error-log-table. contents:
            PRIO: System
      ERROR_CODE: MY-010116
       SUBSYSTEM: Server
-           DATA: mysqld (mysqld 9.7.0) starting as process 96344
+           DATA: mysqld (mysqld 9.7.2) starting as process 96344
      *************************** 2. row ***************************
          LOGGED: 2020-08-06 09:25:00.363521
       THREAD_ID: 1
