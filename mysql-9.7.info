@@ -87676,7 +87676,14 @@ The status variables have the following meanings.
 
    * 'Innodb_rows_deleted'
 
-     The number of rows deleted from 'InnoDB' tables.
+     The number of rows deleted from 'InnoDB' tables.  During a
+     SQL-layer 'DELETE CASCADE', this counter is incremented for each
+     attempted recursive deletion.  If the cascade exceeds the maximum
+     depth and fails with 'ER_FK_DEPTH_EXCEEDED'
+     (https://dev.mysql.com/doc/mysql-errors/9.7/en/server-error-reference.html#error_er_fk_depth_exceeded),
+     those counter increments are not rolled back.  With InnoDB foreign
+     key handling, the counter is not incremented when this error
+     occurs.
 
    * 'Innodb_rows_inserted'
 
@@ -231349,6 +231356,8 @@ statement includes the following:
 Foreign key constraint usage is described under the following topics in
 this section:
 
+   * *note foreign-key-processing::
+
    * *note foreign-key-identifiers::
 
    * *note foreign-key-restrictions::
@@ -231368,6 +231377,39 @@ this section:
    * *note foreign-key-metadata::
 
    * *note foreign-key-errors::
+
+*Foreign Key Processing*
+
+As of MySQL 9.6, the server runtime (SQL layer) performs foreign key
+checks and referential actions for InnoDB tables by default.  This
+behavior is configured with 'innodb_native_foreign_keys':
+
+   * 'FALSE': (Default) Foreign keys are handled by the SQL layer.
+
+   * 'TRUE': Foreign keys are handled by the InnoDB engine.
+
+This variable affects only InnoDB tables.  NDB Cluster continues to
+handle its foreign keys in the storage engine, and this behavior in not
+implemented in any other storage engines.
+
+SQL-layer and InnoDB differ in the following ways:
+
+   * SQL-layer handling validates a foreign key before invoking the
+     InnoDB row operation.  Consequently, an insert rejected because of
+     a foreign key violation does not consume an 'AUTO_INCREMENT' value.
+     With InnoDB handling, the rejected insert consumes the generated
+     value.
+
+   * SQL-layer handling validates constraints at the table level, from
+     the beginning of a foreign key relationship chain.  Native InnoDB
+     handling validates constraints at the index level, from the end of
+     the chain.  If an operation violates more than one constraint, the
+     two implementations can report different constraints while both
+     correctly reject the operation.
+
+With row-based binary logging, SQL-layer cascades generate row events
+for affected child tables.  See *note
+replication-features-foreign-keys::.
 
 *Identifiers*
 
@@ -231547,9 +231589,14 @@ supported where the child table contains one or more columns of any of
 the *note 'TEXT': blob. or *note 'BLOB': blob. types.  (Bug #89511, Bug
 #27484882)
 
-'InnoDB' performs cascading operations using a depth-first search
-algorithm on the records of the index that corresponds to the foreign
-key constraint.
+With InnoDB foreign key handling, InnoDB performs cascading operations
+using a depth-first search algorithm on the records of the index that
+corresponds to the foreign key constraint.  With SQL-layer handling, the
+server follows foreign key relationships recursively.  A cascade can
+traverse at most 15 levels; exceeding this limit causes the statement to
+fail with 'ER_FK_DEPTH_EXCEEDED'.  If the server encounters a circular
+foreign key relationship, it stops following the repeated relationship,
+and the statement succeeds after applying the preceding cascade changes.
 
 A foreign key constraint on a stored generated column cannot use
 'CASCADE', 'SET NULL', or 'SET DEFAULT' as 'ON UPDATE' referential
@@ -231710,8 +231757,10 @@ Disabling foreign key checking is useful when:
    * Performing an *note 'ALTER TABLE': alter-table. operation on a
      table that has a foreign key relationship.
 
-When 'foreign_key_checks' is disabled, foreign key constraints are
-ignored, with the following exceptions:
+When 'foreign_key_checks' is disabled, DML operations do not perform
+foreign key existence checks, 'RESTRICT' checks, or referential actions
+such as 'CASCADE' and 'SET NULL'.  The following DDL checks still
+apply::
 
    * Recreating a table that was previously dropped returns an error if
      the table definition does not conform to the foreign key
@@ -266670,6 +266719,14 @@ sensitive to the execution order of SQL statements.
 
    * 'Lost' auto-increment values and sequence gaps
 
+     When SQL-layer foreign key handling is used
+     ('innodb_native_foreign_keys=FALSE'), an insert rejected by a
+     foreign key constraint is validated before the InnoDB row operation
+     and does not consume an 'AUTO_INCREMENT' value.  When native InnoDB
+     foreign key handling is used ('innodb_native_foreign_keys=TRUE'),
+     the constraint is checked during the row operation, and the
+     rejected insert consumes the generated value.
+
      In all lock modes (0, 1, and 2), if a transaction that generated
      auto-increment values rolls back, those auto-increment values are
      'lost'.  Once a value is generated for an auto-increment column, it
@@ -271200,6 +271257,16 @@ not scan more rows than necessary.
      checked sets shared record-level locks on the records that it looks
      at to check the constraint.  'InnoDB' also sets these locks in the
      case where the constraint fails.
+
+     With SQL-layer foreign key handling, an insert into a child table
+     takes shared record locks on matching parent records.  If the
+     parent key does not exist, it takes a shared gap lock on the
+     subsequent parent key.  An update of a parent key using 'RESTRICT'
+     takes shared record locks while searching the child table.  For
+     'UPDATE CASCADE', SQL-layer handling also takes gap locks on
+     affected child-table secondary indexes.  InnoDB handling takes
+     exclusive locks on those secondary-index records without the
+     additional gap locks.
 
    * *note 'LOCK TABLES': lock-tables. sets table locks, but it is the
      higher MySQL layer above the 'InnoDB' layer that sets these locks.
@@ -286295,6 +286362,15 @@ unique_checks
      Whether foreign keys are handled by the runtime or by the InnoDB
      engine.  If 'FALSE', foreign keys are handled by the runtime, if
      'TRUE', they are handled by the InnoDB Engine.
+
+     This variable only affects InnoDB tables.  It does not change
+     foreign key handling for NDB or other storage engines.
+
+     With statement-based replication, the replica uses its local
+     'innodb_native_foreign_keys' setting.  With row-based replication,
+     the source's foreign key handling mode is recorded in the row
+     events and overrides the replica's local setting.  See *note
+     replication-features-foreign-keys::.
 
    * 'innodb_numa_interleave'
 
@@ -316799,6 +316875,7 @@ File: manual.info.tmp,  Node: replication-features,  Next: replication-compatibi
 * replication-features-timezone::  Replication and Time Zones
 * replication-features-transaction-inconsistencies::  Replication and Transaction Inconsistencies
 * replication-features-transactions::  Replication and Transactions
+* replication-features-foreign-keys::  Replication and Foreign Keys
 * replication-features-triggers::  Replication and Triggers
 * replication-features-truncate::  Replication and TRUNCATE TABLE
 * replication-features-user-names::  Replication and User Name Length
@@ -318760,7 +318837,7 @@ change-replication-source-to. statements, which are not permitted on a
 non-GTID replica where there are gaps.
 
 
-File: manual.info.tmp,  Node: replication-features-transactions,  Next: replication-features-triggers,  Prev: replication-features-transaction-inconsistencies,  Up: replication-features
+File: manual.info.tmp,  Node: replication-features-transactions,  Next: replication-features-foreign-keys,  Prev: replication-features-transaction-inconsistencies,  Up: replication-features
 
 19.5.1.38 Replication and Transactions
 ......................................
@@ -318898,9 +318975,82 @@ For restrictions that apply specifically to XA transactions, see *note
 xa-restrictions::.
 
 
-File: manual.info.tmp,  Node: replication-features-triggers,  Next: replication-features-truncate,  Prev: replication-features-transactions,  Up: replication-features
+File: manual.info.tmp,  Node: replication-features-foreign-keys,  Next: replication-features-triggers,  Prev: replication-features-transactions,  Up: replication-features
 
-19.5.1.39 Replication and Triggers
+19.5.1.39 Replication and Foreign Keys
+......................................
+
+For InnoDB tables, foreign keys can be handled by the server runtime or
+by the native InnoDB implementation, depending on the
+'innodb_native_foreign_keys' system variable.  Replication preserves the
+source's foreign keys as described in this section.
+
+*Statement-Based Replication*
+
+With statement-based replication, a statement that modifies a parent
+table is written to the binary log and reexecuted on the replica.  The
+replica performs foreign key checks and cascading actions using its
+local 'innodb_native_foreign_keys' setting.
+
+Consequently, the source and replica can use different foreign key
+implementations for statement-based replication, although both
+implementations produce the same referential-integrity result.
+
+*Row-Based Replication*
+
+With row-based replication, the source's 'innodb_native_foreign_keys'
+setting is recorded in the row events.  The replica uses the source's
+foreign key implementation for those events, overriding its local
+setting.
+
+When SQL-layer foreign key handling is used on the source, cascading
+updates and deletes generate row events for affected child tables.
+These child-table events are written before the event for the
+parent-table operation.  The child-table events cause the replica to
+skip foreign key checks and further cascading while applying those
+changes.  This prevents a foreign key violation caused by applying a
+child update before the corresponding parent update and prevents
+cascades from being applied twice.
+
+The parent-table event does not skip foreign key checks.  This is
+necessary when the affected parent table is also a child in another
+foreign key relationship.
+
+When InnoDB foreign key handling is used on the source, cascaded
+child-table changes do not generate separate row events.  The replica
+applies the parent-table event using native InnoDB handling and performs
+the corresponding cascades locally.
+
+*Replication Upgrades*
+
+For row-based replication from a source running a version earlier than
+MySQL 9.6, the binary log does not identify SQL-layer foreign key
+handling.  The replica therefore uses native InnoDB handling and
+performs cascading actions locally.
+
+For statement-based replication from an older source, the replica uses
+its local 'innodb_native_foreign_keys' setting.
+
+*Reverting a Replication Topology to InnoDB Handling*
+
+Changing 'innodb_native_foreign_keys' requires a server restart.  To
+change a replication or high-availability topology from SQL-layer
+handling to InnoDB:
+
+  1. Shut down each replica, configure 'innodb_native_foreign_keys=ON'
+     in its option file, and restart it.
+
+  2. When all replicas are configured to use InnoDB handling, shut down
+     the source, configure 'innodb_native_foreign_keys=ON', and restart
+     it
+
+Changing the replicas before the source maintains compatible foreign key
+processing throughout the transition.
+
+
+File: manual.info.tmp,  Node: replication-features-triggers,  Next: replication-features-truncate,  Prev: replication-features-foreign-keys,  Up: replication-features
+
+19.5.1.40 Replication and Triggers
 ..................................
 
 With statement-based replication, triggers executed on the source also
@@ -318982,7 +319132,7 @@ as follows:
 
 File: manual.info.tmp,  Node: replication-features-truncate,  Next: replication-features-user-names,  Prev: replication-features-triggers,  Up: replication-features
 
-19.5.1.40 Replication and TRUNCATE TABLE
+19.5.1.41 Replication and TRUNCATE TABLE
 ........................................
 
 *note 'TRUNCATE TABLE': truncate-table. is normally regarded as a DML
@@ -319004,7 +319154,7 @@ transactional tables on replicas still follow the rules described in
 
 File: manual.info.tmp,  Node: replication-features-user-names,  Next: replication-features-variables,  Prev: replication-features-truncate,  Up: replication-features
 
-19.5.1.41 Replication and User Name Length
+19.5.1.42 Replication and User Name Length
 ..........................................
 
 The maximum length for user names in MySQL 9.7 is 32 characters.
@@ -319017,7 +319167,7 @@ configuration.
 
 File: manual.info.tmp,  Node: replication-features-variables,  Next: replication-features-views,  Prev: replication-features-user-names,  Up: replication-features
 
-19.5.1.42 Replication and Variables
+19.5.1.43 Replication and Variables
 ...................................
 
 System variables are not replicated correctly when using 'STATEMENT'
@@ -319143,7 +319293,7 @@ can only be configured when initializing the server.
 
 File: manual.info.tmp,  Node: replication-features-views,  Prev: replication-features-variables,  Up: replication-features
 
-19.5.1.43 Replication and Views
+19.5.1.44 Replication and Views
 ...............................
 
 Views are always replicated to replicas.  Views are filtered by their
@@ -423922,8 +424072,10 @@ these columns:
 
    * 'TRX_LAST_FOREIGN_KEY_ERROR'
 
-     The detailed error message for the last foreign key error, if any;
-     otherwise 'NULL'.
+     The detailed error message for the last foreign key error reported
+     by InnoDB foreign key handling, if any; otherwise 'NULL'.  This
+     column is not updated for errors reported by SQL-layer foreign key
+     handling.
 
    * 'TRX_ADAPTIVE_HASH_LATCHED'
 
@@ -448735,6 +448887,12 @@ File: manual.info.tmp,  Node: sys-schema-table-statistics,  Next: sys-schema-tab
 
 These views summarize table statistics.  By default, rows are sorted by
 descending total wait time (tables with most contention first).
+
+*Note*:
+
+When SQL-layer foreign key handling performs a cascading update or
+delete, the statistics for each affected child or descendant table
+include the rows updated or deleted by the cascade.
 
 These views user a helper view, 'x$ps_schema_table_statistics_io'.
 
@@ -478866,7 +479024,8 @@ innodb-parameters:: *note information-schema-innodb-metrics-table::
 *note innodb-information-schema-metrics-table:: *note
 innodb-parameters:: *note information-schema-innodb-metrics-table::
 
-*note innodb-parameters::
+*note innodb-auto-increment-handling:: *note create-table-foreign-keys::
+*note innodb-parameters:: *note replication-features-foreign-keys::
 
 *note innodb-parameters::
 
