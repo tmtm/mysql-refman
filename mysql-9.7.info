@@ -67089,7 +67089,11 @@ absolute path name, its location is as given by the path name.
      occurs.  For systems on which multibyte file names are permitted, a
      different value may be more appropriate.  For example, if the
      system represents file names using UTF-8, set
-     'character_set_filesystem' to ''utf8mb4''.
+     'character_set_filesystem' to ''utf8mb4''.  When this variable is
+     set using the '--default-character-set' startup option, the utf8
+     alias is rejected.  Specify 'utf8mb3' or 'utf8mb4' explicitly.
+     This restriction also applies when the option is specified in an
+     option file.
 
      Setting the session value of this system variable is a restricted
      operation.  The session user must have privileges sufficient to set
@@ -67394,6 +67398,11 @@ absolute path name, its location is as given by the path name.
 
      Setting this to the name of a user-defined collation raises a
      warning.
+
+     At server startup, '--collation-server' rejects 'utf8_*' alias
+     names.  Specify the corresponding 'utf8mb3_*' or 'utf8mb4_*'
+     collation explicitly.  This restriction applies both on the command
+     line and in option files.
 
    * 'completion_type'
 
@@ -88827,6 +88836,35 @@ The following list describes all supported SQL modes:
 
      For further discussion of 'IGNORE_SPACE', see *note
      function-resolution::.
+
+   * 'INTERPRET_UTF8_AS_UTF8MB4'
+
+     Controls how the deprecated 'utf8' character set alias and 'utf8_*'
+     collation aliases are interpreted in SQL statements.  This mode is
+     disabled by default.  When disabled, 'utf8' means 'utf8mb3' and
+     'utf8_xxx' means 'utf8mb3_xxx'.  When enabled, 'utf8' means
+     'utf8mb4' and 'utf8_xxx' means 'utf8mb4_xxx'.  Character set and
+     collation names are not case-sensitive.
+
+     The mode applies to DDL and DML statements, including '_utf8'
+     character set introducers.  'SHOW CREATE' statements display the
+     canonical names selected during DDL processing, and 'EXPLAIN'
+     reflects the names selected during DML processing.
+
+     The aliases 'utf8_general_mysql500_ci' and 'utf8_tolower_ci' are
+     rejected when this mode is enabled because no corresponding
+     'utf8mb4' collations exist.  Specify 'utf8mb3_general_mysql500_ci'
+     or 'utf8mb3_tolower_ci' explicitly if one of these collations is
+     required.
+
+     Stored procedure, stored function, and trigger definitions retain
+     the SQL mode in effect when they are defined.  Their 'utf8' aliases
+     are therefore interpreted using that retained mode when they
+     execute.
+
+     This mode does not affect client '--default-character-set' options,
+     server startup character set and collation options, or external
+     character set definitions read from 'Index.xml'.
 
    * 'NO_AUTO_VALUE_ON_ZERO'
 
@@ -180529,6 +180567,13 @@ Therefore, the following three commands all have the same effect:
      mysqld --character-set-server=utf8mb4 \
        --collation-server=utf8mb4_0900_ai_ci
 
+Character set and collation startup options require explicit names.
+'--character-set-server' accepts exactly one value; multiple values are
+rejected.  The value 'utf8' is rejected for this option, and 'utf8_*'
+collation names are rejected for '--collation-server'.  Use explicit
+'utf8mb3', 'utf8mb4', 'utf8mb3_*', or 'utf8mb4_*' names.  These
+restrictions also apply to settings read from option files.
+
 One way to change the settings is by recompiling.  To change the default
 server character set and collation when building from sources, use the
 'DEFAULT_CHARSET' and 'DEFAULT_COLLATION' options for 'CMake'.  For
@@ -180996,6 +181041,11 @@ CHARSET_NAME.' An introducer does not change the string to the
 introducer character set like 'CONVERT()' would do.  It does not change
 the string value, although padding may occur.  The introducer is just a
 signal.
+
+The '_utf8' introducer is a deprecated alias.  By default, it is
+interpreted as '_utf8mb3'.  If the 'INTERPRET_UTF8_AS_UTF8MB4' SQL mode
+is enabled, it is interpreted as '_utf8mb4'.  Use '_utf8mb3' or
+'_utf8mb4' explicitly to avoid behavior that depends on SQL mode.
 
 For character string literals, space between the introducer and the
 string is permitted but optional.
@@ -182619,7 +182669,7 @@ File: manual.info.tmp,  Node: charset-unicode,  Next: charset-charsets,  Prev: c
 
 * charset-unicode-utf8mb4::      The utf8mb4 Character Set (4-Byte UTF-8 Unicode Encoding)
 * charset-unicode-utf8mb3::      The utf8mb3 Character Set (3-Byte UTF-8 Unicode Encoding)
-* charset-unicode-utf8::         The utf8 Character Set (Deprecated alias for utf8mb3)
+* charset-unicode-utf8::         The utf8 Character Set (Deprecated alias)
 * charset-unicode-ucs2::         The ucs2 Character Set (UCS-2 Unicode Encoding)
 * charset-unicode-utf16::        The utf16 Character Set (UTF-16 Unicode Encoding)
 * charset-unicode-utf16le::      The utf16le Character Set (UTF-16LE Unicode Encoding)
@@ -182897,14 +182947,73 @@ character sets, see *note data-types-storage-reqs-strings::.
 
 File: manual.info.tmp,  Node: charset-unicode-utf8,  Next: charset-unicode-ucs2,  Prev: charset-unicode-utf8mb3,  Up: charset-unicode
 
-12.9.3 The utf8 Character Set (Deprecated alias for utf8mb3)
-------------------------------------------------------------
+12.9.3 The utf8 Character Set (Deprecated alias)
+------------------------------------------------
 
-'utf8' has been used by MySQL in the past as an alias for the 'utf8mb3'
-character set, but this usage is now deprecated; in MySQL 9.7, *note
-'SHOW': show. statements and columns of *note 'INFORMATION_SCHEMA':
-information-schema. tables display 'utf8mb3' instead.  For more
-information, see *note charset-unicode-utf8mb3::.
+'utf8' is a deprecated alias whose interpretation in SQL statements is
+controlled by the 'INTERPRET_UTF8_AS_UTF8MB4' SQL mode.  When the server
+stores or reports a resolved character set or collation, it uses the
+canonical 'utf8mb3' or 'utf8mb4' name rather than 'utf8'.  For more
+information, see *note charset-unicode-utf8mb4:: and *note
+charset-unicode-utf8mb3::.
+
+The alias mapping is as follows:
+
+*utf8 Alias Mapping INTERPRET_UTF8_AS_UTF8MB4*
+
+SQL mode                 utf8                     utf8_xxx
+                                                  
+                                                  
+'INTERPRET_UTF8_AS_UTF8MB4''utf8mb3'              'utf8mb3_xxx'
+not enabled (default)                             
+
+'INTERPRET_UTF8_AS_UTF8MB4''utf8mb4'              'utf8mb4_xxx'
+enabled                  
+
+Character set and collation names are not case-sensitive.  For example,
+'UTF8', 'Utf8', and 'utf8' are interpreted identically.  The mapping
+applies to character set and collation names in DDL and DML statements.
+DDL stores the resolved canonical names, which are displayed by 'SHOW
+CREATE' statements.  'EXPLAIN' reflects names resolved while processing
+DML statements.  For example:
+
+     SET SESSION sql_mode = '';
+     CREATE TABLE t1 (c VARCHAR(10))
+       CHARACTER SET utf8 COLLATE utf8_bin;
+     SHOW CREATE TABLE t1;
+
+     SET SESSION sql_mode = 'INTERPRET_UTF8_AS_UTF8MB4';
+     CREATE TABLE t2 (c VARCHAR(10))
+       CHARACTER SET utf8 COLLATE utf8_bin;
+     SHOW CREATE TABLE t2;
+
+'t1' uses 'utf8mb3' and utf8mb3_bin; while t2 uses 'utf8mb4' and
+'utf8mb4_bin'.
+
+All 'utf8mb3' collations have a corresponding 'utf8mb4' collation except
+'utf8mb3_general_mysql500_ci' and 'utf8mb3_tolower_ci'.  Consequently,
+'utf8_general_mysql500_ci' and 'utf8_tolower_ci' are rejected when
+'INTERPRET_UTF8_AS_UTF8MB4' is enabled.  Specify the corresponding
+'utf8mb3' name explicitly to use either collation.  For generated
+columns, aliases are resolved to explicit character set and collation
+names when the table is created.
+
+'INTERPRET_UTF8_AS_UTF8MB4' does not affect the following:
+
+   * For MySQL client program options, '--default-character-set=utf8'
+     always selects utf8mb3.
+
+   * For external character set definitions read from 'Index.xml',
+     'utf8' continues to map to 'utf8mb3'.
+
+   * Server startup options require explicit names.
+     '--default-character-set=utf8', '--default-character-set=utf8', and
+     '--collation-server=utf8_xxx' are rejected.  Use explicit
+     'utf8mb3', 'utf8mb4', 'utf8mb3_xxx', or 'utf8mb4_xxx' names
+     instead.
+
+To avoid behavior that depends on the SQL mode, it is recommended to
+specify 'utf8mb3' or 'utf8mb4' explicitly.
 
 *Note*:
 
@@ -182912,7 +183021,7 @@ The recommended character set for MySQL is 'utf8mb4'.  All new
 applications should use 'utf8mb4'.
 
 The 'utf8mb3' character set is deprecated.  'utf8mb3' remains supported
-for the lifetimes of the MySQL 8.0.x and MySQL 8.4.x LTS release series.
+for the lifetimes of the MySQL 8.4.x LTS release series.
 
 Expect 'utf8mb3' to be removed in a future major release of MySQL.
 
@@ -186009,6 +186118,13 @@ You can force client programs to use specific character set as follows:
 
      [client]
      default-character-set=CHARSET_NAME
+
+For MySQL client programs, specifying 'default-character-set=utf8' in an
+option file, or using the equivalent '--default-character-set=utf8'
+command-line option, always selects utf8mb3.  The server's
+'INTERPRET_UTF8_AS_UTF8MB4' SQL mode does not affect client character
+set option processing.  Specify 'utf8mb4' explicitly to use four-byte
+UTF-8.
 
 This is normally unnecessary.  However, when 'character_set_system'
 differs from 'character_set_server' or 'character_set_client', and you
@@ -228228,10 +228344,15 @@ stored routines, see *note stored-program-restrictions::.
 For information about invoking stored procedures from within programs
 written in a language that has a MySQL interface, see *note call::.
 
-MySQL stores the 'sql_mode' system variable setting in effect when a
-routine is created or altered, and always executes the routine with this
-setting in force, _regardless of the current server SQL mode when the
-routine begins executing_.
+MySQL stores routine definition text verbatim; it does not replace
+occurrences of 'utf8' or 'utf8_*' in the stored text.  MySQL also stores
+the 'sql_mode' system variable setting in effect when a routine is
+created or altered, and always executes the routine with this setting in
+force, _regardless of the current server SQL mode when the routine
+begins executing_.  Consequently, character set and collation aliases in
+statements within the routine are interpreted according to whether
+'INTERPRET_UTF8_AS_UTF8MB4' was enabled when the routine was created or
+altered..
 
 The switch from the SQL mode of the invoker to that of the routine
 occurs after evaluation of arguments and assignment of the resulting
@@ -318502,6 +318623,19 @@ differently on the source and the replica, leading the source and
 replica to diverge.  For best results, you should always use the same
 server SQL mode on the source and on the replica.  This advice applies
 whether you are using statement-based or row-based replication.
+
+For 'INTERPRET_UTF8_AS_UTF8MB4', the source records the applicable SQL
+mode in the binary log for every statement logged using statement format
+and for every DDL statement, regardless of the 'binlog_format' setting.
+The replica applies the statement using the recorded mode, so 'utf8'
+character set and collation aliases resolve in the same way on the
+source and replica.
+
+Before a source begins using 'INTERPRET_UTF8_AS_UTF8MB4', upgrade every
+replica to a MySQL release that recognizes the mode.  Configure the same
+SQL mode on all servers that may be promoted to source.  Otherwise,
+statements executed locally after a takeover may interpret 'utf8'
+aliases differently.
 
 If you are replicating partitioned tables, using different SQL modes on
 the source and the replica is likely to cause issues.  At a minimum,
@@ -411307,6 +411441,13 @@ executes when activated:
 
 See also *note stored-program-restrictions::.
 
+MySQL stores trigger definition text verbatim and stores the 'sql_mode'
+setting in effect when the trigger is created.  When the trigger
+executes, this stored SQL mode is used regardless of the current session
+SQL mode.  Consequently, character set and collation aliases in the
+trigger body are interpreted according to whether
+'INTERPRET_UTF8_AS_UTF8MB4' was enabled when the trigger was created.
+
 MySQL handles errors during trigger execution as follows:
 
    * If a 'BEFORE' trigger fails, the operation on the corresponding row
@@ -467691,8 +467832,8 @@ mysql-cluster-information-schema-tables:: *note
 innodb-information-schema:: *note data-dictionary:: *note glossary::
 *note mysql-cluster-security-mysql-privileges:: *note
 innodb-online-ddl-operations:: *note reserved-accounts:: *note
-data-directory:: *note charset-unicode-utf8:: *note sys-schema-usage::
-*note upgrading-what-is-upgraded::
+data-directory:: *note sys-schema-usage:: *note
+upgrading-what-is-upgraded::
 
 *note faqs-cjk::
 
@@ -468777,7 +468918,8 @@ source-configuration-options::
 
 *note adding-collation:: *note full-text-adding-collation:: *note
 charset-configuration:: *note charset-applications:: *note
-charset-server::
+charset-server:: *note server-system-variables:: *note
+charset-unicode-utf8::
 
 *note source-configuration-options::
 
@@ -469119,8 +469261,10 @@ pluggable-authentication::
 charset-applications:: *note charset-connection:: *note
 mysql-batch-commands:: *note load-data:: *note mysql-command-options::
 *note mysql-tips:: *note mysqladmin:: *note mysqlcheck:: *note
-mysqldump:: *note mysqlimport:: *note mysqlshow:: *note
-server-system-variables::
+mysqldump:: *note mysqlimport:: *note mysqlshow:: *note sql-mode:: *note
+server-system-variables:: *note charset-unicode-utf8::
+
+*note charset-configuration::
 
 *note time-zone-support:: *note server-options:: *note
 server-system-variables::
@@ -472668,6 +472812,10 @@ precision-math-examples:: *note sql-mode::
 *note create-procedure:: *note function-resolution:: *note
 mysql-command-options:: *note sql-mode::
 
+*note charset-configuration:: *note charset-introducer:: *note
+create-procedure:: *note replication-features-sql-mode:: *note
+sql-mode:: *note charset-unicode-utf8:: *note trigger-syntax::
+
 [index top]
 
 *note create-table:: *note numeric-type-attributes:: *note sql-mode::
@@ -474941,8 +475089,7 @@ performance-schema-quick-start:: *note stored-program-restrictions::
 *note server-system-variables:: *note replication-howto-existingdata::
 *note show-columns:: *note show:: *note show-tables:: *note
 account-names:: *note replication-statements-source:: *note binary-log::
-*note features:: *note charset-unicode-utf8:: *note sys-schema-usage::
-*note charset-metadata::
+*note features:: *note sys-schema-usage:: *note charset-metadata::
 
 *note replication-options-gtids:: *note replication-bugs:: *note
 mysqldump:: *note mysql-cluster-replication-backups:: *note
@@ -477867,15 +478014,16 @@ replication-functions-synchronization:: *note
 replication-privilege-checks-account:: *note privileges-provided:: *note
 replication-options-replica:: *note replication-features-blackhole::
 *note replication-features-load-data:: *note
-replication-features-memory:: *note replication-features-temptables::
-*note replication-features-transactions:: *note replication-formats::
-*note replication-features-mysqldb:: *note
-replication-privilege-checks:: *note replication-gtids-restrictions::
-*note xa-restrictions:: *note replication-binlog-encryption-scope::
-*note binary-log-setting:: *note stored-programs-logging:: *note
-system-variable-privileges:: *note blackhole-storage-engine:: *note
-query-log:: *note slow-query-log:: *note
-innodb-transaction-isolation-levels:: *note replication-rbr-usage::
+replication-features-memory:: *note replication-features-sql-mode::
+*note replication-features-temptables:: *note
+replication-features-transactions:: *note replication-formats:: *note
+replication-features-mysqldb:: *note replication-privilege-checks::
+*note replication-gtids-restrictions:: *note xa-restrictions:: *note
+replication-binlog-encryption-scope:: *note binary-log-setting:: *note
+stored-programs-logging:: *note system-variable-privileges:: *note
+blackhole-storage-engine:: *note query-log:: *note slow-query-log::
+*note innodb-transaction-isolation-levels:: *note
+replication-rbr-usage::
 
 *note replication-options-binary-log::
 
@@ -480555,7 +480703,8 @@ binary-log-mixed:: *note compatibility:: *note upgrade-prerequisites::
 *note using-date:: *note replication-features-variables:: *note
 sql-mode:: *note server-system-variables:: *note show-create-view::
 *note signal:: *note binary-log:: *note information-schema-views-table::
-*note sys-list-add:: *note option-files:: *note using-system-variables::
+*note sys-list-add:: *note trigger-syntax:: *note option-files:: *note
+using-system-variables::
 
 *note error-interfaces:: *note server-system-variables:: *note
 show-warnings:: *note diagnostics-area::
