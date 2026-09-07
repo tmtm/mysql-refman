@@ -231660,7 +231660,12 @@ Referential actions include:
 
      *Note*:
 
-     Cascaded foreign key actions do not activate triggers.
+     By default, cascaded foreign key actions do not activate triggers.
+     For InnoDB tables that use SQL-layer foreign key handling
+     ('innodb_native_foreign_keys=OFF'), setting
+     'enable_cascade_triggers=ON' for the current session activates
+     triggers on child rows changed by 'CASCADE' and 'SET NULL' actions.
+     This setting has no effect when 'innodb_native_foreign_keys=ON'.
 
    * 'SET NULL': Delete or update the row from the parent table and set
      the foreign key column or columns in the child table to 'NULL'.
@@ -231688,6 +231693,39 @@ Referential actions include:
      both *note 'InnoDB': innodb-storage-engine. and *note 'NDB':
      mysql-cluster. reject table definitions containing 'ON DELETE SET
      DEFAULT' or 'ON UPDATE SET DEFAULT' clauses.
+
+When cascade-trigger execution is enabled
+('enable_cascade_triggers=ON'), triggers activate once for each affected
+child row as follows:
+
+   * 'ON DELETE CASCADE' activates the 'BEFORE DELETE' triggers, deletes
+     the child row, and then activates the 'AFTER DELETE' triggers.
+
+   * 'ON UPDATE CASCADE', 'ON UPDATE SET NULL', and 'ON DELETE SET NULL'
+     activate the 'BEFORE UPDATE' triggers, update the child row, and
+     then activate the 'AFTER UPDATE' triggers.
+
+For a cascaded delete, 'OLD' contains the child row being deleted.  For
+a cascaded update, 'OLD' contains the values before the cascade and
+'NEW' contains the values after the cascade, including values changed to
+'NULL'.
+
+Multiple triggers for the same trigger event and action time execute in
+their defined order.  For a multilevel cascade, 'BEFORE' triggers
+execute from the parent toward its descendants.  'AFTER' triggers
+execute in the reverse order, from the deepest child toward the parent.
+
+Cascade-induced triggers execute as part of the statement that initiated
+the referential action.  If any such trigger raises an error, the
+statement fails and all changes made by the statement, including changes
+at every cascade level, are rolled back.
+
+An 'INSERT ... ON DUPLICATE KEY UPDATE' that causes an 'ON UPDATE'
+referential action activates the corresponding 'UPDATE' triggers on
+affected child rows.  A 'REPLACE' operation that deletes a parent row
+activates 'DELETE' triggers for child rows removed by 'ON DELETE
+CASCADE'.  The subsequent parent-row insert does not reinsert the
+deleted child rows.
 
 For storage engines that support foreign keys, MySQL rejects any *note
 'INSERT': insert. or *note 'UPDATE': update. operation that attempts to
@@ -231717,9 +231755,20 @@ using a depth-first search algorithm on the records of the index that
 corresponds to the foreign key constraint.  With SQL-layer handling, the
 server follows foreign key relationships recursively.  A cascade can
 traverse at most 15 levels; exceeding this limit causes the statement to
-fail with 'ER_FK_DEPTH_EXCEEDED'.  If the server encounters a circular
-foreign key relationship, it stops following the repeated relationship,
-and the statement succeeds after applying the preceding cascade changes.
+fail with 'ER_FK_DEPTH_EXCEEDED'
+(https://dev.mysql.com/doc/mysql-errors/9.7/en/server-error-reference.html#error_er_fk_depth_exceeded).
+
+When cascade-trigger execution is enabled, triggers also execute for
+cascaded changes in self-referencing foreign key relationships.  If the
+server encounters a circular foreign key relationship, it stops
+following the repeated relationship, and triggers execute once for each
+participating table.  A trigger that attempts to reenter the active
+cascade path causes an error.
+
+Cascade-induced triggers can create multiple cascade chains within one
+statement.  At most 30 tables can participate collectively in all such
+chains.  If this limit is exceeded, the statement fails and all its
+changes are rolled back.
 
 A foreign key constraint on a stored generated column cannot use
 'CASCADE', 'SET NULL', or 'SET DEFAULT' as 'ON UPDATE' referential
@@ -231882,8 +231931,9 @@ Disabling foreign key checking is useful when:
 
 When 'foreign_key_checks' is disabled, DML operations do not perform
 foreign key existence checks, 'RESTRICT' checks, or referential actions
-such as 'CASCADE' and 'SET NULL'.  The following DDL checks still
-apply::
+such as 'CASCADE' and 'SET NULL'.  Because no referential action occurs,
+triggers are not activated on child rows through a foreign key action.
+The following DDL checks still apply::
 
    * Recreating a table that was previously dropped returns an error if
      the table definition does not conform to the foreign key
@@ -234339,7 +234389,12 @@ was a duplicate key for the row.
 
 *Note*:
 
-Cascaded foreign key actions do not activate triggers.
+By default, cascaded foreign key actions do not activate triggers.  For
+InnoDB tables that use SQL-layer foreign key handling
+('innodb_native_foreign_keys=OFF'), setting 'enable_cascade_triggers=ON'
+for the current session activates triggers on child rows changed by
+'CASCADE' and 'SET NULL' actions.  This setting has no effect when
+'innodb_native_foreign_keys=ON'.
 
 It is possible to define multiple triggers for a given table that have
 the same trigger event and action time.  For example, you can have two
@@ -283695,20 +283750,35 @@ unique_checks
 
      'FALSE'
 
-     Whether to enable trigger execution for foreign key cascade
-     actions.
+     Controls whether triggers execute on child rows changed by foreign
+     key referential actions.  The default value, 'FALSE', preserves the
+     historical behavior in which cascaded changes do not activate
+     child-table triggers.
 
         * If 'innodb_native_foreign_keys' is enabled,
-          'enable_cascade_triggers' has no effect and cascades are
-          handled by the InnoDB engine.
+          'enable_cascade_triggers' has no effect because InnoDB handles
+          the referential actions.  Enabling 'enable_cascade_triggers'
+          in this mode returns a warning.
 
         * If 'innodb_native_foreign_keys' is disabled, and
-          'enable_cascade_triggers' is enabled, triggers on rows
-          affected by SQL-layer Foreign Key cascades are fired.
+          'enable_cascade_triggers' is enabled, SQL-layer CASCADE and
+          SET NULL actions activate the applicable BEFORE and AFTER
+          triggers for each affected child row.
 
         * If 'innodb_native_foreign_keys' is disabled, and
-          'enable_cascade_triggers' is disabled, child table triggers
-          are not fired during cascade changes.
+          'enable_cascade_triggers' is disabled, child-table triggers do
+          not activate for cascaded changes.
+
+        * If 'foreign_key_checks' is disabled, no referential action
+          occurs and cascade-induced triggers do not activate.
+
+     *Note*:
+
+     This variable is deprecated and is expected to be removed in a
+     future MySQL release.  Every explicit assignment produces a
+     deprecation warning.  Assigning 'FALSE' or '0' produces an
+     additional warning that triggers do not execute on child rows
+     during foreign key cascades.
 
    * 'innodb_extend_and_initialize'
 
@@ -319128,9 +319198,29 @@ table is written to the binary log and reexecuted on the replica.  The
 replica performs foreign key checks and cascading actions using its
 local 'innodb_native_foreign_keys' setting.
 
-Consequently, the source and replica can use different foreign key
-implementations for statement-based replication, although both
-implementations produce the same referential-integrity result.
+The source session's 'enable_cascade_triggers' value is also written to
+the binary log.  The replication applier uses the source value rather
+than the replica session's local value:
+
+   * If 'enable_cascade_triggers=OFF' on the source, cascade-induced
+     child-table triggers do not execute on either the source or the
+     replica.
+
+   * If 'enable_cascade_triggers=ON' and both servers use SQL-layer
+     foreign key handling, cascade-induced triggers execute on both
+     servers, regardless of the replica's local
+     'enable_cascade_triggers' setting.
+
+   * If the source uses InnoDB foreign key handling, child-table
+     triggers do not execute for cascades.  For replication to a server
+     using SQL-layer handling, 'enable_cascade_triggers' is replicated
+     as 'OFF'.
+
+   * If the source uses SQL-layer handling with
+     'enable_cascade_triggers=ON' but the replica uses native InnoDB
+     handling, the triggers execute on the source but not on the
+     replica.  This configuration is not recommended because trigger
+     side effects can differ between the servers.
 
 *Row-Based Replication*
 
@@ -319138,6 +319228,14 @@ With row-based replication, the source's 'innodb_native_foreign_keys'
 setting is recorded in the row events.  The replica uses the source's
 foreign key implementation for those events, overriding its local
 setting.
+
+The source's 'enable_cascade_triggers' setting controls trigger
+execution on the source only.  When the source uses SQL-layer foreign
+key handling with 'enable_cascade_triggers=ON', cascade-induced triggers
+execute on the source and all row changes made by their trigger bodies
+are written to the binary log.  Replica worker threads suppress
+cascade-induced trigger execution while applying row events, so the
+triggers are not executed a second time on the replica.
 
 When SQL-layer foreign key handling is used on the source, cascading
 updates and deletes generate row events for affected child tables.
@@ -319165,7 +319263,9 @@ handling.  The replica therefore uses native InnoDB handling and
 performs cascading actions locally.
 
 For statement-based replication from an older source, the replica uses
-its local 'innodb_native_foreign_keys' setting.
+its local 'innodb_native_foreign_keys' setting.  Replication from a
+source that predates cascade-trigger support to a newer replica is safe
+because 'enable_cascade_triggers' defaults to 'OFF' on the newer server.
 
 *Reverting a Replication Topology to InnoDB Handling*
 
@@ -319199,6 +319299,14 @@ This behavior is by design.  If under row-based replication the replica
 applied the triggers as well as the row changes caused by them, the
 changes would in effect be applied twice on the replica, leading to
 different data on the source and the replica.
+
+Cascade-induced child-table triggers follow the same replication rules.
+Such triggers can execute only for SQL-layer foreign key handling when
+the source session has 'enable_cascade_triggers=ON', With
+statement-based replication, the applier uses the source's
+'enable_cascade_triggers' value.  With row-based replication, the
+triggers execute only on the source; their resulting row changes are
+applied directly on the replica.
 
 If you want triggers to execute on both the source and the replica,
 perhaps because you have different triggers on the source and replica,
@@ -478323,7 +478431,9 @@ using-system-variables::
 
 [index top]
 
-*note innodb-parameters::
+*note create-trigger:: *note create-table-foreign-keys:: *note
+innodb-parameters:: *note replication-features-foreign-keys:: *note
+replication-features-triggers::
 
 *note server-system-variables::
 
@@ -478372,9 +478482,10 @@ problems-with-null:: *note server-system-variables::
 
 *note alter-table:: *note create-table-foreign-keys:: *note
 mysql-cluster-importing-data:: *note innodb-table-import:: *note
-binary-log-mixed:: *note mysql-cluster-system-variables:: *note
-innodb-online-ddl-operations:: *note replication-features-variables::
-*note sql-mode:: *note server-system-variables:: *note binary-log::
+innodb-parameters:: *note binary-log-mixed:: *note
+mysql-cluster-system-variables:: *note innodb-online-ddl-operations::
+*note replication-features-variables:: *note sql-mode:: *note
+server-system-variables:: *note binary-log::
 
 *note fulltext-boolean:: *note fulltext-fine-tuning:: *note
 server-system-variables::
@@ -479174,8 +479285,9 @@ innodb-parameters:: *note information-schema-innodb-metrics-table::
 *note innodb-information-schema-metrics-table:: *note
 innodb-parameters:: *note information-schema-innodb-metrics-table::
 
-*note innodb-auto-increment-handling:: *note create-table-foreign-keys::
-*note innodb-parameters:: *note replication-features-foreign-keys::
+*note innodb-auto-increment-handling:: *note create-trigger:: *note
+create-table-foreign-keys:: *note innodb-parameters:: *note
+replication-features-foreign-keys::
 
 *note innodb-parameters::
 
