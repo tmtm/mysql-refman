@@ -91114,6 +91114,23 @@ On some operating systems, the error log contains a stack trace if *note
 'mysqld': mysqld. exits abnormally.  The trace can be used to determine
 where *note 'mysqld': mysqld. exited.  See *note debugging-mysql::.
 
+As of MySQL 8.0.31, when the server starts, it can recover an
+unprocessed stack trace from the previous server run and emit the trace
+through the configured error logging pipeline.  Each line of the trace
+is emitted as a separate mandatory system event with the
+'ER_STACK_BACKTRACE'
+(https://dev.mysql.com/doc/mysql-errors/8.4/en/server-error-reference.html#error_er_stack_backtrace)
+error symbol.  Consequently, every configured log sink writes the trace
+in its own format.  If an enabled sink supports the Performance Schema
+*note 'error_log': performance-schema-error-log-table. table, the trace
+is also available through that table.
+
+Stack-trace information that was previously available only in the
+traditional error log can therefore be written to other destinations,
+such as JSON logs, the system log, or the Windows Event Log.  It can
+also be visible to users who have permission to query *note 'error_log':
+performance-schema-error-log-table.
+
 If used to start *note 'mysqld': mysqld, *note 'mysqld_safe':
 mysqld-safe. may write messages to the error log.  For example, when
 *note 'mysqld_safe': mysqld-safe. notices abnormal *note 'mysqld':
@@ -91636,7 +91653,14 @@ After the server interprets the error log destination configuration
 options, it sets the 'log_error' system variable to indicate the default
 error log destination.  Log sink components may base their own output
 destination on the 'log_error' value, or determine their destination
-independently of 'log_error'
+independently of 'log_error'.
+
+As of MySQL 8.0.31, 'log_error' also identifies the traditional error
+log file that the server examines at startup for an unprocessed stack
+trace from the previous server run.  The examination occurs even when
+'log_sink_internal' is not listed in 'log_error_services'.  It requires
+'log_error' to name a valid file and does not occur when its value is
+'stderr'.
 
 If 'log_error' is 'stderr', the default error log destination is the
 console, and log sinks that base their output destination on the default
@@ -101907,14 +101931,19 @@ File: manual.info.tmp,  Node: using-stack-trace,  Next: using-log-files,  Prev: 
 
 On some operating systems, the error log contains a stack trace if *note
 'mysqld': mysqld. dies unexpectedly.  You can use this to find out where
-(and maybe why) *note 'mysqld': mysqld. died.  See *note error-log::.
+(and maybe why) *note 'mysqld': mysqld. died.  As of MySQL 8.0.31, the
+crash message header begins with an ISO 8601 timestamp in UTC that
+includes the date but no fractional seconds.  At the next server
+startup, an unprocessed trace can be written to all configured error log
+sinks and, when a configured sink supports the table, to *note
+'error_log': performance-schema-error-log-table.  See *note error-log::.
 To get a stack trace, you must not compile *note 'mysqld': mysqld. with
 the '-fomit-frame-pointer' option to gcc.  See *note
 compiling-for-debugging::.
 
 A stack trace in the error log looks something like this:
 
-     mysqld got signal 11;
+     2022-03-24T12:34:56Z UTC - mysqld got signal 11;
      Attempting backtrace. You can use the following information
      to find out where mysqld died. If you see no messages after
      this, something went terribly wrong...
@@ -101936,7 +101965,7 @@ A stack trace in the error log looks something like this:
 If resolution of function names for the trace fails, the trace contains
 less information:
 
-     mysqld got signal 11;
+     2022-03-24T12:34:56Z UTC - mysqld got signal 11;
      Attempting backtrace. You can use the following information
      to find out where mysqld died. If you see no messages after
      this, something went terribly wrong...
@@ -417562,6 +417591,23 @@ events occur.  The 'log_error_services' value pertains to populating the
      table.  Otherwise, the newly configured sink writes new error
      events to the table as they occur.
 
+As of MySQL 8.0.31, startup processing also handles an unprocessed stack
+trace from the previous server run.  The server examines the end of the
+traditional error log file identified by 'log_error', even if
+'log_sink_internal' is not enabled.  This requires 'log_error' to name a
+valid file rather than 'stderr'.
+
+A stack trace that extends to the end of the file is considered
+unprocessed.  If a traditional-format error log event follows the trace,
+the trace is considered to have been processed already and is ignored.
+Each line of an unprocessed trace becomes a separate mandatory system
+event with the 'ER_STACK_BACKTRACE' error symbol.  Event timestamps are
+derived from the UTC timestamp in the crash message header and made
+unique for individual rows.  The events are prepended to buffered
+startup events and written to all configured sinks.  They appear in
+*note 'error_log': performance-schema-error-log-table. when the selected
+sink supports the table.
+
 Any configuration that affects output written to the error log affects
 *note 'error_log': performance-schema-error-log-table. table contents.
 This includes settings such as those for verbosity, message suppression,
@@ -454385,7 +454431,8 @@ stored-programs-logging::
 
 *note error-log-destination-configuration:: *note error-log-components::
 *note error-log-json:: *note macos-installation-launchd:: *note
-docker-mysql-more-topics:: *note server-system-variables::
+docker-mysql-more-topics:: *note server-system-variables:: *note
+performance-schema-error-log-table::
 
 *note error-log-destination-configuration:: *note error-log-components::
 *note error-log-configuration:: *note error-log-json:: *note
