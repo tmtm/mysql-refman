@@ -481910,7 +481910,16 @@ technique makes the commit itself faster, with the tradeoff that more
 work is required in case of a rollback.
 
 By default, MySQL uses the *autocommit* setting, which automatically
-issues a commit following each SQL statement.  composite index
+issues a commit following each SQL statement.  compatibility lineage
+
+For calendar-versioned releases, a continuous direct-upgrade sequence
+bounded by LTS releases.  Innovation releases leading up to an LTS
+release, together with that LTS release, belong to one compatibility
+lineage.  The LTS release closes the current lineage and anchors the
+next lineage, which begins with the first subsequent Innovation release.
+Compatibility lineage, rather than the calendar version number alone,
+determines whether a direct server upgrade can cross an LTS boundary.
+composite index
 
 An *index* that includes multiple columns.  compressed backup
 
@@ -482938,9 +482947,14 @@ The 'innodb_strict_mode' option controls whether 'InnoDB' operates in
 cause errors instead (and the underlying statements fail).  Innovation
 Series
 
-Innovation releases with the same major version form an Innovation
-series.  For example, MySQL 8.1 through 8.3 form the MySQL 8 Innovation
-series.  insert
+For sequentially versioned releases, Innovation releases with the same
+major version form an Innovation series.  For example, MySQL 8.1 through
+8.3 form the MySQL 8 Innovation series.
+
+For calendar-versioned releases, Innovation releases in the same
+compatibility lineage form an Innovation series.  A compatibility
+lineage can span multiple YY values, so the calendar year alone does not
+determine the series.  insert
 
 One of the primary *DML* operations in *SQL*. The performance of inserts
 is a key factor in *data warehouse* systems that load millions of rows
@@ -483257,8 +483271,13 @@ backup, you can specify that value to take a subsequent incremental
 backup, whose output contains another LSN for the next incremental
 backup.  LTS Series
 
-LTS releases with the same major version number form an LTS series.  For
-example, all MySQL 8.4.x releases form the MySQL 8.4 LTS series.
+For sequentially versioned releases, LTS releases with the same major
+version number form an LTS series.  For example, all MySQL 8.4.x
+releases form the MySQL 8.4 LTS series.
+
+For calendar-versioned releases, all patch releases with the same YY.M
+release base and an explicit LTS maturity designation form an LTS
+series.  The version number alone does not designate a release as LTS.
 
 Note: MySQL 8.0 is a Bugfix series that preceded the LTS release model.
 
