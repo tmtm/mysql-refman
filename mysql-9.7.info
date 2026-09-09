@@ -4781,309 +4781,32 @@ specific set of options that define the elements to configure when
 performing the operation.  The syntax is -ACTION_OPTION=ACTION_VALUE
 with a full list of action options below:
 
-*Action Options*
+*Syntax*
 
 Action      Shortcut                             Aliases Type                                 Values                               Default        Action                               ConditionDescription
-option                                                                                                                             value                                                       
-                                                                                                                                   
-datadir     d                                    data-dir,Path                                N/A                                  "C:\ProgramData\MySQL\MySQLconfigure                N/A     The path to
-                                                 data-directory                                                                    Server x.x"                                                 the MySQL
-                                                                                                                                   where 'x.x'                                                 server data
-                                                                                                                                   corresponds                                                 directory.
-                                                                                                                                   to the                                                      This option
-                                                                                                                                   corresponding                                               sets the
-                                                                                                                                   server major                                                'datadir'
-                                                                                                                                   and minor                                                   system
-                                                                                                                                   version.                                                    variable.
+option                                           (deprecated                                                                       value                                                       
+                                                 aliases                                                                           
+                                                 marked)
+                                                 
                                                                                                                                                                                                
-config-type N/A                                  configuration-typelist                       Developer, Server, Dedicated,        development    configure, reconfigure               N/A     Optimizes
-                                                                                              Manual                                                                                           system
-                                                                                                                                                                                               resources
-                                                                                                                                                                                               depending on
-                                                                                                                                                                                               the intended
-                                                                                                                                                                                               use of the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               instance.
+backup-data N/A                                  backup-databases,bool                        true, false                          true           upgrade                              N/A     Creates a
+                                                 dump-databases,                                                                                                                               backup of
+                                                 backup-data-directory                                                                                                                         the
+                                                 (deprecated)                                                                                                                                  databases so
+                                                                                                                                                                                               that data
+                                                                                                                                                                                               can be
+                                                                                                                                                                                               restored if
+                                                                                                                                                                                               a failure
+                                                                                                                                                                                               occurs.
                                                                                                                                                                                                
-enable-tcp-ipN/A                                 N/A     bool                                 true, false                          true           configure, reconfigure               N/A     Indicates
-                                                                                                                                                                                               whether the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               permits
-                                                                                                                                                                                               connections
-                                                                                                                                                                                               over TCP/IP.
                                                                                                                                                                                                
-port        P                                    N/A     number                               N/A                                  3306           configure, reconfigure               enable-tcp-id=trueThe port
-                                                                                                                                                                                               number to
-                                                                                                                                                                                               use when
-                                                                                                                                                                                               listening
-                                                                                                                                                                                               for TCP/IP
-                                                                                                                                                                                               connections.
-                                                                                                                                                                                               
-mysqlx-port X                                    x-port, number                               N/A                                  3306           configure, reconfigure               enable-tcp-ip=trueThe network
-                                                 xport                                                                                                                                         port on
-                                                                                                                                                                                               which X
-                                                                                                                                                                                               Plugin
-                                                                                                                                                                                               listens for
-                                                                                                                                                                                               TCP/IP
-                                                                                                                                                                                               connections.
-                                                                                                                                                                                               This is the
-                                                                                                                                                                                               X Plugin
-                                                                                                                                                                                               equivalent
-                                                                                                                                                                                               of 'port'.
-                                                                                                                                                                                               
-open_win_firewallN/A                             open-windows-firewall,bool                   true, false                          true           configure, reconfigure               enable-tcp-ip=trueCreates
-                                                 openfirewall                                                                                                                                  Windows
-                                                                                                                                                                                               Firewall
-                                                                                                                                                                                               rules for
-                                                                                                                                                                                               TCP/IP
-                                                                                                                                                                                               connections
-                                                                                                                                                                                               for both the
-                                                                                                                                                                                               'port' and
-                                                                                                                                                                                               'mysqlx-port'
-                                                                                                                                                                                               options.
-                                                                                                                                                                                               
-upgrade-enterprise-firewallN/A                           bool                                 true, false                          false          upgrade                              N/A     Upgrade the
-                                                 upgrade-ent-fw,                                                                                                                               deprecated
-                                                 upgrade-ef                                                                                                                                    firefall
-                                                                                                                                                                                               plugin to
-                                                                                                                                                                                               the
-                                                                                                                                                                                               *note firewall component: firewall-component.
-                                                                                                                                                                                               
-enable-named-pipesN/A                            named-pipesbool                              true, false                          false          configure, reconfigure               N/A     Indicates
-                                                                                                                                                                                               whether the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               permits
-                                                                                                                                                                                               connections
-                                                                                                                                                                                               over a named
-                                                                                                                                                                                               pipe.
-                                                                                                                                                                                               
-socket      N/A                                  pipe-name,string                             N/A                                  MYSQL          configure, reconfigure               enable-named-pipes=trueSpecifies
-                                                 named-pipe-name,                                                                                                                              the pipe
-                                                 named-pipe,                                                                                                                                   name to use
-                                                 pipename                                                                                                                                      when
-                                                                                                                                                                                               listening
-                                                                                                                                                                                               for local
-                                                                                                                                                                                               connections
-                                                                                                                                                                                               that use a
-                                                                                                                                                                                               named pipe.
-                                                                                                                                                                                               The default
-                                                                                                                                                                                               value is
-                                                                                                                                                                                               MySQL, and
-                                                                                                                                                                                               it is not
-                                                                                                                                                                                               case-sensitive.
-                                                                                                                                                                                               
-named-pipe-full-access-groupN/A                  full-access-groupstring                      "", _everyone_, valid Windows        "" (empty      configure, reconfigure               enable-named-pipes=trueSets the
-                                                                                              local group name                     string)                                                     name of a
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               local group
-                                                                                                                                                                                               whose
-                                                                                                                                                                                               members are
-                                                                                                                                                                                               granted
-                                                                                                                                                                                               sufficient
-                                                                                                                                                                                               access by
-                                                                                                                                                                                               the MySQL
-                                                                                                                                                                                               server to
-                                                                                                                                                                                               use
-                                                                                                                                                                                               named-pipe
-                                                                                                                                                                                               clients.
-                                                                                                                                                                                               The default
-                                                                                                                                                                                               value is an
-                                                                                                                                                                                               empty
-                                                                                                                                                                                               string,
-                                                                                                                                                                                               which means
-                                                                                                                                                                                               that no
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               users are
-                                                                                                                                                                                               granted full
-                                                                                                                                                                                               access to
-                                                                                                                                                                                               the named
-                                                                                                                                                                                               pipe.
-                                                                                                                                                                                               
-shared-memoryN/A                                 enable-shared-memorybool                     true, false                          false          configure, reconfigure               N/A     Whether the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               permits
-                                                                                                                                                                                               shared-memory
-                                                                                                                                                                                               connections.
-                                                                                                                                                                                               
-shared-memory-base-nameN/A                       shared-memory-name,string                    N/A                                  MYSQL          configure, reconfigure               shared-memory=trueName of the
-                                                 shared-mem-name                                                                                                                               shared-memory
-                                                                                                                                                                                               connection
-                                                                                                                                                                                               used to
-                                                                                                                                                                                               communicate
-                                                                                                                                                                                               with the
-                                                                                                                                                                                               server.
-                                                                                                                                                                                               
-password    p                                    pwd,    string                               N/A                                  N/A            configure, reconfigure               N/A     The password
-                                                 root-password,                                                                                                                                assigned to
-                                                 passwd,                                                                                                                                       the root
-                                                 rootpasswd                                                                                                                                    user during
-                                                                                                                                                                                               a
-                                                                                                                                                                                               configuration
-                                                                                                                                                                                               or
-                                                                                                                                                                                               reconfiguration.
-                                                                                                                                                                                               The password
-                                                                                                                                                                                               can't be
-                                                                                                                                                                                               changed
-                                                                                                                                                                                               during a
-                                                                                                                                                                                               reconfiguration,
-                                                                                                                                                                                               although it
-                                                                                                                                                                                               is required
-                                                                                                                                                                                               to validate
-                                                                                                                                                                                               a connection
-                                                                                                                                                                                               to the
-                                                                                                                                                                                               server.
-                                                                                                                                                                                               
-configure-as-serviceN/A                          as-windows-service,bool                      true, false                          true           configure, reconfigure               N/A     Configures
-                                                 as-win-service                                                                                                                                the MySQL
-                                                                                                                                                                                               server to
-                                                                                                                                                                                               run as a
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               service.  By
-                                                                                                                                                                                               default the
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               service runs
-                                                                                                                                                                                               using the
-                                                                                                                                                                                               Standard
-                                                                                                                                                                                               System
-                                                                                                                                                                                               Account
-                                                                                                                                                                                               (Network
-                                                                                                                                                                                               Service).
-                                                                                                                                                                                               
-windows-service-nameN/A                          service-name,string                          N/A                                  "MySQLxx"      configure, reconfigure               configure-as-service=trueThe name
-                                                 win-service-name,                                                                 where 'xx'                                                  given to the
-                                                 servicename                                                                       corresponds                                                 Windows
-                                                                                                                                   to the                                                      service used
-                                                                                                                                   server major                                                to run MySQL
-                                                                                                                                   and minor                                                   Server.
-                                                                                                                                   version.                                                    
-                                                                                                                                   
-windows-service-auto-startN/A                    win-service-auto-start,bool                  true, false                          true           configure, reconfigure               configure-as-service=trueIf
-                                                 service-auto-start,                                                                                                                           configured
-                                                 auto-start,                                                                                                                                   as a Windows
-                                                 autostart                                                                                                                                     Service,
-                                                                                                                                                                                               this value
-                                                                                                                                                                                               sets the
-                                                                                                                                                                                               service to
-                                                                                                                                                                                               start
-                                                                                                                                                                                               automatically
-                                                                                                                                                                                               at system
-                                                                                                                                                                                               startup.
-                                                                                                                                                                                               
-windows-service-userN/A                          win-service-user,string                      N/A                                  NT AUTHORITY   configure, reconfigure               configure-as-service=trueThe name of
-                                                 service-user                                                                                                                                  a Windows
-                                                                                                                                                                                               User Account
-                                                                                                                                                                                               used to run
-                                                                                                                                                                                               the Windows
-                                                                                                                                                                                               service.
-                                                                                                                                                                                               
-windows-service-passwordN/A                      win-service-password,string                  N/A                                  "" (empty      configure, reconfigure               configure-as-service=trueThe password
-                                                 win-service-pwd,                                                                  string)                                                     of the
-                                                 service-password,                                                                                                                             Windows User
-                                                 service-pwd,                                                                                                                                  Account used
-                                                 sapass                                                                                                                                        to run the
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               Service.
-                                                                                                                                                                                               
-server-file-permissions-accessN/A                server-file-accesslist                       FullAccess, Configure, Manual        full-access    configure, upgrade                   N/A     Configures
-                                                                                                                                                                                               the user
-                                                                                                                                                                                               level access
-                                                                                                                                                                                               for the
-                                                                                                                                                                                               server files
-                                                                                                                                                                                               (data
-                                                                                                                                                                                               directory
-                                                                                                                                                                                               and any
-                                                                                                                                                                                               files inside
-                                                                                                                                                                                               that
-                                                                                                                                                                                               location).
-                                                                                                                                                                                               
-server-file-full-control-listN/A                 full-control-listcomma separated list        windows users/groups                 user running   configure, upgrade                   server-file-permissions-access=configureDefines a
-                                                                                                                                   the windows                                                 comma-separated
-                                                                                                                                   service (if                                                 list of
-                                                                                                                                   applicable)                                                 users or
-                                                                                                                                   and                                                         groups to
-                                                                                                                                   Administrators                                              have full
-                                                                                                                                   group                                                       access to
-                                                                                                                                                                                               the server
-                                                                                                                                                                                               files.
-                                                                                                                                                                                               
-server-file-no-access-listN/A                    no-access-listcomma separated list           windows users/groups                 empty          configure, upgrade                   server-file-permissions-access=configureDefines a
-                                                                                                                                                                                               comma-separated
-                                                                                                                                                                                               list of
-                                                                                                                                                                                               users or
-                                                                                                                                                                                               groups to
-                                                                                                                                                                                               have access
-                                                                                                                                                                                               to the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               files.
-                                                                                                                                                                                               
-enable-error-logN/A                              enable-err-logbool                           true, false                          true           configure, reconfigure               N/A     Enables the
-                                                                                                                                                                                               error log.
-                                                                                                                                                                                               The error
-                                                                                                                                                                                               log contains
-                                                                                                                                                                                               a record of
-                                                                                                                                                                                               mysqld
-                                                                                                                                                                                               startup and
-                                                                                                                                                                                               shutdown
-                                                                                                                                                                                               times.  It
-                                                                                                                                                                                               also
-                                                                                                                                                                                               contains
-                                                                                                                                                                                               diagnostic
-                                                                                                                                                                                               messages
-                                                                                                                                                                                               such as
-                                                                                                                                                                                               errors,
-                                                                                                                                                                                               warnings,
-                                                                                                                                                                                               and notes
-                                                                                                                                                                                               that occur
-                                                                                                                                                                                               during
-                                                                                                                                                                                               server
-                                                                                                                                                                                               startup and
-                                                                                                                                                                                               shutdown;
-                                                                                                                                                                                               and while
-                                                                                                                                                                                               the server
-                                                                                                                                                                                               is running.
-                                                                                                                                                                                               
-log-error   N/A                                  error-log,Path/File name                     N/A                                  {host_name}.errconfigure, reconfigure               enable-error-log=trueDefines the
-                                                 error-log-file,                                                                                                                               error log
-                                                 errorlogname                                                                                                                                  location.
-                                                                                                                                                                                               If a path is
-                                                                                                                                                                                               not
-                                                                                                                                                                                               provided,
-                                                                                                                                                                                               the location
-                                                                                                                                                                                               of the file
-                                                                                                                                                                                               is the data
-                                                                                                                                                                                               directory.
-                                                                                                                                                                                               
-slow-query-logN/A                                enable-slow-logbool                          true, false                          false          configure, reconfigure               N/A     Whether the
-                                                                                                                                                                                               slow query
-                                                                                                                                                                                               log is
-                                                                                                                                                                                               enabled.
-                                                                                                                                                                                               
-slow-query-log-fileN/A                           slow-log-file,File name                      N/A                                  {host_name}-slow.logconfigure, reconfigure          slow-query-log=trueThe name of
-                                                 slowlogname                                                                                                                                   the slow
-                                                                                                                                                                                               query log
-                                                                                                                                                                                               file.
-                                                                                                                                                                                               
-general-log N/A                                  enable-general-log,bool                      true, false                          false          configure, reconfigure               N/A     Whether the
-                                                 generallog                                                                                                                                    general
-                                                                                                                                                                                               query log is
-                                                                                                                                                                                               enabled.
-                                                                                                                                                                                               
-general-log-fileN/A                              generallognameFile name                      N/A                                  {host_name}.logconfigure, reconfigure               general-log=trueThe name of
-                                                                                                                                                                                               the general
-                                                                                                                                                                                               query log
-                                                                                                                                                                                               file.
-                                                                                                                                                                                               
-enable-log-binN/A                                enable-binary-logbool                        true, false                          true           configure, reconfigure               N/A     Enables
-                                                                                                                                                                                               binary
-                                                                                                                                                                                               logging.
-                                                                                                                                                                                               
-log-bin     N/A                                  binary-logFile name                          N/A                                  {host_name}-binconfigure, reconfigure               enable-log-bin=trueSpecifies
-                                                                                                                                                                                               the base
-                                                                                                                                                                                               name to use
-                                                                                                                                                                                               for binary
-                                                                                                                                                                                               log files.
-                                                                                                                                                                                               With binary
-                                                                                                                                                                                               logging
+binary-log-file-nameN/A                          log-bin,File name                            N/A                                  {host_name}-binconfigure, reconfigure               enable-binary-log=trueSpecifies
+                                                 binary-log-file,                                                                                                                              the base
+                                                 binary-log,                                                                                                                                   name to use
+                                                 binary-log-path,                                                                                                                              for binary
+                                                 log-bin-file,                                                                                                                                 log files.
+                                                 log-bin-file-name,                                                                                                                            With binary
+                                                 log-bin-path                                                                                                                                  logging
                                                                                                                                                                                                enabled, the
                                                                                                                                                                                                server logs
                                                                                                                                                                                                all
@@ -5103,37 +4826,138 @@ log-bin     N/A                                  binary-logFile name            
                                                                                                                                                                                                and numeric
                                                                                                                                                                                                extension.
                                                                                                                                                                                                
-server-id   N/A                                  serveridnumber                               N/A                                  1              configure                            N/A     For servers
-                                                                                                                                                                                               that are
-                                                                                                                                                                                               used in a
-                                                                                                                                                                                               replication
-                                                                                                                                                                                               topology,
-                                                                                                                                                                                               you must
-                                                                                                                                                                                               specify a
-                                                                                                                                                                                               unique
-                                                                                                                                                                                               server ID
-                                                                                                                                                                                               for each
-                                                                                                                                                                                               replication
-                                                                                                                                                                                               server in
-                                                                                                                                                                                               the range
-                                                                                                                                                                                               from 1 to
-                                                                                                                                                                                               2^32 - 1.
-                                                                                                                                                                                               "Unique"
-                                                                                                                                                                                               means that
-                                                                                                                                                                                               each ID must
-                                                                                                                                                                                               be different
-                                                                                                                                                                                               from every
-                                                                                                                                                                                               other ID in
-                                                                                                                                                                                               use by any
-                                                                                                                                                                                               other source
-                                                                                                                                                                                               or replica
-                                                                                                                                                                                               servers in
-                                                                                                                                                                                               the
-                                                                                                                                                                                               replication
-                                                                                                                                                                                               topology.
                                                                                                                                                                                                
-lower-case-table-namesN/A                        N/A     list                                 0, 1, 2                              1              configure                            N/A     If set to 0,
-                                                                                                                                                                                               table names
+configure-as-processN/A                          run-as-processbool                           true, false                          false          configure, reconfigure               N/A     Configures
+                                                                                                                                                                                               MySQL Server
+                                                                                                                                                                                               to run as a
+                                                                                                                                                                                               Windows
+                                                                                                                                                                                               process.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+configure-as-windows-serviceN/A                  configure-as-win-service,bool                true, false                          true           configure, reconfigure               N/A     Configures
+                                                 configure-as-service,                                                                                                                         MySQL Server
+                                                 run-as-service,                                                                                                                               to run as a
+                                                 run-as-windows-service,                                                                                                                       Windows
+                                                 run-as-win-service,                                                                                                                           service.  By
+                                                 as-windows-service                                                                                                                            default, the
+                                                 (deprecated),                                                                                                                                 Windows
+                                                 as-win-service                                                                                                                                service runs
+                                                 (deprecated)                                                                                                                                  using the
+                                                                                                                                                                                               Standard
+                                                                                                                                                                                               System
+                                                                                                                                                                                               Account
+                                                                                                                                                                                               (Network
+                                                                                                                                                                                               Service).
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+create-windows-firewall-rulesN/A                 create-firewall-rules,bool                   true, false                          true           configure, reconfigure               enable-tcp-ip=trueCreates
+                                                 create-win-fw-rules,                                                                                                                          Windows
+                                                 create-fw-rules,                                                                                                                              Firewall
+                                                 open-win-firewall                                                                                                                             rules to
+                                                 (deprecated),                                                                                                                                 allow
+                                                 open-windows-firewall                                                                                                                         traffic
+                                                 (deprecated),                                                                                                                                 through both
+                                                 openfirewall                                                                                                                                  the classic
+                                                 (deprecated)                                                                                                                                  and X
+                                                                                                                                                                                               Protocol
+                                                                                                                                                                                               TCP/IP
+                                                                                                                                                                                               ports.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+data-directoryd                                  data-dir,Path                                N/A                                  "C:\\ProgramData\\MySQL\\MySQLconfigure             N/A     The path to
+                                                 datadir                                                                           Server x.x"                                                 the MySQL
+                                                                                                                                   where 'x.x'                                                 server data
+                                                                                                                                   corresponds                                                 directory.
+                                                                                                                                   to the                                                      This option
+                                                                                                                                   corresponding                                               sets the
+                                                                                                                                   server major                                                'datadir'
+                                                                                                                                   and minor                                                   system
+                                                                                                                                   version.                                                    variable.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+enable-binary-logN/A                             enable-log-binbool                           true, false                          true           configure, reconfigure               N/A     Indicates
+                                                                                                                                                                                               whether the
+                                                                                                                                                                                               binary log
+                                                                                                                                                                                               is enabled.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+enable-general-logN/A                            general-logbool                              true, false                          false          configure, reconfigure               N/A     Indicates
+                                                 (deprecated),                                                                                                                                 whether the
+                                                 generallog                                                                                                                                    general
+                                                 (deprecated)                                                                                                                                  query log is
+                                                                                                                                                                                               enabled.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+enable-named-pipesN/A                            enable-pipes,bool                            true, false                          false          configure, reconfigure               N/A     Indicates
+                                                 named-pipes                                                                                                                                   whether the
+                                                 (deprecated)                                                                                                                                  server
+                                                                                                                                                                                               permits
+                                                                                                                                                                                               connections
+                                                                                                                                                                                               over a named
+                                                                                                                                                                                               pipe.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+enable-shared-memoryN/A                          shared-memorybool                            true, false                          false          configure, reconfigure               N/A     Indicates
+                                                                                                                                                                                               whether the
+                                                                                                                                                                                               server
+                                                                                                                                                                                               permits
+                                                                                                                                                                                               shared-memory
+                                                                                                                                                                                               connections.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+enable-slow-query-logN/A                         slow-query-logbool                           true, false                          false          configure, reconfigure               N/A     Indicates
+                                                 (deprecated),                                                                                                                                 whether the
+                                                 enable-slow-log                                                                                                                               slow query
+                                                 (deprecated)                                                                                                                                  log is
+                                                                                                                                                                                               enabled.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+error-log-file-nameN/A                           log-error,Path/File name                     N/A                                  {host_name}.errconfigure, reconfigure               enable-error-log=trueDefines the
+                                                 error-log,                                                                                                                                    name and
+                                                 error-log-file,                                                                                                                               path of the
+                                                 error-log-path,                                                                                                                               error log.
+                                                 errorlogname                                                                                                                                  If no path
+                                                 (deprecated)                                                                                                                                  is given,
+                                                                                                                                                                                               the file is
+                                                                                                                                                                                               created in
+                                                                                                                                                                                               the data
+                                                                                                                                                                                               directory.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+general-log-file-nameN/A                         general-log-file,File name                   N/A                                  {host_name}.logconfigure, reconfigure               enable-general-log=trueDefines the
+                                                 general-log-path,                                                                                                                             name and
+                                                 generallogname                                                                                                                                path of the
+                                                 (deprecated)                                                                                                                                  general
+                                                                                                                                                                                               query log.
+                                                                                                                                                                                               If no path
+                                                                                                                                                                                               is given,
+                                                                                                                                                                                               the file is
+                                                                                                                                                                                               created in
+                                                                                                                                                                                               the data
+                                                                                                                                                                                               directory.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+install-sample-databasesN/A                      install-example-databases,list               All, Sakila, World, None             none           configure, reconfigure               N/A     Installs the
+                                                 create-sample-databases,                                                                                                                      specified
+                                                 create-example-databases,                                                                                                                     sample
+                                                 install-sample-database                                                                                                                       databases
+                                                 (deprecated),                                                                                                                                 (Sakila or
+                                                 install-example-database                                                                                                                      World).
+                                                 (deprecated)                                                                                                                                  
+                                                 
+                                                                                                                                                                                               
+keep-data-directoryN/A                           keep-data,bool                               true, false                          false          remove                               N/A     Prevents the
+                                                 keep-data-dir,                                                                                                                                data
+                                                 keep-datadir                                                                                                                                  directory
+                                                                                                                                                                                               from being
+                                                                                                                                                                                               deleted when
+                                                                                                                                                                                               MySQL Server
+                                                                                                                                                                                               configurations
+                                                                                                                                                                                               are removed.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+lower-case-table-namesN/A                        table-nameslist                              0, 1, 2                              1              configure                            N/A     If set to 0,
+                                                 (deprecated)                                                                                                                                  table names
                                                                                                                                                                                                are stored
                                                                                                                                                                                                as specified
                                                                                                                                                                                                and
@@ -5161,129 +4985,277 @@ lower-case-table-namesN/A                        N/A     list                   
                                                                                                                                                                                                table
                                                                                                                                                                                                aliases.
                                                                                                                                                                                                
-install-sample-databaseN/A                       install-example-databaselist                 All, Sakila, World, None             none           configure, reconfigure               N/A     Installs the
-                                                                                                                                                                                               specified
-                                                                                                                                                                                               sample
-                                                                                                                                                                                               databases.
                                                                                                                                                                                                
-uninstall-sample-databaseN/A                     uninstall-example-databaselist               All, Sakila, World, None             none           configure, reconfigure               N/A     Uninstalls
-                                                                                                                                                                                               the
-                                                                                                                                                                                               specified
-                                                                                                                                                                                               sample
-                                                                                                                                                                                               databases.
+mysqlx-port X                                    x-port, number                               N/A                                  3306           configure, reconfigure               enable-tcp-ip=trueThe network
+                                                 xport                                                                                                                                         port on
+                                                 (deprecated)                                                                                                                                  which X
+                                                                                                                                                                                               Plugin
+                                                                                                                                                                                               listens for
+                                                                                                                                                                                               TCP/IP
+                                                                                                                                                                                               connections.
+                                                                                                                                                                                               This is the
+                                                                                                                                                                                               X Plugin
+                                                                                                                                                                                               equivalent
+                                                                                                                                                                                               of 'port';
+                                                                                                                                                                                               see that
+                                                                                                                                                                                               variable
+                                                                                                                                                                                               description
+                                                                                                                                                                                               for more
+                                                                                                                                                                                               information.
                                                                                                                                                                                                
-old-instance-protocolN/A                         existing-instance-protocollist               Socket, Sockets, Tcp, Pipe,          N/A            tcp-ip                               upgrade The
-                                                                                              NamedPipe, SharedMemory, Memory                                                                  connection
-                                                                                                                                                                                               protocol
-                                                                                                                                                                                               used by the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               instance
-                                                                                                                                                                                               that is
-                                                                                                                                                                                               being
-                                                                                                                                                                                               upgraded.
                                                                                                                                                                                                
-old-instance-portN/A                             existing-instance-portnumber                 N/A                                  3306           upgrade                              N/A     The port
-                                                                                                                                                                                               number to
-                                                                                                                                                                                               use by the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               instance
-                                                                                                                                                                                               that is
-                                                                                                                                                                                               being
-                                                                                                                                                                                               upgraded
-                                                                                                                                                                                               when
-                                                                                                                                                                                               listening
-                                                                                                                                                                                               for TCP/IP
-                                                                                                                                                                                               connections
+named-pipe-full-access-groupN/A                  pipe-full-access-group,string                "", everyone, valid Windows local    "" (empty      configure, reconfigure               enable-named-pipes=trueSets the
+                                                 full-access-group                            group name                           string)                                                     name of a
+                                                                                                                                                                                               Windows
+                                                                                                                                                                                               local group
+                                                                                                                                                                                               whose
+                                                                                                                                                                                               members are
+                                                                                                                                                                                               granted
+                                                                                                                                                                                               sufficient
+                                                                                                                                                                                               access by
+                                                                                                                                                                                               the MySQL
+                                                                                                                                                                                               server to
+                                                                                                                                                                                               use
+                                                                                                                                                                                               named-pipe
+                                                                                                                                                                                               clients.
+                                                                                                                                                                                               The default
+                                                                                                                                                                                               value is an
+                                                                                                                                                                                               empty
+                                                                                                                                                                                               string,
+                                                                                                                                                                                               which means
+                                                                                                                                                                                               that no
+                                                                                                                                                                                               Windows user
+                                                                                                                                                                                               is granted
+                                                                                                                                                                                               full access
+                                                                                                                                                                                               to the named
+                                                                                                                                                                                               pipe.
                                                                                                                                                                                                
-old-instance-pipe-nameN/A                        existing-instance-pipe-namestring            N/A                                  MYSQL          upgrade                              N/A     Specifies
-                                                                                                                                                                                               the pipe
-                                                                                                                                                                                               name to use
-                                                                                                                                                                                               by the
-                                                                                                                                                                                               server
-                                                                                                                                                                                               instance
-                                                                                                                                                                                               that is
-                                                                                                                                                                                               being
-                                                                                                                                                                                               upgraded
-                                                                                                                                                                                               when
-                                                                                                                                                                                               listening
+                                                                                                                                                                                               
+named-pipe-nameN/A                               socket, string                               N/A                                  MYSQL          configure, reconfigure               enable-named-pipes=trueSpecifies
+                                                 pipe-name,                                                                                                                                    the pipe
+                                                 named-pipe,                                                                                                                                   name to use
+                                                 pipename                                                                                                                                      when
+                                                 (deprecated)                                                                                                                                  listening
                                                                                                                                                                                                for local
                                                                                                                                                                                                connections
                                                                                                                                                                                                that use a
                                                                                                                                                                                                named pipe.
                                                                                                                                                                                                
-old-instance-memory-nameN/A                      old-instance-shared-memory-name,string       N/A                                  MYSQL          upgrade                              N/A     The name of
-                                                 existing-instance-memory-name,                                                                                                                the
-                                                 existing-instance-shared-memory-name                                                                                                          shared-memory
-                                                                                                                                                                                               connection
+                                                                                                                                                                                               
+old-instance-connection-protocolN/A              old-instance-protocol,list                   Socket, Sockets, Tcp, Pipe,          tcp-ip         upgrade                              N/A     The
+                                                 existing-instance-protocol,                  NamedPipe, SharedMemory, Memory                                                                  connection
+                                                 existing-instance-connection-protocol                                                                                                         protocol
                                                                                                                                                                                                used by the
                                                                                                                                                                                                server
                                                                                                                                                                                                instance
                                                                                                                                                                                                that is
                                                                                                                                                                                                being
-                                                                                                                                                                                               upgraded to
-                                                                                                                                                                                               communicate
-                                                                                                                                                                                               with the
-                                                                                                                                                                                               server.
+                                                                                                                                                                                               upgraded.
                                                                                                                                                                                                
-old-instance-passwordN/A                         old-instance-pwd,string                      N/A                                  N/A            upgrade                              N/A     The password
-                                                 old-instance-root-password,                                                                                                                   of the root
-                                                 existing-instance-password,                                                                                                                   user used by
-                                                 existing-instance-pwd,                                                                                                                        the server
-                                                 existing-instance-pwd                                                                                                                         instance
+                                                                                                                                                                                               
+old-instance-pipe-nameN/A                        old-instance-named-pipe,string               N/A                                  MYSQL          upgrade                              N/A     Specifies
+                                                 existing-instance-named-pipe,                                                                                                                 the named
+                                                 existing-instance-pipe-name                                                                                                                   pipe used
+                                                                                                                                                                                               for local
+                                                                                                                                                                                               connections
+                                                                                                                                                                                               by the
+                                                                                                                                                                                               server
+                                                                                                                                                                                               instance
                                                                                                                                                                                                that is
                                                                                                                                                                                                being
                                                                                                                                                                                                upgraded.
                                                                                                                                                                                                
-backup-data N/A                                  backup-data-directorybool                    true, false                          true           upgrade                              N/A     Creates a
-                                                                                                                                                                                               backup of
-                                                                                                                                                                                               the
-                                                                                                                                                                                               databases to
-                                                                                                                                                                                               ensure data
-                                                                                                                                                                                               can be
-                                                                                                                                                                                               restored in
-                                                                                                                                                                                               case of any
-                                                                                                                                                                                               failure.
                                                                                                                                                                                                
-keep-data-directoryN/A                           keep-databool                                true, false                          false          remove                               N/A     Prevents the
-                                                                                                                                                                                               data
-                                                                                                                                                                                               directory
-                                                                                                                                                                                               from being
-                                                                                                                                                                                               deleted when
-                                                                                                                                                                                               other
-                                                                                                                                                                                               configurations
-                                                                                                                                                                                               are removed.
+old-instance-portN/A                             old-instance-tcp-ip-port,number              N/A                                  3306           upgrade                              N/A     The TCP/IP
+                                                 existing-instance-tcp-ip-port,                                                                                                                port used by
+                                                 existing-instance-port                                                                                                                        the server
+                                                 (deprecated)                                                                                                                                  instance
+                                                                                                                                                                                               that is
+                                                                                                                                                                                               being
+                                                                                                                                                                                               upgraded.
                                                                                                                                                                                                
-defaults-extra-fileN/A                           password-file,Path                           N/A                                  N/A            reconfigure, upgrade                 N/A     The path and
-                                                 pass-file,                                                                                                                                    file name of
-                                                 pwd-file                                                                                                                                      the file
+                                                                                                                                                                                               
+old-instance-shared-memory-nameN/A               existing-instance-memory-name,string         N/A                                  MYSQL          upgrade                              N/A     The name of
+                                                 existing-instance-shared-memory-name                                                                                                          the
+                                                                                                                                                                                               shared-memory
+                                                                                                                                                                                               connection
+                                                                                                                                                                                               used to
+                                                                                                                                                                                               communicate
+                                                                                                                                                                                               with the
+                                                                                                                                                                                               server
+                                                                                                                                                                                               instance
+                                                                                                                                                                                               that is
+                                                                                                                                                                                               being
+                                                                                                                                                                                               upgraded.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+password    p                                    pwd,    string                               N/A                                  N/A            configure, reconfigure               N/A     The password
+                                                 root-password,                                                                                                                                assigned to
+                                                 root-pwd,                                                                                                                                     the root
+                                                 passwd,                                                                                                                                       user during
+                                                 rootpasswd                                                                                                                                    a new
+                                                 (deprecated)                                                                                                                                  configuration
+                                                                                                                                                                                               or
+                                                                                                                                                                                               reconfiguration.
+                                                                                                                                                                                               The password
+                                                                                                                                                                                               cannot be
+                                                                                                                                                                                               changed
+                                                                                                                                                                                               during
+                                                                                                                                                                                               reconfiguration,
+                                                                                                                                                                                               but it is
+                                                                                                                                                                                               required to
+                                                                                                                                                                                               validate
+                                                                                                                                                                                               that MySQL
+                                                                                                                                                                                               Configurator
+                                                                                                                                                                                               can connect
+                                                                                                                                                                                               to the
+                                                                                                                                                                                               server.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+root-password-fileN/A                            root-pass-file,Path                          N/A                                  N/A            reconfigure, upgrade                 N/A     Defines the
+                                                 root-pwd-file,                                                                                                                                name and
+                                                 defaults-extra-file                                                                                                                           path of the
+                                                                                                                                                                                               file
                                                                                                                                                                                                containing
-                                                                                                                                                                                               the
-                                                                                                                                                                                               'password'
-                                                                                                                                                                                               entry that
-                                                                                                                                                                                               specifies
                                                                                                                                                                                                the password
                                                                                                                                                                                                of the root
                                                                                                                                                                                                user.
                                                                                                                                                                                                
-windows-service-account-password-fileN/A         windows-service-account-password-file,Path   N/A                                  N/A            configure, reconfigure               N/A     The path and
-                                                 win-service-account-pass-file,                                                                                                                file name of
-                                                 service-account-pwd-file,                                                                                                                     the file
-                                                 win-service-account-pwd-file,                                                                                                                 containing
-                                                 service-account-password-file                                                                                                                 the
-                                                                                                                                                                                               'password'
-                                                                                                                                                                                               entry that
-                                                                                                                                                                                               specifies
-                                                                                                                                                                                               the password
-                                                                                                                                                                                               of the
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               service
-                                                                                                                                                                                               account user
-                                                                                                                                                                                               associated
+                                                                                                                                                                                               
+server-file-full-permissions-listN/A             server-file-full-access-list,comma separated listwindows users/groups             user running   configure, upgrade                   server-file-permissions=configureDefines a
+                                                 server-file-full-control-list,                                                    the windows                                                 comma-separated
+                                                 full-access-list                                                                  service (if                                                 list of
+                                                 (deprecated),                                                                     applicable)                                                 Windows
+                                                 full-control-list                                                                 and                                                         users or
+                                                 (deprecated)                                                                      Administrators                                              groups that
+                                                                                                                                   group                                                       have full
+                                                                                                                                                                                               access to
+                                                                                                                                                                                               the server
+                                                                                                                                                                                               files.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+server-file-no-permissions-listN/A               server-file-no-access-list,comma separated listwindows users/groups               empty          configure, upgrade                   server-file-permissions=configureDefines a
+                                                 no-access-list                                                                                                                                comma-separated
+                                                 (deprecated)                                                                                                                                  list of
+                                                                                                                                                                                               users or
+                                                                                                                                                                                               groups that
+                                                                                                                                                                                               have no
+                                                                                                                                                                                               access to
+                                                                                                                                                                                               the server
+                                                                                                                                                                                               files.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+server-file-permissionsN/A                       server-file-access,list                      FullAccess, Configure, Manual        full-access    configure, upgrade                   N/A     Configures
+                                                 server-file-permissions-access                                                                                                                the user
+                                                 (deprecated)                                                                                                                                  level of
+                                                                                                                                                                                               access for
+                                                                                                                                                                                               the server
+                                                                                                                                                                                               files,
+                                                                                                                                                                                               including
+                                                                                                                                                                                               the data
+                                                                                                                                                                                               directory
+                                                                                                                                                                                               and all
+                                                                                                                                                                                               files within
+                                                                                                                                                                                               it.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+server-id   N/A                                  serveridnumber                               N/A                                  1              configure                            N/A     For servers
+                                                 (deprecated)                                                                                                                                  used in a
+                                                                                                                                                                                               replication
+                                                                                                                                                                                               topology,
+                                                                                                                                                                                               specifies a
+                                                                                                                                                                                               unique
+                                                                                                                                                                                               server ID in
+                                                                                                                                                                                               the range
+                                                                                                                                                                                               from 1 to
+                                                                                                                                                                                               2^32 - 1.
+                                                                                                                                                                                               Each ID must
+                                                                                                                                                                                               differ from
+                                                                                                                                                                                               every other
+                                                                                                                                                                                               ID used by a
+                                                                                                                                                                                               source or
+                                                                                                                                                                                               replica in
+                                                                                                                                                                                               the
+                                                                                                                                                                                               topology.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+server-type N/A                                  server-configuration-type,list               Developer, Server, Dedicated,        development    configure, reconfigure               N/A     Optimizes
+                                                 server-config-type,                          Manual                                                                                           system
+                                                 configuration-type,                                                                                                                           resources
+                                                 config-type                                                                                                                                   depending on
+                                                                                                                                                                                               the intended
+                                                                                                                                                                                               use of the
+                                                                                                                                                                                               server
+                                                                                                                                                                                               instance.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+shared-memory-nameN/A                            shared-memory-base-name,string               N/A                                  MYSQL          configure, reconfigure               enable-shared-memory=trueThe name of
+                                                 shared-mem-name,                                                                                                                              the
+                                                 memory-name                                                                                                                                   shared-memory
+                                                                                                                                                                                               connection
+                                                                                                                                                                                               used to
+                                                                                                                                                                                               communicate
                                                                                                                                                                                                with the
-                                                                                                                                                                                               Windows
-                                                                                                                                                                                               Service that
-                                                                                                                                                                                               runs the
                                                                                                                                                                                                server.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+slow-query-log-fileN/A                           slow-log-file,File name                      N/A                                  {host_name}-slow.logconfigure, reconfigure          enable-slow-query-log=trueDefines the
+                                                 slow-log-file-name,                                                                                                                           name and
+                                                 slow-query-log-file-name,                                                                                                                     path of the
+                                                 slow-log-path,                                                                                                                                slow query
+                                                 slow-query-log-path,                                                                                                                          log file.
+                                                 slowlogname                                                                                                                                   If no path
+                                                 (deprecated)                                                                                                                                  is given,
+                                                                                                                                                                                               the file is
+                                                                                                                                                                                               created in
+                                                                                                                                                                                               the data
+                                                                                                                                                                                               directory.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+uninstall-sample-databasesN/A                    uninstall-example-databases,list             All, Sakila, World, None             none           configure, reconfigure               N/A     Uninstalls
+                                                 remove-sample-databases,                                                                                                                      the
+                                                 remove-example-databases,                                                                                                                     specified
+                                                 uninstall-sample-database                                                                                                                     sample
+                                                 (deprecated),                                                                                                                                 databases
+                                                 uninstall-example-database                                                                                                                    (Sakila or
+                                                 (deprecated)                                                                                                                                  World).
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+windows-service-auto-startN/A                    win-service-auto-start,bool                  true, false                          true           configure, reconfigure               configure-as-windows-service=trueIf
+                                                 service-auto-start,                                                                                                                           configured
+                                                 auto-start                                                                                                                                    as a Windows
+                                                 (deprecated),                                                                                                                                 service,
+                                                 autostart                                                                                                                                     this value
+                                                 (deprecated)                                                                                                                                  sets the
+                                                                                                                                                                                               service to
+                                                                                                                                                                                               start
+                                                                                                                                                                                               automatically
+                                                                                                                                                                                               at system
+                                                                                                                                                                                               startup.
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+windows-service-nameN/A                          win-service-name,string                      N/A                                  "MySQLxx"      configure, reconfigure               configure-as-windows-service=trueThe name
+                                                 service-name,                                                                     where 'xx'                                                  given to the
+                                                 servicename                                                                       corresponds                                                 Windows
+                                                 (deprecated)                                                                      to the                                                      service used
+                                                                                                                                   server major                                                to run MySQL
+                                                                                                                                   and minor                                                   Server.
+                                                                                                                                   version.                                                    
+                                                                                                                                   
+                                                                                                                                                                                               
+windows-service-passwordN/A                      win-service-password,string                  N/A                                  "" (empty      configure, reconfigure               configure-as-windows-service=trueThe password
+                                                 win-service-pwd,                                                                  string)                                                     of the
+                                                 service-password,                                                                                                                             Windows user
+                                                 service-pwd,                                                                                                                                  account used
+                                                 sapass                                                                                                                                        to run the
+                                                 (deprecated)                                                                                                                                  Windows
+                                                                                                                                                                                               service.
+
+*Note*:
+
+Do not specify both '--configure-as-windows-service=true' and
+'--configure-as-process=true'.  MySQL Configurator reports an error if
+both options are enabled.
 
 *MySQL User Management*
 
@@ -5311,8 +5283,11 @@ A new configuration:
      # Simple
      mysql_configurator.exe --console --action=configure --password=test
 
+     # Configure the server to run as a Windows process
+     mysql_configurator.exe --console --action=configure --password=test --configure-as-process=true
+
      # More complex
-     mysql_configurator.exe --console --action=configure --password=test --port=3320 --enable-pipe-names --pipe-name=MYSQL_PIPE --server-id=2 --install-sample-database=both
+     mysql_configurator.exe --console --action=configure --password=test --port=3320 --enable-named-pipes=true --named-pipe-name=MYSQL_PIPE --server-id=2 --install-sample-databases=All
 
      # More complex, also with users
      mysql_configurator.exe --console --action=configure --password=other123 --add-user='john':'pa$$':"Db Admin":MYSQL --add-user='mary':'p4ssW0rd':"Administrator":MYSQL
@@ -5331,11 +5306,11 @@ A removal:
 
 An upgrade:
 
-     # Basic removal
+     # Basic upgrade
      mysql_configurator.exe --console --action=upgrade --old-instance-password=test
 
-     # Complex removal
-     mysql_configurator.exe --console --action=upgrade --old-instance-password=test --backup-data=false --server-file-permissions-access=full
+     # Complex upgrade
+     mysql_configurator.exe --console --action=upgrade --old-instance-password=test --backup-data=false --server-file-permissions=full
 
 *Root Password Handling*
 
@@ -5354,8 +5329,8 @@ in order of precedence:
      'my.ini' defines the root user password.
 
      Having the entry "password={password_here}" in the extra
-     configuration file (as per '--defaults-extra-file') can define the
-     root user password.
+     configuration file specified by '--root-password-file' can define
+     the root user password.
 
   3. Defining passwords using environment variables:
 
@@ -469486,11 +469461,10 @@ server-system-variables::
 
 *note option-file-options:: *note data-directory-initialization:: *note
 my-print-defaults:: *note myisamchk-general-options:: *note
-mysql-command-options:: *note mysql-configurator-cli:: *note
-mysql-migrate-keyring:: *note mysql-secure-installation:: *note
-mysqladmin:: *note mysqlbinlog:: *note mysqlcheck:: *note mysqld-multi::
-*note mysqld-safe:: *note mysqldump:: *note mysqlimport:: *note
-mysqlshow:: *note mysqlslap:: *note
+mysql-command-options:: *note mysql-migrate-keyring:: *note
+mysql-secure-installation:: *note mysqladmin:: *note mysqlbinlog:: *note
+mysqlcheck:: *note mysqld-multi:: *note mysqld-safe:: *note mysqldump::
+*note mysqlimport:: *note mysqlshow:: *note mysqlslap:: *note
 mysql-cluster-programs-ndb-blob-tool:: *note
 mysql-cluster-programs-ndb-config:: *note
 mysql-cluster-programs-ndb-delete-all:: *note
@@ -470478,8 +470452,6 @@ x-plugin-options-system-variables::
 
 *note x-plugin-disabling::
 
-*note mysql-configurator-cli::
-
 *note x-plugin-options-system-variables::
 
 [index top]
@@ -471029,8 +471001,7 @@ mysql-cluster-programs-ndb-top:: *note mysql-cluster-programs-ndbxfrm::
 test-pluggable-authentication:: *note problems-connecting:: *note
 mysqlbinlog-backup:: *note command-line-options::
 
-*note mysql-configurator-cli:: *note mysql-config-editor:: *note
-option-files::
+*note mysql-config-editor:: *note option-files::
 
 *note connection-options:: *note multifactor-authentication:: *note
 mysql-command-options:: *note mysqladmin:: *note mysqlcheck:: *note
@@ -471181,8 +471152,7 @@ multiple-servers:: *note multiple-unix-servers:: *note server-options::
 *note server-system-variables:: *note problems-connecting:: *note
 starting-server-troubleshooting:: *note multiple-server-clients::
 
-*note mysql-configurator-cli:: *note mysql-config-editor:: *note
-option-files::
+*note mysql-config-editor:: *note option-files::
 
 *note server-options::
 
