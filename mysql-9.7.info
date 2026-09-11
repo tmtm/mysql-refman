@@ -47596,6 +47596,10 @@ caching_sha2_password_private_key_path
 
 Yes            Yes         Yes                     Global      No
                                                                
+caching_sha2_password_proxy_users
+
+Yes            Yes         Yes                     Global      Yes
+                                                               
 caching_sha2_password_public_key_path
 
 Yes            Yes         Yes                     Global      No
@@ -55503,6 +55507,10 @@ Yes            Yes         Yes         Global      Yes
 caching_sha2_password_private_key_path
 
 Yes            Yes         Yes         Global      No
+                                                   
+caching_sha2_password_proxy_users
+
+Yes            Yes         Yes         Global      Yes
                                                    
 caching_sha2_password_public_key_path
 
@@ -66831,6 +66839,49 @@ absolute path name, its location is as given by the path name.
      For information about 'caching_sha2_password', see *note
      caching-sha2-pluggable-authentication::.
 
+   * 'caching_sha2_password_proxy_users'
+
+     Command-Line Format
+
+     '--caching-sha2-password-proxy-users[={OFF|ON}]'
+
+     System Variable
+
+     'caching_sha2_password_proxy_users'
+
+     Scope
+
+     Global
+
+     Dynamic
+
+     Yes
+
+     'SET_VAR' Hint
+     Applies
+
+     No
+
+     Type
+
+     Boolean
+
+     Default Value
+
+     'OFF'
+
+     This variable controls whether the 'caching_sha2_password'
+     authentication plugin supports proxy users by requesting
+     server-side mapping according to the 'PROXY' privileges granted.
+     It has no effect unless the 'check_proxy_users' system variable is
+     enabled.  When both variables are enabled and authentication
+     succeeds, the server maps the authenticated account to a proxied
+     account according to its 'PROXY' privileges and uses the proxied
+     account as the effective account for the connection.
+
+     See *note proxy-users:: and *note
+     caching-sha2-pluggable-authentication::.
+
    * 'caching_sha2_password_public_key_path'
 
      Command-Line Format
@@ -67260,14 +67311,16 @@ absolute path name, its location is as given by the path name.
      plugins).  Other authentication plugins do not support proxy users
      by default.  Of these, some can request that the MySQL server
      itself map proxy users according to granted proxy privileges:
-     'mysql_native_password' (deprecated), 'sha256_password'
-     (deprecated).
+     'caching_sha2_password', 'mysql_native_password' (deprecated),
+     'sha256_password' (deprecated).
 
      If the 'check_proxy_users' system variable is enabled, the server
      performs proxy user mapping for any authentication plugins that
      make such a request.  To take advantage of server proxy user
-     mapping support for the 'sha256_password' plugin, you must enable
-     'sha256_password_proxy_users'.
+     mapping support for the 'caching_sha2_password' or
+     'sha256_password' plugin, you must enable
+     'caching_sha2_password_proxy_users' or
+     'sha256_password_proxy_users', respectively.
 
      For information about user proxying, see *note proxy-users::.
 
@@ -83468,6 +83521,10 @@ caching_sha2_password_digest_rounds
 Integer                       Global
                               
 caching_sha2_password_enforce_storage_format
+
+Boolean                       Global
+                              
+caching_sha2_password_proxy_users
 
 Boolean                       Global
                               
@@ -114391,27 +114448,29 @@ To avoid this problem, use one of the following strategies:
 
 Some authentication plugins implement proxy user mapping for themselves
 (for example, the PAM and Windows authentication plugins).  Other
-authentication plugins do not support proxy users by default.
-'sha256_password' can request that the MySQL server itself map proxy
-users according to granted proxy privileges.  If the 'check_proxy_users'
-system variable is enabled, the server performs proxy user mapping for
-any authentication plugins that make such a request:
+authentication plugins do not support proxy users by default.  The
+'caching_sha2_password' and'sha256_password' (deprecated) plugins can
+request that the MySQL server itself map proxy users according to
+granted proxy privileges.  If the 'check_proxy_users' system variable is
+enabled, the server performs proxy user mapping for any authentication
+plugins that make such a request:
 
    * By default, 'check_proxy_users' is disabled, so the server performs
      no proxy user mapping even for authentication plugins that request
      server support for proxy users.
 
-   * If 'check_proxy_users' is enabled, it may also be necessary to
-     enable a plugin-specific system variable to take advantage of
-     server proxy user mapping support.  For the 'sha256_password'
-     plugin, enable 'sha256_password_proxy_users'.
+   * If 'check_proxy_users' is enabled, a plugin-specific system
+     variable must also be enabled.  For 'caching_sha2_password', enable
+     'caching_sha2_password_proxy_users'.  For the deprecated
+     'sha256_password' plugin, enable 'sha256_password_proxy_users'.
 
-For example, to enable all the preceding capabilities, start the server
-with these lines in the 'my.cnf' file:
+For example, to enable server proxy user mapping for
+'caching_sha2_password', start the server with these lines in the
+'my.cnf' file:
 
      [mysqld]
      check_proxy_users=ON
-     sha256_password_proxy_users=ON
+     caching_sha2_password_proxy_users=ON
 
 Assuming that the relevant system variables have been enabled, create
 the proxy user as usual using *note 'CREATE USER': create-user, then
@@ -114422,7 +114481,7 @@ privilege and uses it to determine the proper proxied user.
 
      -- create proxy account
      CREATE USER 'proxy_user'@'localhost'
-       IDENTIFIED WITH sha256_password
+       IDENTIFIED WITH caching_sha2_password
        BY 'PASSWORD';
 
      -- create proxied account and grant its privileges;
@@ -117441,6 +117500,17 @@ create-user. syntax can be used:
 The default plugin is determined by the value of the
 'authentication_policy' system variable; the default is to use
 'caching_sha2_password'.
+
+As of MySQL 9.3.0, 'caching_sha2_password' supports server-side proxy
+user mapping based on 'PROXY' privileges.  To enable this capability,
+enable both required system variables, 'check_proxy_users' and
+'caching_sha2_password_proxy_users':
+
+     SET GLOBAL check_proxy_users = ON;
+     SET GLOBAL caching_sha2_password_proxy_users = ON;
+
+For information on 'PROXY' and proxied accounts, see *note
+proxy-users::.
 
 To use a different plugin, you must specify it using 'IDENTIFIED WITH'.
 For example, to specify the deprecated 'sha256_password' plugin, use
@@ -472740,10 +472810,11 @@ information-schema-processlist-table:: *note
 performance-schema-processlist-table:: *note
 performance-schema-threads-table::
 
-*note grant:: *note grant-tables:: *note ldap-pluggable-authentication::
-*note pam-pluggable-authentication:: *note privileges-provided:: *note
-proxy-users:: *note default-privileges:: *note
-performance-schema-host-cache-table:: *note
+*note caching-sha2-pluggable-authentication:: *note grant:: *note
+grant-tables:: *note ldap-pluggable-authentication:: *note
+pam-pluggable-authentication:: *note privileges-provided:: *note
+proxy-users:: *note default-privileges:: *note server-system-variables::
+*note performance-schema-host-cache-table:: *note
 windows-pluggable-authentication::
 
 *note proxy-users::
@@ -478260,8 +478331,8 @@ server-system-variables::
 [index top]
 
 *note caching-sha2-pluggable-authentication:: *note
-creating-ssl-rsa-files-using-mysql:: *note server-status-variables::
-*note server-system-variables::
+creating-ssl-rsa-files-using-mysql:: *note proxy-users:: *note
+server-status-variables:: *note server-system-variables::
 
 *note charset-configuration:: *note charset-connection:: *note
 load-data:: *note binary-log-mixed:: *note faqs-cjk:: *note
@@ -478309,7 +478380,8 @@ charset-metadata::
 *note adding-collation-simple-8bit:: *note ldml-collation-example::
 *note server-system-variables::
 
-*note proxy-users:: *note server-system-variables::
+*note caching-sha2-pluggable-authentication:: *note proxy-users:: *note
+server-system-variables::
 
 *note clone-plugin-options-variables:: *note clone-plugin-monitoring::
 
