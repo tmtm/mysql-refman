@@ -2392,7 +2392,7 @@ Installation of MySQL generally follows the steps outlined here:
   2. *Choose which track to install.*
 
      MySQL offers an LTS series, such as MySQL 9.7, and an Innovation
-     series, such as 26.7.  They address different use cases as
+     series, such as 26.10.  They address different use cases as
      described at *note mysql-releases::.
 
   3. *Choose which distribution to install.*
@@ -2524,7 +2524,7 @@ When preparing to install MySQL, decide which version and distribution
 format (binary or source) to use.
 
 First, decide whether to install from an LTS series like MySQL 9.7, or
-install from an Innovation series like MySQL 26.7.  Both tracks include
+install from an Innovation series like MySQL 26.10.  Both tracks include
 bug fixes while innovation releases includes the latest new features and
 changes.  For additional details, see *note mysql-releases::.
 
@@ -7022,7 +7022,7 @@ the MySQL series that is enabled by default for installation.  In this
 case, the MySQL 9.7 LTS subrepository is enabled by default.  It also
 contains other subrepository versions, such as MySQL 8.4 and the MySQL
 Innovation Series, which are disabled by default.  Choose the innovation
-series to install MySQL 26.7.
+series to install MySQL 26.10.
 
 *Steps for a Fresh Installation of MySQL*
 
@@ -7081,7 +7081,7 @@ Follow these steps to choose and install the latest MySQL products:
 
           This also demonstrates that the latest LTS MySQL version is
           enabled by default.  Methods to choose a different release
-          series, such as the innovation track (which today is 26.7) or
+          series, such as the innovation track (which today is 26.10) or
           a previous series (such as MySQL 8.4), are described below.
 
      *Note*:
@@ -7393,7 +7393,7 @@ list.  Follow these steps:
 
      *Note*:
 
-     The innovation track, which includes MySQL 26.7, contains
+     The innovation track, which includes MySQL 26.10, contains
      "-innovation-" in the component name.
 
      You can always change your choices for the versions later; see
@@ -7934,7 +7934,7 @@ release packages provided by MySQL:
 
         * For installing the MySQL server, client, and database common
           files, choose 'mysql-8.4', 'mysql-8.0', or 'mysql-innovation'
-          (for MySQL 26.7) according to the *note MySQL series:
+          (for MySQL 26.10) according to the *note MySQL series:
           mysql-releases. you want.  To switch to another release series
           later, come back and adjust the entry with your new choice.
           This also includes access to tools such as MySQL Router and
@@ -7985,7 +7985,7 @@ The beginning part of the configuration file name, such as 'mysql97',
 describes the default MySQL series that is enabled for installation.  In
 this case, the subrepository for MySQL 9.7 LTS is enabled by default.
 It also contains other subrepository versions, such as MySQL 9.7 and the
-MySQL innovation series.  MySQL 26.7 is the current innovation release.
+MySQL innovation series.  MySQL 26.10 is the current innovation release.
 
 *New MySQL Repository Installation*
 
@@ -8045,7 +8045,7 @@ following:
 
 Then, enable the subrepositories for the release series you want.  For
 example, to enable the Innovation track on SLES 15 which installs MySQL
-26.7:
+26.10:
 
      $> sudo zypper modifyrepo -e mysql-innovation-community
      $> sudo zypper modifyrepo -e mysql-tools-innovation-community
@@ -8178,7 +8178,7 @@ linux-installation-sles-repo-replacing:: instead):
      chosen during installation (see *note
      linux-installation-sles-repo-select-series:: for details), which
      means.  For example, an LTS series installation, such as 9.7, will
-     _not_ update to an innovation series, such as 26.7.  To update to
+     _not_ update to an innovation series, such as 26.10.  To update to
      another release series, you need to first disable the subrepository
      for the series that has been selected (by default, or by yourself)
      and enable the subrepository for your target series.  To do that,
@@ -8994,7 +8994,7 @@ Community Edition image from the Oracle Container Registry (OCR)
      docker pull container-registry.oracle.com/mysql/community-server:TAG
 
 The TAG is the label for the image version you want to pull (for
-example, '9.7', or '26.7', or 'latest').  If :TAG is omitted, the
+example, '9.7', or '26.10', or 'latest').  If :TAG is omitted, the
 'latest' label is used, and the image for the latest GA release (which
 is the latest innovation release) of MySQL Community Server is
 downloaded.
@@ -9217,18 +9217,18 @@ command.
      docker-persisting-data-configuration:: for details.
 
 Follow these steps to upgrade a Docker installation of MySQL 9.7 to
-26.7:
+26.10:
 
    * Stop the MySQL 9.7 server (container name is 'mysql97' in this
      example):
 
           docker stop mysql97
 
-   * Download the MySQL 26.7 Server Docker image.  See instructions in
+   * Download the MySQL 26.10 Server Docker image.  See instructions in
      *note docker-download-image::.  Make sure you use the right tag for
-     MySQL 26.7.
+     MySQL 26.10.
 
-   * Start a new MySQL 26.7 Docker container (named 'mysql267' in this
+   * Start a new MySQL 26.10 Docker container (named 'mysql2610' in this
      example) with the old server data and configuration (with proper
      modifications if needed--see *note upgrading::) that have been
      persisted on the host (by bind-mounting
@@ -9239,7 +9239,7 @@ Follow these steps to upgrade a Docker installation of MySQL 9.7 to
           docker run --name=mysql267 \
              --mount type=bind,src=/path-on-host-machine/my.cnf,dst=/etc/my.cnf \
              --mount type=bind,src=/path-on-host-machine/datadir,dst=/var/lib/mysql \
-             -d container-registry.oracle.com/mysql/community-server:26.7
+             -d container-registry.oracle.com/mysql/community-server:26.10
 
      If needed, adjust
      'container-registry.oracle.com/mysql/community-server' to the
@@ -9253,15 +9253,15 @@ Follow these steps to upgrade a Docker installation of MySQL 9.7 to
      the server using the 'docker ps' command (see *note
      docker-starting-mysql-server:: for how to do that).
 
-Follow the same steps for upgrading within the 26.7 series (that is,
-from release 26.7.X to 26.7.Y): stop the original container, and start a
-new one with a newer image on the old server data and configuration.  If
-you used the 26.7 or the 'latest' tag when starting your original
-container and there is now a new MySQL 26.7 release you want to upgrade
+Follow the same steps for upgrading within the 26.10 series (that is,
+from release 26.10.X to 26.10.Y): stop the original container, and start
+a new one with a newer image on the old server data and configuration.
+If you used the 26.10 or the 'latest' tag when starting your original
+container and there is now a new MySQL 26.10 release you want to upgrade
 to it, you must first pull the image for the new release with the
 command:
 
-     docker pull container-registry.oracle.com/mysql/community-server:26.7
+     docker pull container-registry.oracle.com/mysql/community-server:26.10
 
 You can then upgrade by starting a _new_ container with the same tag on
 the old data and configuration (adjust the image name if you are using
@@ -9270,7 +9270,7 @@ the MySQL Enterprise Edition; see *note docker-download-image::):
      docker run --name=mysql267new \
         --mount type=bind,src=/path-on-host-machine/my.cnf,dst=/etc/my.cnf \
         --mount type=bind,src=/path-on-host-machine/datadir,dst=/var/lib/mysql \
-        -d container-registry.oracle.com/mysql/community-server:26.7
+        -d container-registry.oracle.com/mysql/community-server:26.10
 
 *More Topics on Deploying MySQL Server with Docker*
 
@@ -16086,7 +16086,7 @@ the new version using the old data files) with the MySQL Yum repository.
 
 *Notes*:
 
-   * An innovation series, such as MySQL 26.7, is in a separate track
+   * An innovation series, such as MySQL 26.10, is in a separate track
      than an LTS series, such as MySQL 9.7.  The LTS series is active by
      default.
 
@@ -16635,7 +16635,7 @@ From within an
 Innovation
 series
 
-26.7 to 9.6        Logical     Only supported for
+26.10 to 9.6       Logical     Only supported for
                    dump and    rollback purposes
                    load or     (that is, if no new
                    by using    server functionality
@@ -196550,7 +196550,8 @@ binary string
 
 Return a string
 that indicates
-the MySQL server
+the three-part
+MySQL server
 version
 
 'WAIT_FOR_EXECUTED_GTID_SET()'
@@ -208936,8 +208937,8 @@ Name                 Description
 'USER()'             The user name and host name provided by the
                      client
                      
-'VERSION()'          Return a string that indicates the MySQL server
-                     version
+'VERSION()'          Return a string that indicates the three-part
+                     MySQL server version
 
    * 'BENCHMARK(COUNT,EXPR)'
 
@@ -320409,10 +320410,10 @@ File: manual.info.tmp,  Node: replication-features-transactions,  Next: replicat
 Mixing transactional and nontransactional statements within the same
 transaction
 
-In MySQL 26.7 (and later), transactions that update both transactional
+In MySQL 26.10 (and later), transactions that update both transactional
 tables and tables which are nontransactional or noncomposable are
 deprecated, and causes a deprecation warning to be written to both the
-client and the error log.  In MySQL 26.7 only the *note 'InnoDB':
+client and the error log.  In MySQL 26.10 only the *note 'InnoDB':
 innodb-storage-engine. and *note 'BLACKHOLE': blackhole-storage-engine.
 storage engines are transactional and composable; *note 'NDBCLUSTER':
 mysql-cluster. is transactional but not composable.  This means that the
@@ -342235,7 +342236,7 @@ management tasks, such restarting an NDB Cluster with a large number of
 nodes.  The MySQL Cluster Manager client also supports commands for
 getting and setting the values of most node configuration parameters as
 well as *note 'mysqld': mysqld. server options and variables relating to
-NDB Cluster.  See MySQL Cluster Manager 8.4.11 User Manual
+NDB Cluster.  See MySQL Cluster Manager 8.4.13 User Manual
 (https://dev.mysql.com/doc/mysql-cluster-manager/8.4/en/), for more
 information.
 
@@ -342638,7 +342639,7 @@ be of interest are listed here:
 
 MySQL Cluster Manager has an advanced command-line interface that can
 simplify many complex NDB Cluster management tasks.  See MySQL Cluster
-Manager 8.4.11 User Manual
+Manager 8.4.13 User Manual
 (https://dev.mysql.com/doc/mysql-cluster-manager/8.4/en/), for more
 information.
 
@@ -376034,7 +376035,7 @@ Additional descriptions follow the table.
      from the newer NDB Cluster version to do so.
 
      For example, to restore a cluster backup taken from a cluster
-     running NDB Cluster 8.4.11 to a cluster running NDB Cluster 8.0.48,
+     running NDB Cluster 8.4.12 to a cluster running NDB Cluster 8.0.48,
      you must use the *note 'ndb_restore':
      mysql-cluster-programs-ndb-restore. that comes with the NDB Cluster
      8.0.48 distribution.
@@ -381638,7 +381639,7 @@ starting, stopping, or restarting an NDB Cluster with a large number of
 nodes.  The MySQL Cluster Manager client also supports commands for
 getting and setting the values of most node configuration parameters as
 well as *note 'mysqld': mysqld. server options and variables relating to
-NDB Cluster.  See MySQL Cluster Manager 8.4.11 User Manual
+NDB Cluster.  See MySQL Cluster Manager 8.4.13 User Manual
 (https://dev.mysql.com/doc/mysql-cluster-manager/8.4/en/), for more
 information.
 
@@ -454401,7 +454402,7 @@ C++
 
 Connector/C++'libmysqlclient'     See MySQL
                                   Connector/C++
-                                  26.7
+                                  26.10
                                   Developer
                                   Guide
                                   (https://dev.mysql.com/doc/connector-cpp/26.7/en/).
@@ -454601,7 +454602,7 @@ The MySQL Connector/C++ manual is published in standalone form, not as
 part of the MySQL Reference Manual.  For information, see these
 documents:
 
-   * Main manual: MySQL Connector/C++ 26.7 Developer Guide
+   * Main manual: MySQL Connector/C++ 26.10 Developer Guide
      (https://dev.mysql.com/doc/connector-cpp/26.7/en/)
 
    * Release notes: MySQL Connector/C++ Release Notes
@@ -459904,7 +459905,7 @@ A.1 MySQL 26.7 FAQ: General
 
 Which version of MySQL is production-ready (GA)?
 
-MySQL 26.7, 8.4, and 8.0 are actively supported for production use.
+MySQL 26.10, 8.4, and 8.0 are actively supported for production use.
 
 The MySQL 9 Innovation series began with the MySQL 9.0.0 release on 01
 July 2024.
@@ -460972,7 +460973,7 @@ cluster.  These are:
 When I run the 'SHOW' command in the NDB Cluster management client, I
 see a line of output that looks like this:
 
-     id=2    @10.100.10.32  (Version: 8.0.48-ndb-8.0.48 Nodegroup: 0, *)
+     id=2    @10.100.10.32  (Version: 8.0.46-ndb-8.0.48 Nodegroup: 0, *)
 
 What does the '*' mean?  How is this node different from the others?
 
@@ -461263,7 +461264,7 @@ NDB Cluster is also supported by MySQL Cluster Manager, a separate
 product providing an advanced command line interface that can automate
 many NDB Cluster management tasks such as rolling restarts and
 configuration changes.  For more information about MySQL Cluster
-Manager, see MySQL Cluster Manager 8.4.11 User Manual
+Manager, see MySQL Cluster Manager 8.4.13 User Manual
 (https://dev.mysql.com/doc/mysql-cluster-manager/8.4/en/).
 
 How do I find out what an error or warning message means when using NDB
@@ -461561,7 +461562,7 @@ For more information, see *note mysql-cluster-mgm-client-commands::, and
 *note mysql-cluster-install-shutdown-restart::.
 
 MySQL Cluster Manager provides additional ways to handle starting ansd
-stopping of NDB Cluster nodes.  See MySQL Cluster Manager 8.4.11 User
+stopping of NDB Cluster nodes.  See MySQL Cluster Manager 8.4.13 User
 Manual (https://dev.mysql.com/doc/mysql-cluster-manager/8.4/en/), for
 more information about this tool.
 
@@ -483370,7 +483371,7 @@ Connector/C++ 8.0 can be used to access MySQL servers that implement a
 queries.  It enables development of C++ applications using X DevAPI, or
 plain C applications using X DevAPI for C. It also enables development
 of C++ applications that use the legacy JDBC-based API from
-Connector/C++ 1.1.  For more information, see MySQL Connector/C++ 26.7
+Connector/C++ 1.1.  For more information, see MySQL Connector/C++ 26.10
 Developer Guide (https://dev.mysql.com/doc/connector-cpp/26.7/en/).
 Connector/NET
 
