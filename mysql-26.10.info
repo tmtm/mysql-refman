@@ -61877,7 +61877,7 @@ String                        Global
                               
 mysql_rest_service.state
 
-Integer                       Global
+String                        Global
                               
 Mysqlx_aborted_clients
 
@@ -86097,7 +86097,7 @@ File name                     Global
                               
 mysql_rest_service.ssl_cipher
 
-File name                     Global
+String                        Global
                               
 mysql_rest_service.ssl_key
 
@@ -100489,8 +100489,11 @@ File: manual.info.tmp,  Node: mrs-component,  Next: health-monitor-component,  P
 * mrs-component-functions::      MySQL REST Service Functions
 
 This component embeds MySQL REST Service in MySQL Server and exposes
-published REST services over HTTPS without requiring a MySQL Router
-installation.
+published REST services over HTTPS. This enables MySQL Server to serve
+as the application's HTTPS API without a separate MySQL Router
+deployment to host MySQL REST Service.  Database operations execute
+through local Server services, avoiding the network hop between a
+separate runtime and MySQL.
 
    * Purpose: Hosts MySQL REST Service inside MySQL Server.
 
@@ -100529,9 +100532,12 @@ installing account must have:
    * 'CREATE USER', to create the internal users 'mysql_mrs_metadata'
      and 'mysql_mrs_data'.
 
-   * 'CREATE ROLE' and 'GRANT ROLE', to create and grant the required
+   * 'CREATE ROLE' and 'ROLE_ADMIN', to create and grant the required
      roles, 'mysql_rest_service_meta_provider', and
      'mysql_rest_service_data_provider'.
+
+   * 'SELECT', 'INSERT', and 'UPDATE' on the
+     'mysql_rest_service_metadata' schema.
 
 
 File: manual.info.tmp,  Node: mrs-installation,  Next: mrs-component-additional-notes,  Prev: mrs-prereqs,  Up: mrs-component
@@ -100549,22 +100555,33 @@ package provided by Oracle, 'validate_password' is installed by default.
 To workaround this issue, see *note
 mrs-installation-special-considerations::.
 
-Install the component using the following command:
+  1. Configure the MRS metadata schema.
 
-     >INSTALL COMPONENT 'file://component_mysql_rest_service';
+     Connect as an administrator using MySQL Shell with MRS SQL support.
+     Run the following command:
 
-Installation initiates startup asynchronously.  Successful completion
-means that the component was registered and startup was accepted; it
-does not mean that the HTTPS listener is operational.
+          sql>CONFIGURE REST METADATA;
 
-Check startup progress with the following status variable:
+     The metadata setup creates the provider roles required by the
+     internal account definitions.
 
-     SHOW GLOBAL STATUS LIKE 'mysql_rest_service.state';
+  2. Install the component with the following command:
 
-Startup reaches 'READY' only after the metadata, internal accounts,
-security contexts, TLS context, and HTTPS listener have been
-initialized.  An unrecoverable startup failure changes the state to
-'ERROR' and writes the detailed cause to the MySQL Server error log.
+          sql>>INSTALL COMPONENT 'file://component_mysql_rest_service';
+
+     Installation initiates startup asynchronously.  Successful
+     completion means that the component was registered and startup was
+     accepted; it does not mean that the HTTPS listener is operational.
+
+  3. Check startup progress with the following status variable:
+
+          SHOW GLOBAL STATUS LIKE 'mysql_rest_service.state';
+
+     Startup reaches 'READY' only after the metadata, internal accounts,
+     security contexts, TLS context, and HTTPS listener have been
+     initialized.  An unrecoverable startup failure changes the state to
+     'ERROR' and writes the detailed cause to the MySQL Server error
+     log.
 
 The component creates or validates the following locked internal
 accounts:
@@ -100602,6 +100619,13 @@ assignments, MRS runtime-registration metadata, or values stored using
 starts while the component is not installed, retained MySQL REST Service
 settings produce the normal unknown-variable warnings for persisted
 component variables.
+
+*Note*:
+
+MySQL REST Service inherits the MySQL Server's configured
+'bind_address'.  However, MySQL REST Service does not support
+comma-separated address lists.  MySQL REST Service startup fails in such
+configurations.
 
 *Special Considerations for MySQL REST Service Component Installation*
 
@@ -100693,8 +100717,8 @@ TLS session caching, session tickets, and TLS compression are disabled.
 The process-wide 'ssl_fips_mode' setting affects the MRS TLS context
 indirectly.
 
-ALTER INSTANCE RELOAD TLS' reloads the MySQL protocol-channel TLS
-contexts; it does not reload the MRS listener.  To apply new MRS
+'ALTER INSTANCE RELOAD TLS' reloads the MySQL protocol-channel TLS
+contexts, but does not reload the MRS listener.  To apply new MRS
 certificate, key, or cipher settings, restart MRS:
 
      SET PERSIST mysql_rest_service.ssl_cert = '/path/to/mrs-cert.pem';
@@ -100828,7 +100852,7 @@ File name                     Global
                               
 mysql_rest_service.ssl_cipher
 
-File name                     Global
+String                        Global
                               
 mysql_rest_service.ssl_key
 
@@ -100939,8 +100963,8 @@ File name                     Global
 
      'empty string'
 
-     Used to configure the private key file file.  By default, this
-     variable inherits the server's 'ssl_cert' value.
+     Used to configure the private key file.  By default, this variable
+     inherits the server's 'ssl_key' value.
 
      *Note*:
 
@@ -100973,7 +100997,7 @@ File name                     Global
 
      Type
 
-     File name
+     String
 
      Default Value
 
@@ -101028,6 +101052,8 @@ File name                     Global
      A value of 0 selects automatic sizing: 25% of the available logical
      CPUs, rounded up, with a minimum of one worker.  A positive value
      specifies the exact worker count.
+
+     Changes take affect on MySQL REST Service restart.
 
    * 'mysql_rest_service.http_max_connections'
 
@@ -101225,7 +101251,7 @@ String                        Global
                               
 mysql_rest_service.state
 
-Integer                       Global
+String                        Global
 
    * 'mysql_rest_service.current_http_port'
 
@@ -101293,7 +101319,7 @@ Name                 Description
                      
 'mysql_rest_service_stop()'Stops the REST Service backend, synchronously.
 
-You can monitor lifecycle operations triggered by these functons with
+You can monitor lifecycle operations triggered by these functions with
 'SHOW GLOBAL STATUS LIKE 'mysql_rest_service.state';'.
 
    * 'mysql_rest_service_restart()'
@@ -101313,9 +101339,8 @@ You can monitor lifecycle operations triggered by these functons with
    * 'mysql_rest_service_stop()'
 
      Stops the MySQL REST Service backend, synchronously.  Returns 0 if
-     the immediate operation succeeds.  Failures raise an error.  A
-     return value of 0 from stop means that stop was accepted, it does
-     not mean that the state reached 'STOPPED'.
+     backend shutdown succeeds and the state reaches 'STOPPED'.
+     Failures raise an error.
 
 
 File: manual.info.tmp,  Node: health-monitor-component,  Prev: mrs-component,  Up: components
@@ -479365,8 +479390,8 @@ privileges-provided:: *note resource-groups:: *note set-resource-group::
 *note grant:: *note optimizer-hints:: *note privileges-provided:: *note
 resource-groups:: *note set-resource-group::
 
-*note grant:: *note information-functions:: *note privileges-provided::
-*note server-system-variables:: *note roles::
+*note grant:: *note information-functions:: *note mrs-prereqs:: *note
+privileges-provided:: *note server-system-variables:: *note roles::
 
 [index top]
 
@@ -484764,9 +484789,9 @@ server-options:: *note server-system-variables::
 group-replication-connection-security:: *note ipv6-server-config:: *note
 ipv6-remote-connections:: *note ipv6-local-connections:: *note
 group-replication-ip-address-permissions:: *note
-group-replication-system-variables:: *note ipv6-support:: *note
-mysqld-multi:: *note network-namespace-support:: *note
-nonpersistible-system-variables:: *note ipv6-brokers:: *note
+group-replication-system-variables:: *note mrs-installation:: *note
+ipv6-support:: *note mysqld-multi:: *note network-namespace-support::
+*note nonpersistible-system-variables:: *note ipv6-brokers:: *note
 multiple-servers:: *note
 group-replication-distributed-recovery-connections-endpoints:: *note
 server-system-variables:: *note group-replication-ipv6:: *note
@@ -487627,6 +487652,7 @@ server-system-variables::
 *note connection-options:: *note using-encrypted-connections:: *note
 creating-ssl-rsa-files-using-mysql:: *note
 creating-ssl-files-using-openssl:: *note
+mrs-component-system-variables:: *note
 group-replication-secure-socket-layer-support-ssl:: *note
 server-status-variables:: *note server-system-variables:: *note
 replication-encrypted-connections:: *note
