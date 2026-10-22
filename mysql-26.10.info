@@ -21164,6 +21164,10 @@ see Support for Encrypted Connections
 
 Option Name               Description
                           
+-force-pqc                If enabled, requires the client TLS
+                          connection to negotiate a PQC-compatible key
+                          exchange group
+                          
 -get-server-public-key    Request RSA public key from server
                           
 -server-public-key-path   Path name to file containing RSA public key
@@ -21200,8 +21204,37 @@ Option Name               Description
 -tls-ciphersuites         Permissible TLSv1.3 ciphersuites for
                           encrypted connections
                           
+-tls-kex                  Colon-separated list of TLS key exchange
+                          groups the client may use.
+                          
 -tls-version              Permissible TLS protocols for encrypted
                           connections
+                          
+-use-pqc-sign             If enabled, allows the client to advertise
+                          PQC-capable TLS handshake signature
+                          algorithms.  If disabled, the client
+                          advertises only classical TLS handshake
+                          signature algorithms.
+
+   * '--force-pqc'
+
+     Command-Line Format
+
+     '--force-pqc[={OFF|ON}]'
+
+     Type
+
+     Boolean
+
+     Default Value
+
+     'OFF'
+
+     If enabled, requires the client TLS connection to negotiate a
+     PQC-compatible key exchange group.  Connection setup fails if PQC
+     key exchange cannot be used.
+
+     See *note post-quantum-crytpography-ssl::.
 
    * '--get-server-public-key'
 
@@ -21664,6 +21697,49 @@ Option Name               Description
      To specify which ciphersuites the server permits, set the
      'tls_ciphersuites' system variable.
 
+   * '--tls-kex'
+
+     Command-Line Format
+
+     '--tls-kex=[key_exchange_list]'
+
+     Type
+
+     String
+
+     Default Value
+
+     'empty string'
+
+     Valid Values
+
+     'X25519' (OpenSSL
+     lower than 3.5.0)
+     'secp384r1' (OpenSSL
+     lower than 3.5.0)
+     'secp256r1' (OpenSSL
+     lower than 3.5.0)
+     'secp521r1' (OpenSSL
+     lower than 3.5.0)
+     'X25519MLKEM768'
+     (OpenSSL 3.5.0, or
+     higher)
+     'secp384r1MLKEM1024'
+     (OpenSSL 3.5.0, or
+     higher)
+     'secp256r1MLKEM768'
+     (OpenSSL 3.5.0, or
+     higher) 'MLKEM512'
+     (OpenSSL 3.5.0, or
+     higher) 'MLKEM768'
+     (OpenSSL 3.5.0, or
+     higher)
+
+     Specifies a colon-separated list of TLS key exchange groups the
+     client may use.
+
+     See *note post-quantum-crytpography-ssl::.
+
    * '--tls-version=PROTOCOL_LIST'
 
      Command-Line Format
@@ -21722,6 +21798,26 @@ Option Name               Description
 
      To specify which TLS protocols the server permits, set the
      'tls_version' system variable.
+
+   * '--use-pqc-sign'
+
+     Command-Line Format
+
+     '--use-pqc-sign[={OFF|ON}]'
+
+     Type
+
+     Boolean
+
+     Default Value
+
+     'OFF'
+
+     If enabled, allows the client to advertise PQC-capable TLS
+     handshake signature algorithms.  If disabled, the client advertises
+     only classical TLS handshake signature algorithms.
+
+     See *note post-quantum-crytpography-ssl::.
 
 *Command Options for Connection Compression*
 
@@ -476434,6 +476530,8 @@ mysqlcheck:: *note mysqldump:: *note mysqlimport:: *note batch-mode::
 
 *note mysqlbinlog::
 
+*note connection-options::
+
 *note mysqlbinlog::
 
 *note mysql-cluster-programs-ndbd::
@@ -478664,6 +478762,8 @@ mysqladmin:: *note mysqlbinlog:: *note mysqlcheck:: *note mysqldump::
 *note mysqlimport:: *note mysqlshow:: *note mysqlslap:: *note
 mysqldm-options::
 
+*note connection-options::
+
 *note mysql-command-options:: *note mysql-migrate-keyring:: *note
 mysql-secure-installation:: *note mysqladmin:: *note mysqlbinlog:: *note
 mysqlcheck:: *note mysqldump:: *note mysqlimport:: *note mysqlshow::
@@ -478775,6 +478875,8 @@ mysql-cluster-programs-ndbxfrm::
 *note mysql-secure-installation::
 
 *note mysqlcheck::
+
+*note connection-options::
 
 *note mysqlimport::
 
