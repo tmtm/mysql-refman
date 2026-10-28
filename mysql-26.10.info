@@ -100584,7 +100584,9 @@ File: manual.info.tmp,  Node: mrs-component,  Next: health-monitor-component,  P
 * mrs-component-status-variables::  MySQL REST Service Status Variables
 * mrs-component-functions::      MySQL REST Service Functions
 
-This component embeds MySQL REST Service in MySQL Server and exposes
+MySQL REST Service component is an HTTPS data-access layer providing
+relational-to-JSON mapping, authentication, and authorization This
+component embeds MySQL REST Service in MySQL Server and exposes
 published REST services over HTTPS. This enables MySQL Server to serve
 as the application's HTTPS API without a separate MySQL Router
 deployment to host MySQL REST Service.  Database operations execute
@@ -100596,15 +100598,11 @@ separate runtime and MySQL.
    * URN: 'file://component_mysql_rest_service'
 
 The component does not support MySQL REST Service developer mode and
-serves only published REST services.  For information on defining,
-publishing, authenticating, and using REST services, see MySQL REST
-Service Reference Manual
+serves only published REST services.  This document does not describe
+MySQL REST Service, just the configuration of the MySQL REST Service
+component in MySQL Server.  For information on MySQL REST Service, see
+MySQL REST Service Reference Manual
 (https://dev.mysql.com/doc/dev/mysql-rest-service/latest/).
-
-This document does not describe the MySQL REST Service, just the
-configuration of the MySQL REST Service component in MySQL Server.  For
-information on MySQL REST Service, see MySQL REST Service Reference
-Manual (https://dev.mysql.com/doc/dev/mysql-rest-service/latest/).
 
 
 File: manual.info.tmp,  Node: mrs-prereqs,  Next: mrs-installation,  Prev: mrs-component,  Up: mrs-component
@@ -100628,8 +100626,8 @@ installing account must have:
    * 'CREATE USER', to create the internal users 'mysql_mrs_metadata'
      and 'mysql_mrs_data'.
 
-   * 'CREATE ROLE' and 'ROLE_ADMIN', to create and grant the required
-     roles, 'mysql_rest_service_meta_provider', and
+   * 'ROLE_ADMIN' to create and grant the required roles,
+     'mysql_rest_service_meta_provider', and
      'mysql_rest_service_data_provider'.
 
    * 'SELECT', 'INSERT', and 'UPDATE' on the
@@ -100663,7 +100661,7 @@ mrs-installation-special-considerations::.
 
   2. Install the component with the following command:
 
-          sql>>INSTALL COMPONENT 'file://component_mysql_rest_service';
+          sql> INSTALL COMPONENT 'file://component_mysql_rest_service';
 
      Installation initiates startup asynchronously.  Successful
      completion means that the component was registered and startup was
@@ -100830,6 +100828,14 @@ File: manual.info.tmp,  Node: mrs-component-additional-notes,  Next: mrs-compone
 7.5.10.3 Additional Information
 ...............................
 
+   * *note mrs-component-additional-info-limitations::
+
+   * *note mrs-component-additional-info-logging::
+
+   * *note mrs-component-additional-info-replication::
+
+   * *note mrs-component-additional-info-router::
+
 *Protocol and Execution Limitations*
 
 MySQL REST Service component uses the existing MRS HTTP API and JSON or
@@ -100842,8 +100848,8 @@ returns 'HTTP 501 Not Implemented'.
 
 The component's worker threads are not associated with a THD for their
 complete lifetime.  A server session and THD are used only while SQL
-executes.  The component does not provide explicit Performance Schema
-instrumentation.
+executes.  The component registers its I/O worker threads with
+Performance Schema.
 
 *Logging*
 
@@ -101028,6 +101034,9 @@ File name                     Global
      component, component registration succeeds, but asynchronous
      backend startup fails.
 
+     Changes to this variable take effect on restart of the MySQL REST
+     Service component.
+
    * 'mysql_rest_service.ssl_key'
 
      Command-Line Format
@@ -101068,6 +101077,9 @@ File name                     Global
      component, component registration succeeds, but asynchronous
      backend startup fails.
 
+     Changes to this variable take effect on restart of the MySQL REST
+     Service component.
+
    * 'mysql_rest_service.ssl_cipher'
 
      Command-Line Format
@@ -101101,6 +101113,9 @@ File name                     Global
 
      Configures the colon-separated cipher list for TLS 1.2.  By
      default, this variable inherits the server's 'ssl_cipher' value.
+
+     Changes to this variable take effect on restart of the MySQL REST
+     Service component.
 
    * 'mysql_rest_service.io_worker_threads'
 
@@ -101402,7 +101417,10 @@ detailed information about each function is provided in the list
 following the table.
 
 These functions cannot be invoked from a stored function, trigger, or
-other server substatement.
+other server substatement, and can only be invoked from 'SELECT'.
+
+The account invoking these functions must have the
+'MYSQL_REST_SERVICE_ADMIN' privilege, including when connected as root.
 
 *MySQL REST Service Functions*
 
@@ -479208,7 +479226,7 @@ server-system-variables:: *note set-password:: *note set-transaction::
 partitioning-management-exchange:: *note grant:: *note import-table::
 *note privileges-provided:: *note rename-table::
 
-*note create-role:: *note grant:: *note mrs-prereqs:: *note
+*note create-role:: *note grant:: *note
 replication-privilege-checks-account:: *note privileges-provided:: *note
 roles::
 
@@ -479378,7 +479396,8 @@ innodb-locking-reads:: *note mysqldump:: *note privileges-provided::
 data-masking-components-installation:: *note data-masking-components::
 *note privileges-provided::
 
-*note mrs-installation:: *note privileges-provided::
+*note mrs-installation:: *note mrs-component-functions:: *note
+privileges-provided::
 
 [index top]
 
