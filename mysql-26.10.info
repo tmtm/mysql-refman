@@ -100626,7 +100626,7 @@ installing account must have:
    * 'CREATE USER', to create the internal users 'mysql_mrs_metadata'
      and 'mysql_mrs_data'.
 
-   * 'ROLE_ADMIN' to create and grant the required roles,
+   * 'ROLE_ADMIN' to assign the required roles,
      'mysql_rest_service_meta_provider', and
      'mysql_rest_service_data_provider'.
 
@@ -100654,7 +100654,7 @@ mrs-installation-special-considerations::.
      Connect as an administrator using MySQL Shell with MRS SQL support.
      Run the following command:
 
-          sql>CONFIGURE REST METADATA;
+          sql> CONFIGURE REST METADATA;
 
      The metadata setup creates the provider roles required by the
      internal account definitions.
@@ -101023,7 +101023,8 @@ File name                     Global
 
      Default Value
 
-     'empty string'
+     'inherits server
+     value'
 
      Used to configure the certificate-chain file.  By default, this
      variable inherits the server's 'ssl_cert' value.
@@ -101066,7 +101067,8 @@ File name                     Global
 
      Default Value
 
-     'empty string'
+     'inherits server
+     value'
 
      Used to configure the private key file.  By default, this variable
      inherits the server's 'ssl_key' value.
@@ -101109,7 +101111,8 @@ File name                     Global
 
      Default Value
 
-     'empty string'
+     'inherits server
+     value'
 
      Configures the colon-separated cipher list for TLS 1.2.  By
      default, this variable inherits the server's 'ssl_cipher' value.
@@ -101164,7 +101167,7 @@ File name                     Global
      CPUs, rounded up, with a minimum of one worker.  A positive value
      specifies the exact worker count.
 
-     Changes take affect on MySQL REST Service restart.
+     Changes take effect on MySQL REST Service restart.
 
    * 'mysql_rest_service.http_max_connections'
 
@@ -101438,7 +101441,7 @@ You can monitor lifecycle operations triggered by these functions with
 
    * 'mysql_rest_service_restart()'
 
-     Retarts the MySQL REST Service backend, asynchronously.  Returns 0
+     Restarts the MySQL REST Service backend, asynchronously.  Returns 0
      if the immediate operation succeeds.  Failures raise an error.  A
      return value of 0 from restart means that restart was accepted, it
      does not mean that the state reached 'READY'.
