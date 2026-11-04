@@ -141144,13 +141144,13 @@ filtering are so noted.
 
      This variable applies only for JSON-format audit log output.  When
      that is true, enabling this variable causes each log file record to
-     include a 'time' field.  The field value is an integer that
+     include a 'ts' field.  The field value is an integer that
      represents the UNIX timestamp value indicating the date and time
      when the audit event was generated.
 
      Changing the value of this variable at runtime causes log file
      rotation so that, for a given JSON-format log file, all records in
-     the file either do or do not include the 'time' field.
+     the file either do or do not include the 'ts' field.
 
      Setting the runtime value of 'audit_log_format_unix_timestamp'
      requires the 'AUDIT_ADMIN' privilege, in addition to the

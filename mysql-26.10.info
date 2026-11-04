@@ -101510,13 +101510,7 @@ interval divided by the sample interval.  When a sampled table reaches
 its maximum size, the oldest rows are discarded.
 
 All Health Monitor system variables are global and dynamic.  Changing a
-collector setting can restart the affected collector, but does not
-restart the MySQL server.
-
-For example:
-
-         SET GLOBAL health_monitor.memory_sample_rate = 120;
-         SET PERSIST health_monitor.disk_fallback_enable = ON;
+collector setting restarts the affected collector.
 
 Changing these variables requires the 'SYSTEM_VARIABLES_ADMIN'
 privilege.
@@ -101556,36 +101550,35 @@ the Health Monitor monitors the filesystem containing the MySQL data
 directory.  Health Monitor monitors one target filesystem; it does not
 combine capacity from every filesystem used by the server.
 
-A nonempty value must be a valid absolute path, must not exceed 511
+A nonempty value must be a valid absolute path and must not exceed 511
 bytes.  The path does not have to exist when the variable is set.
 
-Measurements are stored in *note 'health_block_device':
-performance-schema-health-block-device-table.  Each measurement contains
-the device, mount point, measurement time, total capacity, available
-capacity, and percentage in use.  Storage quantities are expressed in
-bytes.
+Measurements are stored in the Performance Schema table *note
+'health_block_device': performance-schema-health-block-device-table.
+Each measurement contains the device, mount point, measurement time,
+total capacity, available capacity, and percentage in use.  Storage
+quantities are expressed in bytes.
 
 For example, to display the most recent measurements:
 
-     SELECT TIMESTAMP, DEVICE, MOUNT_POINT, TOTAL_BYTES, AVAILABLE_BYTES, USE_PERCENT
-     FROM performance_schema.health_block_device
+     SELECT * FROM performance_schema.health_block_device
      ORDER BY `TIMESTAMP` DESC
      LIMIT 10;
 
-     +---------------------+---------------------+-------------+-------------+-----------------+-------------+
-     | TIMESTAMP           | DEVICE              | MOUNT_POINT | TOTAL_BYTES | AVAILABLE_BYTES | USE_PERCENT |
-     +---------------------+---------------------+-------------+-------------+-----------------+-------------+
-     | 2026-10-12 17:02:01 | /dev/mapper/ok-root | /           | 75125227520 |     60801060864 |       19.07 |
-     | 2026-10-12 17:01:01 | /dev/mapper/ok-root | /           | 75125227520 |     60801060864 |       19.07 |
-     | 2026-10-12 17:00:01 | /dev/mapper/ok-root | /           | 75125227520 |     60801060864 |       19.07 |
-     | 2026-10-12 16:59:01 | /dev/mapper/ok-root | /           | 75125227520 |     60801060864 |       19.07 |
-     | 2026-10-12 16:58:01 | /dev/mapper/ok-root | /           | 75125227520 |     60801060864 |       19.07 |
-     | 2026-10-12 16:57:01 | /dev/mapper/ok-root | /           | 75125227520 |     60801060864 |       19.07 |
-     | 2026-10-12 16:56:01 | /dev/mapper/ok-root | /           | 75125227520 |     60800983040 |       19.07 |
-     | 2026-10-12 16:55:01 | /dev/mapper/ok-root | /           | 75125227520 |     60800983040 |       19.07 |
-     | 2026-10-12 16:54:01 | /dev/mapper/ok-root | /           | 75125227520 |     60800983040 |       19.07 |
-     | 2026-10-12 16:53:01 | /dev/mapper/ok-root | /           | 75125227520 |     60800983040 |       19.07 |
-     +---------------------+---------------------+-------------+-------------+-----------------+-------------+
+     +---------------------+---------------------+-------------+-----------------+-------------+-------------+
+     | DEVICE              | TIMESTAMP           | TOTAL_BYTES | AVAILABLE_BYTES | USE_PERCENT | MOUNT_POINT |
+     +---------------------+---------------------+-------------+-----------------+-------------+-------------+
+     | /dev/mapper/ok-root | 2026-10-29 11:37:01 | 75125227520 |     59339362304 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:36:01 | 75125227520 |     59339628544 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:35:01 | 75125227520 |     59339649024 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:34:01 | 75125227520 |     59340042240 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:33:01 | 75125227520 |     59340042240 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:32:00 | 75125227520 |     59340042240 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:31:01 | 75125227520 |     59340042240 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:30:01 | 75125227520 |     59340042240 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:29:01 | 75125227520 |     59340304384 |       21.01 | /           |
+     | /dev/mapper/ok-root | 2026-10-29 11:28:01 | 75125227520 |     59340042240 |       21.01 | /           |
+     +---------------------+---------------------+-------------+-----------------+-------------+-------------+
      10 rows in set (0.003 sec)
 
 The default recording interval is 60 seconds, and the default history
@@ -145374,13 +145367,13 @@ filtering are so noted.
 
      This variable applies only for JSON-format audit log output.  When
      that is true, enabling this variable causes each log file record to
-     include a 'time' field.  The field value is an integer that
+     include a 'ts' field.  The field value is an integer that
      represents the UNIX timestamp value indicating the date and time
      when the audit event was generated.
 
      Changing the value of this variable at runtime causes log file
      rotation so that, for a given JSON-format log file, all records in
-     the file either do or do not include the 'time' field.
+     the file either do or do not include the 'ts' field.
 
      Setting the runtime value of 'audit_log_format_unix_timestamp'
      requires the 'AUDIT_ADMIN' privilege, in addition to the
