@@ -972,7 +972,7 @@ For additional information and specific example supported scenarios, see
 options to perform in-place updates (that replace binaries with the
 latest packages), a logical dump and load (such as using *note
 'mysqldump': mysqldump. or MySQL Shell's dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-dump-instance-schema.html)),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-dump-instance-schema.html)),
 cloning data with the *note clone plugin: clone-plugin, and *note
 asynchronous replication: replication-upgrade. for servers in a
 replication topology.
@@ -10274,7 +10274,7 @@ which build of MySQL you are using, then back up your data, remove your
 existing binaries, and replace them with those from ULN. If a change of
 build is involved, we recommend the backup be a dump (from *note
 'mysqldump': mysqldump. or MySQL Shell's backup utility
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-dump-instance-schema.html))
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-dump-instance-schema.html))
 just in case you need to rebuild your data after the new binaries are in
 place.  If this shift to ULN crosses a version boundary, consult this
 section before proceeding: *note upgrading::.
@@ -14925,7 +14925,7 @@ File: manual.info.tmp,  Node: upgrade-paths,  Next: upgrade-best-practices,  Pre
 
    * We recommend checking upgrade compatibility with MySQL Shell's
      Upgrade Checker Utility
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-upgrade.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-upgrade.html)
      before performing an upgrade.
 
    * A replication topology is upgraded by following the rolling upgrade
@@ -14952,7 +14952,7 @@ series
                           *note replication: replication-upgrade,
                           and MySQL
                           Clone
-                          (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster-clone-deployment.html)
+                          (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster-clone-deployment.html)
                           
 From an LTS or Bugfix
 series to the next LTS
@@ -15115,7 +15115,7 @@ See: *note upgrading-from-previous-series::.
 *Run Upgrade Checker and Fix Incompatibilities*
 
 MySQL Shell's Upgrade Checker Utility
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-upgrade.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-upgrade.html)
 detects incompatibilities between database versions that must be
 addressed before performing the upgrade.  The
 'util.checkForServerUpgrade()' function verifies that MySQL server
@@ -15399,7 +15399,7 @@ may fail otherwise.
 *Tip*:
 
 Consider using the MySQL Shell upgrade checker utility
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-upgrade.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-upgrade.html)
 that enables you to verify whether MySQL server instances are ready for
 upgrade.  You can select a target MySQL Server release to which you plan
 to upgrade, ranging from the MySQL Server 8.0.11 up to the MySQL Server
@@ -15409,7 +15409,7 @@ relevant for the specified target release, and advises you of further
 relevant checks that you should make manually.  The upgrade checker
 works for all Bugfix, Innovation, and LTS releases of MySQL.
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 Preliminary checks:
 
@@ -19119,15 +19119,15 @@ MySQL client programs that connect to the MySQL server:
      'mysqlsh'
 
      MySQL Shell is an advanced client and code editor for MySQL Server.
-     See MySQL Shell 26.7
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  In addition to
+     See MySQL Shell 26.10
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/).  In addition to
      the provided SQL functionality, similar to *note 'mysql': mysql,
      MySQL Shell provides scripting capabilities for JavaScript and
      Python and includes APIs for working with MySQL. X DevAPI enables
      you to work with both relational and document data, see *note
      document-store::.  AdminAPI enables you to work with InnoDB
      Cluster, see MySQL AdminAPI
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-userguide.html).
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-userguide.html).
 
    * 
      *note 'mysqlshow': mysqlshow.
@@ -21942,7 +21942,7 @@ The following options are available:
      '[user@]host[:port]'.  Use the 'uri' option to specify the URI of
      the target MySQL server instance.  For information on SSH tunnel
      connections from MySQL Shell, see Using an SSH Tunnel
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-connection-ssh.html).
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-connection-ssh.html).
 
    * 'uri': The URI for a MySQL server instance that is to be accessed
      through an SSH tunnel from the server specified by the 'ssh'
@@ -22011,7 +22011,7 @@ The following options are available:
      'compression-algorithms' in place of 'compression' to request
      compression for the connection.  For information on MySQL Shell's
      connection compression control, see Using Compressed Connections
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-compressed-connections.html).
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-compressed-connections.html).
 
    * 'connection-attributes': Controls the key-value pairs that
      application programs pass to the server at connect time.  For
@@ -22045,7 +22045,7 @@ The following options are available:
 
 You can specify a connection to MySQL Server using a URI-like string.
 Such strings can be used with the MySQL Shell with the '--uri'
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysqlsh.html#option_mysqlsh_uri)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysqlsh.html#option_mysqlsh_uri)
 command option, the MySQL Shell '\connect' command, and MySQL Connectors
 which implement X DevAPI.
 
@@ -22667,12 +22667,12 @@ legacy parameters, due to the additional compression parameters
 introduced for more control over connection compression that are
 described in *note connection-compression-configuration::.  An exception
 is MySQL Shell, where the '--compress'
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysqlsh.html#option_mysqlsh_compress)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysqlsh.html#option_mysqlsh_compress)
 command-line option remains current, and can be used to request
 compression without selecting compression algorithms.  For information
 on MySQL Shell's connection compression control, see Using Compressed
 Connections
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-compressed-connections.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-compressed-connections.html).
 
 The legacy compression parameters interact with the newer parameters and
 their semantics change as follows:
@@ -25005,7 +25005,7 @@ function in the client/server library rather than 'mysql_store_result()'
 *Note*:
 
 Alternatively, MySQL Shell offers access to the X DevAPI. For details,
-see MySQL Shell 26.7 (https://dev.mysql.com/doc/mysql-shell/26.7/en/).
+see MySQL Shell 26.10 (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
 
 Using *note 'mysql': mysql. is very easy.  Invoke it from the prompt of
 your command interpreter as follows:
@@ -31045,16 +31045,16 @@ output in CSV, other delimited text, or XML format.
 *Tip*:
 
 Consider using the MySQL Shell dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-dump-instance-schema.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-dump-instance-schema.html),
 which provide parallel dumping with multiple threads, file compression,
 and progress information display, as well as cloud features such as
 Oracle Cloud Infrastructure Object Storage streaming, and MySQL HeatWave
 compatibility checks and modifications.  Dumps can be easily imported
 into a MySQL Server instance or a MySQL HeatWave DB System using the
 MySQL Shell load dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-load-dump.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-load-dump.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
    * *note mysqldump-performance::
 
@@ -107138,7 +107138,7 @@ MySQL Shell includes these dump and dump loading utilities:
      data before uploading it to the target MySQL instance.
 
 For details of the utilities, see MySQL Shell Utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities.html).
 
 
 File: manual.info.tmp,  Node: secure-client-programming,  Prev: load-data-local-security,  Up: general-security-issues
@@ -156073,16 +156073,16 @@ File: manual.info.tmp,  Node: using-mysqldump,  Next: point-in-time-recovery,  P
 *Tip*:
 
 Consider using the MySQL Shell dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-dump-instance-schema.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-dump-instance-schema.html),
 which provide parallel dumping with multiple threads, file compression,
 and progress information display, as well as cloud features such as
 Oracle Cloud Infrastructure Object Storage streaming, and MySQL HeatWave
 compatibility checks and modifications.  Dumps can be easily imported
 into a MySQL Server instance or a MySQL HeatWave DB System using the
 MySQL Shell load dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-load-dump.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-load-dump.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 This section describes how to use *note 'mysqldump': mysqldump. to
 produce dump files, and how to reload dump files.  A dump file can be
@@ -165810,7 +165810,7 @@ inserts in *note insert-optimization::.
      MySQL relational table for large data files.  MySQL Shell's dump
      loading utility 'util.loadDump()' also offers parallel load
      capabilities.  See MySQL Shell Utilities
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities.html).
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities.html).
 
 
 File: manual.info.tmp,  Node: optimizing-innodb-queries,  Next: optimizing-innodb-ddl-operations,  Prev: optimizing-innodb-bulk-data-loading,  Up: optimizing-innodb
@@ -267716,7 +267716,7 @@ operations.
    * When you define a 'PRIMARY KEY' on a table, 'InnoDB' uses it as the
      clustered index.  A primary key should be defined for each table.
      If there is no logical unique and non-null column or set of columns
-     to use a the primary key, add an auto-increment column.
+     to use as the primary key, add an auto-increment column.
      Auto-increment column values are unique and are added automatically
      as new rows are inserted.
 
@@ -298007,19 +298007,20 @@ in the database on the source that you want to replicate.
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 There are some generic tasks that are common to all setups:
 
@@ -298378,19 +298379,20 @@ these options:
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 
 File: manual.info.tmp,  Node: replication-howto-mysqldump,  Next: replication-howto-rawdata,  Prev: replication-snapshot-method,  Up: replication-snapshot-method
@@ -298632,19 +298634,20 @@ snapshot of data on the source.
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 *Note*:
 
@@ -311309,19 +311312,20 @@ transaction on a replica.
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 
 File: manual.info.tmp,  Node: replication-administration-status,  Next: replication-administration-pausing,  Prev: replication-administration,  Up: replication-administration
@@ -315671,16 +315675,16 @@ emergency.  However, if the size of your data set is very large, *note
 *Tip*:
 
 Consider using the MySQL Shell dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-dump-instance-schema.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-dump-instance-schema.html),
 which provide parallel dumping with multiple threads, file compression,
 and progress information display, as well as cloud features such as
 Oracle Cloud Infrastructure Object Storage streaming, and MySQL HeatWave
 compatibility checks and modifications.  Dumps can be easily imported
 into a MySQL Server instance or a MySQL HeatWave DB System using the
 MySQL Shell load dump utilities
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-load-dump.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-load-dump.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 When using *note 'mysqldump': mysqldump, you should stop replication on
 the replica before starting the dump process to ensure that the dump
@@ -316677,7 +316681,7 @@ failover between groups if the primary cluster is not functioning
 normally.  Servers and groups can easily be added to or removed from the
 InnoDB ClusterSet deployment after the initial setup when demand
 changes.  For more information, see MySQL InnoDB ClusterSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/innodb-clusterset.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/innodb-clusterset.html).
 
 
 File: manual.info.tmp,  Node: replication-asynchronous-connection-failover-source,  Next: replication-asynchronous-connection-failover-replica,  Prev: replication-asynchronous-connection-failover,  Up: replication-asynchronous-connection-failover
@@ -320173,7 +320177,7 @@ This utility identifies configuration and stored data that is known to
 potentially cause upgrade problems, including features and behaviors
 that are no longer available in the later release.  See Upgrade Checker
 Utility
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-utilities-upgrade.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-utilities-upgrade.html)
 for information on the upgrade checker utility.
 
 *Standard Upgrade Procedure*
@@ -320455,8 +320459,8 @@ group members becomes unavailable, the clients connected to that group
 member must be redirected, or failed over, to a different server in the
 group, using a connector, load balancer, router, or some form of
 middleware.  Group Replication does not have an inbuilt method to do
-this.  For example, see MySQL Router 26.7
-(https://dev.mysql.com/doc/mysql-router/26.7/en/).
+this.  For example, see MySQL Router 26.10
+(https://dev.mysql.com/doc/mysql-router/26.10/en/).
 
 Group Replication is provided as a plugin to MySQL Server.  You can
 follow the instructions in this chapter to configure the plugin on each
@@ -320467,19 +320471,20 @@ group of MySQL server instances is by using InnoDB Cluster.
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 MySQL 9.7 and later support a number of MySQL components for use with
 MySQL Group Replication.  See *note replication-components::, for more
@@ -320744,8 +320749,8 @@ available, in the event of an unexpected server exit, those clients
 connected to it must be redirected, or failed over, to a different
 server.  This is not something Group Replication attempts to resolve.  A
 connector, load balancer, router, or some form of middleware are more
-suitable to deal with this issue.  For example see MySQL Router 26.7
-(https://dev.mysql.com/doc/mysql-router/26.7/en/).
+suitable to deal with this issue.  For example see MySQL Router 26.10
+(https://dev.mysql.com/doc/mysql-router/26.10/en/).
 
 To summarize, MySQL Group Replication provides a highly available,
 highly elastic, dependable MySQL service.
@@ -320753,19 +320758,20 @@ highly elastic, dependable MySQL service.
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 *Example Use Cases*
 
@@ -320826,9 +320832,9 @@ new operating configuration.  You do not need to restart the servers.
 
 Regardless of the deployed mode, Group Replication does not handle
 client-side failover.  That must be handled by a middleware framework
-such as MySQL Router 26.7
-(https://dev.mysql.com/doc/mysql-router/26.7/en/), a proxy, a connector,
-or the application itself.
+such as MySQL Router 26.10
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), a proxy, a
+connector, or the application itself.
 
 
 File: manual.info.tmp,  Node: group-replication-single-primary-mode,  Next: group-replication-multi-primary-mode,  Prev: group-replication-deploying-in-multi-primary-or-single-primary-mode,  Up: group-replication-deploying-in-multi-primary-or-single-primary-mode
@@ -320989,8 +320995,8 @@ event of an unexpected server exit, clients connected to it can be
 redirected, or failed over, to any other member that is in read/write
 mode.  Group Replication does not handle client-side failover itself, so
 you need to arrange this using a middleware framework such as MySQL
-Router 26.7 (https://dev.mysql.com/doc/mysql-router/26.7/en/), a proxy,
-a connector, or the application itself.  *note
+Router 26.10 (https://dev.mysql.com/doc/mysql-router/26.10/en/), a
+proxy, a connector, or the application itself.  *note
 group-replication-multi-primary-diagram:: shows how clients can
 reconnect to an alternative group member if a member leaves the group.
 
@@ -321429,19 +321435,20 @@ required to create a replication group with at least three members.
 *Tip*:
 
 To deploy multiple instances of MySQL, you can use InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html)
 which enables you to easily administer a group of MySQL server instances
-in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/).  InnoDB
-Cluster wraps MySQL Group Replication in a programmatic environment that
-enables you easily deploy a cluster of MySQL instances to achieve high
-availability.  In addition, InnoDB Cluster interfaces seamlessly with
-MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), which
-enables your applications to connect to the cluster without writing your
-own failover process.  For similar use cases that do not require high
-availability, however, you can use InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+in MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/).
+InnoDB Cluster wraps MySQL Group Replication in a programmatic
+environment that enables you easily deploy a cluster of MySQL instances
+to achieve high availability.  In addition, InnoDB Cluster interfaces
+seamlessly with MySQL Router
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), which enables your
+applications to connect to the cluster without writing your own failover
+process.  For similar use cases that do not require high availability,
+however, you can use InnoDB ReplicaSet
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 Installation instructions for MySQL Shell can be found here
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html).
 
 
 File: manual.info.tmp,  Node: group-replication-deploying-in-single-primary-mode,  Next: group-replication-deploying-locally,  Prev: group-replication-getting-started,  Up: group-replication-getting-started
@@ -323599,7 +323606,7 @@ topology is changed using AdminAPI operations.  An InnoDB cluster always
 uses the most recent communication protocol version that is supported by
 all the instances that are currently part of the cluster or joining it.
 For details, see InnoDB Cluster and Group Replication Protocol
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/monitoring-innodb-cluster.html#innodb-cluster-group-replication-protocol).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/monitoring-innodb-cluster.html#innodb-cluster-group-replication-protocol).
 
 
 File: manual.info.tmp,  Node: group-replication-member-actions,  Prev: group-replication-communication-protocol,  Up: group-replication-configuring-online-group
@@ -329651,7 +329658,7 @@ value of 'group_replication_communication_stack' is 'MYSQL', not 'XCOM'
 as it is for a default Group Replication implementation.
 
 For more information, see MySQL InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html).
 
 Some system variables on a Group Replication group member, including
 some Group Replication-specific system variables and some general system
@@ -330392,7 +330399,7 @@ with descriptions of their function or purpose, are listed here:
      'group_replication_communication_stack' is 'MYSQL'.
 
      For more information, see MySQL InnoDB Cluster
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html).
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html).
 
      Additional configuration is required when you set up a group to use
      MySQL's communication stack; see *note
@@ -334651,7 +334658,7 @@ Python which you can use to develop code that interacts with MySQL.
      AdminAPI makes administration of MySQL Router easier, including
      integration with both InnoDB Cluster and InnoDB ReplicaSet.  See
      MySQL AdminAPI
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-userguide.html).
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-userguide.html).
 
 MySQL Shell is available in two editions, the Community Edition and the
 Commercial Edition.  The Community Edition is available free of charge.
@@ -334746,7 +334753,7 @@ develop document based applications.
      JavaScript, Python, or SQL modes.  You can use MySQL Shell to
      prototype applications, execute queries and update data.
      Installing MySQL Shell
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html)
      has instructions to download and install MySQL Shell.
 
    * The quick-start guides (tutorials) in this chapter help you to get
@@ -334758,8 +334765,8 @@ develop document based applications.
      The quick-start guide for Python is here: *note
      mysql-shell-tutorial-python::.
 
-   * The 'MySQL Shell User Guide' at MySQL Shell 26.7
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/) provides detailed
+   * The 'MySQL Shell User Guide' at MySQL Shell 26.10
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/) provides detailed
      information about configuring and using MySQL Shell.
 
 
@@ -334867,18 +334874,18 @@ includes the following topics:
 
 To follow this quick-start guide you need a MySQL server with X Plugin
 installed, the default in 9.7, and MySQL Shell to use as the client.
-MySQL Shell 26.7 (https://dev.mysql.com/doc/mysql-shell/26.7/en/)
+MySQL Shell 26.10 (https://dev.mysql.com/doc/mysql-shell/26.10/en/)
 provides more in-depth information about MySQL Shell.  The Document
 Store is accessed using X DevAPI, and MySQL Shell provides this API in
 both JavaScript and Python.
 
 *Related Information*
 
-   * MySQL Shell 26.7 (https://dev.mysql.com/doc/mysql-shell/26.7/en/)
+   * MySQL Shell 26.10 (https://dev.mysql.com/doc/mysql-shell/26.10/en/)
      provides more in-depth information about MySQL Shell.
 
    * See Installing MySQL Shell
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html)
      and *note x-plugin:: for more information about the tools used in
      this quick-start guide.
 
@@ -334990,12 +334997,12 @@ To quit MySQL Shell, issue the following command:
 *Related Information*
 
    * See Interactive Code Execution
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-interactive-code-execution.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-interactive-code-execution.html)
      for an explanation of how interactive code execution works in MySQL
      Shell.
 
    * See Getting Started with MySQL Shell
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-getting-started.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-getting-started.html)
      to learn about session and connection alternatives.
 
 
@@ -335057,7 +335064,7 @@ relational tables:
 *Related Information*
 
    * MySQL Shell Sessions
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-sessions.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-sessions.html)
      explains session types.
 
 
@@ -336430,16 +336437,16 @@ X Protocol and use the server as a Document Store.
 
 *Related Information*
 
-   * MySQL Shell 26.7 (https://dev.mysql.com/doc/mysql-shell/26.7/en/)
+   * MySQL Shell 26.10 (https://dev.mysql.com/doc/mysql-shell/26.10/en/)
      provides more in-depth information about MySQL Shell.
 
    * See Installing MySQL Shell
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html)
      and *note x-plugin:: for more information about the tools used in
      this quick-start guide.
 
    * See Supported Languages
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-features.html#shell-supported-languages)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-features.html#shell-supported-languages)
      for more information about the languages MySQL Shell supports.
 
    * X DevAPI User Guide
@@ -336553,12 +336560,12 @@ To quit MySQL Shell, issue the following command:
 *Related Information*
 
    * See Interactive Code Execution
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-interactive-code-execution.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-interactive-code-execution.html)
      for an explanation of how interactive code execution works in MySQL
      Shell.
 
    * See Getting Started with MySQL Shell
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-getting-started.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-getting-started.html)
      to learn about session and connection alternatives.
 
 
@@ -336620,7 +336627,7 @@ relational tables:
 *Related Information*
 
    * MySQL Shell Sessions
-     (https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-sessions.html)
+     (https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-sessions.html)
      explains session types.
 
 
@@ -340734,7 +340741,7 @@ technologies to enable you to deploy and administer a complete
 integrated high availability solution for MySQL. This content is a
 high-level overview of InnoDB Cluster, for full documentation, see MySQL
 InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html).
 
 *Important*:
 
@@ -340746,15 +340753,15 @@ An InnoDB Cluster consists of at least three MySQL Server instances, and
 it provides high-availability and scaling features.  InnoDB Cluster uses
 the following MySQL technologies:
 
-   * MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/), which
-     is an advanced client and code editor for MySQL.
+   * MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/),
+     which is an advanced client and code editor for MySQL.
 
    * MySQL Server, and *note Group Replication: group-replication, which
      enables a set of MySQL instances to provide high-availability.
      InnoDB Cluster provides an alternative, easy to use programmatic
      way to work with Group Replication.
 
-   * MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), a
+   * MySQL Router (https://dev.mysql.com/doc/mysql-router/26.10/en/), a
      lightweight middleware that provides transparent routing between
      your application and InnoDB Cluster.
 
@@ -340774,7 +340781,7 @@ primaries.  You can even change the topology of the cluster while InnoDB
 Cluster is online, to ensure the highest possible availability.
 
 You work with InnoDB Cluster using the AdminAPI
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-overview.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-overview.html),
 provided as part of MySQL Shell.  AdminAPI is available in JavaScript
 and Python, and is well suited to scripting and automation of
 deployments of MySQL to achieve high-availability and scalability.  By
@@ -340785,10 +340792,10 @@ administer, and monitor your deployment from one central tool.
 
 To get started with InnoDB Cluster you need to download
 (https://dev.mysql.com/downloads/shell/) and install
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html)
 MySQL Shell.  You need some hosts with MySQL Server instances *note
 installed: installing, and you can also install
-(https://dev.mysql.com/doc/mysql-router/26.7/en/mysql-router-installation.html)
+(https://dev.mysql.com/doc/mysql-router/26.10/en/mysql-router-installation.html)
 MySQL Router.
 
 InnoDB Cluster supports *note MySQL Clone: clone-plugin, which enables
@@ -340797,16 +340804,16 @@ instance before it joins a set of MySQL instances you would need to
 somehow manually transfer the transactions to the joining instance.
 This could involve making file copies, manually copying them, and so on.
 Using InnoDB Cluster, you can simply add an instance
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/add-instances-cluster.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/add-instances-cluster.html)
 to the cluster and it is automatically provisioned.
 
 Similarly, InnoDB Cluster is tightly integrated with MySQL Router
-(https://dev.mysql.com/doc/mysql-router/26.7/en/), and you can use
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), and you can use
 AdminAPI to work with
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/registered-routers.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/registered-routers.html)
 them together.  MySQL Router can automatically configure itself based on
 an InnoDB Cluster, in a process called bootstrapping
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-bootstrapping-router.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-bootstrapping-router.html),
 which removes the need for you to configure routing manually.  MySQL
 Router then transparently connects client applications to the InnoDB
 Cluster, providing routing and load-balancing for client connections.
@@ -340815,7 +340822,7 @@ Router bootstrapped against an InnoDB Cluster using AdminAPI. InnoDB
 Cluster status information includes details about MySQL Routers
 bootstrapped against the cluster.  Operations enable you to create MySQL
 Router users
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/configuring-router-user.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/configuring-router-user.html)
 at the cluster level, to work with the MySQL Routers bootstrapped
 against the cluster, and so on.
 
@@ -340836,27 +340843,27 @@ This chapter introduces MySQL InnoDB ReplicaSet, which combines MySQL
 technologies to enable you to deploy and administer *note replication::.
 This content is a high-level overview of InnoDB ReplicaSet, for full
 documentation, see MySQL InnoDB ReplicaSet
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-replicaset.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-replicaset.html).
 
 An InnoDB ReplicaSet consists of at least two MySQL Server instances,
 and it provides all of the MySQL Replication features you are familiar
 with, such as read scale-out and data security.  InnoDB ReplicaSet uses
 the following MySQL technologies:
 
-   * MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.7/en/), which
-     is an advanced client and code editor for MySQL.
+   * MySQL Shell (https://dev.mysql.com/doc/mysql-shell/26.10/en/),
+     which is an advanced client and code editor for MySQL.
 
    * MySQL Server, and *note replication::, which enables a set of MySQL
      instances to provide availability and asynchronous read scale-out.
      InnoDB ReplicaSet provides an alternative, easy to use programmatic
      way to work with Replication.
 
-   * MySQL Router (https://dev.mysql.com/doc/mysql-router/26.7/en/), a
+   * MySQL Router (https://dev.mysql.com/doc/mysql-router/26.10/en/), a
      lightweight middleware that provides transparent routing between
      your application and InnoDB ReplicaSet.
 
 The interface to an InnoDB ReplicaSet is similar to MySQL InnoDB Cluster
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-innodb-cluster.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-innodb-cluster.html),
 you use MySQL Shell to work with MySQL Server instances as a ReplicaSet,
 and MySQL Router is also tightly integrated in the same way as InnoDB
 Cluster.
@@ -340872,7 +340879,7 @@ even adopt an existing Replication deployment and then administer it as
 an InnoDB ReplicaSet.
 
 You work with InnoDB ReplicaSet using the AdminAPI
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-overview.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-overview.html),
 provided as part of MySQL Shell.  AdminAPI is available in JavaScript
 and Python, and is well suited to scripting and automation of
 deployments of MySQL to achieve high-availability and scalability.  By
@@ -340883,10 +340890,10 @@ administer, and monitor your deployment from one central tool.
 
 To get started with InnoDB ReplicaSet you need to download
 (https://dev.mysql.com/downloads/shell/) and install
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-install.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-install.html)
 MySQL Shell.  You need some hosts with MySQL Server instances *note
 installed: installing, and you can also install
-(https://dev.mysql.com/doc/mysql-router/26.7/en/mysql-router-installation.html)
+(https://dev.mysql.com/doc/mysql-router/26.10/en/mysql-router-installation.html)
 MySQL Router.
 
 InnoDB ReplicaSet supports *note MySQL Clone: clone-plugin, which
@@ -340895,16 +340902,16 @@ new instance before it joined a MySQL Replication deployment, you would
 need to somehow manually transfer the transactions to the joining
 instance.  This could involve making file copies, manually copying them,
 and so on.  You can simply add an instance
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/add-instance-replicaset.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/add-instance-replicaset.html)
 to the replica set and it is automatically provisioned.
 
 Similarly, InnoDB ReplicaSet is tightly integrated with MySQL Router
-(https://dev.mysql.com/doc/mysql-router/26.7/en/), and you can use
+(https://dev.mysql.com/doc/mysql-router/26.10/en/), and you can use
 AdminAPI to work with
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/registered-routers.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/registered-routers.html)
 them together.  MySQL Router can automatically configure itself based on
 an InnoDB ReplicaSet, in a process called bootstrapping
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-bootstrapping-router.html),
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-bootstrapping-router.html),
 which removes the need for you to configure routing manually.  MySQL
 Router then transparently connects client applications to the InnoDB
 ReplicaSet, providing routing and load-balancing for client connections.
@@ -340913,7 +340920,7 @@ Router bootstrapped against an InnoDB ReplicaSet using AdminAPI. InnoDB
 ReplicaSet status information includes details about MySQL Routers
 bootstrapped against the ReplicaSet.  Operations enable you to create
 MySQL Router users
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/configuring-router-user.html)
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/configuring-router-user.html)
 at the ReplicaSet level, to work with the MySQL Routers bootstrapped
 against the ReplicaSet, and so on.
 
@@ -340979,7 +340986,7 @@ storage engine as well as additional applications that are not included
 in the NDB Cluster distribution.  MySQL Server 9.7 binaries cannot be
 used with MySQL NDB Cluster.  For more information about deploying and
 using InnoDB Cluster, see MySQL AdminAPI
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-userguide.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-userguide.html).
 *note mysql-cluster-compared::, discusses differences between the 'NDB'
 and 'InnoDB' storage engines.
 
@@ -453429,7 +453436,7 @@ Perl, Ruby, and C.
 
 Oracle develops a number of connectors:
 
-   * Connector/C++ (https://dev.mysql.com/doc/connector-cpp/26.7/en/)
+   * Connector/C++ (https://dev.mysql.com/doc/connector-cpp/26.10/en/)
      enables C++ applications to connect to MySQL.
 
    * Connector/J (https://dev.mysql.com/doc/connector-j/en/) provides
@@ -453536,7 +453543,7 @@ Connector/C++'libmysqlclient'     See MySQL
                                   26.10
                                   Developer
                                   Guide
-                                  (https://dev.mysql.com/doc/connector-cpp/26.7/en/).
+                                  (https://dev.mysql.com/doc/connector-cpp/26.10/en/).
                                   
 
 MySQL++ 'libmysqlclient'          See
@@ -453734,7 +453741,7 @@ part of the MySQL Reference Manual.  For information, see these
 documents:
 
    * Main manual: MySQL Connector/C++ 26.10 Developer Guide
-     (https://dev.mysql.com/doc/connector-cpp/26.7/en/)
+     (https://dev.mysql.com/doc/connector-cpp/26.10/en/)
 
    * Release notes: MySQL Connector/C++ Release Notes
      (https://dev.mysql.com/doc/relnotes/connector-cpp/en/)
@@ -454543,7 +454550,7 @@ where COMPUTEIP is the IP address of your Compute Instance.
 
 For more information on MySQL Shell connections, see MySQL Shell
 Connections
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/mysql-shell-connections.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/mysql-shell-connections.html).
 
 *Connecting with Workbench*
 
@@ -460435,7 +460442,7 @@ innodb-storage-engine. clustering with regard to architecture,
 requirements, and implementation; despite any similarity in their names,
 the two are not compatible.  For more information about 'InnoDB'
 clustering, see MySQL AdminAPI
-(https://dev.mysql.com/doc/mysql-shell/26.7/en/admin-api-userguide.html).
+(https://dev.mysql.com/doc/mysql-shell/26.10/en/admin-api-userguide.html).
 See also *note mysql-cluster-compared::, for information about the
 differences between the 'NDB' and 'InnoDB' storage engines.
 
@@ -482458,7 +482465,7 @@ queries.  It enables development of C++ applications using X DevAPI, or
 plain C applications using X DevAPI for C. It also enables development
 of C++ applications that use the legacy JDBC-based API from
 Connector/C++ 1.1.  For more information, see MySQL Connector/C++ 26.10
-Developer Guide (https://dev.mysql.com/doc/connector-cpp/26.7/en/).
+Developer Guide (https://dev.mysql.com/doc/connector-cpp/26.10/en/).
 Connector/NET
 
 A MySQL *connector* for developers writing applications using languages,
@@ -485281,7 +485288,7 @@ For supported versions of Visual Studio, see the following references:
      (https://dev.mysql.com/doc/connector-net/en/connector-net-versions.html)
 
    * Connector/C++ 8.0: Platform Support and Prerequisites
-     (https://dev.mysql.com/doc/connector-cpp/26.7/en/connector-cpp-introduction.html#connector-cpp-prerequisites)
+     (https://dev.mysql.com/doc/connector-cpp/26.10/en/connector-cpp-introduction.html#connector-cpp-prerequisites)
 
 wait
 
