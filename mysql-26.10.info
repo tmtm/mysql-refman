@@ -861,14 +861,25 @@ and security fixes, and are considered production-grade quality.
 *MySQL Version Numbers*
 
 MySQL 9.7 was the final release line using the sequential versioning
-model.  Subsequent MySQL Innovation and LTS releases use calendar
-versioning in the YY.M.P format:
+model.  As of 26.7, calendar versioning was introduced.  As of 26.10,
+MySQL Innovation and LTS releases use calendar versioning in the
+YY.M.P.U format:
 
    * YY: the two-digit release year
 
    * M: the release month
 
    * P: the patch or maintenance release number, starting at 0.
+
+   * U: distinguishes separately delivered updates on the same patch
+     line.  The original patch release has an update value of 0, and
+     update-aware interfaces always display this component.  For
+     example, 26.10.0.0 identifies the original 26.10.0 release, and
+     26.10.0.1 identifies its first update.
+
+     The update component is descriptive and does not change upgrade,
+     downgrade, replication, data dictionary, plugin-interface, or Group
+     Replication compatibility.
 
 MySQL 26.7.0, representing the July 2026 release, is the first valid
 calendar-versioned MySQL release.  MySQL 26.7.1 is a patch release in
@@ -2600,18 +2611,9 @@ bug fixes while innovation releases includes the latest new features and
 changes.  For additional details, see *note mysql-releases::.
 
 The naming scheme in MySQL 26.10 uses release names that consist of
-three numbers and an optional suffix (for example, *mysql-9.0.0*).  The
-numbers within the release name are interpreted as follows:
-
-   * The first number (*9*) is the major version number.
-
-   * The second number (*0*) is the minor version number.  The minor
-     version number does not change for an LTS series, but it does
-     change for an Innovation series.
-
-   * The third number (*0*) is the version number within a series.  This
-     is incremented for each new LTS release, but is likely always 0 for
-     innovation releases.
+calendar versioning with four numbers (for example, *mysql-26.10.0.0*).
+The numbers in the release name are described in *note
+mysql-releases-calver::.
 
 After choosing which MySQL version to install, decide which distribution
 format to install for your operating system.  For most use cases, a
