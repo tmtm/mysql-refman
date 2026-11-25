@@ -854,6 +854,25 @@ The MySQL release model is divided into two main tracks: LTS (Long-Term
 Support) and Innovation.  All LTS and Innovation releases include bug
 and security fixes, and are considered production-grade quality.
 
+*MySQL Version Numbers*
+
+As of 8.4.13, 4-part versioning is introduced in the
+Major.Minor.Patch.Update format:
+
+   * Major: the major version number.
+
+   * Minor: the minor version number.
+
+   * Patch: the patch or maintenance release number, starting at 0.
+
+   * Update: distinguishes separately delivered updates on the same
+     patch line.  For example, 8.4.13.0 identifies the original 8.4.13.0
+     release, and 8.4.13.1 identifies its first update.
+
+     The update component is descriptive and does not change upgrade,
+     downgrade, replication, data dictionary, plugin-interface, or Group
+     Replication compatibility.
+
 *MySQL LTS Releases*
 
    * 'Audience': If your environment requires a stable set of features
@@ -4756,9 +4775,14 @@ install from an Innovation series like MySQL 26.7.  Both tracks include
 bug fixes while innovation releases includes the latest new features and
 changes.  For additional details, see *note mysql-releases::.
 
-The naming scheme in MySQL 8.4 uses release names that consist of three
-numbers and an optional suffix (for example, *mysql-8.4.0*).  The
-numbers within the release name are interpreted as follows:
+As of 8.4.13, the naming scheme in MySQL 8.4 uses release names that
+consist of four numbers (for example, *mysql-8.4.13.0*).  The numbers
+within the release name are described in *note mysql-releases-calver::.
+
+Prior to 8.4.13, the naming scheme in MySQL 8.4 uses release names that
+consist of three numbers and an optional suffix (for example,
+*mysql-8.4.0*).  The numbers within the release name are interpreted as
+follows:
 
    * The first number (*8*) is the major version number.
 
@@ -4766,9 +4790,9 @@ numbers within the release name are interpreted as follows:
      version number does not change for an LTS series, but it does
      change for an Innovation series.
 
-   * The third number (*0*) is the version number within an LTS series.
-     This is incremented for each new LTS release, but is likely always
-     0 for innovation releases.
+   * The third number (*0*) is the version number within a series.  This
+     is incremented for each new LTS release, but is likely always 0 for
+     innovation releases.
 
 After choosing which MySQL version to install, decide which distribution
 format to install for your operating system.  For most use cases, a

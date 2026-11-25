@@ -856,15 +856,22 @@ and security fixes, and are considered production-grade quality.
 
 *MySQL Version Numbers*
 
-MySQL 9.7 is the final release line using the previous sequential
-versioning model.  Subsequent MySQL Innovation and LTS releases use
-calendar versioning in the YY.M format, where YY represents the year and
-M represents the scheduled release month.
+As of 9.7.4, 4-part versioning is introduced in the
+Major.Minor.Patch.Update format:
 
-For example, MySQL 26.7 represents the July 2026 release, and MySQL 27.7
-represents the July 2027 release.  When a release is designated as an
-LTS release, its YY.M version remains fixed throughout the support
-lifecycle of that LTS series.
+   * Major: the major version number.
+
+   * Minor: the minor version number.
+
+   * Patch: the patch or maintenance release number, starting at 0.
+
+   * Update: distinguishes separately delivered updates on the same
+     patch line.  For example, 9.7.4.0 identifies the original 9.7.4.0
+     release, and 9.7.4.1 identifies its first update.
+
+     The update component is descriptive and does not change upgrade,
+     downgrade, replication, data dictionary, plugin-interface, or Group
+     Replication compatibility.
 
 *MySQL LTS Releases*
 
@@ -2382,13 +2389,18 @@ install from an Innovation series like MySQL 26.10.  Both tracks include
 bug fixes while innovation releases includes the latest new features and
 changes.  For additional details, see *note mysql-releases::.
 
-The naming scheme in MySQL 9.7 uses release names that consist of three
-numbers and an optional suffix (for example, *mysql-9.0.0*).  The
-numbers within the release name are interpreted as follows:
+As of 9.7.4, the naming scheme in MySQL 9.7 uses release names that
+consist of four numbers (for example, *mysql-9.7.4.0*).  The numbers
+within the release name are described in *note mysql-releases-calver::.
+
+Prior to 9.7.4, the naming scheme in MySQL 9.7 uses release names that
+consist of three numbers and an optional suffix (for example,
+*mysql-9.7.0*).  The numbers within the release name are interpreted as
+follows:
 
    * The first number (*9*) is the major version number.
 
-   * The second number (*0*) is the minor version number.  The minor
+   * The second number (*7*) is the minor version number.  The minor
      version number does not change for an LTS series, but it does
      change for an Innovation series.
 
